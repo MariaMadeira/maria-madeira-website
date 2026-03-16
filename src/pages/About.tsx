@@ -77,7 +77,7 @@ export default function About() {
 
                         <ul style={{ listStyle: 'none', padding: 0 }}>
                             {[
-                                "Ex-CMO of multiple scaling 7-figure brands.",
+                            "Scaling partner for multiple 7-figure e-commerce brands.",
                                 "AI-driven workflow enthusiast.",
                                 "Specialist in turning traffic into robust communities."
                             ].map((item, i) => (

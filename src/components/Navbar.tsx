@@ -14,13 +14,11 @@ export default function Navbar() {
     }, []);
 
     const links = [
-        { name: "Home", path: "/" },
         { name: "Services", path: "/services" },
-        { name: "Case Studies", path: "/case-studies" },
         { name: "Results", path: "/results" },
+        { name: "Case Studies", path: "/case-studies" },
         { name: "Portfolio", path: "/portfolio" },
         { name: "About", path: "/about" },
-        { name: "Contact", path: "/contact" },
     ];
 
     return (
@@ -28,21 +26,25 @@ export default function Navbar() {
             <div className="container">
                 <div className="navbar-content">
                     <Link to="/" className="nav-logo" onClick={() => setIsOpen(false)}>
-                        <img src="/favicon.png" alt="" style={{ height: '44px', width: '44px', objectFit: 'contain', mixBlendMode: 'multiply', flexShrink: 0 }} />
-                        <span className="nav-logo-text">MARIA MADEIRA</span>
+                        <img src="/favicon.png" alt="" style={{ height: '40px', width: '40px', objectFit: 'contain', mixBlendMode: 'multiply', flexShrink: 0 }} />
+                        <span className="nav-logo-text" style={{ fontSize: '1.2rem', letterSpacing: '0.1em' }}>MARIA MADEIRA</span>
                     </Link>
 
                     {/* Desktop Nav */}
-                    <div className="nav-links">
+                    <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
                         {links.map((link) => (
                             <Link
                                 key={link.path}
                                 to={link.path}
                                 className={`nav-link ${location.pathname === link.path ? "active" : ""}`}
+                                style={{ fontSize: '0.9rem', fontWeight: 500 }}
                             >
                                 {link.name}
                             </Link>
                         ))}
+                        <Link to="/contact" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem', marginLeft: '1rem' }}>
+                            Get in Touch
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Toggle */}

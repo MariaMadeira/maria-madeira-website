@@ -73,22 +73,48 @@ export default function Home() {
                         marginBottom: '1rem',
                         display: 'block'
                     }}>
-                        E-commerce Growth Specialist
+                        E-commerce Growth Specialist. AI Enthusiast.
                     </span>
-                    <h1>
-                        Growth Strategist for <br />
-                        <span className="text-gradient">Modern E-commerce Brands</span>
+                    <h1 style={{ maxWidth: '900px', margin: '0 auto 1.5rem' }}>
+                        Scaling <span className="text-gradient">E-commerce Brands</span> with Data-Driven Growth & AI
                     </h1>
-                    <p>
-                        Helping brands scale through growth strategy, lifecycle marketing, paid acquisition, and AI-driven search optimisation.
+                    <p style={{ maxWidth: '700px', margin: '0 auto 2.5rem', fontSize: '1.25rem', color: 'var(--text-secondary)' }}>
+                        Helping modern brands transition from steady growth to aggressive scaling through lifecycle marketing, paid acquisition, and AI-driven automation.
                     </p>
-                    <div className="hero-cta-group" style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
-                        <Link to="/contact" className="btn btn-primary">
-                            Let's Talk <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                    <div className="hero-cta-group" style={{ display: "flex", gap: "1.2rem", justifyContent: "center", marginBottom: '3rem' }}>
+                        <Link to="/contact" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
+                            Book a Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                         </Link>
-                        <Link to="/case-studies" className="btn btn-secondary">
-                            View Case Studies
+                        <Link to="/results" className="btn btn-secondary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
+                            See My Results
                         </Link>
+                    </div>
+
+                    <div style={{ 
+                        display: 'flex', 
+                        justifyContent: 'center', 
+                        gap: '3rem', 
+                        flexWrap: 'wrap', 
+                        opacity: 0.7,
+                        fontSize: '0.9rem',
+                        fontWeight: 500,
+                        padding: '1.5rem',
+                        borderTop: '1px solid var(--border-color)',
+                        maxWidth: '800px',
+                        margin: '0 auto'
+                    }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <span style={{ color: 'var(--accent-secondary)', fontSize: '1.2rem' }}>★</span>
+                            Growth Strategist for Scaling Brands
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <span style={{ color: 'var(--accent-secondary)', fontSize: '1.2rem' }}>★</span>
+                            £160K+ Revenue Generated
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <span style={{ color: 'var(--accent-secondary)', fontSize: '1.2rem' }}>★</span>
+                            5x Avg. ROAS
+                        </div>
                     </div>
                 </motion.div>
 
@@ -108,7 +134,14 @@ export default function Home() {
 
 
             {/* Key Metrics Section */}
-            <section className="section">
+            <section className="section" style={{ position: 'relative', background: 'var(--bg-secondary)', borderRadius: '32px', margin: '4rem 0', padding: '5rem 2rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                    <h2 className="section-title">Measurable Impact</h2>
+                    <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
+                        Consistent results across diverse channels, driven by data and optimized for profitable growth.
+                    </p>
+                </div>
+                
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -116,44 +149,59 @@ export default function Home() {
                     viewport={{ once: true, margin: "-100px" }}
                     className="grid-4"
                 >
-                    <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center' }}>
-                        <h3 className="text-gradient-accent" style={{ fontSize: '2.5rem', marginBottom: '0.5rem', lineHeight: 1 }}>
+                    <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
+                        <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
                             <Counter from={0} to={160} prefix="£" suffix="K+" />
                         </h3>
-                        <p>Revenue Generated</p>
+                        <p style={{ fontWeight: 600 }}>Total Revenue Generated</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Directly attributed to my strategies</p>
                     </motion.div>
-                    <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center' }}>
-                        <h3 className="text-gradient-accent" style={{ fontSize: '2.5rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <Counter from={0} to={40} suffix="%" />
-                        </h3>
-                        <p>Avg. Email Open Rate</p>
-                    </motion.div>
-                    <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center' }}>
-                        <h3 className="text-gradient-accent" style={{ fontSize: '2.5rem', marginBottom: '0.5rem', lineHeight: 1 }}>
+                    <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
+                        <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
                             <Counter from={0} to={5} suffix="x" />
                         </h3>
-                        <p>Return on Ad Spend</p>
+                        <p style={{ fontWeight: 600 }}>Average ROAS</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Across Google & Meta Ads</p>
                     </motion.div>
-                    <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center' }}>
-                        <h3 className="text-gradient-accent" style={{ fontSize: '2.5rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <Counter from={0} to={15} suffix="+" />
+                    <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
+                        <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
+                            <Counter from={0} to={48} suffix="%" />
                         </h3>
-                        <p>Growth Projects Delivered</p>
+                        <p style={{ fontWeight: 600 }}>Email Open Rate</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Industry-leading engagement</p>
+                    </motion.div>
+                    <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
+                        <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
+                            <Counter from={0} to={70} suffix="%" />
+                        </h3>
+                        <p style={{ fontWeight: 600 }}>Cost Reduction</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>In visual production via AI</p>
                     </motion.div>
                 </motion.div>
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 0.6 }}
-                    viewport={{ once: true }}
-                    style={{
-                        fontSize: "0.85rem",
-                        textAlign: "center",
-                        marginTop: "1.5rem",
-                        color: "var(--text-secondary)"
-                    }}
-                >
-                    Revenue generated across lifecycle marketing and paid acquisition projects.
-                </motion.p>
+            </section>
+
+            {/* Brands Section */}
+            <section className="section" style={{ padding: '2rem 0 6rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                    <p style={{ textTransform: 'uppercase', letterSpacing: '0.15em', fontSize: '0.75rem', fontWeight: 700, opacity: 0.5, marginBottom: '2rem' }}>
+                        Trusted by Innovative Brands & Agencies
+                    </p>
+                    <div style={{ 
+                        display: 'flex', 
+                        justifyContent: 'center', 
+                        alignItems: 'center', 
+                        gap: '4rem', 
+                        flexWrap: 'wrap',
+                        filter: 'grayscale(1) opacity(0.6)'
+                    }}>
+                        {/* Adding brands found in portfolio + placeholders for others */}
+                        <span style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.02em' }}>OUSADIA</span>
+                        <span style={{ fontSize: '1.2rem', fontWeight: 600 }}>Rita Antunes</span>
+                        <span style={{ fontSize: '1.4rem', fontWeight: 700 }}>COTSWOLD FUDGE</span>
+                        <span style={{ fontSize: '1.3rem', fontWeight: 900 }}>METRIC DRIVE</span>
+                        <span style={{ fontSize: '1.1rem', fontWeight: 500, fontStyle: 'italic' }}>Bloom Agency</span>
+                    </div>
+                </div>
             </section>
 
             {/* Services Overview Section */}

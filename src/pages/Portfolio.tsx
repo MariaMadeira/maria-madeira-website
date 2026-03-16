@@ -10,35 +10,35 @@ export default function Portfolio() {
         {
             title: "Lifecycle Email Marketing",
             category: "Email Marketing",
-            description: "Automated email flows designed to recover lost sales, improve retention and generate consistent revenue.",
+            description: "Driving £100K+ in attributed revenue through advanced lifecycle flows and retention-first automation strategies.",
             link: "/portfolio-email-marketing",
             visual: "linear-gradient(135deg, #f5f0eb 0%, #e8ddd4 50%, #d4c4b8 100%)"
         },
         {
             title: "Rita Antunes Psicologia",
             category: "Branding",
-            description: "Logo design, colour palette, typography and brand assets.",
+            description: "Establishing a premium clinical practice identity that successfully converts high-ticket therapy leads.",
             link: "/portfolio-rita-antunes",
             visual: "#aab394"
         },
         {
             title: "Ousadia Artcraft",
             category: "Branding",
-            description: "Moodboard, bold visual expressions and handcrafted identity.",
+            description: "Visual storytelling and bold identity that positioned an artisanal brand for high-end market entry.",
             link: "/portfolio-ousadia",
             visual: "linear-gradient(45deg, #d4c8bc, #a38260)"
         },
         {
             title: "AI-Enhanced Product Imagery",
             category: "AI Creations",
-            description: "AI-assisted product image enhancement and visual asset creation for e-commerce marketing campaigns.",
+            description: "Reducing content production costs by 70% while improving campaign CTR through AI-optimised visual assets.",
             link: "/portfolio-ai-enhanced",
             visual: "url('/projects/ai-enhanced/cooked ox cheek.jpg') center/cover"
         },
         {
             title: "AI Product Photography",
             category: "AI Creations",
-            description: "Transforming basic product packshots into marketing-ready product photography using AI-generated environments.",
+            description: "Rapidly scaling social media growth by transforming basic packshots into high-performance marketing creatives.",
             link: "/portfolio-ai-product-photography",
             visual: "url('/projects/ai-product/DEPOIS%20Cotswold%20Fudge%20Butterscotch.jpg') center/cover"
         }

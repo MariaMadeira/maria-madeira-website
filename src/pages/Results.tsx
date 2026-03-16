@@ -70,7 +70,7 @@ export default function Results() {
                     Email Marketing <span className="text-gradient-accent">Metrics</span>
                 </h1>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1.2rem", maxWidth: "800px", margin: "0 auto", lineHeight: 1.8 }}>
-                    Tangible business outcomes driven by advanced lifecycle flows, meticulous A/B testing, and robust list segmentation strategies.
+                    Driving high-intent traffic and recovering lost revenue through advanced lifecycle flows and segmentation.
                 </p>
             </div>
 
@@ -84,12 +84,21 @@ export default function Results() {
                 {emailMetrics.map((stat, i) => (
                     <motion.div
                         key={i}
-                        className="card"
+                        className="card impact-card"
                         variants={itemVariants}
-                        whileHover={{ y: -5, boxShadow: "0 8px 30px rgba(59, 49, 44, 0.08)" }}
-                        style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: "3rem 2rem" }}
+                        whileHover={{ y: -5, boxShadow: "0 12px 40px rgba(59, 49, 44, 0.12)" }}
+                        style={{ 
+                            display: "flex", 
+                            flexDirection: "column", 
+                            justifyContent: "center", 
+                            alignItems: "center", 
+                            textAlign: "center", 
+                            padding: "3.5rem 2rem",
+                            border: "1px solid var(--border-color)",
+                            background: "var(--bg-primary)"
+                        }}
                     >
-                        <h3 className="text-gradient-accent" style={{ fontSize: "3.5rem", marginBottom: "1rem", lineHeight: 1 }}>
+                        <h3 className="text-gradient-accent" style={{ fontSize: "4rem", marginBottom: "0.5rem", lineHeight: 1 }}>
                             <Counter
                                 from={0}
                                 to={stat.to}
@@ -98,19 +107,26 @@ export default function Results() {
                                 suffix={stat.suffix}
                             />
                         </h3>
-                        <p style={{ fontSize: "1.05rem", fontWeight: 500, color: "var(--text-primary)", margin: 0, maxWidth: "250px" }}>
+                        <p style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.75rem" }}>
                             {stat.label}
+                        </p>
+                        <div style={{ width: '40px', height: '2px', background: 'var(--accent-secondary)', margin: '1rem 0', opacity: 0.4 }}></div>
+                        <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", maxWidth: "300px" }}>
+                            {i === 0 && "Substantial growth in direct sales from Klaviyo campaigns."}
+                            {i === 1 && "Outperforming industry averages by 2.5x."}
+                            {i === 2 && "Highly targeted automated systems that never sleep."}
+                            {i === 3 && "Passive income streams built through customer journey mapping."}
                         </p>
                     </motion.div>
                 ))}
             </motion.div>
 
-            <div style={{ textAlign: "center", marginTop: "8rem", marginBottom: "5rem" }}>
+            <div style={{ textAlign: "center", marginTop: "10rem", marginBottom: "5rem" }}>
                 <h2 className="section-title" style={{ marginBottom: "1.5rem" }}>
                     Paid Advertising <span className="text-gradient-accent">Performance</span>
                 </h2>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1.2rem", maxWidth: "800px", margin: "0 auto", lineHeight: 1.8 }}>
-                    Selected performance metrics from paid media campaigns across Google Ads and Meta Ads.
+                    Maximizing efficiency and scale across Google Ads and Meta Ads with data-driven optimization.
                 </p>
             </div>
 
@@ -124,10 +140,19 @@ export default function Results() {
                 {paidMetrics.map((stat, i) => (
                     <motion.div
                         key={i}
-                        className="card"
+                        className="card impact-card"
                         variants={itemVariants}
-                        whileHover={{ y: -5, boxShadow: "0 8px 30px rgba(59, 49, 44, 0.08)" }}
-                        style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: "3rem 2rem" }}
+                        whileHover={{ y: -5, boxShadow: "0 12px 40px rgba(59, 49, 44, 0.12)" }}
+                        style={{ 
+                            display: "flex", 
+                            flexDirection: "column", 
+                            justifyContent: "center", 
+                            alignItems: "center", 
+                            textAlign: "center", 
+                            padding: "3rem 2rem",
+                            border: "1px solid var(--border-color)",
+                            background: "var(--bg-primary)" 
+                        }}
                     >
                         <h3 className="text-gradient-accent" style={{ fontSize: "3.5rem", marginBottom: "1rem", lineHeight: 1 }}>
                             <Counter
@@ -138,8 +163,13 @@ export default function Results() {
                                 suffix={stat.suffix}
                             />
                         </h3>
-                        <p style={{ fontSize: "1.05rem", fontWeight: 500, color: "var(--text-primary)", margin: 0, maxWidth: "250px" }}>
+                        <p style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.5rem" }}>
                             {stat.label}
+                        </p>
+                        <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", marginTop: "0.5rem" }}>
+                            {i === 0 && "Scaling spend while maintaining profitability."}
+                            {i === 1 && "High-intent customer acquisition."}
+                            {i === 2 && "Measurable return on every pound spent."}
                         </p>
                     </motion.div>
                 ))}
@@ -156,6 +186,30 @@ export default function Results() {
                     Campaign management focused on optimisation, targeting improvements, and performance monitoring across Google Ads and Meta Ads.
                 </p>
             </motion.div>
+
+            {/* Bridge to Case Studies */}
+            <section style={{ marginTop: '8rem', textAlign: 'center' }}>
+                <h2 className="section-title" style={{ marginBottom: "1.5rem", fontSize: '2rem' }}>
+                    Want to see the <span className="text-gradient">detail behind</span> these numbers?
+                </h2>
+                <div className="grid-3" style={{ marginTop: '3rem' }}>
+                    <Link to="/case-study-email" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
+                        <h4 style={{ marginBottom: '1rem' }}>Email Growth Case Study</h4>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>How we generated £100K+ through lifecycle automation and advanced segmentation.</p>
+                        <span style={{ color: 'var(--accent-secondary)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
+                    </Link>
+                    <Link to="/case-study-google-ads" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
+                        <h4 style={{ marginBottom: '1rem' }}>Paid Acquisition Deep-Dive</h4>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Scaling ROAS to 4.9x through data-driven targeting and creative testing.</p>
+                        <span style={{ color: 'var(--accent-secondary)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
+                    </Link>
+                    <Link to="/case-study-seo" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
+                        <h4 style={{ marginBottom: '1rem' }}>SEO & Organic Scaling</h4>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Building sustainable long-term growth through content and technical optimisation.</p>
+                        <span style={{ color: 'var(--accent-secondary)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
+                    </Link>
+                </div>
+            </section>
 
             {/* CTA Section */}
             <motion.div
