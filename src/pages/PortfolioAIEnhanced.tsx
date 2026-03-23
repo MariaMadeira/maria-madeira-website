@@ -65,8 +65,8 @@ export default function PortfolioAIEnhanced() {
     );
 
     return (
-        <div className="container animate-fade-in portfolio-page-inner" style={{ padding: "6rem 0", background: "var(--bg-primary)" }}>
-            <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+        <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
+            <div className="portfolio-inner" style={{ maxWidth: "1000px", margin: "0 auto" }}>
 
                 {/* Navigation */}
                 <Link
@@ -185,7 +185,7 @@ export default function PortfolioAIEnhanced() {
                     viewport={{ once: true, margin: "-100px" }}
                     variants={fadeUp}
                     className="portfolio-section-card"
-                    style={{ marginBottom: "6rem", background: "white", padding: "4rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}
+                    className="portfolio-section-card" style={{ marginBottom: "6rem", background: "white", padding: "4rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
                         The Solution

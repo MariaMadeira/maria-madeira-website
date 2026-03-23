@@ -24,8 +24,8 @@ export default function PortfolioOusadia() {
     const assetPath = "/projects/ousadia/";
 
     return (
-        <div className="container animate-fade-in portfolio-page-inner" style={{ padding: "6rem 0", background: "var(--bg-primary)" }}>
-            <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+        <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
+            <div className="portfolio-inner" style={{ maxWidth: "900px", margin: "0 auto" }}>
 
                 {/* Navigation */}
                 <Link
@@ -255,6 +255,7 @@ export default function PortfolioOusadia() {
                     </motion.p>
                     <motion.div
                         variants={fadeUp}
+                        className="portfolio-section-card"
                         style={{
                             background: "white",
                             padding: "4rem",

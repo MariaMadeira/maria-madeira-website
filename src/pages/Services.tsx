@@ -37,7 +37,7 @@ export default function Services() {
     ];
 
     return (
-        <div className="container animate-fade-in" style={{ padding: "6rem 0" }}>
+        <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Helmet>
                 <title>Services | Maria Madeira — Growth Strategy & Marketing Expertise</title>
                 <meta name="description" content="Explore Maria Madeira's services: growth strategy, email marketing & automation, paid advertising, AI marketing systems, and creative direction for e-commerce brands." />

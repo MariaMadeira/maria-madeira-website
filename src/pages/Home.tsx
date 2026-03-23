@@ -90,11 +90,11 @@ export default function Home() {
                         </Link>
                     </div>
 
-                    <div style={{ 
-                        display: 'flex', 
-                        justifyContent: 'center', 
-                        gap: '3rem', 
-                        flexWrap: 'wrap', 
+                    <div className="hero-stats" style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        gap: '3rem',
+                        flexWrap: 'wrap',
                         opacity: 0.7,
                         fontSize: '0.9rem',
                         fontWeight: 500,
@@ -134,7 +134,7 @@ export default function Home() {
 
 
             {/* Key Metrics Section */}
-            <section className="section" style={{ position: 'relative', background: 'var(--bg-secondary)', borderRadius: '32px', margin: '4rem 0', padding: '5rem 2rem' }}>
+            <section className="section metrics-section" style={{ position: 'relative', background: 'var(--bg-secondary)', borderRadius: '32px', margin: '4rem 0', padding: '5rem 2rem' }}>
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                     <h2 className="section-title">Measurable Impact</h2>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
@@ -186,27 +186,44 @@ export default function Home() {
                     <p style={{ textTransform: 'uppercase', letterSpacing: '0.15em', fontSize: '0.75rem', fontWeight: 700, opacity: 0.5, marginBottom: '2rem' }}>
                         Trusted by Innovative Brands & Agencies
                     </p>
-                    <div style={{ 
-                        display: 'flex', 
-                        justifyContent: 'center', 
-                        alignItems: 'center', 
-                        gap: '4rem', 
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        gap: '0',
                         flexWrap: 'wrap',
-                        filter: 'grayscale(1) opacity(0.6)'
+                        opacity: 0.45
                     }}>
-                        {/* Adding brands found in portfolio + placeholders for others */}
-                        <span style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.02em' }}>OUSADIA</span>
-                        <span style={{ fontSize: '1.2rem', fontWeight: 600 }}>Rita Antunes</span>
-                        <span style={{ fontSize: '1.4rem', fontWeight: 700 }}>COTSWOLD FUDGE</span>
-                        <span style={{ fontSize: '1.3rem', fontWeight: 900 }}>METRIC DRIVE</span>
-                        <span style={{ fontSize: '1.1rem', fontWeight: 500, fontStyle: 'italic' }}>Bloom Agency</span>
+                        {[
+                            "THE BLACK FARMER",
+                            "SMORGASBORG",
+                            "OUSADIA",
+                            "WILTSHIRE COUNTRY FAYRE",
+                            "RITA ANTUNES"
+                        ].map((brand, i, arr) => (
+                            <span key={brand} style={{ display: 'flex', alignItems: 'center' }}>
+                                <span style={{
+                                    fontFamily: 'var(--font-heading)',
+                                    fontSize: '0.8rem',
+                                    fontWeight: 700,
+                                    letterSpacing: '0.18em',
+                                    textTransform: 'uppercase',
+                                    padding: '0.5rem 2rem',
+                                    whiteSpace: 'nowrap'
+                                }}>
+                                    {brand}
+                                </span>
+                                {i < arr.length - 1 && (
+                                    <span style={{ color: 'var(--accent-secondary)', fontSize: '0.6rem', opacity: 0.6 }}>✦</span>
+                                )}
+                            </span>
+                        ))}
                     </div>
                 </div>
             </section>
 
             {/* Services Overview Section */}
             <section className="section" style={{ position: 'relative' }}>
-                <div className="watermark-text">EXPERTISE</div>
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                     <h2 className="section-title" style={{ marginBottom: '1rem' }}>Core Services</h2>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
@@ -217,32 +234,26 @@ export default function Home() {
                     <div className="card">
                         <TrendingUp size={32} className="text-gradient-accent" style={{ marginBottom: '1rem' }} />
                         <h3>Growth Strategy</h3>
-                        <p>Comprehensive roadmaps tailored for e-commerce and startups seeking aggressive, sustainable growth.</p>
                     </div>
                     <div className="card">
                         <Mail size={32} className="text-gradient-accent" style={{ marginBottom: '1rem' }} />
                         <h3>Email Marketing & Automation</h3>
-                        <p>Advanced segmentation, lifecycle flows, and campaign management that converts and retains.</p>
                     </div>
                     <div className="card">
                         <BarChart size={32} className="text-gradient-accent" style={{ marginBottom: '1rem' }} />
                         <h3>Paid Advertising</h3>
-                        <p>Data-driven ad campaigns optimized for ROAS and scale across paid social and search channels.</p>
                     </div>
                     <div className="card">
                         <Cpu size={32} className="text-gradient-accent" style={{ marginBottom: '1rem' }} />
                         <h3>AI & Automation Systems</h3>
-                        <p>Implementing AI-powered tools and automation systems to streamline marketing workflows and improve performance.</p>
                     </div>
                     <div className="card">
                         <Maximize size={32} className="text-gradient-accent" style={{ marginBottom: '1rem' }} />
                         <h3>Creative Direction</h3>
-                        <p>Guiding visual communication and branding to ensure consistent, high-converting assets.</p>
                     </div>
                     <div className="card">
                         <ArrowRightLeft size={32} className="text-gradient-accent" style={{ marginBottom: '1rem' }} />
                         <h3>E-commerce Platform Migration</h3>
-                        <p>Supporting brands transitioning from WooCommerce or custom platforms to Shopify, ensuring a smooth migration while preserving store structure, SEO foundations, and operational workflows.</p>
                     </div>
                 </div>
             </section>

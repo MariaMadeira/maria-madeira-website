@@ -8,6 +8,13 @@ export default function Portfolio() {
 
     const projects = [
         {
+            title: "Click & Collect Mobile Experience",
+            category: "Product & UX",
+            description: "End-to-end product experiment: mobile ordering app, campaign creative, and elevator screen distribution for a high-traffic retail store.",
+            link: "/portfolio-click-collect",
+            visual: "url('/projects/click-collect/app-mockups.png') center/cover"
+        },
+        {
             title: "Lifecycle Email Marketing",
             category: "Email Marketing",
             description: "Driving £100K+ in attributed revenue through advanced lifecycle flows and retention-first automation strategies.",
@@ -52,7 +59,7 @@ export default function Portfolio() {
         : projects.filter(project => project.category === activeCategory);
 
     return (
-        <div className="container animate-fade-in" style={{ padding: "4rem 0" }}>
+        <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Helmet>
                 <title>Portfolio | Maria Madeira — Creative Work & Brand Projects</title>
                 <meta name="description" content="Explore Maria Madeira's creative portfolio: branding, AI-enhanced product imagery, and visual identity projects for e-commerce brands." />

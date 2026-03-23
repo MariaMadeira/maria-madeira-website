@@ -17,7 +17,7 @@ export default function CaseStudySEO() {
     };
 
     return (
-        <div className="container animate-fade-in" style={{ padding: "4rem 0" }}>
+        <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <div style={{ maxWidth: "900px", margin: "0 auto" }}>
 
                 {/* Back Link */}

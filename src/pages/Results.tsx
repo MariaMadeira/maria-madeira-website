@@ -59,7 +59,7 @@ export default function Results() {
     };
 
     return (
-        <div className="container animate-fade-in" style={{ padding: "6rem 0" }}>
+        <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Helmet>
                 <title>Results | Maria Madeira — Email & Paid Advertising Performance</title>
                 <meta name="description" content="See the measurable results: £100K+ email revenue, 48% open rates, 4.9x ROAS across Google Ads and Meta Ads campaigns." />

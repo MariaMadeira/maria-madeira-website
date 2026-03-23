@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +14,17 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+        return () => { document.body.style.overflow = ''; };
+    }, [isOpen]);
+
+    // Close menu on route change
+    useEffect(() => {
+        setIsOpen(false);
+    }, [location.pathname]);
+
     const links = [
         { name: "Services", path: "/services" },
         { name: "Results", path: "/results" },
@@ -22,6 +34,7 @@ export default function Navbar() {
     ];
 
     return (
+        <>
         <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
             <div className="container">
                 <div className="navbar-content">
@@ -31,7 +44,7 @@ export default function Navbar() {
                     </Link>
 
                     {/* Desktop Nav */}
-                    <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+                    <div className="nav-links" style={{ alignItems: 'center', gap: '2rem' }}>
                         {links.map((link) => (
                             <Link
                                 key={link.path}
@@ -59,7 +72,10 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile Menu Overlay */}
+        </nav>
+
+        {/* Mobile Menu Overlay — rendered outside <nav> via portal to avoid clipping */}
+        {isOpen && createPortal(
             <div style={{
                 position: 'fixed',
                 top: 'var(--nav-height)',
@@ -67,26 +83,48 @@ export default function Navbar() {
                 right: 0,
                 bottom: 0,
                 background: 'var(--bg-primary)',
-                display: isOpen ? 'flex' : 'none',
+                display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center',
-                padding: '2rem',
-                gap: '2rem',
-                zIndex: 99,
-                borderTop: '1px solid var(--border-color)'
+                padding: '2rem 1.5rem',
+                zIndex: 200,
+                borderTop: '1px solid var(--border-color)',
+                overflowY: 'auto'
             }}>
-                {links.map((link) => (
+                <nav style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+                    {links.map((link) => (
+                        <Link
+                            key={link.path}
+                            to={link.path}
+                            onClick={() => setIsOpen(false)}
+                            style={{
+                                display: 'block',
+                                padding: '1rem 0',
+                                fontSize: '1.3rem',
+                                fontWeight: 600,
+                                fontFamily: 'var(--font-heading)',
+                                color: location.pathname === link.path ? 'var(--accent-secondary)' : 'var(--text-primary)',
+                                borderBottom: '1px solid var(--border-color)',
+                                textDecoration: 'none',
+                                letterSpacing: '-0.01em'
+                            }}
+                        >
+                            {link.name}
+                        </Link>
+                    ))}
+                </nav>
+                <div style={{ marginTop: '2rem' }}>
                     <Link
-                        key={link.path}
-                        to={link.path}
-                        className={`nav-link ${location.pathname === link.path ? "active" : ""}`}
-                        style={{ fontSize: '1.5rem' }}
+                        to="/contact"
+                        className="btn btn-primary"
+                        style={{ display: 'flex', justifyContent: 'center', padding: '1rem 2rem', fontSize: '1rem' }}
                         onClick={() => setIsOpen(false)}
                     >
-                        {link.name}
+                        Get in Touch
                     </Link>
-                ))}
-            </div>
-        </nav>
+                </div>
+            </div>,
+            document.body
+        )}
+        </>
     );
 }

@@ -90,8 +90,8 @@ export default function PortfolioEmailMarketing() {
     ];
 
     return (
-        <div className="container animate-fade-in portfolio-page-inner" style={{ padding: "6rem 0", background: "var(--bg-primary)" }}>
-            <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+        <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
+            <div className="portfolio-inner" style={{ maxWidth: "1000px", margin: "0 auto" }}>
 
                 {/* Navigation */}
                 <Link
@@ -366,13 +366,77 @@ export default function PortfolioEmailMarketing() {
                     </div>
                 </motion.section>
 
-                {/* 4. Segmentation Strategy */}
+                {/* 4. Email Designs */}
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
                     variants={stagger}
-                    style={{ marginBottom: "6rem", background: "white", padding: "4rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}
+                    style={{ marginBottom: "6rem" }}
+                >
+                    <motion.h2 variants={fadeUp} style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
+                        Email Designs
+                    </motion.h2>
+                    <motion.p variants={fadeUp} style={{
+                        fontFamily: "var(--font-sans)",
+                        fontSize: "1.1rem",
+                        lineHeight: 1.8,
+                        color: "var(--text-secondary)",
+                        fontWeight: 300,
+                        marginBottom: "3rem"
+                    }}>
+                        Each email was designed to reflect the brand's bold, food-first identity — combining strong visuals, direct copy, and clear calls to action to drive engagement and conversions.
+                    </motion.p>
+
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem", alignItems: "start" }}>
+                        {[
+                            { src: "/projects/email-marketing/ads-offer.png", label: "Welcome / Offer Flow" },
+                            { src: "/projects/email-marketing/ox-1.png", label: "Ox Segment — Email 1" },
+                            { src: "/projects/email-marketing/ox-2.png", label: "Ox Segment — Email 2" },
+                            { src: "/projects/email-marketing/replenishment.png", label: "30-Day Replenishment Flow" },
+                            { src: "/projects/email-marketing/recipe.png", label: "Recipe Content Flow" },
+                        ].map((email, i) => (
+                            <motion.div
+                                key={i}
+                                variants={fadeUp}
+                                style={{
+                                    borderRadius: "16px",
+                                    overflow: "hidden",
+                                    border: "1px solid var(--border-color)",
+                                    background: "white",
+                                    boxShadow: "0 4px 20px rgba(0,0,0,0.06)"
+                                }}
+                            >
+                                <img
+                                    src={email.src}
+                                    alt={email.label}
+                                    style={{ width: "100%", display: "block" }}
+                                />
+                                <div style={{ padding: "1rem 1.25rem" }}>
+                                    <p style={{
+                                        fontFamily: "var(--font-heading)",
+                                        fontSize: "0.85rem",
+                                        fontWeight: 600,
+                                        color: "var(--text-primary)",
+                                        margin: 0,
+                                        textTransform: "uppercase",
+                                        letterSpacing: "0.05em"
+                                    }}>
+                                        {email.label}
+                                    </p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.section>
+
+                {/* 6. Segmentation Strategy */}
+                <motion.section
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={stagger}
+                    className="portfolio-section-card" style={{ marginBottom: "6rem", background: "white", padding: "4rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}
                 >
                     <motion.h2 variants={fadeUp} style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
                         Segmentation Strategy
@@ -437,7 +501,7 @@ export default function PortfolioEmailMarketing() {
                     </div>
                 </motion.section>
 
-                {/* 5. Content & Engagement Flows */}
+                {/* 7. Content & Engagement Flows */}
                 <motion.section
                     initial="hidden"
                     whileInView="visible"
@@ -510,7 +574,7 @@ export default function PortfolioEmailMarketing() {
                     </div>
                 </motion.section>
 
-                {/* 6. Impact */}
+                {/* 8. Impact */}
                 <motion.section
                     initial="hidden"
                     whileInView="visible"

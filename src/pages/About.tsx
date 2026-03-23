@@ -11,7 +11,7 @@ export default function About() {
     ];
 
     return (
-        <div className="container animate-fade-in" style={{ padding: "6rem 0" }}>
+        <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Helmet>
                 <title>About | Maria Madeira — Growth Strategist & Marketing Specialist</title>
                 <meta name="description" content="Learn about Maria Madeira — a Growth Strategist and Creative Marketing Specialist passionate about bridging data-driven performance and engaging brand narratives." />
@@ -33,7 +33,7 @@ export default function About() {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            background: "url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800') center/cover",
+                            background: "url('/portrait.png') center top/cover",
                             borderRadius: "24px",
                             overflow: "hidden"
                         }}

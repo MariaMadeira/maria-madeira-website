@@ -24,11 +24,18 @@ export default function CaseStudies() {
             problem: "Email channel underutilised with limited lifecycle automation.",
             results: "£110K revenue generated · 41% of total store revenue",
             link: "/case-study-email",
+        },
+        {
+            title: "Exploring Click & Collect as a New Revenue Channel",
+            category: "Product Experiment & UX Strategy",
+            problem: "Physical retail store losing demand to long peak-hour queues with no option for customers to pre-order.",
+            results: "Mobile Click & Collect app built · Key learnings on digital adoption in physical retail",
+            link: "/case-study-click-collect",
         }
     ];
 
     return (
-        <div className="container animate-fade-in" style={{ padding: "4rem 0" }}>
+        <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Helmet>
                 <title>Case Studies | Maria Madeira — E-commerce Growth Results</title>
                 <meta name="description" content="Explore real-world case studies showing measurable growth: SEO optimisation, Google Ads scaling, and email marketing lifecycle revenue." />

@@ -48,7 +48,7 @@ export default function Contact() {
     };
 
     return (
-        <div className="container animate-fade-in" style={{ padding: "6rem 0" }}>
+        <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Helmet>
                 <title>Contact | Maria Madeira — Let's Work Together</title>
                 <meta name="description" content="Get in touch with Maria Madeira to discuss growth strategy, email marketing, paid advertising, or AI marketing projects for your e-commerce brand." />

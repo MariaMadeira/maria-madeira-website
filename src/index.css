@@ -194,7 +194,7 @@ ul {
   z-index: 100;
   background: var(--bg-primary);
   border-bottom: 1px solid var(--border-color);
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .navbar.scrolled {
@@ -352,7 +352,6 @@ ul {
 }
 
 @media (max-width: 900px) {
-
   .grid-3,
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
@@ -360,7 +359,6 @@ ul {
 }
 
 @media (max-width: 600px) {
-
   .grid-2,
   .grid-3,
   .grid-4 {
@@ -570,9 +568,19 @@ textarea:focus {
 }
 
 /* ========================= */
-/* Mobile — ≤ 768px           */
+/* Tablet — ≤ 768px           */
 /* ========================= */
 @media (max-width: 768px) {
+
+  .container {
+    padding: 0 6%;
+  }
+
+  /* Reduce top/bottom page padding on all inner pages */
+  .container.animate-fade-in {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
 
   .section {
     padding: 60px 0;
@@ -583,7 +591,20 @@ textarea:focus {
     margin-bottom: 2rem;
   }
 
-  /* Hero CTA buttons stack vertically */
+  /* Nav: hide desktop links, show hamburger */
+  .nav-links {
+    display: none !important;
+  }
+
+  .mobile-toggle {
+    display: block !important;
+  }
+
+  /* Hero */
+  .hero h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+  }
+
   .hero-cta-group {
     flex-direction: column;
     align-items: center;
@@ -595,25 +616,78 @@ textarea:focus {
     justify-content: center;
   }
 
-  /* About portrait height */
+  .hero-stats {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem !important;
+  }
+
+  /* Grids */
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* About portrait */
   .about-portrait {
     height: 320px !important;
   }
 
-  /* Portfolio project pages: reduce outer padding */
-  .portfolio-page-inner {
-    padding: 3rem 0 !important;
+  /* Contact grid */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
   }
 
-  /* Portfolio project page card-style sections */
+  /* Portfolio inner pages — only reduce vertical padding, never touch sides */
+  .portfolio-page-inner {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  /* Reduce large inner section padding on portfolio pages */
   .portfolio-section-card {
     padding: 2rem !important;
   }
 
-  /* Impact / outcome flex blocks */
   .impact-block {
     flex-direction: column !important;
     padding: 2rem !important;
+  }
+
+  /* App screen labels */
+  .app-labels-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .app-labels-row > div {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  /* Ordering flow */
+  .flow-steps {
+    flex-direction: column !important;
+  }
+
+  .flow-steps > div {
+    flex-direction: column !important;
+    width: 100%;
+  }
+
+  .flow-steps > div > div:first-child {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  /* Metrics section */
+  .metrics-section {
+    padding: 3rem 1.5rem !important;
+    margin: 2rem 0 !important;
   }
 
   /* Results CTA */
@@ -624,6 +698,12 @@ textarea:focus {
   .results-cta h2 {
     font-size: 1.8rem;
   }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
 }
 
 /* ========================= */
@@ -631,24 +711,45 @@ textarea:focus {
 /* ========================= */
 @media (max-width: 480px) {
 
-  /* Hide nav logo text on very small screens */
-  .nav-logo-text {
-    display: none;
+  .container {
+    padding: 0 5%;
   }
 
-  .container {
-    padding: 0 4%;
+  .container.animate-fade-in {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
   }
 
   .section-title {
     font-size: 1.75rem;
   }
 
+  /* Grids: everything single column */
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Cards */
+  .card {
+    padding: 1.5rem;
+  }
+
   .portfolio-image-container {
     min-height: 200px;
   }
 
-  /* Lifecycle diagram: hide connector column, go full width */
+  /* Portfolio pages header meta */
+  .portfolio-meta {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Color swatches: 2 columns */
+  .color-swatches {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Lifecycle diagram */
   .lifecycle-label {
     display: none !important;
   }
