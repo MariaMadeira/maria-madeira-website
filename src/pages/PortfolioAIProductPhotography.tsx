@@ -182,7 +182,6 @@ export default function PortfolioAIProductPhotography() {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
                     variants={fadeUp}
-                    className="portfolio-section-card"
                     className="portfolio-section-card" style={{ marginBottom: "6rem", background: "white", padding: "4rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
