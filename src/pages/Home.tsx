@@ -113,7 +113,7 @@ export default function Home() {
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                             <span style={{ color: 'var(--accent-secondary)', fontSize: '1.2rem' }}>★</span>
-                            5x Avg. ROAS
+                            4.9x Google Ads ROAS
                         </div>
                     </div>
                 </motion.div>
@@ -158,10 +158,10 @@ export default function Home() {
                     </motion.div>
                     <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <Counter from={0} to={5} suffix="x" />
+                            <Counter from={0} to={4.9} suffix="x" decimals={1} />
                         </h3>
-                        <p style={{ fontWeight: 600 }}>Average ROAS</p>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Across Google & Meta Ads</p>
+                        <p style={{ fontWeight: 600 }}>Google Ads ROAS</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>490.74% return on ad spend</p>
                     </motion.div>
                     <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>

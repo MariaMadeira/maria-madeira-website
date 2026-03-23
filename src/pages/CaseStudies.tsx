@@ -15,7 +15,7 @@ export default function CaseStudies() {
             title: "Google Ads Revenue Growth",
             category: "Paid Advertising",
             problem: "Paid acquisition needed to scale profitably while maintaining strong return on ad spend.",
-            results: "£51.9K revenue generated from £9.9K ad spend · 5.2x ROAS",
+            results: "£51.9K revenue generated from £9.9K ad spend · 4.9x ROAS",
             link: "/case-study-google-ads",
         },
         {

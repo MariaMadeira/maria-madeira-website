@@ -58,7 +58,7 @@ export default function CaseStudyGoogleAds() {
                         Google Ads Revenue Growth
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
-                        How an optimised Google Ads strategy generated £51.9K in revenue from £9.9K in ad spend while maintaining a 5.2x return on ad spend.
+                        How an optimised Google Ads strategy generated £51.9K in revenue from £9.9K in ad spend while maintaining a 4.9x return on ad spend.
                     </p>
                 </motion.div>
 
@@ -167,7 +167,7 @@ export default function CaseStudyGoogleAds() {
                         {[
                             { metric: "£51.9K", label: "Revenue Generated", detail: "" },
                             { metric: "£9.9K", label: "Total Ad Spend", detail: "" },
-                            { metric: "5.2x", label: "Return on Ad Spend", detail: "" },
+                            { metric: "4.9x", label: "Return on Ad Spend", detail: "" },
                             { metric: "778", label: "Conversions", detail: "" },
                             { metric: "£12.78", label: "Cost per Conversion", detail: "" },
                             { metric: "4.34M", label: "Ad Impressions", detail: "" },
@@ -225,7 +225,7 @@ export default function CaseStudyGoogleAds() {
                         }}
                     >
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                            The optimised Google Ads strategy generated <strong style={{ color: "var(--text-primary)" }}>£51.9K</strong> in revenue from <strong style={{ color: "var(--text-primary)" }}>£9.9K</strong> in ad spend, achieving a <strong style={{ color: "var(--text-primary)" }}>5.2x</strong> return on ad spend.
+                            The optimised Google Ads strategy generated <strong style={{ color: "var(--text-primary)" }}>£51.9K</strong> in revenue from <strong style={{ color: "var(--text-primary)" }}>£9.9K</strong> in ad spend, achieving a <strong style={{ color: "var(--text-primary)" }}>4.9x</strong> return on ad spend.
                         </p>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
                             With <strong style={{ color: "var(--text-primary)" }}>778 conversions</strong> generated and a cost per conversion of <strong style={{ color: "var(--text-primary)" }}>£12.78</strong>, Google Ads became a reliable channel for acquiring high-intent customers.

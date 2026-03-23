@@ -62,7 +62,7 @@ export default function Results() {
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Helmet>
                 <title>Results | Maria Madeira — Email & Paid Advertising Performance</title>
-                <meta name="description" content="See the measurable results: £100K+ email revenue, 48% open rates, 4.9x ROAS across Google Ads and Meta Ads campaigns." />
+                <meta name="description" content="See the measurable results: £100K+ email revenue, 48% open rates, 4.9x Google Ads ROAS and 3.1x Meta Ads ROAS." />
             </Helmet>
 
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>
@@ -200,7 +200,7 @@ export default function Results() {
                     </Link>
                     <Link to="/case-study-google-ads" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
                         <h4 style={{ marginBottom: '1rem' }}>Paid Acquisition Deep-Dive</h4>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Scaling ROAS to 4.9x through data-driven targeting and creative testing.</p>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>4.9x Google Ads ROAS and 3.1x Meta Ads ROAS through data-driven targeting and creative testing.</p>
                         <span style={{ color: 'var(--accent-secondary)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
                     </Link>
                     <Link to="/case-study-seo" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>

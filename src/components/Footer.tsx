@@ -106,7 +106,7 @@ export default function Footer() {
                             <a href="mailto:mmarques.madeira@gmail.com" style={{ color: "rgba(255,255,255,0.7)", transition: "color 0.3s ease" }} aria-label="Email"><Mail size={20} /></a>
                         </div>
                         <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem", marginTop: "1rem" }}>
-                            Based in London, UK.<br />Working Globally.
+                            Based in Lisbon, Portugal.<br />Working Globally.
                         </p>
                     </div>
                 </div>

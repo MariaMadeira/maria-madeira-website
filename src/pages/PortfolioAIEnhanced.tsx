@@ -38,7 +38,7 @@ export default function PortfolioAIEnhanced() {
         },
         {
             title: "Valentine's Steak",
-            original: "raw valentines steak.jpg",
+            original: "original valentines steak.png",
             enhanced: "raw valentines steak.jpg",
             cooked: "cooked valentine's steak.jpg"
         }
