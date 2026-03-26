@@ -51,6 +51,15 @@ export default function Home() {
             <Helmet>
                 <title>Maria Madeira | E-commerce Growth Strategist & Marketing Automation</title>
                 <meta name="description" content="Growth Strategist for modern e-commerce brands. Specializing in lifecycle marketing, paid acquisition, AI-driven search optimisation, and creative direction." />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Maria Madeira | E-commerce Growth Strategist" />
+                <meta property="og:description" content="Helping modern brands transition from steady growth to aggressive scaling through lifecycle marketing, paid acquisition, and AI-driven automation." />
+                <meta property="og:image" content="/MM.png" />
+                <meta property="og:url" content="https://mariamadeira.com/" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Maria Madeira | E-commerce Growth Strategist" />
+                <meta name="twitter:description" content="Helping modern brands scale through lifecycle marketing, paid acquisition, and AI-driven automation." />
+                <meta name="twitter:image" content="/MM.png" />
             </Helmet>
 
             {/* Hero Section */}
@@ -196,7 +205,7 @@ export default function Home() {
                     }}>
                         {[
                             "THE BLACK FARMER",
-                            "SMORGASBORG",
+                            "SMORGASBURG",
                             "OUSADIA",
                             "WILTSHIRE COUNTRY FAYRE",
                             "RITA ANTUNES"
@@ -234,26 +243,32 @@ export default function Home() {
                     <div className="card">
                         <TrendingUp size={32} className="text-gradient-accent" style={{ marginBottom: '1rem' }} />
                         <h3>Growth Strategy</h3>
+                        <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem', fontSize: '0.95rem' }}>Full-funnel strategies to take brands from steady growth to aggressive, sustainable scaling.</p>
                     </div>
                     <div className="card">
                         <Mail size={32} className="text-gradient-accent" style={{ marginBottom: '1rem' }} />
                         <h3>Email Marketing & Automation</h3>
+                        <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem', fontSize: '0.95rem' }}>Advanced lifecycle flows and segmentation that maximise LTV and cut acquisition costs.</p>
                     </div>
                     <div className="card">
                         <BarChart size={32} className="text-gradient-accent" style={{ marginBottom: '1rem' }} />
                         <h3>Paid Advertising</h3>
+                        <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem', fontSize: '0.95rem' }}>Data-driven media buying across Meta, Google, and TikTok to maximise ROAS.</p>
                     </div>
                     <div className="card">
                         <Cpu size={32} className="text-gradient-accent" style={{ marginBottom: '1rem' }} />
                         <h3>AI & Automation Systems</h3>
+                        <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem', fontSize: '0.95rem' }}>AI tools that accelerate content creation, automate workflows, and enrich data analysis.</p>
                     </div>
                     <div className="card">
                         <Maximize size={32} className="text-gradient-accent" style={{ marginBottom: '1rem' }} />
                         <h3>Creative Direction</h3>
+                        <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem', fontSize: '0.95rem' }}>Translating analytical insights into compelling visual stories and high-performing brand assets.</p>
                     </div>
                     <div className="card">
                         <ArrowRightLeft size={32} className="text-gradient-accent" style={{ marginBottom: '1rem' }} />
                         <h3>E-commerce Platform Migration</h3>
+                        <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem', fontSize: '0.95rem' }}>Seamless migrations that protect SEO, revenue, and customer data throughout the transition.</p>
                     </div>
                 </div>
             </section>

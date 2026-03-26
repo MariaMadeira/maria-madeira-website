@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { TrendingUp, Mail, BarChart, Cpu, Maximize, ArrowRight } from "lucide-react";
+import { TrendingUp, Mail, BarChart, Cpu, Maximize, ArrowRight, ArrowRightLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
@@ -34,6 +34,11 @@ export default function Services() {
             description: "Translating analytical insights into compelling visual stories. Overseeing brand voice and design language to ensure top-tier performance.",
             link: "/portfolio",
         },
+        {
+            icon: <ArrowRightLeft size={40} />,
+            title: "E-commerce Platform Migration",
+            description: "Seamless migrations between e-commerce platforms that protect SEO rankings, preserve customer data, and maintain revenue continuity throughout the transition.",
+        },
     ];
 
     return (
@@ -41,6 +46,15 @@ export default function Services() {
             <Helmet>
                 <title>Services | Maria Madeira — Growth Strategy & Marketing Expertise</title>
                 <meta name="description" content="Explore Maria Madeira's services: growth strategy, email marketing & automation, paid advertising, AI marketing systems, and creative direction for e-commerce brands." />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Services | Maria Madeira" />
+                <meta property="og:description" content="Growth strategy, email marketing, paid advertising, AI systems, and creative direction for scaling e-commerce brands." />
+                <meta property="og:image" content="/MM.png" />
+                <meta property="og:url" content="https://mariamadeira.com/services" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Services | Maria Madeira" />
+                <meta name="twitter:description" content="Growth strategy, email marketing, paid advertising, AI systems, and creative direction for scaling e-commerce brands." />
+                <meta name="twitter:image" content="/MM.png" />
             </Helmet>
 
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>

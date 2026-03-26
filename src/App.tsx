@@ -23,6 +23,7 @@ const PortfolioAIProductPhotography = lazy(() => import("./pages/PortfolioAIProd
 const PortfolioEmailMarketing = lazy(() => import("./pages/PortfolioEmailMarketing"));
 const CaseStudyClickCollect = lazy(() => import("./pages/CaseStudyClickCollect"));
 const PortfolioClickCollect = lazy(() => import("./pages/PortfolioClickCollect"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
   return (
@@ -71,6 +72,7 @@ export default function App() {
               <Route path="/portfolio-click-collect" element={<PortfolioClickCollect />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
           <Footer />

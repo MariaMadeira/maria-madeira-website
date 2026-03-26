@@ -51,6 +51,7 @@ export default function Navbar() {
                                 to={link.path}
                                 className={`nav-link ${location.pathname === link.path ? "active" : ""}`}
                                 style={{ fontSize: '0.9rem', fontWeight: 500 }}
+                                aria-current={location.pathname === link.path ? "page" : undefined}
                             >
                                 {link.name}
                             </Link>
@@ -91,6 +92,24 @@ export default function Navbar() {
                 overflowY: 'auto'
             }}>
                 <nav style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+                    <Link
+                        to="/"
+                        onClick={() => setIsOpen(false)}
+                        style={{
+                            display: 'block',
+                            padding: '1rem 0',
+                            fontSize: '1.3rem',
+                            fontWeight: 600,
+                            fontFamily: 'var(--font-heading)',
+                            color: location.pathname === '/' ? 'var(--accent-secondary)' : 'var(--text-primary)',
+                            borderBottom: '1px solid var(--border-color)',
+                            textDecoration: 'none',
+                            letterSpacing: '-0.01em'
+                        }}
+                        aria-current={location.pathname === '/' ? 'page' : undefined}
+                    >
+                        Home
+                    </Link>
                     {links.map((link) => (
                         <Link
                             key={link.path}
@@ -107,6 +126,7 @@ export default function Navbar() {
                                 textDecoration: 'none',
                                 letterSpacing: '-0.01em'
                             }}
+                            aria-current={location.pathname === link.path ? 'page' : undefined}
                         >
                             {link.name}
                         </Link>

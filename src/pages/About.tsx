@@ -15,6 +15,15 @@ export default function About() {
             <Helmet>
                 <title>About | Maria Madeira — Growth Strategist & Marketing Specialist</title>
                 <meta name="description" content="Learn about Maria Madeira — a Growth Strategist and Creative Marketing Specialist passionate about bridging data-driven performance and engaging brand narratives." />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="About | Maria Madeira" />
+                <meta property="og:description" content="Growth Strategist and Creative Marketing Specialist helping e-commerce brands scale through data-driven decisions and AI-powered marketing." />
+                <meta property="og:image" content="/MM.png" />
+                <meta property="og:url" content="https://mariamadeira.com/about" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="About | Maria Madeira" />
+                <meta name="twitter:description" content="Growth Strategist helping e-commerce brands scale through data-driven decisions and AI-powered marketing." />
+                <meta name="twitter:image" content="/MM.png" />
             </Helmet>
 
             <div className="grid-2" style={{ alignItems: "flex-start", gap: "4rem" }}>

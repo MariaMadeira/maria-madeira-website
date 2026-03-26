@@ -561,7 +561,8 @@ ul {
 /* Form focus states          */
 /* ========================= */
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   outline: none;
   border-color: var(--accent-secondary) !important;
   box-shadow: 0 0 0 3px var(--accent-glow);

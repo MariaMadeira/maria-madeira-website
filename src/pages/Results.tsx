@@ -63,6 +63,15 @@ export default function Results() {
             <Helmet>
                 <title>Results | Maria Madeira — Email & Paid Advertising Performance</title>
                 <meta name="description" content="See the measurable results: £100K+ email revenue, 48% open rates, 4.9x Google Ads ROAS and 3.1x Meta Ads ROAS." />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="Results | Maria Madeira" />
+                <meta property="og:description" content="£100K+ email revenue, 48% open rates, 4.9x Google Ads ROAS — measurable results from data-driven e-commerce growth strategies." />
+                <meta property="og:image" content="/MM.png" />
+                <meta property="og:url" content="https://mariamadeira.com/results" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Results | Maria Madeira" />
+                <meta name="twitter:description" content="£100K+ email revenue, 48% open rates, 4.9x Google Ads ROAS — measurable e-commerce growth results." />
+                <meta name="twitter:image" content="/MM.png" />
             </Helmet>
 
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>

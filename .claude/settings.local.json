@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls /Users/mariamadeira/Desktop/maria-madeira-website/src/pages/CaseStudy*.tsx)",
+      "Bash(ls \"/Users/mariamadeira/Desktop/maria-madeira-website/Click & Collect/\")",
+      "Bash(sips -s format png \"/Users/mariamadeira/Desktop/maria-madeira-website/app/APP.pdf\" --out \"/Users/mariamadeira/Desktop/maria-madeira-website/public/projects/click-collect/campaign.png\")",
+      "Bash(grep -n \"padding:.*0\"\"\" /Users/mariamadeira/Desktop/maria-madeira-website/src/pages/*.tsx)"
+    ]
+  }
+}

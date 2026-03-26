@@ -1,22 +1,8 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Mail, Send } from "lucide-react";
-import { useState } from "react";
+import { Linkedin, Mail } from "lucide-react";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
-    const [newsletterEmail, setNewsletterEmail] = useState("");
-    const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "success">("idle");
-
-    const handleNewsletter = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (newsletterEmail) {
-            // Open mailto as a simple subscription method
-            window.location.href = `mailto:mmarques.madeira@gmail.com?subject=${encodeURIComponent("Newsletter Subscription")}&body=${encodeURIComponent(`Please add me to your newsletter: ${newsletterEmail}`)}`;
-            setNewsletterStatus("success");
-            setNewsletterEmail("");
-            setTimeout(() => setNewsletterStatus("idle"), 3000);
-        }
-    };
 
     return (
         <footer style={{ 
@@ -74,34 +60,29 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Newsletter + Social */}
+                    {/* Get in Touch */}
                     <div>
-                        <h4 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>Stay Updated</h4>
-                        <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", marginBottom: "0.75rem" }}>
-                            Get growth tips & insights delivered to your inbox.
+                        <h4 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>Get in Touch</h4>
+                        <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", marginBottom: "1.25rem" }}>
+                            Ready to scale your brand? Let's talk.
                         </p>
-
-                        {newsletterStatus === "success" ? (
-                            <p style={{ color: "var(--accent-secondary)", fontSize: "0.9rem", fontWeight: 600 }}>
-                                ✓ Thank you for subscribing!
-                            </p>
-                        ) : (
-                            <form className="newsletter-form" onSubmit={handleNewsletter}>
-                                <input
-                                    type="email"
-                                    placeholder="your@email.com"
-                                    value={newsletterEmail}
-                                    onChange={(e) => setNewsletterEmail(e.target.value)}
-                                    required
-                                    aria-label="Email for newsletter"
-                                />
-                                <button type="submit" aria-label="Subscribe to newsletter">
-                                    <Send size={16} />
-                                </button>
-                            </form>
-                        )}
-
-                        <div style={{ display: "flex", gap: "1rem", marginTop: "1.5rem" }}>
+                        <Link
+                            to="/contact"
+                            style={{
+                                display: "inline-block",
+                                padding: "0.7rem 1.5rem",
+                                background: "var(--accent-secondary)",
+                                color: "white",
+                                borderRadius: "10px",
+                                fontWeight: 600,
+                                fontSize: "0.9rem",
+                                transition: "background 0.3s ease",
+                                marginBottom: "1.5rem",
+                            }}
+                        >
+                            Book a Strategy Call
+                        </Link>
+                        <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem" }}>
                             <a href="https://www.linkedin.com/in/maria-madeira-43501b3a/" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.7)", transition: "color 0.3s ease" }} aria-label="LinkedIn"><Linkedin size={20} /></a>
                             <a href="mailto:mmarques.madeira@gmail.com" style={{ color: "rgba(255,255,255,0.7)", transition: "color 0.3s ease" }} aria-label="Email"><Mail size={20} /></a>
                         </div>
