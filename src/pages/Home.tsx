@@ -241,7 +241,7 @@ export default function Home() {
             <section className="section" style={{ padding: '2rem 0 6rem' }}>
                 <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                     <p style={{ textTransform: 'uppercase', letterSpacing: '0.15em', fontSize: '0.75rem', fontWeight: 700, opacity: 0.5, marginBottom: '2rem' }}>
-                        Trusted by Innovative Brands & Agencies
+                        Trusted by Innovative Brands
                     </p>
                     <div className="brands-row" style={{
                         display: 'flex',
@@ -253,7 +253,7 @@ export default function Home() {
                     }}>
                         {[
                             "THE BLACK FARMER",
-                            "SMORGASBURG",
+                            "SMORGASBORD",
                             "OUSADIA",
                             "WILTSHIRE COUNTRY FAYRE",
                             "RITA ANTUNES"
