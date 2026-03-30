@@ -363,9 +363,14 @@ export default function PortfolioAIProductPhotography() {
                     <p style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "1.1rem" }}>
                         Looking to elevate your product imagery with AI?
                     </p>
-                    <Link to="/contact" className="btn btn-primary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
-                        Let's Discuss Your Project
-                    </Link>
+                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <Link to="/contact" className="btn btn-primary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
+                            Let's Discuss Your Project
+                        </Link>
+                        <Link to="/portfolio" className="btn btn-secondary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
+                            View All Work
+                        </Link>
+                    </div>
                 </motion.div>
 
             </div>

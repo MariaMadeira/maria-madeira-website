@@ -62,7 +62,7 @@ export default function CaseStudies() {
                 Real results from strategic marketing engagements. Each study outlines the challenge, approach, and measurable outcomes.
             </p>
 
-            <div className="grid-3">
+            <div className="grid-2">
                 {caseStudies.map((study, index) => (
                     <motion.div
                         key={index}

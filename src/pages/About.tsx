@@ -38,16 +38,16 @@ export default function About() {
                     <div
                         className="card glass-panel about-portrait"
                         style={{
-                            height: "550px",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            background: "url('/portrait.png') center top/cover",
                             borderRadius: "24px",
-                            overflow: "hidden"
+                            overflow: "hidden",
+                            padding: 0,
                         }}
                     >
-                        {/* portrait placeholder */}
+                        <img
+                            src="/portrait.png"
+                            alt="Maria Madeira — Growth Strategist"
+                            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+                        />
                     </div>
                 </motion.div>
 
@@ -98,7 +98,7 @@ export default function About() {
                         </ul>
 
                         {/* Tools & Platforms Section */}
-                        <div style={{ marginTop: '0.5rem' }}>
+                        <div style={{ marginTop: '2rem' }}>
                             <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
                                 Tools & Platforms
                             </h3>

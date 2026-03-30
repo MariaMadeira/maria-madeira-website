@@ -74,11 +74,21 @@ export default function Results() {
                 <meta name="twitter:image" content="/MM.png" />
             </Helmet>
 
+            {/* Page intro */}
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>
                 <h1 className="section-title" style={{ marginBottom: "1.5rem" }}>
-                    Email Marketing <span className="text-gradient-accent">Metrics</span>
+                    Results <span className="text-gradient">That Speak</span>
                 </h1>
-                <p style={{ color: "var(--text-secondary)", fontSize: "1.2rem", maxWidth: "800px", margin: "0 auto", lineHeight: 1.8 }}>
+                <p style={{ color: "var(--text-secondary)", fontSize: "1.15rem", maxWidth: "680px", margin: "0 auto", lineHeight: 1.8 }}>
+                    Every number below is directly attributed to strategy, execution, and optimisation — across email marketing and paid advertising campaigns.
+                </p>
+            </div>
+
+            <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+                <h2 className="section-title" style={{ marginBottom: "1rem", fontSize: "2rem" }}>
+                    Email Marketing <span className="text-gradient-accent">Metrics</span>
+                </h2>
+                <p style={{ color: "var(--text-secondary)", fontSize: "1.1rem", maxWidth: "700px", margin: "0 auto", lineHeight: 1.8 }}>
                     Driving high-intent traffic and recovering lost revenue through advanced lifecycle flows and segmentation.
                 </p>
             </div>
@@ -130,11 +140,11 @@ export default function Results() {
                 ))}
             </motion.div>
 
-            <div style={{ textAlign: "center", marginTop: "10rem", marginBottom: "5rem" }}>
-                <h2 className="section-title" style={{ marginBottom: "1.5rem" }}>
+            <div style={{ textAlign: "center", marginTop: "6rem", marginBottom: "3rem" }}>
+                <h2 className="section-title" style={{ marginBottom: "1rem", fontSize: "2rem" }}>
                     Paid Advertising <span className="text-gradient-accent">Performance</span>
                 </h2>
-                <p style={{ color: "var(--text-secondary)", fontSize: "1.2rem", maxWidth: "800px", margin: "0 auto", lineHeight: 1.8 }}>
+                <p style={{ color: "var(--text-secondary)", fontSize: "1.1rem", maxWidth: "700px", margin: "0 auto", lineHeight: 1.8 }}>
                     Maximizing efficiency and scale across Google Ads and Meta Ads with data-driven optimization.
                 </p>
             </div>

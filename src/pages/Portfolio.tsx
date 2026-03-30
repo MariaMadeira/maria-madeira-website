@@ -19,21 +19,21 @@ export default function Portfolio() {
             category: "Email Marketing",
             description: "Driving £100K+ in attributed revenue through advanced lifecycle flows and retention-first automation strategies.",
             link: "/portfolio-email-marketing",
-            visual: "linear-gradient(135deg, #f5f0eb 0%, #e8ddd4 50%, #d4c4b8 100%)"
+            visual: "url('/projects/email-marketing/recipe.png') center/cover"
         },
         {
             title: "Rita Antunes Psicologia",
             category: "Branding",
             description: "Establishing a premium clinical practice identity that successfully converts high-ticket therapy leads.",
             link: "/portfolio-rita-antunes",
-            visual: "#aab394"
+            visual: "url('/projects/rita-antunes/mockup-stationery.jpg') center/cover"
         },
         {
             title: "Ousadia Artcraft",
             category: "Branding",
             description: "Visual storytelling and bold identity that positioned an artisanal brand for high-end market entry.",
             link: "/portfolio-ousadia",
-            visual: "linear-gradient(45deg, #d4c8bc, #a38260)"
+            visual: "url('/projects/ousadia/moodboard.jpg') center/cover"
         },
         {
             title: "AI-Enhanced Product Imagery",

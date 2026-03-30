@@ -124,7 +124,7 @@ export default function Services() {
                 ))}
             </div>
 
-            <div style={{ marginTop: "6rem", textAlign: "center", background: "var(--bg-secondary)", padding: "5rem 2rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}>
+            <div style={{ marginTop: "8rem", textAlign: "center", background: "var(--bg-secondary)", padding: "5rem 2rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}>
                 <h2 style={{ fontSize: "2.5rem", marginBottom: "1.5rem" }}>Ready to scale your brand?</h2>
                 <p style={{ color: "var(--text-secondary)", marginBottom: "1rem", fontSize: "1.2rem", maxWidth: "600px", margin: "0 auto 1rem" }}>
                     Let's discuss how we can implement these growth systems for your business.
