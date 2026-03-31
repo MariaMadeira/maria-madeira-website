@@ -4,7 +4,11 @@
       "Bash(ls /Users/mariamadeira/Desktop/maria-madeira-website/src/pages/CaseStudy*.tsx)",
       "Bash(ls \"/Users/mariamadeira/Desktop/maria-madeira-website/Click & Collect/\")",
       "Bash(sips -s format png \"/Users/mariamadeira/Desktop/maria-madeira-website/app/APP.pdf\" --out \"/Users/mariamadeira/Desktop/maria-madeira-website/public/projects/click-collect/campaign.png\")",
-      "Bash(grep -n \"padding:.*0\"\"\" /Users/mariamadeira/Desktop/maria-madeira-website/src/pages/*.tsx)"
+      "Bash(grep -n \"padding:.*0\"\"\" /Users/mariamadeira/Desktop/maria-madeira-website/src/pages/*.tsx)",
+      "Bash(grep -l \"Helmet\" /Users/mariamadeira/Desktop/maria-madeira-website/src/pages/*.tsx)",
+      "Bash(head -5 grep -n \"export default function\\\\|return \\(\" /Users/mariamadeira/Desktop/maria-madeira-website/src/pages/PortfolioRitaAntunes.tsx)",
+      "Bash(npm run:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }
