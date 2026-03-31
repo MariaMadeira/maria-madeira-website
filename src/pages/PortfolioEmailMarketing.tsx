@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2, Mail, RefreshCw, ShoppingCart, Star, Users, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 export default function PortfolioEmailMarketing() {
     useEffect(() => {
@@ -90,6 +91,15 @@ export default function PortfolioEmailMarketing() {
     ];
 
     return (
+        <>
+        <Helmet>
+            <title>Lifecycle Email Marketing System | Maria Madeira Portfolio</title>
+            <meta name="description" content="Full lifecycle email marketing system built for e-commerce brands — flows, segmentation, and automations by Maria Madeira." />
+            <meta property="og:title" content="Lifecycle Email Marketing System | Maria Madeira Portfolio" />
+            <meta property="og:description" content="Full lifecycle email marketing system built for e-commerce brands — flows, segmentation, and automations by Maria Madeira." />
+            <meta property="og:url" content="https://mariamadeira.com/portfolio-email-marketing" />
+            <link rel="canonical" href="https://mariamadeira.com/portfolio-email-marketing" />
+        </Helmet>
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "1000px", margin: "0 auto" }}>
 
@@ -639,5 +649,6 @@ export default function PortfolioEmailMarketing() {
 
             </div>
         </div>
+        </>
     );
 }

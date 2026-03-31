@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2, Image as ImageIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 export default function PortfolioAIEnhanced() {
     useEffect(() => {
@@ -65,6 +66,15 @@ export default function PortfolioAIEnhanced() {
     );
 
     return (
+        <>
+        <Helmet>
+            <title>AI-Enhanced Product Imagery | Maria Madeira Portfolio</title>
+            <meta name="description" content="AI-enhanced product imagery project — before/after transformations using generative AI tools, by Maria Madeira." />
+            <meta property="og:title" content="AI-Enhanced Product Imagery | Maria Madeira Portfolio" />
+            <meta property="og:description" content="AI-enhanced product imagery project — before/after transformations using generative AI tools, by Maria Madeira." />
+            <meta property="og:url" content="https://mariamadeira.com/portfolio-ai-enhanced" />
+            <link rel="canonical" href="https://mariamadeira.com/portfolio-ai-enhanced" />
+        </Helmet>
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "1000px", margin: "0 auto" }}>
 
@@ -368,5 +378,6 @@ export default function PortfolioAIEnhanced() {
 
             </div>
         </div>
+        </>
     );
 }

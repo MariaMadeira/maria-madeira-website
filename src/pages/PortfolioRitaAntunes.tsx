@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 export default function PortfolioRitaAntunes() {
     useEffect(() => {
@@ -24,6 +25,15 @@ export default function PortfolioRitaAntunes() {
     const assetPath = "/projects/rita-antunes/";
 
     return (
+        <>
+        <Helmet>
+            <title>Rita Antunes — Brand Identity | Maria Madeira Portfolio</title>
+            <meta name="description" content="Brand identity and visual direction project for Rita Antunes, developed by Maria Madeira." />
+            <meta property="og:title" content="Rita Antunes — Brand Identity | Maria Madeira Portfolio" />
+            <meta property="og:description" content="Brand identity and visual direction project for Rita Antunes, developed by Maria Madeira." />
+            <meta property="og:url" content="https://mariamadeira.com/portfolio-rita-antunes" />
+            <link rel="canonical" href="https://mariamadeira.com/portfolio-rita-antunes" />
+        </Helmet>
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "900px", margin: "0 auto" }}>
 
@@ -408,5 +418,6 @@ export default function PortfolioRitaAntunes() {
 
             </div>
         </div>
+        </>
     );
 }

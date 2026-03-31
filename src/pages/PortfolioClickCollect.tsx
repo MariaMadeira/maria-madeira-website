@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 export default function PortfolioClickCollect() {
     useEffect(() => {
@@ -38,6 +39,15 @@ export default function PortfolioClickCollect() {
     const flowSteps = ["Browse", "Select", "Checkout", "Collect"];
 
     return (
+        <>
+        <Helmet>
+            <title>Click & Collect Mobile Experience | Maria Madeira Portfolio</title>
+            <meta name="description" content="Click & Collect mobile app design and UX project for a retail brand, by Maria Madeira." />
+            <meta property="og:title" content="Click & Collect Mobile Experience | Maria Madeira Portfolio" />
+            <meta property="og:description" content="Click & Collect mobile app design and UX project for a retail brand, by Maria Madeira." />
+            <meta property="og:url" content="https://mariamadeira.com/portfolio-click-collect" />
+            <link rel="canonical" href="https://mariamadeira.com/portfolio-click-collect" />
+        </Helmet>
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "1000px", margin: "0 auto" }}>
 
@@ -534,5 +544,6 @@ export default function PortfolioClickCollect() {
 
             </div>
         </div>
+        </>
     );
 }

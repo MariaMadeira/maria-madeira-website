@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, TrendingUp, Mail, Target, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 export default function CaseStudyEmail() {
     const fadeUp = {
@@ -17,6 +18,15 @@ export default function CaseStudyEmail() {
     };
 
     return (
+        <>
+        <Helmet>
+            <title>Email Marketing Case Study — 48% Open Rate | Maria Madeira</title>
+            <meta name="description" content="How Maria Madeira drove a 48% email open rate and 3.2x revenue lift through lifecycle marketing strategy and automation." />
+            <meta property="og:title" content="Email Marketing Case Study — 48% Open Rate | Maria Madeira" />
+            <meta property="og:description" content="How Maria Madeira drove a 48% email open rate and 3.2x revenue lift through lifecycle marketing strategy and automation." />
+            <meta property="og:url" content="https://mariamadeira.com/case-study-email" />
+            <link rel="canonical" href="https://mariamadeira.com/case-study-email" />
+        </Helmet>
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <div style={{ maxWidth: "900px", margin: "0 auto" }}>
 
@@ -252,5 +262,6 @@ export default function CaseStudyEmail() {
 
             </div>
         </div>
+        </>
     );
 }

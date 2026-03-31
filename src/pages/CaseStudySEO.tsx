@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRightLeft, FileText, Bot, LayoutTemplate, Activity, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 export default function CaseStudySEO() {
     const fadeUp = {
@@ -17,6 +18,15 @@ export default function CaseStudySEO() {
     };
 
     return (
+        <>
+        <Helmet>
+            <title>SEO & Platform Migration Case Study | Maria Madeira</title>
+            <meta name="description" content="How Maria Madeira led a full SEO strategy and platform migration, improving organic visibility and AI-driven search performance." />
+            <meta property="og:title" content="SEO & Platform Migration Case Study | Maria Madeira" />
+            <meta property="og:description" content="How Maria Madeira led a full SEO strategy and platform migration, improving organic visibility and AI-driven search performance." />
+            <meta property="og:url" content="https://mariamadeira.com/case-study-seo" />
+            <link rel="canonical" href="https://mariamadeira.com/case-study-seo" />
+        </Helmet>
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <div style={{ maxWidth: "900px", margin: "0 auto" }}>
 
@@ -232,5 +242,6 @@ export default function CaseStudySEO() {
 
             </div>
         </div>
+        </>
     );
 }
