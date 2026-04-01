@@ -44,8 +44,8 @@ export default function Results() {
     const emailMetrics = [
         { label: "Revenue generated from email marketing", to: 110, prefix: "£", suffix: "K+", decimals: 0 },
         { label: "Average open rate", to: 48, prefix: "", suffix: "%", decimals: 0 },
-        { label: "Click rate from automated flows", to: 8.5, prefix: "", suffix: "%", decimals: 1 },
-        { label: "Revenue generated from automated email flows", to: 45, prefix: "£", suffix: "K+", decimals: 0 }
+        { label: "Click rate from automated flows", to: 9.14, prefix: "", suffix: "%", decimals: 2 },
+        { label: "Revenue generated from automated email flows", to: 45.8, prefix: "£", suffix: "K+", decimals: 1 }
     ];
 
     const paidMetrics: Array<{ label: string; to: number; prefix: string; suffix: string; decimals: number; subtitle: string; range?: string }> = [
@@ -59,15 +59,15 @@ export default function Results() {
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Helmet>
                 <title>Results | Maria Madeira — Email & Paid Advertising Performance</title>
-                <meta name="description" content="See the measurable results: £100K+ email revenue, 48% open rates, 4.9x Google Ads ROAS and 3.1x Meta Ads ROAS." />
+                <meta name="description" content="See the measurable results: £110K+ email revenue, 48% open rates, 4.9x Google Ads ROAS and 3.4x – 5.34x Meta Ads ROAS." />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Results | Maria Madeira" />
-                <meta property="og:description" content="£100K+ email revenue, 48% open rates, 4.9x Google Ads ROAS — measurable results from data-driven e-commerce growth strategies." />
+                <meta property="og:description" content="£110K+ email revenue, 48% open rates, 4.9x Google Ads ROAS — measurable results from data-driven e-commerce growth strategies." />
                 <meta property="og:image" content="/MM.png" />
                 <meta property="og:url" content="https://mariamadeira.com/results" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Results | Maria Madeira" />
-                <meta name="twitter:description" content="£100K+ email revenue, 48% open rates, 4.9x Google Ads ROAS — measurable e-commerce growth results." />
+                <meta name="twitter:description" content="£110K+ email revenue, 48% open rates, 4.9x Google Ads ROAS — measurable e-commerce growth results." />
                 <meta name="twitter:image" content="/MM.png" />
             </Helmet>
 
@@ -184,12 +184,12 @@ export default function Results() {
                 <div className="grid-3" style={{ marginTop: '3rem' }}>
                     <Link to="/case-study-email" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
                         <h4 style={{ marginBottom: '1rem' }}>Email Growth Case Study</h4>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>How we generated £100K+ through lifecycle automation and advanced segmentation.</p>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>How we generated £110K+ through lifecycle automation and advanced segmentation.</p>
                         <span style={{ color: 'var(--accent-secondary)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
                     </Link>
                     <Link to="/case-study-google-ads" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
                         <h4 style={{ marginBottom: '1rem' }}>Paid Acquisition Deep-Dive</h4>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>4.9x Google Ads ROAS and 3.1x Meta Ads ROAS through data-driven targeting and creative testing.</p>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>4.9x Google Ads ROAS and 3.4x – 5.34x Meta Ads ROAS through data-driven targeting and creative testing.</p>
                         <span style={{ color: 'var(--accent-secondary)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
                     </Link>
                     <Link to="/case-study-seo" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>

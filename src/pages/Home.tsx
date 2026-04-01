@@ -216,7 +216,7 @@ export default function Home() {
                         }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>
-                                £160K+ Revenue Generated
+                                £110K+ Email Revenue
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>
@@ -289,10 +289,10 @@ export default function Home() {
                 >
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <AnimatedCounter from={0} to={160} prefix="£" suffix="K+" />
+                            <AnimatedCounter from={0} to={110} prefix="£" suffix="K+" />
                         </h3>
-                        <p style={{ fontWeight: 600 }}>Total Revenue Generated</p>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Directly attributed to my strategies</p>
+                        <p style={{ fontWeight: 600 }}>Email Revenue</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Directly attributed to Klaviyo campaigns & flows</p>
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
