@@ -16,7 +16,7 @@ interface CounterProps {
 
 function AnimatedCounter({ from = 0, to, decimals = 0, prefix = "", suffix = "", duration = 2.5 }: CounterProps) {
     const { ref, inView } = useInView({ rootMargin: '-50px', once: true });
-    const [display, setDisplay] = useState(`${prefix}${from.toFixed(decimals)}${suffix}`);
+    const [display, setDisplay] = useState(`${prefix}${to.toFixed(decimals)}${suffix}`);
     const started = useRef(false);
 
     useEffect(() => {
@@ -41,16 +41,16 @@ function AnimatedCounter({ from = 0, to, decimals = 0, prefix = "", suffix = "",
 /* ── Testimonials data & carousel ────────────────────────── */
 const TESTIMONIALS = [
     {
-        name: "Hermela Michael",
-        role: "History Undergraduate",
-        context: "Former colleague at The Black Farmer · Recommended on LinkedIn",
-        quote: "Maria doesn't just think outside the box — she completely redefines it. Her creativity, strategic mindset, and deep understanding of marketing have played a huge role in shaping the success of the company. She approaches every project with passion and precision, always bringing fresh, data-driven ideas to the table that truly make an impact.",
-    },
-    {
         name: "Will Fuller",
         role: "WordPress Developer",
         context: "Former colleague at The Black Farmer · Recommended on LinkedIn",
         quote: "Maria completely transformed our email marketing strategy. When she took over our Klaviyo account, she achieved 125% growth in email attributed revenue and boosted our automated flows by over 100%. Our open rates went from 28% to 48%, and click rates more than doubled. What impressed me most wasn't just the numbers — it was how she understood our customers.",
+    },
+    {
+        name: "Hermela Michael",
+        role: "History Undergraduate",
+        context: "Former colleague at The Black Farmer · Recommended on LinkedIn",
+        quote: "Maria doesn't just think outside the box — she completely redefines it. Her creativity, strategic mindset, and deep understanding of marketing have played a huge role in shaping the success of the company. She approaches every project with passion and precision, always bringing fresh, data-driven ideas to the table that truly make an impact.",
     },
     {
         name: "Adel Sidiqi",
@@ -310,10 +310,10 @@ export default function Home() {
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <AnimatedCounter from={0} to={70} suffix="%" />
+                            <AnimatedCounter from={0} to={5.34} suffix="x" decimals={2} />
                         </h3>
-                        <p style={{ fontWeight: 600 }}>Cost Reduction</p>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>In visual production via AI</p>
+                        <p style={{ fontWeight: 600 }}>Meta Ads ROAS</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Peak return on ad spend across Meta campaigns</p>
                     </div>
                 </div>
             </section>
@@ -365,7 +365,7 @@ export default function Home() {
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                     <h2 className="section-title" style={{ marginBottom: '1rem' }}>What People Say</h2>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-                        Feedback from colleagues and collaborators I've worked with.
+                        Recommendations from colleagues and professionals I've worked with.
                     </p>
                 </div>
 

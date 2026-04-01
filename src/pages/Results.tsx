@@ -15,7 +15,7 @@ interface CounterProps {
 
 function AnimatedCounter({ from = 0, to, decimals = 0, prefix = "", suffix = "", duration = 2.5 }: CounterProps) {
     const { ref, inView } = useInView({ rootMargin: '-50px', once: true });
-    const [display, setDisplay] = useState(`${prefix}${from.toFixed(decimals)}${suffix}`);
+    const [display, setDisplay] = useState(`${prefix}${to.toFixed(decimals)}${suffix}`);
     const started = useRef(false);
 
     useEffect(() => {
@@ -42,16 +42,17 @@ export default function Results() {
     const { ref: paidRef, inView: paidInView } = useInView({ rootMargin: '-50px', once: true });
 
     const emailMetrics = [
-        { label: "Revenue generated from email marketing", to: 100, prefix: "£", suffix: "K+", decimals: 0 },
+        { label: "Revenue generated from email marketing", to: 110, prefix: "£", suffix: "K+", decimals: 0 },
         { label: "Average open rate", to: 48, prefix: "", suffix: "%", decimals: 0 },
         { label: "Click rate from automated flows", to: 8.5, prefix: "", suffix: "%", decimals: 1 },
         { label: "Revenue generated from automated email flows", to: 45, prefix: "£", suffix: "K+", decimals: 0 }
     ];
 
-    const paidMetrics = [
-        { label: "Return on Ad Spend (ROAS)", to: 4.9, prefix: "", suffix: "x", decimals: 1 },
-        { label: "Conversions Generated", to: 928, prefix: "", suffix: "+", decimals: 0 },
-        { label: "Revenue Attributed", to: 59, prefix: "£", suffix: "K+", decimals: 0 }
+    const paidMetrics: Array<{ label: string; to: number; prefix: string; suffix: string; decimals: number; subtitle: string; range?: string }> = [
+        { label: "Google Ads ROAS", to: 4.9, prefix: "", suffix: "x", decimals: 1, subtitle: "Scaling spend while maintaining profitability." },
+        { label: "Conversions Generated", to: 928, prefix: "", suffix: "+", decimals: 0, subtitle: "High-intent customer acquisition." },
+        { label: "Revenue Attributed", to: 51.9, prefix: "£", suffix: "K+", decimals: 1, subtitle: "Measurable return on every pound spent." },
+        { label: "Meta Ads ROAS", to: 5.34, prefix: "", suffix: "x", decimals: 2, range: "3.4x – 5.34x", subtitle: "Range across active campaigns." }
     ];
 
     return (
@@ -136,7 +137,7 @@ export default function Results() {
 
             <div
                 ref={paidRef as React.RefObject<HTMLDivElement>}
-                className={`grid-3 stagger-container${paidInView ? ' is-visible' : ''}`}
+                className={`grid-4 stagger-container${paidInView ? ' is-visible' : ''}`}
             >
                 {paidMetrics.map((stat, i) => (
                     <div
@@ -154,15 +155,16 @@ export default function Results() {
                         }}
                     >
                         <h3 className="text-gradient-accent" style={{ fontSize: "3.5rem", marginBottom: "1rem", lineHeight: 1 }}>
-                            <AnimatedCounter from={0} to={stat.to} decimals={stat.decimals} prefix={stat.prefix} suffix={stat.suffix} />
+                            {stat.range
+                                ? stat.range
+                                : <AnimatedCounter from={0} to={stat.to} decimals={stat.decimals} prefix={stat.prefix} suffix={stat.suffix} />
+                            }
                         </h3>
                         <p style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.5rem" }}>
                             {stat.label}
                         </p>
                         <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", marginTop: "0.5rem" }}>
-                            {i === 0 && "Scaling spend while maintaining profitability."}
-                            {i === 1 && "High-intent customer acquisition."}
-                            {i === 2 && "Measurable return on every pound spent."}
+                            {stat.subtitle}
                         </p>
                     </div>
                 ))}
