@@ -209,10 +209,10 @@ export default function PortfolioOusadia() {
                     </p>
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "1.5rem" }}>
                         {[
-                            { hex: "#2d2d2d", name: "Charcoal" },
-                            { hex: "#a38260", name: "Warm Terracotta" },
-                            { hex: "#c9b49a", name: "Sand" },
-                            { hex: "#f0e8df", name: "Linen" }
+                            { hex: "#2D2D2D", name: "Charcoal" },
+                            { hex: "#733D19", name: "Warm Terracotta" },
+                            { hex: "#8A6952", name: "Sand" },
+                            { hex: "#F5E5D1", name: "Linen" }
                         ].map((color, i) => (
                             <div key={i}>
                                 <div style={{ background: color.hex, height: "150px", borderRadius: "16px", marginBottom: "1rem", border: "1px solid var(--border-color)" }} />
