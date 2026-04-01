@@ -4,9 +4,10 @@ import { Helmet } from "react-helmet-async";
 
 export default function About() {
     const tools = [
-        "Klaviyo", "Shopify", "Google Ads", "Meta Ads", 
-        "Google Analytics", "Figma", "ChatGPT", "Midjourney",
-        "Mailchimp", "Zapier", "Notion", "Canva"
+        "Klaviyo", "Shopify", "Google Ads", "Meta Ads",
+        "Google Analytics", "Google Search Console", "Figma", "Adobe",
+        "ChatGPT", "Claude", "Manus", "Midjourney",
+        "Mailchimp", "Zapier", "Notion", "Canva", "Antigravity"
     ];
 
     return (
