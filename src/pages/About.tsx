@@ -63,11 +63,11 @@ export default function About() {
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8 }}>
                         <p>
-                            A Growth Strategist and Creative Marketing Specialist passionate about bridging the gap between data-driven performance and engaging brand narratives.
+                            A Growth Strategist with 4+ years of experience helping e-commerce brands scale through email marketing, paid acquisition, and AI-powered systems.
                         </p>
 
                         <p>
-                            With years of experience helping e-commerce brands and tech startups scale, my approach blends technical acumen with creative flair to unlock new revenue channels and optimize existing funnels.
+                            My work spans the full funnel: from building Klaviyo lifecycle systems that generated £110K+ in attributed revenue, to managing Google Ads campaigns with a 4.9x ROAS, to building a Click & Collect app and designing custom AI prompt systems for SEO, AEO, and visual content production.
                         </p>
 
                         <p style={{ fontStyle: 'italic', borderLeft: '4px solid var(--accent-primary)', paddingLeft: '1.5rem', margin: '1rem 0', color: 'var(--text-primary)' }}>
@@ -76,9 +76,9 @@ export default function About() {
 
                         <ul style={{ listStyle: 'none', padding: 0 }}>
                             {[
-                            "Scaling partner for multiple 7-figure e-commerce brands.",
-                                "AI-driven workflow enthusiast.",
-                                "Specialist in turning traffic into robust communities."
+                                "4+ years scaling e-commerce brands in the UK food sector",
+                                "Builder of AI workflows for content, SEO/AEO, and image generation",
+                                "Specialist in turning email lists into consistent revenue engines"
                             ].map((item, i) => (
                                 <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '0.8rem' }}>
                                     <span style={{ color: "var(--accent-secondary)", display: 'flex' }}>✓</span>
