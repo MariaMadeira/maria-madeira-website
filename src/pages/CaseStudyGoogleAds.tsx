@@ -1,22 +1,8 @@
-import { motion } from "framer-motion";
 import { ArrowLeft, TrendingUp, Search, MousePointerClick, BarChart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 export default function CaseStudyGoogleAds() {
-    const fadeUp = {
-        hidden: { opacity: 0, y: 24 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-    };
-
-    const stagger = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.15 },
-        },
-    };
-
     return (
         <>
         <Helmet>
@@ -47,10 +33,10 @@ export default function CaseStudyGoogleAds() {
                 </Link>
 
                 {/* Title */}
-                <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeUp}
+                <div
+
+
+
                 >
                     <p
                         style={{
@@ -70,50 +56,48 @@ export default function CaseStudyGoogleAds() {
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
                         How an optimised Google Ads strategy generated £51.9K in revenue from £9.9K in ad spend while maintaining a 4.9x return on ad spend.
                     </p>
-                </motion.div>
+                </div>
 
                 {/* Divider */}
                 <div style={{ height: "1px", background: "var(--border-color)", marginBottom: "3rem" }} />
 
                 {/* Context Section */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "3.5rem" }}
                 >
-                    <motion.h2
-                        variants={fadeUp}
+                    <h2
+
                         style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}
                     >
                         Context
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
+                    </h2>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
                         The business relied on paid acquisition to drive new customer growth but required a more structured Google Ads strategy to scale efficiently.
-                    </motion.p>
-                    <motion.p variants={fadeUp} style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
+                    </p>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
                         Campaign structure and targeting required optimisation to improve conversion efficiency and maximise return on ad spend.
-                    </motion.p>
-                    <motion.p variants={fadeUp} style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
+                    </p>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
                         The objective was to refine campaign targeting, optimise spend allocation, and increase revenue while maintaining a sustainable cost per acquisition.
-                    </motion.p>
-                </motion.section>
+                    </p>
+                </section>
 
                 {/* Strategy Section */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "3.5rem" }}
                 >
-                    <motion.h2
-                        variants={fadeUp}
+                    <h2
+
                         style={{ fontSize: "1.75rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}
                     >
                         Strategy
-                    </motion.h2>
+                    </h2>
 
                     <div className="grid-2" style={{ gap: "1.5rem" }}>
                         {[
@@ -142,9 +126,9 @@ export default function CaseStudyGoogleAds() {
                                     "Regular campaign reviews were implemented to optimise keywords, bids, and budget allocation.",
                             },
                         ].map((item, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                variants={fadeUp}
+
                                 className="card"
                                 style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
                             >
@@ -153,25 +137,24 @@ export default function CaseStudyGoogleAds() {
                                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, fontSize: "0.95rem" }}>
                                     {item.description}
                                 </p>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Results Section */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "3.5rem" }}
                 >
-                    <motion.h2
-                        variants={fadeUp}
+                    <h2
+
                         style={{ fontSize: "1.75rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}
                     >
                         Results
-                    </motion.h2>
+                    </h2>
 
                     <div className="grid-3" style={{ gap: "1.5rem" }}>
                         {[
@@ -182,9 +165,9 @@ export default function CaseStudyGoogleAds() {
                             { metric: "£12.78", label: "Cost per Conversion", detail: "" },
                             { metric: "4.34M", label: "Ad Impressions", detail: "" },
                         ].map((item, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                variants={fadeUp}
+
                                 className="card"
                                 style={{ textAlign: "center", padding: "2rem 1.5rem" }}
                             >
@@ -206,27 +189,26 @@ export default function CaseStudyGoogleAds() {
                                         {item.detail}
                                     </p>
                                 )}
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Key Impact Section */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "3rem" }}
                 >
-                    <motion.h2
-                        variants={fadeUp}
+                    <h2
+
                         style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}
                     >
                         Key Impact
-                    </motion.h2>
-                    <motion.div
-                        variants={fadeUp}
+                    </h2>
+                    <div
+
                         style={{
                             background: "var(--accent-glow)",
                             border: "1px solid var(--border-color)",
@@ -243,15 +225,14 @@ export default function CaseStudyGoogleAds() {
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>
                             This case demonstrates how structured campaign management and continuous optimisation can turn paid advertising into a scalable and profitable growth channel.
                         </p>
-                    </motion.div>
-                </motion.section>
+                    </div>
+                </section>
 
                 {/* CTA */}
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeUp}
+                <div
+
+
+
                     style={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem" }}
                 >
                     <p style={{ color: "var(--text-secondary)", marginBottom: "1.5rem", fontSize: "1.05rem" }}>
@@ -260,7 +241,7 @@ export default function CaseStudyGoogleAds() {
                     <Link to="/contact" className="btn btn-primary">
                         Let's Talk Strategy
                     </Link>
-                </motion.div>
+                </div>
 
             </div>
         </div>

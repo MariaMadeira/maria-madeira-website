@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -8,20 +7,6 @@ export default function PortfolioRitaAntunes() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
-    const fadeUp = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-    };
-
-    const stagger = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.2 },
-        },
-    };
-
     const assetPath = "/projects/rita-antunes/";
 
     return (
@@ -55,10 +40,10 @@ export default function PortfolioRitaAntunes() {
                 </Link>
 
                 {/* Header Section */}
-                <motion.header
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeUp}
+                <header
+
+
+
                     style={{ marginBottom: "5rem" }}
                 >
                     <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
@@ -99,14 +84,13 @@ export default function PortfolioRitaAntunes() {
                             <p style={{ fontWeight: 600, fontFamily: "'Montserrat', sans-serif" }}>Resilience & Calmness</p>
                         </div>
                     </div>
-                </motion.header>
+                </header>
 
                 {/* 1. Project Overview */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={fadeUp}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "#53593f" }}>
@@ -121,20 +105,19 @@ export default function PortfolioRitaAntunes() {
                     }}>
                         Brand identity design for a psychology practice focused on calmness, trust, and emotional wellbeing. The objective was to create a brand that communicates trust, serenity, and emotional balance.
                     </p>
-                </motion.section>
+                </section>
 
                 {/* 2. Brand Concept */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
+                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
                         Brand Concept
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "'Montserrat', sans-serif",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -143,9 +126,9 @@ export default function PortfolioRitaAntunes() {
                         marginBottom: "3rem"
                     }}>
                         The visual identity draws inspiration from nature and organic forms. A ginkgo leaf symbol was developed as the central brand element, representing resilience, longevity, and mental clarity — values closely aligned with psychological wellbeing.
-                    </motion.p>
-                    <motion.div
-                        variants={fadeUp}
+                    </p>
+                    <div
+
                         style={{ borderRadius: "24px", overflow: "hidden", border: "1px solid var(--border-color)" }}
                     >
                         <img
@@ -161,21 +144,20 @@ export default function PortfolioRitaAntunes() {
                                 }
                             }}
                         />
-                    </motion.div>
-                </motion.section>
+                    </div>
+                </section>
 
                 {/* 3. Logo System */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
+                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
                         Logo System
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "'Montserrat', sans-serif",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -184,9 +166,9 @@ export default function PortfolioRitaAntunes() {
                         marginBottom: "3rem"
                     }}>
                         A modular logo system was designed to maintain visual clarity and brand recognition across digital and physical touchpoints.
-                    </motion.p>
-                    <motion.div
-                        variants={fadeUp}
+                    </p>
+                    <div
+
                         style={{ borderRadius: "24px", overflow: "hidden", border: "1px solid var(--border-color)", background: "white", padding: "2rem" }}
                     >
                         <img
@@ -202,21 +184,20 @@ export default function PortfolioRitaAntunes() {
                                 }
                             }}
                         />
-                    </motion.div>
-                </motion.section>
+                    </div>
+                </section>
 
                 {/* 4. Color Palette */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
+                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
                         Color Palette
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "'Montserrat', sans-serif",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -225,7 +206,7 @@ export default function PortfolioRitaAntunes() {
                         marginBottom: "3rem"
                     }}>
                         The colour palette combines natural greens and warm earthy tones to reinforce feelings of calmness, stability, and trust.
-                    </motion.p>
+                    </p>
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "1.5rem" }}>
                         {[
                             { hex: "#aab394", name: "Primary Sage" },
@@ -233,27 +214,26 @@ export default function PortfolioRitaAntunes() {
                             { hex: "#747e5b", name: "Deep Earth" },
                             { hex: "#53593f", name: "Forest Green" }
                         ].map((color, i) => (
-                            <motion.div key={i} variants={fadeUp}>
+                            <div key={i}>
                                 <div style={{ background: color.hex, height: "150px", borderRadius: "16px", marginBottom: "1rem", border: "1px solid var(--border-color)" }} />
                                 <p style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 600, fontSize: "0.9rem", margin: 0 }}>{color.name}</p>
                                 <p style={{ fontFamily: "'Montserrat', sans-serif", color: "var(--text-secondary)", fontSize: "0.8rem", textTransform: "uppercase" }}>{color.hex}</p>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
-                </motion.section>
+                </section>
 
                 {/* 5. Typography */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
+                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
                         Typography
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "'Montserrat', sans-serif",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -262,10 +242,10 @@ export default function PortfolioRitaAntunes() {
                         marginBottom: "3rem"
                     }}>
                         A clean typographic pairing was chosen to balance readability with elegance, ensuring consistency across digital and print applications.
-                    </motion.p>
+                    </p>
 
-                    <motion.div
-                        variants={fadeUp}
+                    <div
+
                         className="portfolio-section-card"
                         style={{
                             background: "white",
@@ -285,21 +265,20 @@ export default function PortfolioRitaAntunes() {
                                 }}
                             />
                         </div>
-                    </motion.div>
-                </motion.section>
+                    </div>
+                </section>
 
                 {/* 6. Brand Pattern */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
+                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
                         Brand Pattern
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "'Montserrat', sans-serif",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -308,9 +287,9 @@ export default function PortfolioRitaAntunes() {
                         marginBottom: "3rem"
                     }}>
                         A custom botanical pattern was created using stylized ginkgo leaves, designed to bring a sense of natural flow and continuity to the brand's visual materials.
-                    </motion.p>
-                    <motion.div
-                        variants={fadeUp}
+                    </p>
+                    <div
+
                         style={{ borderRadius: "24px", overflow: "hidden", border: "1px solid var(--border-color)", background: "white" }}
                     >
                         <img
@@ -326,21 +305,20 @@ export default function PortfolioRitaAntunes() {
                                 }
                             }}
                         />
-                    </motion.div>
-                </motion.section>
+                    </div>
+                </section>
 
                 {/* 7. Brand Applications */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
+                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
                         Brand Applications
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "'Montserrat', sans-serif",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -349,23 +327,22 @@ export default function PortfolioRitaAntunes() {
                         marginBottom: "3rem"
                     }}>
                         The identity was applied to several brand touchpoints including stationery and digital assets to ensure consistency across all communication channels.
-                    </motion.p>
+                    </p>
                     <div className="grid-2" style={{ gap: "2rem" }}>
-                        <motion.div variants={fadeUp} style={{ borderRadius: "20px", overflow: "hidden", border: "1px solid var(--border-color)" }}>
+                        <div style={{ borderRadius: "20px", overflow: "hidden", border: "1px solid var(--border-color)" }}>
                             <img src={`${assetPath}mockup-cards.jpg`} alt="Business Card mockup" style={{ width: "100%", display: "block" }} />
-                        </motion.div>
-                        <motion.div variants={fadeUp} style={{ borderRadius: "20px", overflow: "hidden", border: "1px solid var(--border-color)" }}>
+                        </div>
+                        <div style={{ borderRadius: "20px", overflow: "hidden", border: "1px solid var(--border-color)" }}>
                             <img src={`${assetPath}mockup-stationery.jpg`} alt="Stationery mockup" style={{ width: "100%", display: "block" }} />
-                        </motion.div>
+                        </div>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* 8. Project Outcome */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={fadeUp}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
                     <div className="impact-block" style={{
@@ -393,14 +370,13 @@ export default function PortfolioRitaAntunes() {
                             </p>
                         </div>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Footer CTA */}
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeUp}
+                <div
+
+
+
                     style={{ textAlign: "center", paddingTop: "4rem", borderTop: "1px solid var(--border-color)" }}
                 >
                     <p style={{ fontFamily: "'Montserrat', sans-serif", color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "1.1rem" }}>
@@ -414,7 +390,7 @@ export default function PortfolioRitaAntunes() {
                             View All Work
                         </Link>
                     </div>
-                </motion.div>
+                </div>
 
             </div>
         </div>

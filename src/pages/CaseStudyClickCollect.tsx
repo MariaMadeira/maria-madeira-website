@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowLeft, Smartphone, AlertCircle, Lightbulb, Users, MapPin, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -8,20 +7,6 @@ export default function CaseStudyClickCollect() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
-    const fadeUp = {
-        hidden: { opacity: 0, y: 24 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-    };
-
-    const stagger = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.15 },
-        },
-    };
-
     const learnings = [
         { icon: <Users size={20} />, text: "Low awareness of the app among customers" },
         { icon: <Zap size={20} />, text: "Behavioural resistance to changing ordering habits" },
@@ -59,10 +44,10 @@ export default function CaseStudyClickCollect() {
                 </Link>
 
                 {/* Title */}
-                <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeUp}
+                <div
+
+
+
                 >
                     <p style={{
                         fontSize: "0.85rem",
@@ -80,57 +65,54 @@ export default function CaseStudyClickCollect() {
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
                         Designed and built a mobile Click & Collect experience for a physical retail store to reduce in-store wait times and capture demand from nearby office workers — and what the experiment revealed about digital adoption in physical retail.
                     </p>
-                </motion.div>
+                </div>
 
                 {/* Divider */}
                 <div style={{ height: "1px", background: "var(--border-color)", marginBottom: "3rem" }} />
 
                 {/* Overview */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "3.5rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
                         Overview
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
+                    </h2>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
                         Designed and built a Click & Collect mobile experience for a physical retail store to reduce in-store wait times and capture demand from nearby office workers.
-                    </motion.p>
-                </motion.section>
+                    </p>
+                </section>
 
                 {/* Problem */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "3.5rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
                         Problem
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
+                    </h2>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
                         The store relied entirely on in-person ordering in a high-traffic office area, leading to long wait times during peak hours and no option for customers to pre-order.
-                    </motion.p>
-                    <motion.p variants={fadeUp} style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
+                    </p>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
                         This created friction, reduced convenience and limited the store's ability to efficiently capture demand.
-                    </motion.p>
-                </motion.section>
+                    </p>
+                </section>
 
                 {/* Solution */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "3.5rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontSize: "1.75rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontSize: "1.75rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}>
                         Solution
-                    </motion.h2>
+                    </h2>
 
                     <div className="grid-2" style={{ gap: "1.5rem" }}>
                         {[
@@ -145,9 +127,9 @@ export default function CaseStudyClickCollect() {
                                 description: "The solution focused on reducing steps in the ordering process and improving speed during peak times to maximise convenience.",
                             },
                         ].map((item, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                variants={fadeUp}
+
                                 className="card"
                                 style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
                             >
@@ -156,29 +138,28 @@ export default function CaseStudyClickCollect() {
                                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, fontSize: "0.95rem" }}>
                                     {item.description}
                                 </p>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Mobile App Mockups */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "3.5rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
                         Mobile Experience
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "2rem" }}>
+                    </h2>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "2rem" }}>
                         The app was designed to feel fast and intuitive — customers could browse the menu, place an order, and collect it without waiting in line.
-                    </motion.p>
+                    </p>
 
                     {/* Phone mockup visual */}
-                    <motion.div
-                        variants={fadeUp}
+                    <div
+
                         style={{
                             display: "flex",
                             justifyContent: "center",
@@ -237,29 +218,28 @@ export default function CaseStudyClickCollect() {
                                 </div>
                             </div>
                         ))}
-                    </motion.div>
-                </motion.section>
+                    </div>
+                </section>
 
                 {/* Outcome & Learnings */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "3.5rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
                         Outcome & Learnings
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "2rem" }}>
+                    </h2>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "2rem" }}>
                         While the solution addressed a real operational challenge, adoption remained low. The experiment surfaced important insights about the gap between building a digital product and driving real-world behaviour change.
-                    </motion.p>
+                    </p>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                         {learnings.map((item, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                variants={fadeUp}
+
                                 style={{
                                     display: "flex",
                                     alignItems: "center",
@@ -274,24 +254,23 @@ export default function CaseStudyClickCollect() {
                                 <p style={{ color: "var(--text-secondary)", margin: 0, lineHeight: 1.6, fontSize: "0.95rem" }}>
                                     {item.text}
                                 </p>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Key Insight */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "3rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
                         Key Insight
-                    </motion.h2>
-                    <motion.div
-                        variants={fadeUp}
+                    </h2>
+                    <div
+
                         style={{
                             background: "var(--accent-glow)",
                             border: "1px solid var(--border-color)",
@@ -307,15 +286,14 @@ export default function CaseStudyClickCollect() {
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0, fontSize: "1.05rem" }}>
                             Building a digital solution is not enough — successful adoption requires <strong style={{ color: "var(--text-primary)" }}>strong distribution</strong>, <strong style={{ color: "var(--text-primary)" }}>behavioural incentives</strong> and <strong style={{ color: "var(--text-primary)" }}>clear value communication</strong>.
                         </p>
-                    </motion.div>
-                </motion.section>
+                    </div>
+                </section>
 
                 {/* CTA */}
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeUp}
+                <div
+
+
+
                     style={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem" }}
                 >
                     <p style={{ color: "var(--text-secondary)", marginBottom: "1.5rem", fontSize: "1.05rem" }}>
@@ -324,7 +302,7 @@ export default function CaseStudyClickCollect() {
                     <Link to="/contact" className="btn btn-primary">
                         Let's Talk Strategy
                     </Link>
-                </motion.div>
+                </div>
 
             </div>
         </div>

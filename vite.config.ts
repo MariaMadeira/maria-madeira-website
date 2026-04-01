@@ -5,6 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   ssr: {
-    noExternal: ['framer-motion', 'react-helmet-async'],
+    noExternal: ['react-helmet-async'],
   },
 })

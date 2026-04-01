@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { TrendingUp, Mail, BarChart, Cpu, Maximize, ArrowRight, ArrowRightLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -66,10 +65,9 @@ export default function Services() {
 
             <div className="grid-2" style={{ gap: "3rem" }}>
                 {services.map((service, index) => (
-                    <motion.div
+                    <div
                         key={index}
-                        className="card glass-panel"
-                        whileHover={{ y: -8 }}
+                        className="card glass-panel hover-lift"
                         style={{ 
                             padding: "3rem",
                             ...(service.featured ? {
@@ -120,7 +118,7 @@ export default function Services() {
                                 See results <ArrowRight size={16} />
                             </Link>
                         )}
-                    </motion.div>
+                    </div>
                 ))}
             </div>
 

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
@@ -51,7 +50,6 @@ export default function Portfolio() {
         }
     ];
 
-    // Only show categories that have projects (+ "All")
     const activeCategories = ["All", ...new Set(projects.map(p => p.category))];
 
     const filteredProjects = activeCategory === "All"
@@ -90,40 +88,25 @@ export default function Portfolio() {
             </div>
 
             <div className="card-grid">
-                <AnimatePresence mode="popLayout">
-                    {filteredProjects.map((project) => (
-                        <motion.div
-                            key={project.title}
-                            layout
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.9 }}
-                            transition={{ duration: 0.4 }}
-                        >
-                            <Link to={project.link} className="portfolio-card">
-                                <motion.div 
-                                    className="portfolio-image-container"
-                                    whileHover={{ scale: 1.03 }}
-                                    transition={{ duration: 0.4, ease: "easeOut" }}
-                                >
-                                    <div style={{ 
-                                        width: "100%", 
-                                        height: "100%",
-                                        minHeight: "280px",
-                                        background: project.visual,
-                                        transition: "transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)"
-                                    }} />
-                                </motion.div>
-
-                                <div className="portfolio-content">
-                                    <div className="portfolio-category">{project.category}</div>
-                                    <h3 className="portfolio-title">{project.title}</h3>
-                                    <p className="portfolio-description">{project.description}</p>
-                                </div>
-                            </Link>
-                        </motion.div>
-                    ))}
-                </AnimatePresence>
+                {filteredProjects.map((project) => (
+                    <div key={project.title} style={{ animation: 'fadeIn 0.4s ease forwards' }}>
+                        <Link to={project.link} className="portfolio-card">
+                            <div className="portfolio-image-container hover-scale">
+                                <div style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    minHeight: "280px",
+                                    background: project.visual,
+                                }} />
+                            </div>
+                            <div className="portfolio-content">
+                                <div className="portfolio-category">{project.category}</div>
+                                <h3 className="portfolio-title">{project.title}</h3>
+                                <p className="portfolio-description">{project.description}</p>
+                            </div>
+                        </Link>
+                    </div>
+                ))}
             </div>
         </div>
     );

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
@@ -22,20 +21,6 @@ export default function PortfolioClickCollect() {
             setIsPlaying(true);
         }
     };
-
-    const fadeUp = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-    };
-
-    const stagger = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.15 },
-        },
-    };
-
     const flowSteps = ["Browse", "Select", "Checkout", "Collect"];
 
     return (
@@ -69,10 +54,10 @@ export default function PortfolioClickCollect() {
                 </Link>
 
                 {/* Header */}
-                <motion.header
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeUp}
+                <header
+
+
+
                     style={{ marginBottom: "5rem" }}
                 >
                     <div style={{ textAlign: "left", marginBottom: "2.5rem" }}>
@@ -116,14 +101,11 @@ export default function PortfolioClickCollect() {
                             <p style={{ fontWeight: 600, fontFamily: "var(--font-sans)" }}>End-to-end product experiment: from UX to acquisition and distribution</p>
                         </div>
                     </div>
-                </motion.header>
+                </header>
 
                 {/* Hero — App Mockups */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={fadeUp}
+                <section
+
                     style={{ marginBottom: "6rem" }}
                 >
                     <div style={{
@@ -146,14 +128,13 @@ export default function PortfolioClickCollect() {
                             }}
                         />
                     </div>
-                </motion.section>
+                </section>
 
                 {/* 1. Overview */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={fadeUp}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
@@ -168,20 +149,19 @@ export default function PortfolioClickCollect() {
                     }}>
                         Designed and built a Click & Collect mobile experience for a physical retail store, focused on reducing wait times and enabling pre-ordering in a high-traffic office environment.
                     </p>
-                </motion.section>
+                </section>
 
                 {/* 2. Product — App Screens */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
                         The App
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "var(--font-sans)",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -190,10 +170,10 @@ export default function PortfolioClickCollect() {
                         marginBottom: "3rem"
                     }}>
                         Designed a mobile-first ordering experience to streamline the customer journey and reduce in-store friction.
-                    </motion.p>
+                    </p>
 
-                    <motion.div
-                        variants={fadeUp}
+                    <div
+
                         style={{
                             background: "#f5f2ee",
                             borderRadius: "24px",
@@ -231,21 +211,20 @@ export default function PortfolioClickCollect() {
                                 </div>
                             ))}
                         </div>
-                    </motion.div>
-                </motion.section>
+                    </div>
+                </section>
 
                 {/* 3. Ordering Flow */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
                         Ordering Flow
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "var(--font-sans)",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -254,10 +233,10 @@ export default function PortfolioClickCollect() {
                         marginBottom: "3rem"
                     }}>
                         Simplified ordering flow designed to prioritise speed and ease of use during peak hours.
-                    </motion.p>
+                    </p>
 
-                    <motion.div
-                        variants={fadeUp}
+                    <div
+
                         className="flow-steps"
                         style={{
                             display: "flex",
@@ -308,21 +287,20 @@ export default function PortfolioClickCollect() {
                                 )}
                             </div>
                         ))}
-                    </motion.div>
-                </motion.section>
+                    </div>
+                </section>
 
                 {/* 4. Campaign Creative */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
                         Campaign Creative
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "var(--font-sans)",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -331,10 +309,10 @@ export default function PortfolioClickCollect() {
                         marginBottom: "3rem"
                     }}>
                         Developed campaign creative focused on speed and convenience to introduce a new ordering behaviour.
-                    </motion.p>
+                    </p>
 
-                    <motion.div
-                        variants={fadeUp}
+                    <div
+
                         style={{
                             borderRadius: "24px",
                             overflow: "hidden",
@@ -385,21 +363,20 @@ export default function PortfolioClickCollect() {
                                 View full asset <ExternalLink size={14} />
                             </a>
                         </div>
-                    </motion.div>
-                </motion.section>
+                    </div>
+                </section>
 
                 {/* 5. Distribution — Elevator Video */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
                         Distribution
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "var(--font-sans)",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -408,10 +385,10 @@ export default function PortfolioClickCollect() {
                         marginBottom: "3rem"
                     }}>
                         Tested distribution through office building elevator screens to reach high-intent users during peak hours.
-                    </motion.p>
+                    </p>
 
-                    <motion.div
-                        variants={fadeUp}
+                    <div
+
                         onClick={handleVideoClick}
                         style={{
                             borderRadius: "24px",
@@ -483,15 +460,14 @@ export default function PortfolioClickCollect() {
                                 Elevator Screen · Office Building Distribution
                             </p>
                         </div>
-                    </motion.div>
-                </motion.section>
+                    </div>
+                </section>
 
                 {/* 6. Role */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={fadeUp}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
                     <div className="impact-block" style={{
@@ -519,14 +495,13 @@ export default function PortfolioClickCollect() {
                             </p>
                         </div>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Footer CTA */}
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeUp}
+                <div
+
+
+
                     style={{ textAlign: "center", paddingTop: "4rem", borderTop: "1px solid var(--border-color)", display: "flex", flexDirection: "column", alignItems: "center", gap: "1.5rem" }}
                 >
                     <p style={{ fontFamily: "var(--font-sans)", color: "var(--text-secondary)", margin: 0, fontSize: "1.1rem" }}>
@@ -540,7 +515,7 @@ export default function PortfolioClickCollect() {
                             Start a Project
                         </Link>
                     </div>
-                </motion.div>
+                </div>
 
             </div>
         </div>

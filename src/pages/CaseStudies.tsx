@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
@@ -64,10 +63,9 @@ export default function CaseStudies() {
 
             <div className="grid-2">
                 {caseStudies.map((study, index) => (
-                    <motion.div
+                    <div
                         key={index}
-                        className="card glass-panel"
-                        whileHover={{ y: -5 }}
+                        className="card glass-panel hover-lift-sm"
                         style={{ display: "flex", flexDirection: "column" }}
                     >
                         <p className="text-gradient-accent" style={{ fontSize: "0.85rem", fontWeight: "bold", marginBottom: "0.5rem" }}>
@@ -99,7 +97,7 @@ export default function CaseStudies() {
                                 Read Full Study
                             </button>
                         )}
-                    </motion.div>
+                    </div>
                 ))}
             </div>
         </div>

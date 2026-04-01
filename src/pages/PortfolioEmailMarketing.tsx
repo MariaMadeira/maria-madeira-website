@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2, Mail, RefreshCw, ShoppingCart, Star, Users, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -8,20 +7,6 @@ export default function PortfolioEmailMarketing() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
-    const fadeUp = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-    };
-
-    const stagger = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.15 },
-        },
-    };
-
     const lifecycleStages = [
         { from: "Subscriber", flow: "Welcome Series", icon: <Mail size={20} /> },
         { from: "Visitor", flow: "Browse Abandonment", icon: <Zap size={20} /> },
@@ -121,10 +106,10 @@ export default function PortfolioEmailMarketing() {
                 </Link>
 
                 {/* Header */}
-                <motion.header
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeUp}
+                <header
+
+
+
                     style={{ marginBottom: "5rem" }}
                 >
                     <div style={{ textAlign: "left", marginBottom: "2.5rem" }}>
@@ -168,14 +153,13 @@ export default function PortfolioEmailMarketing() {
                             <p style={{ fontWeight: 600, fontFamily: "var(--font-sans)" }}>Retention & Revenue Automation</p>
                         </div>
                     </div>
-                </motion.header>
+                </header>
 
                 {/* 1. Project Overview */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={fadeUp}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
@@ -195,20 +179,19 @@ export default function PortfolioEmailMarketing() {
                             The objective was to increase customer retention, recover abandoned purchases and generate consistent revenue through automated email flows that support every stage of the customer journey.
                         </p>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* 2. Lifecycle Strategy */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
                         Lifecycle Strategy
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "var(--font-sans)",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -217,10 +200,10 @@ export default function PortfolioEmailMarketing() {
                         marginBottom: "3rem"
                     }}>
                         The lifecycle email system was designed to support the entire customer journey using automation. Each flow guides customers through the funnel while encouraging conversions and repeat purchases.
-                    </motion.p>
+                    </p>
 
                     {/* Lifecycle flow diagram */}
-                    <motion.div variants={fadeUp} style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
                         {lifecycleStages.map((stage, i) => (
                             <div key={i} className="lifecycle-row" style={{ display: "flex", alignItems: "stretch", gap: "0" }}>
                                 {/* Left: customer stage label */}
@@ -300,21 +283,20 @@ export default function PortfolioEmailMarketing() {
                                 </div>
                             </div>
                         ))}
-                    </motion.div>
-                </motion.section>
+                    </div>
+                </section>
 
                 {/* 3. Key Automation Flows */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
                         Key Automation Flows
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "var(--font-sans)",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -323,13 +305,13 @@ export default function PortfolioEmailMarketing() {
                         marginBottom: "3rem"
                     }}>
                         Six core automation flows were built to cover the full customer lifecycle, each with a distinct purpose and targeted messaging strategy.
-                    </motion.p>
+                    </p>
 
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
                         {keyFlows.map((flow, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                variants={fadeUp}
+
                                 style={{
                                     background: "white",
                                     border: "1px solid var(--border-color)",
@@ -371,23 +353,22 @@ export default function PortfolioEmailMarketing() {
                                 }}>
                                     {flow.description}
                                 </p>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
-                </motion.section>
+                </section>
 
                 {/* 4. Email Designs */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
                         Email Designs
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "var(--font-sans)",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -396,7 +377,7 @@ export default function PortfolioEmailMarketing() {
                         marginBottom: "3rem"
                     }}>
                         Each email was designed to reflect the brand's bold, food-first identity — combining strong visuals, direct copy, and clear calls to action to drive engagement and conversions.
-                    </motion.p>
+                    </p>
 
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem", alignItems: "start" }}>
                         {[
@@ -406,9 +387,9 @@ export default function PortfolioEmailMarketing() {
                             { src: "/projects/email-marketing/replenishment.png", label: "30-Day Replenishment Flow" },
                             { src: "/projects/email-marketing/recipe.png", label: "Recipe Content Flow" },
                         ].map((email, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                variants={fadeUp}
+
                                 style={{
                                     borderRadius: "16px",
                                     overflow: "hidden",
@@ -435,23 +416,22 @@ export default function PortfolioEmailMarketing() {
                                         {email.label}
                                     </p>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
-                </motion.section>
+                </section>
 
                 {/* 6. Segmentation Strategy */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     className="portfolio-section-card" style={{ marginBottom: "6rem", background: "white", padding: "4rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
                         Segmentation Strategy
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "var(--font-sans)",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -460,13 +440,13 @@ export default function PortfolioEmailMarketing() {
                         marginBottom: "2.5rem"
                     }}>
                         Advanced segmentation was implemented based on customer purchase behaviour, enabling targeted communication and more relevant messaging for each audience group.
-                    </motion.p>
+                    </p>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
                         {segments.map((seg, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                variants={fadeUp}
+
                                 style={{
                                     display: "flex",
                                     gap: "1.5rem",
@@ -506,23 +486,22 @@ export default function PortfolioEmailMarketing() {
                                         {seg.description}
                                     </p>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
-                </motion.section>
+                </section>
 
                 {/* 7. Content & Engagement Flows */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
                         Content & Engagement Flows
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{
+                    </h2>
+                    <p style={{
                         fontFamily: "var(--font-sans)",
                         fontSize: "1.1rem",
                         lineHeight: 1.8,
@@ -531,13 +510,13 @@ export default function PortfolioEmailMarketing() {
                         marginBottom: "3rem"
                     }}>
                         Beyond transactional automation, additional flows were created to increase engagement and maintain ongoing communication with customers.
-                    </motion.p>
+                    </p>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
                         {contentFlows.map((flow, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                variants={fadeUp}
+
                                 style={{
                                     display: "flex",
                                     gap: "2rem",
@@ -579,17 +558,16 @@ export default function PortfolioEmailMarketing() {
                                         {flow.description}
                                     </p>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
-                </motion.section>
+                </section>
 
                 {/* 8. Impact */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={fadeUp}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
                     <div className="impact-block" style={{
@@ -624,14 +602,13 @@ export default function PortfolioEmailMarketing() {
                             </div>
                         </div>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Footer CTA */}
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeUp}
+                <div
+
+
+
                     style={{ textAlign: "center", paddingTop: "4rem", borderTop: "1px solid var(--border-color)" }}
                 >
                     <p style={{ fontFamily: "var(--font-sans)", color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "1.1rem" }}>
@@ -645,7 +622,7 @@ export default function PortfolioEmailMarketing() {
                             View All Work
                         </Link>
                     </div>
-                </motion.div>
+                </div>
 
             </div>
         </div>

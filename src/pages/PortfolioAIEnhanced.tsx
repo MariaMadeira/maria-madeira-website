@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2, Image as ImageIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -8,20 +7,6 @@ export default function PortfolioAIEnhanced() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
-    const fadeUp = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-    };
-
-    const stagger = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.2 },
-        },
-    };
-
     const assetPath = "/projects/ai-enhanced/";
 
     const transformations = [
@@ -96,10 +81,10 @@ export default function PortfolioAIEnhanced() {
                 </Link>
 
                 {/* Header Section */}
-                <motion.header
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeUp}
+                <header
+
+
+
                     style={{ marginBottom: "5rem" }}
                 >
                     <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
@@ -139,14 +124,13 @@ export default function PortfolioAIEnhanced() {
                             <p style={{ fontWeight: 600, fontFamily: "var(--font-body)" }}>Visual Enhancement & Scalability</p>
                         </div>
                     </div>
-                </motion.header>
+                </header>
 
                 {/* 1. Project Overview */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={fadeUp}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
@@ -163,14 +147,13 @@ export default function PortfolioAIEnhanced() {
                         <p style={{ marginBottom: "1rem" }}>The objective was to improve the visual quality and consistency of product images used across advertising campaigns, email marketing, and website product listings.</p>
                         <p>AI tools were used to enhance existing photography and generate new visual assets that better communicate product quality while reducing production time and dependency on traditional photoshoots.</p>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* 2. The Challenge */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={fadeUp}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
@@ -186,14 +169,13 @@ export default function PortfolioAIEnhanced() {
                         <p style={{ marginBottom: "1rem" }}>Many product images lacked visual consistency and did not fully communicate the premium quality of the products.</p>
                         <p>Producing new professional photography for every campaign or product listing required significant time and cost, limiting the ability to rapidly create marketing assets.</p>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* 3. The Solution */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={fadeUp}
+                <section
+
+
+
                     className="portfolio-section-card" style={{ marginBottom: "6rem", background: "white", padding: "4rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
@@ -227,23 +209,22 @@ export default function PortfolioAIEnhanced() {
                         <li>generating cooked and styled variations of the products</li>
                         <li>producing assets suitable for marketing campaigns, product listings and email content</li>
                     </ul>
-                </motion.section>
+                </section>
 
                 {/* 4. Before & After Product Transformations */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "3rem", color: "var(--text-primary)", textAlign: "center" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "3rem", color: "var(--text-primary)", textAlign: "center" }}>
                         Before & After Product Transformations
-                    </motion.h2>
+                    </h2>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "4rem" }}>
                         {transformations.map((item, index) => (
-                            <motion.div key={index} variants={fadeUp}>
+                            <div key={index}>
                                 <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "1.5rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)", borderBottom: "1px solid var(--border-color)", paddingBottom: "0.5rem" }}>
                                     {item.title}
                                 </h3>
@@ -261,23 +242,22 @@ export default function PortfolioAIEnhanced() {
                                         <div><ImageWithFallback src={`${assetPath}${item.cooked}`} alt={`${item.title} Cooked`} /></div>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
-                </motion.section>
+                </section>
 
                 {/* 5. Marketing Applications */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={stagger}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
-                    <motion.h2 variants={fadeUp} style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
                         Marketing Applications
-                    </motion.h2>
-                    <motion.p variants={fadeUp} style={{ 
+                    </h2>
+                    <p style={{ 
                         fontFamily: "var(--font-body)", 
                         fontSize: "1.1rem", 
                         lineHeight: 1.8, 
@@ -286,7 +266,7 @@ export default function PortfolioAIEnhanced() {
                         marginBottom: "3rem"
                     }}>
                         The improved product imagery can be used across multiple marketing channels:
-                    </motion.p>
+                    </p>
                     
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "2rem" }}>
                         {[
@@ -294,9 +274,9 @@ export default function PortfolioAIEnhanced() {
                             { title: "Website Product Pages", icon: <ImageIcon size={32} /> },
                             { title: "Email Marketing Visuals", icon: <ImageIcon size={32} /> }
                         ].map((app, i) => (
-                            <motion.div 
+                            <div 
                                 key={i} 
-                                variants={fadeUp} 
+ 
                                 style={{ 
                                     background: "white", 
                                     padding: "3rem", 
@@ -311,17 +291,16 @@ export default function PortfolioAIEnhanced() {
                             >
                                 <div style={{ color: "var(--accent-secondary)", opacity: 0.8 }}>{app.icon}</div>
                                 <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "1.25rem", fontWeight: 600, color: "var(--text-primary)", margin: 0 }}>{app.title}</h3>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
-                </motion.section>
+                </section>
 
                 {/* 6. Impact */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={fadeUp}
+                <section
+
+
+
                     style={{ marginBottom: "6rem" }}
                 >
                     <div className="impact-block" style={{
@@ -353,14 +332,13 @@ export default function PortfolioAIEnhanced() {
                             </div>
                         </div>
                     </div>
-                </motion.section>
+                </section>
 
                 {/* Footer CTA */}
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeUp}
+                <div
+
+
+
                     style={{ textAlign: "center", paddingTop: "4rem", borderTop: "1px solid var(--border-color)" }}
                 >
                     <p style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "1.1rem" }}>
@@ -374,7 +352,7 @@ export default function PortfolioAIEnhanced() {
                             View All Work
                         </Link>
                     </div>
-                </motion.div>
+                </div>
 
             </div>
         </div>

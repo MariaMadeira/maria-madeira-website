@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Linkedin, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -28,12 +27,7 @@ export default function About() {
 
             <div className="grid-2" style={{ alignItems: "flex-start", gap: "4rem" }}>
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8 }}
-                    style={{ position: 'relative' }}
-                >
+                <div className="reveal-scale is-visible" style={{ position: 'relative' }}>
                     <div className="bg-glow" style={{ top: '-10%', left: '-10%', width: '300px', height: '300px', opacity: 0.6 }} />
                     <div
                         className="card glass-panel about-portrait"
@@ -49,13 +43,9 @@ export default function About() {
                             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
                         />
                     </div>
-                </motion.div>
+                </div>
 
-                <motion.div
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                >
+                <div className="reveal-right is-visible" style={{ transitionDelay: '0.2s' }}>
                     <span style={{ 
                         textTransform: 'uppercase', 
                         letterSpacing: '0.2em', 
@@ -104,16 +94,9 @@ export default function About() {
                             </h3>
                             <div className="tools-grid">
                                 {tools.map((tool, i) => (
-                                    <motion.span
-                                        key={i}
-                                        className="tool-badge"
-                                        initial={{ opacity: 0, y: 10 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: i * 0.05 }}
-                                    >
+                                    <span key={i} className="tool-badge" style={{ opacity: 0, transform: 'translateY(10px)', transition: `opacity 0.4s ease ${i * 0.05}s, transform 0.4s ease ${i * 0.05}s`, animation: `fadeIn 0.4s ease ${i * 0.05 + 0.3}s forwards` }}>
                                         {tool}
-                                    </motion.span>
+                                    </span>
                                 ))}
                             </div>
                         </div>
@@ -130,7 +113,7 @@ export default function About() {
                             </Link>
                         </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </div>
     );

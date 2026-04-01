@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Mail, Linkedin, Send, CheckCircle, Clock } from "lucide-react";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
@@ -67,11 +66,7 @@ export default function Contact() {
             <h1 className="section-title">Let's <span className="text-gradient">Work Together</span></h1>
 
             <div className="grid-2 contact-grid" style={{ maxWidth: "1100px", margin: "0 auto", gap: "4rem" }}>
-                <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
-                >
+                <div className="reveal-left is-visible">
                     <h2 style={{ fontSize: "2.5rem", marginBottom: "1.5rem" }}>Ready to scale?</h2>
                     <p style={{ color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "1.1rem", lineHeight: 1.8 }}>
                         Whether you need a full-funnel strategy or specialized support with email and paid advertising, let's discuss how we can partner to achieve your growth objectives.
@@ -115,15 +110,9 @@ export default function Contact() {
                             </div>
                         </div>
                     </div>
-                </motion.div>
+                </div>
 
-                <motion.div
-                    className="card glass-panel"
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
-                    style={{ padding: '3rem' }}
-                >
+                <div className="card glass-panel reveal-right is-visible" style={{ padding: '3rem' }}>
                     {status === "success" ? (
                         <div style={{ textAlign: 'center', padding: '2rem 0' }}>
                             <CheckCircle size={64} color="var(--accent-secondary)" style={{ marginBottom: '1.5rem' }} />
@@ -210,7 +199,7 @@ export default function Contact() {
                             </button>
                         </form>
                     )}
-                </motion.div>
+                </div>
             </div>
         </div>
     );

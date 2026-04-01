@@ -1,11 +1,11 @@
-import { useRef, useEffect } from "react";
-import { motion, useInView, useMotionValue, useTransform, animate, type Variants } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { useInView } from "../hooks/useInView";
 
 interface CounterProps {
-    from: number;
+    from?: number;
     to: number;
     decimals?: number;
     prefix?: string;
@@ -13,25 +13,34 @@ interface CounterProps {
     duration?: number;
 }
 
-function Counter({ from = 0, to, decimals = 0, prefix = "", suffix = "", duration = 2.5 }: CounterProps) {
-    const ref = useRef<HTMLSpanElement>(null);
-    const inView = useInView(ref, { once: true, margin: "-50px" });
-    const count = useMotionValue(from);
-
-    const displayValue = useTransform(count, (latest) => {
-        return `${prefix}${latest.toFixed(decimals)}${suffix}`;
-    });
+function AnimatedCounter({ from = 0, to, decimals = 0, prefix = "", suffix = "", duration = 2.5 }: CounterProps) {
+    const { ref, inView } = useInView({ rootMargin: '-50px', once: true });
+    const [display, setDisplay] = useState(`${prefix}${from.toFixed(decimals)}${suffix}`);
+    const started = useRef(false);
 
     useEffect(() => {
-        if (inView) {
-            animate(count, to, { duration, ease: "easeOut" });
-        }
-    }, [inView, count, to, duration]);
+        if (!inView || started.current) return;
+        started.current = true;
+        const startTime = performance.now();
+        const totalMs = duration * 1000;
+        const tick = (now: number) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / totalMs, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = from + (to - from) * eased;
+            setDisplay(`${prefix}${current.toFixed(decimals)}${suffix}`);
+            if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+    }, [inView, from, to, decimals, prefix, suffix, duration]);
 
-    return <motion.span ref={ref}>{displayValue}</motion.span>;
+    return <span ref={ref as React.RefObject<HTMLSpanElement>}>{display}</span>;
 }
 
 export default function Results() {
+    const { ref: emailRef, inView: emailInView } = useInView({ rootMargin: '-50px', once: true });
+    const { ref: paidRef, inView: paidInView } = useInView({ rootMargin: '-50px', once: true });
+
     const emailMetrics = [
         { label: "Revenue generated from email marketing", to: 100, prefix: "£", suffix: "K+", decimals: 0 },
         { label: "Average open rate", to: 48, prefix: "", suffix: "%", decimals: 0 },
@@ -44,19 +53,6 @@ export default function Results() {
         { label: "Conversions Generated", to: 928, prefix: "", suffix: "+", decimals: 0 },
         { label: "Revenue Attributed", to: 59, prefix: "£", suffix: "K+", decimals: 0 }
     ];
-
-    const containerVariants: Variants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.15 }
-        }
-    };
-
-    const itemVariants: Variants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-    };
 
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
@@ -93,38 +89,27 @@ export default function Results() {
                 </p>
             </div>
 
-            <motion.div
-                className="grid-2"
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
+            <div
+                ref={emailRef as React.RefObject<HTMLDivElement>}
+                className={`grid-2 stagger-container${emailInView ? ' is-visible' : ''}`}
             >
                 {emailMetrics.map((stat, i) => (
-                    <motion.div
+                    <div
                         key={i}
-                        className="card impact-card"
-                        variants={itemVariants}
-                        whileHover={{ y: -5, boxShadow: "0 12px 40px rgba(59, 49, 44, 0.12)" }}
-                        style={{ 
-                            display: "flex", 
-                            flexDirection: "column", 
-                            justifyContent: "center", 
-                            alignItems: "center", 
-                            textAlign: "center", 
+                        className="card impact-card reveal-item hover-lift-sm"
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            textAlign: "center",
                             padding: "3.5rem 2rem",
                             border: "1px solid var(--border-color)",
                             background: "var(--bg-primary)"
                         }}
                     >
                         <h3 className="text-gradient-accent" style={{ fontSize: "4rem", marginBottom: "0.5rem", lineHeight: 1 }}>
-                            <Counter
-                                from={0}
-                                to={stat.to}
-                                decimals={stat.decimals}
-                                prefix={stat.prefix}
-                                suffix={stat.suffix}
-                            />
+                            <AnimatedCounter from={0} to={stat.to} decimals={stat.decimals} prefix={stat.prefix} suffix={stat.suffix} />
                         </h3>
                         <p style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.75rem" }}>
                             {stat.label}
@@ -136,9 +121,9 @@ export default function Results() {
                             {i === 2 && "Highly targeted automated systems that never sleep."}
                             {i === 3 && "Passive income streams built through customer journey mapping."}
                         </p>
-                    </motion.div>
+                    </div>
                 ))}
-            </motion.div>
+            </div>
 
             <div style={{ textAlign: "center", marginTop: "6rem", marginBottom: "3rem" }}>
                 <h2 className="section-title" style={{ marginBottom: "1rem", fontSize: "2rem" }}>
@@ -149,38 +134,27 @@ export default function Results() {
                 </p>
             </div>
 
-            <motion.div
-                className="grid-3"
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
+            <div
+                ref={paidRef as React.RefObject<HTMLDivElement>}
+                className={`grid-3 stagger-container${paidInView ? ' is-visible' : ''}`}
             >
                 {paidMetrics.map((stat, i) => (
-                    <motion.div
+                    <div
                         key={i}
-                        className="card impact-card"
-                        variants={itemVariants}
-                        whileHover={{ y: -5, boxShadow: "0 12px 40px rgba(59, 49, 44, 0.12)" }}
-                        style={{ 
-                            display: "flex", 
-                            flexDirection: "column", 
-                            justifyContent: "center", 
-                            alignItems: "center", 
-                            textAlign: "center", 
+                        className="card impact-card reveal-item hover-lift-sm"
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            textAlign: "center",
                             padding: "3rem 2rem",
                             border: "1px solid var(--border-color)",
-                            background: "var(--bg-primary)" 
+                            background: "var(--bg-primary)"
                         }}
                     >
                         <h3 className="text-gradient-accent" style={{ fontSize: "3.5rem", marginBottom: "1rem", lineHeight: 1 }}>
-                            <Counter
-                                from={0}
-                                to={stat.to}
-                                decimals={stat.decimals}
-                                prefix={stat.prefix}
-                                suffix={stat.suffix}
-                            />
+                            <AnimatedCounter from={0} to={stat.to} decimals={stat.decimals} prefix={stat.prefix} suffix={stat.suffix} />
                         </h3>
                         <p style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.5rem" }}>
                             {stat.label}
@@ -190,21 +164,15 @@ export default function Results() {
                             {i === 1 && "High-intent customer acquisition."}
                             {i === 2 && "Measurable return on every pound spent."}
                         </p>
-                    </motion.div>
+                    </div>
                 ))}
-            </motion.div>
+            </div>
 
-            <motion.div
-                style={{ maxWidth: "700px", margin: "32px auto 0", textAlign: "center" }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-            >
+            <div className="reveal" style={{ maxWidth: "700px", margin: "32px auto 0", textAlign: "center" }}>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1rem" }}>
                     Campaign management focused on optimisation, targeting improvements, and performance monitoring across Google Ads and Meta Ads.
                 </p>
-            </motion.div>
+            </div>
 
             {/* Bridge to Case Studies */}
             <section style={{ marginTop: '8rem', textAlign: 'center' }}>
@@ -231,13 +199,7 @@ export default function Results() {
             </section>
 
             {/* CTA Section */}
-            <motion.div
-                className="results-cta"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-            >
+            <div className="results-cta reveal">
                 <h2 style={{ fontSize: "2.5rem", marginBottom: "1.5rem" }}>Want results like these?</h2>
                 <p style={{ color: "var(--text-secondary)", marginBottom: "2.5rem", fontSize: "1.2rem", maxWidth: "600px", margin: "0 auto 2.5rem" }}>
                     Let's discuss how we can implement data-driven strategies to grow your e-commerce brand.
@@ -245,7 +207,7 @@ export default function Results() {
                 <Link to="/contact" className="btn btn-primary" style={{ padding: "1.2rem 3rem", fontSize: "1.1rem" }}>
                     Let's Talk <ArrowRight size={20} style={{ marginLeft: "10px" }} />
                 </Link>
-            </motion.div>
+            </div>
         </div>
     );
 }

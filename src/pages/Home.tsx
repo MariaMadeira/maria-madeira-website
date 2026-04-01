@@ -1,10 +1,10 @@
-import { useRef, useEffect } from "react";
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { useInView } from "../hooks/useInView";
 
-/* ── CountUp component ─────────────────────────── */
+/* ── AnimatedCounter component ─────────────────────────── */
 interface CounterProps {
     from?: number;
     to: number;
@@ -14,37 +14,32 @@ interface CounterProps {
     duration?: number;
 }
 
-function Counter({ from = 0, to, decimals = 0, prefix = "", suffix = "", duration = 2.5 }: CounterProps) {
-    const ref = useRef<HTMLSpanElement>(null);
-    const inView = useInView(ref, { once: true, margin: "-50px" });
-    const count = useMotionValue(from);
-
-    const displayValue = useTransform(count, (latest) => {
-        return `${prefix}${latest.toFixed(decimals)}${suffix}`;
-    });
+function AnimatedCounter({ from = 0, to, decimals = 0, prefix = "", suffix = "", duration = 2.5 }: CounterProps) {
+    const { ref, inView } = useInView({ rootMargin: '-50px', once: true });
+    const [display, setDisplay] = useState(`${prefix}${from.toFixed(decimals)}${suffix}`);
+    const started = useRef(false);
 
     useEffect(() => {
-        if (inView) {
-            animate(count, to, { duration, ease: "easeOut" });
-        }
-    }, [inView, count, to, duration]);
+        if (!inView || started.current) return;
+        started.current = true;
+        const startTime = performance.now();
+        const totalMs = duration * 1000;
+        const tick = (now: number) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / totalMs, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = from + (to - from) * eased;
+            setDisplay(`${prefix}${current.toFixed(decimals)}${suffix}`);
+            if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+    }, [inView, from, to, decimals, prefix, suffix, duration]);
 
-    return <motion.span ref={ref}>{displayValue}</motion.span>;
+    return <span ref={ref as React.RefObject<HTMLSpanElement>}>{display}</span>;
 }
 
 export default function Home() {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.1 }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
-    };
+    const { ref: metricsRevealRef, inView: metricsInView } = useInView({ rootMargin: '-50px', once: true });
 
     return (
         <div className="container">
@@ -77,13 +72,7 @@ export default function Home() {
                     padding: '0 2rem',
                 }}>
                     {/* Left: text */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        style={{ textAlign: 'left' }}
-                        className="hero-text-col"
-                    >
+                    <div className="hero-text-col animate-fade-in" style={{ textAlign: 'left' }}>
                         <span style={{
                             textTransform: 'uppercase',
                             letterSpacing: '0.2em',
@@ -133,16 +122,10 @@ export default function Home() {
                                 Lisbon-based, global reach
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Right: image */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.9, delay: 0.2 }}
-                        style={{ position: 'relative' }}
-                        className="hero-image-col"
-                    >
+                    <div className="hero-image-col reveal-scale is-visible" style={{ position: 'relative', animationDelay: '0.2s' }}>
                         <div style={{
                             borderRadius: '24px',
                             overflow: 'hidden',
@@ -157,11 +140,8 @@ export default function Home() {
                             />
                         </div>
                         {/* Floating badge */}
-                        <motion.div
-                            className="hero-badge"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.8, duration: 0.6 }}
+                        <div
+                            className="hero-badge reveal is-visible"
                             style={{
                                 position: 'absolute',
                                 bottom: '2rem',
@@ -175,6 +155,7 @@ export default function Home() {
                                 alignItems: 'center',
                                 gap: '0.75rem',
                                 minWidth: '200px',
+                                transitionDelay: '0.8s',
                             }}
                         >
                             <span style={{ fontSize: '1.8rem', lineHeight: 1 }}>📈</span>
@@ -182,13 +163,11 @@ export default function Home() {
                                 <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>490.74% ROAS</div>
                                 <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Google Ads Campaign</div>
                             </div>
-                        </motion.div>
-                    </motion.div>
+                        </div>
+                    </div>
                 </div>
 
             </section>
-
-
 
             {/* Key Metrics Section */}
             <section className="section metrics-section" style={{ position: 'relative', background: 'var(--bg-secondary)', borderRadius: '32px', margin: '4rem 0', padding: '5rem 2rem' }}>
@@ -198,43 +177,40 @@ export default function Home() {
                         Consistent results across diverse channels, driven by data and optimized for profitable growth.
                     </p>
                 </div>
-                
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
-                    className="grid-4"
+
+                <div
+                    ref={metricsRevealRef as React.RefObject<HTMLDivElement>}
+                    className={`grid-4 stagger-container${metricsInView ? ' is-visible' : ''}`}
                 >
-                    <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
+                    <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <Counter from={0} to={160} prefix="£" suffix="K+" />
+                            <AnimatedCounter from={0} to={160} prefix="£" suffix="K+" />
                         </h3>
                         <p style={{ fontWeight: 600 }}>Total Revenue Generated</p>
                         <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Directly attributed to my strategies</p>
-                    </motion.div>
-                    <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
+                    </div>
+                    <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <Counter from={0} to={4.9} suffix="x" decimals={1} />
+                            <AnimatedCounter from={0} to={4.9} suffix="x" decimals={1} />
                         </h3>
                         <p style={{ fontWeight: 600 }}>Google Ads ROAS</p>
                         <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>490.74% return on ad spend</p>
-                    </motion.div>
-                    <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
+                    </div>
+                    <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <Counter from={0} to={48} suffix="%" />
+                            <AnimatedCounter from={0} to={48} suffix="%" />
                         </h3>
                         <p style={{ fontWeight: 600 }}>Email Open Rate</p>
                         <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Industry-leading engagement</p>
-                    </motion.div>
-                    <motion.div variants={itemVariants} className="card text-center" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
+                    </div>
+                    <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <Counter from={0} to={70} suffix="%" />
+                            <AnimatedCounter from={0} to={70} suffix="%" />
                         </h3>
                         <p style={{ fontWeight: 600 }}>Cost Reduction</p>
                         <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>In visual production via AI</p>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
             </section>
 
             {/* Brands Section */}
@@ -351,17 +327,13 @@ export default function Home() {
                             to={item.link}
                             style={{ textDecoration: 'none', color: 'inherit' }}
                         >
-                            <motion.div
-                                whileHover={{ y: -6 }}
-                                transition={{ duration: 0.25 }}
-                                style={{
-                                    borderRadius: '16px',
-                                    overflow: 'hidden',
-                                    border: '1px solid var(--border-color)',
-                                    background: 'var(--bg-secondary)',
-                                    cursor: 'pointer',
-                                }}
-                            >
+                            <div className="hover-lift" style={{
+                                borderRadius: '16px',
+                                overflow: 'hidden',
+                                border: '1px solid var(--border-color)',
+                                background: 'var(--bg-secondary)',
+                                cursor: 'pointer',
+                            }}>
                                 <div style={{ aspectRatio: '4/3', overflow: 'hidden' }}>
                                     <img
                                         src={item.image}
@@ -377,7 +349,7 @@ export default function Home() {
                                     </span>
                                     <span style={{ fontWeight: 600, fontSize: '1rem' }}>{item.title}</span>
                                 </div>
-                            </motion.div>
+                            </div>
                         </Link>
                     ))}
                 </div>
