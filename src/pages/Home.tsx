@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -36,6 +36,111 @@ function AnimatedCounter({ from = 0, to, decimals = 0, prefix = "", suffix = "",
     }, [inView, from, to, decimals, prefix, suffix, duration]);
 
     return <span ref={ref as React.RefObject<HTMLSpanElement>}>{display}</span>;
+}
+
+/* ── Testimonials data & carousel ────────────────────────── */
+const TESTIMONIALS = [
+    {
+        name: "Hermela Michael",
+        role: "History Undergraduate",
+        context: "Former colleague at The Black Farmer · Recommended on LinkedIn",
+        quote: "Maria doesn't just think outside the box — she completely redefines it. Her creativity, strategic mindset, and deep understanding of marketing have played a huge role in shaping the success of the company. She approaches every project with passion and precision, always bringing fresh, data-driven ideas to the table that truly make an impact.",
+    },
+    {
+        name: "Will Fuller",
+        role: "WordPress Developer",
+        context: "Former colleague at The Black Farmer · Recommended on LinkedIn",
+        quote: "Maria completely transformed our email marketing strategy. When she took over our Klaviyo account, she achieved 125% growth in email attributed revenue and boosted our automated flows by over 100%. Our open rates went from 28% to 48%, and click rates more than doubled. What impressed me most wasn't just the numbers — it was how she understood our customers.",
+    },
+    {
+        name: "Adel Sidiqi",
+        role: "Digital Marketing Manager at Ocado Zoom",
+        context: "Former colleague · Recommended on LinkedIn",
+        quote: "Maria's expertise in design, digital marketing, and tools like Klaviyo consistently took our campaigns to the next level — both visually and in terms of results. She has a real knack for aligning creative ideas with marketing goals. Detail-oriented, innovative, and a great team player.",
+    },
+];
+
+function TestimonialsCarousel() {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const touchStartX = useRef<number | null>(null);
+    const { ref: sectionRef, inView } = useInView({ rootMargin: '-50px', once: true });
+
+    const goTo = useCallback((index: number) => {
+        setActiveIndex((index + TESTIMONIALS.length) % TESTIMONIALS.length);
+    }, []);
+
+    const handleTouchStart = (e: React.TouchEvent) => {
+        touchStartX.current = e.touches[0].clientX;
+    };
+    const handleTouchEnd = (e: React.TouchEvent) => {
+        if (touchStartX.current === null) return;
+        const delta = e.changedTouches[0].clientX - touchStartX.current;
+        if (Math.abs(delta) > 40) goTo(activeIndex + (delta < 0 ? 1 : -1));
+        touchStartX.current = null;
+    };
+
+    return (
+        <>
+            {/* Desktop: 3-column grid */}
+            <div
+                ref={sectionRef as React.RefObject<HTMLDivElement>}
+                className={`grid-3 stagger-container testimonials-desktop${inView ? ' is-visible' : ''}`}
+            >
+                {TESTIMONIALS.map((t) => (
+                    <div key={t.name} className="card reveal-item testimonial-card" style={{ background: 'var(--bg-secondary)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                        <p style={{
+                            color: 'var(--text-secondary)',
+                            fontSize: '0.95rem',
+                            lineHeight: 1.75,
+                            fontStyle: 'italic',
+                            flex: 1,
+                        }}>
+                            "{t.quote}"
+                        </p>
+                        <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1rem' }}>
+                            <p style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)', marginBottom: '0.2rem' }}>{t.name}</p>
+                            <p style={{ fontSize: '0.82rem', color: 'var(--accent-secondary)', fontWeight: 600, marginBottom: '0.2rem' }}>{t.role}</p>
+                            <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', opacity: 0.75 }}>{t.context}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {/* Mobile: swipeable carousel */}
+            <div
+                className="testimonials-mobile"
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+            >
+                <div className="testimonial-card card" style={{ background: 'var(--bg-secondary)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                    <p style={{
+                        color: 'var(--text-secondary)',
+                        fontSize: '0.95rem',
+                        lineHeight: 1.75,
+                        fontStyle: 'italic',
+                        flex: 1,
+                    }}>
+                        "{TESTIMONIALS[activeIndex].quote}"
+                    </p>
+                    <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1rem' }}>
+                        <p style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)', marginBottom: '0.2rem' }}>{TESTIMONIALS[activeIndex].name}</p>
+                        <p style={{ fontSize: '0.82rem', color: 'var(--accent-secondary)', fontWeight: 600, marginBottom: '0.2rem' }}>{TESTIMONIALS[activeIndex].role}</p>
+                        <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', opacity: 0.75 }}>{TESTIMONIALS[activeIndex].context}</p>
+                    </div>
+                </div>
+                <div className="testimonial-dots">
+                    {TESTIMONIALS.map((_, i) => (
+                        <button
+                            key={i}
+                            className={`testimonial-dot${i === activeIndex ? ' active' : ''}`}
+                            onClick={() => goTo(i)}
+                            aria-label={`Go to testimonial ${i + 1}`}
+                        />
+                    ))}
+                </div>
+            </div>
+        </>
+    );
 }
 
 export default function Home() {
@@ -92,7 +197,7 @@ export default function Home() {
                         </p>
                         <div style={{ display: "flex", gap: "1rem", flexWrap: 'wrap', marginBottom: '2.5rem' }}>
                             <Link to="/contact" className="btn btn-primary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
-                                Book a Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                                Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                             </Link>
                             <Link to="/results" className="btn btn-secondary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
                                 See My Results
@@ -255,6 +360,19 @@ export default function Home() {
                 </div>
             </section>
 
+            {/* Testimonials Section */}
+            <section className="section testimonials-section" style={{ padding: '5rem 0' }}>
+                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>What People Say</h2>
+                    <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
+                        Feedback from colleagues and collaborators I've worked with.
+                    </p>
+                </div>
+
+                {/* Desktop grid / Mobile carousel */}
+                <TestimonialsCarousel />
+            </section>
+
             {/* Services Overview Section */}
             <section className="section" style={{ position: 'relative' }}>
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
@@ -358,6 +476,24 @@ export default function Home() {
                         View All Work <ArrowRight size={16} style={{ marginLeft: '8px' }} />
                     </Link>
                 </div>
+                <p style={{ textAlign: 'center', marginTop: '1.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+                    Every project is backed by strategy and measurable results.{' '}
+                    <Link
+                        to="/case-studies"
+                        style={{
+                            color: 'var(--accent-secondary)',
+                            textDecoration: 'underline',
+                            textDecorationColor: 'transparent',
+                            textUnderlineOffset: '3px',
+                            transition: 'text-decoration-color 0.2s ease',
+                            fontWeight: 500,
+                        }}
+                        onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.textDecorationColor = 'var(--accent-secondary)')}
+                        onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.textDecorationColor = 'transparent')}
+                    >
+                        Explore the full case studies to see the impact.
+                    </Link>
+                </p>
             </section>
         </div>
     );

@@ -80,7 +80,7 @@ export default function Footer() {
                                 marginBottom: "1.5rem",
                             }}
                         >
-                            Book a Strategy Call
+                            Book a Free Strategy Call
                         </Link>
                         <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem" }}>
                             <a href="https://www.linkedin.com/in/maria-madeira-43501b3a/" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.7)", transition: "color 0.3s ease" }} aria-label="LinkedIn"><Linkedin size={20} /></a>
