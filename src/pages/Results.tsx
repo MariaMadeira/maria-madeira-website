@@ -50,7 +50,7 @@ export default function Results() {
 
     const paidMetrics: Array<{ label: string; to: number; prefix: string; suffix: string; decimals: number; subtitle: string; range?: string }> = [
         { label: "Google Ads ROAS", to: 4.9, prefix: "", suffix: "x", decimals: 1, subtitle: "Scaling spend while maintaining profitability." },
-        { label: "Conversions Generated", to: 928, prefix: "", suffix: "+", decimals: 0, subtitle: "High-intent customer acquisition." },
+        { label: "Conversions Generated", to: 923, prefix: "", suffix: "+", decimals: 0, subtitle: "High-intent customer acquisition." },
         { label: "Revenue Attributed", to: 51.9, prefix: "£", suffix: "K+", decimals: 1, subtitle: "Directly attributed Google Ads revenue." },
         { label: "Meta Ads ROAS", to: 5.34, prefix: "", suffix: "x", decimals: 2, range: "3.4x – 5.34x", subtitle: "Range across active campaigns." }
     ];
