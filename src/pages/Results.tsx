@@ -51,14 +51,14 @@ export default function Results() {
     const paidMetrics: Array<{ label: string; to: number; prefix: string; suffix: string; decimals: number; subtitle: string; range?: string }> = [
         { label: "Google Ads ROAS", to: 4.9, prefix: "", suffix: "x", decimals: 1, subtitle: "Scaling spend while maintaining profitability." },
         { label: "Conversions Generated", to: 928, prefix: "", suffix: "+", decimals: 0, subtitle: "High-intent customer acquisition." },
-        { label: "Revenue Attributed", to: 51.9, prefix: "£", suffix: "K+", decimals: 1, subtitle: "Measurable return on every pound spent." },
+        { label: "Revenue Attributed", to: 51.9, prefix: "£", suffix: "K+", decimals: 1, subtitle: "Directly attributed Google Ads revenue." },
         { label: "Meta Ads ROAS", to: 5.34, prefix: "", suffix: "x", decimals: 2, range: "3.4x – 5.34x", subtitle: "Range across active campaigns." }
     ];
 
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Helmet>
-                <title>Results | Maria Madeira — Email & Paid Advertising Performance</title>
+                <title>Results | Email £110K+ · Google Ads 4.9x ROAS · Meta Ads 5.34x | Maria Madeira</title>
                 <meta name="description" content="See the measurable results: £110K+ email revenue, 48% open rates, 4.9x Google Ads ROAS and 3.4x – 5.34x Meta Ads ROAS." />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Results | Maria Madeira" />
