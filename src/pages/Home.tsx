@@ -97,10 +97,20 @@ function TestimonialsCarousel() {
                         }}>
                             "{t.quote}"
                         </p>
-                        <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1rem' }}>
-                            <p style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)', marginBottom: '0.2rem' }}>{t.name}</p>
-                            <p style={{ fontSize: '0.82rem', color: 'var(--accent-secondary)', fontWeight: 600, marginBottom: '0.2rem' }}>{t.role}</p>
-                            <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', opacity: 0.75 }}>{t.context}</p>
+                        <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                            <div style={{
+                                width: '40px', height: '40px', borderRadius: '50%', flexShrink: 0,
+                                background: 'var(--accent-glow)', border: '1px solid var(--accent-primary)',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                fontWeight: 700, fontSize: '0.85rem', color: 'var(--accent-secondary)',
+                            }}>
+                                {t.name.split(' ').map(n => n[0]).join('')}
+                            </div>
+                            <div>
+                                <p style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)', marginBottom: '0.2rem' }}>{t.name}</p>
+                                <p style={{ fontSize: '0.82rem', color: 'var(--accent-secondary)', fontWeight: 600, marginBottom: '0.2rem' }}>{t.role}</p>
+                                <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', opacity: 0.75 }}>{t.context}</p>
+                            </div>
                         </div>
                     </div>
                 ))}
@@ -122,10 +132,20 @@ function TestimonialsCarousel() {
                     }}>
                         "{TESTIMONIALS[activeIndex].quote}"
                     </p>
-                    <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1rem' }}>
-                        <p style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)', marginBottom: '0.2rem' }}>{TESTIMONIALS[activeIndex].name}</p>
-                        <p style={{ fontSize: '0.82rem', color: 'var(--accent-secondary)', fontWeight: 600, marginBottom: '0.2rem' }}>{TESTIMONIALS[activeIndex].role}</p>
-                        <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', opacity: 0.75 }}>{TESTIMONIALS[activeIndex].context}</p>
+                    <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <div style={{
+                            width: '40px', height: '40px', borderRadius: '50%', flexShrink: 0,
+                            background: 'var(--accent-glow)', border: '1px solid var(--accent-primary)',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            fontWeight: 700, fontSize: '0.85rem', color: 'var(--accent-secondary)',
+                        }}>
+                            {TESTIMONIALS[activeIndex].name.split(' ').map((n: string) => n[0]).join('')}
+                        </div>
+                        <div>
+                            <p style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)', marginBottom: '0.2rem' }}>{TESTIMONIALS[activeIndex].name}</p>
+                            <p style={{ fontSize: '0.82rem', color: 'var(--accent-secondary)', fontWeight: 600, marginBottom: '0.2rem' }}>{TESTIMONIALS[activeIndex].role}</p>
+                            <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', opacity: 0.75 }}>{TESTIMONIALS[activeIndex].context}</p>
+                        </div>
                     </div>
                 </div>
                 <div className="testimonial-dots">
@@ -154,12 +174,12 @@ export default function Home() {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Maria Madeira | E-commerce Growth Strategist" />
                 <meta property="og:description" content="Helping modern brands transition from steady growth to aggressive scaling through lifecycle marketing, paid acquisition, and AI-driven automation." />
-                <meta property="og:image" content="/MM.png" />
+                <meta property="og:image" content="/portrait.png" />
                 <meta property="og:url" content="https://mariamadeira.com/" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Maria Madeira | E-commerce Growth Strategist" />
                 <meta name="twitter:description" content="Helping modern brands scale through lifecycle marketing, paid acquisition, and AI-driven automation." />
-                <meta name="twitter:image" content="/MM.png" />
+                <meta name="twitter:image" content="/portrait.png" />
             </Helmet>
 
             {/* Hero Section */}

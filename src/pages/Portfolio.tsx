@@ -64,12 +64,12 @@ export default function Portfolio() {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Portfolio | Maria Madeira" />
                 <meta property="og:description" content="Branding, AI-enhanced product imagery, and visual identity projects for e-commerce brands." />
-                <meta property="og:image" content="/MM.png" />
+                <meta property="og:image" content="/portrait.png" />
                 <meta property="og:url" content="https://mariamadeira.com/portfolio" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Portfolio | Maria Madeira" />
                 <meta name="twitter:description" content="Branding, AI-enhanced product imagery, and visual identity projects for e-commerce brands." />
-                <meta name="twitter:image" content="/MM.png" />
+                <meta name="twitter:image" content="/portrait.png" />
             </Helmet>
 
             <h1 className="section-title">Creative <span className="text-gradient">Portfolio</span></h1>

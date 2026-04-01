@@ -55,12 +55,12 @@ export default function Contact() {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Contact | Maria Madeira" />
                 <meta property="og:description" content="Ready to scale your e-commerce brand? Get in touch to discuss growth strategy, email marketing, and more." />
-                <meta property="og:image" content="/MM.png" />
+                <meta property="og:image" content="/portrait.png" />
                 <meta property="og:url" content="https://mariamadeira.com/contact" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Contact | Maria Madeira" />
                 <meta name="twitter:description" content="Ready to scale your e-commerce brand? Get in touch with Maria Madeira." />
-                <meta name="twitter:image" content="/MM.png" />
+                <meta name="twitter:image" content="/portrait.png" />
             </Helmet>
 
             <h1 className="section-title">Let's <span className="text-gradient">Work Together</span></h1>

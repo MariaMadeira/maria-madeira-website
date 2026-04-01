@@ -48,12 +48,12 @@ export default function Services() {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Services | Maria Madeira" />
                 <meta property="og:description" content="Growth strategy, email marketing, paid advertising, AI systems, and creative direction for scaling e-commerce brands." />
-                <meta property="og:image" content="/MM.png" />
+                <meta property="og:image" content="/portrait.png" />
                 <meta property="og:url" content="https://mariamadeira.com/services" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Services | Maria Madeira" />
                 <meta name="twitter:description" content="Growth strategy, email marketing, paid advertising, AI systems, and creative direction for scaling e-commerce brands." />
-                <meta name="twitter:image" content="/MM.png" />
+                <meta name="twitter:image" content="/portrait.png" />
             </Helmet>
 
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>
@@ -122,7 +122,53 @@ export default function Services() {
                 ))}
             </div>
 
-            <div style={{ marginTop: "8rem", textAlign: "center", background: "var(--bg-secondary)", padding: "5rem 2rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}>
+            {/* How it works */}
+            <div style={{ marginTop: "8rem", marginBottom: "8rem" }}>
+                <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+                    <h2 className="section-title" style={{ marginBottom: "1rem" }}>How It <span className="text-gradient">Works</span></h2>
+                    <p style={{ color: "var(--text-secondary)", maxWidth: "600px", margin: "0 auto", fontSize: "1.05rem" }}>
+                        A focused, three-step process built around your goals and your data.
+                    </p>
+                </div>
+                <div className="grid-3" style={{ gap: "2rem" }}>
+                    {[
+                        { step: "01", title: "Audit", desc: "We start by mapping your current funnel, channels, and data — identifying the biggest gaps and highest-leverage opportunities." },
+                        { step: "02", title: "Strategy", desc: "A tailored growth plan is built around your goals: which channels to prioritise, what to automate, and how to sequence execution." },
+                        { step: "03", title: "Execute", desc: "Campaigns go live, systems are built, and performance is monitored weekly — with ongoing optimisation to compound results over time." },
+                    ].map((item) => (
+                        <div key={item.step} className="card" style={{ background: "var(--bg-secondary)", position: "relative", paddingTop: "2.5rem" }}>
+                            <span style={{
+                                position: "absolute", top: "1.5rem", right: "1.5rem",
+                                fontFamily: "var(--font-heading)", fontSize: "2.5rem", fontWeight: 800,
+                                color: "var(--accent-primary)", opacity: 0.4, lineHeight: 1,
+                            }}>{item.step}</span>
+                            <h3 style={{ marginBottom: "0.75rem" }}>{item.title}</h3>
+                            <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", lineHeight: 1.7 }}>{item.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Testimonial */}
+            <div style={{ marginBottom: "8rem", background: "var(--bg-secondary)", borderRadius: "24px", padding: "3.5rem", border: "1px solid var(--border-color)" }}>
+                <p style={{ fontSize: "1.1rem", lineHeight: 1.8, fontStyle: "italic", color: "var(--text-secondary)", marginBottom: "2rem" }}>
+                    "Maria completely transformed our email marketing strategy. When she took over our Klaviyo account, she achieved 125% growth in email attributed revenue and boosted our automated flows by over 100%. Our open rates went from 28% to 48%, and click rates more than doubled."
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                    <div style={{
+                        width: "44px", height: "44px", borderRadius: "50%", flexShrink: 0,
+                        background: "var(--accent-glow)", border: "1px solid var(--accent-primary)",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontWeight: 700, fontSize: "0.85rem", color: "var(--accent-secondary)",
+                    }}>WF</div>
+                    <div>
+                        <p style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--text-primary)", marginBottom: "0.2rem" }}>Will Fuller</p>
+                        <p style={{ fontSize: "0.82rem", color: "var(--accent-secondary)", fontWeight: 600 }}>WordPress Developer · Former colleague at The Black Farmer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style={{ textAlign: "center", background: "var(--bg-secondary)", padding: "5rem 2rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}>
                 <h2 style={{ fontSize: "2.5rem", marginBottom: "1.5rem" }}>Ready to scale your brand?</h2>
                 <p style={{ color: "var(--text-secondary)", marginBottom: "1rem", fontSize: "1.2rem", maxWidth: "600px", margin: "0 auto 1rem" }}>
                     Let's discuss how we can implement these growth systems for your business.

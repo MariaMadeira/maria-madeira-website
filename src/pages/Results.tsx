@@ -63,12 +63,12 @@ export default function Results() {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Results | Maria Madeira" />
                 <meta property="og:description" content="£110K+ email revenue, 48% open rates, 4.9x Google Ads ROAS — measurable results from data-driven e-commerce growth strategies." />
-                <meta property="og:image" content="/MM.png" />
+                <meta property="og:image" content="/portrait.png" />
                 <meta property="og:url" content="https://mariamadeira.com/results" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Results | Maria Madeira" />
                 <meta name="twitter:description" content="£110K+ email revenue, 48% open rates, 4.9x Google Ads ROAS — measurable e-commerce growth results." />
-                <meta name="twitter:image" content="/MM.png" />
+                <meta name="twitter:image" content="/portrait.png" />
             </Helmet>
 
             {/* Page intro */}
@@ -199,6 +199,25 @@ export default function Results() {
                     </Link>
                 </div>
             </section>
+
+            {/* Testimonial */}
+            <div style={{ margin: "6rem auto 0", maxWidth: "760px", background: "var(--bg-secondary)", borderRadius: "24px", padding: "3.5rem", border: "1px solid var(--border-color)" }}>
+                <p style={{ fontSize: "1.1rem", lineHeight: 1.8, fontStyle: "italic", color: "var(--text-secondary)", marginBottom: "2rem" }}>
+                    "Maria's expertise in design, digital marketing, and tools like Klaviyo consistently took our campaigns to the next level — both visually and in terms of results. She has a real knack for aligning creative ideas with marketing goals. Detail-oriented, innovative, and a great team player."
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                    <div style={{
+                        width: "44px", height: "44px", borderRadius: "50%", flexShrink: 0,
+                        background: "var(--accent-glow)", border: "1px solid var(--accent-primary)",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontWeight: 700, fontSize: "0.85rem", color: "var(--accent-secondary)",
+                    }}>AS</div>
+                    <div>
+                        <p style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--text-primary)", marginBottom: "0.2rem" }}>Adel Sidiqi</p>
+                        <p style={{ fontSize: "0.82rem", color: "var(--accent-secondary)", fontWeight: 600 }}>Digital Marketing Manager at Ocado Zoom · Former colleague</p>
+                    </div>
+                </div>
+            </div>
 
             {/* CTA Section */}
             <div className="results-cta reveal">
