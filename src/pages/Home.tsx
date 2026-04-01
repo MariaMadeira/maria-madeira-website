@@ -307,19 +307,19 @@ export default function Home() {
                             image: '/projects/rita-antunes/mockup-stationery.jpg',
                             label: 'Brand Identity',
                             title: 'Rita Antunes',
-                            link: '/portfolio/rita-antunes',
+                            link: '/portfolio-rita-antunes',
                         },
                         {
                             image: '/projects/ai-product/DEPOIS Cotswold Fudge Butterscotch.jpg',
                             label: 'AI Product Photography',
                             title: 'Cotswold Fudge',
-                            link: '/portfolio/ai-product-photography',
+                            link: '/portfolio-ai-product-photography',
                         },
                         {
                             image: '/projects/email-marketing/recipe.png',
                             label: 'Email Marketing',
                             title: 'Lifecycle Email System',
-                            link: '/portfolio/email-marketing',
+                            link: '/portfolio-email-marketing',
                         },
                     ].map((item) => (
                         <Link
