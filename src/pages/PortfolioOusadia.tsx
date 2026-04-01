@@ -254,51 +254,11 @@ export default function PortfolioOusadia() {
                         }}
                     >
                         <img
-                            src={`${assetPath}3.jpg`}
+                            src={`${assetPath}4.jpg`}
                             alt="Ousadia Typography"
                             style={{ width: "100%", maxWidth: "800px", display: "block", margin: "0 auto" }}
                             onError={(e) => {
                                 e.currentTarget.style.display = 'none';
-                            }}
-                        />
-                    </div>
-                </section>
-
-                {/* 6. Brand Pattern */}
-                <section
-
-
-
-                    style={{ marginBottom: "6rem" }}
-                >
-                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#2d2d2d" }}>
-                        Brand Pattern
-                    </h2>
-                    <p style={{
-                        fontFamily: "'Montserrat', sans-serif",
-                        fontSize: "1.1rem",
-                        lineHeight: 1.8,
-                        color: "var(--text-secondary)",
-                        fontWeight: 300,
-                        marginBottom: "3rem"
-                    }}>
-                        A custom surface pattern was developed from the brand's graphic language, designed to be applied across packaging, wrapping paper, and brand collateral — adding tactile richness to every touchpoint.
-                    </p>
-                    <div
-
-                        style={{ borderRadius: "24px", overflow: "hidden", border: "1px solid var(--border-color)", background: "white" }}
-                    >
-                        <img
-                            src={`${assetPath}4.jpg`}
-                            alt="Ousadia Brand Pattern"
-                            style={{ width: "100%", display: "block" }}
-                            onError={(e) => {
-                                e.currentTarget.style.display = 'none';
-                                if (e.currentTarget.parentElement) {
-                                    e.currentTarget.parentElement.style.padding = '4rem';
-                                    e.currentTarget.parentElement.style.background = '#f5f5f5';
-                                    e.currentTarget.parentElement.innerHTML = '<p style="text-align:center; color:#999">Pattern Asset Not Found</p>';
-                                }
                             }}
                         />
                     </div>
