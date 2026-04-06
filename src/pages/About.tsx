@@ -19,12 +19,13 @@ export default function About() {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="About | Maria Madeira" />
                 <meta property="og:description" content="Growth Strategist and Creative Marketing Specialist helping e-commerce brands scale through data-driven decisions and AI-powered marketing." />
-                <meta property="og:image" content="/portrait.png" />
+                <meta property="og:image" content="/og-image.png" />
                 <meta property="og:url" content="https://mariamadeira.com/about" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="About | Maria Madeira" />
                 <meta name="twitter:description" content="Growth Strategist helping e-commerce brands scale through data-driven decisions and AI-powered marketing." />
-                <meta name="twitter:image" content="/portrait.png" />
+                <meta name="twitter:image" content="/og-image.png" />
+                <link rel="canonical" href="https://mariamadeira.com/about" />
             </Helmet>
 
             <div className="grid-2" style={{ alignItems: "flex-start", gap: "4rem" }}>

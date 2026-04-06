@@ -174,12 +174,44 @@ export default function Home() {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Maria Madeira | E-commerce Growth Strategist" />
                 <meta property="og:description" content="Helping modern brands transition from steady growth to aggressive scaling through lifecycle marketing, paid acquisition, and AI-driven automation." />
-                <meta property="og:image" content="/portrait.png" />
+                <meta property="og:image" content="/og-image.png" />
                 <meta property="og:url" content="https://mariamadeira.com/" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Maria Madeira | E-commerce Growth Strategist" />
                 <meta name="twitter:description" content="Helping modern brands scale through lifecycle marketing, paid acquisition, and AI-driven automation." />
-                <meta name="twitter:image" content="/portrait.png" />
+                <meta name="twitter:image" content="/og-image.png" />
+                <link rel="canonical" href="https://mariamadeira.com/" />
+                <script type="application/ld+json">{JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@graph": [
+                        {
+                            "@type": "Person",
+                            "@id": "https://mariamadeira.com/#person",
+                            "name": "Maria Madeira",
+                            "url": "https://mariamadeira.com",
+                            "image": "https://mariamadeira.com/portrait.png",
+                            "jobTitle": "E-commerce Growth Strategist",
+                            "description": "Growth Strategist with 4+ years of experience helping e-commerce brands scale through email marketing, paid acquisition, and AI-powered systems.",
+                            "sameAs": ["https://www.linkedin.com/in/maria-madeira-43501b3a/"],
+                            "knowsAbout": ["Email Marketing", "Klaviyo", "Google Ads", "Meta Ads", "AI Marketing", "E-commerce Growth", "Paid Acquisition", "Lifecycle Marketing"]
+                        },
+                        {
+                            "@type": "ProfessionalService",
+                            "@id": "https://mariamadeira.com/#service",
+                            "name": "Maria Madeira — Growth Strategy",
+                            "url": "https://mariamadeira.com",
+                            "description": "E-commerce growth strategy, email marketing automation, paid acquisition, and AI-powered marketing systems for scaling brands.",
+                            "provider": { "@id": "https://mariamadeira.com/#person" },
+                            "areaServed": "Worldwide",
+                            "serviceType": ["Growth Strategy", "Email Marketing", "Paid Advertising", "AI Marketing Systems", "Creative Direction"],
+                            "contactPoint": {
+                                "@type": "ContactPoint",
+                                "email": "mmarques.madeira@gmail.com",
+                                "contactType": "customer service"
+                            }
+                        }
+                    ]
+                })}</script>
             </Helmet>
 
             {/* Hero Section */}

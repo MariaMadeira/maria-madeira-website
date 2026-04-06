@@ -63,12 +63,13 @@ export default function Results() {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Results | Maria Madeira" />
                 <meta property="og:description" content="£110K+ email revenue, 48% open rates, 4.9x Google Ads ROAS — measurable results from data-driven e-commerce growth strategies." />
-                <meta property="og:image" content="/portrait.png" />
+                <meta property="og:image" content="/og-image.png" />
                 <meta property="og:url" content="https://mariamadeira.com/results" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Results | Maria Madeira" />
                 <meta name="twitter:description" content="£110K+ email revenue, 48% open rates, 4.9x Google Ads ROAS — measurable e-commerce growth results." />
-                <meta name="twitter:image" content="/portrait.png" />
+                <meta name="twitter:image" content="/og-image.png" />
+                <link rel="canonical" href="https://mariamadeira.com/results" />
             </Helmet>
 
             {/* Page intro */}

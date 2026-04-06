@@ -48,12 +48,13 @@ export default function Services() {
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Services | Maria Madeira" />
                 <meta property="og:description" content="Growth strategy, email marketing, paid advertising, AI systems, and creative direction for scaling e-commerce brands." />
-                <meta property="og:image" content="/portrait.png" />
+                <meta property="og:image" content="/og-image.png" />
                 <meta property="og:url" content="https://mariamadeira.com/services" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Services | Maria Madeira" />
                 <meta name="twitter:description" content="Growth strategy, email marketing, paid advertising, AI systems, and creative direction for scaling e-commerce brands." />
-                <meta name="twitter:image" content="/portrait.png" />
+                <meta name="twitter:image" content="/og-image.png" />
+                <link rel="canonical" href="https://mariamadeira.com/services" />
             </Helmet>
 
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>
