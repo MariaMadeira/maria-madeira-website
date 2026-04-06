@@ -20,10 +20,12 @@ export default function Footer() {
                 }}>
                     {/* Brand Section */}
                     <div>
-                        <Link to="/" style={{ 
-                            fontFamily: "var(--font-display)", 
-                            fontSize: "1.5rem", 
-                            fontWeight: 700, 
+                        <Link to="/" style={{
+                            fontFamily: "var(--font-display)",
+                            fontSize: "1.5rem",
+                            fontWeight: 400,
+                            letterSpacing: "0.2em",
+                            textTransform: "uppercase",
                             color: "white",
                             display: "block",
                             marginBottom: "1.5rem"
