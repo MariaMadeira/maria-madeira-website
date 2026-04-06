@@ -1,4 +1,4 @@
-import { ArrowLeft, CheckCircle2, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Monitor, Mail, Megaphone, Share2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
@@ -276,28 +276,35 @@ export default function PortfolioAIProductPhotography() {
                     
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem" }}>
                         {[
-                            { title: "Website product listings", icon: <ImageIcon size={32} /> },
-                            { title: "Email marketing campaigns", icon: <ImageIcon size={32} /> },
-                            { title: "Paid advertising creatives", icon: <ImageIcon size={32} /> },
-                            { title: "Social media marketing", icon: <ImageIcon size={32} /> }
+                            { title: "Website product listings", desc: "Hero images and PDP visuals that convert browsers into buyers.", icon: <Monitor size={28} /> },
+                            { title: "Email marketing campaigns", desc: "Scroll-stopping imagery for campaigns, flows, and newsletters.", icon: <Mail size={28} /> },
+                            { title: "Paid advertising creatives", desc: "High-quality assets for Meta, Google, and TikTok ads.", icon: <Megaphone size={28} /> },
+                            { title: "Social media marketing", desc: "On-brand visuals built for Instagram, Pinterest, and beyond.", icon: <Share2 size={28} /> },
                         ].map((app, i) => (
-                            <div 
-                                key={i} 
- 
-                                style={{ 
-                                    background: "white", 
-                                    padding: "3rem 2rem", 
-                                    borderRadius: "20px", 
+                            <div
+                                key={i}
+                                style={{
+                                    background: "var(--bg-primary)",
+                                    padding: "2.5rem 2rem",
+                                    borderRadius: "20px",
                                     border: "1px solid var(--border-color)",
                                     textAlign: "center",
                                     display: "flex",
                                     flexDirection: "column",
                                     alignItems: "center",
-                                    gap: "1.5rem"
+                                    gap: "1rem"
                                 }}
                             >
-                                <div style={{ color: "var(--accent-secondary)", opacity: 0.8 }}>{app.icon}</div>
-                                <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "1.1rem", fontWeight: 600, color: "var(--text-primary)", margin: 0 }}>{app.title}</h3>
+                                <div style={{
+                                    width: "60px", height: "60px", borderRadius: "16px",
+                                    background: "var(--accent-glow)", border: "1px solid var(--accent-primary)",
+                                    display: "flex", alignItems: "center", justifyContent: "center",
+                                    color: "var(--accent-secondary)"
+                                }}>
+                                    {app.icon}
+                                </div>
+                                <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "1.05rem", fontWeight: 600, color: "var(--text-primary)", margin: 0 }}>{app.title}</h3>
+                                <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.6, margin: 0 }}>{app.desc}</p>
                             </div>
                         ))}
                     </div>
