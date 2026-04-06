@@ -84,7 +84,7 @@ export default function Footer() {
                         </Link>
                         <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem" }}>
                             <a href="https://www.linkedin.com/in/maria-madeira-43501b3a/" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.7)", transition: "color 0.3s ease" }} aria-label="LinkedIn"><Linkedin size={20} /></a>
-                            <a href="mailto:mmarques.madeira@gmail.com" style={{ color: "rgba(255,255,255,0.7)", transition: "color 0.3s ease" }} aria-label="Email"><Mail size={20} /></a>
+                            <a href="mailto:info@mariamadeira.com" style={{ color: "rgba(255,255,255,0.7)", transition: "color 0.3s ease" }} aria-label="Email"><Mail size={20} /></a>
                         </div>
                         <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem", marginTop: "1rem" }}>
                             Based in Lisbon, Portugal.<br />Working Globally.

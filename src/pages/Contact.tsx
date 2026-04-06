@@ -34,7 +34,7 @@ export default function Contact() {
 
                 const subject = encodeURIComponent(`Enquiry: ${topic} — from ${name}`);
                 const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nTopic: ${topic}\n\n${message}`);
-                window.location.href = `mailto:mmarques.madeira@gmail.com?subject=${subject}&body=${body}`;
+                window.location.href = `mailto:info@mariamadeira.com?subject=${subject}&body=${body}`;
                 setStatus("success");
             }
         } catch {
@@ -42,7 +42,7 @@ export default function Contact() {
             const formDataObj = Object.fromEntries(formData.entries());
             const subject = encodeURIComponent(`Enquiry: ${formDataObj.topic} — from ${formDataObj.name}`);
             const body = encodeURIComponent(`Name: ${formDataObj.name}\nEmail: ${formDataObj.email}\nTopic: ${formDataObj.topic}\n\n${formDataObj.message}`);
-            window.location.href = `mailto:mmarques.madeira@gmail.com?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:info@mariamadeira.com?subject=${subject}&body=${body}`;
             setStatus("success");
         }
     };
@@ -97,7 +97,7 @@ export default function Contact() {
                             </div>
                             <div>
                                 <strong style={{ display: "block", fontSize: "0.9rem", color: "var(--text-secondary)", textTransform: 'uppercase', letterSpacing: '0.1em' }}>Email</strong>
-                                <a href="mailto:mmarques.madeira@gmail.com" style={{ color: "var(--text-primary)", fontWeight: 600, fontSize: "1.1rem" }}>mmarques.madeira@gmail.com</a>
+                                <a href="mailto:info@mariamadeira.com" style={{ color: "var(--text-primary)", fontWeight: 600, fontSize: "1.1rem" }}>info@mariamadeira.com</a>
                             </div>
                         </div>
 

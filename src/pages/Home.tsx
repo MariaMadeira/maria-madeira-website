@@ -206,7 +206,7 @@ export default function Home() {
                             "serviceType": ["Growth Strategy", "Email Marketing", "Paid Advertising", "AI Marketing Systems", "Creative Direction"],
                             "contactPoint": {
                                 "@type": "ContactPoint",
-                                "email": "mmarques.madeira@gmail.com",
+                                "email": "info@mariamadeira.com",
                                 "contactType": "customer service"
                             }
                         }
