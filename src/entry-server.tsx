@@ -26,6 +26,7 @@ import PortfolioAIEnhanced from './pages/PortfolioAIEnhanced'
 import PortfolioAIProductPhotography from './pages/PortfolioAIProductPhotography'
 import PortfolioEmailMarketing from './pages/PortfolioEmailMarketing'
 import PortfolioClickCollect from './pages/PortfolioClickCollect'
+import NotFound from './pages/NotFound'
 
 const routes: Record<string, React.ComponentType> = {
   '/': Home,
@@ -46,6 +47,8 @@ const routes: Record<string, React.ComponentType> = {
   '/portfolio-ai-product-photography': PortfolioAIProductPhotography,
   '/portfolio-email-marketing': PortfolioEmailMarketing,
   '/portfolio-click-collect': PortfolioClickCollect,
+  // Rendered to dist/404.html, which Vercel serves for unmatched paths.
+  '/404': NotFound,
 }
 
 // react-helmet-async v3 detects React 19 and stops populating the SSR context:

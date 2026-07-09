@@ -24,7 +24,7 @@ const PortfolioEmailMarketing = lazy(() => import("./pages/PortfolioEmailMarketi
 const CaseStudyClickCollect = lazy(() => import("./pages/CaseStudyClickCollect"));
 const CaseStudyBodysurfSchool = lazy(() => import("./pages/CaseStudyBodysurfSchool"));
 const PortfolioClickCollect = lazy(() => import("./pages/PortfolioClickCollect"));
-const Blog = lazy(() => import("./pages/Blog"));
+// Blog.tsx is kept but unrouted until the posts it lists are actually written.
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -73,7 +73,6 @@ export default function App() {
               <Route path="/case-study-click-collect" element={<CaseStudyClickCollect />} />
               <Route path="/case-study-bodysurf-school" element={<CaseStudyBodysurfSchool />} />
               <Route path="/portfolio-click-collect" element={<PortfolioClickCollect />} />
-              <Route path="/blog" element={<Blog />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />

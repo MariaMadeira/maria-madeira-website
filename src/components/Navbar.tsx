@@ -30,7 +30,6 @@ export default function Navbar() {
         { name: "Results", path: "/results" },
         { name: "Case Studies", path: "/case-studies" },
         { name: "Portfolio", path: "/portfolio" },
-        { name: "Insights", path: "/blog" },
         { name: "About", path: "/about" },
     ];
 

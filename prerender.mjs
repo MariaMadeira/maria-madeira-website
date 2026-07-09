@@ -34,8 +34,7 @@ const { render } = await import('./dist/server/entry-server.js')
 // Read the Vite-built client HTML template
 const template = readFileSync(join(__dirname, 'dist/index.html'), 'utf-8')
 
-// Pre-render each route
-for (const route of routes) {
+function renderPage(route) {
   const { html, head, helmet } = render(route)
 
   // On React 19 helmet renders its tags into the markup instead of the SSR
@@ -56,9 +55,14 @@ for (const route of routes) {
   // Inject per-page head tags and SSR body into the template.
   // Replacer functions keep `$&`, `$1` etc. in page content from being treated
   // as replacement patterns.
-  const page = template
+  return template
     .replace('<!--app-head-->', () => headTags)
     .replace('<div id="root"></div>', () => `<div id="root">${html}</div>`)
+}
+
+// Pre-render each route
+for (const route of routes) {
+  const page = renderPage(route)
 
   if (route === '/') {
     writeFileSync(join(__dirname, 'dist/index.html'), page)
@@ -70,6 +74,13 @@ for (const route of routes) {
 
   console.log(`Pre-rendered: ${route}`)
 }
+
+// Branded 404. Vercel serves dist/404.html for paths that match no static file,
+// which is the only way an unknown URL reaches NotFound on a hard load — the
+// <Route path="*"> catch-all only runs for client-side navigation. Deliberately
+// not in `routes`: it must stay out of the sitemap and carries robots=noindex.
+writeFileSync(join(__dirname, 'dist/404.html'), renderPage('/404'))
+console.log('Pre-rendered: /404 -> dist/404.html')
 
 // Generate sitemap.xml
 const today = new Date().toISOString().split('T')[0]
