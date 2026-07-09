@@ -30,6 +30,13 @@ export default function CaseStudies() {
             problem: "Physical retail store losing demand to long peak-hour queues with no option for customers to pre-order.",
             results: "Mobile Click & Collect app built · Key learnings on digital adoption in physical retail",
             link: "/case-study-click-collect",
+        },
+        {
+            title: "From Brochure Site to Booking Engine: The Bodysurf School",
+            category: "Growth Strategy & Website Build",
+            problem: "A growing surf school with five coastal locations relied on manual enquiries, with no online booking, no payment processing, and no search visibility strategy.",
+            results: "Full rebuild delivered: online booking with local payment methods, bilingual site, SEO and AEO foundations.",
+            link: "/case-study-bodysurf-school",
         }
     ];
 

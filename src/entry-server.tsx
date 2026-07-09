@@ -18,6 +18,7 @@ import CaseStudyEmail from './pages/CaseStudyEmail'
 import CaseStudyGoogleAds from './pages/CaseStudyGoogleAds'
 import CaseStudySEO from './pages/CaseStudySEO'
 import CaseStudyClickCollect from './pages/CaseStudyClickCollect'
+import CaseStudyBodysurfSchool from './pages/CaseStudyBodysurfSchool'
 import Portfolio from './pages/Portfolio'
 import PortfolioRitaAntunes from './pages/PortfolioRitaAntunes'
 import PortfolioOusadia from './pages/PortfolioOusadia'
@@ -37,6 +38,7 @@ const routes: Record<string, React.ComponentType> = {
   '/case-study-google-ads': CaseStudyGoogleAds,
   '/case-study-seo': CaseStudySEO,
   '/case-study-click-collect': CaseStudyClickCollect,
+  '/case-study-bodysurf-school': CaseStudyBodysurfSchool,
   '/portfolio': Portfolio,
   '/portfolio-rita-antunes': PortfolioRitaAntunes,
   '/portfolio-ousadia': PortfolioOusadia,

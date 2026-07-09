@@ -18,6 +18,7 @@ const routes = [
   '/case-study-google-ads',
   '/case-study-seo',
   '/case-study-click-collect',
+  '/case-study-bodysurf-school',
   '/portfolio',
   '/portfolio-rita-antunes',
   '/portfolio-ousadia',
