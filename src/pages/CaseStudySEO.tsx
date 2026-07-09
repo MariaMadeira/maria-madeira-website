@@ -1,18 +1,15 @@
 import { ArrowLeft, ArrowRightLeft, FileText, Bot, LayoutTemplate, Activity, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 
 export default function CaseStudySEO() {
     return (
         <>
-        <Helmet>
-            <title>SEO & Platform Migration Case Study | Maria Madeira</title>
-            <meta name="description" content="How Maria Madeira led a full SEO strategy and platform migration, improving organic visibility and AI-driven search performance." />
-            <meta property="og:title" content="SEO & Platform Migration Case Study | Maria Madeira" />
-            <meta property="og:description" content="How Maria Madeira led a full SEO strategy and platform migration, improving organic visibility and AI-driven search performance." />
-            <meta property="og:url" content="https://mariamadeira.com/case-study-seo" />
-            <link rel="canonical" href="https://mariamadeira.com/case-study-seo" />
-        </Helmet>
+        <Seo
+            title="SEO & Platform Migration Case Study"
+            description="SEO case study: rebuilding site structure after a WordPress to Shopify migration to recover organic visibility and win answer-engine (AEO) discoverability."
+            path="/case-study-seo"
+        />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <div style={{ maxWidth: "900px", margin: "0 auto" }}>
 

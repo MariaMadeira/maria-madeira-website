@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 import { Home, ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
@@ -14,10 +14,12 @@ export default function NotFound() {
                 padding: "4rem 2rem",
             }}
         >
-            <Helmet>
-                <title>Page Not Found | Maria Madeira</title>
-                <meta name="robots" content="noindex" />
-            </Helmet>
+            <Seo
+                title="Page Not Found | Maria Madeira"
+                description="The page you are looking for does not exist or has moved. Explore case studies, portfolio work, and growth services from strategist Maria Madeira instead."
+                path="/404"
+                noIndex
+            />
 
             <div>
                 <p

@@ -1,7 +1,7 @@
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 
 export default function PortfolioRitaAntunes() {
     useEffect(() => {
@@ -11,14 +11,11 @@ export default function PortfolioRitaAntunes() {
 
     return (
         <>
-        <Helmet>
-            <title>Rita Antunes — Brand Identity | Maria Madeira Portfolio</title>
-            <meta name="description" content="Brand identity and visual direction project for Rita Antunes, developed by Maria Madeira." />
-            <meta property="og:title" content="Rita Antunes — Brand Identity | Maria Madeira Portfolio" />
-            <meta property="og:description" content="Brand identity and visual direction project for Rita Antunes, developed by Maria Madeira." />
-            <meta property="og:url" content="https://mariamadeira.com/portfolio-rita-antunes" />
-            <link rel="canonical" href="https://mariamadeira.com/portfolio-rita-antunes" />
-        </Helmet>
+        <Seo
+            title="Rita Antunes Brand Identity | Portfolio"
+            description="Brand identity and visual direction for Rita Antunes Psicologia — a premium clinical practice identity built to convert high-ticket therapy leads."
+            path="/portfolio-rita-antunes"
+        />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "900px", margin: "0 auto" }}>
 

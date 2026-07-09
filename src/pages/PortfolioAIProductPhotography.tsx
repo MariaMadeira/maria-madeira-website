@@ -1,7 +1,7 @@
 import { ArrowLeft, CheckCircle2, Monitor, Mail, Megaphone, Share2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 
 export default function PortfolioAIProductPhotography() {
     useEffect(() => {
@@ -54,14 +54,11 @@ export default function PortfolioAIProductPhotography() {
 
     return (
         <>
-        <Helmet>
-            <title>AI Product Photography | Maria Madeira Portfolio</title>
-            <meta name="description" content="AI-generated product photography project showcasing studio-quality results without traditional photoshoots, by Maria Madeira." />
-            <meta property="og:title" content="AI Product Photography | Maria Madeira Portfolio" />
-            <meta property="og:description" content="AI-generated product photography project showcasing studio-quality results without traditional photoshoots, by Maria Madeira." />
-            <meta property="og:url" content="https://mariamadeira.com/portfolio-ai-product-photography" />
-            <link rel="canonical" href="https://mariamadeira.com/portfolio-ai-product-photography" />
-        </Helmet>
+        <Seo
+            title="AI Product Photography | Portfolio"
+            description="AI product photography delivering studio-quality packshots without a traditional photoshoot — used across web, email, and paid social for a UK food brand."
+            path="/portfolio-ai-product-photography"
+        />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "1000px", margin: "0 auto" }}>
 

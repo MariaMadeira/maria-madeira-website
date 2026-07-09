@@ -1,18 +1,15 @@
 import { ArrowLeft, Map, CreditCard, LayoutTemplate, Globe, Search, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 
 export default function CaseStudyBodysurfSchool() {
     return (
         <>
-        <Helmet>
-            <title>Case Study: The Bodysurf School | Maria Madeira</title>
-            <meta name="description" content="How a Portuguese surf school website became a bilingual online booking engine with local payment methods, SEO and AEO foundations." />
-            <meta property="og:title" content="Case Study: The Bodysurf School | Maria Madeira" />
-            <meta property="og:description" content="How a Portuguese surf school website became a bilingual online booking engine with local payment methods, SEO and AEO foundations." />
-            <meta property="og:url" content="https://mariamadeira.com/case-study-bodysurf-school" />
-            <link rel="canonical" href="https://mariamadeira.com/case-study-bodysurf-school" />
-        </Helmet>
+        <Seo
+            title="Bodysurf School Case Study | Booking Engine"
+            description="Case study: turning a Portuguese surf school website into a bilingual online booking engine with local payment methods and SEO and AEO foundations built in."
+            path="/case-study-bodysurf-school"
+        />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <div style={{ maxWidth: "900px", margin: "0 auto" }}>
 

@@ -48,11 +48,36 @@ const routes: Record<string, React.ComponentType> = {
   '/portfolio-click-collect': PortfolioClickCollect,
 }
 
-export function render(url: string): { html: string; helmet: HelmetServerState } {
+// react-helmet-async v3 detects React 19 and stops populating the SSR context:
+// it renders <title>/<meta>/<link> as ordinary elements and lets React 19 hoist
+// them. renderToString has no head to hoist into, so they land at the top of the
+// markup, and <script type="application/ld+json"> stays wherever it was rendered.
+// Lift them all out so prerender.mjs can put them in <head>.
+const LEADING_HOISTABLE = /^(<title>[\s\S]*?<\/title>|<meta\b[^>]*?>|<link\b[^>]*?>)/i
+const JSON_LD = /<script type="application\/ld\+json">[\s\S]*?<\/script>/gi
+
+function extractHeadTags(markup: string): { head: string[]; html: string } {
+  const head: string[] = []
+  let html = markup
+
+  for (let match = html.match(LEADING_HOISTABLE); match; match = html.match(LEADING_HOISTABLE)) {
+    head.push(match[1])
+    html = html.slice(match[1].length)
+  }
+
+  html = html.replace(JSON_LD, (tag) => {
+    head.push(tag)
+    return ''
+  })
+
+  return { head, html }
+}
+
+export function render(url: string): { html: string; head: string[]; helmet: HelmetServerState } {
   const PageComponent = routes[url] ?? null
   const helmetContext: { helmet?: HelmetServerState } = {}
 
-  const html = renderToString(
+  const markup = renderToString(
     <HelmetProvider context={helmetContext}>
       <StaticRouter location={url}>
         <ScrollToTop />
@@ -65,5 +90,7 @@ export function render(url: string): { html: string; helmet: HelmetServerState }
     </HelmetProvider>
   )
 
-  return { html, helmet: helmetContext.helmet ?? ({} as HelmetServerState) }
+  const { head, html } = extractHeadTags(markup)
+
+  return { html, head, helmet: helmetContext.helmet ?? ({} as HelmetServerState) }
 }

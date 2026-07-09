@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 
 export default function Portfolio() {
     const [activeCategory, setActiveCategory] = useState("All");
@@ -58,20 +58,11 @@ export default function Portfolio() {
 
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
-            <Helmet>
-                <title>Portfolio | Maria Madeira — Creative Work & Brand Projects</title>
-                <meta name="description" content="Explore Maria Madeira's creative portfolio: branding, AI-enhanced product imagery, and visual identity projects for e-commerce brands." />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="Portfolio | Maria Madeira" />
-                <meta property="og:description" content="Branding, AI-enhanced product imagery, and visual identity projects for e-commerce brands." />
-                <meta property="og:image" content="/og-image.png" />
-                <meta property="og:url" content="https://mariamadeira.com/portfolio" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Portfolio | Maria Madeira" />
-                <meta name="twitter:description" content="Branding, AI-enhanced product imagery, and visual identity projects for e-commerce brands." />
-                <meta name="twitter:image" content="/og-image.png" />
-                <link rel="canonical" href="https://mariamadeira.com/portfolio" />
-            </Helmet>
+            <Seo
+                title="Portfolio | Creative & Brand Projects"
+                description="Creative portfolio of Maria Madeira: brand identity, AI-enhanced product imagery, lifecycle email systems, and product UX work for modern e-commerce brands."
+                path="/portfolio"
+            />
 
             <h1 className="section-title">Creative <span className="text-gradient">Portfolio</span></h1>
 

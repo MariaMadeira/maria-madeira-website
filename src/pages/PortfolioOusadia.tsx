@@ -1,7 +1,7 @@
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 
 export default function PortfolioOusadia() {
     useEffect(() => {
@@ -11,14 +11,11 @@ export default function PortfolioOusadia() {
 
     return (
         <>
-        <Helmet>
-            <title>Ousadia — Brand & Creative Direction | Maria Madeira Portfolio</title>
-            <meta name="description" content="Brand identity and creative direction for Ousadia artcraft brand, developed by Maria Madeira." />
-            <meta property="og:title" content="Ousadia — Brand & Creative Direction | Maria Madeira Portfolio" />
-            <meta property="og:description" content="Brand identity and creative direction for Ousadia artcraft brand, developed by Maria Madeira." />
-            <meta property="og:url" content="https://mariamadeira.com/portfolio-ousadia" />
-            <link rel="canonical" href="https://mariamadeira.com/portfolio-ousadia" />
-        </Helmet>
+        <Seo
+            title="Ousadia Brand & Creative Direction | Portfolio"
+            description="Brand identity and creative direction for Ousadia, an artcraft brand — logo system, visual language, and campaign art direction by Maria Madeira."
+            path="/portfolio-ousadia"
+        />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "900px", margin: "0 auto" }}>
 

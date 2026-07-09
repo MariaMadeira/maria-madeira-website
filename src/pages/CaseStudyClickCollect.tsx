@@ -1,7 +1,7 @@
 import { ArrowLeft, Smartphone, AlertCircle, Lightbulb, Users, MapPin, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 
 export default function CaseStudyClickCollect() {
     useEffect(() => {
@@ -16,14 +16,11 @@ export default function CaseStudyClickCollect() {
 
     return (
         <>
-        <Helmet>
-            <title>Click & Collect Mobile App Case Study | Maria Madeira</title>
-            <meta name="description" content="How Maria Madeira designed and launched a Click & Collect mobile experience, improving in-store conversion and customer satisfaction." />
-            <meta property="og:title" content="Click & Collect Mobile App Case Study | Maria Madeira" />
-            <meta property="og:description" content="How Maria Madeira designed and launched a Click & Collect mobile experience, improving in-store conversion and customer satisfaction." />
-            <meta property="og:url" content="https://mariamadeira.com/case-study-click-collect" />
-            <link rel="canonical" href="https://mariamadeira.com/case-study-click-collect" />
-        </Helmet>
+        <Seo
+            title="Click & Collect Case Study | Retail UX"
+            description="Click & collect case study: launching a mobile pre-order experience for a high-traffic retail store, and what low adoption taught us about customer habits."
+            path="/case-study-click-collect"
+        />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <div style={{ maxWidth: "900px", margin: "0 auto" }}>
 

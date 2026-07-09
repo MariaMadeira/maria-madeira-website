@@ -1,6 +1,6 @@
 import { TrendingUp, Mail, BarChart, Cpu, Maximize, ArrowRight, ArrowRightLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 
 export default function Services() {
     const services = [
@@ -42,20 +42,11 @@ export default function Services() {
 
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
-            <Helmet>
-                <title>Services | Maria Madeira — Growth Strategy & Marketing Expertise</title>
-                <meta name="description" content="Explore Maria Madeira's services: growth strategy, email marketing & automation, paid advertising, AI marketing systems, and creative direction for e-commerce brands." />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="Services | Maria Madeira" />
-                <meta property="og:description" content="Growth strategy, email marketing, paid advertising, AI systems, and creative direction for scaling e-commerce brands." />
-                <meta property="og:image" content="/og-image.png" />
-                <meta property="og:url" content="https://mariamadeira.com/services" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Services | Maria Madeira" />
-                <meta name="twitter:description" content="Growth strategy, email marketing, paid advertising, AI systems, and creative direction for scaling e-commerce brands." />
-                <meta name="twitter:image" content="/og-image.png" />
-                <link rel="canonical" href="https://mariamadeira.com/services" />
-            </Helmet>
+            <Seo
+                title="E-commerce Growth Services | Maria Madeira"
+                description="Growth strategy, email marketing automation, paid advertising, AI marketing systems, and creative direction — services built to scale e-commerce revenue."
+                path="/services"
+            />
 
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>
                 <h1 className="section-title" style={{ marginBottom: "1rem" }}>Services <span className="text-gradient">& Expertise</span></h1>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 import { ArrowRight, Clock } from "lucide-react";
 
 const POSTS = [
@@ -32,20 +32,11 @@ const POSTS = [
 export default function Blog() {
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
-            <Helmet>
-                <title>Insights | Maria Madeira — E-commerce Growth, AI & Paid Acquisition</title>
-                <meta name="description" content="Practical insights on e-commerce growth, email marketing, AI workflows, and paid acquisition from Maria Madeira — Growth Strategist." />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="Insights | Maria Madeira" />
-                <meta property="og:description" content="Practical insights on e-commerce growth, email marketing, AI workflows, and paid acquisition." />
-                <meta property="og:image" content="/og-image.png" />
-                <meta property="og:url" content="https://mariamadeira.com/blog" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Insights | Maria Madeira" />
-                <meta name="twitter:description" content="Practical insights on e-commerce growth, email marketing, AI workflows, and paid acquisition." />
-                <meta name="twitter:image" content="/og-image.png" />
-                <link rel="canonical" href="https://mariamadeira.com/blog" />
-            </Helmet>
+            <Seo
+                title="Insights | E-commerce Growth & AI Marketing"
+                description="Practical insights on e-commerce growth: lifecycle email marketing, AI marketing workflows, and paid acquisition strategy from strategist Maria Madeira."
+                path="/blog"
+            />
 
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>
                 <span style={{

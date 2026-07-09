@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 
 export default function CaseStudies() {
     const caseStudies = [
@@ -42,20 +42,11 @@ export default function CaseStudies() {
 
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
-            <Helmet>
-                <title>Case Studies | Maria Madeira — E-commerce Growth Results</title>
-                <meta name="description" content="Explore real-world case studies showing measurable growth: SEO optimisation, Google Ads scaling, and email marketing lifecycle revenue." />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="Case Studies | Maria Madeira" />
-                <meta property="og:description" content="Real-world results: SEO, Google Ads at 4.9x ROAS, and £110K email revenue. Detailed case studies from e-commerce growth engagements." />
-                <meta property="og:image" content="/og-image.png" />
-                <meta property="og:url" content="https://mariamadeira.com/case-studies" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Case Studies | Maria Madeira" />
-                <meta name="twitter:description" content="Real-world results: SEO, Google Ads at 4.9x ROAS, and £110K email revenue from e-commerce growth strategies." />
-                <meta name="twitter:image" content="/og-image.png" />
-                <link rel="canonical" href="https://mariamadeira.com/case-studies" />
-            </Helmet>
+            <Seo
+                title="Case Studies | E-commerce Growth Results"
+                description="Real e-commerce case studies with measurable outcomes: SEO and platform migration, Google Ads at 4.9x ROAS, £110K email revenue, and click & collect UX."
+                path="/case-studies"
+            />
 
             <h1 className="section-title">Case <span className="text-gradient">Studies</span></h1>
             <p style={{ 

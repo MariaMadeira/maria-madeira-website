@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 import { useInView } from "../hooks/useInView";
 
 interface CounterProps {
@@ -57,20 +57,11 @@ export default function Results() {
 
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
-            <Helmet>
-                <title>Results | Email £110K+ · Google Ads 4.9x ROAS · Meta Ads 5.34x | Maria Madeira</title>
-                <meta name="description" content="See the measurable results: £110K+ email revenue, 48% open rates, 4.9x Google Ads ROAS and 3.4x – 5.34x Meta Ads ROAS." />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="Results | Maria Madeira" />
-                <meta property="og:description" content="£110K+ email revenue, 48% open rates, 4.9x Google Ads ROAS — measurable results from data-driven e-commerce growth strategies." />
-                <meta property="og:image" content="/og-image.png" />
-                <meta property="og:url" content="https://mariamadeira.com/results" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Results | Maria Madeira" />
-                <meta name="twitter:description" content="£110K+ email revenue, 48% open rates, 4.9x Google Ads ROAS — measurable e-commerce growth results." />
-                <meta name="twitter:image" content="/og-image.png" />
-                <link rel="canonical" href="https://mariamadeira.com/results" />
-            </Helmet>
+            <Seo
+                title="Results: 4.9x ROAS & £110K Email Revenue"
+                description="Measurable e-commerce growth results: £110K+ in email revenue, 48% average open rates, 4.9x Google Ads ROAS, and 3.4x to 5.34x return on Meta Ads spend."
+                path="/results"
+            />
 
             {/* Page intro */}
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>

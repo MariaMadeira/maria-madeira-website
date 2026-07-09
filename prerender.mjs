@@ -36,19 +36,29 @@ const template = readFileSync(join(__dirname, 'dist/index.html'), 'utf-8')
 
 // Pre-render each route
 for (const route of routes) {
-  const { html, helmet } = render(route)
+  const { html, head, helmet } = render(route)
 
-  // Build head tags from react-helmet-async context
-  const headTags = helmet ? [
-    helmet.title?.toString() ?? '',
-    helmet.meta?.toString() ?? '',
-    helmet.link?.toString() ?? '',
-  ].join('\n    ') : ''
+  // On React 19 helmet renders its tags into the markup instead of the SSR
+  // context, so `head` carries them and the helmet.* values come back empty.
+  // Reading both keeps this working either way.
+  const headTags = [
+    helmet?.title?.toString() ?? '',
+    helmet?.meta?.toString() ?? '',
+    helmet?.link?.toString() ?? '',
+    helmet?.script?.toString() ?? '',
+    ...head,
+  ].filter(Boolean).join('\n    ')
 
-  // Inject per-page head tags and SSR body into the template
+  if (!headTags.includes('<title')) {
+    throw new Error(`No <title> resolved for route ${route} — SEO tags would be missing.`)
+  }
+
+  // Inject per-page head tags and SSR body into the template.
+  // Replacer functions keep `$&`, `$1` etc. in page content from being treated
+  // as replacement patterns.
   const page = template
-    .replace('<!--app-head-->', headTags)
-    .replace('<div id="root"></div>', `<div id="root">${html}</div>`)
+    .replace('<!--app-head-->', () => headTags)
+    .replace('<div id="root"></div>', () => `<div id="root">${html}</div>`)
 
   if (route === '/') {
     writeFileSync(join(__dirname, 'dist/index.html'), page)

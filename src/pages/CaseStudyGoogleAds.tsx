@@ -1,18 +1,15 @@
 import { ArrowLeft, TrendingUp, Search, MousePointerClick, BarChart } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "../components/Seo";
 
 export default function CaseStudyGoogleAds() {
     return (
         <>
-        <Helmet>
-            <title>Google Ads Case Study — 4.9x ROAS | Maria Madeira</title>
-            <meta name="description" content="How Maria Madeira achieved 4.9x ROAS on Google Ads through structured paid acquisition strategy and creative testing." />
-            <meta property="og:title" content="Google Ads Case Study — 4.9x ROAS | Maria Madeira" />
-            <meta property="og:description" content="How Maria Madeira achieved 4.9x ROAS on Google Ads through structured paid acquisition strategy and creative testing." />
-            <meta property="og:url" content="https://mariamadeira.com/case-study-google-ads" />
-            <link rel="canonical" href="https://mariamadeira.com/case-study-google-ads" />
-        </Helmet>
+        <Seo
+            title="Google Ads Case Study | 4.9x ROAS"
+            description="Google Ads case study: how structured campaign architecture, audience segmentation, and creative testing turned £9.9K of ad spend into £51.9K in revenue."
+            path="/case-study-google-ads"
+        />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <div style={{ maxWidth: "900px", margin: "0 auto" }}>
 
