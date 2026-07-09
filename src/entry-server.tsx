@@ -12,7 +12,6 @@ import Home from './pages/Home'
 import Services from './pages/Services'
 import About from './pages/About'
 import Contact from './pages/Contact'
-import Results from './pages/Results'
 import CaseStudies from './pages/CaseStudies'
 import CaseStudyEmail from './pages/CaseStudyEmail'
 import CaseStudyGoogleAds from './pages/CaseStudyGoogleAds'
@@ -33,7 +32,6 @@ const routes: Record<string, React.ComponentType> = {
   '/services': Services,
   '/about': About,
   '/contact': Contact,
-  '/results': Results,
   '/case-studies': CaseStudies,
   '/case-study-email': CaseStudyEmail,
   '/case-study-google-ads': CaseStudyGoogleAds,

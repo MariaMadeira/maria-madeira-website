@@ -12,7 +12,8 @@ const CaseStudies = lazy(() => import("./pages/CaseStudies"));
 const CaseStudyEmail = lazy(() => import("./pages/CaseStudyEmail"));
 const CaseStudyGoogleAds = lazy(() => import("./pages/CaseStudyGoogleAds"));
 const CaseStudySEO = lazy(() => import("./pages/CaseStudySEO"));
-const Results = lazy(() => import("./pages/Results"));
+// Results.tsx is kept but unrouted; its metrics now live on the homepage and
+// the case studies hub, and /results 301s to /case-studies at the edge.
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -63,7 +64,6 @@ export default function App() {
               <Route path="/case-study-email" element={<CaseStudyEmail />} />
               <Route path="/case-study-google-ads" element={<CaseStudyGoogleAds />} />
               <Route path="/case-study-seo" element={<CaseStudySEO />} />
-              <Route path="/results" element={<Results />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/portfolio-rita-antunes" element={<PortfolioRitaAntunes />} />
               <Route path="/portfolio-ousadia" element={<PortfolioOusadia />} />

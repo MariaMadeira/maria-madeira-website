@@ -9,6 +9,11 @@
       "has": [{ "type": "host", "value": "www.mariamadeira.com" }],
       "destination": "https://mariamadeira.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/results",
+      "destination": "/case-studies",
+      "permanent": true
     }
   ]
 }

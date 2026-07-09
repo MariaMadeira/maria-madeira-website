@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 
+const HEADLINE_RESULTS = [
+    { value: "£110K+", label: "Email revenue" },
+    { value: "48%", label: "Average open rate" },
+    { value: "4.9x", label: "Google Ads ROAS" },
+    { value: "3.4x – 5.34x", label: "Meta Ads ROAS" },
+];
+
 export default function CaseStudies() {
     const caseStudies = [
         {
@@ -59,6 +66,26 @@ export default function CaseStudies() {
             }}>
                 Real results from strategic marketing engagements. Each study outlines the challenge, approach, and measurable outcomes.
             </p>
+
+            <div
+                className="grid-4"
+                style={{
+                    background: "var(--bg-secondary)",
+                    borderRadius: "20px",
+                    border: "1px solid var(--border-color)",
+                    padding: "2.5rem 2rem",
+                    marginBottom: "4rem",
+                }}
+            >
+                {HEADLINE_RESULTS.map((result) => (
+                    <div key={result.label} style={{ textAlign: "center" }}>
+                        <p className="text-gradient-accent" style={{ fontSize: "2rem", fontWeight: 700, lineHeight: 1, marginBottom: "0.5rem" }}>
+                            {result.value}
+                        </p>
+                        <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", margin: 0 }}>{result.label}</p>
+                    </div>
+                ))}
+            </div>
 
             <div className="grid-2">
                 {caseStudies.map((study, index) => (

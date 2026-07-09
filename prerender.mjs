@@ -12,7 +12,6 @@ const routes = [
   '/services',
   '/about',
   '/contact',
-  '/results',
   '/case-studies',
   '/case-study-email',
   '/case-study-google-ads',

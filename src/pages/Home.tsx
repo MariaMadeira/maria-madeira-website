@@ -4,6 +4,16 @@ import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { useInView } from "../hooks/useInView";
 
+// The four headline numbers (£110K+, 4.9x, 48%, 5.34x) already appear in the
+// hero credentials and the Measurable Impact grid. These are the supporting
+// metrics from the retired /results page that aren't shown anywhere else.
+const SUPPORTING_METRICS = [
+    { to: 45.8, prefix: "£", suffix: "K+", decimals: 1, label: "Automated Flow Revenue", detail: "Earned from lifecycle email flows alone" },
+    { to: 9.14, prefix: "", suffix: "%", decimals: 2, label: "Flow Click Rate", detail: "Across automated email flows" },
+    { to: 51.9, prefix: "£", suffix: "K+", decimals: 1, label: "Google Ads Revenue", detail: "Attributed from £9.9K of ad spend" },
+    { to: 923, prefix: "", suffix: "+", decimals: 0, label: "Conversions Generated", detail: "High-intent customer acquisition" },
+];
+
 const HOME_JSON_LD = {
     "@context": "https://schema.org",
     "@graph": [
@@ -244,7 +254,7 @@ export default function Home() {
                             <Link to="/contact" className="btn btn-primary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
                                 Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                             </Link>
-                            <Link to="/results" className="btn btn-secondary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
+                            <Link to="/case-studies" className="btn btn-secondary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
                                 See My Results
                             </Link>
                         </div>
@@ -360,6 +370,34 @@ export default function Home() {
                         <p style={{ fontWeight: 600 }}>Meta Ads ROAS</p>
                         <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Peak return on ad spend across Meta campaigns</p>
                     </div>
+                </div>
+            </section>
+
+            {/* Supporting Metrics Strip */}
+            <section className="section" style={{ padding: '0 0 5rem' }}>
+                <div
+                    className="grid-4"
+                    style={{
+                        background: 'var(--bg-secondary)',
+                        borderRadius: '20px',
+                        border: '1px solid var(--border-color)',
+                        padding: '2.5rem 2rem',
+                    }}
+                >
+                    {SUPPORTING_METRICS.map((metric) => (
+                        <div key={metric.label} style={{ textAlign: 'center' }}>
+                            <div className="text-gradient-accent" style={{ fontSize: '2rem', fontWeight: 700, lineHeight: 1, marginBottom: '0.5rem' }}>
+                                <AnimatedCounter
+                                    to={metric.to}
+                                    prefix={metric.prefix}
+                                    suffix={metric.suffix}
+                                    decimals={metric.decimals}
+                                />
+                            </div>
+                            <p style={{ fontWeight: 600, fontSize: '0.95rem', marginBottom: '0.25rem' }}>{metric.label}</p>
+                            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>{metric.detail}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
 
