@@ -97,6 +97,17 @@ ${routes.map(r => `  <url>
 writeFileSync(join(__dirname, 'dist/sitemap.xml'), sitemap)
 console.log('Generated: sitemap.xml')
 
+// Generate robots.txt. This overwrites the copy Vite copies out of public/,
+// keeping the sitemap URL next to the sitemap that produces it.
+const robots = `User-agent: *
+Allow: /
+
+Sitemap: ${BASE_URL}/sitemap.xml
+`
+
+writeFileSync(join(__dirname, 'dist/robots.txt'), robots)
+console.log('Generated: robots.txt')
+
 // Clean up server bundle — not needed for deployment
 rmSync(join(__dirname, 'dist/server'), { recursive: true, force: true })
 console.log('Cleaned up: dist/server')
