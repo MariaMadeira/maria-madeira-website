@@ -9,6 +9,7 @@ export default function Services() {
             title: "Growth Strategy",
             description: "Holistic approaches to acquiring and retaining customers. From market positioning to full-funnel optimization, we build strategies designed to scale aggressive growth objectives sustainably.",
             featured: true,
+            link: "/case-study-bodysurf-school",
         },
         {
             icon: <Mail size={40} />,
@@ -37,6 +38,7 @@ export default function Services() {
             icon: <ArrowRightLeft size={40} />,
             title: "E-commerce Platform Migration",
             description: "Seamless migrations between e-commerce platforms that protect SEO rankings, preserve customer data, and maintain revenue continuity throughout the transition.",
+            link: "/case-study-seo",
         },
     ];
 
