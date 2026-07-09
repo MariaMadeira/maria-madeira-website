@@ -55,8 +55,8 @@ export default function Navbar() {
                                 {link.name}
                             </Link>
                         ))}
-                        <Link to="/contact" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem', marginLeft: '1rem' }}>
-                            Get in Touch
+                        <Link to="/contact" className="btn btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem', marginLeft: '1rem', whiteSpace: 'nowrap' }}>
+                            Book a Free Strategy Call
                         </Link>
                     </div>
 
@@ -138,7 +138,7 @@ export default function Navbar() {
                         style={{ display: 'flex', justifyContent: 'center', padding: '1rem 2rem', fontSize: '1rem' }}
                         onClick={() => setIsOpen(false)}
                     >
-                        Get in Touch
+                        Book a Free Strategy Call
                     </Link>
                 </div>
             </div>,

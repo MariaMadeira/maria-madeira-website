@@ -29,19 +29,18 @@ export default function Contact() {
                 // Fallback: open mailto if Formspree isn't configured
                 const name = formData.get("name") as string;
                 const email = formData.get("email") as string;
-                const topic = formData.get("topic") as string;
                 const message = formData.get("message") as string;
 
-                const subject = encodeURIComponent(`Enquiry: ${topic} — from ${name}`);
-                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nTopic: ${topic}\n\n${message}`);
+                const subject = encodeURIComponent(`Strategy call request — from ${name}`);
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
                 window.location.href = `mailto:info@mariamadeira.com?subject=${subject}&body=${body}`;
                 setStatus("success");
             }
         } catch {
             // Offline / network error — fallback to mailto
             const formDataObj = Object.fromEntries(formData.entries());
-            const subject = encodeURIComponent(`Enquiry: ${formDataObj.topic} — from ${formDataObj.name}`);
-            const body = encodeURIComponent(`Name: ${formDataObj.name}\nEmail: ${formDataObj.email}\nTopic: ${formDataObj.topic}\n\n${formDataObj.message}`);
+            const subject = encodeURIComponent(`Strategy call request — from ${formDataObj.name}`);
+            const body = encodeURIComponent(`Name: ${formDataObj.name}\nEmail: ${formDataObj.email}\n\n${formDataObj.message}`);
             window.location.href = `mailto:info@mariamadeira.com?subject=${subject}&body=${body}`;
             setStatus("success");
         }
@@ -55,7 +54,7 @@ export default function Contact() {
                 path="/contact"
             />
 
-            <h1 className="section-title">Let's <span className="text-gradient">Work Together</span></h1>
+            <h1 className="section-title">Book a Free <span className="text-gradient">Strategy Call</span></h1>
 
             <div className="grid-2 contact-grid" style={{ maxWidth: "1100px", margin: "0 auto", gap: "4rem" }}>
                 <div className="reveal-left is-visible">
@@ -138,38 +137,6 @@ export default function Contact() {
                                 />
                             </div>
 
-                            {/* Topic dropdown */}
-                            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                                <label htmlFor="topic" style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", textTransform: 'uppercase' }}>Inquiry Type</label>
-                                <select
-                                    id="topic"
-                                    name="topic"
-                                    required
-                                    style={{ 
-                                        padding: "14px", 
-                                        background: "var(--bg-primary)", 
-                                        border: "1px solid var(--border-color)", 
-                                        borderRadius: "10px", 
-                                        color: "var(--text-primary)", 
-                                        fontSize: "1rem",
-                                        cursor: "pointer",
-                                        appearance: "none",
-                                        backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B5B52' d='M6 8L1 3h10z'/%3E%3C/svg%3E")`,
-                                        backgroundRepeat: "no-repeat",
-                                        backgroundPosition: "right 14px center"
-                                    }}
-                                >
-                                    <option value="">Select a topic...</option>
-                                    <option value="Growth Strategy">Growth Strategy</option>
-                                    <option value="Email Marketing">Email Marketing & Automation</option>
-                                    <option value="Paid Advertising">Paid Advertising</option>
-                                    <option value="AI & Automation">AI & Automation Systems</option>
-                                    <option value="Creative Direction">Creative Direction</option>
-                                    <option value="Platform Migration">E-commerce Platform Migration</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-
                             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                                 <label htmlFor="message" style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", textTransform: 'uppercase' }}>Message</label>
                                 <textarea
@@ -187,8 +154,12 @@ export default function Contact() {
                             )}
 
                             <button type="submit" className="btn btn-primary" style={{ width: "100%", marginTop: '1rem' }} disabled={status === "submitting"}>
-                                {status === "submitting" ? "Sending..." : "Send Message"} <Send size={18} style={{ marginLeft: '10px' }} />
+                                {status === "submitting" ? "Sending..." : "Book a Free Strategy Call"} <Send size={18} style={{ marginLeft: '10px' }} />
                             </button>
+
+                            <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", textAlign: "center", margin: 0 }}>
+                                I respond within 24 hours. No commitment, no pressure.
+                            </p>
                         </form>
                     )}
                 </div>

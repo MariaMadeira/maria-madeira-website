@@ -168,10 +168,10 @@ export default function Services() {
                     Let's discuss how we can implement these growth systems for your business.
                 </p>
                 <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", marginBottom: "3rem" }}>
-                    Book a free 30-minute growth audit to get started.
+                    A free 30-minute call. No commitment.
                 </p>
                 <Link to="/contact" className="btn btn-primary" style={{ padding: "1.2rem 3rem", fontSize: "1.1rem" }}>
-                    Get in Touch <ArrowRight size={20} style={{ marginLeft: "10px" }} />
+                    Book a Free Strategy Call <ArrowRight size={20} style={{ marginLeft: "10px" }} />
                 </Link>
             </div>
         </div>
