@@ -38,7 +38,7 @@ export default function Footer() {
                             lineHeight: 1.6,
                             maxWidth: "300px"
                         }}>
-                            Growth Strategist for modern e-commerce brands looking to scale through data-driven decisions and AI-powered marketing.
+                            Growth Strategist for modern brands that sell online, looking to scale through data-driven decisions and AI-powered marketing.
                         </p>
                     </div>
 

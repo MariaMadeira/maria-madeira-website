@@ -50,7 +50,7 @@ export default function Contact() {
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
                 title="Contact Maria Madeira | Growth Strategist"
-                description="Contact Maria Madeira to discuss growth strategy, lifecycle email marketing, paid advertising, or AI marketing systems for your e-commerce brand. Let's talk."
+                description="Contact Maria Madeira to discuss growth strategy, email marketing, paid advertising, or AI marketing systems for your online business. Let's talk."
                 path="/contact"
             />
 

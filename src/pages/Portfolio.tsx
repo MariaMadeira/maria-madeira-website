@@ -60,7 +60,7 @@ export default function Portfolio() {
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
                 title="Portfolio | Creative & Brand Projects"
-                description="Creative portfolio of Maria Madeira: brand identity, AI-enhanced product imagery, lifecycle email systems, and product UX work for modern e-commerce brands."
+                description="Creative portfolio of Maria Madeira: brand identity, AI-enhanced product imagery, lifecycle email systems, and product UX work for brands that sell online."
                 path="/portfolio"
             />
 

@@ -217,7 +217,7 @@ export default function Results() {
             <div className="results-cta reveal">
                 <h2 style={{ fontSize: "2.5rem", marginBottom: "1.5rem" }}>Want results like these?</h2>
                 <p style={{ color: "var(--text-secondary)", marginBottom: "2.5rem", fontSize: "1.2rem", maxWidth: "600px", margin: "0 auto 2.5rem" }}>
-                    Let's discuss how we can implement data-driven strategies to grow your e-commerce brand.
+                    Let's discuss how we can implement data-driven strategies to grow your business online.
                 </p>
                 <Link to="/contact" className="btn btn-primary" style={{ padding: "1.2rem 3rem", fontSize: "1.1rem" }}>
                     Let's Talk <ArrowRight size={20} style={{ marginLeft: "10px" }} />

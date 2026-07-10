@@ -51,7 +51,7 @@ export default function CaseStudies() {
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
                 title="Case Studies | E-commerce Growth Results"
-                description="Real e-commerce case studies with measurable outcomes: SEO and platform migration, Google Ads at a 5.34x return on ad spend, £134K email revenue, and click & collect UX."
+                description="Real case studies with measurable outcomes: SEO and platform migration, Google Ads at a 5.34x return, £134K email revenue, and click & collect UX."
                 path="/case-studies"
             />
 

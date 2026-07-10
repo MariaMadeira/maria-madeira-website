@@ -15,7 +15,7 @@ export default function About() {
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
                 title="About Maria Madeira | Growth Strategist"
-                description="Meet Maria Madeira, a growth strategist and creative marketing specialist who bridges data-driven performance with brand storytelling for e-commerce brands."
+                description="Meet Maria Madeira, a growth strategist and creative marketing specialist who bridges data-driven performance with storytelling for brands that sell online."
                 path="/about"
             />
 
@@ -57,7 +57,7 @@ export default function About() {
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8 }}>
                         <p>
-                            A Growth Strategist with 4+ years of experience helping e-commerce brands scale through email marketing, paid acquisition, and AI-powered systems.
+                            A Growth Strategist with 4+ years of experience helping brands that sell online scale through email marketing, paid acquisition, and AI-powered systems.
                         </p>
 
                         <p>
@@ -70,7 +70,7 @@ export default function About() {
 
                         <ul style={{ listStyle: 'none', padding: 0 }}>
                             {[
-                                "4+ years scaling e-commerce brands in the UK food sector",
+                                "4+ years scaling brands that sell online in the UK food sector",
                                 "Builder of AI workflows for content, SEO/AEO, and image generation",
                                 "Specialist in turning email lists into consistent revenue engines"
                             ].map((item, i) => (

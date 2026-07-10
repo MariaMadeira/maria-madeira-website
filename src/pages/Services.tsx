@@ -1,9 +1,16 @@
-import { TrendingUp, Mail, BarChart, Cpu, Maximize, ArrowRight, ArrowRightLeft } from "lucide-react";
+import { TrendingUp, Mail, BarChart, Cpu, Maximize, ArrowRight, ArrowRightLeft, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 
 export default function Services() {
     const services = [
+        {
+            icon: <Globe size={40} />,
+            title: "Website Strategy & Build",
+            description: "Turn an outdated website into a growth engine — strategy, a rebuild or targeted improvements, and SEO and AEO built in from the ground up so customers find you on Google and in AI search.",
+            link: "/services/websites",
+            cta: "Explore website services",
+        },
         {
             icon: <TrendingUp size={40} />,
             title: "Growth Strategy",
@@ -109,7 +116,7 @@ export default function Services() {
                                     transition: "gap 0.3s ease"
                                 }}
                             >
-                                See results <ArrowRight size={16} />
+                                {service.cta ?? "See results"} <ArrowRight size={16} />
                             </Link>
                         )}
                     </div>

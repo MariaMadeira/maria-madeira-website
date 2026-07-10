@@ -53,7 +53,7 @@ const HOME_JSON_LD = {
             "url": "https://mariamadeira.com",
             "image": "https://mariamadeira.com/portrait.png",
             "jobTitle": "E-commerce Growth Strategist",
-            "description": "Growth Strategist with 4+ years of experience helping e-commerce brands scale through email marketing, paid acquisition, and AI-powered systems.",
+            "description": "Growth Strategist with 4+ years of experience helping brands that sell online scale through email marketing, paid acquisition, and AI-powered systems.",
             "sameAs": ["https://www.linkedin.com/in/maria-madeira-43501b3a/"],
             "knowsAbout": ["Email Marketing", "Klaviyo", "Google Ads", "Meta Ads", "AI Marketing", "E-commerce Growth", "Paid Acquisition", "Lifecycle Marketing"]
         },
@@ -243,7 +243,7 @@ export default function Home() {
         <div className="container">
             <Seo
                 title="E-commerce Growth Strategist | Maria Madeira"
-                description="Growth strategist for e-commerce brands. I scale revenue through lifecycle email marketing, paid acquisition, AI-driven search, and creative direction."
+                description="Growth strategist for brands that sell online. I scale revenue through lifecycle email marketing, paid acquisition, AI-driven search, and creative direction."
                 path="/"
                 jsonLd={HOME_JSON_LD}
             />
@@ -276,7 +276,7 @@ export default function Home() {
                             E-commerce Growth Specialist. AI Enthusiast.
                         </span>
                         <h1 style={{ margin: '0 0 1.5rem', fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.15 }}>
-                            Scaling <span className="text-gradient">E-commerce Brands</span> with Data-Driven Growth & AI
+                            Scaling <span className="text-gradient">Brands That Sell Online</span> with Data-Driven Growth & AI
                         </h1>
                         <p style={{ marginBottom: '2.5rem', fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                             Helping modern brands transition from steady growth to aggressive scaling through lifecycle marketing, paid acquisition, and AI-driven automation.
@@ -302,7 +302,7 @@ export default function Home() {
                         }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>
-                                4+ years scaling e-commerce brands
+                                4+ years scaling brands that sell online
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>
