@@ -1,54 +1,17 @@
-import React, { Suspense } from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
 import { HelmetProvider } from 'react-helmet-async'
 import type { HelmetServerState } from 'react-helmet-async'
+import AppShell from './components/AppShell'
+import { ROUTES, NOT_FOUND } from './routes'
 
-// Eager imports — lazy() doesn't work with renderToString
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import ScrollToTop from './components/ScrollToTop'
-import PageLoader from './components/PageLoader'
-import Home from './pages/Home'
-import Services from './pages/Services'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import CaseStudies from './pages/CaseStudies'
-import CaseStudyEmail from './pages/CaseStudyEmail'
-import CaseStudyGoogleAds from './pages/CaseStudyGoogleAds'
-import CaseStudySEO from './pages/CaseStudySEO'
-import CaseStudyClickCollect from './pages/CaseStudyClickCollect'
-import CaseStudyBodysurfSchool from './pages/CaseStudyBodysurfSchool'
-import Portfolio from './pages/Portfolio'
-import PortfolioRitaAntunes from './pages/PortfolioRitaAntunes'
-import PortfolioOusadia from './pages/PortfolioOusadia'
-import PortfolioAIEnhanced from './pages/PortfolioAIEnhanced'
-import PortfolioAIProductPhotography from './pages/PortfolioAIProductPhotography'
-import PortfolioEmailMarketing from './pages/PortfolioEmailMarketing'
-import PortfolioClickCollect from './pages/PortfolioClickCollect'
-import NotFound from './pages/NotFound'
+const BY_PATH = new Map([...ROUTES, NOT_FOUND].map((r) => [r.path, r]))
 
-const routes: Record<string, React.ComponentType> = {
-  '/': Home,
-  '/services': Services,
-  '/about': About,
-  '/contact': Contact,
-  '/case-studies': CaseStudies,
-  '/case-study-email': CaseStudyEmail,
-  '/case-study-google-ads': CaseStudyGoogleAds,
-  '/case-study-seo': CaseStudySEO,
-  '/case-study-click-collect': CaseStudyClickCollect,
-  '/case-study-bodysurf-school': CaseStudyBodysurfSchool,
-  '/portfolio': Portfolio,
-  '/portfolio-rita-antunes': PortfolioRitaAntunes,
-  '/portfolio-ousadia': PortfolioOusadia,
-  '/portfolio-ai-enhanced': PortfolioAIEnhanced,
-  '/portfolio-ai-product-photography': PortfolioAIProductPhotography,
-  '/portfolio-email-marketing': PortfolioEmailMarketing,
-  '/portfolio-click-collect': PortfolioClickCollect,
-  // Rendered to dist/404.html, which Vercel serves for unmatched paths.
-  '/404': NotFound,
-}
+/** Paths prerender.mjs should render and list in the sitemap. */
+export const routePaths = ROUTES.map((r) => r.path)
+
+/** Prerendered to dist/404.html, deliberately absent from the sitemap. */
+export const notFoundPath = NOT_FOUND.path
 
 // react-helmet-async v3 detects React 19 and stops populating the SSR context:
 // it renders <title>/<meta>/<link> as ordinary elements and lets React 19 hoist
@@ -75,24 +38,18 @@ function extractHeadTags(markup: string): { head: string[]; html: string } {
   return { head, html }
 }
 
-export function render(url: string): { html: string; head: string[]; helmet: HelmetServerState } {
-  const PageComponent = routes[url] ?? null
+// The page module is awaited rather than passed to lazy(): renderToString cannot
+// suspend, but an already-resolved component renders synchronously inside the
+// same Suspense boundary AppShell gives the client.
+export async function render(url: string): Promise<{ html: string; head: string[]; helmet: HelmetServerState }> {
+  const route = BY_PATH.get(url)
+  const PageComponent = route ? (await route.load()).default : null
   const helmetContext: { helmet?: HelmetServerState } = {}
 
   const markup = renderToString(
     <HelmetProvider context={helmetContext}>
       <StaticRouter location={url}>
-        <ScrollToTop />
-        <Navbar />
-        <div className="page-container">
-          {/* App.tsx wraps its routes in this same Suspense boundary. The client
-              tree must match the server tree exactly or hydration fails, so the
-              boundary has to exist here too even though nothing suspends. */}
-          <Suspense fallback={<PageLoader />}>
-            {PageComponent ? <PageComponent /> : null}
-          </Suspense>
-          <Footer />
-        </div>
+        <AppShell>{PageComponent ? <PageComponent /> : null}</AppShell>
       </StaticRouter>
     </HelmetProvider>
   )

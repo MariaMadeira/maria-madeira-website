@@ -1,65 +1,26 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import { Suspense, lazy } from "react";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ScrollToTop from "./components/ScrollToTop";
-import PageLoader from "./components/PageLoader";
+import { lazy } from "react";
+import AppShell from "./components/AppShell";
+import { ROUTES, NOT_FOUND } from "./routes";
 
-// Route-based code splitting
-const Home = lazy(() => import("./pages/Home"));
-const Services = lazy(() => import("./pages/Services"));
-const CaseStudies = lazy(() => import("./pages/CaseStudies"));
-const CaseStudyEmail = lazy(() => import("./pages/CaseStudyEmail"));
-const CaseStudyGoogleAds = lazy(() => import("./pages/CaseStudyGoogleAds"));
-const CaseStudySEO = lazy(() => import("./pages/CaseStudySEO"));
-// Results.tsx is kept but unrouted; its metrics now live on the homepage and
-// the case studies hub, and /results 301s to /case-studies at the edge.
-const Portfolio = lazy(() => import("./pages/Portfolio"));
-const About = lazy(() => import("./pages/About"));
-const Contact = lazy(() => import("./pages/Contact"));
-const PortfolioRitaAntunes = lazy(() => import("./pages/PortfolioRitaAntunes"));
-const PortfolioOusadia = lazy(() => import("./pages/PortfolioOusadia"));
-const PortfolioAIEnhanced = lazy(() => import("./pages/PortfolioAIEnhanced"));
-const PortfolioAIProductPhotography = lazy(() => import("./pages/PortfolioAIProductPhotography"));
-const PortfolioEmailMarketing = lazy(() => import("./pages/PortfolioEmailMarketing"));
-const CaseStudyClickCollect = lazy(() => import("./pages/CaseStudyClickCollect"));
-const CaseStudyBodysurfSchool = lazy(() => import("./pages/CaseStudyBodysurfSchool"));
-const PortfolioClickCollect = lazy(() => import("./pages/PortfolioClickCollect"));
-// Blog.tsx is kept but unrouted until the posts it lists are actually written.
-const NotFound = lazy(() => import("./pages/NotFound"));
+// lazy() is called at module scope so each route keeps a stable component
+// identity across renders. This is what code-splits the pages.
+const LAZY_ROUTES = ROUTES.map(({ path, load }) => ({ path, Component: lazy(load) }));
+const NotFound = lazy(NOT_FOUND.load);
 
 export default function App() {
   return (
     <HelmetProvider>
       <Router>
-        <ScrollToTop />
-        <Navbar />
-        <div className="page-container">
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/case-studies" element={<CaseStudies />} />
-              <Route path="/case-study-email" element={<CaseStudyEmail />} />
-              <Route path="/case-study-google-ads" element={<CaseStudyGoogleAds />} />
-              <Route path="/case-study-seo" element={<CaseStudySEO />} />
-              <Route path="/portfolio" element={<Portfolio />} />
-              <Route path="/portfolio-rita-antunes" element={<PortfolioRitaAntunes />} />
-              <Route path="/portfolio-ousadia" element={<PortfolioOusadia />} />
-              <Route path="/portfolio-ai-enhanced" element={<PortfolioAIEnhanced />} />
-              <Route path="/portfolio-ai-product-photography" element={<PortfolioAIProductPhotography />} />
-              <Route path="/portfolio-email-marketing" element={<PortfolioEmailMarketing />} />
-              <Route path="/case-study-click-collect" element={<CaseStudyClickCollect />} />
-              <Route path="/case-study-bodysurf-school" element={<CaseStudyBodysurfSchool />} />
-              <Route path="/portfolio-click-collect" element={<PortfolioClickCollect />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-          <Footer />
-        </div>
+        <AppShell>
+          <Routes>
+            {LAZY_ROUTES.map(({ path, Component }) => (
+              <Route key={path} path={path} element={<Component />} />
+            ))}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AppShell>
       </Router>
     </HelmetProvider>
   );

@@ -7,34 +7,22 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const BASE_URL = 'https://mariamadeira.com'
 
-const routes = [
-  '/',
-  '/services',
-  '/about',
-  '/contact',
-  '/case-studies',
-  '/case-study-email',
-  '/case-study-google-ads',
-  '/case-study-seo',
-  '/case-study-click-collect',
-  '/case-study-bodysurf-school',
-  '/portfolio',
-  '/portfolio-rita-antunes',
-  '/portfolio-ousadia',
-  '/portfolio-ai-enhanced',
-  '/portfolio-ai-product-photography',
-  '/portfolio-email-marketing',
-  '/portfolio-click-collect',
-]
+// Import the SSR bundle built by vite build --ssr. The route list comes from
+// src/routes.ts via this bundle, so a route added there is prerendered and
+// listed in the sitemap without touching this file.
+const { render, routePaths, notFoundPath } = await import('./dist/server/entry-server.js')
 
-// Import the SSR bundle built by vite build --ssr
-const { render } = await import('./dist/server/entry-server.js')
+const routes = routePaths
+
+if (!Array.isArray(routes) || routes.length === 0) {
+  throw new Error('No routes exported from entry-server — nothing would be prerendered.')
+}
 
 // Read the Vite-built client HTML template
 const template = readFileSync(join(__dirname, 'dist/index.html'), 'utf-8')
 
-function renderPage(route) {
-  const { html, head, helmet } = render(route)
+async function renderPage(route) {
+  const { html, head, helmet } = await render(route)
 
   // On React 19 helmet renders its tags into the markup instead of the SSR
   // context, so `head` carries them and the helmet.* values come back empty.
@@ -61,7 +49,7 @@ function renderPage(route) {
 
 // Pre-render each route
 for (const route of routes) {
-  const page = renderPage(route)
+  const page = await renderPage(route)
 
   if (route === '/') {
     writeFileSync(join(__dirname, 'dist/index.html'), page)
@@ -78,8 +66,8 @@ for (const route of routes) {
 // which is the only way an unknown URL reaches NotFound on a hard load — the
 // <Route path="*"> catch-all only runs for client-side navigation. Deliberately
 // not in `routes`: it must stay out of the sitemap and carries robots=noindex.
-writeFileSync(join(__dirname, 'dist/404.html'), renderPage('/404'))
-console.log('Pre-rendered: /404 -> dist/404.html')
+writeFileSync(join(__dirname, 'dist/404.html'), await renderPage(notFoundPath))
+console.log(`Pre-rendered: ${notFoundPath} -> dist/404.html`)
 
 // Generate sitemap.xml
 const today = new Date().toISOString().split('T')[0]
