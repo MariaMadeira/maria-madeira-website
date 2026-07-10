@@ -14,6 +14,32 @@ const SUPPORTING_METRICS = [
     { to: 923, prefix: "", suffix: "+", decimals: 0, label: "Conversions Generated", detail: "High-intent customer acquisition" },
 ];
 
+// Outcomes are deliberately phrased to avoid restating any figure already shown
+// in the hero badge, the Measurable Impact grid or the supporting strip — each
+// stat appears exactly once on this page. That leaves the Google Ads cost per
+// conversion as the only unused headline number; the other two lead with the
+// transformation instead.
+const FEATURED_WORK = [
+    {
+        category: "Growth Strategy & Website Build",
+        title: "The Bodysurf School",
+        outcome: "A brochure site rebuilt into a bilingual booking engine, with local payment methods and SEO and AEO foundations built in.",
+        link: "/case-study-bodysurf-school",
+    },
+    {
+        category: "Paid Advertising",
+        title: "Google Ads Revenue Growth",
+        outcome: "£12.78 cost per conversion, acquiring high-intent customers through structured search campaigns.",
+        link: "/case-study-google-ads",
+    },
+    {
+        category: "Email Marketing",
+        title: "Email Lifecycle Revenue Growth",
+        outcome: "An underused channel rebuilt as a full Klaviyo lifecycle system — welcome, recovery, replenishment and win-back.",
+        link: "/case-study-email",
+    },
+];
+
 const HOME_JSON_LD = {
     "@context": "https://schema.org",
     "@graph": [
@@ -489,6 +515,48 @@ export default function Home() {
                             <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem', fontSize: '0.95rem' }}>{s.desc}</p>
                         </div>
                     ))}
+                </div>
+            </section>
+
+            {/* Featured Work Section */}
+            <section className="section" style={{ padding: '2rem 0 4rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>Featured Work</h2>
+                    <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
+                        Three engagements that show the range — a full build, paid acquisition, and lifecycle retention.
+                    </p>
+                </div>
+                <div className="grid-3">
+                    {FEATURED_WORK.map((work) => (
+                        <div key={work.title} className="card hover-lift-sm" style={{ display: 'flex', flexDirection: 'column' }}>
+                            <p className="text-gradient-accent" style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem' }}>
+                                {work.category}
+                            </p>
+                            <h3>{work.title}</h3>
+                            <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem', fontSize: '0.95rem', flex: 1 }}>
+                                {work.outcome}
+                            </p>
+                            <Link
+                                to={work.link}
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '6px',
+                                    color: 'var(--accent-secondary)',
+                                    fontWeight: 600,
+                                    fontSize: '0.9rem',
+                                    marginTop: '1.5rem',
+                                }}
+                            >
+                                Read case study <ArrowRight size={16} />
+                            </Link>
+                        </div>
+                    ))}
+                </div>
+                <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+                    <Link to="/case-studies" className="btn btn-secondary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
+                        View all case studies <ArrowRight size={16} style={{ marginLeft: '8px' }} />
+                    </Link>
                 </div>
             </section>
 
