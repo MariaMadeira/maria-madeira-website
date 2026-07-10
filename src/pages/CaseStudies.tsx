@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 
 const HEADLINE_RESULTS = [
-    { value: "£110K+", label: "Email revenue" },
-    { value: "48%", label: "Average open rate" },
+    { value: "£134K", label: "Email revenue (12 mo, +88.9%)" },
+    { value: "50.4%", label: "Campaign open rate" },
     { value: "4.9x", label: "Google Ads ROAS" },
     { value: "3.4x – 5.34x", label: "Meta Ads ROAS" },
 ];
@@ -28,7 +28,7 @@ export default function CaseStudies() {
             title: "Email Lifecycle Revenue Growth",
             category: "Email Marketing",
             problem: "Email channel underutilised with limited lifecycle automation.",
-            results: "£110K revenue generated · 41% of total store revenue",
+            results: "£134K attributed revenue · +88.9% YoY over the last 12 months",
             link: "/case-study-email",
         },
         {
@@ -51,7 +51,7 @@ export default function CaseStudies() {
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
                 title="Case Studies | E-commerce Growth Results"
-                description="Real e-commerce case studies with measurable outcomes: SEO and platform migration, Google Ads at 4.9x ROAS, £110K email revenue, and click & collect UX."
+                description="Real e-commerce case studies with measurable outcomes: SEO and platform migration, Google Ads at 4.9x ROAS, £134K email revenue, and click & collect UX."
                 path="/case-studies"
             />
 

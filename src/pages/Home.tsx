@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { useInView } from "../hooks/useInView";
 
-// The four headline numbers (£110K+, 4.9x, 48%, 5.34x) already appear in the
-// hero credentials and the Measurable Impact grid. These are the supporting
-// metrics from the retired /results page that aren't shown anywhere else.
+// Email figures are verified Klaviyo data for the last 12 months (Jul 2024 –
+// Jul 2025). The four headline numbers (£134K, 4.9x, 50.4%, 5.34x) live in the
+// Measurable Impact grid; these supporting metrics appear nowhere else on the
+// page, so every stat is stated exactly once.
 const SUPPORTING_METRICS = [
-    { to: 45.8, prefix: "£", suffix: "K+", decimals: 1, label: "Automated Flow Revenue", detail: "Earned from lifecycle email flows alone" },
-    { to: 9.14, prefix: "", suffix: "%", decimals: 2, label: "Flow Click Rate", detail: "Across automated email flows" },
+    { to: 48.3, prefix: "£", suffix: "K", decimals: 1, label: "Flow Revenue", detail: "From automated lifecycle flows, +82.5% YoY" },
+    { to: 7.27, prefix: "", suffix: "%", decimals: 2, label: "Flow Click Rate", detail: "Across automated email flows, last 12 months" },
     { to: 51.9, prefix: "£", suffix: "K+", decimals: 1, label: "Google Ads Revenue", detail: "Attributed from £9.9K of ad spend" },
-    { to: 923, prefix: "", suffix: "+", decimals: 0, label: "Conversions Generated", detail: "High-intent customer acquisition" },
+    { to: 778, prefix: "", suffix: "", decimals: 0, label: "Google Ads Conversions", detail: "High-intent customer acquisition" },
 ];
 
 // Outcomes are deliberately phrased to avoid restating any figure already shown
@@ -348,8 +349,8 @@ export default function Home() {
                         >
                             <span style={{ fontSize: '1.8rem', lineHeight: 1 }}>📈</span>
                             <div>
-                                <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>41% of store revenue</div>
-                                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Driven by email lifecycle flows</div>
+                                <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>£23.6K Welcome Series</div>
+                                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Revenue from a single lifecycle flow</div>
                             </div>
                         </div>
                     </div>
@@ -372,10 +373,10 @@ export default function Home() {
                 >
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <AnimatedCounter from={0} to={110} prefix="£" suffix="K+" />
+                            <AnimatedCounter from={0} to={134} prefix="£" suffix="K" />
                         </h3>
                         <p style={{ fontWeight: 600 }}>Email Revenue</p>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Directly attributed to Klaviyo campaigns & flows</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Attributed to Klaviyo campaigns & flows (last 12 months, +88.9% YoY)</p>
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
@@ -386,10 +387,10 @@ export default function Home() {
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <AnimatedCounter from={0} to={48} suffix="%" />
+                            <AnimatedCounter from={0} to={50.4} suffix="%" decimals={1} />
                         </h3>
-                        <p style={{ fontWeight: 600 }}>Email Open Rate</p>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Industry-leading engagement</p>
+                        <p style={{ fontWeight: 600 }}>Campaign Open Rate</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>78th percentile industry benchmark</p>
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>

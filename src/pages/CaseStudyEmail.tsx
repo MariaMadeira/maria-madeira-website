@@ -6,8 +6,8 @@ export default function CaseStudyEmail() {
     return (
         <>
         <Seo
-            title="Email Marketing Case Study | 48% Open Rate"
-            description="Email marketing case study: how lifecycle flows and segmentation drove a 48% open rate, a 3.2x revenue lift, and £110K in attributed e-commerce revenue."
+            title="Email Marketing Case Study | £134K Revenue"
+            description="Email marketing case study: how a Klaviyo lifecycle system grew attributed revenue to £134K in 12 months, up 88.9% year on year, at a 50.4% open rate."
             path="/case-study-email"
         />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
@@ -51,7 +51,7 @@ export default function CaseStudyEmail() {
                         Email Lifecycle Revenue Growth
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
-                        How a strategic email lifecycle system transformed an underutilised channel into the brand's most important revenue driver — generating over £110K in attributed revenue and driving 41% of total store sales.
+                        How a strategic email lifecycle system transformed an underutilised channel into the brand's most important revenue driver — growing attributed revenue to £134K over the last 12 months, up 88.9% year on year.
                     </p>
                 </div>
 
@@ -155,11 +155,11 @@ export default function CaseStudyEmail() {
 
                     <div className="grid-3" style={{ gap: "1.5rem" }}>
                         {[
-                            { metric: "41%", label: "Email Revenue Share", detail: "" },
-                            { metric: "£110K+", label: "Revenue Generated", detail: "From Email Marketing" },
-                            { metric: "£45.8K", label: "Revenue Generated", detail: "From Automated Flows" },
-                            { metric: "48%", label: "Average Open Rate", detail: "" },
-                            { metric: "8.5%", label: "Click Rate", detail: "Automated Flows" },
+                            { metric: "£134K", label: "Attributed Revenue", detail: "Last 12 months · +88.9% YoY" },
+                            { metric: "£86.1K", label: "Campaign Revenue", detail: "+92.6% YoY" },
+                            { metric: "£48.3K", label: "Flow Revenue", detail: "+82.5% YoY" },
+                            { metric: "50.4%", label: "Campaign Open Rate", detail: "78th percentile benchmark" },
+                            { metric: "7.27%", label: "Flow Click Rate", detail: "Automated flows" },
                             { metric: "✦", label: "Full Lifecycle System", detail: "Built in Klaviyo" },
                         ].map((item, i) => (
                             <div
@@ -212,13 +212,13 @@ export default function CaseStudyEmail() {
                         }}
                     >
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                            Email became one of the brand's most important revenue channels, generating over <strong style={{ color: "var(--text-primary)" }}>£110K</strong> in attributed revenue and driving <strong style={{ color: "var(--text-primary)" }}>41%</strong> of total store sales.
+                            Over the last 12 months email attributed <strong style={{ color: "var(--text-primary)" }}>£134K</strong> in revenue, up <strong style={{ color: "var(--text-primary)" }}>88.9%</strong> year on year — split between <strong style={{ color: "var(--text-primary)" }}>£86.1K</strong> from campaigns (+92.6%) and <strong style={{ color: "var(--text-primary)" }}>£48.3K</strong> from automated flows (+82.5%).
                         </p>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                            Automated lifecycle flows alone generated <strong style={{ color: "var(--text-primary)" }}>£45.8K</strong> in revenue, proving the impact of structured retention strategies on long-term customer value.
+                            The gains held on engagement as well as revenue: a <strong style={{ color: "var(--text-primary)" }}>50.4%</strong> average campaign open rate (78th percentile against the industry benchmark) and a <strong style={{ color: "var(--text-primary)" }}>7.27%</strong> flow click rate over the 12-month window (9.14% across the 2024 calendar year).
                         </p>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>
-                            This case demonstrates how a well-designed email ecosystem can transform owned channels into a scalable and predictable growth driver.
+                            Seen over the full engagement, email-attributed revenue grew from <strong style={{ color: "var(--text-primary)" }}>£33K in 2021</strong> to <strong style={{ color: "var(--text-primary)" }}>£134K in 2025</strong> — a 4x increase, and a channel turned into a scalable, predictable growth driver.
                         </p>
                     </div>
                 </section>

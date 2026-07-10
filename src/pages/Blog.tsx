@@ -5,8 +5,8 @@ import { ArrowRight, Clock } from "lucide-react";
 const POSTS = [
     {
         slug: "email-marketing-lifecycle-flows",
-        title: "How Lifecycle Email Flows Generated £110K+ in Attributed Revenue",
-        excerpt: "Most e-commerce brands treat email as a broadcast channel. The ones that scale treat it as a conversation. Here's the exact flow architecture that drove 48% open rates and £110K+ in revenue for a UK food brand.",
+        title: "How Lifecycle Email Flows Generated £134K in Attributed Revenue",
+        excerpt: "Most e-commerce brands treat email as a broadcast channel. The ones that scale treat it as a conversation. Here's the exact flow architecture that drove a 50.4% campaign open rate and £134K in revenue for a UK food brand.",
         category: "Email Marketing",
         readTime: "6 min read",
         date: "March 2025",

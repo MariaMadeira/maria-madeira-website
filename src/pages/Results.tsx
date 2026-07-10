@@ -41,16 +41,18 @@ export default function Results() {
     const { ref: emailRef, inView: emailInView } = useInView({ rootMargin: '-50px', once: true });
     const { ref: paidRef, inView: paidInView } = useInView({ rootMargin: '-50px', once: true });
 
+    // Verified Klaviyo data, last 12 months (Jul 2024 – Jul 2025). The 2024
+    // calendar-year flow click rate was 9.14%; the 12-month figure is 7.27%.
     const emailMetrics = [
-        { label: "Revenue generated from email marketing", to: 110, prefix: "£", suffix: "K+", decimals: 0 },
-        { label: "Average open rate", to: 48, prefix: "", suffix: "%", decimals: 0 },
-        { label: "Click rate from automated flows", to: 9.14, prefix: "", suffix: "%", decimals: 2 },
-        { label: "Revenue generated from automated email flows", to: 45.8, prefix: "£", suffix: "K+", decimals: 1 }
+        { label: "Attributed email revenue (last 12 months, +88.9% YoY)", to: 134, prefix: "£", suffix: "K", decimals: 0 },
+        { label: "Average campaign open rate (78th percentile)", to: 50.4, prefix: "", suffix: "%", decimals: 1 },
+        { label: "Click rate from automated flows", to: 7.27, prefix: "", suffix: "%", decimals: 2 },
+        { label: "Revenue generated from automated email flows", to: 48.3, prefix: "£", suffix: "K", decimals: 1 }
     ];
 
     const paidMetrics: Array<{ label: string; to: number; prefix: string; suffix: string; decimals: number; subtitle: string; range?: string }> = [
         { label: "Google Ads ROAS", to: 4.9, prefix: "", suffix: "x", decimals: 1, subtitle: "Scaling spend while maintaining profitability." },
-        { label: "Conversions Generated", to: 923, prefix: "", suffix: "+", decimals: 0, subtitle: "High-intent customer acquisition." },
+        { label: "Conversions Generated", to: 778, prefix: "", suffix: "", decimals: 0, subtitle: "High-intent customer acquisition, Google Ads." },
         { label: "Revenue Attributed", to: 51.9, prefix: "£", suffix: "K+", decimals: 1, subtitle: "Directly attributed Google Ads revenue." },
         { label: "Meta Ads ROAS", to: 5.34, prefix: "", suffix: "x", decimals: 2, range: "3.4x – 5.34x", subtitle: "Range across active campaigns." }
     ];
@@ -58,8 +60,8 @@ export default function Results() {
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="Results: 4.9x ROAS & £110K Email Revenue"
-                description="Measurable e-commerce growth results: £110K+ in email revenue, 48% average open rates, 4.9x Google Ads ROAS, and 3.4x to 5.34x return on Meta Ads spend."
+                title="Results: 4.9x ROAS & £134K Email Revenue"
+                description="Measurable e-commerce growth results: £134K in email revenue (+88.9% YoY), 50.4% average open rate, 4.9x Google Ads ROAS, and 3.4x to 5.34x return on Meta Ads spend."
                 path="/results"
             />
 
@@ -176,7 +178,7 @@ export default function Results() {
                 <div className="grid-3" style={{ marginTop: '3rem' }}>
                     <Link to="/case-study-email" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
                         <h4 style={{ marginBottom: '1rem' }}>Email Growth Case Study</h4>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>How we generated £110K+ through lifecycle automation and advanced segmentation.</p>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>How we generated £134K through lifecycle automation and advanced segmentation.</p>
                         <span style={{ color: 'var(--accent-secondary)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
                     </Link>
                     <Link to="/case-study-google-ads" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>

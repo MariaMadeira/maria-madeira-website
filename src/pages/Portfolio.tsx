@@ -16,7 +16,7 @@ export default function Portfolio() {
         {
             title: "Lifecycle Email Marketing",
             category: "Email Marketing",
-            description: "Driving £110K+ in attributed revenue through advanced lifecycle flows and retention-first automation strategies.",
+            description: "Driving £134K in attributed revenue over 12 months through advanced lifecycle flows and retention-first automation strategies.",
             link: "/portfolio-email-marketing",
             visual: "url('/projects/email-marketing/recipe.png') center/cover"
         },
