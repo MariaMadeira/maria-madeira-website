@@ -81,7 +81,15 @@ function AnimatedCounter({ from = 0, to, decimals = 0, prefix = "", suffix = "",
 }
 
 /* ── Testimonials data & carousel ────────────────────────── */
+// Ordered by credibility of the endorser. The mobile carousel opens on the
+// first entry, so the strongest testimonial leads on both layouts.
 const TESTIMONIALS = [
+    {
+        name: "Adel Sidiqi",
+        role: "Digital Marketing Manager at Ocado Zoom",
+        context: "Former colleague · Recommended on LinkedIn",
+        quote: "Maria's expertise in design, digital marketing, and tools like Klaviyo consistently took our campaigns to the next level — both visually and in terms of results. She has a real knack for aligning creative ideas with marketing goals. Detail-oriented, innovative, and a great team player.",
+    },
     {
         name: "Will Fuller",
         role: "WordPress Developer",
@@ -93,12 +101,6 @@ const TESTIMONIALS = [
         role: "History Undergraduate",
         context: "Former colleague at The Black Farmer · Recommended on LinkedIn",
         quote: "Maria doesn't just think outside the box — she completely redefines it. Her creativity, strategic mindset, and deep understanding of marketing have played a huge role in shaping the success of the company. She approaches every project with passion and precision, always bringing fresh, data-driven ideas to the table that truly make an impact.",
-    },
-    {
-        name: "Adel Sidiqi",
-        role: "Digital Marketing Manager at Ocado Zoom",
-        context: "Former colleague · Recommended on LinkedIn",
-        quote: "Maria's expertise in design, digital marketing, and tools like Klaviyo consistently took our campaigns to the next level — both visually and in terms of results. She has a real knack for aligning creative ideas with marketing goals. Detail-oriented, innovative, and a great team player.",
     },
 ];
 
@@ -271,11 +273,11 @@ export default function Home() {
                         }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>
-                                £110K+ Email Revenue
+                                4+ years scaling e-commerce brands
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>
-                                4.9x Google Ads ROAS
+                                Klaviyo · Google Ads · Meta Ads
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>
@@ -320,8 +322,8 @@ export default function Home() {
                         >
                             <span style={{ fontSize: '1.8rem', lineHeight: 1 }}>📈</span>
                             <div>
-                                <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>490.74% ROAS</div>
-                                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Google Ads Campaign</div>
+                                <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>41% of store revenue</div>
+                                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Driven by email lifecycle flows</div>
                             </div>
                         </div>
                     </div>
