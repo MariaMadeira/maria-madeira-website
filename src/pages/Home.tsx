@@ -5,14 +5,15 @@ import Seo from "../components/Seo";
 import { useInView } from "../hooks/useInView";
 
 // Email figures are verified Klaviyo data for the last 12 months (Jul 2024 –
-// Jul 2025). The four headline numbers (£134K, 4.9x, 50.4%, 5.34x) live in the
-// Measurable Impact grid; these supporting metrics appear nowhere else on the
-// page, so every stat is stated exactly once.
+// Jul 2025). The four headline numbers (£134K, 37.8% revenue share, 50.4%,
+// 5.34x Meta ROAS) live in the Measurable Impact grid; these supporting metrics
+// appear nowhere else on the page, so every stat is stated exactly once. The
+// unverifiable Google Ads ROAS (4.9x) and revenue (£51.9K) have been removed.
 const SUPPORTING_METRICS = [
     { to: 48.3, prefix: "£", suffix: "K", decimals: 1, label: "Flow Revenue", detail: "From automated lifecycle flows, +82.5% YoY" },
     { to: 7.27, prefix: "", suffix: "%", decimals: 2, label: "Flow Click Rate", detail: "Across automated email flows, last 12 months" },
-    { to: 51.9, prefix: "£", suffix: "K+", decimals: 1, label: "Google Ads Revenue", detail: "Attributed from £9.9K of ad spend" },
-    { to: 778, prefix: "", suffix: "", decimals: 0, label: "Google Ads Conversions", detail: "High-intent customer acquisition" },
+    { to: 86.1, prefix: "£", suffix: "K", decimals: 1, label: "Campaign Revenue", detail: "From email campaigns, +92.6% YoY" },
+    { to: 778, prefix: "", suffix: "", decimals: 0, label: "Google Ads Conversions", detail: "High-intent acquisition from £9.9K spend" },
 ];
 
 // Outcomes are deliberately phrased to avoid restating any figure already shown
@@ -380,10 +381,10 @@ export default function Home() {
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <AnimatedCounter from={0} to={4.9} suffix="x" decimals={1} />
+                            <AnimatedCounter from={0} to={37.8} suffix="%" decimals={1} />
                         </h3>
-                        <p style={{ fontWeight: 600 }}>Google Ads ROAS</p>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>490.74% return on ad spend</p>
+                        <p style={{ fontWeight: 600 }}>Email Revenue Share</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>of £355.6K total store revenue (last 12 months)</p>
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>

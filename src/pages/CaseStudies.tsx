@@ -4,7 +4,7 @@ import Seo from "../components/Seo";
 const HEADLINE_RESULTS = [
     { value: "£134K", label: "Email revenue (12 mo, +88.9%)" },
     { value: "50.4%", label: "Campaign open rate" },
-    { value: "4.9x", label: "Google Ads ROAS" },
+    { value: "37.8%", label: "Email share of store revenue" },
     { value: "3.4x – 5.34x", label: "Meta Ads ROAS" },
 ];
 
@@ -21,7 +21,7 @@ export default function CaseStudies() {
             title: "Google Ads Revenue Growth",
             category: "Paid Advertising",
             problem: "Paid acquisition needed to scale profitably while maintaining strong return on ad spend.",
-            results: "£51.9K revenue generated from £9.9K ad spend · 4.9x ROAS",
+            results: "778 conversions from £9.9K ad spend · £12.78 cost per conversion",
             link: "/case-study-google-ads",
         },
         {
@@ -51,7 +51,7 @@ export default function CaseStudies() {
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
                 title="Case Studies | E-commerce Growth Results"
-                description="Real e-commerce case studies with measurable outcomes: SEO and platform migration, Google Ads at 4.9x ROAS, £134K email revenue, and click & collect UX."
+                description="Real e-commerce case studies with measurable outcomes: SEO and platform migration, Google Ads at £12.78 cost per conversion, £134K email revenue, and click & collect UX."
                 path="/case-studies"
             />
 

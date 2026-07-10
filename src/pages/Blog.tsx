@@ -21,8 +21,8 @@ const POSTS = [
     },
     {
         slug: "google-ads-roas-ecommerce",
-        title: "Achieving 4.9x ROAS on Google Ads: What the Data Actually Taught Me",
-        excerpt: "A 4.9x ROAS doesn't happen by accident. It happens through obsessive audience segmentation, creative testing, and knowing when to scale versus when to cut. Here's the playbook.",
+        title: "A £12.78 Cost per Conversion on Google Ads: What the Data Actually Taught Me",
+        excerpt: "Efficient acquisition doesn't happen by accident. It happens through obsessive audience segmentation, creative testing, and knowing when to scale versus when to cut. Here's the playbook.",
         category: "Paid Advertising",
         readTime: "7 min read",
         date: "January 2025",

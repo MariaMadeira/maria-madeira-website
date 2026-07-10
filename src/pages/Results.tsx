@@ -51,17 +51,17 @@ export default function Results() {
     ];
 
     const paidMetrics: Array<{ label: string; to: number; prefix: string; suffix: string; decimals: number; subtitle: string; range?: string }> = [
-        { label: "Google Ads ROAS", to: 4.9, prefix: "", suffix: "x", decimals: 1, subtitle: "Scaling spend while maintaining profitability." },
+        { label: "Google Ads Spend", to: 9.9, prefix: "£", suffix: "K", decimals: 1, subtitle: "Total spend across the engagement." },
         { label: "Conversions Generated", to: 778, prefix: "", suffix: "", decimals: 0, subtitle: "High-intent customer acquisition, Google Ads." },
-        { label: "Revenue Attributed", to: 51.9, prefix: "£", suffix: "K+", decimals: 1, subtitle: "Directly attributed Google Ads revenue." },
+        { label: "Cost per Conversion", to: 12.78, prefix: "£", suffix: "", decimals: 2, subtitle: "Efficient, high-intent Google Ads acquisition." },
         { label: "Meta Ads ROAS", to: 5.34, prefix: "", suffix: "x", decimals: 2, range: "3.4x – 5.34x", subtitle: "Range across active campaigns." }
     ];
 
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="Results: 4.9x ROAS & £134K Email Revenue"
-                description="Measurable e-commerce growth results: £134K in email revenue (+88.9% YoY), 50.4% average open rate, 4.9x Google Ads ROAS, and 3.4x to 5.34x return on Meta Ads spend."
+                title="Results: £134K Email Revenue (12-Month)"
+                description="Measurable e-commerce growth results: £134K in email revenue (+88.9% YoY), a 50.4% average open rate, 778 Google Ads conversions at £12.78 each, and Meta Ads at 3.4x to 5.34x ROAS."
                 path="/results"
             />
 
@@ -183,7 +183,7 @@ export default function Results() {
                     </Link>
                     <Link to="/case-study-google-ads" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
                         <h4 style={{ marginBottom: '1rem' }}>Paid Acquisition Deep-Dive</h4>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>4.9x Google Ads ROAS and 3.4x – 5.34x Meta Ads ROAS through data-driven targeting and creative testing.</p>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>778 Google Ads conversions at £12.78 each, and 3.4x – 5.34x Meta Ads ROAS through data-driven targeting and creative testing.</p>
                         <span style={{ color: 'var(--accent-secondary)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
                     </Link>
                     <Link to="/case-study-seo" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
