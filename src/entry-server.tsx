@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
 import { HelmetProvider } from 'react-helmet-async'
@@ -8,6 +8,7 @@ import type { HelmetServerState } from 'react-helmet-async'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import PageLoader from './components/PageLoader'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import About from './pages/About'
@@ -84,7 +85,12 @@ export function render(url: string): { html: string; head: string[]; helmet: Hel
         <ScrollToTop />
         <Navbar />
         <div className="page-container">
-          {PageComponent ? <PageComponent /> : null}
+          {/* App.tsx wraps its routes in this same Suspense boundary. The client
+              tree must match the server tree exactly or hydration fails, so the
+              boundary has to exist here too even though nothing suspends. */}
+          <Suspense fallback={<PageLoader />}>
+            {PageComponent ? <PageComponent /> : null}
+          </Suspense>
           <Footer />
         </div>
       </StaticRouter>

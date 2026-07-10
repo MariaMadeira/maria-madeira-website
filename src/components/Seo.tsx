@@ -3,6 +3,14 @@ import { Helmet } from "react-helmet-async";
 const SITE_URL = "https://mariamadeira.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
+// React 19 hoists <title>, <meta> and <link> into <head> and adopts the copies
+// already there during hydration. It does NOT hoist a non-async <script>, so a
+// JSON-LD tag rendered here would stay inline in the tree. prerender.mjs lifts
+// it into <head>, leaving nothing where the client expects it — a hydration
+// mismatch. Render it on the server only: the tag prerender writes into <head>
+// is plain HTML that React never owns, so it survives untouched.
+const IS_SERVER = typeof window === "undefined";
+
 interface SeoProps {
     /** Page title. Keep under 60 characters, main keyword first. */
     title: string;
@@ -46,7 +54,7 @@ export default function Seo({
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={imageUrl} />
 
-            {jsonLd && (
+            {jsonLd && IS_SERVER && (
                 <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
             )}
         </Helmet>

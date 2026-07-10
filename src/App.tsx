@@ -4,6 +4,7 @@ import { Suspense, lazy } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import PageLoader from "./components/PageLoader";
 
 // Route-based code splitting
 const Home = lazy(() => import("./pages/Home"));
@@ -27,27 +28,6 @@ const CaseStudyBodysurfSchool = lazy(() => import("./pages/CaseStudyBodysurfScho
 const PortfolioClickCollect = lazy(() => import("./pages/PortfolioClickCollect"));
 // Blog.tsx is kept but unrouted until the posts it lists are actually written.
 const NotFound = lazy(() => import("./pages/NotFound"));
-
-function PageLoader() {
-  return (
-    <div style={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      minHeight: "60vh",
-    }}>
-      <div style={{
-        width: "40px",
-        height: "40px",
-        border: "3px solid var(--border-color)",
-        borderTopColor: "var(--accent-secondary)",
-        borderRadius: "50%",
-        animation: "spin 0.8s linear infinite",
-      }} />
-      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-    </div>
-  );
-}
 
 export default function App() {
   return (
