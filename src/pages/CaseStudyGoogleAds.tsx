@@ -6,8 +6,8 @@ export default function CaseStudyGoogleAds() {
     return (
         <>
         <Seo
-            title="Google Ads Case Study | £12.78 CPA"
-            description="Google Ads case study: how structured campaign architecture and creative testing turned £9.9K of ad spend into 778 conversions at a £12.78 cost per conversion."
+            title="Google Ads Case Study | 5.34x ROAS"
+            description="Google Ads case study: how structured campaign architecture and creative testing turned £23.4K of ad spend into £125K in conversion value at a 5.34x return."
             path="/case-study-google-ads"
         />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
@@ -51,7 +51,7 @@ export default function CaseStudyGoogleAds() {
                         Google Ads Revenue Growth
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
-                        How an optimised Google Ads strategy turned £9.9K in ad spend into 778 high-intent conversions at a £12.78 cost per conversion.
+                        How an optimised Google Ads strategy turned £23.4K in ad spend into £125K in conversion value — a 5.34x return — across roughly ten months (Sept 2025 – Jul 2026).
                     </p>
                 </div>
 
@@ -155,9 +155,12 @@ export default function CaseStudyGoogleAds() {
 
                     <div className="grid-3" style={{ gap: "1.5rem" }}>
                         {[
-                            { metric: "£9.9K", label: "Total Ad Spend", detail: "" },
-                            { metric: "778", label: "Conversions", detail: "" },
-                            { metric: "£12.78", label: "Cost per Conversion", detail: "" },
+                            { metric: "£125K", label: "Conversion Value", detail: "" },
+                            { metric: "£23.4K", label: "Total Ad Spend", detail: "" },
+                            { metric: "5.34x", label: "Return on Ad Spend", detail: "" },
+                            { metric: "2,000", label: "Conversions", detail: "" },
+                            { metric: "£11.70", label: "Cost per Conversion", detail: "" },
+                            { metric: "✦", label: "Structured Search System", detail: "Sept 2025 – Jul 2026" },
                         ].map((item, i) => (
                             <div
                                 key={i}
@@ -211,10 +214,10 @@ export default function CaseStudyGoogleAds() {
                         }}
                     >
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                            From <strong style={{ color: "var(--text-primary)" }}>£9.9K</strong> in ad spend, the optimised campaigns reached <strong style={{ color: "var(--text-primary)" }}>4.34M</strong> impressions while keeping acquisition tightly efficient.
+                            From <strong style={{ color: "var(--text-primary)" }}>£23.4K</strong> in ad spend across roughly ten months, the optimised campaigns generated <strong style={{ color: "var(--text-primary)" }}>£125K</strong> in conversion value — a <strong style={{ color: "var(--text-primary)" }}>5.34x</strong> return on ad spend.
                         </p>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                            With <strong style={{ color: "var(--text-primary)" }}>778 conversions</strong> generated at a cost per conversion of <strong style={{ color: "var(--text-primary)" }}>£12.78</strong>, Google Ads became a reliable channel for acquiring high-intent customers.
+                            That came from <strong style={{ color: "var(--text-primary)" }}>2,000 conversions</strong> at a cost per conversion of <strong style={{ color: "var(--text-primary)" }}>£11.70</strong>, making Google Ads a reliable channel for acquiring high-intent customers.
                         </p>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>
                             This case demonstrates how structured campaign management and continuous optimisation can turn paid advertising into a scalable and profitable growth channel.

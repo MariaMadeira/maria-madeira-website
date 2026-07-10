@@ -5,22 +5,23 @@ import Seo from "../components/Seo";
 import { useInView } from "../hooks/useInView";
 
 // Email figures are verified Klaviyo data for the last 12 months (Jul 2024 –
-// Jul 2025). The four headline numbers (£134K, 37.8% revenue share, 50.4%,
-// 5.34x Meta ROAS) live in the Measurable Impact grid; these supporting metrics
-// appear nowhere else on the page, so every stat is stated exactly once. The
-// unverifiable Google Ads ROAS (4.9x) and revenue (£51.9K) have been removed.
+// Jul 2025); Google Ads figures are verified for Sept 2025 – Jul 2026. The four
+// headline numbers (£134K, 37.8% revenue share, 50.4%, 5.34x Meta ROAS) live in
+// the Measurable Impact grid; these supporting metrics appear nowhere else on
+// the page, so every stat is stated exactly once. Google Ads ROAS (also 5.34x)
+// is shown only in its case study, to avoid colliding with the Meta figure here.
 const SUPPORTING_METRICS = [
     { to: 48.3, prefix: "£", suffix: "K", decimals: 1, label: "Flow Revenue", detail: "From automated lifecycle flows, +82.5% YoY" },
     { to: 7.27, prefix: "", suffix: "%", decimals: 2, label: "Flow Click Rate", detail: "Across automated email flows, last 12 months" },
     { to: 86.1, prefix: "£", suffix: "K", decimals: 1, label: "Campaign Revenue", detail: "From email campaigns, +92.6% YoY" },
-    { to: 778, prefix: "", suffix: "", decimals: 0, label: "Google Ads Conversions", detail: "High-intent acquisition from £9.9K spend" },
+    { to: 11.70, prefix: "£", suffix: "", decimals: 2, label: "Google Ads Cost / Conversion", detail: "2,000 conversions · Sept 2025 – Jul 2026" },
 ];
 
-// Outcomes are deliberately phrased to avoid restating any figure already shown
-// in the hero badge, the Measurable Impact grid or the supporting strip — each
-// stat appears exactly once on this page. That leaves the Google Ads cost per
-// conversion as the only unused headline number; the other two lead with the
-// transformation instead.
+// Outcomes are phrased to avoid restating any figure already shown in the hero
+// badge, the Measurable Impact grid or the supporting strip — each stat appears
+// exactly once on this page. The Google Ads ROAS (5.34x) is intentionally NOT
+// shown here: it coincides with the Meta Ads ROAS in the grid, so the card leads
+// with conversion value and spend instead.
 const FEATURED_WORK = [
     {
         category: "Growth Strategy & Website Build",
@@ -31,7 +32,7 @@ const FEATURED_WORK = [
     {
         category: "Paid Advertising",
         title: "Google Ads Revenue Growth",
-        outcome: "£12.78 cost per conversion, acquiring high-intent customers through structured search campaigns.",
+        outcome: "£125K in conversion value from £23.4K in ad spend, acquiring high-intent customers through structured search campaigns.",
         link: "/case-study-google-ads",
     },
     {
@@ -446,7 +447,6 @@ export default function Home() {
                         opacity: 0.45
                     }}>
                         {[
-                            "THE BLACK FARMER",
                             "SMORGASBORD",
                             "OUSADIA",
                             "WILTSHIRE COUNTRY FAYRE",

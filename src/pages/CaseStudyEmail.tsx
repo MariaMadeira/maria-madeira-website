@@ -72,7 +72,7 @@ export default function CaseStudyEmail() {
                         Context
                     </h2>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                        The brand — a UK food e-commerce business — had strong customer demand but email marketing was significantly underutilised.
+                        The brand — a UK premium food e-commerce brand — had strong customer demand but email marketing was significantly underutilised.
                     </p>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
                         Despite a growing customer base, lifecycle automation was limited and most email revenue came from occasional campaign sends rather than structured retention flows.

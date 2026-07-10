@@ -6,7 +6,7 @@ const POSTS = [
     {
         slug: "email-marketing-lifecycle-flows",
         title: "How Lifecycle Email Flows Generated £134K in Attributed Revenue",
-        excerpt: "Most e-commerce brands treat email as a broadcast channel. The ones that scale treat it as a conversation. Here's the exact flow architecture that drove a 50.4% campaign open rate and £134K in revenue for a UK food brand.",
+        excerpt: "Most e-commerce brands treat email as a broadcast channel. The ones that scale treat it as a conversation. Here's the exact flow architecture that drove a 50.4% campaign open rate and £134K in revenue for a UK premium food e-commerce brand.",
         category: "Email Marketing",
         readTime: "6 min read",
         date: "March 2025",
@@ -21,7 +21,7 @@ const POSTS = [
     },
     {
         slug: "google-ads-roas-ecommerce",
-        title: "A £12.78 Cost per Conversion on Google Ads: What the Data Actually Taught Me",
+        title: "Achieving a 5.34x ROAS on Google Ads: What the Data Actually Taught Me",
         excerpt: "Efficient acquisition doesn't happen by accident. It happens through obsessive audience segmentation, creative testing, and knowing when to scale versus when to cut. Here's the playbook.",
         category: "Paid Advertising",
         readTime: "7 min read",

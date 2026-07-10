@@ -11,19 +11,19 @@ export default function PortfolioAIEnhanced() {
 
     const transformations = [
         {
-            title: "Ox Cheek",
+            title: "Hero Product",
             original: "ANTES raw ox cheek.jpg",
             enhanced: "DEPOIS raw ox cheek AI.jpg",
             cooked: "cooked ox cheek.jpg"
         },
         {
-            title: "Pork Stir Fry",
+            title: "Signature Range",
             original: "ANTESPork - Stir Fry Strips.jpg",
             enhanced: "DEPOIS pork stir.jpg",
             cooked: "cooked pork stir.jpg"
         },
         {
-            title: "Valentine's Steak",
+            title: "Seasonal Special",
             original: "original valentines steak.png",
             enhanced: "raw valentines steak.jpg",
             cooked: "cooked valentine's steak.jpg"
@@ -140,7 +140,7 @@ export default function PortfolioAIEnhanced() {
                         color: "var(--text-secondary)",
                         fontWeight: 300 
                     }}>
-                        <p style={{ marginBottom: "1rem" }}>AI-assisted product imagery development for an e-commerce food brand.</p>
+                        <p style={{ marginBottom: "1rem" }}>AI-assisted product imagery development for a UK premium food e-commerce brand.</p>
                         <p style={{ marginBottom: "1rem" }}>The objective was to improve the visual quality and consistency of product images used across advertising campaigns, email marketing, and website product listings.</p>
                         <p>AI tools were used to enhance existing photography and generate new visual assets that better communicate product quality while reducing production time and dependency on traditional photoshoots.</p>
                     </div>

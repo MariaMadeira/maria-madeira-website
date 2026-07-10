@@ -21,7 +21,7 @@ export default function CaseStudies() {
             title: "Google Ads Revenue Growth",
             category: "Paid Advertising",
             problem: "Paid acquisition needed to scale profitably while maintaining strong return on ad spend.",
-            results: "778 conversions from £9.9K ad spend · £12.78 cost per conversion",
+            results: "£125K conversion value from £23.4K ad spend · £11.70 cost per conversion",
             link: "/case-study-google-ads",
         },
         {
@@ -51,7 +51,7 @@ export default function CaseStudies() {
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
                 title="Case Studies | E-commerce Growth Results"
-                description="Real e-commerce case studies with measurable outcomes: SEO and platform migration, Google Ads at £12.78 cost per conversion, £134K email revenue, and click & collect UX."
+                description="Real e-commerce case studies with measurable outcomes: SEO and platform migration, Google Ads at a 5.34x return on ad spend, £134K email revenue, and click & collect UX."
                 path="/case-studies"
             />
 

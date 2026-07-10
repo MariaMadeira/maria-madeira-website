@@ -51,12 +51,12 @@ export default function PortfolioEmailMarketing() {
 
     const segments = [
         {
-            name: "Ox Customers",
-            description: "Customers who purchased ox products, enabling targeted content around relevant cuts, recipes and promotions."
+            name: "Hero Product Customers",
+            description: "Customers who purchased the signature range, enabling targeted content around related products, recipes and promotions."
         },
         {
-            name: "Liver & Kidney Customers",
-            description: "Customers with a preference for offal cuts, allowing for highly relevant messaging and cross-sell opportunities."
+            name: "Specialty Range Customers",
+            description: "Customers with a preference for a specialty product line, allowing for highly relevant messaging and cross-sell opportunities."
         },
     ];
 
@@ -66,7 +66,7 @@ export default function PortfolioEmailMarketing() {
             description: "Sent to customers after purchase to provide recipe ideas and cooking inspiration, building brand affinity and encouraging repeat engagement."
         },
         {
-            title: "The Black Farmer Kitchen",
+            title: "Brand Kitchen Series",
             description: "A content-led email series aligned with the brand's identity, celebrating produce and storytelling to deepen customer connection."
         },
         {
@@ -379,8 +379,8 @@ export default function PortfolioEmailMarketing() {
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem", alignItems: "start" }}>
                         {[
                             { src: "/projects/email-marketing/ads-offer.png", label: "Welcome / Offer Flow" },
-                            { src: "/projects/email-marketing/ox-1.png", label: "Ox Segment — Email 1" },
-                            { src: "/projects/email-marketing/ox-2.png", label: "Ox Segment — Email 2" },
+                            { src: "/projects/email-marketing/ox-1.png", label: "Product Segment — Email 1" },
+                            { src: "/projects/email-marketing/ox-2.png", label: "Product Segment — Email 2" },
                             { src: "/projects/email-marketing/replenishment.png", label: "30-Day Replenishment Flow" },
                             { src: "/projects/email-marketing/recipe.png", label: "Recipe Content Flow" },
                         ].map((email, i) => (
