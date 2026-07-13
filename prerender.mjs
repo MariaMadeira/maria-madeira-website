@@ -69,13 +69,12 @@ for (const route of routes) {
 writeFileSync(join(__dirname, 'dist/404.html'), await renderPage(notFoundPath))
 console.log(`Pre-rendered: ${notFoundPath} -> dist/404.html`)
 
-// Generate sitemap.xml
-const today = new Date().toISOString().split('T')[0]
+// Generate sitemap.xml. No <lastmod>: we don't track real per-route change dates,
+// and stamping every URL with the build date is misleading to crawlers.
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes.map(r => `  <url>
     <loc>${BASE_URL}${r === '/' ? '' : r}</loc>
-    <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${r === '/' ? '1.0' : '0.8'}</priority>
   </url>`).join('\n')}

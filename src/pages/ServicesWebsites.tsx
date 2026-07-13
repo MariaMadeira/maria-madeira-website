@@ -3,6 +3,21 @@ import { Link } from "react-router-dom";
 import { Search, Compass, Hammer, ArrowRight, Globe, TrendingUp, ShoppingBag } from "lucide-react";
 import Seo from "../components/Seo";
 
+const SITE_URL = "https://mariamadeira.com";
+const WEBSITES_JSON_LD = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+                { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` },
+                { "@type": "ListItem", "position": 3, "name": "Website Strategy & Build", "item": `${SITE_URL}/services/websites` },
+            ],
+        },
+    ],
+};
+
 /* ── How it works: 3 steps ─────────────────────────────── */
 const STEPS = [
     { icon: <Search size={26} />, title: "Audit", line: "We find where your current site leaks visibility, trust, and revenue." },
@@ -240,6 +255,7 @@ export default function ServicesWebsites() {
                 title="Website Strategy & SEO/AEO Consultant | Maria Madeira"
                 description="Turn an outdated website into a growth engine: strategy, a rebuild or targeted fixes, with SEO and AEO built in from the start for brands that sell online."
                 path="/services/websites"
+                jsonLd={WEBSITES_JSON_LD}
             />
 
             <style>{`

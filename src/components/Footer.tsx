@@ -49,6 +49,7 @@ export default function Footer() {
                             <li><Link to="/services" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Services</Link></li>
                             <li><Link to="/case-studies" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Case Studies</Link></li>
                             <li><Link to="/portfolio" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Portfolio</Link></li>
+                            <li><Link to="/blog" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Blog</Link></li>
                         </ul>
                     </div>
 

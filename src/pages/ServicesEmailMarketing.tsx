@@ -76,6 +76,14 @@ const EMAIL_JSON_LD = {
                 "acceptedAnswer": { "@type": "Answer", "text": f.a },
             })),
         },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+                { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` },
+                { "@type": "ListItem", "position": 3, "name": "Email Marketing & Klaviyo Consulting", "item": `${SITE_URL}/services/email-marketing` },
+            ],
+        },
     ],
 };
 

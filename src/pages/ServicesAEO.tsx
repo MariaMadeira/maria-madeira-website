@@ -70,6 +70,14 @@ const AEO_JSON_LD = {
                 "acceptedAnswer": { "@type": "Answer", "text": f.a },
             })),
         },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+                { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` },
+                { "@type": "ListItem", "position": 3, "name": "Answer Engine Optimization", "item": `${SITE_URL}/services/aeo` },
+            ],
+        },
     ],
 };
 
@@ -364,6 +372,9 @@ export default function ServicesAEO() {
                 </blockquote>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginTop: "1.75rem", fontSize: "1.05rem" }}>
                     Traditional SEO earns you a position in a list of links and trusts the user to click and compare. AEO works one layer up: it shapes the entities, structured data, and answer-ready content that AI engines synthesise into a single response, so your brand is the one named, quoted, and linked.
+                </p>
+                <p style={{ marginTop: "1.25rem", fontSize: "1.05rem" }}>
+                    <Link to="/blog/what-is-aeo" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>Read the full guide: What is AEO?</Link>
                 </p>
             </section>
 

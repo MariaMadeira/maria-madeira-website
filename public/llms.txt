@@ -1,0 +1,24 @@
+# Maria Madeira
+
+> Maria Madeira is a growth strategist for brands that sell online, covering website strategy, AI search (Answer Engine Optimization), email marketing and Klaviyo, paid acquisition, and creative direction. Based in Lisbon, working globally.
+
+Verified results from recent engagements include £134K in email-attributed revenue over 12 months (up 88.9% year on year, 37.8% of total store revenue), a 50.4% average campaign open rate, and Google Ads at a 5.34x return on ad spend.
+
+## Services
+- [Website Strategy & Build](https://mariamadeira.com/services/websites): strategy, rebuilds and targeted improvements with SEO and AEO built in from the start.
+- [Answer Engine Optimization (AEO)](https://mariamadeira.com/services/aeo): getting cited and recommended by AI assistants such as ChatGPT, Perplexity, Gemini and Google AI Overviews.
+- [Email Marketing & Klaviyo Consulting](https://mariamadeira.com/services/email-marketing): lifecycle flows, segmentation and campaigns that turn email into a compounding, attributed-revenue channel.
+- [All services](https://mariamadeira.com/services): the full list, including growth strategy, paid advertising, creative direction and e-commerce platform migration.
+
+## Case studies
+- [Email lifecycle revenue growth](https://mariamadeira.com/case-study-email): a Klaviyo lifecycle system that grew email-attributed revenue to £134K over 12 months.
+- [Google Ads revenue growth](https://mariamadeira.com/case-study-google-ads): structured campaigns delivering a 5.34x return on ad spend.
+- [SEO & platform migration](https://mariamadeira.com/case-study-seo): recovering organic and answer-engine visibility after a WordPress to Shopify migration.
+- [The Bodysurf School](https://mariamadeira.com/case-study-bodysurf-school): a brochure site rebuilt into a bilingual booking engine with SEO and AEO foundations.
+- [Click & Collect](https://mariamadeira.com/case-study-click-collect): a mobile pre-order experience for a high-traffic retail store.
+
+## Writing
+- [What is AEO? Answer Engine Optimization explained](https://mariamadeira.com/blog/what-is-aeo): how brands get cited by AI answer engines, how AEO differs from SEO and GEO, and where to start.
+
+## Contact
+- [Book a free strategy call](https://mariamadeira.com/contact)
