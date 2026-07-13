@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, Clock } from "lucide-react";
 import Seo from "../components/Seo";
+import AuthorBio from "../components/AuthorBio";
 
 const SITE_URL = "https://mariamadeira.com";
 const PAGE_URL = `${SITE_URL}/blog/what-is-aeo`;
@@ -158,9 +159,7 @@ export default function BlogWhatIsAEO() {
                     ))}
                 </div>
 
-                <div style={{ marginTop: "3.5rem", paddingTop: "2rem", borderTop: "1px solid var(--border-color)", color: "var(--text-secondary)", fontStyle: "italic", lineHeight: 1.7 }}>
-                    Maria Madeira is a growth strategist working with brands that sell online, covering email marketing, paid acquisition, and AI-driven search. <Link to="/contact" style={{ ...linkStyle, fontStyle: "normal" }}>Book a free strategy call</Link>.
-                </div>
+                <AuthorBio />
             </article>
         </div>
     );
