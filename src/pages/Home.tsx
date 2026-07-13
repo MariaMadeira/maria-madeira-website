@@ -53,7 +53,7 @@ const HOME_JSON_LD = {
             "url": "https://mariamadeira.com",
             "image": "https://mariamadeira.com/portrait.png",
             "jobTitle": "E-commerce Growth Strategist",
-            "description": "Growth Strategist with 4+ years of experience helping brands that sell online scale through email marketing, paid acquisition, and AI-powered systems.",
+            "description": "Maria Madeira is a growth strategist for brands that sell online: website strategy and build, SEO and AEO, email marketing, and paid acquisition.",
             "sameAs": ["https://www.linkedin.com/in/maria-madeira-43501b3a/"],
             "knowsAbout": ["Email Marketing", "Klaviyo", "Google Ads", "Meta Ads", "AI Marketing", "E-commerce Growth", "Paid Acquisition", "Lifecycle Marketing"]
         },
