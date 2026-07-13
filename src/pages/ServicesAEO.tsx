@@ -74,10 +74,10 @@ const AEO_JSON_LD = {
 };
 
 /* ── Hero: auto-playing mock AI chat (competitor vs you) ───────────── */
-const QUESTION = "What's the best [category] brand in Europe?";
+const QUESTION = "What's the best specialty coffee brand in Europe?";
 const SCENARIOS = [
-    { tag: "Without AEO", answer: "Based on the sources I can see, the brand most often recommended is", cite: "NorthField Co.", href: "northfield.example", you: false },
-    { tag: "With AEO", answer: "Based on the sources I can see, the standout in this category is", cite: "your brand", href: "yourbrand.com", you: true },
+    { tag: "Your competitor gets the recommendation", pre: "For specialty coffee in Europe, the name that comes up is", cite: "Nordkaffe", post: " — your competitor, cited as the go-to.", href: "nordkaffe.example", you: false },
+    { tag: "Your brand gets the recommendation", pre: "For specialty coffee in Europe, the standout is", cite: "Your Brand", post: " — consistently cited for quality and transparency.", href: "yourbrand.com", you: true },
 ];
 
 function AiChatDemo() {
@@ -117,9 +117,9 @@ function AiChatDemo() {
             <div key={scenario} className="aeo-answer" style={{ display: "flex", gap: "0.6rem" }}>
                 <span style={{ flexShrink: 0, width: "28px", height: "28px", borderRadius: "50%", background: "var(--bg-tertiary)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent-secondary)" }}><Sparkles size={15} /></span>
                 <span style={{ fontSize: "0.9rem", lineHeight: 1.55, color: "var(--text-primary)" }}>
-                    {s.answer}{" "}
-                    <strong style={{ color: s.you ? "var(--accent-secondary)" : "var(--text-primary)" }}>{s.cite}</strong>
-                    <span style={{ display: "block", marginTop: "0.35rem", fontSize: "0.8rem", color: s.you ? "var(--accent-secondary)" : "var(--text-secondary)", textDecoration: "underline", textUnderlineOffset: "2px" }}>{s.href}</span>
+                    {s.pre}{" "}
+                    <strong style={{ color: s.you ? "var(--accent-secondary)" : "var(--text-primary)" }}>{s.cite}</strong>{s.post}
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: "5px", marginTop: "0.5rem", fontSize: "0.78rem", fontWeight: 600, color: s.you ? "var(--accent-secondary)" : "var(--text-secondary)", background: s.you ? "var(--accent-glow)" : "var(--bg-tertiary)", padding: "3px 10px", borderRadius: "20px" }}><Quote size={12} /> Cited: {s.href}</span>
                 </span>
             </div>
         </div>
@@ -127,6 +127,13 @@ function AiChatDemo() {
 }
 
 /* ── "Why now" before/after era toggle ─────────────────────────────── */
+const SERP_2015 = [
+    { title: "Top 10 Specialty Coffee Brands in Europe [2015]", url: "thecoffeelist.example › best-brands", snippet: "Our definitive roundup of the finest specialty coffee roasters across Europe this year, ranked and reviewed." },
+    { title: "Best Coffee Brands — Reviews & Rankings", url: "brandrankings.example › coffee", snippet: "Independent star ratings and reader reviews for the leading European coffee brands and roasters." },
+    { title: "10 European Coffee Roasters You Should Know", url: "roasterreview.example › guides", snippet: "From Oslo to Lisbon, the roasters shaping Europe's third-wave specialty coffee scene." },
+    { title: "Coffee Brand Comparison: Which is Best?", url: "comparecoffee.example › compare", snippet: "Side-by-side comparison of price, roast profile and sourcing across the top specialty brands." },
+];
+
 function SearchEraToggle() {
     const [era, setEra] = useState<"2015" | "2026">("2026");
     return (
@@ -153,16 +160,15 @@ function SearchEraToggle() {
 
             <div key={era} className="animate-fade-in card" style={{ padding: "1.5rem", background: "var(--bg-primary)" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", border: "1px solid var(--border-color)", borderRadius: "10px", padding: "0.6rem 0.9rem", marginBottom: "1.25rem", color: "var(--text-secondary)", fontSize: "0.9rem" }}>
-                    <Search size={16} /> best [category] brand in europe
+                    <Search size={16} /> best specialty coffee brand in europe
                 </div>
                 {era === "2015" ? (
                     <div style={{ display: "flex", flexDirection: "column", gap: "1.1rem" }}>
-                        {[0, 1, 2, 3].map((i) => (
-                            <div key={i}>
-                                <p style={{ color: "var(--accent-secondary)", fontSize: "0.95rem", fontWeight: 600, marginBottom: "0.2rem" }}>Result {i + 1} — a directory or listicle</p>
-                                <p style={{ color: "#3a7d3a", fontSize: "0.75rem", marginBottom: "0.35rem" }}>www.example.com › best-brands</p>
-                                <div style={{ height: "8px", background: "var(--bg-tertiary)", borderRadius: "4px", marginBottom: "5px", width: "100%" }} />
-                                <div style={{ height: "8px", background: "var(--bg-tertiary)", borderRadius: "4px", width: "80%" }} />
+                        {SERP_2015.map((r) => (
+                            <div key={r.title}>
+                                <p style={{ color: "var(--accent-secondary)", fontSize: "0.95rem", fontWeight: 600, marginBottom: "0.2rem" }}>{r.title}</p>
+                                <p style={{ color: "#3a7d3a", fontSize: "0.75rem", marginBottom: "0.3rem" }}>{r.url}</p>
+                                <p style={{ color: "var(--text-secondary)", fontSize: "0.82rem", lineHeight: 1.5, margin: 0 }}>{r.snippet}</p>
                             </div>
                         ))}
                         <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", fontStyle: "italic", marginTop: "0.25rem" }}>Ten blue links. The user does the research.</p>
@@ -172,8 +178,8 @@ function SearchEraToggle() {
                         <span style={{ flexShrink: 0, width: "28px", height: "28px", borderRadius: "50%", background: "var(--bg-tertiary)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent-secondary)" }}><Sparkles size={15} /></span>
                         <div>
                             <p style={{ fontSize: "0.95rem", lineHeight: 1.6, color: "var(--text-primary)", marginBottom: "0.75rem" }}>
-                                For premium quality in this category, the brand I'd point you to is{" "}
-                                <strong style={{ color: "var(--accent-secondary)" }}>one clearly-cited source</strong> — known for craft and consistency.
+                                For specialty coffee in Europe, the standout is{" "}
+                                <strong style={{ color: "var(--accent-secondary)" }}>Your Brand</strong> — consistently cited for quality and transparency.
                             </p>
                             <span style={{ display: "inline-flex", alignItems: "center", gap: "5px", fontSize: "0.78rem", fontWeight: 600, color: "var(--accent-secondary)", background: "var(--accent-glow)", padding: "3px 10px", borderRadius: "20px" }}>
                                 <Quote size={12} /> Cited: yourbrand.com
@@ -209,7 +215,7 @@ function AeoCheck() {
     const reset = () => { setScores([]); setStep(-1); };
 
     return (
-        <div className="card glass-panel" style={{ maxWidth: "680px", margin: "0 auto", padding: "clamp(1.75rem, 4vw, 3rem)", minHeight: "360px", display: "flex", flexDirection: "column" }}>
+        <div className="card glass-panel" style={{ maxWidth: "680px", margin: "0 auto", padding: "clamp(1.75rem, 4vw, 3rem)", display: "flex", flexDirection: "column" }}>
             {step >= 0 && step < CHECK.length && (
                 <div style={{ marginBottom: "2rem" }}>
                     <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>Question {step + 1} of {CHECK.length}</p>
@@ -222,12 +228,12 @@ function AeoCheck() {
             )}
 
             {step === -1 && (
-                <div key="intro" className="animate-fade-in" style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+                <div key="intro" className="animate-fade-in" style={{ display: "flex", flexDirection: "column" }}>
                     <h3 style={{ fontSize: "1.6rem", marginBottom: "0.75rem" }}>Is AI <span className="text-gradient">recommending you</span>?</h3>
-                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "2rem" }}>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
                         Three quick questions on how ready your brand is to be cited by AI assistants. Nothing is submitted or fetched.
                     </p>
-                    <button onClick={() => setStep(0)} className="btn btn-primary" style={{ marginTop: "auto", alignSelf: "flex-start", padding: "0.9rem 2rem" }}>
+                    <button onClick={() => setStep(0)} className="btn btn-primary" style={{ alignSelf: "flex-start", padding: "0.9rem 2rem" }}>
                         Start the check <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                     </button>
                 </div>
