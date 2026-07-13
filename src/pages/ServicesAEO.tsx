@@ -75,9 +75,14 @@ const AEO_JSON_LD = {
 
 /* ── Hero: auto-playing mock AI chat (competitor vs you) ───────────── */
 const QUESTION = "What's the best specialty coffee brand in Europe?";
+// Both states share one answer, word for word; only the brand name and citation
+// change. The "competitor vs you" framing lives solely in the state label above
+// the chat — a real AI answer would never editorialise about "your competitor".
+const ANSWER_PRE = "For specialty coffee in Europe, the standout is";
+const ANSWER_POST = ", consistently cited for quality and transparency.";
 const SCENARIOS = [
-    { tag: "Your competitor gets the recommendation", pre: "For specialty coffee in Europe, the name that comes up is", cite: "Nordkaffe", post: " (your competitor, cited as the go-to).", href: "nordkaffe.example", you: false },
-    { tag: "Your brand gets the recommendation", pre: "For specialty coffee in Europe, the standout is", cite: "Your Brand", post: ", consistently cited for quality and transparency.", href: "yourbrand.com", you: true },
+    { tag: "Your competitor gets the recommendation", cite: "Nordkaffe", href: "nordkaffe.example", you: false },
+    { tag: "Your brand gets the recommendation", cite: "Your Brand", href: "yourbrand.com", you: true },
 ];
 
 function AiChatDemo() {
@@ -101,11 +106,15 @@ function AiChatDemo() {
     }, []);
 
     const s = SCENARIOS[scenario];
+    // Same pill treatment in both states; only the tone (accent vs neutral) differs.
+    const tone = s.you
+        ? { fg: "var(--accent-secondary)", bg: "var(--accent-glow)" }
+        : { fg: "var(--text-secondary)", bg: "var(--bg-tertiary)" };
     return (
         <div className="aeo-chat card" aria-hidden="true" style={{ padding: "1.5rem", background: "var(--bg-primary)", maxWidth: "440px", width: "100%" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1.25rem", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-secondary)" }}>
                 <Bot size={16} /> AI Assistant
-                <span className="aeo-chat-tag" style={{ marginLeft: "auto", color: s.you ? "var(--accent-secondary)" : "var(--text-secondary)", background: s.you ? "var(--accent-glow)" : "var(--bg-tertiary)", padding: "2px 10px", borderRadius: "20px", letterSpacing: "0.04em" }}>{s.tag}</span>
+                <span className="aeo-chat-tag" style={{ marginLeft: "auto", color: tone.fg, background: tone.bg, padding: "2px 10px", borderRadius: "20px", letterSpacing: "0.04em" }}>{s.tag}</span>
             </div>
             {/* user question */}
             <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "1rem" }}>
@@ -117,9 +126,9 @@ function AiChatDemo() {
             <div key={scenario} className="aeo-answer" style={{ display: "flex", gap: "0.6rem" }}>
                 <span style={{ flexShrink: 0, width: "28px", height: "28px", borderRadius: "50%", background: "var(--bg-tertiary)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent-secondary)" }}><Sparkles size={15} /></span>
                 <span style={{ fontSize: "0.9rem", lineHeight: 1.55, color: "var(--text-primary)" }}>
-                    {s.pre}{" "}
-                    <strong style={{ color: s.you ? "var(--accent-secondary)" : "var(--text-primary)" }}>{s.cite}</strong>{s.post}
-                    <span style={{ display: "inline-flex", alignItems: "center", gap: "5px", marginTop: "0.5rem", fontSize: "0.78rem", fontWeight: 600, color: s.you ? "var(--accent-secondary)" : "var(--text-secondary)", background: s.you ? "var(--accent-glow)" : "var(--bg-tertiary)", padding: "3px 10px", borderRadius: "20px" }}><Quote size={12} /> Cited: {s.href}</span>
+                    {ANSWER_PRE}{" "}
+                    <strong style={{ color: tone.fg }}>{s.cite}</strong>{ANSWER_POST}
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: "5px", marginTop: "0.5rem", fontSize: "0.78rem", fontWeight: 600, color: tone.fg, background: tone.bg, padding: "3px 10px", borderRadius: "20px" }}><Quote size={12} /> Cited: {s.href}</span>
                 </span>
             </div>
         </div>
