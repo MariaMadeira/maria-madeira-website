@@ -19,6 +19,13 @@ export default function Services() {
             cta: "Explore AEO",
         },
         {
+            icon: <Mail size={40} />,
+            title: "Email Marketing & Klaviyo Consulting",
+            description: "Lifecycle flows, segmentation and campaigns that turn email into a compounding, attributed-revenue channel. Klaviyo audits, builds and monthly measurement.",
+            link: "/services/email-marketing",
+            cta: "Explore email marketing",
+        },
+        {
             icon: <TrendingUp size={40} />,
             title: "Growth Strategy",
             description: "Holistic approaches to acquiring and retaining customers. From market positioning to full-funnel optimization, we build strategies designed to scale aggressive growth objectives sustainably.",
@@ -29,7 +36,8 @@ export default function Services() {
             icon: <Mail size={40} />,
             title: "Email Marketing & Automation",
             description: "Maximizing LTV and minimizing acquisition costs with advanced lifecycle flows, A/B testing, and robust list segmentation strategy.",
-            link: "/case-study-email",
+            link: "/services/email-marketing",
+            cta: "Explore email marketing",
         },
         {
             icon: <BarChart size={40} />,

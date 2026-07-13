@@ -497,26 +497,33 @@ export default function Home() {
                 <div className="grid-3">
                     {[
                         { icon: <TrendingUp size={22} />, title: 'Growth Strategy', desc: 'Full-funnel strategies to take brands from steady growth to aggressive, sustainable scaling.' },
-                        { icon: <Mail size={22} />, title: 'Email Marketing & Automation', desc: 'Advanced lifecycle flows and segmentation that maximise LTV and cut acquisition costs.' },
+                        { icon: <Mail size={22} />, title: 'Email Marketing & Automation', desc: 'Advanced lifecycle flows and segmentation that maximise LTV and cut acquisition costs.', link: '/services/email-marketing' },
                         { icon: <BarChart size={22} />, title: 'Paid Advertising', desc: 'Data-driven media buying across Meta, Google, and TikTok to maximise ROAS.' },
                         { icon: <Cpu size={22} />, title: 'AI & Automation Systems', desc: 'AI tools that accelerate content creation, automate workflows, and enrich data analysis.' },
                         { icon: <Maximize size={22} />, title: 'Creative Direction', desc: 'Translating analytical insights into compelling visual stories and high-performing brand assets.' },
                         { icon: <ArrowRightLeft size={22} />, title: 'E-commerce Platform Migration', desc: 'Seamless migrations that protect SEO, revenue, and customer data throughout the transition.' },
-                    ].map((s) => (
-                        <div key={s.title} className="card">
-                            <div style={{
-                                width: '48px', height: '48px', borderRadius: '12px',
-                                background: 'var(--accent-glow)', display: 'flex',
-                                alignItems: 'center', justifyContent: 'center',
-                                marginBottom: '1.25rem', color: 'var(--accent-secondary)',
-                                flexShrink: 0,
-                            }}>
-                                {s.icon}
-                            </div>
-                            <h3>{s.title}</h3>
-                            <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem', fontSize: '0.95rem' }}>{s.desc}</p>
-                        </div>
-                    ))}
+                    ].map((s: { icon: React.ReactNode; title: string; desc: string; link?: string }) => {
+                        const body = (
+                            <>
+                                <div style={{
+                                    width: '48px', height: '48px', borderRadius: '12px',
+                                    background: 'var(--accent-glow)', display: 'flex',
+                                    alignItems: 'center', justifyContent: 'center',
+                                    marginBottom: '1.25rem', color: 'var(--accent-secondary)',
+                                    flexShrink: 0,
+                                }}>
+                                    {s.icon}
+                                </div>
+                                <h3>{s.title}</h3>
+                                <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem', fontSize: '0.95rem' }}>{s.desc}</p>
+                            </>
+                        );
+                        return s.link ? (
+                            <Link key={s.title} to={s.link} className="card" style={{ display: 'block' }}>{body}</Link>
+                        ) : (
+                            <div key={s.title} className="card">{body}</div>
+                        );
+                    })}
                 </div>
             </section>
 
