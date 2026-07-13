@@ -121,14 +121,14 @@ const TESTIMONIALS = [
     },
     {
         name: "Will Fuller",
-        role: "WordPress Developer",
-        context: "Former colleague at The Black Farmer · Recommended on LinkedIn",
+        role: "E-commerce Manager",
+        context: "Former colleague · Recommended on LinkedIn",
         quote: "Maria completely transformed our email marketing strategy. When she took over our Klaviyo account, she achieved 125% growth in email attributed revenue and boosted our automated flows by over 100%. Our open rates went from 28% to 48%, and click rates more than doubled. What impressed me most wasn't just the numbers — it was how she understood our customers.",
     },
     {
         name: "Hermela Michael",
         role: "History Undergraduate",
-        context: "Former colleague at The Black Farmer · Recommended on LinkedIn",
+        context: "Former colleague · Recommended on LinkedIn",
         quote: "Maria doesn't just think outside the box — she completely redefines it. Her creativity, strategic mindset, and deep understanding of marketing have played a huge role in shaping the success of the company. She approaches every project with passion and precision, always bringing fresh, data-driven ideas to the table that truly make an impact.",
     },
 ];

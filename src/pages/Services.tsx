@@ -164,7 +164,7 @@ export default function Services() {
                     }}>WF</div>
                     <div>
                         <p style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--text-primary)", marginBottom: "0.2rem" }}>Will Fuller</p>
-                        <p style={{ fontSize: "0.82rem", color: "var(--accent-secondary)", fontWeight: 600 }}>WordPress Developer · Former colleague at The Black Farmer</p>
+                        <p style={{ fontSize: "0.82rem", color: "var(--accent-secondary)", fontWeight: 600 }}>E-commerce Manager · Former colleague</p>
                     </div>
                 </div>
             </div>
