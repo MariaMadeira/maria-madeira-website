@@ -121,7 +121,7 @@ const TESTIMONIALS = [
     },
     {
         name: "Will Fuller",
-        role: "E-commerce Manager",
+        role: "WordPress Developer",
         context: "Former colleague · Recommended on LinkedIn",
         quote: "Maria completely transformed our email marketing strategy. When she took over our Klaviyo account, she achieved 125% growth in email attributed revenue and boosted our automated flows by over 100%. Our open rates went from 28% to 48%, and click rates more than doubled. What impressed me most wasn't just the numbers — it was how she understood our customers.",
     },
