@@ -33,13 +33,6 @@ export default function Services() {
             link: "/case-study-bodysurf-school",
         },
         {
-            icon: <Mail size={40} />,
-            title: "Email Marketing & Automation",
-            description: "Maximizing LTV and minimizing acquisition costs with advanced lifecycle flows, A/B testing, and robust list segmentation strategy.",
-            link: "/services/email-marketing",
-            cta: "Explore email marketing",
-        },
-        {
             icon: <BarChart size={40} />,
             title: "Paid Advertising",
             description: "Media buying and campaign management across Meta, Google, TikTok, and more. Data-driven allocation to maximize Return on Ad Spend (ROAS).",
