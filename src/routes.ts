@@ -19,6 +19,7 @@ export const ROUTES: RouteDef[] = [
     { path: "/", load: () => import("./pages/Home") },
     { path: "/services", load: () => import("./pages/Services") },
     { path: "/services/websites", load: () => import("./pages/ServicesWebsites") },
+    { path: "/services/aeo", load: () => import("./pages/ServicesAEO") },
     { path: "/about", load: () => import("./pages/About") },
     { path: "/contact", load: () => import("./pages/Contact") },
     { path: "/case-studies", load: () => import("./pages/CaseStudies") },

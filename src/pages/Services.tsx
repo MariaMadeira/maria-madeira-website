@@ -1,4 +1,4 @@
-import { TrendingUp, Mail, BarChart, Cpu, Maximize, ArrowRight, ArrowRightLeft, Globe } from "lucide-react";
+import { TrendingUp, Mail, BarChart, Cpu, Maximize, ArrowRight, ArrowRightLeft, Globe, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 
@@ -10,6 +10,13 @@ export default function Services() {
             description: "Turn an outdated website into a growth engine — strategy, a rebuild or targeted improvements, and SEO and AEO built in from the ground up so customers find you on Google and in AI search.",
             link: "/services/websites",
             cta: "Explore website services",
+        },
+        {
+            icon: <Sparkles size={40} />,
+            title: "Answer Engine Optimization (AEO)",
+            description: "Get cited and recommended by AI assistants — ChatGPT, Perplexity, Gemini, and Google AI Overviews — as search shifts from ranked links to synthesised answers.",
+            link: "/services/aeo",
+            cta: "Explore AEO",
         },
         {
             icon: <TrendingUp size={40} />,
