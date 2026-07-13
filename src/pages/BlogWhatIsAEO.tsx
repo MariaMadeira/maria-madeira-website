@@ -22,7 +22,7 @@ const FAQS: { q: string; a: string }[] = [
     },
     {
         q: "Does FAQ schema still matter now that Google removed FAQ rich results?",
-        a: "Yes, and the reason clarifies what AEO is. In May 2026 Google stopped showing FAQ rich results, the expandable Q&A dropdowns in search listings. The display feature died; the markup did not. Google states it still uses FAQ structured data to understand pages, and answer engines like ChatGPT and Perplexity read it as clean, machine-readable question-and-answer pairs. The audience for your FAQ schema changed from Google's results page to the AI systems composing answers. Write fuller answers now: complete 80-to-150-word responses get cited; ten-word snippets written for the old dropdowns do not.",
+        a: "Yes, and the reason clarifies what AEO is. In May 2026 Google stopped showing FAQ rich results, the expandable Q&A dropdowns in search listings. The display feature died; the markup did not. Google's own guidance says there is no need to remove the markup, and answer engines like ChatGPT and Perplexity read it as clean, machine-readable question-and-answer pairs. The audience for your FAQ schema changed from Google's results page to the AI systems composing answers. Write fuller answers now: complete 80-to-150-word responses tend to get cited; ten-word snippets written for the old dropdowns do not.",
     },
     {
         q: "Can a small brand beat big brands in AI answers?",
