@@ -365,7 +365,7 @@ export default function Home() {
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                     <h2 className="section-title">Measurable Impact</h2>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-                        Consistent results across diverse channels, driven by data and optimized for profitable growth.
+                        Consistent results across diverse channels, driven by data and optimised for profitable growth.
                     </p>
                 </div>
 

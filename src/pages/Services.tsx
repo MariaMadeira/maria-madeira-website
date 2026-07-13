@@ -13,7 +13,7 @@ export default function Services() {
         },
         {
             icon: <Sparkles size={40} />,
-            title: "Answer Engine Optimization (AEO)",
+            title: "Answer Engine Optimisation (AEO)",
             description: "Get cited and recommended by AI assistants (ChatGPT, Perplexity, Gemini, and Google AI Overviews) as search shifts from ranked links to synthesised answers.",
             link: "/services/aeo",
             cta: "Explore AEO",
@@ -28,14 +28,14 @@ export default function Services() {
         {
             icon: <TrendingUp size={40} />,
             title: "Growth Strategy",
-            description: "Holistic approaches to acquiring and retaining customers. From market positioning to full-funnel optimization, we build strategies designed to scale aggressive growth objectives sustainably.",
+            description: "Holistic approaches to acquiring and retaining customers. From market positioning to full-funnel optimisation, we build strategies designed to scale aggressive growth objectives sustainably.",
             featured: true,
             link: "/case-study-bodysurf-school",
         },
         {
             icon: <BarChart size={40} />,
             title: "Paid Advertising",
-            description: "Media buying and campaign management across Meta, Google, TikTok, and more. Data-driven allocation to maximize Return on Ad Spend (ROAS).",
+            description: "Media buying and campaign management across Meta, Google, TikTok, and more. Data-driven allocation to maximise Return on Ad Spend (ROAS).",
             link: "/case-study-google-ads",
         },
         {

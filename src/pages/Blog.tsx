@@ -7,7 +7,7 @@ const SITE_URL = "https://mariamadeira.com";
 export const POSTS = [
     {
         slug: "what-is-aeo",
-        title: "What is AEO? Answer Engine Optimization, explained for brands that sell online",
+        title: "What is AEO? Answer Engine Optimisation, explained for brands that sell online",
         excerpt: "How brands get cited and recommended by ChatGPT, Perplexity, Gemini and Google's AI Overviews, how AEO differs from SEO and GEO, and where to start this week.",
         category: "AI Search",
         readTime: "9 min read",

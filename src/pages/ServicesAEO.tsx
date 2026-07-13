@@ -7,7 +7,7 @@ const SITE_URL = "https://mariamadeira.com";
 
 /* ── Quotable definition (kept in prose below too; this is the snippet) ── */
 const AEO_DEFINITION =
-    "Answer Engine Optimization (AEO) is the practice of optimizing a brand to be cited and recommended by AI answer engines like ChatGPT, Perplexity, Gemini, and Google's AI Overviews. Where SEO competes for a ranked link, AEO competes to be the answer itself: the source the AI names when someone asks for a recommendation.";
+    "Answer Engine Optimisation (AEO) is the practice of optimising a brand to be cited and recommended by AI answer engines like ChatGPT, Perplexity, Gemini, and Google's AI Overviews. Where SEO competes for a ranked link, AEO competes to be the answer itself: the source the AI names when someone asks for a recommendation.";
 
 /* ── "Why now" qualitative cards (no fabricated numbers) ──────────── */
 const WHY_NOW = [
@@ -27,12 +27,12 @@ const WHAT_I_DO = [
 /* ── FAQ — drives both the visible section and the FAQPage schema ──── */
 const FAQS: { q: string; a: string }[] = [
     {
-        q: "What is answer engine optimization?",
-        a: "Answer engine optimization (AEO) is the practice of structuring your brand, content, and data so AI assistants cite and recommend you when they answer questions. Instead of chasing a blue-link ranking, AEO aims to make your business the answer that tools like ChatGPT, Perplexity, and Google's AI Overviews return.",
+        q: "What is answer engine optimisation?",
+        a: "Answer engine optimisation (AEO) is the practice of structuring your brand, content, and data so AI assistants cite and recommend you when they answer questions. Instead of chasing a blue-link ranking, AEO aims to make your business the answer that tools like ChatGPT, Perplexity, and Google's AI Overviews return.",
     },
     {
         q: "How is AEO different from SEO?",
-        a: "SEO optimizes for ranked links on a search results page; AEO optimizes to be the cited source inside an AI-generated answer. SEO leans on keywords and backlinks, while AEO leans on clear entities, structured data, and content written to be lifted. They overlap, but AEO assumes the user may never see a list of links at all.",
+        a: "SEO optimises for ranked links on a search results page; AEO optimises to be the cited source inside an AI-generated answer. SEO leans on keywords and backlinks, while AEO leans on clear entities, structured data, and content written to be lifted. They overlap, but AEO assumes the user may never see a list of links at all.",
     },
     {
         q: "How long does AEO take to show results?",
@@ -54,8 +54,8 @@ const AEO_JSON_LD = {
         {
             "@type": "Service",
             "@id": `${SITE_URL}/services/aeo#service`,
-            "name": "Answer Engine Optimization (AEO)",
-            "serviceType": "Answer Engine Optimization",
+            "name": "Answer Engine Optimisation (AEO)",
+            "serviceType": "Answer Engine Optimisation",
             "url": `${SITE_URL}/services/aeo`,
             "description": AEO_DEFINITION,
             "provider": { "@id": `${SITE_URL}/#person` },
@@ -75,7 +75,7 @@ const AEO_JSON_LD = {
             "itemListElement": [
                 { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
                 { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` },
-                { "@type": "ListItem", "position": 3, "name": "Answer Engine Optimization", "item": `${SITE_URL}/services/aeo` },
+                { "@type": "ListItem", "position": 3, "name": "Answer Engine Optimisation", "item": `${SITE_URL}/services/aeo` },
             ],
         },
     ],
@@ -316,7 +316,7 @@ export default function ServicesAEO() {
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="AEO Consultant | Answer Engine Optimization | Maria Madeira"
+                title="AEO Consultant | Answer Engine Optimisation | Maria Madeira"
                 description="AEO consultant helping brands get cited and recommended by AI assistants (ChatGPT, Perplexity, Gemini and Google AI Overviews), not just ranked on Google."
                 path="/services/aeo"
                 jsonLd={AEO_JSON_LD}
@@ -345,7 +345,7 @@ export default function ServicesAEO() {
             <section className="aeo-hero" style={{ marginBottom: "5rem" }}>
                 <div>
                     <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
-                        Answer Engine Optimization
+                        Answer Engine Optimisation
                     </p>
                     <h1 className="section-title" style={{ marginBottom: "1.5rem", textAlign: "left" }}>
                         Get found and <span className="text-gradient">recommended by AI</span>, not just ranked by Google

@@ -125,7 +125,7 @@ export default function Results() {
                     Paid Advertising <span className="text-gradient-accent">Performance</span>
                 </h2>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1.1rem", maxWidth: "700px", margin: "0 auto", lineHeight: 1.8 }}>
-                    Maximizing efficiency and scale across Google Ads and Meta Ads with data-driven optimization.
+                    Maximising efficiency and scale across Google Ads and Meta Ads with data-driven optimisation.
                 </p>
             </div>
 
