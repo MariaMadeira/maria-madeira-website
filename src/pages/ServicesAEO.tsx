@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Sparkles, Search, Database, FileText, LineChart, MessageSquare, ArrowRight, Users, MousePointerClick, Quote, Bot } from "lucide-react";
 import Seo from "../components/Seo";
@@ -73,63 +73,67 @@ const AEO_JSON_LD = {
     ],
 };
 
-/* ── Hero: auto-playing mock AI chat (competitor vs you) ───────────── */
-const QUESTION = "What's the best specialty coffee brand in Europe?";
+/* ── Hero: user-controlled mock AI chat (Without AEO / With AEO) ───── */
+const CHAT_QUESTION = "What's the best specialty coffee brand in Europe?";
 // Both states share one answer, word for word; only the brand name and citation
-// change. The "competitor vs you" framing lives solely in the state label above
-// the chat — a real AI answer would never editorialise about "your competitor".
-const ANSWER_PRE = "For specialty coffee in Europe, the standout is";
-const ANSWER_POST = ", consistently cited for quality and transparency.";
-const SCENARIOS = [
-    { tag: "Your competitor gets the recommendation", cite: "Nordkaffe", href: "nordkaffe.example", you: false },
-    { tag: "Your brand gets the recommendation", cite: "Your Brand", href: "yourbrand.com", you: true },
+// change. The "Without/With AEO" framing lives in the toggle above the card, so
+// the AI answer itself never editorialises. Layout is identical between states.
+const CHAT_ANSWER_PRE = "For specialty coffee in Europe, the standout is";
+const CHAT_ANSWER_POST = ", consistently cited for quality and transparency.";
+const CHAT_STATES = [
+    { label: "Without AEO", cite: "Nordkaffe", href: "nordkaffe.example", you: false },
+    { label: "With AEO", cite: "Your Brand", href: "yourbrand.com", you: true },
 ];
 
 function AiChatDemo() {
-    const [scenario, setScenario] = useState(0);
-    const [typed, setTyped] = useState(QUESTION.length); // SSR/initial: fully typed
-
-    useEffect(() => {
-        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (reduce) { setScenario(1); return; } // show the positive, static outcome
-
-        // type the question out once, then alternate scenarios
-        setTyped(0);
-        let i = 0;
-        const typer = setInterval(() => {
-            i += 1;
-            setTyped(i);
-            if (i >= QUESTION.length) clearInterval(typer);
-        }, 45);
-        const swap = setInterval(() => setScenario((s) => (s + 1) % SCENARIOS.length), 3200);
-        return () => { clearInterval(typer); clearInterval(swap); };
-    }, []);
-
-    const s = SCENARIOS[scenario];
+    const [active, setActive] = useState(0); // 0 = Without AEO (default)
+    const s = CHAT_STATES[active];
     // Same pill treatment in both states; only the tone (accent vs neutral) differs.
     const tone = s.you
         ? { fg: "var(--accent-secondary)", bg: "var(--accent-glow)" }
         : { fg: "var(--text-secondary)", bg: "var(--bg-tertiary)" };
     return (
-        <div className="aeo-chat card" aria-hidden="true" style={{ padding: "1.5rem", background: "var(--bg-primary)", maxWidth: "440px", width: "100%" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1.25rem", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-secondary)" }}>
-                <Bot size={16} /> AI Assistant
-                <span className="aeo-chat-tag" style={{ marginLeft: "auto", color: tone.fg, background: tone.bg, padding: "2px 10px", borderRadius: "20px", letterSpacing: "0.04em" }}>{s.tag}</span>
+        <div style={{ maxWidth: "440px", width: "100%" }}>
+            {/* toggle — same mechanics/style as the Search 2015/2026 toggle */}
+            <div role="tablist" aria-label="AEO comparison" style={{ display: "flex", gap: "0.5rem", justifyContent: "center", marginBottom: "1.5rem" }}>
+                {CHAT_STATES.map((st, i) => (
+                    <button
+                        key={st.label}
+                        role="tab"
+                        aria-selected={active === i}
+                        onClick={() => setActive(i)}
+                        className="aeo-era-btn"
+                        style={{
+                            padding: "0.6rem 1.4rem", borderRadius: "10px", fontWeight: 600, fontSize: "0.9rem", cursor: "pointer",
+                            border: `1px solid ${active === i ? "var(--accent-secondary)" : "var(--border-color)"}`,
+                            background: active === i ? "var(--accent-secondary)" : "transparent",
+                            color: active === i ? "#fff" : "var(--text-secondary)",
+                        }}
+                    >
+                        {st.label}
+                    </button>
+                ))}
             </div>
-            {/* user question */}
-            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "1rem" }}>
-                <span style={{ background: "var(--accent-secondary)", color: "#fff", padding: "0.6rem 0.9rem", borderRadius: "14px 14px 4px 14px", fontSize: "0.9rem", maxWidth: "85%" }}>
-                    {QUESTION.slice(0, typed)}{typed < QUESTION.length && <span className="aeo-caret">|</span>}
-                </span>
-            </div>
-            {/* assistant answer */}
-            <div key={scenario} className="aeo-answer" style={{ display: "flex", gap: "0.6rem" }}>
-                <span style={{ flexShrink: 0, width: "28px", height: "28px", borderRadius: "50%", background: "var(--bg-tertiary)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent-secondary)" }}><Sparkles size={15} /></span>
-                <span style={{ fontSize: "0.9rem", lineHeight: 1.55, color: "var(--text-primary)" }}>
-                    {ANSWER_PRE}{" "}
-                    <strong style={{ color: tone.fg }}>{s.cite}</strong>{ANSWER_POST}
-                    <span style={{ display: "inline-flex", alignItems: "center", gap: "5px", marginTop: "0.5rem", fontSize: "0.78rem", fontWeight: 600, color: tone.fg, background: tone.bg, padding: "3px 10px", borderRadius: "20px" }}><Quote size={12} /> Cited: {s.href}</span>
-                </span>
+
+            <div className="aeo-chat card" style={{ padding: "1.5rem", background: "var(--bg-primary)" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1.25rem", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-secondary)" }}>
+                    <Bot size={16} /> AI Assistant
+                </div>
+                {/* user question — identical in both states */}
+                <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "1rem" }}>
+                    <span style={{ background: "var(--accent-secondary)", color: "#fff", padding: "0.6rem 0.9rem", borderRadius: "14px 14px 4px 14px", fontSize: "0.9rem", maxWidth: "85%" }}>
+                        {CHAT_QUESTION}
+                    </span>
+                </div>
+                {/* assistant answer — same layout; brand name, citation and accent tone differ */}
+                <div key={active} className="aeo-answer" style={{ display: "flex", gap: "0.6rem" }}>
+                    <span style={{ flexShrink: 0, width: "28px", height: "28px", borderRadius: "50%", background: "var(--bg-tertiary)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent-secondary)" }}><Sparkles size={15} /></span>
+                    <span style={{ fontSize: "0.9rem", lineHeight: 1.55, color: "var(--text-primary)" }}>
+                        {CHAT_ANSWER_PRE}{" "}
+                        <strong style={{ color: tone.fg }}>{s.cite}</strong>{CHAT_ANSWER_POST}
+                        <span style={{ display: "inline-flex", alignItems: "center", gap: "5px", marginTop: "0.5rem", fontSize: "0.78rem", fontWeight: 600, color: tone.fg, background: tone.bg, padding: "3px 10px", borderRadius: "20px" }}><Quote size={12} /> Cited: {s.href}</span>
+                    </span>
+                </div>
             </div>
         </div>
     );
@@ -299,12 +303,10 @@ export default function ServicesAEO() {
                 @media (max-width: 420px) { .aeo-steps { grid-template-columns: 1fr; } }
                 .aeo-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
                 @media (max-width: 860px) { .aeo-hero { grid-template-columns: 1fr; } }
-                .aeo-caret { animation: aeo-blink 1s steps(1) infinite; }
-                .aeo-answer { animation: aeo-fade 0.5s ease; }
-                @keyframes aeo-blink { 50% { opacity: 0; } }
-                @keyframes aeo-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+                .aeo-answer { animation: aeo-fade 0.2s ease; }
+                @keyframes aeo-fade { from { opacity: 0; } to { opacity: 1; } }
                 @media (prefers-reduced-motion: reduce) {
-                    .aeo-caret, .aeo-answer { animation: none; }
+                    .aeo-answer { animation: none; }
                 }
             `}</style>
 
