@@ -77,6 +77,17 @@ const P = { color: "var(--text-secondary)", fontSize: "1.05rem", lineHeight: 1.8
 const H2 = { fontSize: "1.6rem", marginTop: "3rem", marginBottom: "1.25rem", lineHeight: 1.25 } as const;
 const strong = { color: "var(--text-primary)" };
 const linkStyle = { color: "var(--accent-secondary)", fontWeight: 600 };
+// Shared "liftable block" callout: the definition and the five-question test
+// both use this so the article's two quotable blocks read as one pattern.
+const calloutBox = { background: "var(--accent-glow)", border: "1px solid var(--border-color)", borderLeft: "4px solid var(--accent-secondary)", borderRadius: "16px", padding: "clamp(1.5rem, 4vw, 2.5rem)" } as const;
+
+const FIVE_QUESTIONS = [
+    "Best [your category] in [your market]",
+    "Alternatives to [market leader]",
+    "[Your brand] reviews",
+    "Is [your brand] good for [use case]",
+    "How do I choose a [your category]",
+];
 
 export default function BlogWhatIsAEO() {
     return (
@@ -108,9 +119,11 @@ export default function BlogWhatIsAEO() {
                     <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><Clock size={13} /> 9 min read</span>
                 </div>
 
-                <p style={{ ...P, fontSize: "1.15rem", color: "var(--text-primary)" }}>
-                    Answer Engine Optimization (AEO) is the practice of optimizing a brand to be cited and recommended by AI answer engines like ChatGPT, Perplexity, Gemini, and Google's AI Overviews. Where SEO competes for a ranked link on a results page, AEO competes to be the answer itself: the source the AI names when someone asks "what's the best option for me?". It works by making your brand legible to machines through structured data, clear entities, and content written so an AI can lift it, quote it, and attribute it to you.
-                </p>
+                <blockquote style={{ ...calloutBox, margin: "0 0 1.25rem" }}>
+                    <p style={{ fontSize: "1.15rem", lineHeight: 1.7, color: "var(--text-primary)", fontWeight: 500, margin: 0 }}>
+                        Answer Engine Optimization (AEO) is the practice of optimizing a brand to be cited and recommended by AI answer engines like ChatGPT, Perplexity, Gemini, and Google's AI Overviews. Where SEO competes for a ranked link on a results page, AEO competes to be the answer itself: the source the AI names when someone asks "what's the best option for me?". It works by making your brand legible to machines through structured data, clear entities, and content written so an AI can lift it, quote it, and attribute it to you.
+                    </p>
+                </blockquote>
                 <p style={P}>
                     That is the short version. The rest of this guide covers how AEO differs from SEO and GEO, why 2026 is the year it stopped being optional, what the work looks like in practice, and how to find out whether AI assistants recommend you or your competitor today.
                 </p>
@@ -143,10 +156,26 @@ export default function BlogWhatIsAEO() {
                 <h2 style={H2}>Where to start this week</h2>
                 <p style={P}>Three actions, in order of effort:</p>
                 <ol style={{ ...P, paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
-                    <li><strong style={strong}>Run the five-question test, logged out and in an incognito window</strong> so the assistant cannot flatter you with your own history. Ask ChatGPT and Perplexity: "best [your category] in [your market]", "alternatives to [market leader]", "[your brand] reviews", "is [your brand] good for [use case]", and "how do I choose a [your category]". Twenty minutes, and you will know whether you have an AEO problem.</li>
+                    <li><strong style={strong}>Run the five-question test below.</strong> Twenty minutes tells you whether AI already recommends you or a competitor.</li>
                     <li><strong style={strong}>Fix the machine-readability basics.</strong> Valid structured data, answers visible in HTML, no content locked behind interactions, AI crawlers not blocked in robots.txt. Any competent audit surfaces these in a day.</li>
                     <li><strong style={strong}>Publish one page that owns one question.</strong> Pick the question in your category with no good answer and write the definitive one, with a complete answer in the first paragraph. That page is your first bid for the citation.</li>
                 </ol>
+
+                <div style={{ ...calloutBox, marginTop: "0.5rem", marginBottom: "1.25rem" }}>
+                    <h3 style={{ fontSize: "1.2rem", margin: "0 0 0.75rem", color: "var(--text-primary)" }}>The five-question test</h3>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, margin: "0 0 1.25rem" }}>
+                        Logged out, in an incognito window, so the assistant cannot flatter you with your own history. Ask ChatGPT and Perplexity:
+                    </p>
+                    <ol style={{ margin: 0, paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+                        {FIVE_QUESTIONS.map((q) => (
+                            <li key={q} style={{ color: "var(--text-primary)", fontWeight: 500, lineHeight: 1.5 }}>"{q}"</li>
+                        ))}
+                    </ol>
+                    <p style={{ color: "var(--text-secondary)", fontStyle: "italic", lineHeight: 1.7, margin: "1.25rem 0 0" }}>
+                        Twenty minutes, and you will know whether you have an AEO problem.
+                    </p>
+                </div>
+
                 <p style={P}>Or skip the ramp-up: <Link to="/contact" style={linkStyle}>book a free strategy call</Link> and I will run the visibility audit on your brand and tell you exactly where you stand.</p>
 
                 <h2 style={H2}>Frequently asked questions</h2>
