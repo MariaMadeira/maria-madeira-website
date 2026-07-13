@@ -94,25 +94,46 @@ function AiChatDemo() {
         : { fg: "var(--text-secondary)", bg: "var(--bg-tertiary)" };
     return (
         <div style={{ maxWidth: "440px", width: "100%" }}>
-            {/* toggle — same mechanics/style as the Search 2015/2026 toggle */}
-            <div role="tablist" aria-label="AEO comparison" style={{ display: "flex", gap: "0.5rem", justifyContent: "center", marginBottom: "1.5rem" }}>
-                {CHAT_STATES.map((st, i) => (
-                    <button
-                        key={st.label}
-                        role="tab"
-                        aria-selected={active === i}
-                        onClick={() => setActive(i)}
-                        className="aeo-era-btn"
-                        style={{
-                            padding: "0.6rem 1.4rem", borderRadius: "10px", fontWeight: 600, fontSize: "0.9rem", cursor: "pointer",
-                            border: `1px solid ${active === i ? "var(--accent-secondary)" : "var(--border-color)"}`,
-                            background: active === i ? "var(--accent-secondary)" : "transparent",
-                            color: active === i ? "#fff" : "var(--text-secondary)",
-                        }}
-                    >
-                        {st.label}
-                    </button>
-                ))}
+            {/* on/off switch: off = Without AEO (default), on = With AEO */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.9rem", marginBottom: "1.5rem" }}>
+                <button
+                    type="button"
+                    onClick={() => setActive(0)}
+                    className="aeo-switch-label"
+                    style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.9rem", fontWeight: active === 0 ? 700 : 500, color: active === 0 ? "var(--accent-secondary)" : "var(--text-secondary)", transition: "color 0.15s ease" }}
+                >
+                    {CHAT_STATES[0].label}
+                </button>
+                <button
+                    type="button"
+                    role="switch"
+                    aria-checked={active === 1}
+                    aria-label="Show the AI answer with AEO applied"
+                    onClick={() => setActive(active === 1 ? 0 : 1)}
+                    className="aeo-switch"
+                    style={{
+                        position: "relative", boxSizing: "border-box", width: "52px", height: "28px", borderRadius: "999px",
+                        cursor: "pointer", flexShrink: 0, padding: 0,
+                        border: "1px solid var(--border-color)",
+                        background: active === 1 ? "var(--accent-secondary)" : "var(--bg-tertiary)",
+                        transition: "background 0.15s ease",
+                    }}
+                >
+                    <span aria-hidden="true" style={{
+                        position: "absolute", top: "2px", left: "2px", width: "22px", height: "22px", borderRadius: "50%",
+                        background: "#fff", boxShadow: "0 1px 3px rgba(0,0,0,0.25)",
+                        transform: active === 1 ? "translateX(24px)" : "translateX(0)",
+                        transition: "transform 0.15s ease",
+                    }} />
+                </button>
+                <button
+                    type="button"
+                    onClick={() => setActive(1)}
+                    className="aeo-switch-label"
+                    style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.9rem", fontWeight: active === 1 ? 700 : 500, color: active === 1 ? "var(--accent-secondary)" : "var(--text-secondary)", transition: "color 0.15s ease" }}
+                >
+                    {CHAT_STATES[1].label}
+                </button>
             </div>
 
             <div className="aeo-chat card" style={{ padding: "1.5rem", background: "var(--bg-primary)" }}>
@@ -305,8 +326,10 @@ export default function ServicesAEO() {
                 @media (max-width: 860px) { .aeo-hero { grid-template-columns: 1fr; } }
                 .aeo-answer { animation: aeo-fade 0.2s ease; }
                 @keyframes aeo-fade { from { opacity: 0; } to { opacity: 1; } }
+                .aeo-switch:focus-visible, .aeo-switch-label:focus-visible { outline: 2px solid var(--accent-secondary); outline-offset: 3px; border-radius: 6px; }
                 @media (prefers-reduced-motion: reduce) {
                     .aeo-answer { animation: none; }
+                    .aeo-switch span, .aeo-switch { transition: none; }
                 }
             `}</style>
 
