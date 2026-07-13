@@ -6,7 +6,7 @@ import Seo from "../components/Seo";
 /* ── How it works: 3 steps ─────────────────────────────── */
 const STEPS = [
     { icon: <Search size={26} />, title: "Audit", line: "We find where your current site leaks visibility, trust, and revenue." },
-    { icon: <Compass size={26} />, title: "Strategy", line: "A clear plan for search, AI discovery, and conversion — tied to your goals." },
+    { icon: <Compass size={26} />, title: "Strategy", line: "A clear plan for search, AI discovery, and conversion, tied to your goals." },
     { icon: <Hammer size={26} />, title: "Build or Improve", line: "A rebuild or targeted fixes, with SEO and AEO wired in from the ground up." },
 ];
 
@@ -38,14 +38,14 @@ const QUESTIONS: Question[] = [
         key: "ai",
         prompt: "Have you asked ChatGPT or Perplexity about businesses like yours and checked if you appear?",
         options: [
-            { label: "Yes — and I appear", score: 3 },
-            { label: "Yes — and I don't", score: 1 },
+            { label: "Yes, and I appear", score: 3 },
+            { label: "Yes, and I don't", score: 1 },
             { label: "Never tried", score: 1 },
         ],
     },
     {
         key: "convert",
-        prompt: "Does your site clearly convert visitors — bookings, sales, leads?",
+        prompt: "Does your site clearly convert visitors (bookings, sales, leads)?",
         options: [
             { label: "Yes", score: 3 },
             { label: "Could be better", score: 1 },
@@ -60,19 +60,19 @@ const TIERS: Tier[] = [
         min: 9,
         label: "Strong foundation",
         diagnosis: (site) =>
-            `${site} is already doing its job. The opportunity now is compounding — turning a solid base into a growth engine across search, AI discovery, and conversion.`,
+            `${site} is already doing its job. The opportunity now is compounding: turning a solid base into a growth engine across search, AI discovery, and conversion.`,
     },
     {
         min: 5,
         label: "Leaving money on the table",
         diagnosis: (site) =>
-            `The bones of ${site} are there, but visitors and revenue are slipping through the gaps — dated design, thin search visibility, or a funnel that doesn't quite close.`,
+            `The bones of ${site} are there, but visitors and revenue are slipping through the gaps: dated design, thin search visibility, or a funnel that doesn't quite close.`,
     },
     {
         min: 0,
         label: "Invisible to modern search",
         diagnosis: (site) =>
-            `Customers can't find ${site} where they now look — Google and AI assistants alike — and the visitors who do arrive aren't converting. All of it is fixable, and the upside is large.`,
+            `Customers can't find ${site} where they now look (Google and AI assistants alike), and the visitors who do arrive aren't converting. All of it is fixable, and the upside is large.`,
     },
 ];
 
@@ -143,7 +143,7 @@ function HealthCheck() {
                         Website <span className="text-gradient">Health Check</span>
                     </h3>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "2rem" }}>
-                        Four quick questions. An honest read on whether your site is a growth engine or quietly costing you. Takes under a minute — nothing is submitted or fetched.
+                        Four quick questions. An honest read on whether your site is a growth engine or quietly costing you. Takes under a minute. Nothing is submitted or fetched.
                     </p>
                     <label htmlFor="ws-url" style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "0.5rem", display: "block" }}>
                         Your website <span style={{ opacity: 0.6, textTransform: "none", letterSpacing: 0 }}>(optional)</span>
@@ -213,7 +213,7 @@ function HealthCheck() {
                         </p>
                         <div style={{ marginTop: "auto", display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
                             <Link to="/contact" className="btn btn-primary" style={{ padding: "0.9rem 2rem" }}>
-                                Get the full audit — Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                                Get the full audit: Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                             </Link>
                             <button onClick={reset} className="ws-restart" style={{ background: "transparent", border: "none", color: "var(--text-secondary)", cursor: "pointer", fontSize: "0.9rem", fontWeight: 500, textDecoration: "underline", textUnderlineOffset: "3px" }}>
                                 Start over
@@ -230,7 +230,7 @@ function HealthCheck() {
 const PROOF = [
     { category: "Website Build", title: "The Bodysurf School", result: "Brochure site → bilingual booking engine with local payments live", link: "/case-study-bodysurf-school" },
     { category: "Brand & Web Identity", title: "Rita Antunes", result: "A premium clinical identity built to convert high-ticket leads", link: "/portfolio-rita-antunes" },
-    { category: "Brand & Creative", title: "Ousadia", result: "A bold artisan brand system — logo, visual language, art direction", link: "/portfolio-ousadia" },
+    { category: "Brand & Creative", title: "Ousadia", result: "A bold artisan brand system: logo, visual language, art direction", link: "/portfolio-ousadia" },
 ];
 
 export default function ServicesWebsites() {
@@ -267,7 +267,7 @@ export default function ServicesWebsites() {
                     Turn an outdated website into a <span className="text-gradient">growth engine</span>
                 </h1>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8, marginBottom: "2.5rem" }}>
-                    Strategy first, then a rebuild or targeted improvements — with SEO and AEO built in from the ground up, so customers find you on Google and in AI search alike.
+                    Strategy first, then a rebuild or targeted improvements, with SEO and AEO built in from the ground up, so customers find you on Google and in AI search alike.
                 </p>
                 <Link to="/contact" className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
                     Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
@@ -333,7 +333,7 @@ export default function ServicesWebsites() {
                     <div>
                         <h2 style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>Who this is for</h2>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>
-                            Brands and businesses that sell or take bookings online — and know their website should be doing more of the selling. Whether you need a full rebuild or focused improvements, the starting point is the same: an honest audit and a plan.
+                            Brands and businesses that sell or take bookings online, and know their website should be doing more of the selling. Whether you need a full rebuild or focused improvements, the starting point is the same: an honest audit and a plan.
                         </p>
                     </div>
                 </div>
@@ -346,7 +346,7 @@ export default function ServicesWebsites() {
                 </div>
                 <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Ready to make your site earn its keep?</h2>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1.1rem", maxWidth: "560px", margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
-                    Book a free strategy call and we'll walk through your audit together — no commitment, no pressure.
+                    Book a free strategy call and we'll walk through your audit together. No commitment, no pressure.
                 </p>
                 <Link to="/contact" className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
                     <Globe size={18} style={{ marginRight: "8px" }} /> Book a Free Strategy Call

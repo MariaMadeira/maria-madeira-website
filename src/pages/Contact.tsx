@@ -31,7 +31,7 @@ export default function Contact() {
                 const email = formData.get("email") as string;
                 const message = formData.get("message") as string;
 
-                const subject = encodeURIComponent(`Strategy call request — from ${name}`);
+                const subject = encodeURIComponent(`Strategy call request from ${name}`);
                 const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
                 window.location.href = `mailto:info@mariamadeira.com?subject=${subject}&body=${body}`;
                 setStatus("success");
@@ -39,7 +39,7 @@ export default function Contact() {
         } catch {
             // Offline / network error — fallback to mailto
             const formDataObj = Object.fromEntries(formData.entries());
-            const subject = encodeURIComponent(`Strategy call request — from ${formDataObj.name}`);
+            const subject = encodeURIComponent(`Strategy call request from ${formDataObj.name}`);
             const body = encodeURIComponent(`Name: ${formDataObj.name}\nEmail: ${formDataObj.email}\n\n${formDataObj.message}`);
             window.location.href = `mailto:info@mariamadeira.com?subject=${subject}&body=${body}`;
             setStatus("success");

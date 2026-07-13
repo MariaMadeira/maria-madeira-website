@@ -7,14 +7,14 @@ export default function Services() {
         {
             icon: <Globe size={40} />,
             title: "Website Strategy & Build",
-            description: "Turn an outdated website into a growth engine — strategy, a rebuild or targeted improvements, and SEO and AEO built in from the ground up so customers find you on Google and in AI search.",
+            description: "Turn an outdated website into a growth engine: strategy, a rebuild or targeted improvements, and SEO and AEO built in from the ground up so customers find you on Google and in AI search.",
             link: "/services/websites",
             cta: "Explore website services",
         },
         {
             icon: <Sparkles size={40} />,
             title: "Answer Engine Optimization (AEO)",
-            description: "Get cited and recommended by AI assistants — ChatGPT, Perplexity, Gemini, and Google AI Overviews — as search shifts from ranked links to synthesised answers.",
+            description: "Get cited and recommended by AI assistants (ChatGPT, Perplexity, Gemini, and Google AI Overviews) as search shifts from ranked links to synthesised answers.",
             link: "/services/aeo",
             cta: "Explore AEO",
         },
@@ -40,7 +40,7 @@ export default function Services() {
         {
             icon: <Cpu size={40} />,
             title: "AI Marketing Systems",
-            description: "Implementation of modern AI tools to accelerate content creation, automate manual workflows, and enrich data analysis—keeping you ahead of competitors.",
+            description: "Implementation of modern AI tools to accelerate content creation, automate manual workflows, and enrich data analysis, keeping you ahead of competitors.",
         },
         {
             icon: <Maximize size={40} />,
@@ -60,7 +60,7 @@ export default function Services() {
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
                 title="E-commerce Growth Services | Maria Madeira"
-                description="Growth strategy, email marketing automation, paid advertising, AI marketing systems, and creative direction — services built to scale e-commerce revenue."
+                description="Growth strategy, email marketing automation, paid advertising, AI marketing systems, and creative direction: services built to scale e-commerce revenue."
                 path="/services"
             />
 
@@ -140,9 +140,9 @@ export default function Services() {
                 </div>
                 <div className="grid-3" style={{ gap: "2rem" }}>
                     {[
-                        { step: "01", title: "Audit", desc: "We start by mapping your current funnel, channels, and data — identifying the biggest gaps and highest-leverage opportunities." },
+                        { step: "01", title: "Audit", desc: "We start by mapping your current funnel, channels, and data, identifying the biggest gaps and highest-leverage opportunities." },
                         { step: "02", title: "Strategy", desc: "A tailored growth plan is built around your goals: which channels to prioritise, what to automate, and how to sequence execution." },
-                        { step: "03", title: "Execute", desc: "Campaigns go live, systems are built, and performance is monitored weekly — with ongoing optimisation to compound results over time." },
+                        { step: "03", title: "Execute", desc: "Campaigns go live, systems are built, and performance is monitored weekly, with ongoing optimisation to compound results over time." },
                     ].map((item) => (
                         <div key={item.step} className="card" style={{ background: "var(--bg-secondary)", position: "relative", paddingTop: "2.5rem" }}>
                             <span style={{

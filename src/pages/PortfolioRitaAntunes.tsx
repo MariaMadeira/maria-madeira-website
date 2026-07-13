@@ -13,7 +13,7 @@ export default function PortfolioRitaAntunes() {
         <>
         <Seo
             title="Rita Antunes Brand Identity | Portfolio"
-            description="Brand identity and visual direction for Rita Antunes Psicologia — a premium clinical practice identity built to convert high-ticket therapy leads."
+            description="Brand identity and visual direction for Rita Antunes Psicologia: a premium clinical practice identity built to convert high-ticket therapy leads."
             path="/portfolio-rita-antunes"
         />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
@@ -122,7 +122,7 @@ export default function PortfolioRitaAntunes() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        The visual identity draws inspiration from nature and organic forms. A ginkgo leaf symbol was developed as the central brand element, representing resilience, longevity, and mental clarity — values closely aligned with psychological wellbeing.
+                        The visual identity draws inspiration from nature and organic forms. A ginkgo leaf symbol was developed as the central brand element, representing resilience, longevity, and mental clarity, values closely aligned with psychological wellbeing.
                     </p>
                     <div
 

@@ -60,7 +60,7 @@ export default function CaseStudyClickCollect() {
                         Exploring Click & Collect as a New Revenue Channel
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
-                        Designed and built a mobile Click & Collect experience for a physical retail store to reduce in-store wait times and capture demand from nearby office workers — and what the experiment revealed about digital adoption in physical retail.
+                        Designed and built a mobile Click & Collect experience for a physical retail store to reduce in-store wait times and capture demand from nearby office workers, and what the experiment revealed about digital adoption in physical retail.
                     </p>
                 </div>
 
@@ -151,7 +151,7 @@ export default function CaseStudyClickCollect() {
                         Mobile Experience
                     </h2>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "2rem" }}>
-                        The app was designed to feel fast and intuitive — customers could browse the menu, place an order, and collect it without waiting in line.
+                        The app was designed to feel fast and intuitive: customers could browse the menu, place an order, and collect it without waiting in line.
                     </p>
 
                     {/* Phone mockup visual */}
@@ -281,7 +281,7 @@ export default function CaseStudyClickCollect() {
                     >
                         <AlertCircle size={24} style={{ color: "var(--accent-secondary)", flexShrink: 0, marginTop: "0.1rem" }} />
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0, fontSize: "1.05rem" }}>
-                            Building a digital solution is not enough — successful adoption requires <strong style={{ color: "var(--text-primary)" }}>strong distribution</strong>, <strong style={{ color: "var(--text-primary)" }}>behavioural incentives</strong> and <strong style={{ color: "var(--text-primary)" }}>clear value communication</strong>.
+                            Building a digital solution is not enough: successful adoption requires <strong style={{ color: "var(--text-primary)" }}>strong distribution</strong>, <strong style={{ color: "var(--text-primary)" }}>behavioural incentives</strong> and <strong style={{ color: "var(--text-primary)" }}>clear value communication</strong>.
                         </p>
                     </div>
                 </section>

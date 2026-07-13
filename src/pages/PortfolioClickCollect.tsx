@@ -180,7 +180,7 @@ export default function PortfolioClickCollect() {
                     >
                         <img
                             src="/projects/click-collect/app-mockups.png"
-                            alt="App screens — homepage, categories, checkout"
+                            alt="App screens: homepage, categories, checkout"
                             style={{ width: "100%", display: "block" }}
                         />
                         <div className="app-labels-row" style={{
@@ -319,7 +319,7 @@ export default function PortfolioClickCollect() {
                     >
                         <img
                             src="/projects/click-collect/campaign.png"
-                            alt="Click & Collect campaign — Order in seconds, pick up in minutes"
+                            alt="Click & Collect campaign: Order in seconds, pick up in minutes"
                             style={{ width: "100%", display: "block" }}
                         />
                         <div style={{

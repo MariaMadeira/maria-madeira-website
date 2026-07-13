@@ -71,7 +71,7 @@ export default function Results() {
                     Results <span className="text-gradient">That Speak</span>
                 </h1>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1.15rem", maxWidth: "680px", margin: "0 auto", lineHeight: 1.8 }}>
-                    Every number below is directly attributed to strategy, execution, and optimisation — across email marketing and paid advertising campaigns.
+                    Every number below is directly attributed to strategy, execution, and optimisation, across email marketing and paid advertising campaigns.
                 </p>
             </div>
 

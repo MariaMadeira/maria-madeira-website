@@ -13,7 +13,7 @@ export default function PortfolioOusadia() {
         <>
         <Seo
             title="Ousadia Brand & Creative Direction | Portfolio"
-            description="Brand identity and creative direction for Ousadia, an artcraft brand — logo system, visual language, and campaign art direction by Maria Madeira."
+            description="Brand identity and creative direction for Ousadia, an artcraft brand: logo system, visual language, and campaign art direction by Maria Madeira."
             path="/portfolio-ousadia"
         />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
@@ -122,7 +122,7 @@ export default function PortfolioOusadia() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        The Ousadia brand (translated as 'Boldness') is inspired by the contrast between tradition and contemporary artistic expression. The concept centres on textures, neutral tones, and organic imperfections — capturing the soul of handmade objects in every visual element.
+                        The Ousadia brand (translated as 'Boldness') is inspired by the contrast between tradition and contemporary artistic expression. The concept centres on textures, neutral tones, and organic imperfections, capturing the soul of handmade objects in every visual element.
                     </p>
                     <div
 
@@ -162,7 +162,7 @@ export default function PortfolioOusadia() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        A bold and expressive logo system was developed to reflect the duality of the brand — the rawness of handcraft and the confidence of a modern identity.
+                        A bold and expressive logo system was developed to reflect the duality of the brand: the rawness of handcraft and the confidence of a modern identity.
                     </p>
                     <div
 
@@ -202,7 +202,7 @@ export default function PortfolioOusadia() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        The colour palette draws from earth and raw material — warm terracotta tones, deep charcoal, and soft neutrals that evoke authenticity, texture, and handmade craft.
+                        The colour palette draws from earth and raw material: warm terracotta tones, deep charcoal, and soft neutrals that evoke authenticity, texture, and handmade craft.
                     </p>
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "1.5rem" }}>
                         {[
@@ -329,7 +329,7 @@ export default function PortfolioOusadia() {
                                 color: "var(--text-secondary)",
                                 margin: 0
                             }}>
-                                Ousadia now possesses a strong, earthy, and sophisticated identity that resonates with high-end artisanal collectors. The brand communicates both the 'boldness' of its name and the serene quality of its products — a visual identity that is as handcrafted in spirit as the objects it represents.
+                                Ousadia now possesses a strong, earthy, and sophisticated identity that resonates with high-end artisanal collectors. The brand communicates both the 'boldness' of its name and the serene quality of its products: a visual identity that is as handcrafted in spirit as the objects it represents.
                             </p>
                         </div>
                     </div>

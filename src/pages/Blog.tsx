@@ -49,7 +49,7 @@ export default function Blog() {
                     Insights
                 </h1>
                 <p style={{ color: "var(--text-secondary)", maxWidth: "600px", margin: "0 auto", fontSize: "1.1rem", lineHeight: 1.7 }}>
-                    Practical takes on e-commerce growth, AI marketing systems, and paid acquisition — from the work, not the theory.
+                    Practical takes on e-commerce growth, AI marketing systems, and paid acquisition. From the work, not the theory.
                 </p>
             </div>
 
@@ -89,7 +89,7 @@ export default function Blog() {
             <div style={{ textAlign: "center", marginTop: "6rem", padding: "4rem 2rem", background: "var(--bg-secondary)", borderRadius: "24px", border: "1px solid var(--border-color)" }}>
                 <h2 style={{ fontSize: "1.8rem", marginBottom: "1rem" }}>Want these insights in your inbox?</h2>
                 <p style={{ color: "var(--text-secondary)", marginBottom: "2rem", maxWidth: "500px", margin: "0 auto 2rem" }}>
-                    I write about what's actually working in e-commerce growth — no fluff, no vanity metrics.
+                    I write about what's actually working in e-commerce growth: no fluff, no vanity metrics.
                 </p>
                 <Link to="/contact" className="btn btn-primary" style={{ padding: "0.9rem 2.5rem" }}>
                     Get in Touch <ArrowRight size={16} style={{ marginLeft: "8px" }} />

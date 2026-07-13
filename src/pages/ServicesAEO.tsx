@@ -7,18 +7,18 @@ const SITE_URL = "https://mariamadeira.com";
 
 /* ── Quotable definition (kept in prose below too; this is the snippet) ── */
 const AEO_DEFINITION =
-    "Answer Engine Optimization (AEO) is the practice of optimizing a brand to be cited and recommended by AI answer engines like ChatGPT, Perplexity, Gemini, and Google's AI Overviews. Where SEO competes for a ranked link, AEO competes to be the answer itself — the source the AI names when someone asks for a recommendation.";
+    "Answer Engine Optimization (AEO) is the practice of optimizing a brand to be cited and recommended by AI answer engines like ChatGPT, Perplexity, Gemini, and Google's AI Overviews. Where SEO competes for a ranked link, AEO competes to be the answer itself: the source the AI names when someone asks for a recommendation.";
 
 /* ── "Why now" qualitative cards (no fabricated numbers) ──────────── */
 const WHY_NOW = [
     { icon: <Users size={24} />, title: "Buyers ask AI first", line: "More people ask ChatGPT, Perplexity and Gemini for recommendations before they ever open a search results page." },
-    { icon: <MousePointerClick size={24} />, title: "Zero-click answers", line: "AI Overviews and assistant answers increasingly replace the list of blue links — the answer arrives without a click." },
+    { icon: <MousePointerClick size={24} />, title: "Zero-click answers", line: "AI Overviews and assistant answers increasingly replace the list of blue links. The answer arrives without a click." },
     { icon: <Sparkles size={24} />, title: "Early movers win", line: "Brands that get cited now become the default answer, while competitors who wait stay invisible in the response." },
 ];
 
 /* ── "What I do" — quotable, always static ─────────────────────────── */
 const WHAT_I_DO = [
-    { icon: <Search size={26} />, title: "AI Visibility Audit", line: "Where you appear — or don't — across ChatGPT, Perplexity, Gemini and Google AI Overviews." },
+    { icon: <Search size={26} />, title: "AI Visibility Audit", line: "Where you appear (or don't) across ChatGPT, Perplexity, Gemini and Google AI Overviews." },
     { icon: <Database size={26} />, title: "Entity & Schema Foundation", line: "Structured data and entity signals that machines can read, trust, and attribute to you." },
     { icon: <FileText size={26} />, title: "Answer-Ready Content", line: "Pages and copy structured to be lifted and cited directly inside AI answers." },
     { icon: <LineChart size={26} />, title: "Measurement", line: "Tracking citations across AI assistants and the traffic they refer back to you." },
@@ -36,7 +36,7 @@ const FAQS: { q: string; a: string }[] = [
     },
     {
         q: "How long does AEO take to show results?",
-        a: "It depends on how often AI engines recrawl and how established your brand entity already is. Early signals — appearing in AI answers for niche questions — often show within weeks, while becoming the default recommendation in a competitive category takes longer. AEO is a compounding investment, not an overnight switch.",
+        a: "It depends on how often AI engines recrawl and how established your brand entity already is. Early signals (appearing in AI answers for niche questions) often show within weeks, while becoming the default recommendation in a competitive category takes longer. AEO is a compounding investment, not an overnight switch.",
     },
     {
         q: "Do I still need traditional SEO?",
@@ -76,8 +76,8 @@ const AEO_JSON_LD = {
 /* ── Hero: auto-playing mock AI chat (competitor vs you) ───────────── */
 const QUESTION = "What's the best specialty coffee brand in Europe?";
 const SCENARIOS = [
-    { tag: "Your competitor gets the recommendation", pre: "For specialty coffee in Europe, the name that comes up is", cite: "Nordkaffe", post: " — your competitor, cited as the go-to.", href: "nordkaffe.example", you: false },
-    { tag: "Your brand gets the recommendation", pre: "For specialty coffee in Europe, the standout is", cite: "Your Brand", post: " — consistently cited for quality and transparency.", href: "yourbrand.com", you: true },
+    { tag: "Your competitor gets the recommendation", pre: "For specialty coffee in Europe, the name that comes up is", cite: "Nordkaffe", post: " (your competitor, cited as the go-to).", href: "nordkaffe.example", you: false },
+    { tag: "Your brand gets the recommendation", pre: "For specialty coffee in Europe, the standout is", cite: "Your Brand", post: ", consistently cited for quality and transparency.", href: "yourbrand.com", you: true },
 ];
 
 function AiChatDemo() {
@@ -129,7 +129,7 @@ function AiChatDemo() {
 /* ── "Why now" before/after era toggle ─────────────────────────────── */
 const SERP_2015 = [
     { title: "Top 10 Specialty Coffee Brands in Europe [2015]", url: "thecoffeelist.example › best-brands", snippet: "Our definitive roundup of the finest specialty coffee roasters across Europe this year, ranked and reviewed." },
-    { title: "Best Coffee Brands — Reviews & Rankings", url: "brandrankings.example › coffee", snippet: "Independent star ratings and reader reviews for the leading European coffee brands and roasters." },
+    { title: "Best Coffee Brands: Reviews & Rankings", url: "brandrankings.example › coffee", snippet: "Independent star ratings and reader reviews for the leading European coffee brands and roasters." },
     { title: "10 European Coffee Roasters You Should Know", url: "roasterreview.example › guides", snippet: "From Oslo to Lisbon, the roasters shaping Europe's third-wave specialty coffee scene." },
     { title: "Coffee Brand Comparison: Which is Best?", url: "comparecoffee.example › compare", snippet: "Side-by-side comparison of price, roast profile and sourcing across the top specialty brands." },
 ];
@@ -179,7 +179,7 @@ function SearchEraToggle() {
                         <div>
                             <p style={{ fontSize: "0.95rem", lineHeight: 1.6, color: "var(--text-primary)", marginBottom: "0.75rem" }}>
                                 For specialty coffee in Europe, the standout is{" "}
-                                <strong style={{ color: "var(--accent-secondary)" }}>Your Brand</strong> — consistently cited for quality and transparency.
+                                <strong style={{ color: "var(--accent-secondary)" }}>Your Brand</strong>, consistently cited for quality and transparency.
                             </p>
                             <span style={{ display: "inline-flex", alignItems: "center", gap: "5px", fontSize: "0.78rem", fontWeight: 600, color: "var(--accent-secondary)", background: "var(--accent-glow)", padding: "3px 10px", borderRadius: "20px" }}>
                                 <Quote size={12} /> Cited: yourbrand.com
@@ -195,7 +195,7 @@ function SearchEraToggle() {
 
 /* ── "Is AI recommending you?" 3-question check ────────────────────── */
 const CHECK: { prompt: string; options: { label: string; score: number }[] }[] = [
-    { prompt: "Have you asked ChatGPT about your category and looked for your brand?", options: [{ label: "Yes — and I appear", score: 2 }, { label: "Yes — and I don't", score: 0 }, { label: "Never checked", score: 1 }] },
+    { prompt: "Have you asked ChatGPT about your category and looked for your brand?", options: [{ label: "Yes, and I appear", score: 2 }, { label: "Yes, and I don't", score: 0 }, { label: "Never checked", score: 1 }] },
     { prompt: "Does your site have structured data (schema markup)?", options: [{ label: "Yes", score: 2 }, { label: "Not sure", score: 1 }, { label: "No", score: 0 }] },
     { prompt: "Is your content written to answer questions directly?", options: [{ label: "Yes", score: 2 }, { label: "Somewhat", score: 1 }, { label: "No", score: 0 }] },
 ];
@@ -231,7 +231,7 @@ function AeoCheck() {
                 <div key="intro" className="animate-fade-in" style={{ display: "flex", flexDirection: "column" }}>
                     <h3 style={{ fontSize: "1.6rem", marginBottom: "0.75rem" }}>Is AI <span className="text-gradient">recommending you</span>?</h3>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
-                        Three quick questions on how ready your brand is to be cited by AI assistants. Nothing is submitted or fetched.
+                        Three quick questions on how ready your brand is to be cited by AI assistants. Instant and private. Nothing leaves your browser.
                     </p>
                     <button onClick={() => setStep(0)} className="btn btn-primary" style={{ alignSelf: "flex-start", padding: "0.9rem 2rem" }}>
                         Start the check <ArrowRight size={18} style={{ marginLeft: "8px" }} />
@@ -260,7 +260,7 @@ function AeoCheck() {
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "2rem" }}>{verdict.copy}</p>
                     <div style={{ marginTop: "auto", display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
                         <Link to="/contact" className="btn btn-primary" style={{ padding: "0.9rem 2rem" }}>
-                            Get your AEO audit — Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                            Get your AEO audit: Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                         </Link>
                         <button onClick={reset} style={{ background: "transparent", border: "none", color: "var(--text-secondary)", cursor: "pointer", fontSize: "0.9rem", fontWeight: 500, textDecoration: "underline", textUnderlineOffset: "3px" }}>Start over</button>
                     </div>
@@ -275,7 +275,7 @@ export default function ServicesAEO() {
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
                 title="AEO Consultant | Answer Engine Optimization | Maria Madeira"
-                description="AEO consultant helping brands get cited and recommended by AI assistants — ChatGPT, Perplexity, Gemini and Google AI Overviews — not just ranked on Google."
+                description="AEO consultant helping brands get cited and recommended by AI assistants (ChatGPT, Perplexity, Gemini and Google AI Overviews), not just ranked on Google."
                 path="/services/aeo"
                 jsonLd={AEO_JSON_LD}
             />
@@ -306,7 +306,7 @@ export default function ServicesAEO() {
                         Answer Engine Optimization
                     </p>
                     <h1 className="section-title" style={{ marginBottom: "1.5rem", textAlign: "left" }}>
-                        Get found and <span className="text-gradient">recommended by AI</span> — not just ranked by Google
+                        Get found and <span className="text-gradient">recommended by AI</span>, not just ranked by Google
                     </h1>
                     <p style={{ color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8, marginBottom: "2.5rem" }}>
                         Search is shifting from links to answers. AEO makes sure that when an AI assistant answers "who's the best?", the answer is you.
@@ -329,7 +329,7 @@ export default function ServicesAEO() {
                     </p>
                 </blockquote>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginTop: "1.75rem", fontSize: "1.05rem" }}>
-                    Traditional SEO earns you a position in a list of links and trusts the user to click and compare. AEO works one layer up: it shapes the entities, structured data, and answer-ready content that AI engines synthesise into a single response — so your brand is the one named, quoted, and linked.
+                    Traditional SEO earns you a position in a list of links and trusts the user to click and compare. AEO works one layer up: it shapes the entities, structured data, and answer-ready content that AI engines synthesise into a single response, so your brand is the one named, quoted, and linked.
                 </p>
             </section>
 
@@ -383,7 +383,7 @@ export default function ServicesAEO() {
                     <p className="text-gradient-accent" style={{ fontSize: "0.85rem", fontWeight: 700, margin: 0 }}>Case Study</p>
                     <h3 style={{ margin: 0 }}>The Bodysurf School</h3>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, margin: "0.25rem 0 0" }}>
-                        SEO and AEO foundations built into a full site rebuild — structured, answer-ready, and findable in both classic and AI search.
+                        SEO and AEO foundations built into a full site rebuild: structured, answer-ready, and findable in both classic and AI search.
                     </p>
                     <span style={{ marginTop: "0.75rem", display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.9rem" }}>
                         Read the case study <ArrowRight size={16} />
@@ -415,7 +415,7 @@ export default function ServicesAEO() {
                 </div>
                 <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Become the answer AI recommends</h2>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1.1rem", maxWidth: "560px", margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
-                    Book a free strategy call and we'll map where AI search sees you today — and how to become the cited default in your category.
+                    Book a free strategy call and we'll map where AI search sees you today, and how to become the cited default in your category.
                 </p>
                 <Link to="/contact" className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
                     Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />

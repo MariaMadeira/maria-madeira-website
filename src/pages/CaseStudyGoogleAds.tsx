@@ -51,7 +51,7 @@ export default function CaseStudyGoogleAds() {
                         Google Ads Revenue Growth
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
-                        How an optimised Google Ads strategy turned £23.4K in ad spend into £125K in conversion value — a 5.34x return — across roughly ten months (Sept 2025 – Jul 2026).
+                        How an optimised Google Ads strategy turned £23.4K in ad spend into £125K in conversion value, a 5.34x return, across roughly ten months (Sept 2025 – Jul 2026).
                     </p>
                 </div>
 
@@ -214,7 +214,7 @@ export default function CaseStudyGoogleAds() {
                         }}
                     >
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                            From <strong style={{ color: "var(--text-primary)" }}>£23.4K</strong> in ad spend across roughly ten months, the optimised campaigns generated <strong style={{ color: "var(--text-primary)" }}>£125K</strong> in conversion value — a <strong style={{ color: "var(--text-primary)" }}>5.34x</strong> return on ad spend.
+                            From <strong style={{ color: "var(--text-primary)" }}>£23.4K</strong> in ad spend across roughly ten months, the optimised campaigns generated <strong style={{ color: "var(--text-primary)" }}>£125K</strong> in conversion value, a <strong style={{ color: "var(--text-primary)" }}>5.34x</strong> return on ad spend.
                         </p>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
                             That came from <strong style={{ color: "var(--text-primary)" }}>2,000 conversions</strong> at a cost per conversion of <strong style={{ color: "var(--text-primary)" }}>£11.70</strong>, making Google Ads a reliable channel for acquiring high-intent customers.

@@ -51,7 +51,7 @@ export default function CaseStudyEmail() {
                         Email Lifecycle Revenue Growth
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
-                        How a strategic email lifecycle system transformed an underutilised channel into the brand's most important revenue driver — growing attributed revenue to £134K over the last 12 months, up 88.9% year on year.
+                        How a strategic email lifecycle system transformed an underutilised channel into the brand's most important revenue driver: growing attributed revenue to £134K over the last 12 months, up 88.9% year on year.
                     </p>
                 </div>
 
@@ -72,7 +72,7 @@ export default function CaseStudyEmail() {
                         Context
                     </h2>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                        The brand — a UK premium food e-commerce brand — had strong customer demand but email marketing was significantly underutilised.
+                        The brand (a UK premium food e-commerce brand) had strong customer demand but email marketing was significantly underutilised.
                     </p>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
                         Despite a growing customer base, lifecycle automation was limited and most email revenue came from occasional campaign sends rather than structured retention flows.
@@ -212,13 +212,13 @@ export default function CaseStudyEmail() {
                         }}
                     >
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                            Over the last 12 months email attributed <strong style={{ color: "var(--text-primary)" }}>£134K</strong> in revenue, up <strong style={{ color: "var(--text-primary)" }}>88.9%</strong> year on year — split between <strong style={{ color: "var(--text-primary)" }}>£86.1K</strong> from campaigns (+92.6%) and <strong style={{ color: "var(--text-primary)" }}>£48.3K</strong> from automated flows (+82.5%).
+                            Over the last 12 months email attributed <strong style={{ color: "var(--text-primary)" }}>£134K</strong> in revenue, up <strong style={{ color: "var(--text-primary)" }}>88.9%</strong> year on year: split between <strong style={{ color: "var(--text-primary)" }}>£86.1K</strong> from campaigns (+92.6%) and <strong style={{ color: "var(--text-primary)" }}>£48.3K</strong> from automated flows (+82.5%).
                         </p>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
                             The gains held on engagement as well as revenue: a <strong style={{ color: "var(--text-primary)" }}>50.4%</strong> average campaign open rate (78th percentile against the industry benchmark) and a <strong style={{ color: "var(--text-primary)" }}>7.27%</strong> flow click rate over the 12-month window (9.14% across the 2024 calendar year).
                         </p>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>
-                            Seen over the full engagement, email-attributed revenue grew from <strong style={{ color: "var(--text-primary)" }}>£33K in 2021</strong> to <strong style={{ color: "var(--text-primary)" }}>£134K in 2025</strong> — a 4x increase, and a channel turned into a scalable, predictable growth driver.
+                            Seen over the full engagement, email-attributed revenue grew from <strong style={{ color: "var(--text-primary)" }}>£33K in 2021</strong> to <strong style={{ color: "var(--text-primary)" }}>£134K in 2025</strong>: a 4x increase, and a channel turned into a scalable, predictable growth driver.
                         </p>
                     </div>
                 </section>

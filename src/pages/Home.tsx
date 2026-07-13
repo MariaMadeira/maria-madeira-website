@@ -38,7 +38,7 @@ const FEATURED_WORK = [
     {
         category: "Email Marketing",
         title: "Email Lifecycle Revenue Growth",
-        outcome: "An underused channel rebuilt as a full Klaviyo lifecycle system — welcome, recovery, replenishment and win-back.",
+        outcome: "An underused channel rebuilt as a full Klaviyo lifecycle system: welcome, recovery, replenishment and win-back.",
         link: "/case-study-email",
     },
 ];
@@ -60,7 +60,7 @@ const HOME_JSON_LD = {
         {
             "@type": "ProfessionalService",
             "@id": "https://mariamadeira.com/#service",
-            "name": "Maria Madeira — Growth Strategy",
+            "name": "Maria Madeira: Growth Strategy",
             "url": "https://mariamadeira.com",
             "description": "E-commerce growth strategy, email marketing automation, paid acquisition, and AI-powered marketing systems for scaling brands.",
             "provider": { "@id": "https://mariamadeira.com/#person" },
@@ -326,7 +326,7 @@ export default function Home() {
                         }}>
                             <img
                                 src="/maria-working.png"
-                                alt="Maria Madeira — E-commerce Growth Strategist"
+                                alt="Maria Madeira, E-commerce Growth Strategist"
                                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '60% 15%', display: 'block' }}
                             />
                         </div>
@@ -525,7 +525,7 @@ export default function Home() {
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                     <h2 className="section-title" style={{ marginBottom: '1rem' }}>Featured Work</h2>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-                        Three engagements that show the range — a full build, paid acquisition, and lifecycle retention.
+                        Three engagements that show the range: a full build, paid acquisition, and lifecycle retention.
                     </p>
                 </div>
                 <div className="grid-3">
@@ -567,7 +567,7 @@ export default function Home() {
                 <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                     <h2 className="section-title" style={{ marginBottom: '1rem' }}>Selected Work</h2>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-                        A snapshot of recent projects — from brand identity to AI-powered product photography.
+                        A snapshot of recent projects, from brand identity to AI-powered product photography.
                     </p>
                 </div>
                 <div className="portfolio-preview-grid" style={{

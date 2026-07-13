@@ -30,7 +30,7 @@ export default function PortfolioEmailMarketing() {
         {
             title: "Abandoned Checkout",
             icon: <ShoppingCart size={28} />,
-            description: "Recovers lost sales from customers who started checkout but didn't complete their purchase — a high-ROI flow."
+            description: "Recovers lost sales from customers who started checkout but didn't complete their purchase: a high-ROI flow."
         },
         {
             title: "Post Purchase Flow",
@@ -373,14 +373,14 @@ export default function PortfolioEmailMarketing() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        Each email was designed to reflect the brand's bold, food-first identity — combining strong visuals, direct copy, and clear calls to action to drive engagement and conversions.
+                        Each email was designed to reflect the brand's bold, food-first identity: combining strong visuals, direct copy, and clear calls to action to drive engagement and conversions.
                     </p>
 
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem", alignItems: "start" }}>
                         {[
                             { src: "/projects/email-marketing/ads-offer.png", label: "Welcome / Offer Flow" },
-                            { src: "/projects/email-marketing/ox-1.png", label: "Product Segment — Email 1" },
-                            { src: "/projects/email-marketing/ox-2.png", label: "Product Segment — Email 2" },
+                            { src: "/projects/email-marketing/ox-1.png", label: "Product Segment: Email 1" },
+                            { src: "/projects/email-marketing/ox-2.png", label: "Product Segment: Email 2" },
                             { src: "/projects/email-marketing/replenishment.png", label: "30-Day Replenishment Flow" },
                             { src: "/projects/email-marketing/recipe.png", label: "Recipe Content Flow" },
                         ].map((email, i) => (
