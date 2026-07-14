@@ -16,6 +16,18 @@ interface CaseStudyMeta {
     headline: string;
     /** One-sentence summary of the engagement and its outcome. */
     description: string;
+    /**
+     * ISO date (YYYY-MM-DD) of the first git commit that introduced the page.
+     * Derived from `git log` at author time — real and verifiable, not guessed.
+     */
+    datePublished: string;
+    /**
+     * ISO date (YYYY-MM-DD) of the most recent commit touching the page.
+     * Hardcoded rather than read from git at build time because Vercel's default
+     * shallow clone would truncate history in production. Bump this in the same
+     * file whenever a case study's numbers are updated.
+     */
+    dateModified: string;
     /** Short breadcrumb label; defaults to the headline. */
     breadcrumb?: string;
 }
@@ -23,10 +35,10 @@ interface CaseStudyMeta {
 /**
  * Article + BreadcrumbList graph for a case study. Case studies are the proof
  * content AI answer engines lift and cite, so marking them up as authored,
- * attributed Articles makes them far more citable. No datePublished: we don't
- * track real per-case dates and a fabricated one would be worse than none.
+ * attributed Articles makes them far more citable. Dates are git-derived (see
+ * CaseStudyMeta) so both datePublished and dateModified are real.
  */
-export function caseStudyJsonLd({ path, headline, description, breadcrumb }: CaseStudyMeta) {
+export function caseStudyJsonLd({ path, headline, description, datePublished, dateModified, breadcrumb }: CaseStudyMeta) {
     const url = `${SITE_URL}${path}`;
     return {
         "@context": "https://schema.org",
@@ -38,6 +50,8 @@ export function caseStudyJsonLd({ path, headline, description, breadcrumb }: Cas
                 "description": description,
                 "author": PERSON_REF,
                 "publisher": PERSON_REF,
+                "datePublished": datePublished,
+                "dateModified": dateModified,
                 "mainEntityOfPage": url,
                 "isPartOf": { "@id": `${SITE_URL}/case-studies#collection` },
             },

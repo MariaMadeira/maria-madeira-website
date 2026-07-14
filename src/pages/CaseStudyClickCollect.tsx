@@ -4,6 +4,11 @@ import { useEffect } from "react";
 import Seo from "../components/Seo";
 import { caseStudyJsonLd } from "../lib/schema";
 
+// Git-derived (git log src/pages/CaseStudyClickCollect.tsx). Bump MODIFIED
+// whenever the case study's details are updated.
+const PUBLISHED = "2026-03-23";
+const MODIFIED = "2026-07-14";
+
 export default function CaseStudyClickCollect() {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -25,6 +30,8 @@ export default function CaseStudyClickCollect() {
                 path: "/case-study-click-collect",
                 headline: "Click & Collect",
                 description: "Launching a mobile pre-order experience for a high-traffic retail store, and what low adoption taught us about customer habits.",
+                datePublished: PUBLISHED,
+                dateModified: MODIFIED,
                 breadcrumb: "Click & Collect",
             })}
         />

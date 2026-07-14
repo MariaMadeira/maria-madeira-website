@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { caseStudyJsonLd } from "../lib/schema";
 
+// Git-derived (git log src/pages/CaseStudyBodysurfSchool.tsx). Bump MODIFIED
+// whenever the case study's details are updated.
+const PUBLISHED = "2026-07-09";
+const MODIFIED = "2026-07-14";
+
 export default function CaseStudyBodysurfSchool() {
     return (
         <>
@@ -14,6 +19,8 @@ export default function CaseStudyBodysurfSchool() {
                 path: "/case-study-bodysurf-school",
                 headline: "The Bodysurf School",
                 description: "Turning a Portuguese surf school website into a bilingual online booking engine with local payment methods and SEO and AEO foundations built in.",
+                datePublished: PUBLISHED,
+                dateModified: MODIFIED,
                 breadcrumb: "The Bodysurf School",
             })}
         />

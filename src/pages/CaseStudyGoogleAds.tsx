@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { caseStudyJsonLd } from "../lib/schema";
 
+// Git-derived (git log src/pages/CaseStudyGoogleAds.tsx). Bump MODIFIED
+// whenever the numbers below are updated — this is an ongoing engagement.
+const PUBLISHED = "2026-03-16";
+const MODIFIED = "2026-07-14";
+
 export default function CaseStudyGoogleAds() {
     return (
         <>
@@ -14,6 +19,8 @@ export default function CaseStudyGoogleAds() {
                 path: "/case-study-google-ads",
                 headline: "Google Ads Revenue Growth",
                 description: "How structured campaign architecture and creative testing turned £23.4K of ad spend into £125K in conversion value at a 5.34x return on ad spend.",
+                datePublished: PUBLISHED,
+                dateModified: MODIFIED,
                 breadcrumb: "Google Ads Revenue Growth",
             })}
         />
@@ -84,8 +91,11 @@ export default function CaseStudyGoogleAds() {
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
                         Campaign structure and targeting required optimisation to improve conversion efficiency and maximise return on ad spend.
                     </p>
-                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
                         The objective was to refine campaign targeting, optimise spend allocation, and increase revenue while maintaining a sustainable cost per acquisition.
+                    </p>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontStyle: "italic" }}>
+                        This is an ongoing engagement, running from September 2025 to present.
                     </p>
                 </section>
 

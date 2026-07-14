@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { caseStudyJsonLd } from "../lib/schema";
 
+// Git-derived (git log src/pages/CaseStudySEO.tsx). Bump MODIFIED whenever the
+// case study's details are updated — this is an ongoing engagement.
+const PUBLISHED = "2026-03-16";
+const MODIFIED = "2026-07-14";
+
 export default function CaseStudySEO() {
     return (
         <>
@@ -14,6 +19,8 @@ export default function CaseStudySEO() {
                 path: "/case-study-seo",
                 headline: "SEO & Platform Migration",
                 description: "Rebuilding site structure after a WordPress to Shopify migration to recover organic visibility and win answer-engine (AEO) discoverability.",
+                datePublished: PUBLISHED,
+                dateModified: MODIFIED,
                 breadcrumb: "SEO & Platform Migration",
             })}
         />
@@ -87,8 +94,11 @@ export default function CaseStudySEO() {
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
                         Additionally, with search increasingly influenced by AI-powered search engines and large language models, the website required improvements to support Answer Engine Optimisation (AEO).
                     </p>
-                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
                         The objective was to implement proper SEO foundations while structuring content to improve discoverability in both traditional search engines and AI-powered search.
+                    </p>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontStyle: "italic" }}>
+                        This is an ongoing engagement, running from September 2025 to present.
                     </p>
                 </section>
 

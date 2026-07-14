@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { caseStudyJsonLd } from "../lib/schema";
 
+// Git-derived (git log src/pages/CaseStudyEmail.tsx). Bump PUBLISHED never;
+// bump MODIFIED whenever the numbers below are updated.
+const PUBLISHED = "2026-03-16";
+const MODIFIED = "2026-07-14";
+
 export default function CaseStudyEmail() {
     return (
         <>
@@ -14,6 +19,8 @@ export default function CaseStudyEmail() {
                 path: "/case-study-email",
                 headline: "Email Lifecycle Revenue Growth",
                 description: "How a Klaviyo lifecycle system grew email-attributed revenue to £134K over 12 months, up 88.9% year on year, at a 50.4% campaign open rate.",
+                datePublished: PUBLISHED,
+                dateModified: MODIFIED,
                 breadcrumb: "Email Lifecycle Revenue Growth",
             })}
         />
