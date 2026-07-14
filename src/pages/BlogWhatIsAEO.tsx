@@ -96,6 +96,7 @@ export default function BlogWhatIsAEO() {
                 title="What is AEO? Answer Engine Optimisation | Maria Madeira"
                 description={DESCRIPTION}
                 path="/blog/what-is-aeo"
+                ogImage="/og/og-blog-aeo.png"
                 jsonLd={ARTICLE_JSON_LD}
             />
 

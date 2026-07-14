@@ -170,6 +170,7 @@ export default function ServicesEmailMarketing() {
                 title="Email Marketing Consultant | Klaviyo | Maria Madeira"
                 description="Klaviyo and email marketing consultant building lifecycle flows, segmentation and campaigns that grow attributed email revenue for brands that sell online."
                 path="/services/email-marketing"
+                ogImage="/og/og-email.png"
                 jsonLd={EMAIL_JSON_LD}
             />
 

@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
 const SITE_URL = "https://mariamadeira.com";
-const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/og/og-default.png`;
 
 // React 19 hoists <title>, <meta> and <link> into <head> and adopts the copies
 // already there during hydration. It does NOT hoist a non-async <script>, so a
@@ -48,6 +48,8 @@ export default function Seo({
             <meta property="og:description" content={description} />
             <meta property="og:url" content={canonical} />
             <meta property="og:image" content={imageUrl} />
+            <meta property="og:image:width" content="2400" />
+            <meta property="og:image:height" content="1260" />
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={title} />

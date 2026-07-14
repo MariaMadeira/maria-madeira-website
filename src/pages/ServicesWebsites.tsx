@@ -255,6 +255,7 @@ export default function ServicesWebsites() {
                 title="Website Strategy & SEO/AEO Consultant | Maria Madeira"
                 description="Turn an outdated website into a growth engine: strategy, a rebuild or targeted fixes, with SEO and AEO built in from the start for brands that sell online."
                 path="/services/websites"
+                ogImage="/og/og-websites.png"
                 jsonLd={WEBSITES_JSON_LD}
             />
 

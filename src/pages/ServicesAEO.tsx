@@ -319,6 +319,7 @@ export default function ServicesAEO() {
                 title="AEO Consultant | Answer Engine Optimisation | Maria Madeira"
                 description="AEO consultant helping brands get cited and recommended by AI assistants (ChatGPT, Perplexity, Gemini and Google AI Overviews), not just ranked on Google."
                 path="/services/aeo"
+                ogImage="/og/og-aeo.png"
                 jsonLd={AEO_JSON_LD}
             />
 
