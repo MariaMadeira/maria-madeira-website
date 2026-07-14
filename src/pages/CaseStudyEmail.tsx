@@ -1,6 +1,7 @@
 import { ArrowLeft, TrendingUp, Mail, Target, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import { caseStudyJsonLd } from "../lib/schema";
 
 export default function CaseStudyEmail() {
     return (
@@ -9,6 +10,12 @@ export default function CaseStudyEmail() {
             title="Email Marketing Case Study | £134K Revenue"
             description="Email marketing case study: how a Klaviyo lifecycle system grew attributed revenue to £134K in 12 months, up 88.9% year on year, at a 50.4% open rate."
             path="/case-study-email"
+            jsonLd={caseStudyJsonLd({
+                path: "/case-study-email",
+                headline: "Email Lifecycle Revenue Growth",
+                description: "How a Klaviyo lifecycle system grew email-attributed revenue to £134K over 12 months, up 88.9% year on year, at a 50.4% campaign open rate.",
+                breadcrumb: "Email Lifecycle Revenue Growth",
+            })}
         />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <div style={{ maxWidth: "900px", margin: "0 auto" }}>

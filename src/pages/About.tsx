@@ -1,6 +1,54 @@
 import { Linkedin, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import { SITE_URL, PERSON_ID } from "../lib/schema";
+
+// The About page is the canonical entity page for the Maria Madeira brand, so it
+// carries the richest Person node. Same @id as the homepage (#person) so search
+// and answer engines merge them into one entity. sameAs is the single strongest
+// lever for entity recognition — add more verified profiles (Instagram, X,
+// Crunchbase, guest-post bylines) to this array as they come online.
+const SAME_AS = [
+    "https://www.linkedin.com/in/maria-madeira-43501b3a/",
+];
+
+const ABOUT_JSON_LD = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "ProfilePage",
+            "@id": `${SITE_URL}/about#profilepage`,
+            "url": `${SITE_URL}/about`,
+            "name": "About Maria Madeira",
+            "mainEntity": { "@id": PERSON_ID },
+        },
+        {
+            "@type": "Person",
+            "@id": PERSON_ID,
+            "name": "Maria Madeira",
+            "url": SITE_URL,
+            "image": `${SITE_URL}/portrait.png`,
+            "jobTitle": "E-commerce Growth Strategist",
+            "description": "Maria Madeira is a growth strategist for brands that sell online: website strategy and build, SEO and AEO, email marketing and Klaviyo, and paid acquisition. Based in Lisbon, working globally.",
+            "homeLocation": { "@type": "Place", "name": "Lisbon, Portugal" },
+            "knowsAbout": [
+                "E-commerce Growth", "Email Marketing", "Klaviyo", "Lifecycle Marketing",
+                "Google Ads", "Meta Ads", "Paid Acquisition", "Search Engine Optimisation",
+                "Answer Engine Optimisation", "AI Marketing", "Creative Direction",
+                "Shopify", "E-commerce Platform Migration",
+            ],
+            "knowsLanguage": ["English", "Portuguese"],
+            "sameAs": SAME_AS,
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+                { "@type": "ListItem", "position": 2, "name": "About", "item": `${SITE_URL}/about` },
+            ],
+        },
+    ],
+};
 
 export default function About() {
     const tools = [
@@ -17,6 +65,7 @@ export default function About() {
                 title="About Maria Madeira | Growth Strategist"
                 description="Meet Maria Madeira, a growth strategist and creative marketing specialist who bridges data-driven performance with storytelling for brands that sell online."
                 path="/about"
+                jsonLd={ABOUT_JSON_LD}
             />
 
             <div className="grid-2" style={{ alignItems: "flex-start", gap: "4rem" }}>

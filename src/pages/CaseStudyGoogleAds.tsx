@@ -1,6 +1,7 @@
 import { ArrowLeft, TrendingUp, Search, MousePointerClick, BarChart } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import { caseStudyJsonLd } from "../lib/schema";
 
 export default function CaseStudyGoogleAds() {
     return (
@@ -9,6 +10,12 @@ export default function CaseStudyGoogleAds() {
             title="Google Ads Case Study | 5.34x ROAS"
             description="Google Ads case study: how structured campaign architecture and creative testing turned £23.4K of ad spend into £125K in conversion value at a 5.34x return."
             path="/case-study-google-ads"
+            jsonLd={caseStudyJsonLd({
+                path: "/case-study-google-ads",
+                headline: "Google Ads Revenue Growth",
+                description: "How structured campaign architecture and creative testing turned £23.4K of ad spend into £125K in conversion value at a 5.34x return on ad spend.",
+                breadcrumb: "Google Ads Revenue Growth",
+            })}
         />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <div style={{ maxWidth: "900px", margin: "0 auto" }}>

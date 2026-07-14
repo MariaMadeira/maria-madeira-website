@@ -1,6 +1,7 @@
 import { ArrowLeft, Map, CreditCard, LayoutTemplate, Globe, Search, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import { caseStudyJsonLd } from "../lib/schema";
 
 export default function CaseStudyBodysurfSchool() {
     return (
@@ -9,6 +10,12 @@ export default function CaseStudyBodysurfSchool() {
             title="Bodysurf School Case Study | Booking Engine"
             description="Case study: turning a Portuguese surf school website into a bilingual online booking engine with local payment methods and SEO and AEO foundations built in."
             path="/case-study-bodysurf-school"
+            jsonLd={caseStudyJsonLd({
+                path: "/case-study-bodysurf-school",
+                headline: "The Bodysurf School",
+                description: "Turning a Portuguese surf school website into a bilingual online booking engine with local payment methods and SEO and AEO foundations built in.",
+                breadcrumb: "The Bodysurf School",
+            })}
         />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <div style={{ maxWidth: "900px", margin: "0 auto" }}>

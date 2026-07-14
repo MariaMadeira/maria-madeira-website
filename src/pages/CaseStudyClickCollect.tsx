@@ -2,6 +2,7 @@ import { ArrowLeft, Smartphone, AlertCircle, Lightbulb, Users, MapPin, Zap } fro
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Seo from "../components/Seo";
+import { caseStudyJsonLd } from "../lib/schema";
 
 export default function CaseStudyClickCollect() {
     useEffect(() => {
@@ -20,6 +21,12 @@ export default function CaseStudyClickCollect() {
             title="Click & Collect Case Study | Retail UX"
             description="Click & collect case study: launching a mobile pre-order experience for a high-traffic retail store, and what low adoption taught us about customer habits."
             path="/case-study-click-collect"
+            jsonLd={caseStudyJsonLd({
+                path: "/case-study-click-collect",
+                headline: "Click & Collect",
+                description: "Launching a mobile pre-order experience for a high-traffic retail store, and what low adoption taught us about customer habits.",
+                breadcrumb: "Click & Collect",
+            })}
         />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <div style={{ maxWidth: "900px", margin: "0 auto" }}>

@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowRightLeft, FileText, Bot, LayoutTemplate, Activity, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import { caseStudyJsonLd } from "../lib/schema";
 
 export default function CaseStudySEO() {
     return (
@@ -9,6 +10,12 @@ export default function CaseStudySEO() {
             title="SEO & Platform Migration Case Study"
             description="SEO case study: rebuilding site structure after a WordPress to Shopify migration to recover organic visibility and win answer-engine (AEO) discoverability."
             path="/case-study-seo"
+            jsonLd={caseStudyJsonLd({
+                path: "/case-study-seo",
+                headline: "SEO & Platform Migration",
+                description: "Rebuilding site structure after a WordPress to Shopify migration to recover organic visibility and win answer-engine (AEO) discoverability.",
+                breadcrumb: "SEO & Platform Migration",
+            })}
         />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <div style={{ maxWidth: "900px", margin: "0 auto" }}>
