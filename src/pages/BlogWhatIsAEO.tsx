@@ -9,6 +9,10 @@ const HEADLINE = "What is AEO? Answer Engine Optimisation, explained for brands 
 const DESCRIPTION = "Answer Engine Optimisation (AEO) explained: how brands get cited by ChatGPT, Perplexity and AI Overviews, how it differs from SEO, and where to start.";
 const PUBLISHED_ISO = "2026-07-13";
 const PUBLISHED_HUMAN = "13 July 2026";
+// Bump MODIFIED when content changes. Latest edits (five-question test callout,
+// roundup cross-link, FAQ corrections) shipped 14 July 2026.
+const MODIFIED_ISO = "2026-07-14";
+const MODIFIED_HUMAN = "14 July 2026";
 
 /* FAQ drives both the visible section and the FAQPage schema, so they can't drift. */
 const FAQS: { q: string; a: string }[] = [
@@ -49,7 +53,7 @@ const ARTICLE_JSON_LD = {
             "author": { "@type": "Person", "@id": `${SITE_URL}/#person`, "name": "Maria Madeira" },
             "publisher": { "@id": `${SITE_URL}/#person` },
             "datePublished": PUBLISHED_ISO,
-            "dateModified": PUBLISHED_ISO,
+            "dateModified": MODIFIED_ISO,
             "mainEntityOfPage": PAGE_URL,
         },
         {
@@ -116,7 +120,7 @@ export default function BlogWhatIsAEO() {
                 <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap", color: "var(--text-secondary)", fontSize: "0.9rem", marginBottom: "2.5rem", paddingBottom: "2rem", borderBottom: "1px solid var(--border-color)" }}>
                     <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>Maria Madeira</span>
                     <span>Published {PUBLISHED_HUMAN}</span>
-                    <span>Updated {PUBLISHED_HUMAN}</span>
+                    <span>Updated {MODIFIED_HUMAN}</span>
                     <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><Clock size={13} /> 9 min read</span>
                 </div>
 

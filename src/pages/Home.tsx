@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState, useCallback } from "react";
-import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft } from "lucide-react";
+import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { useInView } from "../hooks/useInView";
@@ -494,14 +494,23 @@ export default function Home() {
                         Strategic solutions designed to drive revenue and improve operational efficiency for scaling brands.
                     </p>
                 </div>
-                <div className="grid-3">
+                {/* Centred flex-wrap keeps the 3-column rhythm but balances the odd
+                    seventh card, which grid-3 would leave orphaned in a row of one. */}
+                <style>{`
+                    .services-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
+                    .services-grid > * { flex: 0 1 calc((100% - 4rem) / 3); }
+                    @media (max-width: 900px) { .services-grid > * { flex-basis: calc((100% - 2rem) / 2); } }
+                    @media (max-width: 600px) { .services-grid > * { flex-basis: 100%; } }
+                `}</style>
+                <div className="services-grid">
                     {[
-                        { icon: <TrendingUp size={22} />, title: 'Growth Strategy', desc: 'Full-funnel strategies to take brands from steady growth to aggressive, sustainable scaling.' },
+                        { icon: <TrendingUp size={22} />, title: 'Growth Strategy', desc: 'Full-funnel strategies to take brands from steady growth to aggressive, sustainable scaling.', link: '/services' },
+                        { icon: <Sparkles size={22} />, title: 'AI Search Visibility (AEO)', desc: "Getting brands cited and recommended by ChatGPT, Perplexity and Google's AI Overviews, not just ranked.", link: '/services/aeo' },
                         { icon: <Mail size={22} />, title: 'Email Marketing & Automation', desc: 'Advanced lifecycle flows and segmentation that maximise LTV and cut acquisition costs.', link: '/services/email-marketing' },
                         { icon: <BarChart size={22} />, title: 'Paid Advertising', desc: 'Data-driven media buying across Meta, Google, and TikTok to maximise ROAS.' },
                         { icon: <Cpu size={22} />, title: 'AI & Automation Systems', desc: 'AI tools that accelerate content creation, automate workflows, and enrich data analysis.' },
                         { icon: <Maximize size={22} />, title: 'Creative Direction', desc: 'Translating analytical insights into compelling visual stories and high-performing brand assets.' },
-                        { icon: <ArrowRightLeft size={22} />, title: 'E-commerce Platform Migration', desc: 'Seamless migrations that protect SEO, revenue, and customer data throughout the transition.' },
+                        { icon: <ArrowRightLeft size={22} />, title: 'E-commerce Platform Migration', desc: 'Seamless migrations that protect SEO, revenue, and customer data throughout the transition.', link: '/services/websites' },
                     ].map((s: { icon: React.ReactNode; title: string; desc: string; link?: string }) => {
                         const body = (
                             <>
