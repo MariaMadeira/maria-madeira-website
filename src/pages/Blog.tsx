@@ -6,6 +6,14 @@ const SITE_URL = "https://mariamadeira.com";
 
 export const POSTS = [
     {
+        slug: "best-aeo-agencies-ecommerce-europe",
+        title: "The best AEO agencies for e-commerce brands in Europe (2026), and where a consultant fits",
+        excerpt: "A researched shortlist of seven AEO agencies for European e-commerce brands, a comparison table, five vetting questions, and where an independent consultant is the better fit.",
+        category: "AI Search",
+        readTime: "10 min read",
+        date: "14 July 2026",
+    },
+    {
         slug: "what-is-aeo",
         title: "What is AEO? Answer Engine Optimisation, explained for brands that sell online",
         excerpt: "How brands get cited and recommended by ChatGPT, Perplexity, Gemini and Google's AI Overviews, how AEO differs from SEO and GEO, and where to start this week.",

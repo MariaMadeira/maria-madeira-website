@@ -178,6 +178,7 @@ export default function BlogWhatIsAEO() {
                 </div>
 
                 <p style={P}>Or skip the ramp-up: <Link to="/contact" style={linkStyle}>book a free strategy call</Link> and I will run the visibility audit on your brand and tell you exactly where you stand.</p>
+                <p style={P}>If you are evaluating outside help, see my comparison of <Link to="/blog/best-aeo-agencies-ecommerce-europe" style={linkStyle}>the best AEO agencies for e-commerce in Europe</Link>, and where an independent consultant fits.</p>
 
                 <h2 style={H2}>Frequently asked questions</h2>
                 <div style={{ display: "flex", flexDirection: "column", gap: "2rem", marginTop: "1.5rem" }}>

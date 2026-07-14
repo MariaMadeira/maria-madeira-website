@@ -25,6 +25,7 @@ export const ROUTES: RouteDef[] = [
     { path: "/contact", load: () => import("./pages/Contact") },
     { path: "/blog", load: () => import("./pages/Blog") },
     { path: "/blog/what-is-aeo", load: () => import("./pages/BlogWhatIsAEO") },
+    { path: "/blog/best-aeo-agencies-ecommerce-europe", load: () => import("./pages/BlogBestAeoAgencies") },
     { path: "/case-studies", load: () => import("./pages/CaseStudies") },
     { path: "/case-study-email", load: () => import("./pages/CaseStudyEmail") },
     { path: "/case-study-google-ads", load: () => import("./pages/CaseStudyGoogleAds") },
