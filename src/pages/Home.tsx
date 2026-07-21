@@ -53,16 +53,16 @@ const HOME_JSON_LD = {
             "url": "https://mariamadeira.com",
             "image": "https://mariamadeira.com/portrait.png",
             "jobTitle": "Growth Strategist",
-            "description": "Growth strategist for brands that sell online: website strategy and build, SEO and AEO, Klaviyo email marketing, and paid acquisition. Four years working with UK food and drink brands.",
+            "description": "Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Four years with UK food and drink brands.",
             "sameAs": ["https://www.linkedin.com/in/maria-madeira-43501b3a/"],
-            "knowsAbout": ["Email Marketing", "Klaviyo", "Google Ads", "Meta Ads", "AI Marketing", "E-commerce Growth", "Paid Acquisition", "Lifecycle Marketing"]
+            "knowsAbout": ["Email Marketing", "Klaviyo", "Google Ads", "Meta Ads", "AI Marketing", "Growth Strategy", "Paid Acquisition", "Lifecycle Marketing"]
         },
         {
             "@type": "ProfessionalService",
             "@id": "https://mariamadeira.com/#service",
             "name": "Maria Madeira: Growth Strategy",
             "url": "https://mariamadeira.com",
-            "description": "E-commerce growth strategy, email marketing automation, paid acquisition, and AI-powered marketing systems for scaling brands.",
+            "description": "Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Four years with UK food and drink brands.",
             "provider": { "@id": "https://mariamadeira.com/#person" },
             "areaServed": "Worldwide",
             "serviceType": ["Growth Strategy", "Email Marketing", "Paid Advertising", "AI Marketing Systems", "Creative Direction"],
@@ -274,7 +274,7 @@ export default function Home() {
         <div className="container">
             <Seo
                 title="Maria Madeira | Growth Strategist for Brands That Sell Online"
-                description="Growth strategist for brands that sell online: website strategy and build, SEO and AEO, Klaviyo email marketing, and paid acquisition. Four years working with UK food and drink brands."
+                description="Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Four years with UK food and drink brands."
                 path="/"
                 jsonLd={HOME_JSON_LD}
             />
@@ -304,7 +304,7 @@ export default function Home() {
                             marginBottom: '1rem',
                             display: 'block'
                         }}>
-                            E-commerce Growth Specialist. AI Enthusiast.
+                            Growth Strategist for brands that sell online.
                         </span>
                         <h1 style={{ margin: '0 0 1.5rem', fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.15 }}>
                             Scaling <span className="text-gradient">Brands That Sell Online</span> with Data-Driven Growth & AI
@@ -357,7 +357,7 @@ export default function Home() {
                         }}>
                             <img
                                 src="/maria-working.png"
-                                alt="Maria Madeira, E-commerce Growth Strategist"
+                                alt="Maria Madeira, Growth Strategist"
                                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '60% 15%', display: 'block' }}
                             />
                         </div>
@@ -545,7 +545,7 @@ export default function Home() {
                         { icon: <BarChart size={22} />, title: 'Paid Advertising', desc: 'Data-driven media buying across Meta, Google, and TikTok to maximise ROAS.' },
                         { icon: <Cpu size={22} />, title: 'AI & Automation Systems', desc: 'AI tools that accelerate content creation, automate workflows, and enrich data analysis.' },
                         { icon: <Maximize size={22} />, title: 'Creative Direction', desc: 'Translating analytical insights into compelling visual stories and high-performing brand assets.' },
-                        { icon: <ArrowRightLeft size={22} />, title: 'E-commerce Platform Migration', desc: 'Seamless migrations that protect SEO, revenue, and customer data throughout the transition.', link: '/services/websites' },
+                        { icon: <ArrowRightLeft size={22} />, title: 'Platform Migration', desc: 'Seamless migrations that protect SEO, revenue, and customer data throughout the transition.', link: '/services/websites' },
                     ].map((s: { icon: React.ReactNode; title: string; desc: string; link?: string }) => {
                         const body = (
                             <>
