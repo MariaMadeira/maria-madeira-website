@@ -52,8 +52,8 @@ const HOME_JSON_LD = {
             "name": "Maria Madeira",
             "url": "https://mariamadeira.com",
             "image": "https://mariamadeira.com/portrait.png",
-            "jobTitle": "E-commerce Growth Strategist",
-            "description": "Maria Madeira is a growth strategist for brands that sell online: website strategy and build, SEO and AEO, email marketing, and paid acquisition.",
+            "jobTitle": "Growth Strategist",
+            "description": "Growth strategist for brands that sell online: website strategy and build, SEO and AEO, Klaviyo email marketing, and paid acquisition. Four years working with UK food and drink brands.",
             "sameAs": ["https://www.linkedin.com/in/maria-madeira-43501b3a/"],
             "knowsAbout": ["Email Marketing", "Klaviyo", "Google Ads", "Meta Ads", "AI Marketing", "E-commerce Growth", "Paid Acquisition", "Lifecycle Marketing"]
         },
@@ -273,8 +273,8 @@ export default function Home() {
     return (
         <div className="container">
             <Seo
-                title="E-commerce Growth Strategist | Maria Madeira"
-                description="Growth strategist for brands that sell online. I scale revenue through lifecycle email marketing, paid acquisition, AI-driven search, and creative direction."
+                title="Maria Madeira | Growth Strategist for Brands That Sell Online"
+                description="Growth strategist for brands that sell online: website strategy and build, SEO and AEO, Klaviyo email marketing, and paid acquisition. Four years working with UK food and drink brands."
                 path="/"
                 jsonLd={HOME_JSON_LD}
             />
