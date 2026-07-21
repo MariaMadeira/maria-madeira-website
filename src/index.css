@@ -104,6 +104,21 @@ ul {
   min-height: 100vh;
 }
 
+/* Brands strip diamond separator. Styled via a class (not an inline style
+   attribute) so the mobile `.brands-row span[style]` padding override does not
+   apply to it: the separator stays glyph-width, which keeps row wrapping stable
+   when Home.tsx hides the separators that fall at the start of a wrapped line. */
+.brand-sep {
+  color: var(--accent-secondary);
+  font-size: 0.6rem;
+  opacity: 0.6;
+}
+.brand-sep--hide {
+  /* Hidden but keeps its (glyph-width) box, so hiding a separator never changes
+     where the row wraps. That keeps the line-start detection in Home.tsx stable. */
+  visibility: hidden;
+}
+
 .section {
   padding: 100px 0;
 }

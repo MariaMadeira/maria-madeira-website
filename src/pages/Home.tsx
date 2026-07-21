@@ -239,6 +239,37 @@ function TestimonialsCarousel() {
 export default function Home() {
     const { ref: metricsRevealRef, inView: metricsInView } = useInView({ rootMargin: '-50px', once: true });
 
+    // Brands strip: the diamond separators lead each brand, so on wide screens the
+    // row reads "A ✦ B ✦ C". When the row wraps on smaller viewports we hide the
+    // separator of any brand that starts a new line, so a diamond only ever sits
+    // *between* two brands on the same line and never dangles at a line edge.
+    // All separators are present in the server HTML (nothing hidden set); this runs
+    // after hydration and re-runs on resize.
+    const brandsRef = useRef<HTMLDivElement>(null);
+    const [lineStartSeps, setLineStartSeps] = useState<number[]>([]);
+
+    const recomputeBrandSeps = useCallback(() => {
+        const row = brandsRef.current;
+        if (!row) return;
+        const wrappers = Array.from(row.children) as HTMLElement[];
+        const hide: number[] = [];
+        let prevTop: number | null = null;
+        wrappers.forEach((w, i) => {
+            const top = w.getBoundingClientRect().top;
+            if (i > 0 && (prevTop === null || Math.abs(top - prevTop) > 4)) hide.push(i);
+            prevTop = top;
+        });
+        setLineStartSeps((prev) => (prev.length === hide.length && prev.every((v, k) => v === hide[k]) ? prev : hide));
+    }, []);
+
+    useEffect(() => {
+        recomputeBrandSeps();
+        window.addEventListener("resize", recomputeBrandSeps);
+        // Re-check once webfonts settle, since final glyph widths change wrapping.
+        (document as Document & { fonts?: FontFaceSet }).fonts?.ready.then(recomputeBrandSeps).catch(() => {});
+        return () => window.removeEventListener("resize", recomputeBrandSeps);
+    }, [recomputeBrandSeps]);
+
     return (
         <div className="container">
             <Seo
@@ -438,7 +469,7 @@ export default function Home() {
                     <p style={{ textTransform: 'uppercase', letterSpacing: '0.15em', fontSize: '0.75rem', fontWeight: 700, opacity: 0.5, marginBottom: '2rem' }}>
                         Trusted by Innovative Brands
                     </p>
-                    <div className="brands-row" style={{
+                    <div ref={brandsRef} className="brands-row" style={{
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -447,12 +478,19 @@ export default function Home() {
                         opacity: 0.45
                     }}>
                         {[
+                            "THE BLACK FARMER",
                             "SMORGASBORD",
                             "OUSADIA",
                             "WILTSHIRE COUNTRY FAYRE",
                             "RITA ANTUNES"
-                        ].map((brand, i, arr) => (
+                        ].map((brand, i) => (
+                            // The separator leads its brand and is bound to it as one
+                            // non-wrapping unit, so a diamond can never be left dangling
+                            // at the end of a line when the row wraps on small screens.
                             <span key={brand} style={{ display: 'flex', alignItems: 'center' }}>
+                                {i > 0 && (
+                                    <span aria-hidden="true" className={lineStartSeps.includes(i) ? "brand-sep brand-sep--hide" : "brand-sep"}>✦</span>
+                                )}
                                 <span style={{
                                     fontFamily: 'var(--font-heading)',
                                     fontSize: '0.8rem',
@@ -464,9 +502,6 @@ export default function Home() {
                                 }}>
                                     {brand}
                                 </span>
-                                {i < arr.length - 1 && (
-                                    <span style={{ color: 'var(--accent-secondary)', fontSize: '0.6rem', opacity: 0.6 }}>✦</span>
-                                )}
                             </span>
                         ))}
                     </div>
