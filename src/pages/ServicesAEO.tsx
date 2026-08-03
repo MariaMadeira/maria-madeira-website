@@ -27,6 +27,10 @@ const WHAT_I_DO = [
 /* ── FAQ — drives both the visible section and the FAQPage schema ──── */
 const FAQS: { q: string; a: string }[] = [
     {
+        q: "Do you implement the work, or only advise?",
+        a: "I implement it. The audit is the starting point, not the deliverable. From there I do the work: structured data, entity consistency, page and content changes, and citation tracking across ChatGPT, Perplexity, Gemini and AI Overviews. If the site itself needs rebuilding to support any of it, I do that too. You are working directly with the person doing the work, not briefing a team through an account manager.",
+    },
+    {
         q: "What is answer engine optimisation?",
         a: "Answer engine optimisation (AEO) is the practice of structuring your brand, content, and data so AI assistants cite and recommend you when they answer questions. Instead of chasing a blue-link ranking, AEO aims to make your business the answer that tools like ChatGPT, Perplexity, and Google's AI Overviews return.",
     },
@@ -400,6 +404,9 @@ export default function ServicesAEO() {
             <section style={{ marginBottom: "5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "3rem" }}>
                     <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>What I do</h2>
+                    <p style={{ color: "var(--text-secondary)", fontSize: "1.05rem", lineHeight: 1.8, maxWidth: "760px", margin: "0 auto", textAlign: "left" }}>
+                        Four stages, and I deliver all four. The audit tells you where you stand. The other three are implementation: schema, entity signals and answer-ready content built into your site, and citation tracking set up so you can see what changed. Nothing is handed over as a list of recommendations for someone else to action.
+                    </p>
                 </div>
                 <div className="aeo-steps">
                     {WHAT_I_DO.map((s, i) => (
@@ -413,6 +420,22 @@ export default function ServicesAEO() {
                         </div>
                     ))}
                 </div>
+            </section>
+
+            {/* Built alongside the rest */}
+            <section style={{ marginBottom: "5rem", maxWidth: "820px", margin: "0 auto 5rem" }}>
+                <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Built alongside the rest, not bolted on</h2>
+                </div>
+                <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "1.25rem" }}>
+                    AEO runs on the same foundations as everything else in search: site structure, clean markup, content that answers real questions, and enough authority for engines to trust you. When those are weak, AEO has nothing to stand on.
+                </p>
+                <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "1.25rem" }}>
+                    That is why I do not sell it on its own. I build websites, run SEO, and run Klaviyo email for the same brands, so the AEO work lands on foundations I can fix rather than foundations I have to work around. One person doing the strategy and the build, with no gap between what gets recommended and what gets shipped.
+                </p>
+                <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", margin: 0 }}>
+                    Deciding between an agency and an independent? <Link to="/blog/best-aeo-agencies-ecommerce-europe" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>I wrote a comparison of the European options, including where I fit.</Link>
+                </p>
             </section>
 
             {/* Mini-check */}
