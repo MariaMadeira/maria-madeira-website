@@ -30,6 +30,7 @@ export const ROUTES: RouteDef[] = [
     { path: "/case-study-email", load: () => import("./pages/CaseStudyEmail") },
     { path: "/case-study-google-ads", load: () => import("./pages/CaseStudyGoogleAds") },
     { path: "/case-study-seo", load: () => import("./pages/CaseStudySEO") },
+    { path: "/case-study-seo-aeo", load: () => import("./pages/CaseStudySEOAEO") },
     { path: "/case-study-click-collect", load: () => import("./pages/CaseStudyClickCollect") },
     { path: "/case-study-bodysurf-school", load: () => import("./pages/CaseStudyBodysurfSchool") },
     { path: "/portfolio", load: () => import("./pages/Portfolio") },

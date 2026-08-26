@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState, useCallback } from "react";
-import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft, Sparkles, Check } from "lucide-react";
+import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { useInView } from "../hooks/useInView";
@@ -613,19 +613,19 @@ export default function Home() {
                         </div>
                         <div className="case-study-card-body">
                             <p className="case-study-category">Paid advertising</p>
-                            <h3 className="case-study-card-title">Customers ready to buy, found through search</h3>
+                            <h3 className="case-study-card-title">Every pound spent returned five, for eleven months in a row</h3>
                             <ul className="case-study-items-list">
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>£125K in sales from Google Ads</span>
+                                    <span>£141K attributed revenue, 11 months</span>
                                 </li>
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>£23.4K ad spend</span>
+                                    <span>532% ROAS (client break-even: 400%)</span>
                                 </li>
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>£11.70 cost per sale</span>
+                                    <span>11 of 11 months above break-even</span>
                                 </li>
                             </ul>
                             <Link to="/case-study-google-ads" className="case-study-link">
@@ -640,23 +640,23 @@ export default function Home() {
                             <span className="case-study-placeholder-text" aria-hidden="true">Photo coming soon</span>
                         </div>
                         <div className="case-study-card-body">
-                            <p className="case-study-category">Website build</p>
-                            <h3 className="case-study-card-title">A brochure site rebuilt into a booking engine</h3>
+                            <p className="case-study-category">SEO and AEO</p>
+                            <h3 className="case-study-card-title">A catalogue invisible to Google, rebuilt page by page</h3>
                             <ul className="case-study-items-list">
                                 <li className="case-study-item">
-                                    <Check size={16} className="case-study-item-bullet" aria-hidden="true" style={{ marginTop: '3px' }} />
-                                    <span>Bookings taken in two languages</span>
+                                    <span className="case-study-item-bullet" aria-hidden="true">✦</span>
+                                    <span>Clicks from 4.5K to 8.0K (+78%) in four months</span>
                                 </li>
                                 <li className="case-study-item">
-                                    <Check size={16} className="case-study-item-bullet" aria-hidden="true" style={{ marginTop: '3px' }} />
-                                    <span>Local payment methods built in</span>
+                                    <span className="case-study-item-bullet" aria-hidden="true">✦</span>
+                                    <span>Average position from 15.2 to 9.4 (page 2 to page 1)</span>
                                 </li>
                                 <li className="case-study-item">
-                                    <Check size={16} className="case-study-item-bullet" aria-hidden="true" style={{ marginTop: '3px' }} />
-                                    <span>Found on Google and in AI answers</span>
+                                    <span className="case-study-item-bullet" aria-hidden="true">✦</span>
+                                    <span>60 pages improved at 30 days, 0 declined at 60 days</span>
                                 </li>
                             </ul>
-                            <Link to="/case-study-bodysurf-school" className="case-study-link">
+                            <Link to="/case-study-seo-aeo" className="case-study-link">
                                 Read case study <ArrowRight size={16} />
                             </Link>
                         </div>
