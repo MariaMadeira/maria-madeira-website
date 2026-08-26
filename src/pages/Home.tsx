@@ -595,7 +595,7 @@ export default function Home() {
                                 <img
                                     className="case-study-media-img case-study-media-img--top"
                                     src="/email-popcorn-800.jpg"
-                                    alt="Email campaign designed in Klaviyo for a British food brand"
+                                    alt="Email campaign designed in Klaviyo for The Black Farmer"
                                     width={800}
                                     height={1387}
                                     loading="lazy"
