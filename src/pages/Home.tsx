@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState, useCallback } from "react";
-import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft, Sparkles } from "lucide-react";
+import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft, Sparkles, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { useInView } from "../hooks/useInView";
@@ -17,32 +17,6 @@ const SUPPORTING_METRICS = [
     { to: 11.70, prefix: "£", suffix: "", decimals: 2, label: "Google Ads Cost / Conversion", detail: "2,000 conversions · Sept 2025 – Jul 2026" },
 ];
 
-// Outcomes are phrased to avoid restating any figure already shown in the hero
-// badge, the Measurable Impact grid or the supporting strip — each stat appears
-// exactly once on this page. The Google Ads ROAS (5.34x) is intentionally NOT
-// shown here: it coincides with the Meta Ads ROAS in the grid, so the card leads
-// with conversion value and spend instead.
-const FEATURED_WORK = [
-    {
-        category: "Growth Strategy & Website Build",
-        title: "The Bodysurf School",
-        outcome: "A brochure site rebuilt into a bilingual booking engine, with local payment methods and SEO and AEO foundations built in.",
-        link: "/case-study-bodysurf-school",
-    },
-    {
-        category: "Paid Advertising",
-        title: "Google Ads Revenue Growth",
-        outcome: "£125K in conversion value from £23.4K in ad spend, acquiring high-intent customers through structured search campaigns.",
-        link: "/case-study-google-ads",
-    },
-    {
-        category: "Email Marketing",
-        title: "Email Lifecycle Revenue Growth",
-        outcome: "An underused channel rebuilt as a full Klaviyo lifecycle system: welcome, recovery, replenishment and win-back.",
-        link: "/case-study-email",
-    },
-];
-
 const HOME_JSON_LD = {
     "@context": "https://schema.org",
     "@graph": [
@@ -51,7 +25,7 @@ const HOME_JSON_LD = {
             "@id": "https://mariamadeira.com/#person",
             "name": "Maria Madeira",
             "url": "https://mariamadeira.com",
-            "image": "https://mariamadeira.com/portrait.png",
+            "image": "https://mariamadeira.com/maria-hero-800.jpg",
             "jobTitle": "Growth Strategist",
             "description": "Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Four years with UK food and drink brands.",
             "sameAs": ["https://www.linkedin.com/in/maria-madeira-43501b3a/"],
@@ -355,11 +329,26 @@ export default function Home() {
                             boxShadow: '0 30px 80px rgba(0,0,0,0.25)',
                             border: '1px solid var(--border-color)',
                         }}>
-                            <img
-                                src="/maria-working.png"
-                                alt="Maria Madeira, Growth Strategist"
-                                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '60% 15%', display: 'block' }}
-                            />
+                            <picture>
+                                <source
+                                    type="image/webp"
+                                    srcSet="/maria-hero-400.webp 400w, /maria-hero-800.webp 800w, /maria-hero-1600.webp 1600w"
+                                    sizes="(max-width: 900px) 100vw, 550px"
+                                />
+                                <source
+                                    type="image/jpeg"
+                                    srcSet="/maria-hero-400.jpg 400w, /maria-hero-800.jpg 800w, /maria-hero-1600.jpg 1600w"
+                                    sizes="(max-width: 900px) 100vw, 550px"
+                                />
+                                <img
+                                    src="/maria-hero-800.jpg"
+                                    alt="Maria Madeira, growth consultant, at her desk"
+                                    width="1600"
+                                    height="2000"
+                                    fetchPriority="high"
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%', display: 'block' }}
+                                />
+                            </picture>
                         </div>
                         {/* Floating badge */}
                         <div
@@ -571,41 +560,109 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Featured Work Section */}
-            <section className="section" style={{ padding: '2rem 0 4rem' }}>
-                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>Featured Work</h2>
-                    <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-                        Three engagements that show the range: a full build, paid acquisition, and lifecycle retention.
-                    </p>
+            {/* Case Studies Section */}
+            <section className="section" style={{ padding: '2rem 0 5rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+                    <span style={{
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.2em',
+                        fontSize: '0.85rem',
+                        color: 'var(--accent-secondary)',
+                        fontWeight: 600,
+                        marginBottom: '0.75rem',
+                        display: 'block'
+                    }}>
+                        Case studies
+                    </span>
+                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>Results you can check</h2>
                 </div>
+
                 <div className="grid-3">
-                    {FEATURED_WORK.map((work) => (
-                        <div key={work.title} className="card hover-lift-sm" style={{ display: 'flex', flexDirection: 'column' }}>
-                            <p className="text-gradient-accent" style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-                                {work.category}
-                            </p>
-                            <h3>{work.title}</h3>
-                            <p style={{ color: 'var(--text-secondary)', marginTop: '0.75rem', fontSize: '0.95rem', flex: 1 }}>
-                                {work.outcome}
-                            </p>
-                            <Link
-                                to={work.link}
-                                style={{
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    gap: '6px',
-                                    color: 'var(--accent-secondary)',
-                                    fontWeight: 600,
-                                    fontSize: '0.9rem',
-                                    marginTop: '1.5rem',
-                                }}
-                            >
+                    {/* Card 1 */}
+                    <div className="case-study-card">
+                        <div className="case-study-media-slot">
+                            <span className="case-study-placeholder-text" aria-hidden="true">Photo coming soon</span>
+                        </div>
+                        <div className="case-study-card-body">
+                            <p className="case-study-category">Email marketing</p>
+                            <h3 className="case-study-card-title">An unused email list became a revenue channel</h3>
+                            <ul className="case-study-items-list">
+                                <li className="case-study-item">
+                                    <span className="case-study-item-bullet" aria-hidden="true">✦</span>
+                                    <span>£134K email revenue, 12 months</span>
+                                </li>
+                                <li className="case-study-item">
+                                    <span className="case-study-item-bullet" aria-hidden="true">✦</span>
+                                    <span>+88.9% year on year</span>
+                                </li>
+                                <li className="case-study-item">
+                                    <span className="case-study-item-bullet" aria-hidden="true">✦</span>
+                                    <span>37.8% of total store revenue</span>
+                                </li>
+                            </ul>
+                            <Link to="/case-study-email" className="case-study-link">
                                 Read case study <ArrowRight size={16} />
                             </Link>
                         </div>
-                    ))}
+                    </div>
+
+                    {/* Card 2 */}
+                    <div className="case-study-card">
+                        <div className="case-study-media-slot">
+                            <span className="case-study-placeholder-text" aria-hidden="true">Photo coming soon</span>
+                        </div>
+                        <div className="case-study-card-body">
+                            <p className="case-study-category">Paid advertising</p>
+                            <h3 className="case-study-card-title">Customers ready to buy, found through search</h3>
+                            <ul className="case-study-items-list">
+                                <li className="case-study-item">
+                                    <span className="case-study-item-bullet" aria-hidden="true">✦</span>
+                                    <span>£125K in sales from Google Ads</span>
+                                </li>
+                                <li className="case-study-item">
+                                    <span className="case-study-item-bullet" aria-hidden="true">✦</span>
+                                    <span>£23.4K ad spend</span>
+                                </li>
+                                <li className="case-study-item">
+                                    <span className="case-study-item-bullet" aria-hidden="true">✦</span>
+                                    <span>£11.70 cost per sale</span>
+                                </li>
+                            </ul>
+                            <Link to="/case-study-google-ads" className="case-study-link">
+                                Read case study <ArrowRight size={16} />
+                            </Link>
+                        </div>
+                    </div>
+
+                    {/* Card 3 */}
+                    <div className="case-study-card">
+                        <div className="case-study-media-slot">
+                            <span className="case-study-placeholder-text" aria-hidden="true">Photo coming soon</span>
+                        </div>
+                        <div className="case-study-card-body">
+                            <p className="case-study-category">Website build</p>
+                            <h3 className="case-study-card-title">A brochure site rebuilt into a booking engine</h3>
+                            <ul className="case-study-items-list">
+                                <li className="case-study-item">
+                                    <Check size={16} className="case-study-item-bullet" aria-hidden="true" style={{ marginTop: '3px' }} />
+                                    <span>Bookings taken in two languages</span>
+                                </li>
+                                <li className="case-study-item">
+                                    <Check size={16} className="case-study-item-bullet" aria-hidden="true" style={{ marginTop: '3px' }} />
+                                    <span>Local payment methods built in</span>
+                                </li>
+                                <li className="case-study-item">
+                                    <Check size={16} className="case-study-item-bullet" aria-hidden="true" style={{ marginTop: '3px' }} />
+                                    <span>Found on Google and in AI answers</span>
+                                </li>
+                            </ul>
+                            <Link to="/case-study-bodysurf-school" className="case-study-link">
+                                Read case study <ArrowRight size={16} />
+                            </Link>
+                        </div>
+                    </div>
                 </div>
+
                 <div style={{ textAlign: 'center', marginTop: '3rem' }}>
                     <Link to="/case-studies" className="btn btn-secondary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
                         View all case studies <ArrowRight size={16} style={{ marginLeft: '8px' }} />

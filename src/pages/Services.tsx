@@ -139,22 +139,53 @@ export default function Services() {
                         A focused, three-step process built around your goals and your data.
                     </p>
                 </div>
-                <div className="grid-3" style={{ gap: "2rem" }}>
-                    {[
-                        { step: "01", title: "Audit", desc: "We start by mapping your current funnel, channels, and data, identifying the biggest gaps and highest-leverage opportunities." },
-                        { step: "02", title: "Strategy", desc: "A tailored growth plan is built around your goals: which channels to prioritise, what to automate, and how to sequence execution." },
-                        { step: "03", title: "Execute", desc: "Campaigns go live, systems are built, and performance is monitored weekly, with ongoing optimisation to compound results over time." },
-                    ].map((item) => (
-                        <div key={item.step} className="card" style={{ background: "var(--bg-secondary)", position: "relative", paddingTop: "2.5rem" }}>
-                            <span style={{
-                                position: "absolute", top: "1.5rem", right: "1.5rem",
-                                fontFamily: "var(--font-heading)", fontSize: "2.5rem", fontWeight: 800,
-                                color: "var(--accent-primary)", opacity: 0.4, lineHeight: 1,
-                            }}>{item.step}</span>
-                            <h3 style={{ marginBottom: "0.75rem" }}>{item.title}</h3>
-                            <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", lineHeight: 1.7 }}>{item.desc}</p>
-                        </div>
-                    ))}
+
+                <div className="how-it-works-container">
+                    <div style={{
+                        borderRadius: "24px",
+                        overflow: "hidden",
+                        border: "1px solid var(--border-color)",
+                        boxShadow: "0 20px 50px rgba(59, 49, 44, 0.08)",
+                        aspectRatio: "4/5",
+                    }}>
+                        <picture>
+                            <source
+                                type="image/webp"
+                                srcSet="/maria-videocall-400.webp 400w, /maria-videocall-800.webp 800w, /maria-videocall-1600.webp 1600w"
+                                sizes="(max-width: 900px) 100vw, 500px"
+                            />
+                            <source
+                                type="image/jpeg"
+                                srcSet="/maria-videocall-400.jpg 400w, /maria-videocall-800.jpg 800w, /maria-videocall-1600.jpg 1600w"
+                                sizes="(max-width: 900px) 100vw, 500px"
+                            />
+                            <img
+                                src="/maria-videocall-800.jpg"
+                                alt="Maria Madeira talking with a client on a video call"
+                                width="1600"
+                                height="2133"
+                                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 15%", display: "block" }}
+                            />
+                        </picture>
+                    </div>
+
+                    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+                        {[
+                            { step: "01", title: "Audit", desc: "We start by mapping your current funnel, channels, and data, identifying the biggest gaps and highest-leverage opportunities." },
+                            { step: "02", title: "Strategy", desc: "A tailored growth plan is built around your goals: which channels to prioritise, what to automate, and how to sequence execution." },
+                            { step: "03", title: "Execute", desc: "Campaigns go live, systems are built, and performance is monitored weekly, with ongoing optimisation to compound results over time." },
+                        ].map((item) => (
+                            <div key={item.step} className="card" style={{ background: "var(--bg-secondary)", position: "relative", padding: "2rem 2.5rem" }}>
+                                <span style={{
+                                    position: "absolute", top: "1.25rem", right: "1.5rem",
+                                    fontFamily: "var(--font-heading)", fontSize: "2.2rem", fontWeight: 800,
+                                    color: "var(--accent-primary)", opacity: 0.4, lineHeight: 1,
+                                }}>{item.step}</span>
+                                <h3 style={{ marginBottom: "0.5rem", fontSize: "1.25rem" }}>{item.title}</h3>
+                                <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 

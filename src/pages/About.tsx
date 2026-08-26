@@ -27,7 +27,7 @@ const ABOUT_JSON_LD = {
             "@id": PERSON_ID,
             "name": "Maria Madeira",
             "url": SITE_URL,
-            "image": `${SITE_URL}/portrait.png`,
+            "image": `${SITE_URL}/maria-notebook-800.jpg`,
             "jobTitle": "E-commerce Growth Strategist",
             "description": "Maria Madeira is a growth strategist for brands that sell online: website strategy and build, SEO and AEO, email marketing and Klaviyo, and paid acquisition. Based in Lisbon, working globally.",
             "homeLocation": { "@type": "Place", "name": "Lisbon, Portugal" },
@@ -80,11 +80,25 @@ export default function About() {
                             padding: 0,
                         }}
                     >
-                        <img
-                            src="/portrait.png"
-                            alt="Maria Madeira, Growth Strategist"
-                            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
-                        />
+                        <picture>
+                            <source
+                                type="image/webp"
+                                srcSet="/maria-notebook-400.webp 400w, /maria-notebook-800.webp 800w, /maria-notebook-1600.webp 1600w"
+                                sizes="(max-width: 900px) 100vw, 550px"
+                            />
+                            <source
+                                type="image/jpeg"
+                                srcSet="/maria-notebook-400.jpg 400w, /maria-notebook-800.jpg 800w, /maria-notebook-1600.jpg 1600w"
+                                sizes="(max-width: 900px) 100vw, 550px"
+                            />
+                            <img
+                                src="/maria-notebook-800.jpg"
+                                alt="Maria Madeira standing by a window holding a notebook"
+                                width="1600"
+                                height="2133"
+                                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%', display: 'block' }}
+                            />
+                        </picture>
                     </div>
                 </div>
 
