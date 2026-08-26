@@ -654,30 +654,156 @@ ul {
 /* ========================= */
 /* Testimonials               */
 /* ========================= */
-.testimonials-desktop {
+/* One track holding every quote, translated by whole pages. Nothing is unmounted,
+   so all five quotes sit in the prerendered HTML for crawlers. --per-view (1 on
+   mobile, 2 from 901px) is set inline from the same value React groups pages by. */
+.testimonial-carousel:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 8px;
+  border-radius: 20px;
+}
+
+.testimonial-viewport {
+  overflow: hidden;
+}
+
+.testimonial-track {
+  display: flex;
+  transform: translateX(calc(var(--page, 0) * -100%));
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonial-page {
+  flex: 0 0 100%;
   display: grid;
+  grid-template-columns: repeat(var(--per-view, 1), 1fr);
+  gap: 2rem;
+  align-items: stretch;
+  /* Keeps hover lift and focus rings from being clipped by the viewport */
+  padding: 6px;
 }
 
-.testimonials-mobile {
-  display: none;
+.testimonial-card {
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 0;
 }
 
-@media (max-width: 600px) {
-  .testimonials-desktop {
-    display: none;
-  }
+.testimonial-quote {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  font-style: italic;
+  flex: 1;
+  margin: 0;
+}
 
-  .testimonials-mobile {
-    display: block;
-    padding: 0 1rem;
+.testimonial-readmore {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.testimonial-readmore:hover {
+  color: var(--accent-hover);
+  gap: 10px;
+}
+
+.testimonial-attribution {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.testimonial-monogram {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--accent-glow);
+  border: 1px solid var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--accent-secondary);
+}
+
+.testimonial-name {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.testimonial-role {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--accent-secondary);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.testimonial-context {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  opacity: 0.75;
+}
+
+.testimonial-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.testimonial-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.testimonial-arrow:hover {
+  border-color: var(--accent-secondary);
+  color: var(--accent-secondary);
+}
+
+.testimonial-arrow:active {
+  transform: scale(0.94);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-track {
+    transition: none;
   }
 }
 
 .testimonial-dots {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.5rem;
-  margin-top: 1.5rem;
 }
 
 .testimonial-dot {

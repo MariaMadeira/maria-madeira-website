@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState, useCallback } from "react";
-import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft, Sparkles } from "lucide-react";
+import { useRef, useEffect, useState, useCallback, useSyncExternalStore } from "react";
+import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { useInView } from "../hooks/useInView";
@@ -7,9 +7,9 @@ import { useInView } from "../hooks/useInView";
 // Email figures are verified Klaviyo data for the last 12 months (Jul 2024 –
 // Jul 2025); Google Ads figures are the full account export for 1 Oct 2025 to
 // 26 Aug 2026. The four headline numbers (£134K, 37.8% revenue share, 50.4%,
-// 5.34x Meta ROAS) live in the Measurable Impact grid; these supporting metrics
-// appear nowhere else on the page, so every stat is stated exactly once. Google
-// Ads ROAS (532%) is shown only in the case study card below and its full study.
+// 532% Google Ads ROAS) live in the Measurable Impact grid; these supporting
+// metrics appear nowhere else on the page. The client's total store revenue is
+// deliberately absent: the share is published, the absolute figure is not.
 const SUPPORTING_METRICS = [
     { to: 48.3, prefix: "£", suffix: "K", decimals: 1, label: "Flow Revenue", detail: "From automated lifecycle flows, +82.5% YoY" },
     { to: 7.27, prefix: "", suffix: "%", decimals: 2, label: "Flow Click Rate", detail: "Across automated email flows, last 12 months" },
@@ -27,7 +27,7 @@ const HOME_JSON_LD = {
             "url": "https://mariamadeira.com",
             "image": "https://mariamadeira.com/maria-hero-800.jpg",
             "jobTitle": "Growth Strategist",
-            "description": "Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Four years with UK food and drink brands.",
+            "description": "Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands.",
             "sameAs": ["https://www.linkedin.com/in/maria-madeira-43501b3a/"],
             "knowsAbout": ["Email Marketing", "Klaviyo", "Google Ads", "Meta Ads", "AI Marketing", "Growth Strategy", "Paid Acquisition", "Lifecycle Marketing"]
         },
@@ -36,7 +36,7 @@ const HOME_JSON_LD = {
             "@id": "https://mariamadeira.com/#service",
             "name": "Maria Madeira: Growth Strategy",
             "url": "https://mariamadeira.com",
-            "description": "Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Four years with UK food and drink brands.",
+            "description": "Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands.",
             "provider": { "@id": "https://mariamadeira.com/#person" },
             "areaServed": "Worldwide",
             "serviceType": ["Growth Strategy", "Email Marketing", "Paid Advertising", "AI Marketing Systems", "Creative Direction"],
@@ -82,38 +82,90 @@ function AnimatedCounter({ from = 0, to, decimals = 0, prefix = "", suffix = "",
 
     return <span ref={ref as React.RefObject<HTMLSpanElement>}>{display}</span>;
 }
-
 /* ── Testimonials data & carousel ────────────────────────── */
-// Ordered by credibility of the endorser. The mobile carousel opens on the
-// first entry, so the strongest testimonial leads on both layouts.
+// Ordered by weight of proof: the client engagement leads, then colleagues.
+// Quotes are verbatim LinkedIn recommendations, so their punctuation is theirs.
 const TESTIMONIALS = [
+    {
+        name: "The Bodysurf School",
+        role: null,
+        context: "Client · Recommended on LinkedIn",
+        monogram: "BS",
+        quote: "Something we thought would be pricey and difficult to create, she built in just one month, and our monthly costs are low. On top of that, we're now ranking number one on search engines and AI tools whenever you search for bodysurf. She's easy to work with, super hands-on, and delivered exactly what she promised, within the timeframe she promised.",
+        readMore: "/case-study-bodysurf-school",
+    },
     {
         name: "Adel Sidiqi",
         role: "Digital Marketing Manager at Ocado Zoom",
         context: "Former colleague · Recommended on LinkedIn",
+        monogram: "AS",
         quote: "Maria's expertise in design, digital marketing, and tools like Klaviyo consistently took our campaigns to the next level — both visually and in terms of results. She has a real knack for aligning creative ideas with marketing goals. Detail-oriented, innovative, and a great team player.",
+        readMore: null,
+    },
+    {
+        name: "Isbah Amin",
+        role: "Marketing Executive, B2C Growth, CRM & Lifecycle Marketing",
+        context: "Former colleague · Recommended on LinkedIn",
+        monogram: "IA",
+        quote: "Working under Maria's guidance at The Black Farmer was an incredible experience. As my senior, she taught me the ins and outs of marketing, from brand strategy to high-impact email campaigns. Her ability to grab customer attention and her deep business knowledge are truly inspiring. Anyone would be lucky to have Maria leading their marketing efforts!",
+        readMore: null,
     },
     {
         name: "Will Fuller",
         role: "WordPress Developer",
         context: "Former colleague · Recommended on LinkedIn",
+        monogram: "WF",
         quote: "Maria completely transformed our email marketing strategy. When she took over our Klaviyo account, she achieved 125% growth in email attributed revenue and boosted our automated flows by over 100%. Our open rates went from 28% to 48%, and click rates more than doubled. What impressed me most wasn't just the numbers — it was how she understood our customers.",
+        readMore: null,
     },
     {
         name: "Hermela Michael",
-        role: "History Undergraduate",
+        role: null,
         context: "Former colleague · Recommended on LinkedIn",
+        monogram: "HM",
         quote: "Maria doesn't just think outside the box — she completely redefines it. Her creativity, strategic mindset, and deep understanding of marketing have played a huge role in shaping the success of the company. She approaches every project with passion and precision, always bringing fresh, data-driven ideas to the table that truly make an impact.",
+        readMore: null,
     },
 ];
 
+const DESKTOP_QUERY = "(min-width: 901px)";
+
+/**
+ * Testimonials carousel.
+ *
+ * Every quote is rendered into the markup, never swapped in on the client: the
+ * track holds all of them and only slides, so the prerendered HTML carries all
+ * five for crawlers. Two per page on desktop, one on mobile, which is why the
+ * pages are regrouped from `perView` rather than baked into the data.
+ *
+ * `perView` comes from useSyncExternalStore rather than an effect, so the server
+ * snapshot (1) renders cleanly and hydration corrects it without a setState pass.
+ */
 function TestimonialsCarousel() {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [page, setPage] = useState(0);
     const touchStartX = useRef<number | null>(null);
     const { ref: sectionRef, inView } = useInView({ rootMargin: '-50px', once: true });
 
-    const goTo = useCallback((index: number) => {
-        setActiveIndex((index + TESTIMONIALS.length) % TESTIMONIALS.length);
+    const perView = useSyncExternalStore(
+        (onChange) => {
+            const mq = window.matchMedia(DESKTOP_QUERY);
+            mq.addEventListener('change', onChange);
+            return () => mq.removeEventListener('change', onChange);
+        },
+        () => (window.matchMedia(DESKTOP_QUERY).matches ? 2 : 1),
+        () => 1,
+    );
+
+    const pageCount = Math.ceil(TESTIMONIALS.length / perView);
+    // Clamped at render rather than in an effect, so a resize that shortens the
+    // page list can never leave the track parked past the end.
+    const activePage = Math.min(page, pageCount - 1);
+
+    const pages: typeof TESTIMONIALS[] = [];
+    for (let i = 0; i < TESTIMONIALS.length; i += perView) pages.push(TESTIMONIALS.slice(i, i + perView));
+
+    const goTo = useCallback((next: number, total: number) => {
+        setPage(((next % total) + total) % total);
     }, []);
 
     const handleTouchStart = (e: React.TouchEvent) => {
@@ -122,91 +174,93 @@ function TestimonialsCarousel() {
     const handleTouchEnd = (e: React.TouchEvent) => {
         if (touchStartX.current === null) return;
         const delta = e.changedTouches[0].clientX - touchStartX.current;
-        if (Math.abs(delta) > 40) goTo(activeIndex + (delta < 0 ? 1 : -1));
+        if (Math.abs(delta) > 40) goTo(activePage + (delta < 0 ? 1 : -1), pageCount);
         touchStartX.current = null;
+    };
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(activePage + 1, pageCount); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(activePage - 1, pageCount); }
     };
 
     return (
-        <>
-            {/* Desktop: 3-column grid */}
+        <div
+            ref={sectionRef as React.RefObject<HTMLDivElement>}
+            className={`testimonial-carousel reveal${inView ? ' is-visible' : ''}`}
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Testimonials"
+            tabIndex={0}
+            onKeyDown={handleKeyDown}
+        >
             <div
-                ref={sectionRef as React.RefObject<HTMLDivElement>}
-                className={`grid-3 stagger-container testimonials-desktop${inView ? ' is-visible' : ''}`}
-            >
-                {TESTIMONIALS.map((t) => (
-                    <div key={t.name} className="card reveal-item testimonial-card" style={{ background: 'var(--bg-secondary)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                        <p style={{
-                            color: 'var(--text-secondary)',
-                            fontSize: '0.95rem',
-                            lineHeight: 1.75,
-                            fontStyle: 'italic',
-                            flex: 1,
-                        }}>
-                            "{t.quote}"
-                        </p>
-                        <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                            <div style={{
-                                width: '40px', height: '40px', borderRadius: '50%', flexShrink: 0,
-                                background: 'var(--accent-glow)', border: '1px solid var(--accent-primary)',
-                                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                fontWeight: 700, fontSize: '0.85rem', color: 'var(--accent-secondary)',
-                            }}>
-                                {t.name.split(' ').map(n => n[0]).join('')}
-                            </div>
-                            <div>
-                                <p style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)', marginBottom: '0.2rem' }}>{t.name}</p>
-                                <p style={{ fontSize: '0.82rem', color: 'var(--accent-secondary)', fontWeight: 600, marginBottom: '0.2rem' }}>{t.role}</p>
-                                <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', opacity: 0.75 }}>{t.context}</p>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            {/* Mobile: swipeable carousel */}
-            <div
-                className="testimonials-mobile"
+                className="testimonial-viewport"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
             >
-                <div className="testimonial-card card" style={{ background: 'var(--bg-secondary)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                    <p style={{
-                        color: 'var(--text-secondary)',
-                        fontSize: '0.95rem',
-                        lineHeight: 1.75,
-                        fontStyle: 'italic',
-                        flex: 1,
-                    }}>
-                        "{TESTIMONIALS[activeIndex].quote}"
-                    </p>
-                    <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                        <div style={{
-                            width: '40px', height: '40px', borderRadius: '50%', flexShrink: 0,
-                            background: 'var(--accent-glow)', border: '1px solid var(--accent-primary)',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            fontWeight: 700, fontSize: '0.85rem', color: 'var(--accent-secondary)',
-                        }}>
-                            {TESTIMONIALS[activeIndex].name.split(' ').map((n: string) => n[0]).join('')}
+                <div
+                    className="testimonial-track"
+                    style={{ '--page': activePage, '--per-view': perView } as React.CSSProperties}
+                >
+                    {pages.map((group, groupIndex) => (
+                        <div className="testimonial-page" key={groupIndex}>
+                            {group.map((t) => (
+                                <figure key={t.name} className="card testimonial-card">
+                                    <blockquote className="testimonial-quote">"{t.quote}"</blockquote>
+                                    {t.readMore && (
+                                        <Link
+                                            to={t.readMore}
+                                            className="testimonial-readmore"
+                                            tabIndex={groupIndex === activePage ? undefined : -1}
+                                        >
+                                            Read the full recommendation <ArrowRight size={15} />
+                                        </Link>
+                                    )}
+                                    <figcaption className="testimonial-attribution">
+                                        <span className="testimonial-monogram" aria-hidden="true">{t.monogram}</span>
+                                        <span>
+                                            <span className="testimonial-name">{t.name}</span>
+                                            {t.role && <span className="testimonial-role">{t.role}</span>}
+                                            <span className="testimonial-context">{t.context}</span>
+                                        </span>
+                                    </figcaption>
+                                </figure>
+                            ))}
                         </div>
-                        <div>
-                            <p style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)', marginBottom: '0.2rem' }}>{TESTIMONIALS[activeIndex].name}</p>
-                            <p style={{ fontSize: '0.82rem', color: 'var(--accent-secondary)', fontWeight: 600, marginBottom: '0.2rem' }}>{TESTIMONIALS[activeIndex].role}</p>
-                            <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', opacity: 0.75 }}>{TESTIMONIALS[activeIndex].context}</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="testimonial-dots">
-                    {TESTIMONIALS.map((_, i) => (
-                        <button
-                            key={i}
-                            className={`testimonial-dot${i === activeIndex ? ' active' : ''}`}
-                            onClick={() => goTo(i)}
-                            aria-label={`Go to testimonial ${i + 1}`}
-                        />
                     ))}
                 </div>
             </div>
-        </>
+
+            <div className="testimonial-controls">
+                <button
+                    type="button"
+                    className="testimonial-arrow"
+                    onClick={() => goTo(activePage - 1, pageCount)}
+                    aria-label="Previous testimonials"
+                >
+                    <ChevronLeft size={20} />
+                </button>
+                <div className="testimonial-dots">
+                    {pages.map((_, i) => (
+                        <button
+                            type="button"
+                            key={i}
+                            className={`testimonial-dot${i === activePage ? ' active' : ''}`}
+                            onClick={() => goTo(i, pageCount)}
+                            aria-label={`Go to testimonial page ${i + 1} of ${pageCount}`}
+                            aria-current={i === activePage ? 'true' : undefined}
+                        />
+                    ))}
+                </div>
+                <button
+                    type="button"
+                    className="testimonial-arrow"
+                    onClick={() => goTo(activePage + 1, pageCount)}
+                    aria-label="Next testimonials"
+                >
+                    <ChevronRight size={20} />
+                </button>
+            </div>
+        </div>
     );
 }
 
@@ -248,7 +302,7 @@ export default function Home() {
         <div className="container">
             <Seo
                 title="Maria Madeira | Growth Strategist for Brands That Sell Online"
-                description="Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Four years with UK food and drink brands."
+                description="I find what's holding back your online sales and fix it: websites, SEO and AEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands."
                 path="/"
                 jsonLd={HOME_JSON_LD}
             />
@@ -281,10 +335,10 @@ export default function Home() {
                             Growth Strategist for brands that sell online.
                         </span>
                         <h1 style={{ margin: '0 0 1.5rem', fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.15 }}>
-                            Scaling <span className="text-gradient">Brands That Sell Online</span> with Data-Driven Growth & AI
+                            Your brand sells good products. Your website should sell more of them.
                         </h1>
                         <p style={{ marginBottom: '2.5rem', fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-                            Helping modern brands transition from steady growth to aggressive scaling through lifecycle marketing, paid acquisition, and AI-driven automation.
+                            I find what's holding back your online sales, then fix it: your website, your emails, your ads, and how you show up on Google and in AI answers. Five years doing this for UK food and drink brands.
                         </p>
                         <div style={{ display: "flex", gap: "1rem", flexWrap: 'wrap', marginBottom: '2.5rem' }}>
                             <Link to="/contact" className="btn btn-primary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
@@ -307,7 +361,7 @@ export default function Home() {
                         }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>
-                                4+ years scaling brands that sell online
+                                5 years scaling brands that sell online
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>
@@ -405,7 +459,7 @@ export default function Home() {
                             <AnimatedCounter from={0} to={37.8} suffix="%" decimals={1} />
                         </h3>
                         <p style={{ fontWeight: 600 }}>Email Revenue Share</p>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>of £355.6K total store revenue (last 12 months)</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>of total store revenue (last 12 months)</p>
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
@@ -416,10 +470,10 @@ export default function Home() {
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <AnimatedCounter from={0} to={5.34} suffix="x" decimals={2} />
+                            <AnimatedCounter from={0} to={532} suffix="%" />
                         </h3>
-                        <p style={{ fontWeight: 600 }}>Meta Ads ROAS</p>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Peak return on ad spend across Meta campaigns</p>
+                        <p style={{ fontWeight: 600 }}>Google Ads ROAS</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Average across 11 months, against a 400% break-even</p>
                     </div>
                 </div>
             </section>
@@ -528,13 +582,13 @@ export default function Home() {
                 `}</style>
                 <div className="services-grid">
                     {[
-                        { icon: <TrendingUp size={22} />, title: 'Growth Strategy', desc: 'Full-funnel strategies to take brands from steady growth to aggressive, sustainable scaling.', link: '/services' },
+                        { icon: <TrendingUp size={22} />, title: 'Growth Strategy', desc: 'A plan for what to fix first, based on your numbers, not guesswork. Then I build it.', link: '/services' },
                         { icon: <Sparkles size={22} />, title: 'AI Search Visibility (AEO)', desc: "Getting brands cited and recommended by ChatGPT, Perplexity and Google's AI Overviews, not just ranked.", link: '/services/aeo' },
-                        { icon: <Mail size={22} />, title: 'Email Marketing & Automation', desc: 'Advanced lifecycle flows and segmentation that maximise LTV and cut acquisition costs.', link: '/services/email-marketing' },
-                        { icon: <BarChart size={22} />, title: 'Paid Advertising', desc: 'Data-driven media buying across Meta, Google, and TikTok to maximise ROAS.' },
-                        { icon: <Cpu size={22} />, title: 'AI & Automation Systems', desc: 'AI tools that accelerate content creation, automate workflows, and enrich data analysis.' },
-                        { icon: <Maximize size={22} />, title: 'Creative Direction', desc: 'Translating analytical insights into compelling visual stories and high-performing brand assets.' },
-                        { icon: <ArrowRightLeft size={22} />, title: 'Platform Migration', desc: 'Seamless migrations that protect SEO, revenue, and customer data throughout the transition.', link: '/services/websites' },
+                        { icon: <Mail size={22} />, title: 'Email Marketing & Automation', desc: 'You have a list of customers you never email. I turn it into a channel that sells while you sleep.', link: '/services/email-marketing' },
+                        { icon: <BarChart size={22} />, title: 'Paid Advertising', desc: 'Ads that pay for themselves, with every pound tracked against what it brings back.' },
+                        { icon: <Cpu size={22} />, title: 'AI & Automation Systems', desc: 'The repetitive work (content, reporting, data entry) done by machines, so your time goes where it earns.' },
+                        { icon: <Maximize size={22} />, title: 'Creative Direction', desc: 'Product photography and brand assets that look like the premium products you sell.' },
+                        { icon: <ArrowRightLeft size={22} />, title: 'Platform Migration', desc: 'Migrations planned around what they put at risk: rankings, revenue, customer data.', link: '/services/websites' },
                     ].map((s: { icon: React.ReactNode; title: string; desc: string; link?: string }) => {
                         const body = (
                             <>

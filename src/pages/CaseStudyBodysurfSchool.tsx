@@ -10,6 +10,14 @@ const MODIFIED = "2026-08-26";
 
 const TITLE = "Five surf school locations, zero online bookings. Built from scratch in eight weeks.";
 
+const CLIENT_QUOTE = [
+    "We are very happy with the website Maria created for us. She listened to our needs and wishes and really took us by the hand from beginning to end. She constantly came with recommendations that took the website to the next level, and for any tools we needed, she explained the pros and cons of different add-ons, which made our decision-making a lot easier.",
+    "What stood out too is that she thought along with us on a much broader level, beyond just the website itself. She considered what would work for our customers, and even suggested different services we could consider offering. It felt like having someone thinking with us on marketing and branding, not just building a website.",
+    "We now have a website that sells our different services well, with clear calls to action and an easy way to book and pay. Something we thought would be pricey and difficult to create, she built in just one month, and our monthly costs are low. On top of that, we're now ranking number one on search engines and AI tools whenever you search for bodysurf.",
+    "Maria handed over the website in such a professional way that we're now fully equipped to manage it ourselves.",
+    "It was truly a pleasure working with Maria. She's easy to work with, super hands-on, and delivered exactly what she promised, within the timeframe she promised.",
+];
+
 export default function CaseStudyBodysurfSchool() {
     return (
         <>
@@ -223,6 +231,69 @@ export default function CaseStudyBodysurfSchool() {
                             style={{ width: "100%", display: "block" }}
                         />
                     </div>
+                </section>
+
+                {/* Client Testimonial */}
+                <section style={{ marginBottom: "3.5rem" }}>
+                    <h2 style={{ fontSize: "1.75rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}>
+                        What the client said
+                    </h2>
+                    <figure
+                        style={{
+                            margin: 0,
+                            background: "var(--accent-glow)",
+                            border: "1px solid var(--border-color)",
+                            borderLeft: "4px solid var(--accent-secondary)",
+                            borderRadius: "16px",
+                            padding: "2rem",
+                        }}
+                    >
+                        <blockquote style={{ margin: 0, display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                            {CLIENT_QUOTE.map((paragraph) => (
+                                <p key={paragraph.slice(0, 40)} style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontStyle: "italic", margin: 0 }}>
+                                    {paragraph}
+                                </p>
+                            ))}
+                        </blockquote>
+                        <figcaption
+                            style={{
+                                marginTop: "1.75rem",
+                                paddingTop: "1.25rem",
+                                borderTop: "1px solid var(--border-color)",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "0.75rem",
+                            }}
+                        >
+                            <span
+                                aria-hidden="true"
+                                style={{
+                                    width: "40px",
+                                    height: "40px",
+                                    borderRadius: "50%",
+                                    flexShrink: 0,
+                                    background: "var(--bg-secondary)",
+                                    border: "1px solid var(--accent-primary)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    fontWeight: 700,
+                                    fontSize: "0.85rem",
+                                    color: "var(--accent-secondary)",
+                                }}
+                            >
+                                BS
+                            </span>
+                            <span>
+                                <span style={{ display: "block", fontWeight: 700, fontSize: "0.95rem", color: "var(--text-primary)" }}>
+                                    The Bodysurf School
+                                </span>
+                                <span style={{ display: "block", fontSize: "0.82rem", color: "var(--text-secondary)" }}>
+                                    Client · Recommended on LinkedIn
+                                </span>
+                            </span>
+                        </figcaption>
+                    </figure>
                 </section>
 
                 {/* CTA */}
