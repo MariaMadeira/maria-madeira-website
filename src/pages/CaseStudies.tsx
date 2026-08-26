@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import { SITE_URL } from "../lib/schema";
 
 const HEADLINE_RESULTS = [
     { value: "£134K", label: "Email revenue (12 mo, +88.9%)" },
@@ -8,51 +9,71 @@ const HEADLINE_RESULTS = [
     { value: "532%", label: "Google Ads ROAS" },
 ];
 
-export default function CaseStudies() {
-    const caseStudies = [
-        {
-            title: "Found on Google and in AI answers, four months after a migration that left the site invisible",
-            category: "SEO / AEO Optimisation",
-            problem: "After migrating from WordPress to Shopify, the new website lacked proper SEO structure and was not optimised for AI-powered search and answer engines.",
-            results: "SEO and AEO optimisation improving site structure, search visibility, and AI discoverability.",
-            link: "/case-study-seo",
-        },
-        {
-            title: "Five pounds back for every pound spent, over eleven months",
-            category: "Paid Advertising",
-            problem: "Paid acquisition needed to scale profitably while maintaining strong return on ad spend.",
-            results: "£141K attributed revenue from £26.5K ad spend · 532% ROAS (client break-even: 400%) · 10 of 11 months above break-even",
-            link: "/case-study-google-ads",
-        },
-        {
-            title: "An unused email list became the brand's biggest revenue channel",
-            category: "Email Marketing",
-            problem: "Email channel underutilised with limited lifecycle automation.",
-            results: "£134K attributed revenue · +88.9% YoY over the last 12 months",
-            link: "/case-study-email",
-        },
-        {
-            title: "A shop losing sales to queues, fixed with a mobile pre-order system",
-            category: "Product Experiment & UX Strategy",
-            problem: "Physical retail store losing demand to long peak-hour queues with no option for customers to pre-order.",
-            results: "Mobile Click & Collect app built · Key learnings on digital adoption in physical retail",
-            link: "/case-study-click-collect",
-        },
-        {
-            title: "Five surf school locations, zero online bookings. Built from scratch in eight weeks.",
-            category: "The Bodysurf School Website",
-            problem: "A growing surf school with five coastal locations relied on manual enquiries, with no online booking, no payment processing, and no search visibility strategy.",
-            results: "Full rebuild delivered: online booking with local payment methods, bilingual site, SEO and AEO foundations.",
-            link: "/case-study-bodysurf-school",
-        }
-    ];
+const CASE_STUDIES = [
+    {
+        title: "Found on Google and in AI answers, four months after a migration that left the site invisible",
+        category: "SEO / AEO Optimisation",
+        problem: "After migrating from WordPress to Shopify, the new website lacked proper SEO structure and was not optimised for AI-powered search and answer engines.",
+        results: "SEO and AEO optimisation improving site structure, search visibility, and AI discoverability.",
+        link: "/case-study-seo",
+    },
+    {
+        title: "Five pounds back for every pound spent, over eleven months",
+        category: "Paid Advertising",
+        problem: "Paid acquisition needed to scale profitably while maintaining strong return on ad spend.",
+        results: "£141K attributed revenue from £26.5K ad spend · 532% ROAS (client break-even: 400%) · 10 of 11 months above break-even",
+        link: "/case-study-google-ads",
+    },
+    {
+        title: "An unused email list became the brand's biggest revenue channel",
+        category: "Email Marketing",
+        problem: "Email channel underutilised with limited lifecycle automation.",
+        results: "£134K attributed revenue · +88.9% YoY over the last 12 months",
+        link: "/case-study-email",
+    },
+    {
+        title: "A shop losing sales to queues, fixed with a mobile pre-order system",
+        category: "Product Experiment & UX Strategy",
+        problem: "Physical retail store losing demand to long peak-hour queues with no option for customers to pre-order.",
+        results: "Mobile Click & Collect app built · Key learnings on digital adoption in physical retail",
+        link: "/case-study-click-collect",
+    },
+    {
+        title: "Five surf school locations, zero online bookings. Built from scratch in eight weeks.",
+        category: "The Bodysurf School Website",
+        problem: "A growing surf school with five coastal locations relied on manual enquiries, with no online booking, no payment processing, and no search visibility strategy.",
+        results: "Full rebuild delivered: online booking with local payment methods, bilingual site, SEO and AEO foundations.",
+        link: "/case-study-bodysurf-school",
+    }
+];
 
+/**
+ * Every case study Article declares isPartOf this @id (see caseStudyJsonLd), but
+ * the node itself was never declared anywhere, leaving the reference unresolved.
+ * hasPart mirrors it back so the collection and its members point at each other.
+ */
+const CASE_STUDIES_JSON_LD = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "CollectionPage",
+            "@id": `${SITE_URL}/case-studies#collection`,
+            "url": `${SITE_URL}/case-studies`,
+            "name": "Case Studies",
+            "description": "Real case studies with measurable outcomes: SEO and platform migration, Google Ads, Klaviyo email, click & collect UX, and a surf school booking engine.",
+            "hasPart": CASE_STUDIES.map((study) => ({ "@id": `${SITE_URL}${study.link}#article` })),
+        },
+    ],
+};
+
+export default function CaseStudies() {
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
                 title="Case Studies | E-commerce Growth Results"
                 description="Real case studies with measurable outcomes: SEO and platform migration, Google Ads at a 532% return, £134K email revenue, and click & collect UX."
                 path="/case-studies"
+                jsonLd={CASE_STUDIES_JSON_LD}
             />
 
             <h1 className="section-title">Case <span className="text-gradient">Studies</span></h1>
@@ -88,7 +109,7 @@ export default function CaseStudies() {
             </div>
 
             <div className="grid-2">
-                {caseStudies.map((study, index) => (
+                {CASE_STUDIES.map((study, index) => (
                     <div
                         key={index}
                         className="card glass-panel hover-lift-sm"
