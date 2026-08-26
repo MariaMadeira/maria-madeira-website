@@ -10,7 +10,17 @@ import { SITE_URL, PERSON_ID } from "../lib/schema";
 // Crunchbase, guest-post bylines) to this array as they come online.
 const SAME_AS = [
     "https://www.linkedin.com/in/maria-madeira-43501b3a/",
+    "https://influee.co/partnership/maria-madeira",
 ];
+
+// Person.memberOf accepts an Organization, so the Klaviyo partnership fits the
+// canonical Person node without inventing a shape. Same @id as the homepage, so
+// the two nodes merge rather than competing.
+const MEMBER_OF = {
+    "@type": "Organization",
+    "name": "Klaviyo K:Partners",
+    "url": "https://www.klaviyo.com/partners",
+};
 
 const ABOUT_JSON_LD = {
     "@context": "https://schema.org",
@@ -39,6 +49,7 @@ const ABOUT_JSON_LD = {
             ],
             "knowsLanguage": ["English", "Portuguese"],
             "sameAs": SAME_AS,
+            "memberOf": MEMBER_OF,
         },
         {
             "@type": "BreadcrumbList",

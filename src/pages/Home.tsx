@@ -28,23 +28,40 @@ const HOME_JSON_LD = {
             "image": "https://mariamadeira.com/maria-hero-800.jpg",
             "jobTitle": "Growth Strategist",
             "description": "Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands.",
-            "sameAs": ["https://www.linkedin.com/in/maria-madeira-43501b3a/"],
+            "sameAs": ["https://www.linkedin.com/in/maria-madeira-43501b3a/", "https://influee.co/partnership/maria-madeira"],
+            "memberOf": {
+                "@type": "Organization",
+                "name": "Klaviyo K:Partners",
+                "url": "https://www.klaviyo.com/partners"
+            },
             "knowsAbout": ["Email Marketing", "Klaviyo", "Google Ads", "Meta Ads", "AI Marketing", "Growth Strategy", "Paid Acquisition", "Lifecycle Marketing"]
         },
+        // Split out of a single ProfessionalService node: that type descends from
+        // LocalBusiness, not Service, so it accepts neither provider nor
+        // serviceType (schema.org deprecated it precisely for that confusion).
+        // The practice is now an Organization and what it sells is a Service.
         {
-            "@type": "ProfessionalService",
-            "@id": "https://mariamadeira.com/#service",
+            "@type": "Organization",
+            "@id": "https://mariamadeira.com/#organization",
             "name": "Maria Madeira: Growth Strategy",
             "url": "https://mariamadeira.com",
             "description": "Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands.",
-            "provider": { "@id": "https://mariamadeira.com/#person" },
+            "founder": { "@id": "https://mariamadeira.com/#person" },
             "areaServed": "Worldwide",
-            "serviceType": ["Growth Strategy", "Email Marketing", "Paid Advertising", "AI Marketing Systems", "Creative Direction"],
             "contactPoint": {
                 "@type": "ContactPoint",
                 "email": "info@mariamadeira.com",
                 "contactType": "customer service"
             }
+        },
+        {
+            "@type": "Service",
+            "@id": "https://mariamadeira.com/#service",
+            "name": "Maria Madeira: Growth Strategy",
+            "description": "Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands.",
+            "provider": { "@id": "https://mariamadeira.com/#organization" },
+            "areaServed": "Worldwide",
+            "serviceType": ["Growth Strategy", "Email Marketing", "Paid Advertising", "AI Marketing Systems", "Creative Direction"]
         }
     ]
 };
@@ -365,7 +382,7 @@ export default function Home() {
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>
-                                Klaviyo · Google Ads · Meta Ads
+                                Klaviyo Partner · Google Ads · Meta Ads
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>

@@ -47,6 +47,20 @@ export default function Services() {
             icon: <Maximize size={40} />,
             title: "Creative Direction",
             description: "Translating analytical insights into compelling visual stories. Overseeing brand voice and design language to ensure top-tier performance.",
+            note: (
+                <>
+                    Partnered with{" "}
+                    <a
+                        href="https://influee.co/partnership/maria-madeira"
+                        target="_blank"
+                        rel="noopener"
+                        style={{ color: "var(--accent-secondary)", fontWeight: 600 }}
+                    >
+                        Influee
+                    </a>{" "}
+                    for UGC and creator content across TikTok, Instagram and YouTube.
+                </>
+            ),
             link: "/portfolio",
         },
         {
@@ -110,6 +124,11 @@ export default function Services() {
                         </div>
                         <h3>{service.title}</h3>
                         <p style={{ flex: 1 }}>{service.description}</p>
+                        {service.note && (
+                            <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", marginTop: "1rem" }}>
+                                {service.note}
+                            </p>
+                        )}
                         {service.link && (
                             <Link 
                                 to={service.link} 
