@@ -7,7 +7,9 @@ import { caseStudyJsonLd } from "../lib/schema";
 // Git-derived (git log src/pages/CaseStudyClickCollect.tsx). Bump MODIFIED
 // whenever the case study's details are updated.
 const PUBLISHED = "2026-03-23";
-const MODIFIED = "2026-07-14";
+const MODIFIED = "2026-08-26";
+
+const TITLE = "A shop losing sales to queues, fixed with a mobile pre-order system";
 
 export default function CaseStudyClickCollect() {
     useEffect(() => {
@@ -23,12 +25,12 @@ export default function CaseStudyClickCollect() {
     return (
         <>
         <Seo
-            title="Click & Collect Case Study | Retail UX"
+            title={TITLE}
             description="Click & collect case study: launching a mobile pre-order experience for a high-traffic retail store, and what low adoption taught us about customer habits."
             path="/case-study-click-collect"
             jsonLd={caseStudyJsonLd({
                 path: "/case-study-click-collect",
-                headline: "Click & Collect",
+                headline: TITLE,
                 description: "Launching a mobile pre-order experience for a high-traffic retail store, and what low adoption taught us about customer habits.",
                 datePublished: PUBLISHED,
                 dateModified: MODIFIED,
@@ -71,7 +73,7 @@ export default function CaseStudyClickCollect() {
                         Product Experiment & UX Strategy · Case Study
                     </p>
                     <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", marginBottom: "1.5rem", lineHeight: 1.15 }}>
-                        Exploring Click & Collect as a New Revenue Channel
+                        {TITLE}
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
                         Designed and built a mobile Click & Collect experience for a physical retail store to reduce in-store wait times and capture demand from nearby office workers, and what the experiment revealed about digital adoption in physical retail.

@@ -1,27 +1,32 @@
 import { ArrowLeft, TrendingUp, Search, MousePointerClick, BarChart } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import { GoogleAdsCharts } from "../components/ResultCharts";
 import { caseStudyJsonLd } from "../lib/schema";
 
 // Git-derived (git log src/pages/CaseStudyGoogleAds.tsx). Bump MODIFIED
 // whenever the numbers below are updated — this is an ongoing engagement.
 const PUBLISHED = "2026-03-16";
-const MODIFIED = "2026-07-14";
+const MODIFIED = "2026-08-26";
+
+const TITLE = "Five pounds back for every pound spent, over eleven months";
 
 export default function CaseStudyGoogleAds() {
     return (
         <>
         <Seo
-            title="Google Ads Case Study | 5.34x ROAS"
-            description="Google Ads case study: how structured campaign architecture and creative testing turned £23.4K of ad spend into £125K in conversion value at a 5.34x return."
+            title={TITLE}
+            description="Google Ads case study: £26.5K of ad spend returned £141K in attributed revenue over eleven months, a 532% blended return against a 400% break-even."
             path="/case-study-google-ads"
             jsonLd={caseStudyJsonLd({
                 path: "/case-study-google-ads",
-                headline: "Google Ads Revenue Growth",
-                description: "How structured campaign architecture and creative testing turned £23.4K of ad spend into £125K in conversion value at a 5.34x return on ad spend.",
+                headline: TITLE,
+                description: "How structured campaign architecture and creative testing turned £26.5K of ad spend into £141K in attributed revenue, a 532% return against a 400% break-even.",
                 datePublished: PUBLISHED,
                 dateModified: MODIFIED,
-                breadcrumb: "Google Ads Revenue Growth",
+                // Short by design: breadcrumbs render in search results, where the
+                // full headline would truncate.
+                breadcrumb: "Google Ads",
             })}
         />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
@@ -62,15 +67,18 @@ export default function CaseStudyGoogleAds() {
                         Paid Advertising · Case Study
                     </p>
                     <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", marginBottom: "1.5rem", lineHeight: 1.15 }}>
-                        Google Ads Revenue Growth
+                        {TITLE}
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
-                        How an optimised Google Ads strategy turned £23.4K in ad spend into £125K in conversion value, a 5.34x return, across roughly ten months (Sept 2025 – Jul 2026).
+                        How an optimised Google Ads strategy turned £26.5K in ad spend into £141K in attributed revenue, a 532% return against the client's 400% break-even, between 1 October 2025 and 26 August 2026.
                     </p>
                 </div>
 
                 {/* Divider */}
                 <div style={{ height: "1px", background: "var(--border-color)", marginBottom: "3rem" }} />
+
+                {/* Result charts, before the write-up: the numbers first, the method after */}
+                <GoogleAdsCharts />
 
                 {/* Context Section */}
                 <section
@@ -95,7 +103,7 @@ export default function CaseStudyGoogleAds() {
                         The objective was to refine campaign targeting, optimise spend allocation, and increase revenue while maintaining a sustainable cost per acquisition.
                     </p>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontStyle: "italic" }}>
-                        This is an ongoing engagement, running from September 2025 to present.
+                        This is an ongoing engagement. The figures on this page cover the reporting period from 1 October 2025 to 26 August 2026, eleven months.
                     </p>
                 </section>
 
@@ -172,12 +180,12 @@ export default function CaseStudyGoogleAds() {
 
                     <div className="grid-3" style={{ gap: "1.5rem" }}>
                         {[
-                            { metric: "£125K", label: "Conversion Value", detail: "" },
-                            { metric: "£23.4K", label: "Total Ad Spend", detail: "" },
-                            { metric: "5.34x", label: "Return on Ad Spend", detail: "" },
-                            { metric: "2,000", label: "Conversions", detail: "" },
-                            { metric: "£11.70", label: "Cost per Conversion", detail: "" },
-                            { metric: "✦", label: "Structured Search System", detail: "Sept 2025 – Jul 2026" },
+                            { metric: "£141K", label: "Attributed Revenue", detail: "" },
+                            { metric: "£26.5K", label: "Total Ad Spend", detail: "" },
+                            { metric: "532%", label: "Return on Ad Spend", detail: "Client break-even: 400%" },
+                            { metric: "10 of 11", label: "Months Above Break-even", detail: "February 2026 came in at 396%" },
+                            { metric: "2,161", label: "Conversions", detail: "" },
+                            { metric: "✦", label: "Structured Search System", detail: "1 Oct 2025 to 26 Aug 2026" },
                         ].map((item, i) => (
                             <div
                                 key={i}
@@ -231,10 +239,10 @@ export default function CaseStudyGoogleAds() {
                         }}
                     >
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                            From <strong style={{ color: "var(--text-primary)" }}>£23.4K</strong> in ad spend across roughly ten months, the optimised campaigns generated <strong style={{ color: "var(--text-primary)" }}>£125K</strong> in conversion value, a <strong style={{ color: "var(--text-primary)" }}>5.34x</strong> return on ad spend.
+                            From <strong style={{ color: "var(--text-primary)" }}>£26.5K</strong> in ad spend across eleven months, the optimised campaigns generated <strong style={{ color: "var(--text-primary)" }}>£141K</strong> in attributed revenue, a <strong style={{ color: "var(--text-primary)" }}>532%</strong> return on ad spend against the client's <strong style={{ color: "var(--text-primary)" }}>400%</strong> break-even.
                         </p>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                            That came from <strong style={{ color: "var(--text-primary)" }}>2,000 conversions</strong> at a cost per conversion of <strong style={{ color: "var(--text-primary)" }}>£11.70</strong>, making Google Ads a reliable channel for acquiring high-intent customers.
+                            That came from <strong style={{ color: "var(--text-primary)" }}>2,161 conversions</strong>. Ten of the eleven months finished above break-even; February 2026 landed at 396%, four points short, and every other month cleared the line comfortably.
                         </p>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>
                             This case demonstrates how structured campaign management and continuous optimisation can turn paid advertising into a scalable and profitable growth channel.

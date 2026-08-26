@@ -6,18 +6,20 @@ import { caseStudyJsonLd } from "../lib/schema";
 // Git-derived (git log src/pages/CaseStudyBodysurfSchool.tsx). Bump MODIFIED
 // whenever the case study's details are updated.
 const PUBLISHED = "2026-07-09";
-const MODIFIED = "2026-07-14";
+const MODIFIED = "2026-08-26";
+
+const TITLE = "Five surf school locations, zero online bookings. Built from scratch in eight weeks.";
 
 export default function CaseStudyBodysurfSchool() {
     return (
         <>
         <Seo
-            title="Bodysurf School Case Study | Booking Engine"
+            title={TITLE}
             description="Case study: turning a Portuguese surf school website into a bilingual online booking engine with local payment methods and SEO and AEO foundations built in."
             path="/case-study-bodysurf-school"
             jsonLd={caseStudyJsonLd({
                 path: "/case-study-bodysurf-school",
-                headline: "The Bodysurf School",
+                headline: TITLE,
                 description: "Turning a Portuguese surf school website into a bilingual online booking engine with local payment methods and SEO and AEO foundations built in.",
                 datePublished: PUBLISHED,
                 dateModified: MODIFIED,
@@ -58,7 +60,7 @@ export default function CaseStudyBodysurfSchool() {
                         Growth Strategy &amp; Website Build
                     </p>
                     <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", marginBottom: "1.5rem", lineHeight: 1.15 }}>
-                        From Brochure Site to Booking Engine: The Bodysurf School
+                        {TITLE}
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
                         Transforming a local surf school's website into a conversion-focused booking system, built for tourists, locals, and institutional partners.

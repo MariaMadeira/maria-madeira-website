@@ -124,7 +124,7 @@ export default function About() {
                         </p>
 
                         <p>
-                            My work spans the full funnel: from building Klaviyo lifecycle systems that generated £134K in attributed revenue over 12 months, to managing Google Ads campaigns that delivered a 5.34x return on ad spend, to building a Click & Collect app and designing custom AI prompt systems for SEO, AEO, and visual content production.
+                            My work spans the full funnel: from building Klaviyo lifecycle systems that generated £134K in attributed revenue over 12 months, to managing Google Ads campaigns that returned 532% ROAS over eleven months, ten of them above the client's break-even, to building a Click & Collect app and designing custom AI prompt systems for SEO, AEO, and visual content production.
                         </p>
 
                         <p style={{ fontStyle: 'italic', borderLeft: '4px solid var(--accent-primary)', paddingLeft: '1.5rem', margin: '1rem 0', color: 'var(--text-primary)' }}>

@@ -6,22 +6,26 @@ import { caseStudyJsonLd } from "../lib/schema";
 // Git-derived (git log src/pages/CaseStudyEmail.tsx). Bump PUBLISHED never;
 // bump MODIFIED whenever the numbers below are updated.
 const PUBLISHED = "2026-03-16";
-const MODIFIED = "2026-07-14";
+const MODIFIED = "2026-08-26";
+
+const TITLE = "An unused email list became the brand's biggest revenue channel";
 
 export default function CaseStudyEmail() {
     return (
         <>
         <Seo
-            title="Email Marketing Case Study | £134K Revenue"
+            title={TITLE}
             description="Email marketing case study: how a Klaviyo lifecycle system grew attributed revenue to £134K in 12 months, up 88.9% year on year, at a 50.4% open rate."
             path="/case-study-email"
             jsonLd={caseStudyJsonLd({
                 path: "/case-study-email",
-                headline: "Email Lifecycle Revenue Growth",
+                headline: TITLE,
                 description: "How a Klaviyo lifecycle system grew email-attributed revenue to £134K over 12 months, up 88.9% year on year, at a 50.4% campaign open rate.",
                 datePublished: PUBLISHED,
                 dateModified: MODIFIED,
-                breadcrumb: "Email Lifecycle Revenue Growth",
+                // Short by design: breadcrumbs render in search results, where the
+                // full headline would truncate.
+                breadcrumb: "Email Marketing",
             })}
         />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
@@ -62,7 +66,7 @@ export default function CaseStudyEmail() {
                         Email Marketing · Case Study
                     </p>
                     <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", marginBottom: "1.5rem", lineHeight: 1.15 }}>
-                        Email Lifecycle Revenue Growth
+                        {TITLE}
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
                         How a strategic email lifecycle system transformed an underutilised channel into the brand's most important revenue driver: growing attributed revenue to £134K over the last 12 months, up 88.9% year on year.

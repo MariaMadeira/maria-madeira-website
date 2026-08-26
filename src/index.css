@@ -1161,3 +1161,101 @@ select:focus {
     justify-content: flex-start !important;
   }
 }
+/* ========================= */
+/* Result Charts              */
+/* ========================= */
+/* Charts sit on a white panel rather than the beige page: --accent-secondary
+   clears 3:1 contrast on #ffffff but only reaches 2.91:1 on --bg-primary. */
+.chart-stack {
+  margin-bottom: 3.5rem;
+}
+
+.chart-panel {
+  margin: 0 0 1.5rem;
+  padding: 1.25rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+}
+
+.chart-stack .chart-panel:last-child {
+  margin-bottom: 0;
+}
+
+.chart-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text-primary);
+  margin-bottom: 0.85rem;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.85rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.chart-legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.chart-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--font-sans);
+}
+
+/* The narrow drawing is the default; the wide one takes over once the column is
+   broad enough to keep its 11.5-unit type above 12px. display:none also keeps
+   the hidden twin out of the accessibility tree. */
+.chart-svg-narrow {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.chart-svg-wide {
+  display: none;
+}
+
+.chart-note,
+.chart-source {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0.75rem 0 0;
+}
+
+@media (min-width: 940px) {
+  .chart-panel {
+    padding: 1.75rem 1.75rem 1.5rem;
+  }
+
+  .chart-title {
+    font-size: 1.15rem;
+  }
+
+  .chart-svg-wide {
+    display: block;
+  }
+
+  .chart-svg-narrow {
+    display: none;
+  }
+}

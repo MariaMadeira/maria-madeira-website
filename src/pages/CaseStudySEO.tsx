@@ -1,27 +1,32 @@
 import { ArrowLeft, ArrowRightLeft, FileText, Bot, LayoutTemplate, Activity, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import { SeoAeoCharts } from "../components/ResultCharts";
 import { caseStudyJsonLd } from "../lib/schema";
 
 // Git-derived (git log src/pages/CaseStudySEO.tsx). Bump MODIFIED whenever the
 // case study's details are updated — this is an ongoing engagement.
 const PUBLISHED = "2026-03-16";
-const MODIFIED = "2026-07-14";
+const MODIFIED = "2026-08-26";
+
+const TITLE = "Found on Google and in AI answers, four months after a migration that left the site invisible";
 
 export default function CaseStudySEO() {
     return (
         <>
         <Seo
-            title="SEO & Platform Migration Case Study"
-            description="SEO case study: rebuilding site structure after a WordPress to Shopify migration to recover organic visibility and win answer-engine (AEO) discoverability."
+            title={TITLE}
+            description="SEO and AEO case study: rebuilding site structure after a WordPress to Shopify migration lifted organic clicks 78% and average position from 15.2 to 9.4."
             path="/case-study-seo"
             jsonLd={caseStudyJsonLd({
                 path: "/case-study-seo",
-                headline: "SEO & Platform Migration",
+                headline: TITLE,
                 description: "Rebuilding site structure after a WordPress to Shopify migration to recover organic visibility and win answer-engine (AEO) discoverability.",
                 datePublished: PUBLISHED,
                 dateModified: MODIFIED,
-                breadcrumb: "SEO & Platform Migration",
+                // Short by design: breadcrumbs render in search results, where the
+                // full headline would truncate.
+                breadcrumb: "SEO and AEO",
             })}
         />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
@@ -62,15 +67,18 @@ export default function CaseStudySEO() {
                         SEO / AEO Optimisation
                     </p>
                     <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", marginBottom: "1.5rem", lineHeight: 1.15 }}>
-                        SEO & AEO Optimisation After Shopify Migration
+                        {TITLE}
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
-                        Improving search structure and AI discoverability after a WordPress to Shopify platform migration.
+                        Improving search structure and AI discoverability after a WordPress to Shopify platform migration: organic clicks up 78% and average position from 15.2 to 9.4 across matched 28-day windows.
                     </p>
                 </div>
 
                 {/* Divider */}
                 <div style={{ height: "1px", background: "var(--border-color)", marginBottom: "3rem" }} />
+
+                {/* Result charts, before the write-up: the numbers first, the method after */}
+                <SeoAeoCharts />
 
                 {/* Context Section */}
                 <section

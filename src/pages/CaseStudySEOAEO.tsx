@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowRight, TrendingUp, Search, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import { SeoAeoCharts } from "../components/ResultCharts";
 import { caseStudyJsonLd } from "../lib/schema";
 
 const PUBLISHED = "2026-08-26";
@@ -114,6 +115,9 @@ export default function CaseStudySEOAEO() {
                             </p>
                         </div>
                     </div>
+
+                    {/* Result charts, before the write-up: the numbers first, the method after */}
+                    <SeoAeoCharts />
 
                     {/* Content Section */}
                     <section style={{ marginBottom: "4rem" }}>

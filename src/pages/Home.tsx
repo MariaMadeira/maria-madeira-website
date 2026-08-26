@@ -5,16 +5,16 @@ import Seo from "../components/Seo";
 import { useInView } from "../hooks/useInView";
 
 // Email figures are verified Klaviyo data for the last 12 months (Jul 2024 –
-// Jul 2025); Google Ads figures are verified for Sept 2025 – Jul 2026. The four
-// headline numbers (£134K, 37.8% revenue share, 50.4%, 5.34x Meta ROAS) live in
-// the Measurable Impact grid; these supporting metrics appear nowhere else on
-// the page, so every stat is stated exactly once. Google Ads ROAS (also 5.34x)
-// is shown only in its case study, to avoid colliding with the Meta figure here.
+// Jul 2025); Google Ads figures are the full account export for 1 Oct 2025 to
+// 26 Aug 2026. The four headline numbers (£134K, 37.8% revenue share, 50.4%,
+// 5.34x Meta ROAS) live in the Measurable Impact grid; these supporting metrics
+// appear nowhere else on the page, so every stat is stated exactly once. Google
+// Ads ROAS (532%) is shown only in the case study card below and its full study.
 const SUPPORTING_METRICS = [
     { to: 48.3, prefix: "£", suffix: "K", decimals: 1, label: "Flow Revenue", detail: "From automated lifecycle flows, +82.5% YoY" },
     { to: 7.27, prefix: "", suffix: "%", decimals: 2, label: "Flow Click Rate", detail: "Across automated email flows, last 12 months" },
     { to: 86.1, prefix: "£", suffix: "K", decimals: 1, label: "Campaign Revenue", detail: "From email campaigns, +92.6% YoY" },
-    { to: 11.70, prefix: "£", suffix: "", decimals: 2, label: "Google Ads Cost / Conversion", detail: "2,000 conversions · Sept 2025 – Jul 2026" },
+    { to: 12.27, prefix: "£", suffix: "", decimals: 2, label: "Google Ads CPA", detail: "2,161 conversions · Oct 2025 to Aug 2026" },
 ];
 
 const HOME_JSON_LD = {
@@ -613,7 +613,7 @@ export default function Home() {
                         </div>
                         <div className="case-study-card-body">
                             <p className="case-study-category">Paid advertising</p>
-                            <h3 className="case-study-card-title">Every pound spent returned five, for eleven months in a row</h3>
+                            <h3 className="case-study-card-title">Every pound spent returned five, over eleven months</h3>
                             <ul className="case-study-items-list">
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
@@ -625,7 +625,7 @@ export default function Home() {
                                 </li>
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>11 of 11 months above break-even</span>
+                                    <span>10 of 11 months above break-even</span>
                                 </li>
                             </ul>
                             <Link to="/case-study-google-ads" className="case-study-link">
