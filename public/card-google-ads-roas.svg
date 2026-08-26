@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-labelledby="t1 d1">
+  <title id="t1">Monthly ROAS over eleven months against a 400 percent break-even</title>
+  <desc id="d1">Bar chart of monthly return on ad spend from October 2025 to August 2026, ranging from 396 to 668 percent, with a dashed break-even reference line at 400 percent.</desc>
+  <rect width="640" height="400" fill="#FFFFFF"/>
+  <text x="48" y="56" font-family="Outfit, Inter, sans-serif" font-size="22" font-weight="600" fill="#3D3A33">Monthly return on ad spend</text>
+  <text x="48" y="82" font-family="Inter, sans-serif" font-size="14" fill="#8A8272">11 months · Google Ads</text>
+  <g>
+    <rect x="48"  y="141.6" width="34" height="198.4" rx="3" fill="#B08968"/>
+    <rect x="96"  y="167.1" width="34" height="172.9" rx="3" fill="#B08968"/>
+    <rect x="144" y="138.4" width="34" height="201.6" rx="3" fill="#B08968"/>
+    <rect x="192" y="156.3" width="34" height="183.7" rx="3" fill="#B08968"/>
+    <rect x="240" y="197.4" width="34" height="142.6" rx="3" fill="#D6C3AC"/>
+    <rect x="288" y="156.3" width="34" height="183.7" rx="3" fill="#B08968"/>
+    <rect x="336" y="150.9" width="34" height="189.1" rx="3" fill="#B08968"/>
+    <rect x="384" y="99.9"  width="34" height="240.1" rx="3" fill="#724F37"/>
+    <rect x="432" y="105.3" width="34" height="234.7" rx="3" fill="#724F37"/>
+    <rect x="480" y="138.0" width="34" height="202.0" rx="3" fill="#B08968"/>
+    <rect x="528" y="185.6" width="34" height="154.4" rx="3" fill="#B08968"/>
+  </g>
+  <line x1="40" y1="196" x2="566" y2="196" stroke="#3D3A33" stroke-width="2" stroke-dasharray="7 6"/>
+  <text x="636" y="192" font-family="Inter, sans-serif" font-size="13" fill="#3D3A33" text-anchor="end">Break-even</text>
+  <text x="636" y="208" font-family="Inter, sans-serif" font-size="13" fill="#3D3A33" text-anchor="end">400%</text>
+  <text x="48" y="374" font-family="Inter, sans-serif" font-size="13" fill="#8A8272">Oct 2025</text>
+  <text x="562" y="374" font-family="Inter, sans-serif" font-size="13" fill="#8A8272" text-anchor="end">Aug 2026</text>
+  <text x="401" y="88" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#3D3A33">668%</text>
+</svg>

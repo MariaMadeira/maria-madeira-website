@@ -33,6 +33,18 @@ const images = [
             join(PUBLIC_DIR, 'maria-smiling.jpeg'),
         ],
     },
+    {
+        // Homepage case study card 1. The slot is ~400 CSS px at its widest, so
+        // 400 and 800 cover it up to 2x DPR; a 1600 variant would only upscale
+        // (the source is 932px wide) and the canonical 1200 copy is unused.
+        name: 'email-popcorn',
+        sources: [join(PUBLIC_DIR, 'Email_PopCorn.png')],
+        sizes: [
+            { width: 400, suffix: '-400' },
+            { width: 800, suffix: '-800' },
+        ],
+        canonical: false,
+    },
 ];
 
 const sizes = [
@@ -41,10 +53,16 @@ const sizes = [
     { width: 1600, suffix: '-1600' },
 ];
 
+// Pass a name to process a single image, e.g. `node scripts/optimize-images.mjs
+// email-popcorn`. Without it every image is reprocessed, which rewrites the
+// bytes of assets that have not changed.
+const only = process.argv[2];
+
 async function processImages() {
     console.log('--- Processing site photography ---');
 
     for (const img of images) {
+        if (only && img.name !== only) continue;
         const sourcePath = img.sources.find(p => existsSync(p));
         if (!sourcePath) {
             console.error(`Source file not found for ${img.name}`);
@@ -55,7 +73,7 @@ async function processImages() {
         const baseSharp = sharp(sourcePath);
 
         // Generate responsive variants
-        for (const s of sizes) {
+        for (const s of img.sizes ?? sizes) {
             // WebP
             const webpOut = join(PUBLIC_DIR, `${img.name}${s.suffix}.webp`);
             await sharp(sourcePath)
@@ -75,6 +93,10 @@ async function processImages() {
                 .toFile(jpgOut);
             const jpgStat = statSync(jpgOut);
             console.log(`  Created ${jpgOut} (${(jpgStat.size / 1024).toFixed(1)} KB)`);
+        }
+
+        if (img.canonical === false) {
+            continue;
         }
 
         // Canonical default webp and jpg

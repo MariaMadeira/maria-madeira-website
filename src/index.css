@@ -538,6 +538,30 @@ ul {
   overflow: hidden;
 }
 
+/* The slot already reserves 16/10, so the image cannot shift layout as it loads.
+   The SVGs are 640x400, the same ratio, so cover crops nothing. */
+/* <picture> is inline by default, which leaves the img's height:100% without a
+   definite containing block. Make the wrapper fill the slot so object-fit works. */
+.case-study-media-slot picture {
+  display: block;
+  align-self: stretch;
+  width: 100%;
+  height: 100%;
+}
+
+.case-study-media-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The email screenshot is a tall portrait crop; anchor it to the top so the
+   campaign header stays visible in the 16/10 slot. */
+.case-study-media-img--top {
+  object-position: top;
+}
+
 .case-study-placeholder-text {
   font-size: 0.8rem;
   font-weight: 600;

@@ -581,7 +581,27 @@ export default function Home() {
                     {/* Card 1 */}
                     <div className="case-study-card">
                         <div className="case-study-media-slot">
-                            <span className="case-study-placeholder-text" aria-hidden="true">Photo coming soon</span>
+                            <picture>
+                                <source
+                                    type="image/webp"
+                                    srcSet="/email-popcorn-400.webp 400w, /email-popcorn-800.webp 800w"
+                                    sizes="(min-width: 940px) 400px, (min-width: 700px) 45vw, 90vw"
+                                />
+                                <source
+                                    type="image/jpeg"
+                                    srcSet="/email-popcorn-400.jpg 400w, /email-popcorn-800.jpg 800w"
+                                    sizes="(min-width: 940px) 400px, (min-width: 700px) 45vw, 90vw"
+                                />
+                                <img
+                                    className="case-study-media-img case-study-media-img--top"
+                                    src="/email-popcorn-800.jpg"
+                                    alt="Email campaign designed in Klaviyo for a British food brand"
+                                    width={800}
+                                    height={1387}
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </picture>
                         </div>
                         <div className="case-study-card-body">
                             <p className="case-study-category">Email marketing</p>
@@ -609,7 +629,15 @@ export default function Home() {
                     {/* Card 2 */}
                     <div className="case-study-card">
                         <div className="case-study-media-slot">
-                            <span className="case-study-placeholder-text" aria-hidden="true">Photo coming soon</span>
+                            <img
+                                className="case-study-media-img"
+                                src="/card-google-ads-roas.svg"
+                                alt="Bar chart of monthly return on ad spend over eleven months against a 400 percent break-even"
+                                width={640}
+                                height={400}
+                                loading="lazy"
+                                decoding="async"
+                            />
                         </div>
                         <div className="case-study-card-body">
                             <p className="case-study-category">Paid advertising</p>
@@ -637,7 +665,15 @@ export default function Home() {
                     {/* Card 3 */}
                     <div className="case-study-card">
                         <div className="case-study-media-slot">
-                            <span className="case-study-placeholder-text" aria-hidden="true">Photo coming soon</span>
+                            <img
+                                className="case-study-media-img"
+                                src="/card-seo-clicks.svg"
+                                alt="Line chart of organic clicks rising 78 percent over four months"
+                                width={640}
+                                height={400}
+                                loading="lazy"
+                                decoding="async"
+                            />
                         </div>
                         <div className="case-study-card-body">
                             <p className="case-study-category">SEO and AEO</p>
