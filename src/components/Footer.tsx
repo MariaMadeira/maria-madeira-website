@@ -47,6 +47,9 @@ export default function Footer() {
                         <h4 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>Navigation</h4>
                         <ul style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
                             <li><Link to="/services" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Services</Link></li>
+                            <li><Link to="/services/websites" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Website Strategy &amp; Build</Link></li>
+                            <li><Link to="/services/aeo" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>AI Search Visibility (AEO)</Link></li>
+                            <li><Link to="/services/email-marketing" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Email Marketing &amp; Klaviyo</Link></li>
                             <li><Link to="/case-studies" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Case Studies</Link></li>
                             <li><Link to="/portfolio" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Portfolio</Link></li>
                             <li><Link to="/blog" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Blog</Link></li>

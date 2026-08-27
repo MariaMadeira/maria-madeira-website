@@ -763,7 +763,7 @@ export default function Home() {
                                     <span>60 pages improved at 30 days, 0 declined at 60 days</span>
                                 </li>
                             </ul>
-                            <Link to="/case-study-seo-aeo" className="case-study-link">
+                            <Link to="/case-study-seo" className="case-study-link">
                                 Read case study <ArrowRight size={16} />
                             </Link>
                         </div>

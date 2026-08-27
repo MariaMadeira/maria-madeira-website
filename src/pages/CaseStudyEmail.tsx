@@ -1,6 +1,7 @@
 import { ArrowLeft, TrendingUp, Mail, Target, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import RelatedLinks from "../components/RelatedLinks";
 import { caseStudyJsonLd } from "../lib/schema";
 
 // Git-derived (git log src/pages/CaseStudyEmail.tsx). Bump PUBLISHED never;
@@ -240,6 +241,11 @@ export default function CaseStudyEmail() {
                         </p>
                     </div>
                 </section>
+
+                <RelatedLinks
+                    service={{ to: "/services/email-marketing", label: "Email marketing and Klaviyo consulting" }}
+                    next={{ to: "/case-study-click-collect", label: "A shop losing sales to queues" }}
+                />
 
                 {/* CTA */}
                 <div

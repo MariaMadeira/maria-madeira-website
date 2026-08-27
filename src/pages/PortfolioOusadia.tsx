@@ -2,6 +2,7 @@ import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Seo from "../components/Seo";
+import { portfolioJsonLd } from "../lib/schema";
 
 export default function PortfolioOusadia() {
     useEffect(() => {
@@ -15,6 +16,14 @@ export default function PortfolioOusadia() {
             title="Ousadia Brand & Creative Direction | Portfolio"
             description="Brand identity and creative direction for Ousadia, an artcraft brand: logo system, visual language, and campaign art direction by Maria Madeira."
             path="/portfolio-ousadia"
+            ogImage="/og/og-portfolio-ousadia.png"
+            jsonLd={portfolioJsonLd({
+                path: "/portfolio-ousadia",
+                name: "Ousadia",
+                description: "Brand identity and creative direction for Ousadia, an artcraft brand: logo system, visual language, and campaign art direction.",
+                about: { type: "Brand", name: "Ousadia" },
+                image: "/projects/ousadia/moodboard.jpg",
+            })}
         />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "900px", margin: "0 auto" }}>

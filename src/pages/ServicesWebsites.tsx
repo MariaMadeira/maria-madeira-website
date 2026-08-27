@@ -339,6 +339,9 @@ export default function ServicesWebsites() {
                         </Link>
                     ))}
                 </div>
+                <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: "2rem auto 0", maxWidth: "680px", textAlign: "center" }}>
+                    The build behind the first of those, from brief to booking engine, is written up in the <Link to="/case-study-bodysurf-school" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>Bodysurf School case study</Link>. The brand and visual work behind the other two, and the rest of the identity projects, sits in the <Link to="/portfolio" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>portfolio</Link>.
+                </p>
             </section>
 
             {/* Who this is for */}

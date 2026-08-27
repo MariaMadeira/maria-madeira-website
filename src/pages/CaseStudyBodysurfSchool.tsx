@@ -1,6 +1,7 @@
 import { ArrowLeft, Map, CreditCard, LayoutTemplate, Globe, Search, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import RelatedLinks from "../components/RelatedLinks";
 import { caseStudyJsonLd } from "../lib/schema";
 
 // Git-derived (git log src/pages/CaseStudyBodysurfSchool.tsx). Bump MODIFIED
@@ -295,6 +296,11 @@ export default function CaseStudyBodysurfSchool() {
                         </figcaption>
                     </figure>
                 </section>
+
+                <RelatedLinks
+                    service={{ to: "/services/websites", label: "Website strategy and build" }}
+                    next={{ to: "/case-study-seo", label: "Found on Google and in AI answers" }}
+                />
 
                 {/* CTA */}
                 <div style={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem" }}>

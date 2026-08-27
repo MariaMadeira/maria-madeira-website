@@ -310,6 +310,9 @@ export default function ServicesEmailMarketing() {
                         Read the case study <ArrowRight size={16} />
                     </span>
                 </Link>
+                <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: "1.5rem 0 0" }}>
+                    The full breakdown of how that system was built, flow by flow, is in the <Link to="/case-study-email" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>email marketing case study</Link>.
+                </p>
             </section>
 
             {/* FAQ, all answers visible */}

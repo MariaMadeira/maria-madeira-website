@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowRightLeft, FileText, Bot, LayoutTemplate, Activity, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import RelatedLinks from "../components/RelatedLinks";
 import { SeoAeoCharts } from "../components/ResultCharts";
 import { caseStudyJsonLd } from "../lib/schema";
 
@@ -228,6 +229,11 @@ export default function CaseStudySEO() {
                         ))}
                     </div>
                 </section>
+
+                <RelatedLinks
+                    service={{ to: "/services/aeo", label: "SEO and AEO" }}
+                    next={{ to: "/case-study-google-ads", label: "Five pounds back for every pound spent" }}
+                />
 
                 {/* CTA */}
                 <div

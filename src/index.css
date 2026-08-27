@@ -1409,3 +1409,48 @@ select:focus {
     display: none;
   }
 }
+
+/* ========================= */
+/* Related Links (case studies) */
+/* ========================= */
+.related-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  margin-bottom: 2rem;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+@media (max-width: 600px) {
+  .related-links {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.related-links-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.related-links-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent-secondary);
+  line-height: 1.4;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.related-links-link:hover {
+  color: var(--accent-hover);
+  gap: 10px;
+}

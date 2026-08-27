@@ -2,6 +2,7 @@ import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Seo from "../components/Seo";
+import { portfolioJsonLd } from "../lib/schema";
 
 export default function PortfolioRitaAntunes() {
     useEffect(() => {
@@ -15,6 +16,14 @@ export default function PortfolioRitaAntunes() {
             title="Rita Antunes Brand Identity | Portfolio"
             description="Brand identity and visual direction for Rita Antunes Psicologia: a premium clinical practice identity built to convert high-ticket therapy leads."
             path="/portfolio-rita-antunes"
+            ogImage="/og/og-portfolio-rita-antunes.png"
+            jsonLd={portfolioJsonLd({
+                path: "/portfolio-rita-antunes",
+                name: "Rita Antunes",
+                description: "Brand identity and visual direction for Rita Antunes Psicologia: a premium clinical practice identity built to convert high-ticket therapy leads.",
+                about: { type: "Organization", name: "Rita Antunes Psicologia" },
+                image: "/projects/rita-antunes/mockup-stationery.jpg",
+            })}
         />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "900px", margin: "0 auto" }}>

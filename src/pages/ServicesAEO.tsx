@@ -458,6 +458,9 @@ export default function ServicesAEO() {
                         Read the case study <ArrowRight size={16} />
                     </span>
                 </Link>
+                <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: "1.5rem 0 0" }}>
+                    For the same work applied to an existing catalogue rather than a new build, read the <Link to="/case-study-seo" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>SEO and AEO case study</Link>.
+                </p>
             </section>
 
             {/* FAQ — all answers visible, no accordions */}

@@ -1,6 +1,22 @@
 import { TrendingUp, Mail, BarChart, Cpu, Maximize, ArrowRight, ArrowRightLeft, Globe, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import { SITE_URL } from "../lib/schema";
+
+// Matches the BreadcrumbList each child service page already carries, so the
+// hub is not the one rung missing from the trail.
+const SERVICES_JSON_LD = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+                { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` },
+            ],
+        },
+    ],
+};
 
 export default function Services() {
     const services = [
@@ -77,6 +93,7 @@ export default function Services() {
                 title="E-commerce Growth Services | Maria Madeira"
                 description="Growth strategy, email marketing automation, paid advertising, AI marketing systems, and creative direction: services built to scale e-commerce revenue."
                 path="/services"
+                jsonLd={SERVICES_JSON_LD}
             />
 
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>

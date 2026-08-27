@@ -66,3 +66,49 @@ export function caseStudyJsonLd({ path, headline, description, datePublished, da
         ],
     };
 }
+
+interface PortfolioMeta {
+    /** Route path, e.g. "/portfolio-ousadia". */
+    path: string;
+    /** Project name, used as both the CreativeWork name and the breadcrumb leaf. */
+    name: string;
+    description: string;
+    /** The subject of the work: the client brand or practice. */
+    about: { type: "Brand" | "Organization"; name: string };
+    /** Root-relative path to a representative image from the project. */
+    image: string;
+}
+
+/**
+ * CreativeWork + BreadcrumbList for a portfolio project.
+ *
+ * creator points at the canonical Person node rather than repeating it, so these
+ * pages join the site's entity graph instead of standing outside it as the only
+ * content type with no structured data at all.
+ */
+export function portfolioJsonLd({ path, name, description, about, image }: PortfolioMeta) {
+    const url = `${SITE_URL}${path}`;
+    return {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "CreativeWork",
+                "@id": `${url}#work`,
+                "name": name,
+                "description": description,
+                "url": url,
+                "creator": PERSON_REF,
+                "about": { "@type": about.type, "name": about.name },
+                "image": `${SITE_URL}${image}`,
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+                    { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": `${SITE_URL}/portfolio` },
+                    { "@type": "ListItem", "position": 3, "name": name, "item": url },
+                ],
+            },
+        ],
+    };
+}

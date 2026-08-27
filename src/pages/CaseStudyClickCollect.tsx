@@ -2,6 +2,7 @@ import { ArrowLeft, Smartphone, AlertCircle, Lightbulb, Users, MapPin, Zap } fro
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Seo from "../components/Seo";
+import RelatedLinks from "../components/RelatedLinks";
 import { caseStudyJsonLd } from "../lib/schema";
 
 // Git-derived (git log src/pages/CaseStudyClickCollect.tsx). Bump MODIFIED
@@ -301,6 +302,11 @@ export default function CaseStudyClickCollect() {
                         </p>
                     </div>
                 </section>
+
+                <RelatedLinks
+                    service={{ to: "/services", label: "Growth strategy and product experiments" }}
+                    next={{ to: "/case-study-bodysurf-school", label: "Five surf school locations, zero online bookings" }}
+                />
 
                 {/* CTA */}
                 <div

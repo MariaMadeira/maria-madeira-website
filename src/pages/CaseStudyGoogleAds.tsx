@@ -1,6 +1,7 @@
 import { ArrowLeft, TrendingUp, Search, MousePointerClick, BarChart } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import RelatedLinks from "../components/RelatedLinks";
 import { GoogleAdsCharts } from "../components/ResultCharts";
 import { caseStudyJsonLd } from "../lib/schema";
 
@@ -249,6 +250,11 @@ export default function CaseStudyGoogleAds() {
                         </p>
                     </div>
                 </section>
+
+                <RelatedLinks
+                    service={{ to: "/services", label: "Growth strategy and paid acquisition" }}
+                    next={{ to: "/case-study-email", label: "An unused email list became the brand's biggest revenue channel" }}
+                />
 
                 {/* CTA */}
                 <div

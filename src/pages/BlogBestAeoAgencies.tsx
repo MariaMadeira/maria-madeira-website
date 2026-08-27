@@ -316,6 +316,10 @@ export default function BlogBestAeoAgencies() {
                     </p>
                 </div>
 
+                <p style={P}>
+                    Judged by the same standard I set above, my own work is checkable rather than asserted: the <Link to="/case-study-seo" style={linkStyle}>SEO and AEO case study</Link> publishes the Search Console windows behind it, and the <Link to="/services/aeo" style={linkStyle}>AEO service page</Link> sets out the audit process it came from.
+                </p>
+
                 {/* FAQ — all answers visible */}
                 <h2 style={H2}>Frequently asked questions</h2>
                 <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", marginTop: "1.5rem" }}>
