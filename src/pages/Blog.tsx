@@ -6,6 +6,14 @@ const SITE_URL = "https://mariamadeira.com";
 
 export const POSTS = [
     {
+        slug: "chatgpt-ads-europe",
+        title: "Inside ChatGPT Ads: I opened a European advertiser account so you don't have to",
+        excerpt: "ChatGPT Ads is live in 31 European markets. A walkthrough of the signup from the inside: the enforced minimums, the US defaults, the settings that lock permanently, and why AEO still comes first.",
+        category: "Paid Media",
+        readTime: "7 min read",
+        date: "9 September 2026",
+    },
+    {
         slug: "best-aeo-agencies-ecommerce-europe",
         title: "The best AEO agencies for e-commerce brands in Europe (2026), and where a consultant fits",
         excerpt: "A researched shortlist of seven AEO agencies for European e-commerce brands, a comparison table, five vetting questions, and where an independent consultant is the better fit.",
