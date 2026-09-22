@@ -27,14 +27,14 @@ const HOME_JSON_LD = {
             "url": "https://mariamadeira.com",
             "image": "https://mariamadeira.com/maria-hero-800.jpg",
             "jobTitle": "Growth Strategist",
-            "description": "Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands.",
+            "description": "Growth strategist for brands that sell online: websites, Answer Engine Optimisation (AEO), SEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands.",
             "sameAs": ["https://www.linkedin.com/in/maria-madeira-43501b3a/", "https://influee.co/partnership/maria-madeira"],
             "memberOf": {
                 "@type": "Organization",
                 "name": "Klaviyo K:Partners",
                 "url": "https://www.klaviyo.com/partners"
             },
-            "knowsAbout": ["Email Marketing", "Klaviyo", "Google Ads", "Meta Ads", "AI Marketing", "Growth Strategy", "Paid Acquisition", "Lifecycle Marketing"]
+            "knowsAbout": ["Answer Engine Optimisation (AEO)", "SEO", "Email Marketing", "Klaviyo", "Google Ads", "Meta Ads", "AI Marketing", "Growth Strategy", "Paid Acquisition", "Lifecycle Marketing"]
         },
         // Split out of a single ProfessionalService node: that type descends from
         // LocalBusiness, not Service, so it accepts neither provider nor
@@ -45,7 +45,7 @@ const HOME_JSON_LD = {
             "@id": "https://mariamadeira.com/#organization",
             "name": "Maria Madeira: Growth Strategy",
             "url": "https://mariamadeira.com",
-            "description": "Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands.",
+            "description": "Answer Engine Optimisation (AEO), SEO, Klaviyo email and paid acquisition for UK food and drink e-commerce brands. Agency-level execution from an independent consultant.",
             "founder": { "@id": "https://mariamadeira.com/#person" },
             "areaServed": "Worldwide",
             "contactPoint": {
@@ -58,7 +58,7 @@ const HOME_JSON_LD = {
             "@type": "Service",
             "@id": "https://mariamadeira.com/#service",
             "name": "Maria Madeira: Growth Strategy",
-            "description": "Growth strategist for brands that sell online: websites, SEO and AEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands.",
+            "description": "Answer Engine Optimisation (AEO), SEO, Klaviyo email and paid acquisition for UK food and drink e-commerce brands. Agency-level execution from an independent consultant.",
             "provider": { "@id": "https://mariamadeira.com/#organization" },
             "areaServed": "Worldwide",
             "serviceType": ["Growth Strategy", "Email Marketing", "Paid Advertising", "AI Marketing Systems", "Creative Direction"]
@@ -318,8 +318,8 @@ export default function Home() {
     return (
         <div className="container">
             <Seo
-                title="Maria Madeira | Growth Strategist for Brands That Sell Online"
-                description="I find what's holding back your online sales and fix it: websites, SEO and AEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands."
+                title="AEO Consultancy for E-commerce Brands | Maria Madeira"
+                description="Answer Engine Optimisation (AEO), SEO and email marketing for UK food and drink e-commerce brands. Agency-level execution from an independent consultant."
                 path="/"
                 jsonLd={HOME_JSON_LD}
             />
@@ -349,13 +349,13 @@ export default function Home() {
                             marginBottom: '1rem',
                             display: 'block'
                         }}>
-                            Growth Strategist for brands that sell online.
+                            AEO and growth consultancy for e-commerce brands.
                         </span>
                         <h1 style={{ margin: '0 0 1.5rem', fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.15 }}>
-                            Your brand sells good products. Your website should sell more of them.
+                            AEO consultancy for e-commerce.
                         </h1>
                         <p style={{ marginBottom: '2.5rem', fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-                            I find what's holding back your online sales, then fix it: your website, your emails, your ads, and how you show up on Google and in AI answers. Five years doing this for UK food and drink brands.
+                            The output of an agency, without the agency. Answer Engine Optimisation, SEO, email and paid media for brands that want senior work done directly.
                         </p>
                         <div style={{ display: "flex", gap: "1rem", flexWrap: 'wrap', marginBottom: '2.5rem' }}>
                             <Link to="/contact" className="btn btn-primary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
