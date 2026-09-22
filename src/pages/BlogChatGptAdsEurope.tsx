@@ -417,7 +417,7 @@ export default function BlogChatGptAdsEurope() {
                     And the platform's rough edges are the point. US defaults, dollar budgets on European accounts, locked settings, a 52-character copy limit and AI-generated creative that needs supervision: none of this is a reason to ignore the channel, and all of it is a reason not to walk in unprepared.
                 </p>
                 <p style={P}>
-                    If you want to know where your brand stands before a competitor pays to sit under your answer, I offer a <Link to="/contact" style={linkStyle}>20-minute diagnosis call</Link>. I will show you what ChatGPT says about your category today, with your brand in it or not.
+                    If you want to <Link to="/services/aeo" style={linkStyle}>know where your brand stands</Link> before a competitor pays to sit under your answer, I offer a <Link to="/contact" style={linkStyle}>20-minute diagnosis call</Link>. I will show you what ChatGPT says about your category today, with your brand in it or not.
                 </p>
 
                 {/* Approved sign-off from the article copy, in the shared AuthorBio treatment. */}

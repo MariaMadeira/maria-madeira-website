@@ -291,6 +291,17 @@ export default function BlogBestAeoAgencies() {
                     ))}
                 </div>
 
+                {/* Consultant callout: sits directly under the ranked list, where the
+                    agency-versus-independent question naturally arises. */}
+                <div style={{ ...calloutBox, marginBottom: "1.25rem" }}>
+                    <h3 style={{ fontSize: "1.3rem", margin: "0 0 0.9rem", lineHeight: 1.3, color: "var(--text-primary)" }}>
+                        Prefer a consultant to an agency?
+                    </h3>
+                    <p style={{ color: "var(--text-primary)", fontSize: "1.05rem", lineHeight: 1.8, margin: 0 }}>
+                        Every provider above is an agency. The independent model works differently: one person on the strategy and the build, no account manager in between, and senior attention on every task rather than parallel capacity. If that is the shape you want, my <Link to="/services/aeo" style={linkStyle}>independent AEO consultancy</Link> page sets out how the engagements run, from the visibility audit through to schema, answer-ready content and citation tracking.
+                    </p>
+                </div>
+
                 {/* How to vet any provider — numbered checklist */}
                 <h2 style={H2}>How to vet any AEO provider</h2>
                 <p style={P}>Five questions that separate real practices from a relabelled SEO retainer.</p>

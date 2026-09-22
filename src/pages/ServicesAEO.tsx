@@ -27,6 +27,14 @@ const WHAT_I_DO = [
 /* ── FAQ — drives both the visible section and the FAQPage schema ──── */
 const FAQS: { q: string; a: string }[] = [
     {
+        q: "What does an AEO consultant do for an e-commerce brand?",
+        a: "Four stages, and I deliver all four. It starts with an AI visibility audit that records where you appear, or do not, across ChatGPT, Perplexity, Gemini and Google AI Overviews. The rest is implementation: structured data and entity signals machines can read and attribute to you, pages and copy structured to be lifted and cited inside AI answers, and citation tracking set up so you can see what changed. Nothing is handed over as a list of recommendations for someone else to action.",
+    },
+    {
+        q: "Should an e-commerce brand hire an AEO consultant or an agency?",
+        a: "It depends on your size and how much coordination you can absorb. An agency gives you process and parallel capacity, which suits brands with an internal marketing team to brief and manage them. An independent consultant gives you senior attention on every task and direct contact with the person doing the work, rather than briefing a team through an account manager. I have published an open comparison of the European agency options, including where I fit and where an agency is the better choice.",
+    },
+    {
         q: "Do you implement the work, or only advise?",
         a: "I implement it. The audit is the starting point, not the deliverable. From there I do the work: structured data, entity consistency, page and content changes, and citation tracking across ChatGPT, Perplexity, Gemini and AI Overviews. If the site itself needs rebuilding to support any of it, I do that too. You are working directly with the person doing the work, not briefing a team through an account manager.",
     },
@@ -320,8 +328,8 @@ export default function ServicesAEO() {
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="AEO Consultant | Answer Engine Optimisation | Maria Madeira"
-                description="AEO consultant helping brands get cited and recommended by AI assistants (ChatGPT, Perplexity, Gemini and Google AI Overviews), not just ranked on Google."
+                title="AEO Consultant for E-commerce Brands | Maria Madeira"
+                description="Answer Engine Optimisation for e-commerce and food & drink brands. Get cited and recommended by ChatGPT, Perplexity, Gemini and Google AI Overviews, not just ranked. Audits with a measured baseline."
                 path="/services/aeo"
                 ogImage="/og/og-aeo.png"
                 jsonLd={AEO_JSON_LD}
