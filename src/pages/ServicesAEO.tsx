@@ -329,7 +329,7 @@ export default function ServicesAEO() {
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
                 title="AEO Consultant for E-commerce Brands | Maria Madeira"
-                description="Answer Engine Optimisation for e-commerce and food & drink brands. Get cited and recommended by ChatGPT, Perplexity, Gemini and Google AI Overviews, not just ranked. Audits with a measured baseline."
+                description="AEO audits with a measured baseline, for e-commerce and food and drink brands. Get cited and recommended by ChatGPT, Perplexity, Gemini and Google AI Overviews, not just ranked."
                 path="/services/aeo"
                 ogImage="/og/og-aeo.png"
                 jsonLd={AEO_JSON_LD}
