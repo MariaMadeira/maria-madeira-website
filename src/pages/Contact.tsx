@@ -34,7 +34,9 @@ export default function Contact() {
 
         const form = e.currentTarget;
         const formData = new FormData(form);
-        if (preset) formData.append("_subject", preset.subject);
+        // Formspree reads _subject. Without it every enquiry arrived under
+        // Formspree's own generic default, so ordinary enquiries get one too.
+        formData.append("_subject", preset ? preset.subject : `Website enquiry from ${formData.get("name")}`);
 
         try {
             // Replace YOUR_FORM_ID with the ID from https://formspree.io (e.g. "xpzgkwqr")
