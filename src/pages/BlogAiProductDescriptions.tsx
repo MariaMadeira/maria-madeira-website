@@ -12,10 +12,10 @@ const OG_IMAGE = "/og/og-blog-ai-product-descriptions.png";
 const PUBLISHED_ISO = "2026-09-24";
 const PUBLISHED_HUMAN = "24 September 2026";
 
-/* Prefilled enquiry for the CTA. The contact form takes name, email and message
-   only, with no subject or URL-parameter prefill, so the offer carries its own
-   subject and fields through mailto rather than changing that form. */
-const AI_CHECK_MAILTO = "mailto:info@mariamadeira.com?subject=AI%20search%20check&body=Brand%3A%0AWebsite%3A%0A";
+/* The contact form now recognises this topic and sets the subject, intro line and
+   message prefill from it. A mailto here failed silently for anyone without a
+   desktop mail client, which is most of the audience. */
+const AI_CHECK_CONTACT = "/contact?topic=ai-search-check";
 
 /* ── The safer workflow: numbered steps, bold lead then the rest ── */
 const WORKFLOW: { lead: string; rest: string }[] = [
@@ -227,9 +227,9 @@ export default function BlogAiProductDescriptions() {
                     <p style={{ color: "var(--text-primary)", fontSize: "1.05rem", lineHeight: 1.8, margin: "0 0 1.75rem" }}>
                         Send me your website and I'll ask ChatGPT and Perplexity about three of your products. You'll get a short note on what they get right, what they get wrong, and what I'd fix first. Free, for food and drink brands selling online.
                     </p>
-                    <a href={AI_CHECK_MAILTO} className="btn btn-primary" style={{ padding: "0.9rem 2rem", fontSize: "1rem" }}>
+                    <Link to={AI_CHECK_CONTACT} className="btn btn-primary" style={{ padding: "0.9rem 2rem", fontSize: "1rem" }}>
                         Request your AI search check <ArrowRight size={18} style={{ marginLeft: "8px" }} />
-                    </a>
+                    </Link>
                     <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", lineHeight: 1.7, margin: "1.5rem 0 0" }}>
                         Or read more about my <Link to="/services/aeo" style={linkStyle}>AEO consultancy for food and drink e-commerce</Link>.
                     </p>

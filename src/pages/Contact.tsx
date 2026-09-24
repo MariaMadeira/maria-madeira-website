@@ -1,10 +1,31 @@
 import { Mail, Linkedin, Send, CheckCircle, Clock } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Seo from "../components/Seo";
+
+/* Enquiry presets reachable as /contact?topic=<key>. Anything else, including no
+   parameter at all, leaves the page exactly as it was. */
+const TOPICS: Record<string, { subject: string; intro: string; message: string }> = {
+    "ai-search-check": {
+        subject: "AI search check",
+        intro: "AI search check: tell me your brand and website, and I'll get back to you with a short note.",
+        message: "Brand:\nWebsite:\n",
+    },
+};
 
 export default function Contact() {
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
     const [errorMessage, setErrorMessage] = useState("");
+
+    /* The prerendered /contact HTML is the no-topic state, so the query string is
+       read only after mount. Reading it during render would make the first client
+       render disagree with that HTML and introduce a hydration mismatch. */
+    const { search } = useLocation();
+    const [topicKey, setTopicKey] = useState<string | null>(null);
+    useEffect(() => {
+        setTopicKey(new URLSearchParams(search).get("topic"));
+    }, [search]);
+    const preset = topicKey ? TOPICS[topicKey] ?? null : null;
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -13,6 +34,7 @@ export default function Contact() {
 
         const form = e.currentTarget;
         const formData = new FormData(form);
+        if (preset) formData.append("_subject", preset.subject);
 
         try {
             // Replace YOUR_FORM_ID with the ID from https://formspree.io (e.g. "xpzgkwqr")
@@ -31,15 +53,15 @@ export default function Contact() {
                 const email = formData.get("email") as string;
                 const message = formData.get("message") as string;
 
-                const subject = encodeURIComponent(`Strategy call request from ${name}`);
+                const subject = encodeURIComponent(preset ? preset.subject : `Strategy call request from ${name}`);
                 const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
                 window.location.href = `mailto:info@mariamadeira.com?subject=${subject}&body=${body}`;
                 setStatus("success");
             }
         } catch {
-            // Offline / network error — fallback to mailto
+            // Offline / network error: fallback to mailto
             const formDataObj = Object.fromEntries(formData.entries());
-            const subject = encodeURIComponent(`Strategy call request from ${formDataObj.name}`);
+            const subject = encodeURIComponent(preset ? preset.subject : `Strategy call request from ${formDataObj.name}`);
             const body = encodeURIComponent(`Name: ${formDataObj.name}\nEmail: ${formDataObj.email}\n\n${formDataObj.message}`);
             window.location.href = `mailto:info@mariamadeira.com?subject=${subject}&body=${body}`;
             setStatus("success");
@@ -113,6 +135,11 @@ export default function Contact() {
                         </div>
                     ) : (
                         <form style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }} onSubmit={handleSubmit}>
+                            {preset && (
+                                <p style={{ margin: 0, padding: "1rem 1.25rem", background: "var(--accent-glow)", borderLeft: "3px solid var(--accent-secondary)", borderRadius: "10px", color: "var(--text-primary)", fontSize: "0.95rem", lineHeight: 1.7 }}>
+                                    {preset.intro}
+                                </p>
+                            )}
                             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                                 <label htmlFor="name" style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", textTransform: 'uppercase' }}>Name</label>
                                 <input
@@ -140,6 +167,8 @@ export default function Contact() {
                             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                                 <label htmlFor="message" style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", textTransform: 'uppercase' }}>Message</label>
                                 <textarea
+                                    key={topicKey ?? "default"}
+                                    defaultValue={preset ? preset.message : ""}
                                     id="message"
                                     name="message"
                                     rows={5}
