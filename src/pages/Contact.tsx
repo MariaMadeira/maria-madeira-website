@@ -5,11 +5,14 @@ import Seo from "../components/Seo";
 
 /* Enquiry presets reachable as /contact?topic=<key>. Anything else, including no
    parameter at all, leaves the page exactly as it was. */
-const TOPICS: Record<string, { subject: string; intro: string; message: string }> = {
+const TOPICS: Record<string, { subject: string; intro: string; message: string; h1Lead: string; h1Accent: string; submitLabel: string }> = {
     "ai-search-check": {
         subject: "AI search check",
         intro: "AI search check: tell me your brand and website, and I'll get back to you with a short note.",
         message: "Brand:\nWebsite:\n",
+        h1Lead: "Request Your ",
+        h1Accent: "AI Search Check",
+        submitLabel: "Request my AI search check",
     },
 };
 
@@ -55,7 +58,7 @@ export default function Contact() {
                 const email = formData.get("email") as string;
                 const message = formData.get("message") as string;
 
-                const subject = encodeURIComponent(preset ? preset.subject : `Strategy call request from ${name}`);
+                const subject = encodeURIComponent(preset ? preset.subject : `Website enquiry from ${name}`);
                 const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
                 window.location.href = `mailto:info@mariamadeira.com?subject=${subject}&body=${body}`;
                 setStatus("success");
@@ -63,7 +66,7 @@ export default function Contact() {
         } catch {
             // Offline / network error: fallback to mailto
             const formDataObj = Object.fromEntries(formData.entries());
-            const subject = encodeURIComponent(preset ? preset.subject : `Strategy call request from ${formDataObj.name}`);
+            const subject = encodeURIComponent(preset ? preset.subject : `Website enquiry from ${formDataObj.name}`);
             const body = encodeURIComponent(`Name: ${formDataObj.name}\nEmail: ${formDataObj.email}\n\n${formDataObj.message}`);
             window.location.href = `mailto:info@mariamadeira.com?subject=${subject}&body=${body}`;
             setStatus("success");
@@ -78,7 +81,7 @@ export default function Contact() {
                 path="/contact"
             />
 
-            <h1 className="section-title">Book a Free <span className="text-gradient">Strategy Call</span></h1>
+            <h1 className="section-title">{preset ? preset.h1Lead : "Book a Free "}<span className="text-gradient">{preset ? preset.h1Accent : "Strategy Call"}</span></h1>
 
             <div className="grid-2 contact-grid" style={{ maxWidth: "1100px", margin: "0 auto", gap: "4rem" }}>
                 <div className="reveal-left is-visible">
@@ -185,7 +188,7 @@ export default function Contact() {
                             )}
 
                             <button type="submit" className="btn btn-primary" style={{ width: "100%", marginTop: '1rem' }} disabled={status === "submitting"}>
-                                {status === "submitting" ? "Sending..." : "Book a Free Strategy Call"} <Send size={18} style={{ marginLeft: '10px' }} />
+                                {status === "submitting" ? "Sending..." : preset ? preset.submitLabel : "Book a Free Strategy Call"} <Send size={18} style={{ marginLeft: '10px' }} />
                             </button>
 
                             <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", textAlign: "center", margin: 0 }}>
