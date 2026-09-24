@@ -8,6 +8,7 @@ const PATH = "/blog/ai-product-descriptions-food-brands";
 const PAGE_URL = `${SITE_URL}${PATH}`;
 const HEADLINE = "AI Product Descriptions for Food and Drink Brands: What Can Go Wrong, and How to Do It Safely";
 const DESCRIPTION = "AI tools can write your product pages in seconds. A UK food brand learned what happens when nobody checks them. A safer workflow for food and drink brands.";
+const OG_IMAGE = "/og/og-blog-ai-product-descriptions.png";
 const PUBLISHED_ISO = "2026-09-24";
 const PUBLISHED_HUMAN = "24 September 2026";
 
@@ -53,16 +54,12 @@ const ARTICLE_JSON_LD = {
             "@id": `${PAGE_URL}#article`,
             "headline": HEADLINE,
             "description": DESCRIPTION,
-            "author": {
-                "@type": "Person",
-                "@id": `${SITE_URL}/#person`,
-                "name": "Maria Madeira",
-                "url": `${SITE_URL}/about`,
-            },
+            "author": { "@type": "Person", "@id": `${SITE_URL}/#person`, "name": "Maria Madeira" },
             "publisher": { "@id": `${SITE_URL}/#person` },
             "datePublished": PUBLISHED_ISO,
             "dateModified": PUBLISHED_ISO,
             "mainEntityOfPage": PAGE_URL,
+            "image": `${SITE_URL}${OG_IMAGE}`,
             "isPartOf": { "@id": `${SITE_URL}/blog#blog` },
             "articleSection": "AI Search",
         },
@@ -109,6 +106,7 @@ export default function BlogAiProductDescriptions() {
                 title="AI Product Descriptions for Food Brands: A Safer Way to Do It"
                 description={DESCRIPTION}
                 path={PATH}
+                ogImage={OG_IMAGE}
                 jsonLd={ARTICLE_JSON_LD}
             />
 
@@ -210,7 +208,7 @@ export default function BlogAiProductDescriptions() {
                             <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>
                                 {f.q === "What is AEO?" ? (
                                     <>
-                                        Answer engine optimisation: making your content easy for AI assistants such as ChatGPT, Perplexity and Google's AI Mode to find, trust and cite. If you're comparing providers, see <Link to="/blog/best-aeo-agencies-ecommerce-europe" style={linkStyle}>my guide to AEO agencies for e-commerce</Link>.
+                                        <Link to="/blog/what-is-aeo" style={linkStyle}>Answer engine optimisation</Link>: making your content easy for AI assistants such as ChatGPT, Perplexity and Google's AI Mode to find, trust and cite. If you're comparing providers, see <Link to="/blog/best-aeo-agencies-ecommerce-europe" style={linkStyle}>my guide to AEO agencies for e-commerce</Link>.
                                     </>
                                 ) : f.a}
                             </p>
