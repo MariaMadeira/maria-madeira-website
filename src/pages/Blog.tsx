@@ -6,6 +6,14 @@ const SITE_URL = "https://mariamadeira.com";
 
 export const POSTS = [
     {
+        slug: "ai-product-descriptions-food-brands",
+        title: "AI Product Descriptions for Food and Drink Brands: What Can Go Wrong, and How to Do It Safely",
+        excerpt: "A UK food brand let an AI agent write its product descriptions. Here's what went wrong, why it matters more for food, and a safer way to use AI on your product pages.",
+        category: "AI Search",
+        readTime: "5 min read",
+        date: "24 September 2026",
+    },
+    {
         slug: "chatgpt-ads-europe",
         title: "Inside ChatGPT Ads: I opened a European advertiser account so you don't have to",
         excerpt: "ChatGPT Ads is live in 31 European markets. A walkthrough of the signup from the inside: the enforced minimums, the US defaults, the settings that lock permanently, and why AEO still comes first.",
