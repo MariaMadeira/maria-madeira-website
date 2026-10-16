@@ -44,7 +44,7 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>Navigation</h4>
+                        <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>Navigation</h2>
                         <ul style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
                             <li><Link to="/services" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Services</Link></li>
                             <li><Link to="/services/websites" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Website Strategy &amp; Build</Link></li>
@@ -58,7 +58,7 @@ export default function Footer() {
 
                     {/* Company */}
                     <div>
-                        <h4 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>Company</h4>
+                        <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>Company</h2>
                         <ul style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
                             <li><Link to="/about" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>About</Link></li>
                             <li><Link to="/contact" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Contact</Link></li>
@@ -67,7 +67,7 @@ export default function Footer() {
 
                     {/* Get in Touch */}
                     <div>
-                        <h4 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>Get in Touch</h4>
+                        <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>Get in Touch</h2>
                         <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", marginBottom: "1.25rem" }}>
                             Ready to scale your brand? Let's talk.
                         </p>

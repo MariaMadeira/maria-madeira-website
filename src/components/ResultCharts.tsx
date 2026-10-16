@@ -43,6 +43,7 @@ const INK = "#3B312C";         /* --text-primary */
 const INK_SOFT = "#6B5B52";    /* --text-secondary */
 const RULE = "#E8E2DB";        /* --border-color */
 const SURFACE = "#ffffff";     /* --bg-secondary, the panel the charts sit on */
+const NEGATIVE = "var(--negative)"; /* shared with the case study tiles */
 
 /* ── Formatting (hand-rolled so server and client always agree) ── */
 const commas = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -67,6 +68,8 @@ interface Series {
     name: string;
     colour: string;
     values: number[];
+    /** Per-bar override, for marking a single value that means something else. */
+    pointColours?: (string | null)[];
 }
 
 interface Margin {
@@ -176,7 +179,7 @@ function VerticalBars({ id, title, desc, margin, categories, series, yMax, yTick
                             <path
                                 key={s.name}
                                 d={barUp(groupX + si * (barWidth + 2), y(s.values[i]), barWidth, base, 3.4)}
-                                fill={s.colour}
+                                fill={s.pointColours?.[i] ?? s.colour}
                             />
                         ))}
                         <text x={r2(margin.left + band * i + band / 2)} y={base + 20} textAnchor="middle" fill={INK_SOFT}>
@@ -296,7 +299,7 @@ function HorizontalBars({ id, title, desc, margin, categories, series, xMax, xTi
                             <path
                                 key={s.name}
                                 d={barRight(margin.left, groupY + si * (barHeight + 2), x(s.values[i]), barHeight, 5.4)}
-                                fill={s.colour}
+                                fill={s.pointColours?.[i] ?? s.colour}
                             />
                         ))}
                         <text x={margin.left - 8} y={r2(groupY + groupH / 2) + 6} textAnchor="end" fill={INK_SOFT}>
@@ -312,12 +315,16 @@ function HorizontalBars({ id, title, desc, margin, categories, series, xMax, xTi
 /* ── Chart A: monthly ROAS vs break-even ─────────────────── */
 export function MonthlyRoasChart() {
     const title = "Monthly ROAS vs break-even";
-    const desc = `Bar chart of monthly return on ad spend from October 2025 to August 2026, against a ${BREAK_EVEN}% break-even line. ${ADS_MONTHS.map((m, i) => `${m} ${ADS_ROAS[i]}%`).join(", ")}. Ten of the eleven months sit above break-even; February 2026 at 396% is the exception. ${AUGUST_NOTE}`;
-    const series: Series[] = [{ name: "Monthly ROAS", colour: ACCENT, values: ADS_ROAS }];
+    const desc = `Bar chart of monthly return on ad spend from October 2025 to August 2026, against a ${BREAK_EVEN}% break-even line. ${ADS_MONTHS.map((m, i) => `${m} ${ADS_ROAS[i]}%`).join(", ")}. Ten of the eleven months sit above break-even; February 2026 at 396% is the exception and is the only bar shown in the negative colour. ${AUGUST_NOTE}`;
+    /* February 2026 is the single month under break-even, so it wears the
+     * negative token. The 396% direct label and its position under the dashed
+     * rule carry the same meaning without relying on colour. */
+    const belowBreakEven = ADS_ROAS.map((v) => (v < BREAK_EVEN ? NEGATIVE : null));
+    const series: Series[] = [{ name: "Monthly ROAS", colour: ACCENT, values: ADS_ROAS, pointColours: belowBreakEven }];
     const refLine = { value: BREAK_EVEN, label: "Break-even" };
 
     return (
-        <ChartFigure title={title} note={AUGUST_NOTE} source={ADS_SOURCE}>
+        <ChartFigure title={title} headingLevel={3} note={`One month below the ${BREAK_EVEN}% break-even. ${AUGUST_NOTE}`} source={ADS_SOURCE}>
             <VerticalBars
                 id="roas-w"
                 title={title}
@@ -365,7 +372,7 @@ export function SpendVsRevenueChart() {
     ];
 
     return (
-        <ChartFigure title={title} note={AUGUST_NOTE} source={ADS_SOURCE} legend={series}>
+        <ChartFigure title={title} headingLevel={3} note={AUGUST_NOTE} source={ADS_SOURCE} legend={series}>
             <VerticalBars
                 id="spend-w"
                 title={title}

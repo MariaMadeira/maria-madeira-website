@@ -1,4 +1,4 @@
-import { ArrowLeft, TrendingUp, Search, MousePointerClick, BarChart } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import RelatedLinks from "../components/RelatedLinks";
@@ -78,9 +78,6 @@ export default function CaseStudyGoogleAds() {
                 {/* Divider */}
                 <div style={{ height: "1px", background: "var(--border-color)", marginBottom: "3rem" }} />
 
-                {/* Result charts, before the write-up: the numbers first, the method after */}
-                <GoogleAdsCharts />
-
                 {/* Context Section */}
                 <section
 
@@ -103,118 +100,36 @@ export default function CaseStudyGoogleAds() {
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
                         The objective was to refine campaign targeting, optimise spend allocation, and increase revenue while maintaining a sustainable cost per acquisition.
                     </p>
-                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontStyle: "italic" }}>
-                        This is an ongoing engagement. The figures on this page cover the reporting period from 1 October 2025 to 26 August 2026, eleven months.
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
+                        The work covered campaign restructuring around high-intent searches and best-selling categories, conversion tracking and value-based bidding, ad copy testing, and regular reviews of keywords, bids and budget.
+                    </p>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>
+                        Figures cover 1 October 2025 to 26 August 2026, eleven months.
                     </p>
                 </section>
 
-                {/* Strategy Section */}
-                <section
-
-
-
-                    style={{ marginBottom: "3.5rem" }}
-                >
-                    <h2
-
-                        style={{ fontSize: "1.75rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}
-                    >
-                        Strategy
-                    </h2>
-
-                    <div className="grid-2" style={{ gap: "1.5rem" }}>
-                        {[
-                            {
-                                icon: <Search size={24} />,
-                                title: "Campaign Structure Optimisation",
-                                description:
-                                    "Restructured Google Ads campaigns to prioritise high-intent search terms and high-performing product categories.",
-                            },
-                            {
-                                icon: <BarChart size={24} />,
-                                title: "Conversion Tracking & Bid Optimisation",
-                                description:
-                                    "Improved conversion tracking and optimised bidding strategies based on conversion value and cost per conversion.",
-                            },
-                            {
-                                icon: <MousePointerClick size={24} />,
-                                title: "Ad Copy & Creative Testing",
-                                description:
-                                    "Tested multiple ad variations to improve click-through rates and attract higher intent traffic.",
-                            },
-                            {
-                                icon: <TrendingUp size={24} />,
-                                title: "Continuous Performance Optimisation",
-                                description:
-                                    "Regular campaign reviews were implemented to optimise keywords, bids, and budget allocation.",
-                            },
-                        ].map((item, i) => (
-                            <div
-                                key={i}
-
-                                className="card"
-                                style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
-                            >
-                                <div style={{ color: "var(--accent-secondary)" }}>{item.icon}</div>
-                                <h3 style={{ fontSize: "1.15rem", marginBottom: 0 }}>{item.title}</h3>
-                                <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, fontSize: "0.95rem" }}>
-                                    {item.description}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-
-                {/* Results Section */}
-                <section
-
-
-
-                    style={{ marginBottom: "3.5rem" }}
-                >
-                    <h2
-
-                        style={{ fontSize: "1.75rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}
-                    >
+                {/* Results */}
+                <section style={{ marginBottom: "3.5rem" }}>
+                    <h2 style={{ fontSize: "1.75rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}>
                         Results
                     </h2>
-
-                    <div className="grid-3" style={{ gap: "1.5rem" }}>
+                    <div className="cs-grid cs-grid-3">
                         {[
-                            { metric: "£141K", label: "Attributed Revenue", detail: "" },
-                            { metric: "£26.5K", label: "Total Ad Spend", detail: "" },
-                            { metric: "532%", label: "Return on Ad Spend", detail: "Client break-even: 400%" },
-                            { metric: "10 of 11", label: "Months Above Break-even", detail: "February 2026 came in at 396%" },
-                            { metric: "2,161", label: "Conversions", detail: "" },
-                            { metric: "✦", label: "Structured Search System", detail: "1 Oct 2025 to 26 Aug 2026" },
-                        ].map((item, i) => (
-                            <div
-                                key={i}
-
-                                className="card"
-                                style={{ textAlign: "center", padding: "2rem 1.5rem" }}
-                            >
-                                <h3
-                                    style={{
-                                        fontSize: "2rem",
-                                        color: "var(--accent-secondary)",
-                                        marginBottom: "0.25rem",
-                                        fontWeight: 700,
-                                    }}
-                                >
-                                    {item.metric}
-                                </h3>
-                                <p style={{ fontWeight: 600, color: "var(--text-primary)", marginBottom: "0.25rem", fontSize: "0.95rem" }}>
-                                    {item.label}
-                                </p>
-                                {item.detail && (
-                                    <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", margin: 0 }}>
-                                        {item.detail}
-                                    </p>
-                                )}
+                            { value: "£141K", badge: null, label: "attributed revenue" },
+                            { value: "£26.5K", badge: null, label: "ad spend" },
+                            { value: "532%", badge: "+132 pts above break-even", label: "return on ad spend, against a 400% break-even" },
+                            { value: "10 of 11", badge: "months above break-even", label: "February 2026 came in at 396%" },
+                            { value: "2,161", badge: null, label: "conversions" },
+                        ].map((t) => (
+                            <div key={t.label} className="cs-tile">
+                                <p className="cs-tile-value">{t.value}</p>
+                                {t.badge && <span className="cs-badge cs-badge--positive">{t.badge}</span>}
+                                <p className="cs-tile-label">{t.label}</p>
                             </div>
                         ))}
                     </div>
+
+                    <GoogleAdsCharts />
                 </section>
 
                 {/* Key Impact Section */}
