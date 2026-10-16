@@ -102,6 +102,9 @@ function AnimatedCounter({ from = 0, to, decimals = 0, prefix = "", suffix = "",
 /* ── Testimonials data & carousel ────────────────────────── */
 // Ordered by weight of proof: the client engagement leads, then colleagues.
 // Quotes are verbatim LinkedIn recommendations, so their punctuation is theirs.
+/** LinkedIn has no per-recommendation URL, so both links land on the list. */
+const RECOMMENDATIONS_URL = "https://www.linkedin.com/in/maria-madeira-growth/details/recommendations/";
+
 const TESTIMONIALS = [
     {
         name: "Wilfred Emmanuel-Jones",
@@ -112,7 +115,7 @@ const TESTIMONIALS = [
         // The full text is not published: `readMore` links to a case study page,
         // and there is no page for this one.
         quote: "I could give her something that was little more than an idea in my head and she would go away, work it out and come back with something real. [...] She built our email marketing, worked on our e-commerce, creative, advertising and SEO, helped us launch our app and later became one of the people pushing us to understand and use AI properly within the business.",
-        readMore: null,
+        readMore: RECOMMENDATIONS_URL,
     },
     {
         name: "The Bodysurf School",
@@ -235,13 +238,25 @@ function TestimonialsCarousel() {
                                 <figure key={t.name} className="card testimonial-card">
                                     <blockquote className="testimonial-quote">"{t.quote}"</blockquote>
                                     {t.readMore && (
-                                        <Link
-                                            to={t.readMore}
-                                            className="testimonial-readmore"
-                                            tabIndex={groupIndex === activePage ? undefined : -1}
-                                        >
-                                            Read the full recommendation <ArrowRight size={15} />
-                                        </Link>
+                                        t.readMore.startsWith("http") ? (
+                                            <a
+                                                href={t.readMore}
+                                                target="_blank"
+                                                rel="noopener"
+                                                className="testimonial-readmore"
+                                                tabIndex={groupIndex === activePage ? undefined : -1}
+                                            >
+                                                Read the full recommendation <ArrowRight size={15} />
+                                            </a>
+                                        ) : (
+                                            <Link
+                                                to={t.readMore}
+                                                className="testimonial-readmore"
+                                                tabIndex={groupIndex === activePage ? undefined : -1}
+                                            >
+                                                Read the full recommendation <ArrowRight size={15} />
+                                            </Link>
+                                        )
                                     )}
                                     <figcaption className="testimonial-attribution">
                                         <span className="testimonial-monogram" aria-hidden="true">{t.monogram}</span>
@@ -592,16 +607,16 @@ export default function Home() {
                 <TestimonialsCarousel />
 
                 {/* The cards carry excerpts, so one link out to the full set. */}
-                <p style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+                <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
                     <a
-                        className="related-links-link"
-                        href="https://www.linkedin.com/in/maria-madeira-growth/details/recommendations/"
+                        className="btn btn-secondary"
+                        href={RECOMMENDATIONS_URL}
                         target="_blank"
                         rel="noopener"
                     >
                         See all recommendations on LinkedIn <ArrowRight size={16} />
                     </a>
-                </p>
+                </div>
             </section>
 
             {/* Services Overview Section */}
