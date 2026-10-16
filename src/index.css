@@ -15,6 +15,14 @@
 
   --border-color: #E8E2DB;
 
+  /* Semantic change colours, used on the case study pages only. Both clear
+     4.5:1 on the cream page background (the binding surface, since it is darker
+     than the white cards) and on white, and on their own badge background. */
+  --positive: #1E6B43;
+  --positive-bg: #E3F0E8;
+  --negative: #A32B22;
+  --negative-bg: #FBE7E4;
+
   /* Warm palette */
   --color-cream: #e2d2c7;
   --color-light-beige: #d1b8a7;
@@ -1488,7 +1496,9 @@ select:focus {
   font-size: clamp(2.75rem, 5vw, 3.75rem);
   font-weight: 600;
   line-height: 1;
-  color: var(--accent-secondary);
+  /* Primary ink, not brown: brown is reserved for chart marks, eyebrows and
+     links so a figure never reads as a control. */
+  color: var(--text-primary);
   margin-bottom: 0.6rem;
 }
 
@@ -1546,4 +1556,153 @@ select:focus {
   .aeo-split .chart-svg-narrow {
     display: block;
   }
+}
+
+/* ========================= */
+/* Case study results blocks  */
+/* ========================= */
+/* Big figures take the primary ink, not the brand brown: brown is reserved for
+   chart marks, eyebrows and links, so a number never competes with a control. */
+.cs-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cs-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.cs-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.cs-tile {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+}
+
+.cs-tile-value {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.cs-tile--sm .cs-tile-value { font-size: clamp(1.75rem, 3vw, 2.25rem); }
+
+.cs-tile-before {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 0.15rem;
+}
+
+.cs-tile-label {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0.65rem 0 0;
+}
+
+.cs-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  margin-top: 0.6rem;
+}
+
+.cs-badge--positive { color: var(--positive); background: var(--positive-bg); }
+.cs-badge--negative { color: var(--negative); background: var(--negative-bg); }
+
+/* Biggest wins: label left, values and badge right; stacks under 620px. */
+.cs-wins {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.cs-win {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cs-win-label {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin: 0;
+}
+
+.cs-win-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.cs-win-values {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.cs-win-values .cs-win-before {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.cs-win .cs-badge { margin-top: 0; }
+
+.cs-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.cs-legend-num {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin-right: 0.35rem;
+}
+
+.cs-subline {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0 0 1.75rem;
+}
+
+@media (max-width: 900px) {
+  .cs-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .cs-grid-3 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  .cs-grid-4 { grid-template-columns: 1fr; }
+
+  /* Label above values once the row cannot hold both. */
+  .cs-win { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .cs-win-right { margin-left: 0; }
 }

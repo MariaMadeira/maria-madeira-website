@@ -514,7 +514,7 @@ export function OrganicClicksChart() {
     };
 
     return (
-        <ChartFigure title={title} source={SEO_SOURCE}>
+        <ChartFigure title={title} headingLevel={3} source={SEO_SOURCE}>
             <LineChart
                 {...shared}
                 id="clicks-w"
@@ -553,7 +553,7 @@ export function AveragePositionChart() {
     };
 
     return (
-        <ChartFigure title={title} source={SEO_SOURCE}>
+        <ChartFigure title={title} headingLevel={3} source={SEO_SOURCE}>
             <LineChart
                 {...shared}
                 id="position-w"
@@ -777,5 +777,52 @@ export function AiVisibilityChart() {
             <AiVisibilityBars variant="wide" desc={desc} />
             <AiVisibilityBars variant="narrow" desc={desc} />
         </ChartFigure>
+    );
+}
+
+
+/* ── Chart: 30-day re-evaluation outcomes ────────────────────
+ * 117 pages re-evaluated. Green and red are far apart in normal vision but
+ * close under deuteranopia, so they are never adjacent here (the neutral sits
+ * between them) and the legend names and counts every segment.
+ */
+const OUTCOMES = [
+    { label: "improved", value: 60, fill: "var(--positive)" },
+    { label: "stable or mixed", value: 52, fill: MUTED },
+    { label: "declined, each with a diagnosed cause", value: 5, fill: "var(--negative)" },
+];
+
+/** Single stacked bar of the 117 re-evaluated pages. */
+export function OutcomesBar() {
+    const total = OUTCOMES.reduce((n, o) => n + o.value, 0);
+    const W = 720, H = 44, GAP = 2, R = 6;
+    const usable = W - GAP * (OUTCOMES.length - 1);
+    const desc = `Stacked bar of ${total} pages re-evaluated at 30 days: ${OUTCOMES.map((o) => `${o.value} ${o.label}`).join(", ")}.`;
+    /* Offsets computed up front rather than accumulated during render. */
+    const segs = OUTCOMES.reduce<{ o: typeof OUTCOMES[number]; x: number; w: number }[]>((acc, o) => {
+        const prev = acc[acc.length - 1];
+        const w = (o.value / total) * usable;
+        return [...acc, { o, w, x: prev ? prev.x + prev.w + GAP : 0 }];
+    }, []);
+    return (
+        <svg
+            className="chart-svg"
+            viewBox={`0 0 ${W} ${H}`}
+            role="img"
+            aria-labelledby="outcomes-t outcomes-d"
+            preserveAspectRatio="none"
+            style={{ height: "44px" }}
+        >
+            <title id="outcomes-t">Outcomes of the 30-day re-evaluation</title>
+            <desc id="outcomes-d">{desc}</desc>
+            {segs.map(({ o, x, w }, i) => {
+                const first = i === 0, last = i === segs.length - 1;
+                /* Round only the outer ends so the bar reads as one track. */
+                const d = first || last
+                    ? `M${r2(x + (first ? R : 0))},0 H${r2(x + w - (last ? R : 0))}${last ? ` Q${r2(x + w)},0 ${r2(x + w)},${R} V${H - R} Q${r2(x + w)},${H} ${r2(x + w - R)},${H}` : ` V${H}`} H${r2(x + (first ? R : 0))}${first ? ` Q${r2(x)},${H} ${r2(x)},${H - R} V${R} Q${r2(x)},0 ${r2(x + R)},0` : ` V0`} Z`
+                    : `M${r2(x)},0 H${r2(x + w)} V${H} H${r2(x)} Z`;
+                return <path key={o.label} d={d} fill={o.fill} />;
+            })}
+        </svg>
     );
 }
