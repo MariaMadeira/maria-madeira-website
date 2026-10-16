@@ -2,7 +2,7 @@ import { ArrowLeft, ArrowRightLeft, FileText, Bot, LayoutTemplate, Activity, Che
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import RelatedLinks from "../components/RelatedLinks";
-import { SeoAeoCharts } from "../components/ResultCharts";
+import { SeoAeoCharts, AiImpressionsChart, AiVisibilityChart, AI_SOURCE } from "../components/ResultCharts";
 import { caseStudyJsonLd } from "../lib/schema";
 
 // Git-derived (git log src/pages/CaseStudySEO.tsx). Bump MODIFIED whenever the
@@ -228,6 +228,58 @@ export default function CaseStudySEO() {
                             </div>
                         ))}
                     </div>
+                </section>
+
+
+                {/* AI search results */}
+                <section style={{ marginBottom: "3.5rem" }}>
+                    <p
+                        style={{
+                            fontSize: "0.85rem",
+                            fontWeight: 600,
+                            color: "var(--accent-secondary)",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.08em",
+                            marginBottom: "0.75rem",
+                        }}
+                    >
+                        AI search results
+                    </p>
+                    <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
+                        Found in AI answers, not just search results
+                    </h2>
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "2.5rem" }}>
+                        Alongside the SEO work, I rebuilt the catalogue around the questions customers actually ask: are sausages gluten free, is salami gluten free, how to cook lamb steaks. Each owning page got a clear, extractable answer, verified claims only, and the founder was marked up as a structured entity so AI systems could attribute the brand correctly.
+                    </p>
+
+                    <div className="aeo-stats">
+                        {[
+                            { value: "2.2x", label: "daily AI impressions, first vs last week" },
+                            { value: "287k", label: "impressions in Google's AI features, May to August 2026" },
+                            { value: "356", label: "keywords where AI Overviews link to the site" },
+                        ].map((stat) => (
+                            <div key={stat.value} className="aeo-stat">
+                                <p className="aeo-stat-value">{stat.value}</p>
+                                <p className="aeo-stat-label">{stat.label}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    <AiImpressionsChart />
+
+                    <div className="aeo-split">
+                        <div className="aeo-split-tile">
+                            <p className="aeo-stat-value">2nd</p>
+                            <p className="aeo-stat-label">
+                                of five tracked competitors in Semrush AI Visibility. Gap to the category leader cut from 8 points to 4.
+                            </p>
+                        </div>
+                        <AiVisibilityChart />
+                    </div>
+
+                    <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.6, marginTop: "1.5rem" }}>
+                        {AI_SOURCE}
+                    </p>
                 </section>
 
                 <RelatedLinks

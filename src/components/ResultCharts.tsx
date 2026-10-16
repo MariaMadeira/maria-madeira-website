@@ -85,16 +85,28 @@ interface Margin {
 interface ChartFigureProps {
     /** Visible chart title. The SVG repeats it in its <title> for assistive tech. */
     title: string;
+    /** Optional line under the title, for the window or unit the chart covers. */
+    subtitle?: string;
+    /**
+     * Render the caption as a real <h3>. Charts that sit under a section <h2>
+     * need one, or the next heading on the page (the footer's <h4>) skips a
+     * level. Charts that sit directly under the page <h1> must NOT set it, since
+     * h1 -> h3 would skip instead.
+     */
+    headingLevel?: 3;
     note?: string;
-    source: string;
+    source?: string;
     legend?: Series[];
     children: React.ReactNode;
 }
 
-function ChartFigure({ title, note, source, legend, children }: ChartFigureProps) {
+function ChartFigure({ title, subtitle, headingLevel, note, source, legend, children }: ChartFigureProps) {
     return (
         <figure className="chart-panel">
-            <figcaption className="chart-title">{title}</figcaption>
+            <figcaption className="chart-title">
+                {headingLevel === 3 ? <h3 className="chart-title-heading">{title}</h3> : title}
+                {subtitle && <span className="chart-subtitle">{subtitle}</span>}
+            </figcaption>
             {legend && (
                 <ul className="chart-legend">
                     {legend.map((s) => (
@@ -107,7 +119,7 @@ function ChartFigure({ title, note, source, legend, children }: ChartFigureProps
             )}
             {children}
             {note && <p className="chart-note">{note}</p>}
-            <p className="chart-source">{source}</p>
+            {source && <p className="chart-source">{source}</p>}
         </figure>
     );
 }
@@ -579,5 +591,191 @@ export function SeoAeoCharts() {
             <OrganicClicksChart />
             <AveragePositionChart />
         </div>
+    );
+}
+
+/* ── AEO section data (Google Search Console + Semrush) ──────
+ * Weekly average of daily impressions in Google's AI features,
+ * 18 May to 30 August 2026. Values are week-starting.
+ */
+const AI_WEEKS = ["18 May", "25 May", "1 Jun", "8 Jun", "15 Jun", "22 Jun", "29 Jun", "6 Jul", "13 Jul", "20 Jul", "27 Jul", "3 Aug", "10 Aug", "17 Aug", "24 Aug"];
+const AI_IMPRESSIONS = [1393, 1710, 1951, 2369, 2516, 2304, 2736, 2646, 2621, 2948, 3137, 3661, 4143, 3359, 3044];
+export const AI_SOURCE = "Sources: Google Search Console (Generative AI features report, available from 18 May 2026), Semrush AI Visibility, August 2026.";
+const AI_NOTE = "The site also earned its first documented click from a conversational AI query, on the Gluten-Free Sausages page.";
+
+/* Semrush AI Visibility, August 2026. Competitors stay unnamed by request, so
+ * the three trailing rows share a label; the desc enumerates them by value. */
+const VISIBILITY = [
+    { label: "Category leader", value: 31, highlight: false },
+    { label: "The Black Farmer", value: 27, highlight: true },
+    { label: "Competitor", value: 22, highlight: false },
+    { label: "Competitor", value: 22, highlight: false },
+    { label: "Competitor", value: 14, highlight: false },
+];
+/* De-emphasis grey for the unhighlighted bars. Clears both separation gates
+ * against the accent (ΔE 17.3 normal, 16.6 deutan); its sub-3:1 contrast on the
+ * white panel is relieved by a value label on every bar. */
+const MUTED = "#C9C4BD";
+
+const kLabel = (n: number) => (n === 0 ? "0" : `${n / 1000}k`);
+
+/* ── Chart: daily impressions in Google's AI features ── */
+interface AiLineProps {
+    variant: "wide" | "narrow";
+    desc: string;
+}
+
+function AiImpressionsLine({ variant, desc }: AiLineProps) {
+    const wide = variant === "wide";
+    const width = wide ? WIDE_W : NARROW_W;
+    const font = wide ? WIDE_FONT : NARROW_FONT;
+    const height = wide ? 330 : 320;
+    const margin = wide ? { top: 30, right: 24, bottom: 48, left: 46 } : { top: 34, right: 16, bottom: 52, left: 52 };
+    const plotW = width - margin.left - margin.right;
+    const plotH = height - margin.top - margin.bottom;
+    const bottom = margin.top + plotH;
+    const Y_MAX = 5000;
+    const ticks = [0, 1000, 2000, 3000, 4000, 5000];
+    const x = (i: number) => margin.left + (plotW / (AI_IMPRESSIONS.length - 1)) * i;
+    const y = (v: number) => bottom - (v / Y_MAX) * plotH;
+
+    const line = AI_IMPRESSIONS.map((v, i) => `${r2(x(i))},${r2(y(v))}`).join(" ");
+    const area = `M${r2(x(0))},${r2(bottom)} L${line.split(" ").join(" L")} L${r2(x(AI_IMPRESSIONS.length - 1))},${r2(bottom)} Z`;
+
+    const peak = AI_IMPRESSIONS.indexOf(Math.max(...AI_IMPRESSIONS));
+    /* Only the first and peak points are marked and labelled: a value on every
+     * point would be unreadable at fifteen of them. */
+    /* The first point sits where the line climbs steeply, so on the narrow
+     * drawing its label is pushed up and to the right to clear the stroke. */
+    const marked = [
+        { i: 0, text: "1.4k", anchor: "start" as const, dx: wide ? 5 : 13, dy: wide ? 18 : 38 },
+        { i: peak, text: "4.1k", anchor: "middle" as const, dx: 0, dy: wide ? 13 : 17 },
+    ];
+    const xLabelIdx = wide ? [0, 4, 8, 12, 14] : [0, 8, 14];
+
+    return (
+        <svg
+            className={`chart-svg chart-svg-${variant}`}
+            viewBox={`0 0 ${width} ${height}`}
+            role="img"
+            aria-labelledby={`ai-imp-${variant}-t ai-imp-${variant}-d`}
+            fontSize={font}
+        >
+            <title id={`ai-imp-${variant}-t`}>Daily impressions in Google&apos;s AI features</title>
+            <desc id={`ai-imp-${variant}-d`}>{desc}</desc>
+
+            {ticks.map((t) => (
+                <g key={t}>
+                    <line x1={margin.left} x2={margin.left + plotW} y1={r2(y(t))} y2={r2(y(t))} stroke={RULE} strokeWidth={1} />
+                    <text x={margin.left - 8} y={r2(y(t)) + (wide ? 4 : 6)} textAnchor="end" fill={INK_SOFT}>{kLabel(t)}</text>
+                </g>
+            ))}
+
+            <path d={area} fill={ACCENT} opacity={0.12} />
+            <polyline points={line} fill="none" stroke={ACCENT} strokeWidth={wide ? 2 : 3} strokeLinecap="round" strokeLinejoin="round" />
+
+            {marked.map((m) => (
+                <g key={m.i}>
+                    <circle cx={r2(x(m.i))} cy={r2(y(AI_IMPRESSIONS[m.i]))} r={wide ? 4 : 6} fill={ACCENT} stroke={SURFACE} strokeWidth={2} />
+                    <text x={r2(x(m.i) + m.dx)} y={r2(y(AI_IMPRESSIONS[m.i]) - m.dy)} textAnchor={m.anchor} fill={INK} fontWeight={600}>{m.text}</text>
+                </g>
+            ))}
+
+            {xLabelIdx.map((i, n) => (
+                <text
+                    key={i}
+                    x={r2(x(i))}
+                    y={bottom + (wide ? 24 : 30)}
+                    textAnchor={n === 0 ? "start" : n === xLabelIdx.length - 1 ? "end" : "middle"}
+                    fill={INK_SOFT}
+                >
+                    {AI_WEEKS[i]}
+                </text>
+            ))}
+        </svg>
+    );
+}
+
+/* ── Chart: Semrush AI Visibility across the tracked set ── */
+function AiVisibilityBars({ variant, desc }: AiLineProps) {
+    const wide = variant === "wide";
+    const X_MAX = 35;
+
+    if (wide) {
+        const margin = { top: 16, right: 52, bottom: 40, left: 152 };
+        const barH = 20, rowGap = 16;
+        const plotH = VISIBILITY.length * (barH + rowGap);
+        const height = margin.top + plotH + margin.bottom;
+        const plotW = WIDE_W - margin.left - margin.right;
+        const x = (v: number) => margin.left + (v / X_MAX) * plotW;
+        return (
+            <svg className="chart-svg chart-svg-wide" viewBox={`0 0 ${WIDE_W} ${height}`} role="img" aria-labelledby="ai-vis-wide-t ai-vis-wide-d" fontSize={WIDE_FONT}>
+                <title id="ai-vis-wide-t">Semrush AI Visibility score across the tracked set</title>
+                <desc id="ai-vis-wide-d">{desc}</desc>
+                {[0, 10, 20, 30].map((t) => (
+                    <g key={t}>
+                        <line x1={r2(x(t))} x2={r2(x(t))} y1={margin.top} y2={r2(margin.top + plotH)} stroke={RULE} strokeWidth={1} />
+                        <text x={r2(x(t))} y={r2(margin.top + plotH) + 24} textAnchor="middle" fill={INK_SOFT}>{t}</text>
+                    </g>
+                ))}
+                {VISIBILITY.map((row, i) => {
+                    const top = margin.top + i * (barH + rowGap) + rowGap / 2;
+                    return (
+                        <g key={i}>
+                            <path d={barRight(margin.left, top, x(row.value), barH, 3.4)} fill={row.highlight ? ACCENT : MUTED} />
+                            <text x={margin.left - 10} y={top + barH / 2 + 4} textAnchor="end" fill={row.highlight ? INK : INK_SOFT} fontWeight={row.highlight ? 600 : 400}>{row.label}</text>
+                            <text x={r2(x(row.value)) + 8} y={top + barH / 2 + 4} fill={INK} fontWeight={600}>{row.value}</text>
+                        </g>
+                    );
+                })}
+            </svg>
+        );
+    }
+
+    /* Narrow: labels sit above their bar, value right-aligned on the same line,
+     * so a 16-character brand name does not eat half the width as a gutter. */
+    const margin = { top: 6, right: 4, bottom: 6, left: 0 };
+    const rowH = 62, barH = 16;
+    const plotW = NARROW_W - margin.left - margin.right;
+    const height = margin.top + VISIBILITY.length * rowH + margin.bottom;
+    const x = (v: number) => (v / X_MAX) * plotW;
+    return (
+        <svg className="chart-svg chart-svg-narrow" viewBox={`0 0 ${NARROW_W} ${height}`} role="img" aria-labelledby="ai-vis-narrow-t ai-vis-narrow-d" fontSize={NARROW_FONT}>
+            <title id="ai-vis-narrow-t">Semrush AI Visibility score across the tracked set</title>
+            <desc id="ai-vis-narrow-d">{desc}</desc>
+            {VISIBILITY.map((row, i) => {
+                const top = margin.top + i * rowH;
+                return (
+                    <g key={i}>
+                        <text x={0} y={top + 18} fill={row.highlight ? INK : INK_SOFT} fontWeight={row.highlight ? 600 : 400}>{row.label}</text>
+                        <text x={plotW} y={top + 18} textAnchor="end" fill={INK} fontWeight={600}>{row.value}</text>
+                        <rect x={0} y={top + 28} width={plotW} height={barH} rx={3} fill={RULE} opacity={0.5} />
+                        <path d={barRight(0, top + 28, x(row.value), barH, 5.4)} fill={row.highlight ? ACCENT : MUTED} />
+                    </g>
+                );
+            })}
+        </svg>
+    );
+}
+
+/** Line chart of daily impressions in Google's AI features. */
+export function AiImpressionsChart() {
+    const desc = `Line chart of the weekly average of daily impressions in Google's AI features, 18 May to 30 August 2026. ${AI_WEEKS.map((w, i) => `week starting ${w}, ${commas(AI_IMPRESSIONS[i])}`).join("; ")}. The series rises from 1,393 to a peak of 4,143 in the week starting 10 August, then eases to 3,044.`;
+    return (
+        <ChartFigure title="Daily impressions in Google's AI features" subtitle="Weekly average, 18 May to 30 August 2026" headingLevel={3} note={AI_NOTE}>
+            <AiImpressionsLine variant="wide" desc={desc} />
+            <AiImpressionsLine variant="narrow" desc={desc} />
+        </ChartFigure>
+    );
+}
+
+/** Horizontal bars of Semrush AI Visibility across the tracked set. */
+export function AiVisibilityChart() {
+    const desc = "Horizontal bar chart of Semrush AI Visibility scores across five tracked brands. The category leader scores 31, The Black Farmer 27, and three further competitors score 22, 22 and 14. Only The Black Farmer is highlighted.";
+    return (
+        <ChartFigure title="Semrush AI Visibility score" headingLevel={3}>
+            <AiVisibilityBars variant="wide" desc={desc} />
+            <AiVisibilityBars variant="narrow" desc={desc} />
+        </ChartFigure>
     );
 }

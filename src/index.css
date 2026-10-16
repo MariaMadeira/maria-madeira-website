@@ -1454,3 +1454,96 @@ select:focus {
   color: var(--accent-hover);
   gap: 10px;
 }
+
+/* ========================= */
+/* AI search results section  */
+/* ========================= */
+.chart-subtitle {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.aeo-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.aeo-stat {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+}
+
+/* At least 56px on desktop and 44px on mobile, per spec. */
+.aeo-stat-value {
+  font-family: var(--font-heading);
+  font-size: clamp(2.75rem, 5vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--accent-secondary);
+  margin-bottom: 0.6rem;
+}
+
+.aeo-stat-label {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Competitor block: tile left, chart right; stacks with the tile above. */
+.aeo-split {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.aeo-split .chart-panel {
+  margin-bottom: 0;
+}
+
+.aeo-split-tile {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.75rem 1.5rem;
+}
+
+@media (max-width: 760px) {
+  .aeo-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .aeo-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* The caption carries the styling; the heading inside it is purely semantic. */
+.chart-title-heading {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+/* The competitor chart sits in a ~420-450px column, not the full content width,
+   so the wide drawing would render its 11.5-unit type at about 7px. Keep the
+   stacked-label variant there at every width; its 400px cap holds type at 17px. */
+@media (min-width: 940px) {
+  .aeo-split .chart-svg-wide {
+    display: none;
+  }
+
+  .aeo-split .chart-svg-narrow {
+    display: block;
+  }
+}
