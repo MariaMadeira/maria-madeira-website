@@ -104,6 +104,17 @@ function AnimatedCounter({ from = 0, to, decimals = 0, prefix = "", suffix = "",
 // Quotes are verbatim LinkedIn recommendations, so their punctuation is theirs.
 const TESTIMONIALS = [
     {
+        name: "Wilfred Emmanuel-Jones",
+        role: "Founder, The Black Farmer",
+        context: "Client \u00b7 Recommended on LinkedIn",
+        monogram: "WE",
+        // Excerpt of a much longer recommendation; the cut is marked with [...].
+        // The full text is not published: `readMore` links to a case study page,
+        // and there is no page for this one.
+        quote: "I could give her something that was little more than an idea in my head and she would go away, work it out and come back with something real. [...] She built our email marketing, worked on our e-commerce, creative, advertising and SEO, helped us launch our app and later became one of the people pushing us to understand and use AI properly within the business.",
+        readMore: null,
+    },
+    {
         name: "The Bodysurf School",
         role: null,
         context: "Client · Recommended on LinkedIn",
@@ -579,6 +590,18 @@ export default function Home() {
 
                 {/* Desktop grid / Mobile carousel */}
                 <TestimonialsCarousel />
+
+                {/* The cards carry excerpts, so one link out to the full set. */}
+                <p style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+                    <a
+                        className="related-links-link"
+                        href="https://www.linkedin.com/in/maria-madeira-growth/details/recommendations/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        See all recommendations on LinkedIn <ArrowRight size={16} />
+                    </a>
+                </p>
             </section>
 
             {/* Services Overview Section */}
