@@ -109,6 +109,14 @@ ul {
 
 .page-container {
   padding-top: var(--nav-height);
+  /* The decorative .bg-glow circles are absolutely positioned outside their
+     section's box, which widened the document and let the page be scrolled
+     sideways (34px at 1440, 16px at 390) even though body's overflow-x hid it.
+     This wrapper spans the viewport, so clipping here cuts exactly where the
+     page already ended visually: nothing moves, the overflow just stops
+     existing. `clip` rather than `hidden` creates no scroll container, so
+     sticky and fixed elements are untouched, and overflow-y stays visible. */
+  overflow-x: clip;
   min-height: 100vh;
 }
 
@@ -1182,8 +1190,11 @@ select:focus {
   }
 
   /* Contact grid */
+  /* minmax(0, 1fr), not 1fr: a grid item's automatic minimum size is its
+     min-content width, so the form card's 3rem padding pushed the column to
+     344px inside a 288px grid and hung 40px off a 320px screen. */
   .contact-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: minmax(0, 1fr) !important;
     gap: 2rem !important;
   }
 
@@ -1252,6 +1263,14 @@ select:focus {
   /* Portfolio preview strip */
   .portfolio-preview-grid {
     grid-template-columns: 1fr !important;
+  }
+}
+
+/* Very small screens only: 3rem of padding each side leaves the form fields
+   about 190px wide at 320px. Ordinary phones (390px and up) keep the 3rem. */
+@media (max-width: 380px) {
+  .contact-grid .card {
+    padding: 1.75rem !important;
   }
 }
 
