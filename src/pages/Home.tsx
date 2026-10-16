@@ -28,7 +28,7 @@ const HOME_JSON_LD = {
             "image": "https://mariamadeira.com/maria-hero-800.jpg",
             "jobTitle": "Growth Strategist",
             "description": "Growth strategist for brands that sell online: websites, Answer Engine Optimisation (AEO), SEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands.",
-            "sameAs": ["https://www.linkedin.com/in/maria-madeira-43501b3a/", "https://influee.co/partnership/maria-madeira"],
+            "sameAs": ["https://www.linkedin.com/in/maria-madeira-growth", "https://influee.co/partnership/maria-madeira"],
             "memberOf": {
                 "@type": "Organization",
                 "name": "Klaviyo K:Partners",

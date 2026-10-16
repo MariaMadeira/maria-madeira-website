@@ -2,7 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import RelatedLinks from "../components/RelatedLinks";
-import { SeoAeoCharts, AiImpressionsChart, AiVisibilityChart, OutcomesBar, AI_SOURCE } from "../components/ResultCharts";
+import { AiImpressionsChart, AiVisibilityChart, OutcomesBar, AI_SOURCE } from "../components/ResultCharts";
 import { caseStudyJsonLd } from "../lib/schema";
 
 // Git-derived (git log src/pages/CaseStudySEO.tsx). Bump MODIFIED whenever the
@@ -19,6 +19,7 @@ export default function CaseStudySEO() {
             title={TITLE}
             description="SEO and AEO for The Black Farmer after its move to Shopify: organic clicks up 78% and average position from 15.2 to 9.4, May to August 2026."
             path="/case-study-seo"
+            ogImage="/og/og-case-study-seo.png"
             jsonLd={caseStudyJsonLd({
                 path: "/case-study-seo",
                 headline: TITLE,
@@ -89,12 +90,11 @@ export default function CaseStudySEO() {
                     <h2 style={{ fontSize: "1.75rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}>
                         What I did
                     </h2>
-                    <div className="cs-grid cs-grid-4">
+                    <div className="cs-grid cs-grid-3">
                         {[
-                            { value: "28", label: "collections rewritten against live Search Console data: 16 butchery collections plus the Gluten-Free and Caribbean hubs and their 12 sub-collections" },
+                            { value: "30", label: "collections rewritten against live Search Console data: 16 butchery collections plus the Gluten-Free and Caribbean hubs and their 12 sub-collections" },
                             { value: "60+", label: "product pages rebuilt: headline, copy, question-led FAQs, metadata and internal links" },
-                            { value: "140k → 30.7k", label: "not-indexed URLs after the migration clean-up, with legacy redirects and founder schema in place" },
-                            { value: "0", label: "unverifiable claims left live: gluten-free, free-range and grass-fed statements the supplier could not confirm were removed" },
+                            { value: "14+", label: "unverifiable claims removed: gluten-free, free-range and grass-fed statements the supplier could not confirm" },
                         ].map((card) => (
                             <div key={card.value} className="cs-tile cs-tile--sm">
                                 <p className="cs-tile-value">{card.value}</p>
@@ -119,7 +119,7 @@ export default function CaseStudySEO() {
                         Search results
                     </p>
                     <h2 style={{ fontSize: "1.75rem", marginBottom: "0.75rem", color: "var(--text-primary)" }}>
-                        Page 1, and still climbing
+                        Onto page 1 in under four months
                     </h2>
                     <p className="cs-subline">Google Search Console, matched 28-day windows, May to August 2026</p>
 
@@ -157,7 +157,6 @@ export default function CaseStudySEO() {
                         ))}
                     </div>
 
-                    <SeoAeoCharts />
 
                     <h3 style={{ fontSize: "1.25rem", margin: "2.5rem 0 1.25rem", color: "var(--text-primary)" }}>
                         Biggest wins, page by page
@@ -222,7 +221,7 @@ export default function CaseStudySEO() {
                     <div className="aeo-stats">
                         {[
                             { value: "2.2x", label: "daily AI impressions, first vs last week" },
-                            { value: "287k", label: "impressions in Google's AI features, May to August 2026" },
+                            { value: "287K", label: "impressions in Google's AI features, May to August 2026" },
                             { value: "356", label: "keywords where AI Overviews link to the site" },
                         ].map((stat) => (
                             <div key={stat.value} className="aeo-stat">
@@ -234,15 +233,14 @@ export default function CaseStudySEO() {
 
                     <AiImpressionsChart />
 
-                    <div className="aeo-split">
-                        <div className="aeo-split-tile">
-                            <p className="aeo-stat-value">2nd</p>
-                            <p className="aeo-stat-label">
-                                of five tracked competitors in Semrush AI Visibility. Gap to the category leader cut from 8 points to 4.
-                            </p>
-                        </div>
-                        <AiVisibilityChart />
-                    </div>
+                    <figure className="cs-pullquote">
+                        <blockquote>what meat has no gluten? give me a list of gluten-free sausages</blockquote>
+                        <figcaption>
+                            A real conversational query from Search Console. The Gluten-Free Sausages page was shown in the answer and clicked: the site's first documented click from an AI-style question.
+                        </figcaption>
+                    </figure>
+
+                    <AiVisibilityChart />
 
                     <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.6, marginTop: "1.5rem" }}>
                         {AI_SOURCE}
@@ -262,10 +260,10 @@ export default function CaseStudySEO() {
                     style={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem" }}
                 >
                     <p style={{ color: "var(--text-secondary)", marginBottom: "1.5rem", fontSize: "1.05rem" }}>
-                        Planning a migration or looking to improve search visibility?
+                        Curious what ChatGPT says about your products?
                     </p>
-                    <Link to="/contact" className="btn btn-primary">
-                        Let's Talk Strategy
+                    <Link to="/contact?topic=ai-search-check" className="btn btn-primary">
+                        Get a free AI search check
                     </Link>
                 </div>
 

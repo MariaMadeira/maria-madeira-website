@@ -124,7 +124,7 @@ export default function Contact() {
                             </div>
                             <div>
                                 <strong style={{ display: "block", fontSize: "0.9rem", color: "var(--text-secondary)", textTransform: 'uppercase', letterSpacing: '0.1em' }}>LinkedIn</strong>
-                                <a href="https://www.linkedin.com/in/maria-madeira-43501b3a/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text-primary)", fontWeight: 600, fontSize: "1.1rem" }}>Connect on LinkedIn</a>
+                                <a href="https://www.linkedin.com/in/maria-madeira-growth" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text-primary)", fontWeight: 600, fontSize: "1.1rem" }}>Connect on LinkedIn</a>
                             </div>
                         </div>
                     </div>

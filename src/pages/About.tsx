@@ -9,7 +9,7 @@ import { SITE_URL, PERSON_ID } from "../lib/schema";
 // lever for entity recognition — add more verified profiles (Instagram, X,
 // Crunchbase, guest-post bylines) to this array as they come online.
 const SAME_AS = [
-    "https://www.linkedin.com/in/maria-madeira-43501b3a/",
+    "https://www.linkedin.com/in/maria-madeira-growth",
     "https://influee.co/partnership/maria-madeira",
 ];
 
@@ -170,7 +170,7 @@ export default function About() {
                         </div>
 
                         <div style={{ display: "flex", gap: "1.5rem", marginTop: "1rem" }}>
-                            <a href="https://www.linkedin.com/in/maria-madeira-43501b3a/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontWeight: 600 }}>
+                            <a href="https://www.linkedin.com/in/maria-madeira-growth" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontWeight: 600 }}>
                                 <Linkedin size={20} /> LinkedIn <ExternalLink size={14} opacity={0.5} />
                             </a>
                         </div>

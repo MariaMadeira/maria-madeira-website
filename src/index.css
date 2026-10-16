@@ -1706,3 +1706,32 @@ select:focus {
   .cs-win { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   .cs-win-right { margin-left: 0; }
 }
+
+/* Pull quote: a real user query, so it reads as speech rather than body copy. */
+.cs-pullquote {
+  margin: 2rem 0;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  background: var(--accent-glow);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-secondary);
+  border-radius: 16px;
+}
+
+.cs-pullquote blockquote {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--text-primary);
+}
+
+.cs-pullquote blockquote::before { content: "\201C"; }
+.cs-pullquote blockquote::after { content: "\201D"; }
+
+.cs-pullquote figcaption {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}

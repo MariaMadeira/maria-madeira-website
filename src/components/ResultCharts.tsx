@@ -35,12 +35,6 @@ const BREAK_EVEN = 400;
 const AUGUST_NOTE = "August 2026 covers 1 to 26 August and is understated by conversion lag.";
 const ADS_SOURCE = "Source: Google Ads, full account export";
 
-/* Search Console: matched 28-day windows. */
-const SEO_WINDOWS_WIDE = ["May 2026 baseline", "August 2026", "Latest (24 Aug)"];
-const SEO_WINDOWS_NARROW = [["May 2026", "baseline"], ["August", "2026"], ["Latest", "(24 Aug)"]];
-const SEO_CLICKS = [4500, 6500, 8000];
-const SEO_POSITION = [15.2, 9.8, 9.4];
-const SEO_SOURCE = "Source: Google Search Console, matched 28-day windows";
 
 /* ── Design tokens, mirrored as literals so the SVG can use them ── */
 const ACCENT = "#B08968";      /* --accent-secondary */
@@ -315,103 +309,6 @@ function HorizontalBars({ id, title, desc, margin, categories, series, xMax, xTi
     );
 }
 
-/* ── Line chart (charts C and D, both variants) ── */
-interface LineChartProps {
-    id: string;
-    variant: "wide" | "narrow";
-    title: string;
-    desc: string;
-    margin: Margin;
-    height: number;
-    /** [value at the bottom of the axis, value at the top]. Reversed for "lower is better". */
-    domain: [number, number];
-    ticks: number[];
-    tickLabel: (n: number) => string;
-    values: number[];
-    labels: string[][];
-    endLabels: string[];
-}
-
-function LineChart({ id, variant, title, desc, margin, height, domain, ticks, tickLabel, values, labels, endLabels }: LineChartProps) {
-    const wide = variant === "wide";
-    const width = wide ? WIDE_W : NARROW_W;
-    const font = wide ? WIDE_FONT : NARROW_FONT;
-    const plotW = width - margin.left - margin.right;
-    const plotH = height - margin.top - margin.bottom;
-    const bottom = margin.top + plotH;
-    const y = (v: number) => bottom - ((v - domain[0]) / (domain[1] - domain[0])) * plotH;
-    const x = (i: number) => margin.left + (plotW / (values.length - 1)) * i;
-    const anchors = ["start", "middle", "end"] as const;
-
-    return (
-        <svg
-            className={`chart-svg chart-svg-${variant}`}
-            viewBox={`0 0 ${width} ${height}`}
-            role="img"
-            aria-labelledby={`${id}-t ${id}-d`}
-            fontSize={font}
-        >
-            <title id={`${id}-t`}>{title}</title>
-            <desc id={`${id}-d`}>{desc}</desc>
-
-            {ticks.map((t) => (
-                <g key={t}>
-                    <line x1={margin.left} x2={margin.left + plotW} y1={r2(y(t))} y2={r2(y(t))} stroke={RULE} strokeWidth={1} />
-                    <text x={margin.left - 8} y={r2(y(t)) + (wide ? 4 : 6)} textAnchor="end" fill={INK_SOFT}>
-                        {tickLabel(t)}
-                    </text>
-                </g>
-            ))}
-
-            <polyline
-                points={values.map((v, i) => `${r2(x(i))},${r2(y(v))}`).join(" ")}
-                fill="none"
-                stroke={ACCENT}
-                strokeWidth={wide ? 2 : 3}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            />
-
-            {values.map((v, i) => (
-                <circle
-                    key={i}
-                    cx={r2(x(i))}
-                    cy={r2(y(v))}
-                    r={wide ? 4 : 6}
-                    fill={ACCENT}
-                    stroke={SURFACE}
-                    strokeWidth={2}
-                />
-            ))}
-
-            {endLabels.map((text, i) =>
-                text ? (
-                    <text
-                        key={i}
-                        x={r2(x(i))}
-                        y={r2(y(values[i])) - (wide ? 12 : 16)}
-                        textAnchor={anchors[i]}
-                        fill={INK}
-                        fontWeight={600}
-                    >
-                        {text}
-                    </text>
-                ) : null,
-            )}
-
-            {labels.map((lines, i) => (
-                <text key={i} x={r2(x(i))} y={bottom + (wide ? 24 : 30)} textAnchor={anchors[i]} fill={INK_SOFT}>
-                    {lines.map((line, li) => (
-                        <tspan key={line} x={r2(x(i))} dy={li === 0 ? 0 : wide ? 15 : 23}>
-                            {line}
-                        </tspan>
-                    ))}
-                </text>
-            ))}
-        </svg>
-    );
-}
-
 /* ── Chart A: monthly ROAS vs break-even ─────────────────── */
 export function MonthlyRoasChart() {
     const title = "Monthly ROAS vs break-even";
@@ -500,96 +397,12 @@ export function SpendVsRevenueChart() {
     );
 }
 
-/* ── Chart C: organic clicks ─────────────────────────────── */
-export function OrganicClicksChart() {
-    const title = "Organic clicks, matched 28-day windows";
-    const desc = `Line chart of organic clicks across three matched 28-day windows. ${SEO_WINDOWS_WIDE.map((w, i) => `${w}, ${commas(SEO_CLICKS[i])} clicks`).join("; ")}. An increase of 78% from the baseline.`;
-    const shared = {
-        title,
-        desc,
-        domain: [0, 9000] as [number, number],
-        ticks: [0, 3000, 6000, 9000],
-        values: SEO_CLICKS,
-        endLabels: [commas(4500), "", commas(8000)],
-    };
-
-    return (
-        <ChartFigure title={title} headingLevel={3} source={SEO_SOURCE}>
-            <LineChart
-                {...shared}
-                id="clicks-w"
-                variant="wide"
-                height={300}
-                margin={{ top: 30, right: 24, bottom: 46, left: 56 }}
-                tickLabel={commas}
-                labels={SEO_WINDOWS_WIDE.map((w) => [w])}
-            />
-            <LineChart
-                {...shared}
-                id="clicks-n"
-                variant="narrow"
-                height={310}
-                margin={{ top: 34, right: 20, bottom: 66, left: 52 }}
-                tickLabel={(n) => (n === 0 ? "0" : `${n / 1000}K`)}
-                labels={SEO_WINDOWS_NARROW}
-            />
-        </ChartFigure>
-    );
-}
-
-/* ── Chart D: average search position ────────────────────── */
-export function AveragePositionChart() {
-    const title = "Average search position (lower is better)";
-    const desc = `Line chart of average search position across three matched 28-day windows, with the axis running from 20 at the bottom to 1 at the top so improvement reads upward. ${SEO_WINDOWS_WIDE.map((w, i) => `${w}, position ${SEO_POSITION[i]}`).join("; ")}. A move from page two to page one.`;
-    const shared = {
-        title,
-        desc,
-        /* Reversed domain: 20 sits on the baseline, 1 at the top of the plot. */
-        domain: [20, 1] as [number, number],
-        ticks: [20, 15, 10, 5, 1],
-        values: SEO_POSITION,
-        tickLabel: String,
-        endLabels: ["15.2", "", "9.4"],
-    };
-
-    return (
-        <ChartFigure title={title} headingLevel={3} source={SEO_SOURCE}>
-            <LineChart
-                {...shared}
-                id="position-w"
-                variant="wide"
-                height={300}
-                margin={{ top: 30, right: 24, bottom: 46, left: 56 }}
-                labels={SEO_WINDOWS_WIDE.map((w) => [w])}
-            />
-            <LineChart
-                {...shared}
-                id="position-n"
-                variant="narrow"
-                height={310}
-                margin={{ top: 34, right: 20, bottom: 66, left: 52 }}
-                labels={SEO_WINDOWS_NARROW}
-            />
-        </ChartFigure>
-    );
-}
-
 /** Charts A and B, in order, for the Google Ads case study. */
 export function GoogleAdsCharts() {
     return (
         <div className="chart-stack">
             <MonthlyRoasChart />
             <SpendVsRevenueChart />
-        </div>
-    );
-}
-
-/** Charts C and D, in order, for the SEO and AEO case studies. */
-export function SeoAeoCharts() {
-    return (
-        <div className="chart-stack">
-            <OrganicClicksChart />
-            <AveragePositionChart />
         </div>
     );
 }
@@ -601,7 +414,6 @@ export function SeoAeoCharts() {
 const AI_WEEKS = ["18 May", "25 May", "1 Jun", "8 Jun", "15 Jun", "22 Jun", "29 Jun", "6 Jul", "13 Jul", "20 Jul", "27 Jul", "3 Aug", "10 Aug", "17 Aug", "24 Aug"];
 const AI_IMPRESSIONS = [1393, 1710, 1951, 2369, 2516, 2304, 2736, 2646, 2621, 2948, 3137, 3661, 4143, 3359, 3044];
 export const AI_SOURCE = "Sources: Google Search Console (Generative AI features report, available from 18 May 2026), Semrush AI Visibility, August 2026.";
-const AI_NOTE = "The site also earned its first documented click from a conversational AI query, on the Gluten-Free Sausages page.";
 
 /* Semrush AI Visibility, August 2026. Competitors stay unnamed by request, so
  * the three trailing rows share a label; the desc enumerates them by value. */
@@ -617,7 +429,7 @@ const VISIBILITY = [
  * white panel is relieved by a value label on every bar. */
 const MUTED = "#C9C4BD";
 
-const kLabel = (n: number) => (n === 0 ? "0" : `${n / 1000}k`);
+const kLabel = (n: number) => (n === 0 ? "0" : `${n / 1000}K`);
 
 /* ── Chart: daily impressions in Google's AI features ── */
 interface AiLineProps {
@@ -642,16 +454,16 @@ function AiImpressionsLine({ variant, desc }: AiLineProps) {
     const line = AI_IMPRESSIONS.map((v, i) => `${r2(x(i))},${r2(y(v))}`).join(" ");
     const area = `M${r2(x(0))},${r2(bottom)} L${line.split(" ").join(" L")} L${r2(x(AI_IMPRESSIONS.length - 1))},${r2(bottom)} Z`;
 
-    const peak = AI_IMPRESSIONS.indexOf(Math.max(...AI_IMPRESSIONS));
-    /* Only the first and peak points are marked and labelled: a value on every
-     * point would be unreadable at fifteen of them. */
-    /* The first point sits where the line climbs steeply, so on the narrow
-     * drawing its label is pushed up and to the right to clear the stroke. */
+    const last = AI_IMPRESSIONS.length - 1;
+    /* First and last only. The first sits where the line climbs steeply, so on
+     * the narrow drawing its label is pushed up and right to clear the stroke. */
     const marked = [
-        { i: 0, text: "1.4k", anchor: "start" as const, dx: wide ? 5 : 13, dy: wide ? 18 : 38 },
-        { i: peak, text: "4.1k", anchor: "middle" as const, dx: 0, dy: wide ? 13 : 17 },
+        { i: 0, text: "1.4K", anchor: "start" as const, dx: wide ? 5 : 13, dy: wide ? 18 : 38 },
+        { i: last, text: "3.0K", anchor: "end" as const, dx: 0, dy: wide ? 14 : 18 },
     ];
-    const xLabelIdx = wide ? [0, 4, 8, 12, 14] : [0, 8, 14];
+    /* Month ticks only: the first week falling in each month. */
+    const xLabelIdx = [0, 2, 7, 11];
+    const xLabelText = ["May", "Jun", "Jul", "Aug"];
 
     return (
         <svg
@@ -686,10 +498,10 @@ function AiImpressionsLine({ variant, desc }: AiLineProps) {
                     key={i}
                     x={r2(x(i))}
                     y={bottom + (wide ? 24 : 30)}
-                    textAnchor={n === 0 ? "start" : n === xLabelIdx.length - 1 ? "end" : "middle"}
+                    textAnchor={n === 0 ? "start" : "middle"}
                     fill={INK_SOFT}
                 >
-                    {AI_WEEKS[i]}
+                    {xLabelText[n]}
                 </text>
             ))}
         </svg>
@@ -762,7 +574,7 @@ function AiVisibilityBars({ variant, desc }: AiLineProps) {
 export function AiImpressionsChart() {
     const desc = `Line chart of the weekly average of daily impressions in Google's AI features, 18 May to 30 August 2026. ${AI_WEEKS.map((w, i) => `week starting ${w}, ${commas(AI_IMPRESSIONS[i])}`).join("; ")}. The series rises from 1,393 to a peak of 4,143 in the week starting 10 August, then eases to 3,044.`;
     return (
-        <ChartFigure title="Daily impressions in Google's AI features" subtitle="Weekly average, 18 May to 30 August 2026" headingLevel={3} note={AI_NOTE}>
+        <ChartFigure title="Daily impressions in Google's AI features" subtitle="Weekly average, 18 May to 30 August 2026" headingLevel={3}>
             <AiImpressionsLine variant="wide" desc={desc} />
             <AiImpressionsLine variant="narrow" desc={desc} />
         </ChartFigure>
@@ -773,7 +585,11 @@ export function AiImpressionsChart() {
 export function AiVisibilityChart() {
     const desc = "Horizontal bar chart of Semrush AI Visibility scores across five tracked brands. The category leader scores 31, The Black Farmer 27, and three further competitors score 22, 22 and 14. Only The Black Farmer is highlighted.";
     return (
-        <ChartFigure title="Semrush AI Visibility score" headingLevel={3}>
+        <ChartFigure
+            title="2nd of 5 in Semrush AI Visibility"
+            subtitle="Gap to the category leader cut from 8 points to 4 in three weeks, 5 to 24 August 2026."
+            headingLevel={3}
+        >
             <AiVisibilityBars variant="wide" desc={desc} />
             <AiVisibilityBars variant="narrow" desc={desc} />
         </ChartFigure>
