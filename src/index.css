@@ -693,6 +693,10 @@ ul {
   flex: 0 0 100%;
   display: grid;
   grid-template-columns: repeat(var(--per-view, 1), 1fr);
+  /* Three shared rows: body, read-more, author. Each card is a subgrid over
+     them, so the divider and the link land at the same height across a pair
+     however the quotes and roles happen to wrap. */
+  grid-template-rows: 1fr auto auto;
   gap: 2rem;
   align-items: stretch;
   /* Keeps hover lift and focus rings from being clipped by the viewport */
@@ -701,10 +705,34 @@ ul {
 
 .testimonial-card {
   background: var(--bg-secondary);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
   gap: 1.25rem;
   margin: 0;
+}
+
+/* Rows are assigned explicitly, never by source order: a card with no
+   read-more link leaves row 2 empty rather than pulling its author up into
+   it, which would break the alignment it is here to keep. */
+.testimonial-body { grid-row: 1; display: flex; flex-direction: column; gap: 1.25rem; }
+.testimonial-readmore { grid-row: 2; }
+.testimonial-attribution { grid-row: 3; }
+
+/* Relationship label on the client cards. Muted like .related-links-label, the
+   site's other eyebrow, so it names the relationship without competing with the
+   quote. Colleague cards carry none. */
+.testimonial-badge {
+  align-self: flex-start;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
 }
 
 .testimonial-quote {

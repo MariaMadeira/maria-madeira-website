@@ -108,25 +108,27 @@ const RECOMMENDATIONS_URL = "https://www.linkedin.com/in/maria-madeira-growth/de
 const TESTIMONIALS = [
     {
         name: "Wilfred Emmanuel-Jones",
+        badge: "Client",
         role: "Founder, The Black Farmer",
-        context: "Client \u00b7 Recommended on LinkedIn",
+        context: "Recommended on LinkedIn",
         monogram: "WE",
         // Excerpt of a much longer recommendation; the cut is marked with [...].
-        // The full text is not published: `readMore` links to a case study page,
-        // and there is no page for this one.
+        // readMore sends readers to LinkedIn for the whole thing.
         quote: "I could give her something that was little more than an idea in my head and she would go away, work it out and come back with something real. [...] She built our email marketing, worked on our e-commerce, creative, advertising and SEO, helped us launch our app and later became one of the people pushing us to understand and use AI properly within the business.",
         readMore: RECOMMENDATIONS_URL,
     },
     {
         name: "The Bodysurf School",
+        badge: "Client",
         role: null,
-        context: "Client · Recommended on LinkedIn",
+        context: "Recommended on LinkedIn",
         monogram: "BS",
         quote: "Something we thought would be pricey and difficult to create, she built in just one month, and our monthly costs are low. On top of that, we're now ranking number one on search engines and AI tools whenever you search for bodysurf. She's easy to work with, super hands-on, and delivered exactly what she promised, within the timeframe she promised.",
         readMore: "/case-study-bodysurf-school",
     },
     {
         name: "Adel Sidiqi",
+        badge: null,
         role: "Digital Marketing Manager at Ocado Zoom",
         context: "Former colleague · Recommended on LinkedIn",
         monogram: "AS",
@@ -135,6 +137,7 @@ const TESTIMONIALS = [
     },
     {
         name: "Isbah Amin",
+        badge: null,
         role: "Marketing Executive, B2C Growth, CRM & Lifecycle Marketing",
         context: "Former colleague · Recommended on LinkedIn",
         monogram: "IA",
@@ -143,6 +146,7 @@ const TESTIMONIALS = [
     },
     {
         name: "Will Fuller",
+        badge: null,
         role: "WordPress Developer",
         context: "Former colleague · Recommended on LinkedIn",
         monogram: "WF",
@@ -151,6 +155,7 @@ const TESTIMONIALS = [
     },
     {
         name: "Hermela Michael",
+        badge: null,
         role: null,
         context: "Former colleague · Recommended on LinkedIn",
         monogram: "HM",
@@ -236,7 +241,10 @@ function TestimonialsCarousel() {
                         <div className="testimonial-page" key={groupIndex}>
                             {group.map((t) => (
                                 <figure key={t.name} className="card testimonial-card">
-                                    <blockquote className="testimonial-quote">"{t.quote}"</blockquote>
+                                    <div className="testimonial-body">
+                                        {t.badge && <span className="testimonial-badge">{t.badge}</span>}
+                                        <blockquote className="testimonial-quote">"{t.quote}"</blockquote>
+                                    </div>
                                     {t.readMore && (
                                         t.readMore.startsWith("http") ? (
                                             <a
@@ -597,9 +605,9 @@ export default function Home() {
             {/* Testimonials Section */}
             <section className="section testimonials-section" style={{ padding: '5rem 0' }}>
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>What People Say</h2>
+                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>Five years with one founder. One month to rank a school number one.</h2>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-                        Recommendations from colleagues and professionals I've worked with.
+                        Clients and colleagues, in their own words, on LinkedIn.
                     </p>
                 </div>
 
