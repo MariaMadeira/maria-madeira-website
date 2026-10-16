@@ -439,12 +439,13 @@ const MUTED = "#C9C4BD";
 const kLabel = (n: number) => (n === 0 ? "0" : `${n / 1000}K`);
 
 /* ── Chart: daily impressions in Google's AI features ── */
-interface AiLineProps {
+/** Shared by every chart that ships a hand-built wide and narrow drawing. */
+interface ChartVariantProps {
     variant: "wide" | "narrow";
     desc: string;
 }
 
-function AiImpressionsLine({ variant, desc }: AiLineProps) {
+function AiImpressionsLine({ variant, desc }: ChartVariantProps) {
     const wide = variant === "wide";
     const width = wide ? WIDE_W : NARROW_W;
     const font = wide ? WIDE_FONT : NARROW_FONT;
@@ -516,7 +517,7 @@ function AiImpressionsLine({ variant, desc }: AiLineProps) {
 }
 
 /* ── Chart: Semrush AI Visibility across the tracked set ── */
-function AiVisibilityBars({ variant, desc }: AiLineProps) {
+function AiVisibilityBars({ variant, desc }: ChartVariantProps) {
     const wide = variant === "wide";
     const X_MAX = 35;
 
@@ -647,5 +648,148 @@ export function OutcomesBar() {
                 return <path key={o.label} d={d} fill={o.fill} />;
             })}
         </svg>
+    );
+}
+
+
+/* ── Email programme data (Klaviyo) ──────────────────────────
+ * Attributed revenue by period in £K, split between campaign sends and
+ * automated flows. 2021 covers September to December, when the programme
+ * started, so it is a four-month period next to four full-year ones.
+ * Segments sum to the labelled total (2021 rounds to £33.1K from 33.0).
+ */
+const EMAIL_PERIODS = [
+    { lines: ["2021", "(Sep to Dec)"], campaigns: 25.9, flows: 7.1, total: "£33.1K" },
+    { lines: ["2022"], campaigns: 47.4, flows: 18.9, total: "£66.3K" },
+    { lines: ["2023"], campaigns: 52.8, flows: 23.4, total: "£76.2K" },
+    { lines: ["2024"], campaigns: 64.8, flows: 48.2, total: "£113K" },
+    { lines: ["12 months", "to Jul 2025"], campaigns: 86.1, flows: 48.3, total: "£134.4K" },
+];
+const EMAIL_NOTE = "2021 covers September to December, when the programme started.";
+const EMAIL_SOURCE = "Source: Klaviyo Business Overview exports.";
+/* Campaigns take the deeper brown and sit at the base; flows take the lighter
+ * brown on top. The pair clears CVD separation (ΔE 19.9 protan, 20.0 normal),
+ * and identity is carried by the legend and the labelled totals as well as hue. */
+const EMAIL_SERIES: Series[] = [
+    { name: "Campaigns", colour: DEEP, values: EMAIL_PERIODS.map((p) => p.campaigns) },
+    { name: "Automated flows", colour: ACCENT, values: EMAIL_PERIODS.map((p) => p.flows) },
+];
+const EMAIL_Y_MAX = 150;
+const EMAIL_TICKS = [0, 50, 100, 150];
+const kGbp = (n: number) => (n === 0 ? "£0" : `£${n}K`);
+/* 2px of surface between the segments, so the boundary reads as a gap rather
+ * than a colour change. */
+const STACK_GAP = 2;
+
+function EmailRevenueStack({ variant, desc }: ChartVariantProps) {
+    const titleId = `email-rev-${variant}-t`;
+    const descId = `email-rev-${variant}-d`;
+
+    if (variant === "wide") {
+        const height = 340;
+        const margin = { top: 34, right: 18, bottom: 58, left: 56 };
+        const plotW = WIDE_W - margin.left - margin.right;
+        const plotH = height - margin.top - margin.bottom;
+        const base = margin.top + plotH;
+        const band = plotW / EMAIL_PERIODS.length;
+        const barW = 58;
+        const y = (v: number) => base - (v / EMAIL_Y_MAX) * plotH;
+
+        return (
+            <svg
+                className="chart-svg chart-svg-wide"
+                viewBox={`0 0 ${WIDE_W} ${height}`}
+                role="img"
+                aria-labelledby={`${titleId} ${descId}`}
+                fontSize={WIDE_FONT}
+            >
+                <title id={titleId}>Attributed email revenue by period</title>
+                <desc id={descId}>{desc}</desc>
+
+                {EMAIL_TICKS.map((t) => (
+                    <g key={t}>
+                        <line x1={margin.left} x2={margin.left + plotW} y1={r2(y(t))} y2={r2(y(t))} stroke={RULE} strokeWidth={1} />
+                        <text x={margin.left - 8} y={r2(y(t)) + 4} textAnchor="end" fill={INK_SOFT}>{kGbp(t)}</text>
+                    </g>
+                ))}
+
+                {EMAIL_PERIODS.map((p, i) => {
+                    const centre = margin.left + band * i + band / 2;
+                    const x = centre - barW / 2;
+                    const topCampaigns = y(p.campaigns);
+                    const topStack = y(p.campaigns + p.flows);
+                    return (
+                        <g key={p.lines[0]}>
+                            {/* Base segment: square at the baseline and under the gap. */}
+                            <rect x={r2(x)} y={r2(topCampaigns)} width={barW} height={r2(base - topCampaigns)} fill={DEEP} />
+                            <path d={barUp(x, topStack - STACK_GAP, barW, topCampaigns - STACK_GAP, 3.4)} fill={ACCENT} />
+                            <text x={r2(centre)} y={r2(topStack - STACK_GAP - 9)} textAnchor="middle" fill={INK} fontWeight={600}>
+                                {p.total}
+                            </text>
+                            {p.lines.map((line, n) => (
+                                <text key={line} x={r2(centre)} y={base + 20 + n * 15} textAnchor="middle" fill={INK_SOFT}>
+                                    {line}
+                                </text>
+                            ))}
+                        </g>
+                    );
+                })}
+            </svg>
+        );
+    }
+
+    /* Narrow: one row per period, label and total above the bar, so a long
+     * period name does not eat half the width as a left gutter. The full-width
+     * track is the £150K axis. */
+    const rowH = 76;
+    const barH = 22;
+    const plotW = NARROW_W;
+    const height = EMAIL_PERIODS.length * rowH + 10;
+    const x = (v: number) => (v / EMAIL_Y_MAX) * plotW;
+
+    return (
+        <svg
+            className="chart-svg chart-svg-narrow"
+            viewBox={`0 0 ${NARROW_W} ${height}`}
+            role="img"
+            aria-labelledby={`${titleId} ${descId}`}
+            fontSize={NARROW_FONT}
+        >
+            <title id={titleId}>Attributed email revenue by period</title>
+            <desc id={descId}>{desc}</desc>
+
+            {EMAIL_PERIODS.map((p, i) => {
+                const top = i * rowH + 6;
+                const endCampaigns = x(p.campaigns);
+                const endStack = x(p.campaigns + p.flows);
+                return (
+                    <g key={p.lines[0]}>
+                        <text x={0} y={top + 18} fill={INK_SOFT}>{p.lines.join(" ")}</text>
+                        <text x={plotW} y={top + 18} textAnchor="end" fill={INK} fontWeight={600}>{p.total}</text>
+                        <rect x={0} y={top + 32} width={plotW} height={barH} rx={3} fill={RULE} opacity={0.5} />
+                        <rect x={0} y={top + 32} width={r2(endCampaigns)} height={barH} fill={DEEP} />
+                        <path d={barRight(endCampaigns + STACK_GAP, top + 32, endStack, barH, 5.4)} fill={ACCENT} />
+                    </g>
+                );
+            })}
+        </svg>
+    );
+}
+
+/** Stacked bars of attributed email revenue, campaigns and flows, by period. */
+export function EmailRevenueChart() {
+    const desc = `Stacked bar chart of attributed email revenue by period, in thousands of pounds, split between campaigns and automated flows. ${EMAIL_PERIODS.map((p) => `${p.lines.join(" ")}, campaigns £${p.campaigns}K, flows £${p.flows}K, total ${p.total}`).join("; ")}. Every period is higher than the one before it.`;
+    return (
+        <ChartFigure
+            title="Attributed email revenue by period"
+            subtitle="Campaigns and automated flows, values in £K"
+            headingLevel={3}
+            note={EMAIL_NOTE}
+            source={EMAIL_SOURCE}
+            legend={EMAIL_SERIES}
+        >
+            <EmailRevenueStack variant="wide" desc={desc} />
+            <EmailRevenueStack variant="narrow" desc={desc} />
+        </ChartFigure>
     );
 }

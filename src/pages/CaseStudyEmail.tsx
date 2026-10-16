@@ -1,27 +1,37 @@
-import { ArrowLeft, TrendingUp, Mail, Target, Zap } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import RelatedLinks from "../components/RelatedLinks";
+import { EmailRevenueChart } from "../components/ResultCharts";
 import { caseStudyJsonLd } from "../lib/schema";
 
 // Git-derived (git log src/pages/CaseStudyEmail.tsx). Bump PUBLISHED never;
 // bump MODIFIED whenever the numbers below are updated.
 const PUBLISHED = "2026-03-16";
-const MODIFIED = "2026-08-26";
+const MODIFIED = "2026-10-16";
 
-const TITLE = "An unused email list became the brand's biggest revenue channel";
+const TITLE = "Four years of growth: email now brings in £134K a year and over a third of store revenue";
+
+// The H1 runs to 88 characters, past where Google truncates, so the meta title
+// is a shorter sibling. The schema headline still carries the H1 verbatim.
+const META_TITLE = "From £33K to £134K a year: a four-year Klaviyo programme";
+
+// The client is not named on this page, so the brand is described rather than
+// identified. The hero subtitle doubles as the schema description.
+const SUBTITLE = "A Klaviyo lifecycle programme for a UK premium food brand: attributed email revenue grew every year, from £33K (September to December 2021) to £134K in the twelve months to July 2025, up 88.9% year on year.";
 
 export default function CaseStudyEmail() {
     return (
         <>
         <Seo
-            title={TITLE}
-            description="Email marketing case study: how a Klaviyo lifecycle system grew attributed revenue to £134K in 12 months, up 88.9% year on year, at a 50.4% open rate."
+            title={META_TITLE}
+            description="A Klaviyo lifecycle programme for a UK premium food brand: attributed email revenue grew from £33K in late 2021 to £134K in the twelve months to July 2025."
             path="/case-study-email"
+            ogImage="/og/og-case-study-email.png"
             jsonLd={caseStudyJsonLd({
                 path: "/case-study-email",
                 headline: TITLE,
-                description: "How a Klaviyo lifecycle system grew email-attributed revenue to £134K over 12 months, up 88.9% year on year, at a 50.4% campaign open rate.",
+                description: SUBTITLE,
                 datePublished: PUBLISHED,
                 dateModified: MODIFIED,
                 // Short by design: breadcrumbs render in search results, where the
@@ -48,12 +58,8 @@ export default function CaseStudyEmail() {
                     <ArrowLeft size={18} /> Back to Case Studies
                 </Link>
 
-                {/* Title */}
-                <div
-
-
-
-                >
+                {/* Hero */}
+                <div>
                     <p
                         style={{
                             fontSize: "0.85rem",
@@ -70,159 +76,119 @@ export default function CaseStudyEmail() {
                         {TITLE}
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
-                        How a strategic email lifecycle system transformed an underutilised channel into the brand's most important revenue driver: growing attributed revenue to £134K over the last 12 months, up 88.9% year on year.
+                        {SUBTITLE}
                     </p>
                 </div>
 
                 {/* Divider */}
                 <div style={{ height: "1px", background: "var(--border-color)", marginBottom: "3rem" }} />
 
-                {/* Context Section */}
-                <section
-
-
-
-                    style={{ marginBottom: "3.5rem" }}
-                >
-                    <h2
-
-                        style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}
-                    >
+                {/* Context */}
+                <section style={{ marginBottom: "3.5rem" }}>
+                    <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
                         Context
                     </h2>
-                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                        The brand (a UK premium food e-commerce brand) had strong customer demand but email marketing was significantly underutilised.
-                    </p>
-                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                        Despite a growing customer base, lifecycle automation was limited and most email revenue came from occasional campaign sends rather than structured retention flows.
-                    </p>
-                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
-                        The opportunity was clear: build a full lifecycle email system capable of increasing repeat purchases, improving customer engagement, and turning email into a predictable revenue driver.
+                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>
+                        When I started in September 2021, the brand had a customer list, three automated flows and occasional campaign sends. Most email revenue came from one-off promotions. Over four years I built the Klaviyo programme end to end: flows, segmentation, campaign calendar and testing, with every figure below taken from Klaviyo&apos;s own reporting.
                     </p>
                 </section>
 
-                {/* Strategy Section */}
-                <section
-
-
-
-                    style={{ marginBottom: "3.5rem" }}
-                >
-                    <h2
-
-                        style={{ fontSize: "1.75rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}
-                    >
-                        Strategy
+                {/* What I built */}
+                <section style={{ marginBottom: "3.5rem" }}>
+                    <h2 style={{ fontSize: "1.75rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}>
+                        What I built
                     </h2>
-
-                    <div className="grid-2" style={{ gap: "1.5rem" }}>
+                    <div className="cs-grid cs-grid-3">
                         {[
-                            {
-                                icon: <Mail size={24} />,
-                                title: "Full Lifecycle Buildout",
-                                description:
-                                    "Designed and implemented a complete lifecycle email system including welcome flows, browse abandonment, checkout recovery, post-purchase nurturing, replenishment reminders, win-back campaigns, and customer segmentation flows.",
-                            },
-                            {
-                                icon: <Target size={24} />,
-                                title: "Advanced Segmentation",
-                                description:
-                                    "Created behaviour-based and purchase-based segments including high-value customers, repeat buyers, and product-specific audiences to deliver more relevant messaging and offers.",
-                            },
-                            {
-                                icon: <Zap size={24} />,
-                                title: "Campaign Cadence & Content",
-                                description:
-                                    "Established a consistent campaign strategy combining promotional emails, product education, and brand storytelling to maintain engagement and drive repeat purchases.",
-                            },
-                            {
-                                icon: <TrendingUp size={24} />,
-                                title: "Continuous Optimisation",
-                                description:
-                                    "Regular performance reviews were implemented to optimise subject lines, send times, segmentation, and flow triggers based on engagement and revenue performance.",
-                            },
-                        ].map((item, i) => (
-                            <div
-                                key={i}
-
-                                className="card"
-                                style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
-                            >
-                                <div style={{ color: "var(--accent-secondary)" }}>{item.icon}</div>
-                                <h3 style={{ fontSize: "1.15rem", marginBottom: 0 }}>{item.title}</h3>
-                                <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, fontSize: "0.95rem" }}>
-                                    {item.description}
-                                </p>
+                            { value: "3 → 14", label: "live automated flows, from welcome and abandoned checkout to replenishment, win-back, post-purchase and birthday" },
+                            { value: "1.06M", label: "campaign emails sent in the twelve months to July 2025, at a 50.4% open rate" },
+                            { value: "£23.6K", label: "from a single flow, the Welcome Series for the box list, in twelve months" },
+                        ].map((card) => (
+                            <div key={card.value} className="cs-tile cs-tile--sm">
+                                <p className="cs-tile-value">{card.value}</p>
+                                <p className="cs-tile-label">{card.label}</p>
                             </div>
                         ))}
                     </div>
                 </section>
 
-                {/* Results Section */}
-                <section
-
-
-
-                    style={{ marginBottom: "3.5rem" }}
-                >
-                    <h2
-
-                        style={{ fontSize: "1.75rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}
+                {/* Results */}
+                <section style={{ marginBottom: "3.5rem" }}>
+                    <p
+                        style={{
+                            fontSize: "0.85rem",
+                            fontWeight: 600,
+                            color: "var(--accent-secondary)",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.08em",
+                            marginBottom: "0.75rem",
+                        }}
                     >
                         Results
+                    </p>
+                    <h2 style={{ fontSize: "1.75rem", marginBottom: "0.75rem", color: "var(--text-primary)" }}>
+                        Every year higher than the last
                     </h2>
+                    <p className="cs-subline">Klaviyo attributed revenue, campaigns and flows</p>
 
-                    <div className="grid-3" style={{ gap: "1.5rem" }}>
+                    <EmailRevenueChart />
+
+                    <div className="cs-grid cs-grid-3" style={{ marginTop: "2.5rem" }}>
                         {[
-                            { metric: "£134K", label: "Attributed Revenue", detail: "Last 12 months · +88.9% YoY" },
-                            { metric: "£86.1K", label: "Campaign Revenue", detail: "+92.6% YoY" },
-                            { metric: "£48.3K", label: "Flow Revenue", detail: "+82.5% YoY" },
-                            { metric: "50.4%", label: "Campaign Open Rate", detail: "78th percentile benchmark" },
-                            { metric: "7.27%", label: "Flow Click Rate", detail: "Automated flows" },
-                            { metric: "✦", label: "Full Lifecycle System", detail: "Built in Klaviyo" },
-                        ].map((item, i) => (
-                            <div
-                                key={i}
+                            { value: "£134K", badge: "+88.9% YoY", label: "attributed email revenue, twelve months to July 2025" },
+                            { value: "£86.1K", badge: "+92.6% YoY", label: "from campaigns" },
+                            { value: "£48.3K", badge: "+82.5% YoY", label: "from automated flows" },
+                        ].map((t) => (
+                            <div key={t.label} className="cs-tile">
+                                <p className="cs-tile-value">{t.value}</p>
+                                <span className="cs-badge cs-badge--positive">{t.badge}</span>
+                                <p className="cs-tile-label">{t.label}</p>
+                            </div>
+                        ))}
+                    </div>
 
-                                className="card"
-                                style={{ textAlign: "center", padding: "2rem 1.5rem" }}
-                            >
-                                <h3
-                                    style={{
-                                        fontSize: "2rem",
-                                        color: "var(--accent-secondary)",
-                                        marginBottom: "0.25rem",
-                                        fontWeight: 700,
-                                    }}
-                                >
-                                    {item.metric}
-                                </h3>
-                                <p style={{ fontWeight: 600, color: "var(--text-primary)", marginBottom: "0.25rem", fontSize: "0.95rem" }}>
-                                    {item.label}
+                    <div className="cs-grid cs-grid-3">
+                        {[
+                            {
+                                before: "28.2%",
+                                after: "50.4%",
+                                badge: "78th percentile",
+                                tone: "positive" as const,
+                                label: "campaign open rate, December 2021 vs June 2025, against Klaviyo's industry benchmark",
+                            },
+                            {
+                                before: null,
+                                after: "over a third",
+                                badge: null,
+                                tone: "positive" as const,
+                                label: "of total store revenue attributed to email, twelve months to July 2025",
+                            },
+                            {
+                                before: "8.5%",
+                                after: "7.3%",
+                                badge: "-1.2 pts",
+                                tone: "negative" as const,
+                                label: "flow click rate, 2024 vs twelve months to July 2025, while flow recipients rose 142%",
+                            },
+                        ].map((t) => (
+                            <div key={t.label} className="cs-tile cs-tile--sm">
+                                <p className="cs-tile-value">
+                                    {t.before && <span className="cs-tile-before">{t.before} →</span>}
+                                    {t.after}
                                 </p>
-                                <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", margin: 0 }}>
-                                    {item.detail}
-                                </p>
+                                {t.badge && <span className={`cs-badge cs-badge--${t.tone}`}>{t.badge}</span>}
+                                <p className="cs-tile-label">{t.label}</p>
                             </div>
                         ))}
                     </div>
                 </section>
 
-                {/* Key Impact Section */}
-                <section
-
-
-
-                    style={{ marginBottom: "3rem" }}
-                >
-                    <h2
-
-                        style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}
-                    >
+                {/* Key Impact */}
+                <section style={{ marginBottom: "3rem" }}>
+                    <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
                         Key Impact
                     </h2>
                     <div
-
                         style={{
                             background: "var(--accent-glow)",
                             border: "1px solid var(--border-color)",
@@ -230,14 +196,8 @@ export default function CaseStudyEmail() {
                             padding: "2rem",
                         }}
                     >
-                        <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                            Over the last 12 months email attributed <strong style={{ color: "var(--text-primary)" }}>£134K</strong> in revenue, up <strong style={{ color: "var(--text-primary)" }}>88.9%</strong> year on year: split between <strong style={{ color: "var(--text-primary)" }}>£86.1K</strong> from campaigns (+92.6%) and <strong style={{ color: "var(--text-primary)" }}>£48.3K</strong> from automated flows (+82.5%).
-                        </p>
-                        <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                            The gains held on engagement as well as revenue: a <strong style={{ color: "var(--text-primary)" }}>50.4%</strong> average campaign open rate (78th percentile against the industry benchmark) and a <strong style={{ color: "var(--text-primary)" }}>7.27%</strong> flow click rate over the 12-month window (9.14% across the 2024 calendar year).
-                        </p>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>
-                            Seen over the full engagement, email-attributed revenue grew from <strong style={{ color: "var(--text-primary)" }}>£33K in 2021</strong> to <strong style={{ color: "var(--text-primary)" }}>£134K in 2025</strong>: a 4x increase, and a channel turned into a scalable, predictable growth driver.
+                            Email revenue rose every period since the programme began: £33K in the last four months of 2021, £66K in 2022, £76K in 2023, £113K in 2024 and £134K in the twelve months to July 2025. Flows grew from 21% to 36% of email revenue over the same span, and campaign open rates moved from the 53rd to the 78th percentile of Klaviyo&apos;s benchmark.
                         </p>
                     </div>
                 </section>
@@ -248,17 +208,12 @@ export default function CaseStudyEmail() {
                 />
 
                 {/* CTA */}
-                <div
-
-
-
-                    style={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem" }}
-                >
+                <div style={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem" }}>
                     <p style={{ color: "var(--text-secondary)", marginBottom: "1.5rem", fontSize: "1.05rem" }}>
-                        Want similar results for your brand?
+                        Have a list you&apos;re not making the most of?
                     </p>
                     <Link to="/contact" className="btn btn-primary">
-                        Let's Talk Strategy
+                        Let&apos;s talk about your email
                     </Link>
                 </div>
 
