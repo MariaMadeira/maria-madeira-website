@@ -22,7 +22,7 @@ export default function PortfolioOusadia() {
                 name: "Ousadia",
                 description: "Brand identity and creative direction for Ousadia, an artcraft brand: logo system, visual language, and campaign art direction.",
                 about: { type: "Brand", name: "Ousadia" },
-                image: "/projects/ousadia/moodboard.jpg",
+                image: "/projects/ousadia/moodboard.webp",
             })}
         />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
@@ -138,7 +138,7 @@ export default function PortfolioOusadia() {
                         style={{ borderRadius: "24px", overflow: "hidden", border: "1px solid var(--border-color)" }}
                     >
                         <img
-                            src={`${assetPath}moodboard.jpg`}
+                            src={`${assetPath}moodboard.webp`}
                             alt="Ousadia Moodboard"
                             style={{ width: "100%", display: "block" }}
                             onError={(e) => {
@@ -148,8 +148,7 @@ export default function PortfolioOusadia() {
                                     e.currentTarget.parentElement.style.background = '#f5f5f5';
                                     e.currentTarget.parentElement.innerHTML = '<p style="text-align:center; color:#999">Moodboard Asset Not Found</p>';
                                 }
-                            }}
-                        />
+                            }} width={1200} height={800} loading="lazy" decoding="async" />
                     </div>
                 </section>
 
@@ -178,7 +177,7 @@ export default function PortfolioOusadia() {
                         style={{ borderRadius: "24px", overflow: "hidden", border: "1px solid var(--border-color)", background: "white", padding: "2rem" }}
                     >
                         <img
-                            src={`${assetPath}2.jpg`}
+                            src={`${assetPath}2.webp`}
                             alt="Ousadia Logo System"
                             style={{ width: "100%", display: "block" }}
                             onError={(e) => {
@@ -188,8 +187,7 @@ export default function PortfolioOusadia() {
                                     e.currentTarget.parentElement.style.background = '#f5f5f5';
                                     e.currentTarget.parentElement.innerHTML = '<p style="text-align:center; color:#999">Logo System Asset Not Found</p>';
                                 }
-                            }}
-                        />
+                            }} width={1200} height={800} loading="lazy" decoding="async" />
                     </div>
                 </section>
 
@@ -260,13 +258,12 @@ export default function PortfolioOusadia() {
                         }}
                     >
                         <img
-                            src={`${assetPath}4.jpg`}
+                            src={`${assetPath}4.webp`}
                             alt="Ousadia Typography"
                             style={{ width: "100%", maxWidth: "800px", display: "block", margin: "0 auto" }}
                             onError={(e) => {
                                 e.currentTarget.style.display = 'none';
-                            }}
-                        />
+                            }} width={1200} height={800} loading="lazy" decoding="async" />
                     </div>
                 </section>
 
@@ -295,7 +292,7 @@ export default function PortfolioOusadia() {
                         style={{ borderRadius: "24px", overflow: "hidden", border: "1px solid var(--border-color)" }}
                     >
                         <img
-                            src={`${assetPath}5.jpg`}
+                            src={`${assetPath}5.webp`}
                             alt="Ousadia Brand Applications"
                             style={{ width: "100%", display: "block" }}
                             onError={(e) => {
@@ -305,8 +302,7 @@ export default function PortfolioOusadia() {
                                     e.currentTarget.parentElement.style.background = '#f5f5f5';
                                     e.currentTarget.parentElement.innerHTML = '<p style="text-align:center; color:#999">Applications Asset Not Found</p>';
                                 }
-                            }}
-                        />
+                            }} width={1200} height={800} loading="lazy" decoding="async" />
                     </div>
                 </section>
 

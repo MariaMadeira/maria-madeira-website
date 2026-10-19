@@ -12,23 +12,23 @@ export default function PortfolioAIProductPhotography() {
     const transformations = [
         {
             title: "Butterscotch Fudge",
-            original: "ANTES Cotswold Fudge Butterscotch.jpg",
-            enhanced: "DEPOIS Cotswold Fudge Butterscotch.jpg"
+            original: "ANTES Cotswold Fudge Butterscotch.webp",
+            enhanced: "DEPOIS Cotswold Fudge Butterscotch.webp"
         },
         {
             title: "Chocolate Fudge",
-            original: "Antes Cotswold Fudge chocolate.jpg",
-            enhanced: "DEPOIS Cotswold Fudge chocolate.jpg"
+            original: "Antes Cotswold Fudge chocolate.webp",
+            enhanced: "DEPOIS Cotswold Fudge chocolate.webp"
         },
         {
             title: "Ginger Jelly",
-            original: "Antes Ginger Jelly.jpg",
-            enhanced: "DEPOIS ginger jelly.jpg"
+            original: "Antes Ginger Jelly.webp",
+            enhanced: "DEPOIS ginger jelly.webp"
         },
         {
             title: "Mixed Berry Jam",
-            original: "antes mixed berry jam.jpg",
-            enhanced: "depois mixed berry jam.jpg"
+            original: "antes mixed berry jam.webp",
+            enhanced: "depois mixed berry jam.webp"
         }
     ];
 
@@ -36,6 +36,9 @@ export default function PortfolioAIProductPhotography() {
         <img 
             src={src} 
             alt={alt} 
+            loading="lazy"
+            decoding="async"
+
             style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", display: "block", borderRadius: "12px", border: "1px solid var(--border-color)" }} 
             onError={(e) => {
                 e.currentTarget.style.display = 'none';

@@ -12,21 +12,21 @@ export default function PortfolioAIEnhanced() {
     const transformations = [
         {
             title: "Hero Product",
-            original: "ANTES raw ox cheek.jpg",
-            enhanced: "DEPOIS raw ox cheek AI.jpg",
-            cooked: "cooked ox cheek.jpg"
+            original: "ANTES raw ox cheek.webp",
+            enhanced: "DEPOIS raw ox cheek AI.webp",
+            cooked: "cooked ox cheek.webp"
         },
         {
             title: "Signature Range",
-            original: "ANTESPork - Stir Fry Strips.jpg",
-            enhanced: "DEPOIS pork stir.jpg",
-            cooked: "cooked pork stir.jpg"
+            original: "ANTESPork - Stir Fry Strips.webp",
+            enhanced: "DEPOIS pork stir.webp",
+            cooked: "cooked pork stir.webp"
         },
         {
             title: "Seasonal Special",
-            original: "original valentines steak.png",
-            enhanced: "raw valentines steak.jpg",
-            cooked: "cooked valentine's steak.jpg"
+            original: "original valentines steak.webp",
+            enhanced: "raw valentines steak.webp",
+            cooked: "cooked valentine's steak.webp"
         }
     ];
 
@@ -34,6 +34,9 @@ export default function PortfolioAIEnhanced() {
         <img 
             src={src} 
             alt={alt} 
+            loading="lazy"
+            decoding="async"
+
             style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", display: "block", borderRadius: "12px", border: "1px solid var(--border-color)" }} 
             onError={(e) => {
                 e.currentTarget.style.display = 'none';

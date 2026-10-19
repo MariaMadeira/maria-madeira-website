@@ -45,9 +45,16 @@ const HOME_JSON_LD = {
         {
             "@type": "Organization",
             "@id": "https://mariamadeira.com/#organization",
-            "name": "Maria Madeira: Growth Strategy",
+            "name": "Maria Madeira",
             "url": "https://mariamadeira.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://mariamadeira.com/apple-touch-icon.png",
+                "width": 180,
+                "height": 180
+            },
             "description": "Answer Engine Optimisation (AEO), SEO, Klaviyo email and paid acquisition for UK food and drink e-commerce brands. Agency-level execution from an independent consultant.",
+            "sameAs": ["https://www.linkedin.com/in/maria-madeira-growth"],
             "founder": { "@id": "https://mariamadeira.com/#person" },
             "areaServed": "Worldwide",
             "contactPoint": {
@@ -55,6 +62,15 @@ const HOME_JSON_LD = {
                 "email": "info@mariamadeira.com",
                 "contactType": "customer service"
             }
+        },
+        // No SearchAction: the site has no search, and claiming one that does
+        // not exist is the most common way this node gets ignored.
+        {
+            "@type": "WebSite",
+            "@id": "https://mariamadeira.com/#website",
+            "name": "Maria Madeira",
+            "url": "https://mariamadeira.com",
+            "publisher": { "@id": "https://mariamadeira.com/#organization" }
         },
         {
             "@type": "Service",
@@ -840,19 +856,19 @@ export default function Home() {
                 }}>
                     {[
                         {
-                            image: '/projects/rita-antunes/mockup-stationery.jpg',
+                            image: '/projects/rita-antunes/mockup-stationery.webp',
                             label: 'Brand Identity',
                             title: 'Rita Antunes',
                             link: '/portfolio-rita-antunes',
                         },
                         {
-                            image: '/projects/ai-product/DEPOIS Cotswold Fudge Butterscotch.jpg',
+                            image: '/projects/ai-product/DEPOIS Cotswold Fudge Butterscotch.webp',
                             label: 'AI Product Photography',
                             title: 'Cotswold Fudge',
                             link: '/portfolio-ai-product-photography',
                         },
                         {
-                            image: '/projects/email-marketing/recipe.png',
+                            image: '/projects/email-marketing/recipe.webp',
                             label: 'Email Marketing',
                             title: 'Lifecycle Email System',
                             link: '/portfolio-email-marketing',
@@ -874,6 +890,8 @@ export default function Home() {
                                     <img
                                         src={item.image}
                                         alt={item.title}
+                                        loading="lazy"
+                                        decoding="async"
                                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s ease' }}
                                         onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
                                         onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}

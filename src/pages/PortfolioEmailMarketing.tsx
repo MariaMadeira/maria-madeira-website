@@ -378,11 +378,11 @@ export default function PortfolioEmailMarketing() {
 
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem", alignItems: "start" }}>
                         {[
-                            { src: "/projects/email-marketing/ads-offer.png", label: "Welcome / Offer Flow" },
-                            { src: "/projects/email-marketing/ox-1.png", label: "Product Segment: Email 1" },
-                            { src: "/projects/email-marketing/ox-2.png", label: "Product Segment: Email 2" },
-                            { src: "/projects/email-marketing/replenishment.png", label: "30-Day Replenishment Flow" },
-                            { src: "/projects/email-marketing/recipe.png", label: "Recipe Content Flow" },
+                            { src: "/projects/email-marketing/ads-offer.webp", label: "Welcome / Offer Flow" },
+                            { src: "/projects/email-marketing/ox-1.webp", label: "Product Segment: Email 1" },
+                            { src: "/projects/email-marketing/ox-2.webp", label: "Product Segment: Email 2" },
+                            { src: "/projects/email-marketing/replenishment.webp", label: "30-Day Replenishment Flow" },
+                            { src: "/projects/email-marketing/recipe.webp", label: "Recipe Content Flow" },
                         ].map((email, i) => (
                             <div
                                 key={i}
@@ -398,6 +398,8 @@ export default function PortfolioEmailMarketing() {
                                 <img
                                     src={email.src}
                                     alt={email.label}
+                                    loading="lazy"
+                                    decoding="async"
                                     style={{ width: "100%", display: "block" }}
                                 />
                                 <div style={{ padding: "1rem 1.25rem" }}>

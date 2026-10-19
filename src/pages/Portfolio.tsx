@@ -11,35 +11,35 @@ export default function Portfolio() {
             category: "Product & UX",
             description: "End-to-end product experiment: mobile ordering app, campaign creative, and elevator screen distribution for a high-traffic retail store.",
             link: "/portfolio-click-collect",
-            visual: "url('/projects/click-collect/app-mockups.png') center/cover"
+            visual: "url('/projects/click-collect/app-mockups.webp') center/cover"
         },
         {
             title: "Lifecycle Email Marketing",
             category: "Email Marketing",
             description: "Driving £134K in attributed revenue over 12 months through advanced lifecycle flows and retention-first automation strategies.",
             link: "/portfolio-email-marketing",
-            visual: "url('/projects/email-marketing/recipe.png') center/cover"
+            visual: "url('/projects/email-marketing/recipe.webp') center/cover"
         },
         {
             title: "Rita Antunes Psicologia",
             category: "Branding",
             description: "Establishing a premium clinical practice identity that successfully converts high-ticket therapy leads.",
             link: "/portfolio-rita-antunes",
-            visual: "url('/projects/rita-antunes/mockup-stationery.jpg') center/cover"
+            visual: "url('/projects/rita-antunes/mockup-stationery.webp') center/cover"
         },
         {
             title: "Ousadia Artcraft",
             category: "Branding",
             description: "Visual storytelling and bold identity that positioned an artisanal brand for high-end market entry.",
             link: "/portfolio-ousadia",
-            visual: "url('/projects/ousadia/moodboard.jpg') center/cover"
+            visual: "url('/projects/ousadia/moodboard.webp') center/cover"
         },
         {
             title: "AI-Enhanced Product Imagery",
             category: "AI Creations",
             description: "Reducing content production costs by 70% while improving campaign CTR through AI-optimised visual assets.",
             link: "/portfolio-ai-enhanced",
-            visual: "url('/projects/ai-enhanced/cooked ox cheek.jpg') center/cover"
+            visual: "url('/projects/ai-enhanced/cooked ox cheek.webp') center/cover"
         },
         {
             title: "AI Product Photography",

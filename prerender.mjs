@@ -69,12 +69,23 @@ for (const route of routes) {
 writeFileSync(join(__dirname, 'dist/404.html'), await renderPage(notFoundPath))
 console.log(`Pre-rendered: ${notFoundPath} -> dist/404.html`)
 
-// Generate sitemap.xml. No <lastmod>: we don't track real per-route change dates,
-// and stamping every URL with the build date is misleading to crawlers.
+// Generate sitemap.xml. <lastmod> is the real date of the last commit that
+// touched each route's page component, generated into src/data/route-dates.json
+// by scripts/route-dates.mjs. It is read from that file rather than from git
+// here, because Vercel builds from a shallow clone where `git log` for an older
+// file comes back empty. A route missing from the file simply omits the field:
+// no date is better than a wrong one.
+const routeDates = JSON.parse(readFileSync(join(__dirname, 'src/data/route-dates.json'), 'utf-8'))
+const distinct = new Set(routes.map(r => routeDates[r]).filter(Boolean))
+if (distinct.size === 1) {
+  console.warn('Warning: every URL would carry the same lastmod, which crawlers ignore. Re-run scripts/route-dates.mjs.')
+}
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes.map(r => `  <url>
-    <loc>${BASE_URL}${r === '/' ? '' : r}</loc>
+    <loc>${BASE_URL}${r === '/' ? '' : r}</loc>${routeDates[r] ? `
+    <lastmod>${routeDates[r]}</lastmod>` : ''}
     <changefreq>monthly</changefreq>
     <priority>${r === '/' ? '1.0' : '0.8'}</priority>
   </url>`).join('\n')}

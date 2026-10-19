@@ -105,10 +105,9 @@ export default function CaseStudyBodysurfSchool() {
                     }}
                 >
                     <img
-                        src="/bodysurf-desktop-mobile.png"
+                        src="/bodysurf-desktop-mobile.webp"
                         alt="The Bodysurf School website on desktop and mobile showing the corporate page and booking cart"
-                        style={{ width: "100%", display: "block" }}
-                    />
+                        style={{ width: "100%", display: "block" }} width={1200} height={800} loading="lazy" decoding="async" />
                 </div>
 
                 {/* Strategy Section */}
@@ -227,10 +226,9 @@ export default function CaseStudyBodysurfSchool() {
                         }}
                     >
                         <img
-                            src="/bodysurf-mobile-screens.png"
+                            src="/bodysurf-mobile-screens.webp"
                             alt="Four mobile screens of The Bodysurf School website showing lessons, locations and booking flows"
-                            style={{ width: "100%", display: "block" }}
-                        />
+                            style={{ width: "100%", display: "block" }} width={1200} height={800} loading="lazy" decoding="async" />
                     </div>
                 </section>
 

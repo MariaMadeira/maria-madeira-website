@@ -39,7 +39,7 @@ export default function Navbar() {
             <div className="container">
                 <div className="navbar-content">
                     <Link to="/" className="nav-logo" onClick={() => setIsOpen(false)}>
-                        <img src="/favicon.png" alt="" style={{ height: '40px', width: '40px', objectFit: 'contain', mixBlendMode: 'multiply', flexShrink: 0 }} />
+                        <img src="/logo-80.png" alt="" width="80" height="80" style={{ height: '40px', width: '40px', objectFit: 'contain', mixBlendMode: 'multiply', flexShrink: 0 }} />
                         <span className="nav-logo-text" style={{ fontSize: '1.2rem', letterSpacing: '0.1em' }}>MARIA MADEIRA</span>
                     </Link>
 

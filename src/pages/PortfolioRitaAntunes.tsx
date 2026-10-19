@@ -22,7 +22,7 @@ export default function PortfolioRitaAntunes() {
                 name: "Rita Antunes",
                 description: "Brand identity and visual direction for Rita Antunes Psicologia: a premium clinical practice identity built to convert high-ticket therapy leads.",
                 about: { type: "Organization", name: "Rita Antunes Psicologia" },
-                image: "/projects/rita-antunes/mockup-stationery.jpg",
+                image: "/projects/rita-antunes/mockup-stationery.webp",
             })}
         />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
@@ -138,7 +138,7 @@ export default function PortfolioRitaAntunes() {
                         style={{ borderRadius: "24px", overflow: "hidden", border: "1px solid var(--border-color)" }}
                     >
                         <img
-                            src={`${assetPath}moodboard.jpg`}
+                            src={`${assetPath}moodboard.webp`}
                             alt="Moodboard and Concept"
                             style={{ width: "100%", display: "block" }}
                             onError={(e) => {
@@ -148,8 +148,7 @@ export default function PortfolioRitaAntunes() {
                                     e.currentTarget.parentElement.style.background = '#f5f5f5';
                                     e.currentTarget.parentElement.innerHTML = '<p style="text-align:center; color:#999">Moodboard Asset Not Found</p>';
                                 }
-                            }}
-                        />
+                            }} width={1200} height={800} loading="lazy" decoding="async" />
                     </div>
                 </section>
 
@@ -178,7 +177,7 @@ export default function PortfolioRitaAntunes() {
                         style={{ borderRadius: "24px", overflow: "hidden", border: "1px solid var(--border-color)", background: "white", padding: "2rem" }}
                     >
                         <img
-                            src={`${assetPath}logo-system.jpg`}
+                            src={`${assetPath}logo-system.webp`}
                             alt="Logo System"
                             style={{ width: "100%", display: "block" }}
                             onError={(e) => {
@@ -188,8 +187,7 @@ export default function PortfolioRitaAntunes() {
                                     e.currentTarget.parentElement.style.background = '#f5f5f5';
                                     e.currentTarget.parentElement.innerHTML = '<p style="text-align:center; color:#999">Logo System Asset Not Found</p>';
                                 }
-                            }}
-                        />
+                            }} width={1200} height={800} loading="lazy" decoding="async" />
                     </div>
                 </section>
 
@@ -263,13 +261,12 @@ export default function PortfolioRitaAntunes() {
                         {/* Binate - Heading */}
                         <div style={{ textAlign: "center" }}>
                             <img
-                                src={`${assetPath}typo.png`}
+                                src={`${assetPath}typo.webp`}
                                 alt="Typography: Binate and Balgin"
                                 style={{ width: "100%", maxWidth: "800px", display: "block", margin: "0 auto" }}
                                 onError={(e) => {
                                     e.currentTarget.style.display = 'none';
-                                }}
-                            />
+                                }} width={1200} height={800} loading="lazy" decoding="async" />
                         </div>
                     </div>
                 </section>
@@ -299,7 +296,7 @@ export default function PortfolioRitaAntunes() {
                         style={{ borderRadius: "24px", overflow: "hidden", border: "1px solid var(--border-color)", background: "white" }}
                     >
                         <img
-                            src={`${assetPath}pattern.jpg`}
+                            src={`${assetPath}pattern.webp`}
                             alt="Brand Pattern"
                             style={{ width: "100%", display: "block" }}
                             onError={(e) => {
@@ -309,8 +306,7 @@ export default function PortfolioRitaAntunes() {
                                     e.currentTarget.parentElement.style.background = '#f5f5f5';
                                     e.currentTarget.parentElement.innerHTML = '<p style="text-align:center; color:#999">Pattern Asset Not Found</p>';
                                 }
-                            }}
-                        />
+                            }} width={1200} height={800} loading="lazy" decoding="async" />
                     </div>
                 </section>
 
@@ -336,10 +332,10 @@ export default function PortfolioRitaAntunes() {
                     </p>
                     <div className="grid-2" style={{ gap: "2rem" }}>
                         <div style={{ borderRadius: "20px", overflow: "hidden", border: "1px solid var(--border-color)" }}>
-                            <img src={`${assetPath}mockup-cards.jpg`} alt="Business Card mockup" style={{ width: "100%", display: "block" }} />
+                            <img src={`${assetPath}mockup-cards.webp`} alt="Business Card mockup" style={{ width: "100%", display: "block" }} width={1200} height={800} loading="lazy" decoding="async" />
                         </div>
                         <div style={{ borderRadius: "20px", overflow: "hidden", border: "1px solid var(--border-color)" }}>
-                            <img src={`${assetPath}mockup-stationery.jpg`} alt="Stationery mockup" style={{ width: "100%", display: "block" }} />
+                            <img src={`${assetPath}mockup-stationery.webp`} alt="Stationery mockup" style={{ width: "100%", display: "block" }} width={1200} height={800} loading="lazy" decoding="async" />
                         </div>
                     </div>
                 </section>

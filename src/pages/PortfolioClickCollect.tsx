@@ -115,15 +115,14 @@ export default function PortfolioClickCollect() {
                         overflow: "hidden"
                     }}>
                         <img
-                            src="/projects/click-collect/app-mockups.png"
+                            src="/projects/click-collect/app-mockups.webp"
                             alt="Click & Collect app screens"
                             style={{
                                 width: "100%",
                                 maxWidth: "800px",
                                 display: "block",
                                 filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.3))"
-                            }}
-                        />
+                            }} width={1200} height={800} loading="lazy" decoding="async" />
                     </div>
                 </section>
 
@@ -179,10 +178,9 @@ export default function PortfolioClickCollect() {
                         }}
                     >
                         <img
-                            src="/projects/click-collect/app-mockups.png"
+                            src="/projects/click-collect/app-mockups.webp"
                             alt="App screens: homepage, categories, checkout"
-                            style={{ width: "100%", display: "block" }}
-                        />
+                            style={{ width: "100%", display: "block" }} width={1200} height={800} loading="lazy" decoding="async" />
                         <div className="app-labels-row" style={{
                             display: "grid",
                             gridTemplateColumns: "repeat(3, 1fr)",
@@ -318,10 +316,9 @@ export default function PortfolioClickCollect() {
                         }}
                     >
                         <img
-                            src="/projects/click-collect/campaign.png"
+                            src="/projects/click-collect/campaign.webp"
                             alt="Click & Collect campaign: Order in seconds, pick up in minutes"
-                            style={{ width: "100%", display: "block" }}
-                        />
+                            style={{ width: "100%", display: "block" }} width={840} height={415} loading="lazy" decoding="async" />
                         <div style={{
                             background: "white",
                             padding: "1.25rem 2rem",
