@@ -1856,12 +1856,15 @@ select:focus {
   margin-top: 0.5rem;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--accent-secondary);
+  /* The deep brown rather than --accent-secondary: at 0.85rem the accent is
+     2.91:1 on the page background, and these are the links that have to be
+     trusted. */
+  color: var(--color-dark-brown);
   transition: gap 0.2s ease, color 0.2s ease;
 }
 
 .credential-verify:hover {
-  color: var(--accent-hover);
+  color: var(--color-dark-brown-hover);
   gap: 10px;
 }
 

@@ -218,8 +218,8 @@ export default function ServicesEmailMarketing() {
                     <p style={{ color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8, marginBottom: "2.5rem" }}>
                         Lifecycle flows that sell on autopilot, segmentation that sends the right message to the right customer, and the deliverability discipline that keeps it all landing in the inbox.
                     </p>
+                    {/* The eyebrow above the H1 already says Klaviyo Partner. */}
                     <p className="trust-line" style={{ marginBottom: "2rem" }}>
-                        Klaviyo Partner.{" "}
                         <a href={PRACTITIONER_URL} target="_blank" rel="noopener">
                             Klaviyo Practitioner certified
                         </a>.

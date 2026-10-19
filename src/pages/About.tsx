@@ -155,9 +155,9 @@ export default function About() {
 
                         {/* Tools & Platforms Section */}
                         <div style={{ marginTop: '2rem' }}>
-                            <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
+                            <h2 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
                                 Tools & Platforms
-                            </h3>
+                            </h2>
                             <div className="tools-grid">
                                 {tools.map((tool, i) => (
                                     <span key={i} className="tool-badge" style={{ opacity: 0, transform: 'translateY(10px)', transition: `opacity 0.4s ease ${i * 0.05}s, transform 0.4s ease ${i * 0.05}s`, animation: `fadeIn 0.4s ease ${i * 0.05 + 0.3}s forwards` }}>
