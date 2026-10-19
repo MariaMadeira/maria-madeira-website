@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, Clock, Check } from "lucide-react";
 import Seo from "../components/Seo";
+import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 import AuthorBio from "../components/AuthorBio";
 
 const SITE_URL = "https://mariamadeira.com";
@@ -345,6 +346,14 @@ export default function BlogBestAeoAgencies() {
                 <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", fontStyle: "italic", lineHeight: 1.7, marginTop: "3rem" }}>
                     Last updated: {PUBLISHED_HUMAN}. This list will be revised as the European AEO market matures; corrections and suggested additions are welcome via <Link to="/contact" style={linkStyle}>contact</Link>.
                 </p>
+
+                <RelatedLinks
+                    className="related-links--open"
+                    items={[
+                        { kicker: RELATED.reading, to: "/case-study-bodysurf-school", label: "AEO foundations built into a new site" },
+                        { kicker: RELATED.reading, to: "/blog/chatgpt-ads-europe", label: "Organic answers versus ChatGPT Ads" },
+                    ]}
+                />
 
                 <AuthorBio />
             </article>

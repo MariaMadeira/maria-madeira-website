@@ -1478,6 +1478,17 @@ select:focus {
   border-bottom: 1px solid var(--border-color);
 }
 
+.related-links--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Blog posts and portfolio pages: the block that follows (author bio, footer
+   CTA) already draws a top rule, which closes this one. */
+.related-links--open {
+  margin: 3.5rem 0 0;
+  border-bottom: none;
+}
+
 @media (max-width: 600px) {
   .related-links {
     grid-template-columns: 1fr;

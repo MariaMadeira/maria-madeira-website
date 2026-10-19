@@ -2,6 +2,7 @@ import { ArrowLeft, CheckCircle2, Megaphone, Monitor, Mail } from "lucide-react"
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Seo from "../components/Seo";
+import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 
 export default function PortfolioAIEnhanced() {
     useEffect(() => {
@@ -340,6 +341,15 @@ export default function PortfolioAIEnhanced() {
                         </div>
                     </div>
                 </section>
+
+                <RelatedLinks
+                    className="related-links--open"
+                    items={[
+                        { kicker: RELATED.work, to: "/portfolio-ai-product-photography", label: "AI product photography" },
+                        { kicker: RELATED.reading, to: "/blog/ai-product-descriptions-food-brands", label: "AI product descriptions, done safely" },
+                        { kicker: RELATED.work, to: "/portfolio-email-marketing", label: "Email campaigns for the same brand" },
+                    ]}
+                />
 
                 {/* Footer CTA */}
                 <div

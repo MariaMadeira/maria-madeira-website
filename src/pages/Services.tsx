@@ -2,6 +2,7 @@ import { TrendingUp, Mail, BarChart, Cpu, Maximize, ArrowRight, ArrowRightLeft, 
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { SITE_URL } from "../lib/schema";
+import { PAID_ADS_SERVICE } from "../lib/links";
 
 // Matches the BreadcrumbList each child service page already carries, so the
 // hub is not the one rung missing from the trail.
@@ -52,7 +53,7 @@ export default function Services() {
             icon: <BarChart size={40} />,
             title: "Paid Advertising",
             description: "Media buying and campaign management across Meta, Google, TikTok, and more. Data-driven allocation to maximise Return on Ad Spend (ROAS).",
-            link: "/case-study-google-ads",
+            link: PAID_ADS_SERVICE,
         },
         {
             icon: <Cpu size={40} />,

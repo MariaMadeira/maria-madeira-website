@@ -2,6 +2,7 @@ import { ArrowLeft, CheckCircle2, Mail, RefreshCw, ShoppingCart, Star, Users, Za
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Seo from "../components/Seo";
+import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 
 export default function PortfolioEmailMarketing() {
     useEffect(() => {
@@ -602,6 +603,15 @@ export default function PortfolioEmailMarketing() {
                         </div>
                     </div>
                 </section>
+
+                <RelatedLinks
+                    className="related-links--open"
+                    items={[
+                        { kicker: RELATED.service, to: "/services/email-marketing", label: "Email marketing and Klaviyo consulting" },
+                        { kicker: RELATED.work, to: "/case-study-email", label: "£134K from email in 12 months" },
+                        { kicker: RELATED.work, to: "/portfolio-ai-enhanced", label: "AI-enhanced imagery for the same brand" },
+                    ]}
+                />
 
                 {/* Footer CTA */}
                 <div

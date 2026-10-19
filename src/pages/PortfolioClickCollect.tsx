@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowRight, CheckCircle2, ExternalLink } from "lucide-react"
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import Seo from "../components/Seo";
+import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 
 export default function PortfolioClickCollect() {
     useEffect(() => {
@@ -490,6 +491,13 @@ export default function PortfolioClickCollect() {
                         </div>
                     </div>
                 </section>
+
+                <RelatedLinks
+                    className="related-links--open"
+                    items={[
+                        { kicker: RELATED.service, to: "/services", label: "Growth strategy and product experiments" },
+                    ]}
+                />
 
                 {/* Footer CTA */}
                 <div

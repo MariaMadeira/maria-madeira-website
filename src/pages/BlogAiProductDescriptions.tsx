@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, Clock, ArrowRight, Sparkles } from "lucide-react";
 import Seo from "../components/Seo";
+import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 import AuthorBio from "../components/AuthorBio";
 
 const SITE_URL = "https://mariamadeira.com";
@@ -234,6 +235,14 @@ export default function BlogAiProductDescriptions() {
                         Or read more about my <Link to="/services/aeo" style={linkStyle}>AEO consultancy for food and drink e-commerce</Link>.
                     </p>
                 </div>
+
+                <RelatedLinks
+                    className="related-links--open"
+                    items={[
+                        { kicker: RELATED.reading, to: "/portfolio-ai-product-photography", label: "AI product photography for a UK food brand" },
+                        { kicker: RELATED.reading, to: "/case-study-seo", label: "AI search impressions up 2.2x" },
+                    ]}
+                />
 
                 <AuthorBio />
             </article>

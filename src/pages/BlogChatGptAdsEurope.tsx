@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Clock, Calendar, User, MapPin, Wallet, Layout, Lock, Shield } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import Seo from "../components/Seo";
+import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 
 const SITE_URL = "https://mariamadeira.com";
 const PATH = "/blog/chatgpt-ads-europe";
@@ -419,6 +420,14 @@ export default function BlogChatGptAdsEurope() {
                 <p style={P}>
                     If you want to <Link to="/services/aeo" style={linkStyle}>know where your brand stands</Link> before a competitor pays to sit under your answer, I offer a <Link to="/contact" style={linkStyle}>20-minute diagnosis call</Link>. I will show you what ChatGPT says about your category today, with your brand in it or not.
                 </p>
+
+                <RelatedLinks
+                    className="related-links--open"
+                    items={[
+                        { kicker: RELATED.reading, to: "/blog/what-is-aeo", label: "What is AEO?" },
+                        { kicker: RELATED.reading, to: "/case-study-seo", label: "AI search impressions up 2.2x" },
+                    ]}
+                />
 
                 {/* Approved sign-off from the article copy, in the shared AuthorBio treatment. */}
                 <div style={{ marginTop: "3.5rem", paddingTop: "2rem", borderTop: "1px solid var(--border-color)", color: "var(--text-secondary)", fontStyle: "italic", lineHeight: 1.7 }}>

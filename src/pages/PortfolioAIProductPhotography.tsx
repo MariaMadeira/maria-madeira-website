@@ -2,6 +2,7 @@ import { ArrowLeft, CheckCircle2, Monitor, Mail, Megaphone, Share2 } from "lucid
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Seo from "../components/Seo";
+import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 
 export default function PortfolioAIProductPhotography() {
     useEffect(() => {
@@ -347,6 +348,14 @@ export default function PortfolioAIProductPhotography() {
                         </div>
                     </div>
                 </section>
+
+                <RelatedLinks
+                    className="related-links--open"
+                    items={[
+                        { kicker: RELATED.work, to: "/portfolio-ai-enhanced", label: "AI-enhanced product imagery" },
+                        { kicker: RELATED.reading, to: "/blog/ai-product-descriptions-food-brands", label: "AI product descriptions, done safely" },
+                    ]}
+                />
 
                 {/* Footer CTA */}
                 <div

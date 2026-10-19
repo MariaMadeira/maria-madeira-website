@@ -2,6 +2,7 @@ import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Seo from "../components/Seo";
+import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 import { portfolioJsonLd } from "../lib/schema";
 
 export default function PortfolioRitaAntunes() {
@@ -373,6 +374,14 @@ export default function PortfolioRitaAntunes() {
                         </div>
                     </div>
                 </section>
+
+                <RelatedLinks
+                    className="related-links--open"
+                    items={[
+                        { kicker: RELATED.service, to: "/services/websites", label: "Website strategy and build" },
+                        { kicker: RELATED.work, to: "/portfolio-ousadia", label: "Ousadia: brand identity" },
+                    ]}
+                />
 
                 {/* Footer CTA */}
                 <div

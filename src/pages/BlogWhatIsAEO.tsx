@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, Clock } from "lucide-react";
 import Seo from "../components/Seo";
+import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 import AuthorBio from "../components/AuthorBio";
 
 const SITE_URL = "https://mariamadeira.com";
@@ -194,6 +195,14 @@ export default function BlogWhatIsAEO() {
                         </div>
                     ))}
                 </div>
+
+                <RelatedLinks
+                    className="related-links--open"
+                    items={[
+                        { kicker: RELATED.reading, to: "/blog/chatgpt-ads-europe", label: "Inside ChatGPT Ads in Europe" },
+                        { kicker: RELATED.reading, to: "/blog/ai-product-descriptions-food-brands", label: "AI product descriptions, done safely" },
+                    ]}
+                />
 
                 <AuthorBio />
             </article>
