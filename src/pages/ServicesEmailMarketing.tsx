@@ -4,61 +4,19 @@ import { Search, Repeat, Users, LineChart, ArrowRight, Mail, Quote } from "lucid
 import Seo from "../components/Seo";
 import KlaviyoPartnerBadge from "../components/KlaviyoPartnerBadge";
 import { PRACTITIONER_URL } from "../lib/credentials";
+import { useLang } from "../hooks/useLang";
+import COPY from "../i18n/emailMarketing";
 
+/* Renders /services/email-marketing and /pt/servicos/email-marketing from
+   src/i18n/emailMarketing.ts. Icons, bar widths, scores and links live here;
+   every word lives in the copy file. */
 const SITE_URL = "https://mariamadeira.com";
 
-/* ── Hero stats (verified, already live on the site) ──────────────── */
-const HERO_STATS = [
-    { value: "£134K", label: "Email-attributed revenue", detail: "Last 12 months, +88.9% YoY" },
-    { value: "50.4%", label: "Campaign open rate", detail: "78th percentile industry benchmark" },
-    { value: "Over a third", label: "Of total store revenue", detail: "Driven by email over 12 months" },
-];
+/* ── Compounding-curve bar widths, in the copy's order ── */
+const CURVE_PCT = [[56, 100], [25, 100]];
 
-/* ── Quotable definition (mirrors the AEO "What is AEO?" callout) ──── */
-const EMAIL_DEFINITION =
-    "Lifecycle email marketing is owned-channel revenue built on automated flows, segmentation and campaigns, not one-off newsletters. It sends the right message to the right customer at the right moment, and it is measured in attributed revenue rather than opens.";
-
-/* ── Compounding-curve proof (verified long-arc data, always visible) ── */
-const CURVE = [
-    { title: "Campaign open rate", from: { label: "2021–22", value: "28%", pct: 56 }, to: { label: "2025", value: "50.4%", pct: 100 }, note: "78th percentile against the industry benchmark" },
-    { title: "Email-attributed revenue", from: { label: "2021", value: "£33K", pct: 25 }, to: { label: "2025", value: "£134K", pct: 100 }, note: "A 4x increase over the engagement" },
-];
-
-/* ── "What I do" (quotable, always static) ─────────────────────────── */
-const WHAT_I_DO = [
-    { icon: <Search size={26} />, title: "Klaviyo Audit", line: "Flows, segments, deliverability and revenue attribution reviewed against benchmarks." },
-    { icon: <Repeat size={26} />, title: "Lifecycle Flows", line: "Welcome, abandonment, post-purchase, replenishment and win-back sequences that sell on autopilot." },
-    { icon: <Users size={26} />, title: "Campaigns & Segmentation", line: "The right message to the right slice of the list, protecting deliverability as you scale." },
-    { icon: <LineChart size={26} />, title: "Measurement", line: "Attributed revenue, flow performance and list health tracked every month." },
-];
-
-/* ── FAQ (drives the visible section and the FAQPage schema) ───────── */
-const FAQS: { q: string; a: string }[] = [
-    {
-        q: "What does an email marketing consultant do?",
-        a: "An email marketing consultant builds and optimises the owned channel that turns subscribers into repeat revenue: lifecycle automations, segmented campaigns, and the deliverability and measurement behind them. The aim is attributed revenue that compounds over time, not just a longer list or higher open rates.",
-    },
-    {
-        q: "Why Klaviyo?",
-        a: "Klaviyo is built for e-commerce. It connects directly to your store data, so flows and segments can react to real browsing and purchase behaviour, and it attributes revenue back to each message. That depth of data and native integration is why I build most lifecycle programs on it.",
-    },
-    {
-        q: "How much revenue should email generate for an e-commerce brand?",
-        a: "There is no single number, but for a well-built lifecycle program email is usually one of a store's top channels, often a quarter or more of total revenue. For one brand I work with, email reached over a third of total store revenue over the last 12 months.",
-    },
-    {
-        q: "What email flows should every store have?",
-        a: "At minimum: a welcome series for new subscribers, browse and cart abandonment to recover lost intent, a post-purchase flow to earn the second order, and a win-back for lapsing customers. Replenishment flows help for consumable products. These automations do the selling on autopilot, which is why they earn more per send than campaigns.",
-    },
-    {
-        q: "How long until email marketing shows results?",
-        a: "Flows start capturing revenue as soon as they go live, often within the first few weeks, because they trigger on behaviour that is already happening. The compounding gains (higher open rates, sharper segmentation and a larger engaged list) build over months. For context, one program grew email-attributed revenue from £33K in 2021 to £134K in 2025.",
-    },
-    {
-        q: "How much does a Klaviyo consultant cost?",
-        a: "Klaviyo setup with core flows starts from £1,200, and monthly email marketing from £750 a month. The final price depends on the size of your list, how many flows are needed, and how many campaigns go out each month.",
-    },
-];
+/* ── "What I do" icons, in the copy's order ── */
+const WHAT_ICONS = [<Search size={26} />, <Repeat size={26} />, <Users size={26} />, <LineChart size={26} />];
 
 const EMAIL_JSON_LD = {
     "@context": "https://schema.org",
@@ -69,7 +27,7 @@ const EMAIL_JSON_LD = {
             "name": "Email Marketing & Klaviyo Consulting",
             "serviceType": "Email Marketing and Klaviyo Consulting",
             "url": `${SITE_URL}/services/email-marketing`,
-            "description": EMAIL_DEFINITION,
+            "description": COPY.en.definition,
             "provider": { "@id": `${SITE_URL}/#person` },
             "areaServed": "Worldwide",
             "offers": [
@@ -80,7 +38,7 @@ const EMAIL_JSON_LD = {
         {
             "@type": "FAQPage",
             "@id": `${SITE_URL}/services/email-marketing#faq`,
-            "mainEntity": FAQS.map((f) => ({
+            "mainEntity": COPY.en.faqs.map((f) => ({
                 "@type": "Question",
                 "name": f.q,
                 "acceptedAnswer": { "@type": "Answer", "text": f.a },
@@ -97,33 +55,75 @@ const EMAIL_JSON_LD = {
     ],
 };
 
-/* ── "Is your email program underperforming?" mini-check ───────────── */
-const CHECK: { prompt: string; options: { label: string; score: number }[] }[] = [
-    { prompt: "Is email generating less than 25% of your store revenue?", options: [{ label: "Yes", score: 0 }, { label: "Not sure", score: 1 }, { label: "No", score: 2 }] },
-    { prompt: "Are your flows limited to a basic welcome email?", options: [{ label: "Yes", score: 0 }, { label: "Somewhat", score: 1 }, { label: "No, I run full lifecycle flows", score: 2 }] },
-    { prompt: "Has your open rate been flat or falling this year?", options: [{ label: "Yes", score: 0 }, { label: "Not sure", score: 1 }, { label: "No, it's climbing", score: 2 }] },
-];
-const VERDICTS = [
-    { min: 5, label: "Solid foundation", copy: "Email is already pulling its weight. The opportunity now is optimisation and scale: sharper segmentation, more flows, and protecting deliverability as the list grows." },
-    { min: 3, label: "Room to compound", copy: "The basics are in place, but revenue is leaking between the gaps. Fuller lifecycle flows and smarter segmentation can lift email from a nice-to-have into a top channel." },
-    { min: 0, label: "Underperforming", copy: "Email is leaving significant revenue on the table right now. The good news: the fixes (flows, segmentation and deliverability) are well understood and compound quickly." },
-];
+/* The Portuguese page: no offers, the page's language and a Portuguese trail. */
+const PT_URL = `${SITE_URL}/pt/servicos/email-marketing`;
+const PT_JSON_LD = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": `${PT_URL}#webpage`,
+            "url": PT_URL,
+            "name": "Consultora de email marketing e Klaviyo",
+            "description": COPY.pt.description,
+            "inLanguage": "pt-PT",
+            "isPartOf": { "@id": `${SITE_URL}/#website` },
+            "mainEntity": { "@id": `${PT_URL}#service` },
+        },
+        {
+            "@type": "Service",
+            "@id": `${PT_URL}#service`,
+            "name": "Email marketing e consultoria Klaviyo",
+            "serviceType": "Email marketing e consultoria Klaviyo",
+            "url": PT_URL,
+            "description": COPY.pt.definition,
+            "provider": { "@id": `${SITE_URL}/#person` },
+            "areaServed": ["PT", "GB"],
+        },
+        {
+            "@type": "FAQPage",
+            "@id": `${PT_URL}#faq`,
+            "inLanguage": "pt-PT",
+            "mainEntity": COPY.pt.faqs.map((f) => ({
+                "@type": "Question",
+                "name": f.q,
+                "acceptedAnswer": { "@type": "Answer", "text": f.a },
+            })),
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
+                { "@type": "ListItem", "position": 2, "name": "Serviços", "item": `${SITE_URL}/pt/servicos` },
+                { "@type": "ListItem", "position": 3, "name": "Email marketing e consultoria Klaviyo", "item": PT_URL },
+            ],
+        },
+    ],
+};
+
+/* ── "Is your email program underperforming?" mini-check: scores per option
+       and the minimum score of each verdict, in the copy's order ── */
+const SCORES = [[0, 1, 2], [0, 1, 2], [0, 1, 2]];
+const VERDICT_MIN = [5, 3, 0];
 
 function EmailCheck() {
+    const { lang, to } = useLang();
+    const c = COPY[lang].check;
     const [step, setStep] = useState(-1);
     const [scores, setScores] = useState<number[]>([]);
     const total = scores.reduce((a, b) => a + b, 0);
-    const verdict = VERDICTS.find((v) => total >= v.min) ?? VERDICTS[VERDICTS.length - 1];
+    const vi = VERDICT_MIN.findIndex((min) => total >= min);
+    const verdict = c.verdicts[vi === -1 ? c.verdicts.length - 1 : vi];
     const answer = (sc: number) => { setScores([...scores, sc]); setStep(step + 1); };
     const reset = () => { setScores([]); setStep(-1); };
 
     return (
         <div className="card glass-panel" style={{ maxWidth: "680px", margin: "0 auto", padding: "clamp(1.75rem, 4vw, 3rem)", display: "flex", flexDirection: "column" }}>
-            {step >= 0 && step < CHECK.length && (
+            {step >= 0 && step < c.questions.length && (
                 <div style={{ marginBottom: "2rem" }}>
-                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>Question {step + 1} of {CHECK.length}</p>
+                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>{c.questionOf[0]}{step + 1}{c.questionOf[1]}{c.questions.length}</p>
                     <div style={{ display: "flex", gap: "0.4rem" }}>
-                        {CHECK.map((_, i) => (
+                        {c.questions.map((_, i) => (
                             <span key={i} style={{ flex: 1, height: "4px", borderRadius: "2px", background: i <= step ? "var(--accent-secondary)" : "var(--border-color)", transition: "background 0.4s ease" }} />
                         ))}
                     </div>
@@ -132,21 +132,21 @@ function EmailCheck() {
 
             {step === -1 && (
                 <div key="intro" className="animate-fade-in" style={{ display: "flex", flexDirection: "column" }}>
-                    <h3 style={{ fontSize: "1.6rem", marginBottom: "0.75rem" }}>Is your email program <span className="text-gradient">underperforming</span>?</h3>
+                    <h3 style={{ fontSize: "1.6rem", marginBottom: "0.75rem" }}>{c.titleLead}<span className="text-gradient">{c.titleAccent}</span>{c.titleTail}</h3>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
-                        Three quick questions on how hard your email channel is working. Instant and private. Nothing leaves your browser.
+                        {c.intro}
                     </p>
                     <button onClick={() => setStep(0)} className="btn btn-primary" style={{ alignSelf: "flex-start", padding: "0.9rem 2rem" }}>
-                        Start the check <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                        {c.start} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                     </button>
                 </div>
             )}
 
-            {step >= 0 && step < CHECK.length && (
+            {step >= 0 && step < c.questions.length && (
                 <div key={step} className="animate-fade-in" style={{ display: "flex", flexDirection: "column" }}>
-                    <h3 style={{ fontSize: "1.4rem", lineHeight: 1.3, marginBottom: "1.75rem" }}>{CHECK[step].prompt}</h3>
+                    <h3 style={{ fontSize: "1.4rem", lineHeight: 1.3, marginBottom: "1.75rem" }}>{c.questions[step].prompt}</h3>
                     <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                        {CHECK[step].options.map((o) => (
+                        {c.questions[step].options.map((label, oi) => ({ label, score: SCORES[step][oi] })).map((o) => (
                             <button key={o.label} onClick={() => answer(o.score)} className="em-option" style={{ textAlign: "left", padding: "1rem 1.25rem", background: "var(--bg-primary)", border: "1px solid var(--border-color)", borderRadius: "12px", color: "var(--text-primary)", fontSize: "1rem", fontWeight: 500, cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}>
                                 {o.label}
                                 <ArrowRight size={16} className="em-option-arrow" />
@@ -156,16 +156,16 @@ function EmailCheck() {
                 </div>
             )}
 
-            {step >= CHECK.length && (
+            {step >= c.questions.length && (
                 <div key="result" className="animate-fade-in" style={{ display: "flex", flexDirection: "column" }}>
-                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>Your result</p>
+                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>{c.yourResult}</p>
                     <h3 style={{ fontSize: "1.9rem", lineHeight: 1.2, marginBottom: "1rem" }}><span className="text-gradient">{verdict.label}</span></h3>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "2rem" }}>{verdict.copy}</p>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
-                        <Link to="/contact" className="btn btn-primary" style={{ padding: "0.9rem 2rem" }}>
-                            Get your email audit: Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                        <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "0.9rem 2rem" }}>
+                            {c.resultCta} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                         </Link>
-                        <button onClick={reset} style={{ background: "transparent", border: "none", color: "var(--text-secondary)", cursor: "pointer", fontSize: "0.9rem", fontWeight: 500, textDecoration: "underline", textUnderlineOffset: "3px" }}>Start over</button>
+                        <button onClick={reset} style={{ background: "transparent", border: "none", color: "var(--text-secondary)", cursor: "pointer", fontSize: "0.9rem", fontWeight: 500, textDecoration: "underline", textUnderlineOffset: "3px" }}>{c.restart}</button>
                     </div>
                 </div>
             )}
@@ -174,14 +174,17 @@ function EmailCheck() {
 }
 
 export default function ServicesEmailMarketing() {
+    const { lang, to } = useLang();
+    const t = COPY[lang];
+    const x = t.ptExtras;
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="Email Marketing Consultant | Klaviyo | Maria Madeira"
-                description="Klaviyo and email marketing consultant building lifecycle flows, segmentation and campaigns that grow attributed email revenue for brands that sell online."
-                path="/services/email-marketing"
+                title={t.title}
+                description={t.description}
+                path={t.path}
                 ogImage="/og/og-email.png"
-                jsonLd={EMAIL_JSON_LD}
+                jsonLd={lang === "pt" ? PT_JSON_LD : EMAIL_JSON_LD}
             />
 
             <style>{`
@@ -201,29 +204,29 @@ export default function ServicesEmailMarketing() {
             <section className="em-hero" style={{ marginBottom: "5rem" }}>
                 <div>
                     <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
-                        Email Marketing & Klaviyo Consulting
+                        {t.eyebrow}
                     </p>
                     <div style={{ marginBottom: "1.25rem" }}>
                         <KlaviyoPartnerBadge eager />
                     </div>
                     <h1 className="section-title" style={{ marginBottom: "1.5rem", textAlign: "left" }}>
-                        Turn email into a <span className="text-gradient">compounding revenue channel</span>, not a newsletter chore
+                        {t.h1Lead}<span className="text-gradient">{t.h1Accent}</span>{t.h1Tail}
                     </h1>
                     <p style={{ color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8, marginBottom: "2.5rem" }}>
-                        Lifecycle flows that sell on autopilot, segmentation that sends the right message to the right customer, and the deliverability discipline that keeps it all landing in the inbox.
+                        {t.intro}
                     </p>
                     {/* The badge above the H1 already says Klaviyo Partner. */}
                     <p className="trust-line" style={{ marginBottom: "2rem" }}>
-                        <a href={PRACTITIONER_URL} target="_blank" rel="noopener">
-                            Klaviyo Practitioner certified
-                        </a>.
+                        {t.trustPre}<a href={PRACTITIONER_URL} target="_blank" rel="noopener">
+                            {t.trustLink}
+                        </a>{t.trustPost}
                     </p>
-                    <Link to="/contact" className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
-                        Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                    <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
+                        {t.cta} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                     </Link>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                    {HERO_STATS.map((st) => (
+                    {t.heroStats.map((st) => (
                         <div key={st.label} className="card" style={{ background: "var(--bg-primary)", padding: "1.5rem" }}>
                             <div className="text-gradient-accent" style={{ fontSize: "2.2rem", fontWeight: 700, lineHeight: 1 }}>{st.value}</div>
                             <p style={{ fontWeight: 600, margin: "0.5rem 0 0.15rem" }}>{st.label}</p>
@@ -235,10 +238,10 @@ export default function ServicesEmailMarketing() {
 
             {/* What great email looks like */}
             <section style={{ marginBottom: "5rem", maxWidth: "820px", margin: "0 auto 5rem" }}>
-                <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1.5rem", textAlign: "center" }}>What great email looks like</h2>
+                <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1.5rem", textAlign: "center" }}>{t.definitionTitle}</h2>
                 <blockquote style={{ background: "var(--accent-glow)", border: "1px solid var(--border-color)", borderLeft: "4px solid var(--accent-secondary)", borderRadius: "16px", padding: "clamp(1.5rem, 4vw, 2.5rem)", margin: 0 }}>
                     <p style={{ fontSize: "1.2rem", lineHeight: 1.7, color: "var(--text-primary)", fontWeight: 500, margin: 0 }}>
-                        {EMAIL_DEFINITION}
+                        {t.definition}
                     </p>
                 </blockquote>
             </section>
@@ -246,16 +249,16 @@ export default function ServicesEmailMarketing() {
             {/* The compounding curve */}
             <section style={{ marginBottom: "5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>The compounding curve</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.curveTitle}</h2>
                     <p style={{ color: "var(--text-secondary)", maxWidth: "600px", margin: "0 auto" }}>
-                        Real figures from one engagement, start to now.
+                        {t.curveSub}
                     </p>
                 </div>
                 <div className="grid-2" style={{ gap: "1.5rem", maxWidth: "820px", margin: "0 auto" }}>
-                    {CURVE.map((c) => (
+                    {t.curve.map((c, ci) => (
                         <div key={c.title} className="card" style={{ padding: "2rem" }}>
                             <h3 style={{ fontSize: "1.15rem", marginBottom: "1.5rem" }}>{c.title}</h3>
-                            {[c.from, c.to].map((row, i) => (
+                            {[c.from, c.to].map((row, i) => ({ ...row, pct: CURVE_PCT[ci][i] })).map((row, i) => (
                                 <div key={row.label} style={{ marginBottom: i === 0 ? "1.1rem" : 0 }}>
                                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.4rem" }}>
                                         <span style={{ fontSize: "0.85rem", color: "var(--text-secondary)" }}>{row.label}</span>
@@ -270,18 +273,39 @@ export default function ServicesEmailMarketing() {
                         </div>
                     ))}
                 </div>
+                {/* Portuguese only (D19 B): three more results under the curve. */}
+                {x && (
+                    <div style={{ maxWidth: "820px", margin: "1.5rem auto 0" }}>
+                        <style>{`
+                            .em-pt-results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+                            @media (max-width: 720px) { .em-pt-results { grid-template-columns: 1fr; } }
+                        `}</style>
+                        <div className="em-pt-results">
+                            {x.results.map((r) => (
+                                <div key={r.value} className="card" style={{ background: "var(--bg-primary)", padding: "1.5rem" }}>
+                                    <div className="text-gradient-accent" style={{ fontSize: "2.2rem", fontWeight: 700, lineHeight: 1 }}>{r.value}</div>
+                                    <p style={{ fontSize: "0.92rem", color: "var(--text-secondary)", lineHeight: 1.55, margin: "0.75rem 0 0" }}>{r.label}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", margin: "1rem 0 0.5rem" }}>{x.source}</p>
+                        <Link to={to("/case-study-email")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.95rem" }}>
+                            {x.caseLink} <ArrowRight size={16} />
+                        </Link>
+                    </div>
+                )}
             </section>
 
             {/* What I do */}
             <section style={{ marginBottom: "5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>What I do</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.whatTitle}</h2>
                 </div>
                 <div className="em-steps">
-                    {WHAT_I_DO.map((s, i) => (
+                    {t.whatIDo.map((s, i) => (
                         <div key={s.title} style={{ textAlign: "center" }}>
                             <div style={{ width: "64px", height: "64px", borderRadius: "50%", background: "var(--bg-primary)", border: "2px solid var(--accent-secondary)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.25rem", color: "var(--accent-secondary)", position: "relative" }}>
-                                {s.icon}
+                                {WHAT_ICONS[i]}
                                 <span style={{ position: "absolute", top: "-8px", right: "-8px", width: "26px", height: "26px", borderRadius: "50%", background: "var(--accent-secondary)", color: "#fff", fontSize: "0.8rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>{i + 1}</span>
                             </div>
                             <h3 style={{ fontSize: "1.1rem", marginBottom: "0.5rem" }}>{s.title}</h3>
@@ -291,6 +315,16 @@ export default function ServicesEmailMarketing() {
                 </div>
             </section>
 
+            {/* Portuguese only (D19 B): who it's for */}
+            {x && (
+                <section style={{ maxWidth: "820px", margin: "0 auto 5rem" }}>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1.5rem", textAlign: "center" }}>{x.whoTitle}</h2>
+                    <blockquote style={{ background: "var(--accent-glow)", border: "1px solid var(--border-color)", borderLeft: "4px solid var(--accent-secondary)", borderRadius: "16px", padding: "clamp(1.5rem, 4vw, 2.5rem)", margin: 0 }}>
+                        <p style={{ fontSize: "1.2rem", lineHeight: 1.7, color: "var(--text-primary)", fontWeight: 500, margin: 0 }}>{x.whoText}</p>
+                    </blockquote>
+                </section>
+            )}
+
             {/* Mini-check */}
             <section style={{ marginBottom: "5rem" }}>
                 <EmailCheck />
@@ -299,24 +333,24 @@ export default function ServicesEmailMarketing() {
             {/* Proof */}
             <section style={{ marginBottom: "5rem", maxWidth: "680px", margin: "0 auto 5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Proof</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.proofTitle}</h2>
                 </div>
-                <Link to="/case-study-email" className="card hover-lift" style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                    <p className="text-gradient-accent" style={{ fontSize: "0.85rem", fontWeight: 700, margin: 0 }}>Case Study</p>
-                    <h3 style={{ margin: 0 }}>Lifecycle email revenue growth</h3>
+                <Link to={to("/case-study-email")} className="card hover-lift" style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                    <p className="text-gradient-accent" style={{ fontSize: "0.85rem", fontWeight: 700, margin: 0 }}>{t.proofEyebrow}</p>
+                    <h3 style={{ margin: 0 }}>{t.proofCardTitle}</h3>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, margin: "0.25rem 0 0" }}>
-                        Flows £48.3K (+82.5% YoY), campaigns £86.1K (+92.6% YoY), and the Welcome Series alone £23.6K. A full Klaviyo lifecycle system rebuilt from the ground up.
+                        {t.proofCardText}
                     </p>
                     <span style={{ marginTop: "0.75rem", display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.9rem" }}>
-                        Read the case study <ArrowRight size={16} />
+                        {t.proofCardLink} <ArrowRight size={16} />
                     </span>
                 </Link>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: "1.5rem 0 0" }}>
-                    The full breakdown of how that system was built, flow by flow, is in the <Link to="/case-study-email" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>email marketing case study</Link>.
+                    {t.proofParaPre}<Link to={to("/case-study-email")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.proofParaLink}</Link>{t.proofParaPost}
                 </p>
                 <p style={{ margin: "1rem 0 0" }}>
-                    <Link to="/blog/klaviyo-flows-vs-campaigns" style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
-                        Klaviyo flows vs campaigns: four years of data <ArrowRight size={16} />
+                    <Link to={to("/blog/klaviyo-flows-vs-campaigns")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
+                        {t.blogLink} <ArrowRight size={16} />
                     </Link>
                 </p>
             </section>
@@ -324,14 +358,14 @@ export default function ServicesEmailMarketing() {
             {/* Pricing */}
             <section style={{ marginBottom: "5rem", maxWidth: "820px", margin: "0 auto 5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Pricing</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.pricingTitle}</h2>
                 </div>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", margin: 0 }}>
-                    Klaviyo setup with core flows starts from £1,200. Monthly email marketing starts from £750 a month. You get a written quote after the first call, once the scope is clear.
+                    {t.pricingText}
                 </p>
                 <p style={{ margin: "1.25rem 0 0" }}>
-                    <Link to="/pricing" style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
-                        See all ways to work with me <ArrowRight size={16} />
+                    <Link to={to("/pricing")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
+                        {t.pricingLink} <ArrowRight size={16} />
                     </Link>
                 </p>
             </section>
@@ -339,10 +373,10 @@ export default function ServicesEmailMarketing() {
             {/* FAQ, all answers visible */}
             <section style={{ marginBottom: "5rem", maxWidth: "820px", margin: "0 auto 5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Frequently asked questions</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.faqTitle}</h2>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-                    {FAQS.map((f) => (
+                    {t.faqs.map((f) => (
                         <div key={f.q} className="card" style={{ padding: "1.75rem" }}>
                             <h3 style={{ fontSize: "1.15rem", marginBottom: "0.75rem", display: "flex", alignItems: "flex-start", gap: "0.6rem" }}>
                                 <Quote size={18} style={{ flexShrink: 0, marginTop: "3px", color: "var(--accent-secondary)" }} /> {f.q}
@@ -358,12 +392,12 @@ export default function ServicesEmailMarketing() {
                 <div style={{ display: "inline-flex", width: "56px", height: "56px", borderRadius: "50%", background: "var(--accent-glow)", alignItems: "center", justifyContent: "center", color: "var(--accent-secondary)", marginBottom: "1.5rem" }}>
                     <Mail size={28} />
                 </div>
-                <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Make email your best-performing channel</h2>
+                <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.ctaTitle}</h2>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1.1rem", maxWidth: "560px", margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
-                    Book a free strategy call and we'll find the revenue your email program is leaving on the table.
+                    {t.ctaText}
                 </p>
-                <Link to="/contact" className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
-                    Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
+                    {t.ctaButton} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                 </Link>
             </section>
         </div>

@@ -1,96 +1,69 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Clock } from "lucide-react";
 import Seo from "../components/Seo";
+import { useLang } from "../hooks/useLang";
+import type { Lang } from "../lib/i18n";
+import COPY from "../i18n/blog";
 
+/* Renders /blog and /pt/blog from src/i18n/blog.ts. */
 const SITE_URL = "https://mariamadeira.com";
 
-export const POSTS = [
-    {
-        slug: "klaviyo-flows-vs-campaigns",
-        title: "Why your automated emails earn more than your campaigns",
-        excerpt: "Automated flows are a small share of sends and a large share of email revenue. What the research says, four years of data from a real UK brand, and the flows to build first.",
-        category: "Email Marketing",
-        readTime: "7 min read",
-        date: "19 October 2026",
-    },
-    {
-        slug: "ai-product-descriptions-food-brands",
-        title: "AI Product Descriptions for Food and Drink Brands: What Can Go Wrong, and How to Do It Safely",
-        excerpt: "A UK food brand let an AI agent write its product descriptions. Here's what went wrong, why it matters more for food, and a safer way to use AI on your product pages.",
-        category: "AI Search",
-        readTime: "5 min read",
-        date: "24 September 2026",
-    },
-    {
-        slug: "chatgpt-ads-europe",
-        title: "Inside ChatGPT Ads: I opened a European advertiser account so you don't have to",
-        excerpt: "ChatGPT Ads is live in 31 European markets. A walkthrough of the signup from the inside: the enforced minimums, the US defaults, the settings that lock permanently, and why AEO still comes first.",
-        category: "Paid Media",
-        readTime: "7 min read",
-        date: "9 September 2026",
-    },
-    {
-        slug: "best-aeo-agencies-ecommerce-europe",
-        title: "The best AEO agencies for e-commerce brands in Europe (2026), and where a consultant fits",
-        excerpt: "A researched shortlist of seven AEO agencies for European e-commerce brands, a comparison table, five vetting questions, and where an independent consultant is the better fit.",
-        category: "AI Search",
-        readTime: "10 min read",
-        date: "14 July 2026",
-    },
-    {
-        slug: "what-is-aeo",
-        title: "What is AEO? Answer Engine Optimisation, explained for brands that sell online",
-        excerpt: "How brands get cited and recommended by ChatGPT, Perplexity, Gemini and Google's AI Overviews, how AEO differs from SEO and GEO, and where to start this week.",
-        category: "AI Search",
-        readTime: "9 min read",
-        date: "13 July 2026",
-    },
-];
+/** The English post list, newest first. The Portuguese twin is COPY.pt.posts. */
+export const POSTS = COPY.en.posts;
 
-const BLOG_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "Blog",
-            "@id": `${SITE_URL}/blog#blog`,
-            "name": "Maria Madeira Blog",
-            "url": `${SITE_URL}/blog`,
-            "description": "Practical writing on e-commerce growth, AI search (AEO), email marketing and paid acquisition.",
-            "author": { "@id": `${SITE_URL}/#person` },
-        },
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
-                { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${SITE_URL}/blog` },
-            ],
-        },
-    ],
-};
+function blogJsonLd(lang: Lang) {
+    const t = COPY[lang];
+    const url = `${SITE_URL}${t.path}`;
+    return {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Blog",
+                "@id": `${url}#blog`,
+                "name": t.schema.name,
+                "url": url,
+                ...(lang === "pt" ? { "inLanguage": "pt-PT" } : {}),
+                "description": t.schema.description,
+                "author": { "@id": `${SITE_URL}/#person` },
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": t.schema.home, "item": lang === "pt" ? `${SITE_URL}/pt` : `${SITE_URL}/` },
+                    { "@type": "ListItem", "position": 2, "name": t.schema.blog, "item": url },
+                ],
+            },
+        ],
+    };
+}
+
+const BLOG_JSON_LD = { en: blogJsonLd("en"), pt: blogJsonLd("pt") };
 
 export default function Blog() {
+    const { lang, to } = useLang();
+    const t = COPY[lang];
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="Blog | Maria Madeira"
-                description="Practical writing on AI search (AEO), email marketing, paid acquisition and e-commerce growth, from strategist Maria Madeira. From the work, not the theory."
-                path="/blog"
-                jsonLd={BLOG_JSON_LD}
+                title={t.title}
+                description={t.description}
+                path={t.path}
+                jsonLd={BLOG_JSON_LD[lang]}
             />
 
             <div style={{ textAlign: "center", marginBottom: "4rem" }}>
                 <span style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem", display: "block" }}>
-                    Thoughts & Strategy
+                    {t.eyebrow}
                 </span>
-                <h1 className="section-title" style={{ marginBottom: "1rem" }}>Blog</h1>
+                <h1 className="section-title" style={{ marginBottom: "1rem" }}>{t.h1}</h1>
                 <p style={{ color: "var(--text-secondary)", maxWidth: "620px", margin: "0 auto", fontSize: "1.1rem", lineHeight: 1.7 }}>
-                    Practical takes on AI search, email marketing and growth. From the work, not the theory.
+                    {t.intro}
                 </p>
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "2rem", maxWidth: "820px", margin: "0 auto" }}>
-                {POSTS.map((post) => (
-                    <Link key={post.slug} to={`/blog/${post.slug}`} className="card hover-lift" style={{ display: "block", padding: "2.5rem" }}>
+                {t.posts.map((post) => (
+                    <Link key={post.slug} to={to(`/blog/${post.slug}`)} className="card hover-lift" style={{ display: "block", padding: "2.5rem" }}>
                         <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.25rem", flexWrap: "wrap" }}>
                             <span style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--accent-secondary)", background: "var(--accent-glow)", padding: "4px 12px", borderRadius: "6px" }}>
                                 {post.category}
@@ -107,7 +80,7 @@ export default function Blog() {
                             {post.excerpt}
                         </p>
                         <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.9rem" }}>
-                            Read the article <ArrowRight size={14} />
+                            {t.readArticle} <ArrowRight size={14} />
                         </span>
                     </Link>
                 ))}

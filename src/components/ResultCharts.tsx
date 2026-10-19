@@ -3,14 +3,14 @@
  *
  * Every chart is inline SVG rendered from the data arrays below: no chart
  * library, no client-side JavaScript, nothing to hydrate. That keeps them in the
- * prerendered HTML, which is the point — these are the numbers AI answer engines
+ * prerendered HTML, which is the point: these are the numbers AI answer engines
  * and search crawlers read straight off the page.
  *
  * Responsive strategy: an SVG with a viewBox scales its text along with its
  * geometry, so one drawing cannot hold axis labels inside a readable band across
- * the 300px–850px range these pages span. Each chart therefore ships two
- * drawings — a wide landscape one and a narrow portrait one (bar charts flip to
- * horizontal, where eleven month labels still fit) — swapped by a media query at
+ * the 300px to 850px range these pages span. Each chart therefore ships two
+ * drawings, a wide landscape one and a narrow portrait one (bar charts flip to
+ * horizontal, where eleven month labels still fit), swapped by a media query at
  * 940px. `display: none` keeps the hidden twin out of the accessibility tree, so
  * screen readers meet each chart once. Font sizes are in user units, chosen so
  * the rendered text lands at roughly 12.6–13.5px wide and 12.8–18px narrow.
@@ -20,9 +20,20 @@
  * 3:1 contrast on white; it sits below the usual chroma floor because the brand
  * palette is deliberately desaturated, so identity is carried by a legend and
  * direct labels rather than by hue alone.
+ *
+ * Every word comes from src/i18n/resultCharts.ts, in the language of the
+ * route (useLang). English output is unchanged; Portuguese numbers use a
+ * decimal comma and a space for thousands from five digits (src/lib/format.ts).
+ * Portuguese month labels ("mai. 26", "ago. 26") were measured in Inter: the
+ * widest, "ago. 26", is 64.3 units at font 18, inside the 70 the narrow bar
+ * charts leave left of the axis, so the margins are the same in both languages.
  */
 
 import { EMAIL_PERIODS } from "../data/emailRevenue";
+import { useLang } from "../hooks/useLang";
+import type { Lang } from "../lib/i18n";
+import { formatNumber, decimal, monthLabel, EMAIL_PERIOD_LINES_PT } from "../lib/format";
+import COPY from "../i18n/resultCharts";
 
 /* ── Source data ───────────────────────────────────────────
  * Google Ads: full account export, 1 October 2025 to 26 August 2026 (11 months).
@@ -34,8 +45,6 @@ const ADS_ROAS = [552, 481, 561, 511, 396, 511, 526, 668, 653, 562, 429];
 const ADS_SPEND = [1788, 2871, 2868, 2147, 2190, 2454, 2316, 2206, 2475, 2828, 2369];
 const ADS_REVENUE = [9861, 13793, 16075, 10976, 8675, 12534, 12185, 14740, 16167, 15901, 10166];
 const BREAK_EVEN = 400;
-const AUGUST_NOTE = "August 2026 covers 1 to 26 August and is understated by conversion lag.";
-const ADS_SOURCE = "Source: Google Ads, full account export";
 
 
 /* ── Design tokens, mirrored as literals so the SVG can use them ── */
@@ -49,7 +58,9 @@ const NEGATIVE = "var(--negative)"; /* shared with the case study tiles */
 
 /* ── Formatting (hand-rolled so server and client always agree) ── */
 const commas = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-const gbp = (n: number) => `£${commas(n)}`;
+/** A whole number in the page's language: 1,393 in English, 1393 or 141 073 in Portuguese. */
+const int = (n: number, lang: Lang) => (lang === "en" ? commas(n) : formatNumber(n, lang));
+const gbp = (n: number, lang: Lang) => `£${int(n, lang)}`;
 const gbpShort = (n: number) => (n === 0 ? "£0" : `£${n / 1000}K`);
 const pct = (n: number) => `${n}%`;
 const r2 = (n: number) => Number(n.toFixed(2));
@@ -316,23 +327,26 @@ function HorizontalBars({ id, title, desc, margin, categories, series, xMax, xTi
 
 /* ── Chart A: monthly ROAS vs break-even ─────────────────── */
 export function MonthlyRoasChart() {
-    const title = "Monthly ROAS vs break-even";
-    const desc = `Bar chart of monthly return on ad spend from October 2025 to August 2026, against a ${BREAK_EVEN}% break-even line. ${ADS_MONTHS.map((m, i) => `${m} ${ADS_ROAS[i]}%`).join(", ")}. Ten of the eleven months sit above break-even; February 2026 at 396% is the exception and is the only bar shown in the negative colour. ${AUGUST_NOTE}`;
+    const { lang } = useLang();
+    const c = COPY[lang].ads;
+    const months = ADS_MONTHS.map((m) => monthLabel(m, lang));
+    const title = c.roasTitle;
+    const desc = c.roasDesc(BREAK_EVEN, months.map((m, i) => [m, ADS_ROAS[i]]));
     /* February 2026 is the single month under break-even, so it wears the
      * negative token. The 396% direct label and its position under the dashed
      * rule carry the same meaning without relying on colour. */
     const belowBreakEven = ADS_ROAS.map((v) => (v < BREAK_EVEN ? NEGATIVE : null));
-    const series: Series[] = [{ name: "Monthly ROAS", colour: ACCENT, values: ADS_ROAS, pointColours: belowBreakEven }];
-    const refLine = { value: BREAK_EVEN, label: "Break-even" };
+    const series: Series[] = [{ name: c.roasSeries, colour: ACCENT, values: ADS_ROAS, pointColours: belowBreakEven }];
+    const refLine = { value: BREAK_EVEN, label: c.breakEven };
 
     return (
-        <ChartFigure title={title} headingLevel={3} note={`One month below the ${BREAK_EVEN}% break-even. ${AUGUST_NOTE}`} source={ADS_SOURCE}>
+        <ChartFigure title={title} headingLevel={3} note={c.roasNote(BREAK_EVEN)} source={c.source}>
             <VerticalBars
                 id="roas-w"
                 title={title}
                 desc={desc}
                 margin={{ top: 26, right: 100, bottom: 42, left: 46 }}
-                categories={ADS_MONTHS}
+                categories={months}
                 series={series}
                 yMax={700}
                 yTicks={[0, 200, 400, 600]}
@@ -348,10 +362,10 @@ export function MonthlyRoasChart() {
                 id="roas-n"
                 title={title}
                 desc={desc}
-                // left clears the widest month label ("May 26", 63.4 units at
-                // font 18); right clears half the widest axis tick.
+                // left clears the widest month label ("ago. 26", 64.3 units at
+                // font 18; "May 26" is 63.4); right clears half the widest axis tick.
                 margin={{ top: 34, right: 26, bottom: 40, left: 78 }}
-                categories={ADS_MONTHS}
+                categories={months}
                 series={series}
                 xMax={700}
                 xTicks={[0, 200, 400, 600]}
@@ -366,27 +380,34 @@ export function MonthlyRoasChart() {
 
 /* ── Chart B: monthly spend vs attributed revenue ────────── */
 export function SpendVsRevenueChart() {
-    const title = "Monthly spend vs attributed revenue";
-    const desc = `Grouped bar chart comparing ad spend with attributed revenue each month from October 2025 to August 2026. ${ADS_MONTHS.map((m, i) => `${m}, spend ${gbp(ADS_SPEND[i])}, revenue ${gbp(ADS_REVENUE[i])}`).join("; ")}. Totals: ${gbp(26512)} spend and ${gbp(141073)} revenue. ${AUGUST_NOTE}`;
+    const { lang } = useLang();
+    const c = COPY[lang].ads;
+    const months = ADS_MONTHS.map((m) => monthLabel(m, lang));
+    const title = c.spendTitle;
+    const desc = c.spendDesc(
+        months.map((m, i) => [m, gbp(ADS_SPEND[i], lang), gbp(ADS_REVENUE[i], lang)]),
+        gbp(26512, lang),
+        gbp(141073, lang),
+    );
     const series: Series[] = [
-        { name: "Ad spend", colour: DEEP, values: ADS_SPEND },
-        { name: "Attributed revenue", colour: ACCENT, values: ADS_REVENUE },
+        { name: c.spendSeries, colour: DEEP, values: ADS_SPEND },
+        { name: c.revenueSeries, colour: ACCENT, values: ADS_REVENUE },
     ];
 
     return (
-        <ChartFigure title={title} headingLevel={3} note={AUGUST_NOTE} source={ADS_SOURCE} legend={series}>
+        <ChartFigure title={title} headingLevel={3} note={c.augustNote} source={c.source} legend={series}>
             <VerticalBars
                 id="spend-w"
                 title={title}
                 desc={desc}
                 margin={{ top: 26, right: 18, bottom: 42, left: 52 }}
-                categories={ADS_MONTHS}
+                categories={months}
                 series={series}
                 yMax={18000}
                 yTicks={[0, 6000, 12000, 18000]}
                 tickLabel={gbpShort}
                 barWidth={20}
-                marks={[{ series: 1, index: 8, text: gbp(16167) }]}
+                marks={[{ series: 1, index: 8, text: gbp(16167, lang) }]}
             />
             <HorizontalBars
                 id="spend-n"
@@ -394,7 +415,7 @@ export function SpendVsRevenueChart() {
                 desc={desc}
                 // Matches the ROAS chart so the two read as one system.
                 margin={{ top: 12, right: 26, bottom: 40, left: 78 }}
-                categories={ADS_MONTHS}
+                categories={months}
                 series={series}
                 xMax={18000}
                 xTicks={[0, 6000, 12000, 18000]}
@@ -420,18 +441,17 @@ export function GoogleAdsCharts() {
  * Weekly average of daily impressions in Google's AI features,
  * 18 May to 30 August 2026. Values are week-starting.
  */
-const AI_WEEKS = ["18 May", "25 May", "1 Jun", "8 Jun", "15 Jun", "22 Jun", "29 Jun", "6 Jul", "13 Jul", "20 Jul", "27 Jul", "3 Aug", "10 Aug", "17 Aug", "24 Aug"];
 const AI_IMPRESSIONS = [1393, 1710, 1951, 2369, 2516, 2304, 2736, 2646, 2621, 2948, 3137, 3661, 4143, 3359, 3044];
-export const AI_SOURCE = "Sources: Google Search Console (Generative AI features report, available from 18 May 2026), Semrush AI Visibility, August 2026.";
 
 /* Semrush AI Visibility, August 2026. Competitors stay unnamed by request, so
- * the three trailing rows share a label; the desc enumerates them by value. */
+ * the three trailing rows share a label; the desc enumerates them by value.
+ * Labels come from the copy, in this order. */
 const VISIBILITY = [
-    { label: "Category leader", value: 31, highlight: false },
-    { label: "The Black Farmer", value: 27, highlight: true },
-    { label: "Competitor", value: 22, highlight: false },
-    { label: "Competitor", value: 22, highlight: false },
-    { label: "Competitor", value: 14, highlight: false },
+    { value: 31, highlight: false },
+    { value: 27, highlight: true },
+    { value: 22, highlight: false },
+    { value: 22, highlight: false },
+    { value: 14, highlight: false },
 ];
 /* De-emphasis grey for the unhighlighted bars. Clears both separation gates
  * against the accent (ΔE 17.3 normal, 16.6 deutan); its sub-3:1 contrast on the
@@ -448,6 +468,7 @@ interface ChartVariantProps {
 }
 
 function AiImpressionsLine({ variant, desc }: ChartVariantProps) {
+    const { lang } = useLang();
     const wide = variant === "wide";
     const width = wide ? WIDE_W : NARROW_W;
     const font = wide ? WIDE_FONT : NARROW_FONT;
@@ -468,12 +489,12 @@ function AiImpressionsLine({ variant, desc }: ChartVariantProps) {
     /* First and last only. The first sits where the line climbs steeply, so on
      * the narrow drawing its label is pushed up and right to clear the stroke. */
     const marked = [
-        { i: 0, text: "1.4K", anchor: "start" as const, dx: wide ? 5 : 13, dy: wide ? 18 : 38 },
-        { i: last, text: "3.0K", anchor: "end" as const, dx: 0, dy: wide ? 14 : 18 },
+        { i: 0, text: decimal("1.4K", lang), anchor: "start" as const, dx: wide ? 5 : 13, dy: wide ? 18 : 38 },
+        { i: last, text: decimal("3.0K", lang), anchor: "end" as const, dx: 0, dy: wide ? 14 : 18 },
     ];
     /* Month ticks only: the first week falling in each month. */
     const xLabelIdx = [0, 2, 7, 11];
-    const xLabelText = ["May", "Jun", "Jul", "Aug"];
+    const xLabelText = ["May", "Jun", "Jul", "Aug"].map((m) => monthLabel(m, lang));
 
     return (
         <svg
@@ -483,7 +504,7 @@ function AiImpressionsLine({ variant, desc }: ChartVariantProps) {
             aria-labelledby={`ai-imp-${variant}-t ai-imp-${variant}-d`}
             fontSize={font}
         >
-            <title id={`ai-imp-${variant}-t`}>Daily impressions in Google&apos;s AI features</title>
+            <title id={`ai-imp-${variant}-t`}>{COPY[lang].ai.impressionsTitle}</title>
             <desc id={`ai-imp-${variant}-d`}>{desc}</desc>
 
             {ticks.map((t) => (
@@ -520,6 +541,8 @@ function AiImpressionsLine({ variant, desc }: ChartVariantProps) {
 
 /* ── Chart: Semrush AI Visibility across the tracked set ── */
 function AiVisibilityBars({ variant, desc }: ChartVariantProps) {
+    const c = COPY[useLang().lang].ai;
+    const rows = VISIBILITY.map((row, i) => ({ ...row, label: c.visibilityLabels[i] }));
     const wide = variant === "wide";
     const X_MAX = 35;
 
@@ -532,7 +555,7 @@ function AiVisibilityBars({ variant, desc }: ChartVariantProps) {
         const x = (v: number) => margin.left + (v / X_MAX) * plotW;
         return (
             <svg className="chart-svg chart-svg-wide" viewBox={`0 0 ${WIDE_W} ${height}`} role="img" aria-labelledby="ai-vis-wide-t ai-vis-wide-d" fontSize={WIDE_FONT}>
-                <title id="ai-vis-wide-t">Semrush AI Visibility score across the tracked set</title>
+                <title id="ai-vis-wide-t">{c.visibilityA11yTitle}</title>
                 <desc id="ai-vis-wide-d">{desc}</desc>
                 {[0, 10, 20, 30].map((t) => (
                     <g key={t}>
@@ -540,7 +563,7 @@ function AiVisibilityBars({ variant, desc }: ChartVariantProps) {
                         <text x={r2(x(t))} y={r2(margin.top + plotH) + 24} textAnchor="middle" fill={INK_SOFT}>{t}</text>
                     </g>
                 ))}
-                {VISIBILITY.map((row, i) => {
+                {rows.map((row, i) => {
                     const top = margin.top + i * (barH + rowGap) + rowGap / 2;
                     return (
                         <g key={i}>
@@ -563,9 +586,9 @@ function AiVisibilityBars({ variant, desc }: ChartVariantProps) {
     const x = (v: number) => (v / X_MAX) * plotW;
     return (
         <svg className="chart-svg chart-svg-narrow" viewBox={`0 0 ${NARROW_W} ${height}`} role="img" aria-labelledby="ai-vis-narrow-t ai-vis-narrow-d" fontSize={NARROW_FONT}>
-            <title id="ai-vis-narrow-t">Semrush AI Visibility score across the tracked set</title>
+            <title id="ai-vis-narrow-t">{c.visibilityA11yTitle}</title>
             <desc id="ai-vis-narrow-d">{desc}</desc>
-            {VISIBILITY.map((row, i) => {
+            {rows.map((row, i) => {
                 const top = margin.top + i * rowH;
                 return (
                     <g key={i}>
@@ -582,9 +605,16 @@ function AiVisibilityBars({ variant, desc }: ChartVariantProps) {
 
 /** Line chart of daily impressions in Google's AI features. */
 export function AiImpressionsChart() {
-    const desc = `Line chart of the weekly average of daily impressions in Google's AI features, 18 May to 30 August 2026. ${AI_WEEKS.map((w, i) => `week starting ${w}, ${commas(AI_IMPRESSIONS[i])}`).join("; ")}. The series rises from 1,393 to a peak of 4,143 in the week starting 10 August, then eases to 3,044.`;
+    const { lang } = useLang();
+    const c = COPY[lang].ai;
+    const desc = c.impressionsDesc(
+        c.weeks.map((w, i) => [w, int(AI_IMPRESSIONS[i], lang)]),
+        int(1393, lang),
+        int(4143, lang),
+        int(3044, lang),
+    );
     return (
-        <ChartFigure title="Daily impressions in Google's AI features" subtitle="Weekly average, 18 May to 30 August 2026" headingLevel={3}>
+        <ChartFigure title={c.impressionsTitle} subtitle={c.impressionsSubtitle} headingLevel={3}>
             <AiImpressionsLine variant="wide" desc={desc} />
             <AiImpressionsLine variant="narrow" desc={desc} />
         </ChartFigure>
@@ -593,11 +623,12 @@ export function AiImpressionsChart() {
 
 /** Horizontal bars of Semrush AI Visibility across the tracked set. */
 export function AiVisibilityChart() {
-    const desc = "Horizontal bar chart of Semrush AI Visibility scores across five tracked brands. The category leader scores 31, The Black Farmer 27, and three further competitors score 22, 22 and 14. Only The Black Farmer is highlighted.";
+    const c = COPY[useLang().lang].ai;
+    const desc = c.visibilityDesc;
     return (
         <ChartFigure
-            title="2nd of 5 in Semrush AI Visibility"
-            subtitle="Gap to the category leader cut from 8 points to 4 in three weeks, 5 to 24 August 2026."
+            title={c.visibilityTitle}
+            subtitle={c.visibilitySubtitle}
             headingLevel={3}
         >
             <AiVisibilityBars variant="wide" desc={desc} />
@@ -613,19 +644,21 @@ export function AiVisibilityChart() {
  * between them) and the legend names and counts every segment.
  */
 const OUTCOMES = [
-    { label: "improved", value: 60, fill: "var(--positive)" },
-    { label: "stable or mixed", value: 52, fill: MUTED },
-    { label: "declined, each with a diagnosed cause", value: 5, fill: "var(--negative)" },
+    { value: 60, fill: "var(--positive)" },
+    { value: 52, fill: MUTED },
+    { value: 5, fill: "var(--negative)" },
 ];
 
 /** Single stacked bar of the 117 re-evaluated pages. */
 export function OutcomesBar() {
-    const total = OUTCOMES.reduce((n, o) => n + o.value, 0);
+    const c = COPY[useLang().lang].outcomes;
+    const outcomes = OUTCOMES.map((o, i) => ({ ...o, label: c.labels[i] }));
+    const total = outcomes.reduce((n, o) => n + o.value, 0);
     const W = 720, H = 44, GAP = 2, R = 6;
-    const usable = W - GAP * (OUTCOMES.length - 1);
-    const desc = `Stacked bar of ${total} pages re-evaluated at 30 days: ${OUTCOMES.map((o) => `${o.value} ${o.label}`).join(", ")}.`;
+    const usable = W - GAP * (outcomes.length - 1);
+    const desc = c.desc(total, outcomes.map((o) => `${o.value} ${o.label}`));
     /* Offsets computed up front rather than accumulated during render. */
-    const segs = OUTCOMES.reduce<{ o: typeof OUTCOMES[number]; x: number; w: number }[]>((acc, o) => {
+    const segs = outcomes.reduce<{ o: typeof outcomes[number]; x: number; w: number }[]>((acc, o) => {
         const prev = acc[acc.length - 1];
         const w = (o.value / total) * usable;
         return [...acc, { o, w, x: prev ? prev.x + prev.w + GAP : 0 }];
@@ -639,7 +672,7 @@ export function OutcomesBar() {
             preserveAspectRatio="none"
             style={{ height: "44px" }}
         >
-            <title id="outcomes-t">Outcomes of the 30-day re-evaluation</title>
+            <title id="outcomes-t">{c.title}</title>
             <desc id="outcomes-d">{desc}</desc>
             {segs.map(({ o, x, w }, i) => {
                 const first = i === 0, last = i === segs.length - 1;
@@ -654,15 +687,25 @@ export function OutcomesBar() {
 }
 
 
-const EMAIL_NOTE = "2021 covers September to December, when the programme started.";
-const EMAIL_SOURCE = "Source: Klaviyo Business Overview exports.";
 /* Campaigns take the deeper brown and sit at the base; flows take the lighter
  * brown on top. The pair clears CVD separation (ΔE 19.9 protan, 20.0 normal),
  * and identity is carried by the legend and the labelled totals as well as hue. */
-const EMAIL_SERIES: Series[] = [
-    { name: "Campaigns", colour: DEEP, values: EMAIL_PERIODS.map((p) => p.campaigns) },
-    { name: "Automated flows", colour: ACCENT, values: EMAIL_PERIODS.map((p) => p.flows) },
-];
+function emailSeries(lang: Lang): Series[] {
+    const c = COPY[lang].email;
+    return [
+        { name: c.campaigns, colour: DEEP, values: EMAIL_PERIODS.map((p) => p.campaigns) },
+        { name: c.flows, colour: ACCENT, values: EMAIL_PERIODS.map((p) => p.flows) },
+    ];
+}
+
+/** The email periods with their labels and totals in the page's language. */
+function emailPeriods(lang: Lang) {
+    return EMAIL_PERIODS.map((p, i) => ({
+        ...p,
+        lines: lang === "pt" ? EMAIL_PERIOD_LINES_PT[i] : p.lines,
+        total: decimal(p.total, lang),
+    }));
+}
 const EMAIL_Y_MAX = 150;
 const EMAIL_TICKS = [0, 50, 100, 150];
 const kGbp = (n: number) => (n === 0 ? "£0" : `£${n}K`);
@@ -671,6 +714,9 @@ const kGbp = (n: number) => (n === 0 ? "£0" : `£${n}K`);
 const STACK_GAP = 2;
 
 function EmailRevenueStack({ variant, desc }: ChartVariantProps) {
+    const { lang } = useLang();
+    const title = COPY[lang].email.title;
+    const periods = emailPeriods(lang);
     const titleId = `email-rev-${variant}-t`;
     const descId = `email-rev-${variant}-d`;
 
@@ -692,7 +738,7 @@ function EmailRevenueStack({ variant, desc }: ChartVariantProps) {
                 aria-labelledby={`${titleId} ${descId}`}
                 fontSize={WIDE_FONT}
             >
-                <title id={titleId}>Attributed email revenue by period</title>
+                <title id={titleId}>{title}</title>
                 <desc id={descId}>{desc}</desc>
 
                 {EMAIL_TICKS.map((t) => (
@@ -702,7 +748,7 @@ function EmailRevenueStack({ variant, desc }: ChartVariantProps) {
                     </g>
                 ))}
 
-                {EMAIL_PERIODS.map((p, i) => {
+                {periods.map((p, i) => {
                     const centre = margin.left + band * i + band / 2;
                     const x = centre - barW / 2;
                     const topCampaigns = y(p.campaigns);
@@ -744,10 +790,10 @@ function EmailRevenueStack({ variant, desc }: ChartVariantProps) {
             aria-labelledby={`${titleId} ${descId}`}
             fontSize={NARROW_FONT}
         >
-            <title id={titleId}>Attributed email revenue by period</title>
+            <title id={titleId}>{title}</title>
             <desc id={descId}>{desc}</desc>
 
-            {EMAIL_PERIODS.map((p, i) => {
+            {periods.map((p, i) => {
                 const top = i * rowH + 6;
                 const endCampaigns = x(p.campaigns);
                 const endStack = x(p.campaigns + p.flows);
@@ -767,15 +813,22 @@ function EmailRevenueStack({ variant, desc }: ChartVariantProps) {
 
 /** Stacked bars of attributed email revenue, campaigns and flows, by period. */
 export function EmailRevenueChart() {
-    const desc = `Stacked bar chart of attributed email revenue by period, in thousands of pounds, split between campaigns and automated flows. ${EMAIL_PERIODS.map((p) => `${p.lines.join(" ")}, campaigns £${p.campaigns}K, flows £${p.flows}K, total ${p.total}`).join("; ")}. Every period is higher than the one before it.`;
+    const { lang } = useLang();
+    const c = COPY[lang].email;
+    const desc = c.desc(emailPeriods(lang).map((p) => [
+        p.lines.join(" "),
+        `£${decimal(String(p.campaigns), lang)}K`,
+        `£${decimal(String(p.flows), lang)}K`,
+        p.total,
+    ]));
     return (
         <ChartFigure
-            title="Attributed email revenue by period"
-            subtitle="Campaigns and automated flows, values in £K"
+            title={c.title}
+            subtitle={c.subtitle}
             headingLevel={3}
-            note={EMAIL_NOTE}
-            source={EMAIL_SOURCE}
-            legend={EMAIL_SERIES}
+            note={c.note}
+            source={c.source}
+            legend={emailSeries(lang)}
         >
             <EmailRevenueStack variant="wide" desc={desc} />
             <EmailRevenueStack variant="narrow" desc={desc} />

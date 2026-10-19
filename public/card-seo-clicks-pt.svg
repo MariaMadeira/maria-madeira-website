@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-labelledby="t2 d2">
+  <title id="t2">Cliques orgânicos a subir de 4,5 mil para 8 mil entre maio e o fim de agosto</title>
+  <desc id="d2">Gráfico de linhas com três pontos: 4,5 mil cliques no ponto de partida de maio de 2026, 6,5 mil no período de agosto e 8 mil na leitura de 24 de agosto, uma subida de 78%.</desc>
+  <rect width="640" height="400" fill="#FFFFFF"/>
+  <text x="48" y="56" font-family="Outfit, Inter, sans-serif" font-size="22" font-weight="600" fill="#3D3A33">Cliques orgânicos, períodos de 28 dias</text>
+  <text x="48" y="82" font-family="Inter, sans-serif" font-size="14" fill="#8A8272">maio a agosto de 2026 · Google Search Console</text>
+  <path d="M 80 306 L 320 220 L 560 156" fill="none" stroke="#724F37" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 80 306 L 320 220 L 560 156 L 560 344 L 80 344 Z" fill="#B08968" opacity="0.12"/>
+  <circle cx="80"  cy="306" r="7" fill="#FFFFFF" stroke="#724F37" stroke-width="3.5"/>
+  <circle cx="320" cy="220" r="7" fill="#FFFFFF" stroke="#724F37" stroke-width="3.5"/>
+  <circle cx="560" cy="156" r="7" fill="#724F37" stroke="#724F37" stroke-width="3.5"/>
+  <text x="80"  y="288" font-family="Inter, sans-serif" font-size="15" fill="#3D3A33" text-anchor="middle">4,5K</text>
+  <text x="320" y="202" font-family="Inter, sans-serif" font-size="15" fill="#3D3A33" text-anchor="middle">6,5K</text>
+  <text x="560" y="138" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#3D3A33" text-anchor="middle">8,0K</text>
+  <text x="80"  y="374" font-family="Inter, sans-serif" font-size="13" fill="#8A8272" text-anchor="middle">maio 2026</text>
+  <text x="320" y="374" font-family="Inter, sans-serif" font-size="13" fill="#8A8272" text-anchor="middle">ago. 2026</text>
+  <text x="560" y="374" font-family="Inter, sans-serif" font-size="13" fill="#8A8272" text-anchor="middle">24 ago.</text>
+  <text x="495" y="96" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#724F37">+78%</text>
+</svg>

@@ -62,7 +62,6 @@ const pt: typeof en = {
     who: "Marcas e negócios que vendem ou recebem reservas online e sabem que o site devia estar a vender mais. Seja uma reconstrução completa ou melhorias focadas, o ponto de partida é o mesmo: uma auditoria honesta e um plano.",
     ctaTitle: "Quer pôr o seu site a render?",
     ctaText: "Marque uma conversa gratuita e vemos a sua auditoria juntos. Sem compromisso, sem pressão.",
-    englishSuffix: " (em inglês)",
 };
 
 export default pt;

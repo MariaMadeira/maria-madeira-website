@@ -111,7 +111,6 @@ const pt: typeof en = {
     ],
     ctaTitle: "Seja a resposta que a IA recomenda",
     ctaText: "Marque uma conversa gratuita e vemos onde a pesquisa com IA coloca a sua marca hoje, e como torná-la a referência citada na sua categoria.",
-    englishSuffix: " (em inglês)",
 };
 
 export default pt;

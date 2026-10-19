@@ -1,0 +1,76 @@
+import type en from "../en/portfolioEmailMarketing";
+
+/** Portuguese copy, batch 3 as approved in docs/pt-review/lote-2-3-4.md. */
+const pt: typeof en = {
+    path: "/pt/portefolio-email-marketing",
+    title: "Email marketing de ciclo de vida no Klaviyo | Maria Madeira",
+    description: "Sistema de email marketing no Klaviyo, com fluxos automáticos de boas-vindas, navegação abandonada, checkout abandonado, pós-compra, reposição e reconquista.",
+    back: "Voltar ao portefólio",
+    h1: "Sistema de email marketing de ciclo de vida",
+    subtitle: "Automação de email e estratégia de retenção",
+    categoryLabel: "Categoria",
+    category: "Estratégia de email marketing",
+    platformLabel: "Plataforma",
+    platform: "Klaviyo",
+    focusLabel: "Foco",
+    focus: "Retenção e receita automatizada",
+    overviewTitle: "Visão geral do projeto",
+    overview: [
+        "Desenhei e implementei no Klaviyo um sistema de email marketing de ciclo de vida para uma marca de e-commerce.",
+        "O objetivo era aumentar a retenção de clientes, recuperar compras abandonadas e gerar receita constante com fluxos automáticos de email que acompanham cada fase da jornada do cliente.",
+    ],
+    strategyTitle: "Estratégia de ciclo de vida",
+    strategy: "O sistema foi desenhado para acompanhar toda a jornada do cliente com automação. Cada fluxo guia o cliente pelo funil e incentiva conversões e compras repetidas.",
+    lifecycleStages: [
+        { from: "Subscritor", flow: "Série de boas-vindas" },
+        { from: "Visitante", flow: "Navegação abandonada" },
+        { from: "Checkout", flow: "Checkout abandonado" },
+        { from: "Cliente", flow: "Fluxo pós-compra" },
+        { from: "Cliente recorrente", flow: "Fluxo de reposição" },
+        { from: "Cliente inativo", flow: "Fluxo de reconquista" },
+    ],
+    flowsTitle: "Principais fluxos automáticos",
+    flowsIntro: "Foram criados seis fluxos automáticos essenciais para cobrir todo o ciclo de vida do cliente, cada um com uma função própria e mensagens direcionadas.",
+    keyFlows: [
+        { title: "Série de boas-vindas", description: "Recebe os novos subscritores e apresenta a marca, criando confiança desde o primeiro contacto e levando à primeira compra." },
+        { title: "Navegação abandonada", description: "Volta a falar com quem viu produtos mas não os pôs no carrinho, mantendo a marca presente e recuperando a intenção de compra." },
+        { title: "Checkout abandonado", description: "Recupera vendas de clientes que começaram o checkout e não concluíram a compra. É um fluxo com um retorno muito alto." },
+        { title: "Fluxo pós-compra", description: "Acompanha o cliente depois da compra para agradecer, pedir avaliações e apresentar produtos complementares." },
+        { title: "Fluxo de reposição", description: "Lembretes enviados a clientes recorrentes na altura em que o produto deve estar a acabar, para gerar novas compras." },
+        { title: "Fluxo de reconquista", description: "Reativa clientes que não compram há um determinado período, com incentivos e mensagens à medida." },
+    ],
+    designsTitle: "Design dos emails",
+    designs: "Cada email foi desenhado para refletir a identidade forte da marca, com a comida em primeiro lugar: visuais fortes, texto direto e chamadas para a ação claras, para gerar interação e conversões.",
+    emailLabels: [
+        "Fluxo de boas-vindas / oferta",
+        "Segmento de produto: email 1",
+        "Segmento de produto: email 2",
+        "Fluxo de reposição a 30 dias",
+        "Fluxo de conteúdo com receitas",
+    ],
+    segmentationTitle: "Estratégia de segmentação",
+    segmentation: "Foi implementada uma segmentação avançada com base no comportamento de compra, para comunicar de forma direcionada e com mensagens mais relevantes para cada grupo.",
+    segments: [
+        { name: "Clientes do produto principal", description: "Clientes que compraram a gama emblemática, o que permite conteúdos direcionados sobre produtos relacionados, receitas e promoções." },
+        { name: "Clientes da gama de especialidade", description: "Clientes que preferem uma linha de especialidade, o que permite mensagens muito relevantes e oportunidades de venda cruzada." },
+    ],
+    contentTitle: "Fluxos de conteúdo e interação",
+    contentIntro: "Além da automação transacional, foram criados fluxos adicionais para aumentar a interação e manter uma comunicação contínua com os clientes.",
+    contentFlows: [
+        { title: "Fluxo de receitas e inspiração", description: "Enviado depois da compra, com ideias de receitas e inspiração para cozinhar, para reforçar a ligação à marca e incentivar novas interações." },
+        { title: "Série \"Cozinha da marca\"", description: "Uma série de emails de conteúdo alinhada com a identidade da marca, que celebra os produtos e conta histórias para aprofundar a ligação com o cliente." },
+        { title: "Email de aniversário", description: "Um email personalizado enviado no dia de anos do cliente, com uma oferta especial, para reforçar a fidelização e gerar compras adicionais." },
+    ],
+    impactTitle: "Impacto",
+    impact: [
+        "O sistema de automação tornou-se uma fonte de receita constante para a marca.",
+        "Fluxos como a série de boas-vindas, a navegação abandonada e o checkout abandonado tiveram um papel importante na recuperação de vendas perdidas e na conversão de subscritores em clientes.",
+        "Os fluxos de conteúdo também ajudaram a manter a interação e a reforçar a fidelização à marca ao longo do tempo.",
+    ],
+    related: ["Email marketing e consultoria Klaviyo", "£134K de email em 12 meses", "Imagens melhoradas com IA para a mesma marca"],
+    ctaText: "Quer criar um sistema de retenção para a sua marca?",
+    ctaPrimary: "Marcar uma conversa gratuita",
+    ctaSecondary: "Ver todo o portefólio",
+};
+
+export default pt;

@@ -4,26 +4,34 @@ import { useEffect } from "react";
 import Seo from "../components/Seo";
 import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 import { portfolioJsonLd } from "../lib/schema";
+import { useLang } from "../hooks/useLang";
+import COPY from "../i18n/portfolioOusadia";
+
+/* Renders /portfolio-ousadia and /pt/portefolio-ousadia from
+   src/i18n/portfolioOusadia.ts. */
 
 export default function PortfolioOusadia() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const { lang, to } = useLang();
+    const c = COPY[lang];
     const assetPath = "/projects/ousadia/";
 
     return (
         <>
         <Seo
-            title="Ousadia Brand & Creative Direction | Portfolio"
-            description="Brand identity and creative direction for Ousadia, an artcraft brand: logo system, visual language, and campaign art direction by Maria Madeira."
-            path="/portfolio-ousadia"
+            title={c.title}
+            description={c.description}
+            path={c.path}
             ogImage="/og/og-portfolio-ousadia.png"
             jsonLd={portfolioJsonLd({
-                path: "/portfolio-ousadia",
+                path: c.path,
                 name: "Ousadia",
-                description: "Brand identity and creative direction for Ousadia, an artcraft brand: logo system, visual language, and campaign art direction.",
+                description: c.schemaDescription,
                 about: { type: "Brand", name: "Ousadia" },
                 image: "/projects/ousadia/moodboard.webp",
+                lang,
             })}
         />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
@@ -31,7 +39,7 @@ export default function PortfolioOusadia() {
 
                 {/* Navigation */}
                 <Link
-                    to="/portfolio"
+                    to={to("/portfolio")}
                     style={{
                         display: "inline-flex",
                         alignItems: "center",
@@ -43,7 +51,7 @@ export default function PortfolioOusadia() {
                         fontFamily: "var(--font-heading)"
                     }}
                 >
-                    <ArrowLeft size={16} /> Back to Portfolio
+                    <ArrowLeft size={16} /> {c.back}
                 </Link>
 
                 {/* Header Section */}
@@ -63,7 +71,7 @@ export default function PortfolioOusadia() {
                             lineHeight: 1,
                             letterSpacing: "-0.02em"
                         }}>
-                            Ousadia
+                            {c.h1}
                         </h1>
                         <p style={{
                             fontFamily: "'Montserrat', sans-serif",
@@ -75,7 +83,7 @@ export default function PortfolioOusadia() {
                             margin: 0,
                             fontWeight: 300
                         }}>
-                            Artcraft Project
+                            {c.subtitle}
                         </p>
                     </div>
 
@@ -83,12 +91,12 @@ export default function PortfolioOusadia() {
 
                     <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap' }}>
                         <div>
-                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>Category</p>
-                            <p style={{ fontWeight: 600, fontFamily: "'Montserrat', sans-serif" }}>Artisanal Branding</p>
+                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>{c.categoryLabel}</p>
+                            <p style={{ fontWeight: 600, fontFamily: "'Montserrat', sans-serif" }}>{c.category}</p>
                         </div>
                         <div>
-                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>Focus</p>
-                            <p style={{ fontWeight: 600, fontFamily: "'Montserrat', sans-serif" }}>Boldness & Handcrafted Quality</p>
+                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>{c.focusLabel}</p>
+                            <p style={{ fontWeight: 600, fontFamily: "'Montserrat', sans-serif" }}>{c.focus}</p>
                         </div>
                     </div>
                 </header>
@@ -101,7 +109,7 @@ export default function PortfolioOusadia() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "#2d2d2d" }}>
-                        Project Overview
+                        {c.overviewTitle}
                     </h2>
                     <p style={{
                         fontFamily: "'Montserrat', sans-serif",
@@ -110,7 +118,7 @@ export default function PortfolioOusadia() {
                         color: "var(--text-secondary)",
                         fontWeight: 300
                     }}>
-                        Brand identity for Ousadia, an artisanal artcraft brand that celebrates the unique beauty of handmade objects. The project focused on creating a visual language that balances professional sophistication with the raw, emotional energy of manual craftsmanship.
+                        {c.overview}
                     </p>
                 </section>
 
@@ -122,7 +130,7 @@ export default function PortfolioOusadia() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#2d2d2d" }}>
-                        Brand Concept
+                        {c.conceptTitle}
                     </h2>
                     <p style={{
                         fontFamily: "'Montserrat', sans-serif",
@@ -132,7 +140,7 @@ export default function PortfolioOusadia() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        The Ousadia brand (translated as 'Boldness') is inspired by the contrast between tradition and contemporary artistic expression. The concept centres on textures, neutral tones, and organic imperfections, capturing the soul of handmade objects in every visual element.
+                        {c.concept}
                     </p>
                     <div
 
@@ -140,14 +148,14 @@ export default function PortfolioOusadia() {
                     >
                         <img
                             src={`${assetPath}moodboard.webp`}
-                            alt="Ousadia Moodboard"
+                            alt={c.moodboardAlt}
                             style={{ width: "100%", display: "block" }}
                             onError={(e) => {
                                 e.currentTarget.style.display = 'none';
                                 if (e.currentTarget.parentElement) {
                                     e.currentTarget.parentElement.style.padding = '4rem';
                                     e.currentTarget.parentElement.style.background = '#f5f5f5';
-                                    e.currentTarget.parentElement.innerHTML = '<p style="text-align:center; color:#999">Moodboard Asset Not Found</p>';
+                                    e.currentTarget.parentElement.innerHTML = `<p style="text-align:center; color:#999">${c.moodboardMissing}</p>`;
                                 }
                             }} width={1200} height={800} loading="lazy" decoding="async" />
                     </div>
@@ -161,7 +169,7 @@ export default function PortfolioOusadia() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#2d2d2d" }}>
-                        Logo System
+                        {c.logoTitle}
                     </h2>
                     <p style={{
                         fontFamily: "'Montserrat', sans-serif",
@@ -171,7 +179,7 @@ export default function PortfolioOusadia() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        A bold and expressive logo system was developed to reflect the duality of the brand: the rawness of handcraft and the confidence of a modern identity.
+                        {c.logo}
                     </p>
                     <div
 
@@ -179,14 +187,14 @@ export default function PortfolioOusadia() {
                     >
                         <img
                             src={`${assetPath}2.webp`}
-                            alt="Ousadia Logo System"
+                            alt={c.logoAlt}
                             style={{ width: "100%", display: "block" }}
                             onError={(e) => {
                                 e.currentTarget.style.display = 'none';
                                 if (e.currentTarget.parentElement) {
                                     e.currentTarget.parentElement.style.padding = '4rem';
                                     e.currentTarget.parentElement.style.background = '#f5f5f5';
-                                    e.currentTarget.parentElement.innerHTML = '<p style="text-align:center; color:#999">Logo System Asset Not Found</p>';
+                                    e.currentTarget.parentElement.innerHTML = `<p style="text-align:center; color:#999">${c.logoMissing}</p>`;
                                 }
                             }} width={1200} height={800} loading="lazy" decoding="async" />
                     </div>
@@ -200,7 +208,7 @@ export default function PortfolioOusadia() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#2d2d2d" }}>
-                        Color Palette
+                        {c.paletteTitle}
                     </h2>
                     <p style={{
                         fontFamily: "'Montserrat', sans-serif",
@@ -210,14 +218,14 @@ export default function PortfolioOusadia() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        The colour palette draws from earth and raw material: warm terracotta tones, deep charcoal, and soft neutrals that evoke authenticity, texture, and handmade craft.
+                        {c.palette}
                     </p>
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "1.5rem" }}>
                         {[
-                            { hex: "#2D2D2D", name: "Charcoal" },
-                            { hex: "#733D19", name: "Warm Terracotta" },
-                            { hex: "#8A6952", name: "Sand" },
-                            { hex: "#F5E5D1", name: "Linen" }
+                            { hex: "#2D2D2D", name: c.colours[0] },
+                            { hex: "#733D19", name: c.colours[1] },
+                            { hex: "#8A6952", name: c.colours[2] },
+                            { hex: "#F5E5D1", name: c.colours[3] }
                         ].map((color, i) => (
                             <div key={i}>
                                 <div style={{ background: color.hex, height: "150px", borderRadius: "16px", marginBottom: "1rem", border: "1px solid var(--border-color)" }} />
@@ -236,7 +244,7 @@ export default function PortfolioOusadia() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#2d2d2d" }}>
-                        Typography
+                        {c.typeTitle}
                     </h2>
                     <p style={{
                         fontFamily: "'Montserrat', sans-serif",
@@ -246,7 +254,7 @@ export default function PortfolioOusadia() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        The typographic system combines bold display type with refined body copy, reflecting the brand's core tension between boldness and artisanal refinement.
+                        {c.type}
                     </p>
                     <div
 
@@ -260,7 +268,7 @@ export default function PortfolioOusadia() {
                     >
                         <img
                             src={`${assetPath}4.webp`}
-                            alt="Ousadia Typography"
+                            alt={c.typeAlt}
                             style={{ width: "100%", maxWidth: "800px", display: "block", margin: "0 auto" }}
                             onError={(e) => {
                                 e.currentTarget.style.display = 'none';
@@ -276,7 +284,7 @@ export default function PortfolioOusadia() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#2d2d2d" }}>
-                        Brand Applications
+                        {c.applicationsTitle}
                     </h2>
                     <p style={{
                         fontFamily: "'Montserrat', sans-serif",
@@ -286,7 +294,7 @@ export default function PortfolioOusadia() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        The identity was applied across brand collateral and product packaging to demonstrate real-world cohesion, ensuring the brand reads as bold and intentional at every touchpoint.
+                        {c.applications}
                     </p>
                     <div
 
@@ -294,14 +302,14 @@ export default function PortfolioOusadia() {
                     >
                         <img
                             src={`${assetPath}5.webp`}
-                            alt="Ousadia Brand Applications"
+                            alt={c.applicationsAlt}
                             style={{ width: "100%", display: "block" }}
                             onError={(e) => {
                                 e.currentTarget.style.display = 'none';
                                 if (e.currentTarget.parentElement) {
                                     e.currentTarget.parentElement.style.padding = '4rem';
                                     e.currentTarget.parentElement.style.background = '#f5f5f5';
-                                    e.currentTarget.parentElement.innerHTML = '<p style="text-align:center; color:#999">Applications Asset Not Found</p>';
+                                    e.currentTarget.parentElement.innerHTML = `<p style="text-align:center; color:#999">${c.applicationsMissing}</p>`;
                                 }
                             }} width={1200} height={800} loading="lazy" decoding="async" />
                     </div>
@@ -326,7 +334,7 @@ export default function PortfolioOusadia() {
                         <CheckCircle2 style={{ color: "#a38260", flexShrink: 0 }} size={32} />
                         <div>
                             <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "1.75rem", marginBottom: "1rem", color: "#2d2d2d" }}>
-                                Project Outcome
+                                {c.outcomeTitle}
                             </h2>
                             <p style={{
                                 fontFamily: "'Montserrat', sans-serif",
@@ -335,7 +343,7 @@ export default function PortfolioOusadia() {
                                 color: "var(--text-secondary)",
                                 margin: 0
                             }}>
-                                Ousadia now possesses a strong, earthy, and sophisticated identity that resonates with high-end artisanal collectors. The brand communicates both the 'boldness' of its name and the serene quality of its products: a visual identity that is as handcrafted in spirit as the objects it represents.
+                                {c.outcome}
                             </p>
                         </div>
                     </div>
@@ -344,8 +352,8 @@ export default function PortfolioOusadia() {
                 <RelatedLinks
                     className="related-links--open"
                     items={[
-                        { kicker: RELATED.service, to: "/services/websites", label: "Website strategy and build" },
-                        { kicker: RELATED.work, to: "/portfolio-rita-antunes", label: "Rita Antunes: brand identity" },
+                        { kicker: RELATED.service, to: "/services/websites", label: c.relatedService },
+                        { kicker: RELATED.work, to: "/portfolio-rita-antunes", label: c.relatedWork },
                     ]}
                 />
 
@@ -357,14 +365,14 @@ export default function PortfolioOusadia() {
                     style={{ textAlign: "center", paddingTop: "4rem", borderTop: "1px solid var(--border-color)" }}
                 >
                     <p style={{ fontFamily: "'Montserrat', sans-serif", color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "1.1rem" }}>
-                        Need a bold identity for your creative venture?
+                        {c.ctaText}
                     </p>
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <Link to="/contact" className="btn btn-primary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
-                            Start a Project
+                        <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
+                            {c.ctaPrimary}
                         </Link>
-                        <Link to="/portfolio" className="btn btn-secondary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
-                            View All Work
+                        <Link to={to("/portfolio")} className="btn btn-secondary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
+                            {c.ctaSecondary}
                         </Link>
                     </div>
                 </div>

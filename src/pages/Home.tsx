@@ -1,15 +1,22 @@
 import { useRef, useEffect, useState, useCallback, useSyncExternalStore } from "react";
-import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft, Sparkles, ChevronLeft, ChevronRight, ExternalLink, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { PAID_ADS_SERVICE } from "../lib/links";
 import { BODYSURF_TESTIMONIAL } from "../data/testimonials";
 import type { Testimonial } from "../data/testimonials";
 import { useInView } from "../hooks/useInView";
+import { useLang } from "../hooks/useLang";
 import { PROGRAM_MEMBERSHIP } from "../lib/credentials";
+import { formatNumber } from "../lib/format";
+import COPY from "../i18n/home";
 
-// Email figures are verified Klaviyo data for the last 12 months (Jul 2024 –
-// Jul 2025); Google Ads figures are the full account export for 1 Oct 2025 to
+/* Renders / and /pt from src/i18n/home.ts. Icons, images, counter values and
+   links live here; every word lives in the copy file. The Portuguese page
+   adds four sections of its own after the shared ones (ptExtras). */
+
+// Email figures are verified Klaviyo data for the 12 months to July 2025
+// (Jul 2024 to Jul 2025); Google Ads figures are the full account export for 1 Oct 2025 to
 // 26 Aug 2026. The four headline numbers (£134K, 2.2x AI impressions, 50.4%,
 // 532% Google Ads ROAS) live in the Measurable Impact grid; these supporting
 // metrics appear nowhere else on the page. 2.2x is the first week against the
@@ -17,11 +24,12 @@ import { PROGRAM_MEMBERSHIP } from "../lib/credentials";
 // figure, array and window published on /case-study-seo. The client's total
 // store revenue stays underivable, so the email share appears only as "over a
 // third", never as a percentage: an exact share next to £134K reconstructs it.
+// Labels and details are in the copy file, in this order.
 const SUPPORTING_METRICS = [
-    { to: 48.3, prefix: "£", suffix: "K", decimals: 1, label: "Flow Revenue", detail: "From automated lifecycle flows, +82.5% YoY" },
-    { to: 7.27, prefix: "", suffix: "%", decimals: 2, label: "Flow Click Rate", detail: "Across automated email flows, last 12 months" },
-    { to: 86.1, prefix: "£", suffix: "K", decimals: 1, label: "Campaign Revenue", detail: "From email campaigns, +92.6% YoY" },
-    { to: 12.27, prefix: "£", suffix: "", decimals: 2, label: "Google Ads CPA", detail: "2,161 conversions · Oct 2025 to Aug 2026" },
+    { to: 48.3, prefix: "£", suffix: "K", decimals: 1 },
+    { to: 7.27, prefix: "", suffix: "%", decimals: 2 },
+    { to: 86.1, prefix: "£", suffix: "K", decimals: 1 },
+    { to: 12.27, prefix: "£", suffix: "", decimals: 2 },
 ];
 
 const HOME_JSON_LD = {
@@ -87,6 +95,46 @@ const HOME_JSON_LD = {
     ]
 };
 
+/* The Portuguese page (D16 A): its own WebPage, FAQPage and Service, with no
+   Offer. Person, Organization and WebSite are referenced by @id, never
+   repeated. */
+const PT_URL = "https://mariamadeira.com/pt";
+const PT_JSON_LD = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": `${PT_URL}#webpage`,
+            "url": PT_URL,
+            "name": "Consultoria de AEO para marcas de e-commerce",
+            "description": COPY.pt.description,
+            "inLanguage": "pt-PT",
+            "isPartOf": { "@id": "https://mariamadeira.com/#website" },
+            "about": { "@id": "https://mariamadeira.com/#person" },
+            "publisher": { "@id": "https://mariamadeira.com/#organization" },
+        },
+        {
+            "@type": "FAQPage",
+            "@id": `${PT_URL}#faq`,
+            "inLanguage": "pt-PT",
+            "mainEntity": (COPY.pt.ptExtras?.faqs ?? []).map((f) => ({
+                "@type": "Question",
+                "name": f.q,
+                "acceptedAnswer": { "@type": "Answer", "text": f.a },
+            })),
+        },
+        {
+            "@type": "Service",
+            "@id": `${PT_URL}#service`,
+            "name": "Maria Madeira: Estratégia de crescimento",
+            "description": "Otimização para motores de resposta (AEO), SEO, email no Klaviyo e aquisição paga para marcas de alimentação e bebidas que vendem online. Trabalho de agência, feito por uma consultora independente.",
+            "provider": { "@id": "https://mariamadeira.com/#organization" },
+            "areaServed": "Worldwide",
+            "serviceType": ["Estratégia de crescimento", "Email marketing", "Anúncios pagos", "Sistemas de marketing com IA", "Direção criativa"],
+        },
+    ],
+};
+
 /* ── AnimatedCounter component ─────────────────────────── */
 interface CounterProps {
     from?: number;
@@ -99,7 +147,10 @@ interface CounterProps {
 
 function AnimatedCounter({ from = 0, to, decimals = 0, prefix = "", suffix = "", duration = 2.5 }: CounterProps) {
     const { ref, inView } = useInView({ rootMargin: '-50px', once: true });
-    const [display, setDisplay] = useState(`${prefix}${to.toFixed(decimals)}${suffix}`);
+    // Portuguese pages count with a decimal comma (2,2x); English keeps toFixed.
+    const { lang } = useLang();
+    const fmt = useCallback((n: number) => (lang === "pt" ? formatNumber(n, "pt", decimals) : n.toFixed(decimals)), [lang, decimals]);
+    const [display, setDisplay] = useState(`${prefix}${fmt(to)}${suffix}`);
     const started = useRef(false);
 
     useEffect(() => {
@@ -112,11 +163,11 @@ function AnimatedCounter({ from = 0, to, decimals = 0, prefix = "", suffix = "",
             const progress = Math.min(elapsed / totalMs, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
             const current = from + (to - from) * eased;
-            setDisplay(`${prefix}${current.toFixed(decimals)}${suffix}`);
+            setDisplay(`${prefix}${fmt(current)}${suffix}`);
             if (progress < 1) requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
-    }, [inView, from, to, decimals, prefix, suffix, duration]);
+    }, [inView, from, to, fmt, prefix, suffix, duration]);
 
     return <span ref={ref as React.RefObject<HTMLSpanElement>}>{display}</span>;
 }
@@ -179,6 +230,33 @@ const TESTIMONIALS: Testimonial[] = [
 
 const DESKTOP_QUERY = "(min-width: 901px)";
 
+/* Core Services icons and links, in the copy's order. */
+const SERVICE_VISUALS: { icon: React.ReactNode; link?: string }[] = [
+    { icon: <TrendingUp size={22} />, link: '/services' },
+    { icon: <Sparkles size={22} />, link: '/services/aeo' },
+    { icon: <Mail size={22} />, link: '/services/email-marketing' },
+    { icon: <BarChart size={22} />, link: PAID_ADS_SERVICE },
+    { icon: <Cpu size={22} /> },
+    { icon: <Maximize size={22} /> },
+    { icon: <ArrowRightLeft size={22} />, link: '/services/websites' },
+];
+
+/* Selected Work images and links, in the copy's order. */
+const WORK_VISUALS = [
+    { image: '/projects/rita-antunes/mockup-stationery.webp', link: '/portfolio-rita-antunes' },
+    { image: '/projects/ai-product/DEPOIS Cotswold Fudge Butterscotch.webp', link: '/portfolio-ai-product-photography' },
+    { image: '/projects/email-marketing/recipe.webp', link: '/portfolio-email-marketing' },
+];
+
+/* Portuguese only (D15 A): "Ver o caso" under a Measurable Impact card. */
+function ImpactCaseLink({ to, label }: { to: string; label: string }) {
+    return (
+        <Link to={to} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.9rem", marginTop: "1rem" }}>
+            {label} <ArrowRight size={16} />
+        </Link>
+    );
+}
+
 /**
  * Testimonials carousel.
  *
@@ -191,6 +269,10 @@ const DESKTOP_QUERY = "(min-width: 901px)";
  * snapshot (1) renders cleanly and hydration corrects it without a setState pass.
  */
 function TestimonialsCarousel() {
+    const { lang, to } = useLang();
+    const c = COPY[lang].testimonials;
+    // Badge, role and context come from the copy; the quote stays verbatim.
+    const list = TESTIMONIALS.map((tm, i) => ({ ...tm, badge: tm.badge ? c.badge : null, role: c.people[i].role, context: c.people[i].context }));
     const [page, setPage] = useState(0);
     const touchStartX = useRef<number | null>(null);
     const { ref: sectionRef, inView } = useInView({ rootMargin: '-50px', once: true });
@@ -205,13 +287,13 @@ function TestimonialsCarousel() {
         () => 1,
     );
 
-    const pageCount = Math.ceil(TESTIMONIALS.length / perView);
+    const pageCount = Math.ceil(list.length / perView);
     // Clamped at render rather than in an effect, so a resize that shortens the
     // page list can never leave the track parked past the end.
     const activePage = Math.min(page, pageCount - 1);
 
-    const pages: typeof TESTIMONIALS[] = [];
-    for (let i = 0; i < TESTIMONIALS.length; i += perView) pages.push(TESTIMONIALS.slice(i, i + perView));
+    const pages: typeof list[] = [];
+    for (let i = 0; i < list.length; i += perView) pages.push(list.slice(i, i + perView));
 
     const goTo = useCallback((next: number, total: number) => {
         setPage(((next % total) + total) % total);
@@ -236,8 +318,8 @@ function TestimonialsCarousel() {
             ref={sectionRef as React.RefObject<HTMLDivElement>}
             className={`testimonial-carousel reveal${inView ? ' is-visible' : ''}`}
             role="region"
-            aria-roledescription="carousel"
-            aria-label="Testimonials"
+            aria-roledescription={c.roledescription}
+            aria-label={c.carousel}
             tabIndex={0}
             onKeyDown={handleKeyDown}
         >
@@ -257,6 +339,7 @@ function TestimonialsCarousel() {
                                     <div className="testimonial-body">
                                         {t.badge && <span className="testimonial-badge">{t.badge}</span>}
                                         <blockquote className="testimonial-quote">"{t.quote}"</blockquote>
+                                        {c.note && <p className="testimonial-context" style={{ marginTop: "0.75rem" }}>{c.note}</p>}
                                     </div>
                                     {t.readMore && (
                                         t.readMore.startsWith("http") ? (
@@ -267,15 +350,15 @@ function TestimonialsCarousel() {
                                                 className="testimonial-readmore"
                                                 tabIndex={groupIndex === activePage ? undefined : -1}
                                             >
-                                                Read the full recommendation <ArrowRight size={15} />
+                                                {c.readMore} <ArrowRight size={15} />
                                             </a>
                                         ) : (
                                             <Link
-                                                to={t.readMore}
+                                                to={to(t.readMore)}
                                                 className="testimonial-readmore"
                                                 tabIndex={groupIndex === activePage ? undefined : -1}
                                             >
-                                                Read the full recommendation <ArrowRight size={15} />
+                                                {c.readMore} <ArrowRight size={15} />
                                             </Link>
                                         )
                                     )}
@@ -299,7 +382,7 @@ function TestimonialsCarousel() {
                     type="button"
                     className="testimonial-arrow"
                     onClick={() => goTo(activePage - 1, pageCount)}
-                    aria-label="Previous testimonials"
+                    aria-label={c.prev}
                 >
                     <ChevronLeft size={20} />
                 </button>
@@ -310,7 +393,7 @@ function TestimonialsCarousel() {
                             key={i}
                             className={`testimonial-dot${i === activePage ? ' active' : ''}`}
                             onClick={() => goTo(i, pageCount)}
-                            aria-label={`Go to testimonial page ${i + 1} of ${pageCount}`}
+                            aria-label={`${c.dot[0]}${i + 1}${c.dot[1]}${pageCount}${c.dot[2]}`}
                             aria-current={i === activePage ? 'true' : undefined}
                         />
                     ))}
@@ -319,7 +402,7 @@ function TestimonialsCarousel() {
                     type="button"
                     className="testimonial-arrow"
                     onClick={() => goTo(activePage + 1, pageCount)}
-                    aria-label="Next testimonials"
+                    aria-label={c.next}
                 >
                     <ChevronRight size={20} />
                 </button>
@@ -329,6 +412,9 @@ function TestimonialsCarousel() {
 }
 
 export default function Home() {
+    const { lang, to } = useLang();
+    const t = COPY[lang];
+    const x = t.ptExtras;
     const { ref: metricsRevealRef, inView: metricsInView } = useInView({ rootMargin: '-50px', once: true });
 
     // Brands strip: the diamond separators lead each brand, so on wide screens the
@@ -365,10 +451,10 @@ export default function Home() {
     return (
         <div className="container">
             <Seo
-                title="AEO Consultancy for E-commerce Brands | Maria Madeira"
-                description="Answer Engine Optimisation (AEO), SEO and email marketing for UK food and drink e-commerce brands. Agency-level execution from an independent consultant."
-                path="/"
-                jsonLd={HOME_JSON_LD}
+                title={t.title}
+                description={t.description}
+                path={t.path}
+                jsonLd={lang === "pt" ? PT_JSON_LD : HOME_JSON_LD}
             />
 
             {/* Hero Section */}
@@ -396,20 +482,20 @@ export default function Home() {
                             marginBottom: '1rem',
                             display: 'block'
                         }}>
-                            AEO and growth consultancy for e-commerce brands.
+                            {t.hero.eyebrow}
                         </span>
                         <h1 style={{ margin: '0 0 1.5rem', fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.15 }}>
-                            AEO consultancy for e-commerce.
+                            {t.hero.h1}
                         </h1>
                         <p style={{ marginBottom: '2.5rem', fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-                            The output of an agency, without the agency. Answer Engine Optimisation, SEO, email and paid media for brands that want senior work done directly.
+                            {t.hero.intro}
                         </p>
                         <div style={{ display: "flex", gap: "1rem", flexWrap: 'wrap', marginBottom: '2.5rem' }}>
-                            <Link to="/contact" className="btn btn-primary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
-                                Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                            <Link to={to("/contact")} className="btn btn-primary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
+                                {t.hero.cta} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                             </Link>
-                            <Link to="/case-studies" className="btn btn-secondary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
-                                See My Results
+                            <Link to={to("/case-studies")} className="btn btn-secondary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
+                                {t.hero.results}
                             </Link>
                         </div>
 
@@ -425,15 +511,15 @@ export default function Home() {
                         }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>
-                                5 years scaling brands that sell online
+                                {t.hero.credentials[0]}
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>
-                                Klaviyo Partner · Google Ads · Meta Ads
+                                {t.hero.credentials[1]}
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                 <span style={{ color: 'var(--accent-secondary)' }}>★</span>
-                                Lisbon-based, global reach
+                                {t.hero.credentials[2]}
                             </div>
                         </div>
                     </div>
@@ -460,7 +546,7 @@ export default function Home() {
                                 />
                                 <img
                                     src="/maria-hero-800.jpg"
-                                    alt="Maria Madeira, growth consultant, at her desk"
+                                    alt={t.hero.imageAlt}
                                     width="1600"
                                     height="2000"
                                     fetchPriority="high"
@@ -489,8 +575,8 @@ export default function Home() {
                         >
                             <span style={{ fontSize: '1.8rem', lineHeight: 1 }}>📈</span>
                             <div>
-                                <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>£23.6K Welcome Series</div>
-                                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Revenue from a single lifecycle flow</div>
+                                <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>{t.hero.badgeTitle}</div>
+                                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{t.hero.badgeText}</div>
                             </div>
                         </div>
                     </div>
@@ -501,9 +587,9 @@ export default function Home() {
             {/* Key Metrics Section */}
             <section className="section metrics-section" style={{ position: 'relative', background: 'var(--bg-secondary)', borderRadius: '32px', margin: '4rem 0', padding: '5rem 2rem' }}>
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <h2 className="section-title">Measurable Impact</h2>
+                    <h2 className="section-title">{t.impact.title}</h2>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-                        Consistent results across diverse channels, driven by data and optimised for profitable growth.
+                        {t.impact.sub}
                     </p>
                 </div>
 
@@ -515,29 +601,32 @@ export default function Home() {
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
                             <AnimatedCounter from={0} to={134} prefix="£" suffix="K" />
                         </h3>
-                        <p style={{ fontWeight: 600 }}>Email Revenue</p>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Attributed to Klaviyo campaigns & flows (last 12 months, +88.9% YoY)</p>
+                        <p style={{ fontWeight: 600 }}>{t.impact.cards[0].label}</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>{t.impact.cards[0].detail}</p>
+                        {x && <ImpactCaseLink to={to("/case-study-email")} label={x.impactCaseLink} />}
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
                             <AnimatedCounter from={0} to={2.2} suffix="x" decimals={1} />
                         </h3>
-                        <p style={{ fontWeight: 600 }}>AI Search Impressions</p>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Daily impressions in Google&apos;s AI features, first vs last week</p>
+                        <p style={{ fontWeight: 600 }}>{t.impact.cards[1].label}</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>{t.impact.cards[1].detail}</p>
+                        {x && <ImpactCaseLink to={to("/case-study-seo")} label={x.impactCaseLink} />}
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
                             <AnimatedCounter from={0} to={50.4} suffix="%" decimals={1} />
                         </h3>
-                        <p style={{ fontWeight: 600 }}>Campaign Open Rate</p>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>78th percentile industry benchmark</p>
+                        <p style={{ fontWeight: 600 }}>{t.impact.cards[2].label}</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>{t.impact.cards[2].detail}</p>
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
                             <AnimatedCounter from={0} to={532} suffix="%" />
                         </h3>
-                        <p style={{ fontWeight: 600 }}>Google Ads ROAS</p>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Average across 11 months, against a 400% break-even</p>
+                        <p style={{ fontWeight: 600 }}>{t.impact.cards[3].label}</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>{t.impact.cards[3].detail}</p>
+                        {x && <ImpactCaseLink to={to("/case-study-google-ads")} label={x.impactCaseLink} />}
                     </div>
                 </div>
             </section>
@@ -553,8 +642,8 @@ export default function Home() {
                         padding: '2.5rem 2rem',
                     }}
                 >
-                    {SUPPORTING_METRICS.map((metric) => (
-                        <div key={metric.label} style={{ textAlign: 'center' }}>
+                    {SUPPORTING_METRICS.map((metric, i) => (
+                        <div key={t.supporting[i].label} style={{ textAlign: 'center' }}>
                             <div className="text-gradient-accent" style={{ fontSize: '2rem', fontWeight: 700, lineHeight: 1, marginBottom: '0.5rem' }}>
                                 <AnimatedCounter
                                     to={metric.to}
@@ -563,8 +652,8 @@ export default function Home() {
                                     decimals={metric.decimals}
                                 />
                             </div>
-                            <p style={{ fontWeight: 600, fontSize: '0.95rem', marginBottom: '0.25rem' }}>{metric.label}</p>
-                            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>{metric.detail}</p>
+                            <p style={{ fontWeight: 600, fontSize: '0.95rem', marginBottom: '0.25rem' }}>{t.supporting[i].label}</p>
+                            <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: 0 }}>{t.supporting[i].detail}</p>
                         </div>
                     ))}
                 </div>
@@ -574,7 +663,7 @@ export default function Home() {
             <section className="section" style={{ padding: '2rem 0 6rem' }}>
                 <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
                     <p style={{ textTransform: 'uppercase', letterSpacing: '0.15em', fontSize: '0.75rem', fontWeight: 700, opacity: 0.5, marginBottom: '2rem' }}>
-                        Trusted by Innovative Brands
+                        {t.brandsLabel}
                     </p>
                     <div ref={brandsRef} className="brands-row" style={{
                         display: 'flex',
@@ -618,9 +707,9 @@ export default function Home() {
             {/* Testimonials Section */}
             <section className="section testimonials-section" style={{ padding: '5rem 0' }}>
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>Five years with one founder. One month to rank a school number one.</h2>
+                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>{t.testimonials.title}</h2>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-                        Clients and colleagues, in their own words, on LinkedIn.
+                        {t.testimonials.sub}
                     </p>
                 </div>
 
@@ -635,7 +724,7 @@ export default function Home() {
                         target="_blank"
                         rel="noopener"
                     >
-                        See all recommendations on LinkedIn <ArrowRight size={16} />
+                        {t.testimonials.seeAll} <ArrowRight size={16} />
                     </a>
                 </div>
             </section>
@@ -643,9 +732,9 @@ export default function Home() {
             {/* Services Overview Section */}
             <section className="section" style={{ position: 'relative' }}>
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>Core Services</h2>
+                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>{t.services.title}</h2>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-                        Strategic solutions designed to drive revenue and improve operational efficiency for scaling brands.
+                        {t.services.sub}
                     </p>
                 </div>
                 {/* Centred flex-wrap keeps the 3-column rhythm but balances the odd
@@ -657,15 +746,7 @@ export default function Home() {
                     @media (max-width: 600px) { .services-grid > * { flex-basis: 100%; } }
                 `}</style>
                 <div className="services-grid">
-                    {[
-                        { icon: <TrendingUp size={22} />, title: 'Growth Strategy', desc: 'A plan for what to fix first, based on your numbers, not guesswork. Then I build it.', link: '/services' },
-                        { icon: <Sparkles size={22} />, title: 'AI Search Visibility (AEO)', desc: "Getting brands cited and recommended by ChatGPT, Perplexity and Google's AI Overviews, not just ranked.", link: '/services/aeo' },
-                        { icon: <Mail size={22} />, title: 'Email Marketing & Automation', desc: 'You have a list of customers you never email. I turn it into a channel that sells while you sleep.', link: '/services/email-marketing' },
-                        { icon: <BarChart size={22} />, title: 'Paid Advertising', desc: 'Ads that pay for themselves, with every pound tracked against what it brings back.', link: PAID_ADS_SERVICE },
-                        { icon: <Cpu size={22} />, title: 'AI & Automation Systems', desc: 'The repetitive work (content, reporting, data entry) done by machines, so your time goes where it earns.' },
-                        { icon: <Maximize size={22} />, title: 'Creative Direction', desc: 'Product photography and brand assets that look like the premium products you sell.' },
-                        { icon: <ArrowRightLeft size={22} />, title: 'Platform Migration', desc: 'Migrations planned around what they put at risk: rankings, revenue, customer data.', link: '/services/websites' },
-                    ].map((s: { icon: React.ReactNode; title: string; desc: string; link?: string }) => {
+                    {t.services.items.map((item, i) => ({ ...item, ...SERVICE_VISUALS[i] })).map((s: { icon: React.ReactNode; title: string; desc: string; link?: string }) => {
                         const body = (
                             <>
                                 <div style={{
@@ -682,7 +763,7 @@ export default function Home() {
                             </>
                         );
                         return s.link ? (
-                            <Link key={s.title} to={s.link} className="card" style={{ display: 'block' }}>{body}</Link>
+                            <Link key={s.title} to={to(s.link)} className="card" style={{ display: 'block' }}>{body}</Link>
                         ) : (
                             <div key={s.title} className="card">{body}</div>
                         );
@@ -702,9 +783,9 @@ export default function Home() {
                         marginBottom: '0.75rem',
                         display: 'block'
                     }}>
-                        Case studies
+                        {t.caseStudies.eyebrow}
                     </span>
-                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>Results you can check</h2>
+                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>{t.caseStudies.title}</h2>
                 </div>
 
                 <div className="grid-3">
@@ -725,7 +806,7 @@ export default function Home() {
                                 <img
                                     className="case-study-media-img case-study-media-img--top"
                                     src="/email-popcorn-800.jpg"
-                                    alt="Email campaign designed in Klaviyo for The Black Farmer"
+                                    alt={t.caseStudies.cards[0].alt}
                                     width={800}
                                     height={1387}
                                     loading="lazy"
@@ -734,24 +815,24 @@ export default function Home() {
                             </picture>
                         </div>
                         <div className="case-study-card-body">
-                            <p className="case-study-category">Email marketing</p>
-                            <h3 className="case-study-card-title">An unused email list became a revenue channel</h3>
+                            <p className="case-study-category">{t.caseStudies.cards[0].category}</p>
+                            <h3 className="case-study-card-title">{t.caseStudies.cards[0].title}</h3>
                             <ul className="case-study-items-list">
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>£134K email revenue, 12 months</span>
+                                    <span>{t.caseStudies.cards[0].items[0]}</span>
                                 </li>
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>+88.9% year on year</span>
+                                    <span>{t.caseStudies.cards[0].items[1]}</span>
                                 </li>
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>Over a third of store revenue</span>
+                                    <span>{t.caseStudies.cards[0].items[2]}</span>
                                 </li>
                             </ul>
-                            <Link to="/case-study-email" className="case-study-link">
-                                Read case study <ArrowRight size={16} />
+                            <Link to={to("/case-study-email")} className="case-study-link">
+                                {t.caseStudies.readCase} <ArrowRight size={16} />
                             </Link>
                         </div>
                     </div>
@@ -761,8 +842,8 @@ export default function Home() {
                         <div className="case-study-media-slot">
                             <img
                                 className="case-study-media-img"
-                                src="/card-google-ads-roas.svg"
-                                alt="Bar chart of monthly return on ad spend over eleven months against a 400 percent break-even"
+                                src={lang === "pt" ? "/card-google-ads-roas-pt.svg" : "/card-google-ads-roas.svg"}
+                                alt={t.caseStudies.cards[1].alt}
                                 width={640}
                                 height={400}
                                 loading="lazy"
@@ -770,24 +851,24 @@ export default function Home() {
                             />
                         </div>
                         <div className="case-study-card-body">
-                            <p className="case-study-category">Paid advertising</p>
-                            <h3 className="case-study-card-title">Every pound spent returned five, over eleven months</h3>
+                            <p className="case-study-category">{t.caseStudies.cards[1].category}</p>
+                            <h3 className="case-study-card-title">{t.caseStudies.cards[1].title}</h3>
                             <ul className="case-study-items-list">
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>£141K attributed revenue, 11 months</span>
+                                    <span>{t.caseStudies.cards[1].items[0]}</span>
                                 </li>
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>532% ROAS (client break-even: 400%)</span>
+                                    <span>{t.caseStudies.cards[1].items[1]}</span>
                                 </li>
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>10 of 11 months above break-even</span>
+                                    <span>{t.caseStudies.cards[1].items[2]}</span>
                                 </li>
                             </ul>
-                            <Link to="/case-study-google-ads" className="case-study-link">
-                                Read case study <ArrowRight size={16} />
+                            <Link to={to("/case-study-google-ads")} className="case-study-link">
+                                {t.caseStudies.readCase} <ArrowRight size={16} />
                             </Link>
                         </div>
                     </div>
@@ -797,8 +878,8 @@ export default function Home() {
                         <div className="case-study-media-slot">
                             <img
                                 className="case-study-media-img"
-                                src="/card-seo-clicks.svg"
-                                alt="Line chart of organic clicks rising 78 percent over four months"
+                                src={lang === "pt" ? "/card-seo-clicks-pt.svg" : "/card-seo-clicks.svg"}
+                                alt={t.caseStudies.cards[2].alt}
                                 width={640}
                                 height={400}
                                 loading="lazy"
@@ -806,32 +887,32 @@ export default function Home() {
                             />
                         </div>
                         <div className="case-study-card-body">
-                            <p className="case-study-category">SEO and AEO</p>
-                            <h3 className="case-study-card-title">A catalogue invisible to Google, rebuilt page by page</h3>
+                            <p className="case-study-category">{t.caseStudies.cards[2].category}</p>
+                            <h3 className="case-study-card-title">{t.caseStudies.cards[2].title}</h3>
                             <ul className="case-study-items-list">
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>Clicks from 4.5K to 8.0K (+78%) in four months</span>
+                                    <span>{t.caseStudies.cards[2].items[0]}</span>
                                 </li>
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>Average position from 15.2 to 9.4 (page 2 to page 1)</span>
+                                    <span>{t.caseStudies.cards[2].items[1]}</span>
                                 </li>
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>60 pages improved at 30 days, 0 declined at 60 days</span>
+                                    <span>{t.caseStudies.cards[2].items[2]}</span>
                                 </li>
                             </ul>
-                            <Link to="/case-study-seo" className="case-study-link">
-                                Read case study <ArrowRight size={16} />
+                            <Link to={to("/case-study-seo")} className="case-study-link">
+                                {t.caseStudies.readCase} <ArrowRight size={16} />
                             </Link>
                         </div>
                     </div>
                 </div>
 
                 <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-                    <Link to="/case-studies" className="btn btn-secondary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
-                        View all case studies <ArrowRight size={16} style={{ marginLeft: '8px' }} />
+                    <Link to={to("/case-studies")} className="btn btn-secondary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
+                        {t.caseStudies.viewAll} <ArrowRight size={16} style={{ marginLeft: '8px' }} />
                     </Link>
                 </div>
             </section>
@@ -839,9 +920,9 @@ export default function Home() {
             {/* Portfolio Preview Strip */}
             <section className="section" style={{ padding: '2rem 0 6rem' }}>
                 <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>Selected Work</h2>
+                    <h2 className="section-title" style={{ marginBottom: '1rem' }}>{t.work.title}</h2>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-                        A snapshot of recent projects, from brand identity to AI-powered product photography.
+                        {t.work.sub}
                     </p>
                 </div>
                 <div className="portfolio-preview-grid" style={{
@@ -849,29 +930,10 @@ export default function Home() {
                     gridTemplateColumns: 'repeat(3, 1fr)',
                     gap: '1.5rem',
                 }}>
-                    {[
-                        {
-                            image: '/projects/rita-antunes/mockup-stationery.webp',
-                            label: 'Brand Identity',
-                            title: 'Rita Antunes',
-                            link: '/portfolio-rita-antunes',
-                        },
-                        {
-                            image: '/projects/ai-product/DEPOIS Cotswold Fudge Butterscotch.webp',
-                            label: 'AI Product Photography',
-                            title: 'Cotswold Fudge',
-                            link: '/portfolio-ai-product-photography',
-                        },
-                        {
-                            image: '/projects/email-marketing/recipe.webp',
-                            label: 'Email Marketing',
-                            title: 'Lifecycle Email System',
-                            link: '/portfolio-email-marketing',
-                        },
-                    ].map((item) => (
+                    {t.work.items.map((item, i) => ({ ...item, ...WORK_VISUALS[i] })).map((item) => (
                         <Link
                             key={item.title}
-                            to={item.link}
+                            to={to(item.link)}
                             style={{ textDecoration: 'none', color: 'inherit' }}
                         >
                             <div className="hover-lift" style={{
@@ -903,14 +965,14 @@ export default function Home() {
                     ))}
                 </div>
                 <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-                    <Link to="/portfolio" className="btn btn-secondary" style={{ padding: '0.9rem 2.5rem' }}>
-                        View All Work <ArrowRight size={16} style={{ marginLeft: '8px' }} />
+                    <Link to={to("/portfolio")} className="btn btn-secondary" style={{ padding: '0.9rem 2.5rem' }}>
+                        {t.work.viewAll} <ArrowRight size={16} style={{ marginLeft: '8px' }} />
                     </Link>
                 </div>
                 <p style={{ textAlign: 'center', marginTop: '1.5rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                    Every project is backed by strategy and measurable results.{' '}
+                    {t.work.closing}{' '}
                     <Link
-                        to="/case-studies"
+                        to={to("/case-studies")}
                         style={{
                             color: 'var(--accent-secondary)',
                             textDecoration: 'underline',
@@ -922,10 +984,74 @@ export default function Home() {
                         onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.textDecorationColor = 'var(--accent-secondary)')}
                         onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.textDecorationColor = 'transparent')}
                     >
-                        Explore the full case studies to see the impact.
+                        {t.work.closingLink}
                     </Link>
                 </p>
             </section>
+
+            {/* Portuguese only (D15 A): how I work, credentials, FAQ and a final
+                call to action, after the shared sections. */}
+            {x && (
+                <>
+                    <section style={{ marginBottom: "5rem" }}>
+                        <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+                            <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{x.howTitle}</h2>
+                        </div>
+                        <ol className="grid-3" style={{ listStyle: "none", padding: 0, margin: 0, gap: "1.5rem" }}>
+                            {x.steps.map((st, i) => (
+                                <li key={st.lead} className="card" style={{ background: "var(--bg-secondary)", position: "relative", padding: "2rem 2rem 1.75rem" }}>
+                                    <span aria-hidden="true" style={{ position: "absolute", top: "1.25rem", right: "1.5rem", fontFamily: "var(--font-heading)", fontSize: "2.2rem", fontWeight: 800, color: "var(--accent-primary)", opacity: 0.4, lineHeight: 1 }}>
+                                        {String(i + 1).padStart(2, "0")}
+                                    </span>
+                                    <p style={{ color: "var(--text-secondary)", fontSize: "1rem", lineHeight: 1.7, margin: "1.75rem 0 0" }}>
+                                        <strong style={{ color: "var(--text-primary)" }}>{st.lead}:</strong> {st.rest}
+                                    </p>
+                                </li>
+                            ))}
+                        </ol>
+                    </section>
+
+                    <section className="credentials" style={{ maxWidth: "980px", margin: "0 auto 5rem" }}>
+                        <h2 className="credentials-title">{x.credentialsTitle}</h2>
+                        <ul className="credential-list" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
+                            {x.credentials.map((c) => (
+                                <li key={c.name} className="credential">
+                                    <p className="credential-name">{c.name}</p>
+                                    <p className="credential-issuer">{c.issuer}</p>
+                                    {c.verifyUrl && (
+                                        <a href={c.verifyUrl} target="_blank" rel="noopener" className="credential-verify">
+                                            {x.verify} <ExternalLink size={13} />
+                                        </a>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+
+                    <section style={{ maxWidth: "820px", margin: "0 auto 5rem" }}>
+                        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+                            <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{x.faqTitle}</h2>
+                        </div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+                            {x.faqs.map((f) => (
+                                <div key={f.q} className="card" style={{ padding: "1.75rem" }}>
+                                    <h3 style={{ fontSize: "1.15rem", marginBottom: "0.75rem", display: "flex", alignItems: "flex-start", gap: "0.6rem" }}>
+                                        <Quote size={18} style={{ flexShrink: 0, marginTop: "3px", color: "var(--accent-secondary)" }} /> {f.q}
+                                    </h3>
+                                    <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>{f.a}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    <section style={{ textAlign: "center", background: "var(--bg-secondary)", padding: "clamp(3rem, 6vw, 5rem) 2rem", borderRadius: "24px", border: "1px solid var(--border-color)", marginBottom: "6rem" }}>
+                        <h2 style={{ fontSize: "2rem", marginBottom: "2.5rem" }}>{x.ctaTitle}</h2>
+                        <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
+                            {x.ctaButton} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                        </Link>
+                    </section>
+                </>
+            )}
         </div>
     );
 }

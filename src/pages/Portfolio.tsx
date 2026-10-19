@@ -1,77 +1,52 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import { useLang } from "../hooks/useLang";
+import COPY from "../i18n/portfolio";
+
+/* Renders /portfolio and /pt/portefolio from src/i18n/portfolio.ts. Links
+   and images live here, in the same order as the copy's projects. */
+const PROJECT_ASSETS = [
+    { link: "/portfolio-click-collect", visual: "url('/projects/click-collect/app-mockups.webp') center/cover" },
+    { link: "/portfolio-email-marketing", visual: "url('/projects/email-marketing/recipe.webp') center/cover" },
+    { link: "/portfolio-rita-antunes", visual: "url('/projects/rita-antunes/mockup-stationery.webp') center/cover" },
+    { link: "/portfolio-ousadia", visual: "url('/projects/ousadia/moodboard.webp') center/cover" },
+    { link: "/portfolio-ai-enhanced", visual: "url('/projects/ai-enhanced/cooked ox cheek.webp') center/cover" },
+    { link: "/portfolio-ai-product-photography", visual: "url('/projects/ai-product/DEPOIS%20Cotswold%20Fudge%20Butterscotch.jpg') center/cover" },
+];
 
 export default function Portfolio() {
-    const [activeCategory, setActiveCategory] = useState("All");
+    const { lang, to } = useLang();
+    const c = COPY[lang];
+    /* The filter is kept as a position in the list (0 = all), so it means the
+       same thing in both languages. */
+    const [activeIndex, setActiveIndex] = useState(0);
 
-    const projects = [
-        {
-            title: "Click & Collect Mobile Experience",
-            category: "Product & UX",
-            description: "End-to-end product experiment: mobile ordering app, campaign creative, and elevator screen distribution for a high-traffic retail store.",
-            link: "/portfolio-click-collect",
-            visual: "url('/projects/click-collect/app-mockups.webp') center/cover"
-        },
-        {
-            title: "Lifecycle Email Marketing",
-            category: "Email Marketing",
-            description: "Driving £134K in attributed revenue over 12 months through advanced lifecycle flows and retention-first automation strategies.",
-            link: "/portfolio-email-marketing",
-            visual: "url('/projects/email-marketing/recipe.webp') center/cover"
-        },
-        {
-            title: "Rita Antunes Psicologia",
-            category: "Branding",
-            description: "Establishing a premium clinical practice identity that successfully converts high-ticket therapy leads.",
-            link: "/portfolio-rita-antunes",
-            visual: "url('/projects/rita-antunes/mockup-stationery.webp') center/cover"
-        },
-        {
-            title: "Ousadia Artcraft",
-            category: "Branding",
-            description: "Visual storytelling and bold identity that positioned an artisanal brand for high-end market entry.",
-            link: "/portfolio-ousadia",
-            visual: "url('/projects/ousadia/moodboard.webp') center/cover"
-        },
-        {
-            title: "AI-Enhanced Product Imagery",
-            category: "AI Creations",
-            description: "Reducing content production costs by 70% while improving campaign CTR through AI-optimised visual assets.",
-            link: "/portfolio-ai-enhanced",
-            visual: "url('/projects/ai-enhanced/cooked ox cheek.webp') center/cover"
-        },
-        {
-            title: "AI Product Photography",
-            category: "AI Creations",
-            description: "Rapidly scaling social media growth by transforming basic packshots into high-performance marketing creatives.",
-            link: "/portfolio-ai-product-photography",
-            visual: "url('/projects/ai-product/DEPOIS%20Cotswold%20Fudge%20Butterscotch.jpg') center/cover"
-        }
-    ];
+    const projects = c.projects.map((p, i) => ({ ...p, ...PROJECT_ASSETS[i] }));
 
-    const activeCategories = ["All", ...new Set(projects.map(p => p.category))];
+    const activeCategories = [c.all, ...new Set(projects.map(p => p.category))];
+    const activeCategory = activeCategories[activeIndex] ?? c.all;
 
-    const filteredProjects = activeCategory === "All"
+    const filteredProjects = activeIndex === 0
         ? projects
         : projects.filter(project => project.category === activeCategory);
 
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="Portfolio | Creative & Brand Projects"
-                description="Creative portfolio of Maria Madeira: brand identity, AI-enhanced product imagery, lifecycle email systems, and product UX work for brands that sell online."
-                path="/portfolio"
+                title={c.title}
+                description={c.description}
+                path={c.path}
             />
 
-            <h1 className="section-title">Creative <span className="text-gradient">Portfolio</span></h1>
+            <h1 className="section-title">{c.h1Lead}<span className="text-gradient">{c.h1Accent}</span>{c.h1Tail}</h1>
 
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center", marginBottom: "4rem" }}>
                 {activeCategories.map((cat, i) => (
                     <button
                         key={i}
-                        className={`btn ${activeCategory === cat ? "btn-primary" : "btn-secondary"}`}
-                        onClick={() => setActiveCategory(cat)}
+                        className={`btn ${activeIndex === i ? "btn-primary" : "btn-secondary"}`}
+                        onClick={() => setActiveIndex(i)}
                         style={{ padding: "0.6rem 1.5rem", fontSize: "0.9rem" }}
                     >
                         {cat}
@@ -82,7 +57,7 @@ export default function Portfolio() {
             <div className="card-grid">
                 {filteredProjects.map((project) => (
                     <div key={project.title} style={{ animation: 'fadeIn 0.4s ease forwards' }}>
-                        <Link to={project.link} className="portfolio-card">
+                        <Link to={to(project.link)} className="portfolio-card">
                             <div className="portfolio-image-container hover-scale">
                                 <div style={{
                                     width: "100%",

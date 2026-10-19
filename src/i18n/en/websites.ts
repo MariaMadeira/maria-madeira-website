@@ -60,7 +60,6 @@ const en = {
     who: "Brands and businesses that sell or take bookings online, and know their website should be doing more of the selling. Whether you need a full rebuild or focused improvements, the starting point is the same: an honest audit and a plan.",
     ctaTitle: "Ready to make your site earn its keep?",
     ctaText: "Book a free strategy call and we'll walk through your audit together. No commitment, no pressure.",
-    englishSuffix: "",
 };
 
 export default en;

@@ -4,38 +4,40 @@ import { useEffect } from "react";
 import Seo from "../components/Seo";
 import RelatedLinks from "../components/RelatedLinks";
 import { caseStudyJsonLd } from "../lib/schema";
+import { useLang } from "../hooks/useLang";
+import COPY from "../i18n/caseStudyClickCollect";
 
 // Git-derived (git log src/pages/CaseStudyClickCollect.tsx). Bump MODIFIED
 // whenever the case study's details are updated.
 const PUBLISHED = "2026-03-23";
 const MODIFIED = "2026-08-26";
 
-const TITLE = "A shop losing sales to queues, fixed with a mobile pre-order system";
+const STRONG = { color: "var(--text-primary)" };
+const SOLUTION_ICONS = [<Smartphone size={24} />, <Zap size={24} />];
+const LEARNING_ICONS = [<Users size={20} />, <Zap size={20} />, <Lightbulb size={20} />, <MapPin size={20} />];
 
 export default function CaseStudyClickCollect() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    const learnings = [
-        { icon: <Users size={20} />, text: "Low awareness of the app among customers" },
-        { icon: <Zap size={20} />, text: "Behavioural resistance to changing ordering habits" },
-        { icon: <Lightbulb size={20} />, text: "Lack of strong incentives to drive adoption" },
-        { icon: <MapPin size={20} />, text: "Physical proximity reduced urgency for pre-ordering" },
-    ];
+    const { lang, to } = useLang();
+    const c = COPY[lang];
+    const learnings = c.learnings.map((text, i) => ({ icon: LEARNING_ICONS[i], text }));
 
     return (
         <>
         <Seo
-            title={TITLE}
-            description="Click & collect case study: launching a mobile pre-order experience for a high-traffic retail store, and what low adoption taught us about customer habits."
-            path="/case-study-click-collect"
+            title={c.title}
+            description={c.description}
+            path={c.path}
             jsonLd={caseStudyJsonLd({
-                path: "/case-study-click-collect",
-                headline: TITLE,
-                description: "Launching a mobile pre-order experience for a high-traffic retail store, and what low adoption taught us about customer habits.",
+                path: c.path,
+                headline: c.h1,
+                description: c.schemaDescription,
                 datePublished: PUBLISHED,
                 dateModified: MODIFIED,
-                breadcrumb: "Click & Collect",
+                breadcrumb: c.breadcrumb,
+                lang,
             })}
         />
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
@@ -43,7 +45,7 @@ export default function CaseStudyClickCollect() {
 
                 {/* Back Link */}
                 <Link
-                    to="/case-studies"
+                    to={to("/case-studies")}
                     style={{
                         display: "inline-flex",
                         alignItems: "center",
@@ -54,7 +56,7 @@ export default function CaseStudyClickCollect() {
                         fontWeight: 500,
                     }}
                 >
-                    <ArrowLeft size={18} /> Back to Case Studies
+                    <ArrowLeft size={18} /> {c.back}
                 </Link>
 
                 {/* Title */}
@@ -71,13 +73,13 @@ export default function CaseStudyClickCollect() {
                         letterSpacing: "0.08em",
                         marginBottom: "0.75rem",
                     }}>
-                        Product Experiment & UX Strategy · Case Study
+                        {c.eyebrow}
                     </p>
                     <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", marginBottom: "1.5rem", lineHeight: 1.15 }}>
-                        {TITLE}
+                        {c.h1}
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
-                        Designed and built a mobile Click & Collect experience for a physical retail store to reduce in-store wait times and capture demand from nearby office workers, and what the experiment revealed about digital adoption in physical retail.
+                        {c.intro}
                     </p>
                 </div>
 
@@ -92,10 +94,10 @@ export default function CaseStudyClickCollect() {
                     style={{ marginBottom: "3.5rem" }}
                 >
                     <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
-                        Overview
+                        {c.overviewTitle}
                     </h2>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
-                        Designed and built a Click & Collect mobile experience for a physical retail store to reduce in-store wait times and capture demand from nearby office workers.
+                        {c.overview}
                     </p>
                 </section>
 
@@ -107,13 +109,13 @@ export default function CaseStudyClickCollect() {
                     style={{ marginBottom: "3.5rem" }}
                 >
                     <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
-                        Problem
+                        {c.problemTitle}
                     </h2>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1rem" }}>
-                        The store relied entirely on in-person ordering in a high-traffic office area, leading to long wait times during peak hours and no option for customers to pre-order.
+                        {c.problem[0]}
                     </p>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
-                        This created friction, reduced convenience and limited the store's ability to efficiently capture demand.
+                        {c.problem[1]}
                     </p>
                 </section>
 
@@ -125,22 +127,11 @@ export default function CaseStudyClickCollect() {
                     style={{ marginBottom: "3.5rem" }}
                 >
                     <h2 style={{ fontSize: "1.75rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}>
-                        Solution
+                        {c.solutionTitle}
                     </h2>
 
                     <div className="grid-2" style={{ gap: "1.5rem" }}>
-                        {[
-                            {
-                                icon: <Smartphone size={24} />,
-                                title: "Mobile App with GoodBarber",
-                                description: "Designed and developed a mobile Click & Collect experience using GoodBarber, enabling customers to pre-order and skip queues entirely.",
-                            },
-                            {
-                                icon: <Zap size={24} />,
-                                title: "Simplified Ordering Flow",
-                                description: "The solution focused on reducing steps in the ordering process and improving speed during peak times to maximise convenience.",
-                            },
-                        ].map((item, i) => (
+                        {c.solution.map((item, i) => ({ ...item, icon: SOLUTION_ICONS[i] })).map((item, i) => (
                             <div
                                 key={i}
 
@@ -165,10 +156,10 @@ export default function CaseStudyClickCollect() {
                     style={{ marginBottom: "3.5rem" }}
                 >
                     <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
-                        Mobile Experience
+                        {c.mobileTitle}
                     </h2>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "2rem" }}>
-                        The app was designed to feel fast and intuitive: customers could browse the menu, place an order, and collect it without waiting in line.
+                        {c.mobileText}
                     </p>
 
                     {/* Phone mockup visual */}
@@ -185,7 +176,7 @@ export default function CaseStudyClickCollect() {
                             border: "1px solid var(--border-color)"
                         }}
                     >
-                        {["Browse Menu", "Place Order", "Collect & Go"].map((step, i) => (
+                        {c.steps.map((step, i) => (
                             <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
                                 {/* Phone frame */}
                                 <div style={{
@@ -243,10 +234,10 @@ export default function CaseStudyClickCollect() {
                     style={{ marginBottom: "3.5rem" }}
                 >
                     <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
-                        Outcome & Learnings
+                        {c.outcomeTitle}
                     </h2>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "2rem" }}>
-                        While the solution addressed a real operational challenge, adoption remained low. The experiment surfaced important insights about the gap between building a digital product and driving real-world behaviour change.
+                        {c.outcome}
                     </p>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -281,7 +272,7 @@ export default function CaseStudyClickCollect() {
                     style={{ marginBottom: "3rem" }}
                 >
                     <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>
-                        Key Insight
+                        {c.insightTitle}
                     </h2>
                     <div
 
@@ -298,14 +289,14 @@ export default function CaseStudyClickCollect() {
                     >
                         <AlertCircle size={24} style={{ color: "var(--accent-secondary)", flexShrink: 0, marginTop: "0.1rem" }} />
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0, fontSize: "1.05rem" }}>
-                            Building a digital solution is not enough: successful adoption requires <strong style={{ color: "var(--text-primary)" }}>strong distribution</strong>, <strong style={{ color: "var(--text-primary)" }}>behavioural incentives</strong> and <strong style={{ color: "var(--text-primary)" }}>clear value communication</strong>.
+                            {c.insight.map((p, i) => (typeof p === "string" ? p : <strong key={i} style={STRONG}>{p.b}</strong>))}
                         </p>
                     </div>
                 </section>
 
                 <RelatedLinks
-                    service={{ to: "/services", label: "Growth strategy and product experiments" }}
-                    next={{ to: "/case-study-bodysurf-school", label: "Five surf school locations, zero online bookings" }}
+                    service={{ to: "/services", label: c.serviceLink }}
+                    next={{ to: "/case-study-bodysurf-school", label: c.nextLink }}
                 />
 
                 {/* CTA */}
@@ -316,10 +307,10 @@ export default function CaseStudyClickCollect() {
                     style={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem" }}
                 >
                     <p style={{ color: "var(--text-secondary)", marginBottom: "1.5rem", fontSize: "1.05rem" }}>
-                        Have a product idea you want to explore?
+                        {c.ctaText}
                     </p>
-                    <Link to="/contact" className="btn btn-primary">
-                        Let's Talk Strategy
+                    <Link to={to("/contact")} className="btn btn-primary">
+                        {c.ctaButton}
                     </Link>
                 </div>
 

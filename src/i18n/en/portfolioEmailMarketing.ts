@@ -1,0 +1,76 @@
+/** English copy. See src/i18n/portfolioEmailMarketing.ts. */
+const en = {
+    path: "/portfolio-email-marketing",
+    title: "Lifecycle Email Marketing System | Portfolio",
+    description: "A full lifecycle email marketing system: welcome, browse abandonment, checkout recovery, post-purchase, replenishment, and win-back flows built in Klaviyo.",
+    back: "Back to Portfolio",
+    h1: "Lifecycle Email Marketing System",
+    subtitle: "Email Automation & Retention Strategy",
+    categoryLabel: "Category",
+    category: "Email Marketing Strategy",
+    platformLabel: "Platform",
+    platform: "Klaviyo",
+    focusLabel: "Focus",
+    focus: "Retention & Revenue Automation",
+    overviewTitle: "Project Overview",
+    overview: [
+        "Designed and implemented a lifecycle email marketing system for an e-commerce brand using Klaviyo.",
+        "The objective was to increase customer retention, recover abandoned purchases and generate consistent revenue through automated email flows that support every stage of the customer journey.",
+    ],
+    strategyTitle: "Lifecycle Strategy",
+    strategy: "The lifecycle email system was designed to support the entire customer journey using automation. Each flow guides customers through the funnel while encouraging conversions and repeat purchases.",
+    /* Same order as the icons in the component. */
+    lifecycleStages: [
+        { from: "Subscriber", flow: "Welcome Series" },
+        { from: "Visitor", flow: "Browse Abandonment" },
+        { from: "Checkout", flow: "Abandoned Checkout" },
+        { from: "Customer", flow: "Post Purchase Flow" },
+        { from: "Repeat Customer", flow: "Replenishment Flow" },
+        { from: "Inactive Customer", flow: "Win Back Flow" },
+    ],
+    flowsTitle: "Key Automation Flows",
+    flowsIntro: "Six core automation flows were built to cover the full customer lifecycle, each with a distinct purpose and targeted messaging strategy.",
+    keyFlows: [
+        { title: "Welcome Series", description: "Onboards new subscribers and introduces the brand, building trust from the first touchpoint and driving the first purchase." },
+        { title: "Browse Abandonment", description: "Re-engages visitors who browsed products but didn't add to cart, keeping the brand top-of-mind and recovering intent." },
+        { title: "Abandoned Checkout", description: "Recovers lost sales from customers who started checkout but didn't complete their purchase: a high-ROI flow." },
+        { title: "Post Purchase Flow", description: "Follows up after a purchase to thank customers, encourage reviews, and introduce complementary products." },
+        { title: "Replenishment Flow", description: "Timed reminders sent to repeat customers when they're likely to run out of a product, driving repeat purchases." },
+        { title: "Win Back Flow", description: "Re-activates lapsed customers who haven't purchased in a defined period with tailored incentives and messaging." },
+    ],
+    designsTitle: "Email Designs",
+    designs: "Each email was designed to reflect the brand's bold, food-first identity: combining strong visuals, direct copy, and clear calls to action to drive engagement and conversions.",
+    /* Alt text and caption of each email image, same order as the files. */
+    emailLabels: [
+        "Welcome / Offer Flow",
+        "Product Segment: Email 1",
+        "Product Segment: Email 2",
+        "30-Day Replenishment Flow",
+        "Recipe Content Flow",
+    ],
+    segmentationTitle: "Segmentation Strategy",
+    segmentation: "Advanced segmentation was implemented based on customer purchase behaviour, enabling targeted communication and more relevant messaging for each audience group.",
+    segments: [
+        { name: "Hero Product Customers", description: "Customers who purchased the signature range, enabling targeted content around related products, recipes and promotions." },
+        { name: "Specialty Range Customers", description: "Customers with a preference for a specialty product line, allowing for highly relevant messaging and cross-sell opportunities." },
+    ],
+    contentTitle: "Content & Engagement Flows",
+    contentIntro: "Beyond transactional automation, additional flows were created to increase engagement and maintain ongoing communication with customers.",
+    contentFlows: [
+        { title: "Recipe & Inspiration Flow", description: "Sent to customers after purchase to provide recipe ideas and cooking inspiration, building brand affinity and encouraging repeat engagement." },
+        { title: "Brand Kitchen Series", description: "A content-led email series aligned with the brand's identity, celebrating produce and storytelling to deepen customer connection." },
+        { title: "Birthday Email", description: "A personalised email sent on a customer's birthday with a special offer, reinforcing loyalty and driving incremental purchases." },
+    ],
+    impactTitle: "Impact",
+    impact: [
+        "The lifecycle automation system became a consistent revenue driver for the brand.",
+        "Key flows such as the Welcome Series, Browse Abandonment and Abandoned Checkout played a major role in recovering lost sales and converting subscribers into customers.",
+        "Content-driven flows also helped maintain engagement and strengthen brand loyalty over time.",
+    ],
+    related: ["Email marketing and Klaviyo consulting", "£134K from email in 12 months", "AI-enhanced imagery for the same brand"],
+    ctaText: "Ready to build a retention system for your brand?",
+    ctaPrimary: "Let's Discuss Your Project",
+    ctaSecondary: "View All Work",
+};
+
+export default en;

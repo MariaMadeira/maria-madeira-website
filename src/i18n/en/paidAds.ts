@@ -68,7 +68,6 @@ const en = {
     ],
     ctaTitle: "Want ads that clear your break-even?",
     ctaButton: "Let's Talk Strategy",
-    englishSuffix: "",
 };
 
 export default en;

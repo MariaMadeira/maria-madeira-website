@@ -1,4 +1,5 @@
 import { KLAVIYO_REFERRAL_URL } from "../lib/links";
+import { useLang } from "../hooks/useLang";
 
 /**
  * The official K:Partners tier badge (Charcoal, Bronze), served locally at
@@ -7,11 +8,12 @@ import { KLAVIYO_REFERRAL_URL } from "../lib/links";
  * layout shift and no distortion.
  */
 export default function KlaviyoPartnerBadge({ height = 64, eager = false }: { height?: number; eager?: boolean }) {
+    const { lang } = useLang();
     return (
         <a href={KLAVIYO_REFERRAL_URL} target="_blank" rel="sponsored noopener" style={{ display: "inline-block", lineHeight: 0, flexShrink: 0 }}>
             <img
                 src="/klaviyo-partner-badge.png"
-                alt="Klaviyo Partner badge"
+                alt={lang === "pt" ? "Selo Klaviyo Partner" : "Klaviyo Partner badge"}
                 width={Math.round((height * 304) / 128)}
                 height={height}
                 loading={eager ? undefined : "lazy"}

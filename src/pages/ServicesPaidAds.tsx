@@ -94,10 +94,8 @@ const PT_JSON_LD = {
 const LINK_STYLE = { display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.95rem" } as const;
 
 export default function ServicesPaidAds() {
-    const { lang, to, englishOnly } = useLang();
+    const { lang, to } = useLang();
     const t = COPY[lang];
-    /* "(em inglês)" on links whose target has no Portuguese page yet. */
-    const label = (text: string, path: string) => (englishOnly(path) ? text + t.englishSuffix : text);
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
@@ -143,7 +141,7 @@ export default function ServicesPaidAds() {
                     {t.resultsLine}
                 </p>
                 <Link to={to("/case-study-google-ads")} style={LINK_STYLE}>
-                    {label(t.caseLink, "/case-study-google-ads")} <ArrowRight size={16} />
+                    {t.caseLink} <ArrowRight size={16} />
                 </Link>
             </section>
 
@@ -226,7 +224,7 @@ export default function ServicesPaidAds() {
                             <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>{f.a}</p>
                             {f.link && (
                                 <Link to={to(f.link.to)} style={{ ...LINK_STYLE, marginTop: "1rem" }}>
-                                    {label(f.link.label, f.link.to)} <ArrowRight size={16} />
+                                    {f.link.label} <ArrowRight size={16} />
                                 </Link>
                             )}
                         </div>

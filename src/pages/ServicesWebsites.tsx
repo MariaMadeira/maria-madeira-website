@@ -217,9 +217,8 @@ function HealthCheck() {
 const PROOF_LINKS = ["/case-study-bodysurf-school", "/portfolio-rita-antunes", "/portfolio-ousadia"];
 
 export default function ServicesWebsites() {
-    const { lang, to, englishOnly } = useLang();
+    const { lang, to } = useLang();
     const t = COPY[lang];
-    const label = (text: string, path: string) => (englishOnly(path) ? text + t.englishSuffix : text);
     const proof = t.proof.map((p, i) => ({ ...p, link: PROOF_LINKS[i] }));
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
@@ -312,7 +311,7 @@ export default function ServicesWebsites() {
                     ))}
                 </div>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: "2rem auto 0", maxWidth: "680px", textAlign: "center" }}>
-                    {t.proofNote[0]}<Link to={to("/case-study-bodysurf-school")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{label(t.proofNote[1], "/case-study-bodysurf-school")}</Link>{t.proofNote[2]}<Link to={to("/portfolio")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.proofNote[3]}</Link>{t.proofNote[4]}
+                    {t.proofNote[0]}<Link to={to("/case-study-bodysurf-school")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.proofNote[1]}</Link>{t.proofNote[2]}<Link to={to("/portfolio")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.proofNote[3]}</Link>{t.proofNote[4]}
                 </p>
             </section>
 

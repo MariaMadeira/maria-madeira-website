@@ -3,33 +3,39 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Seo from "../components/Seo";
 import RelatedLinks, { RELATED } from "../components/RelatedLinks";
+import { useLang } from "../hooks/useLang";
+import COPY from "../i18n/portfolioAIEnhanced";
+
+/* Renders /portfolio-ai-enhanced and /pt/portefolio-imagens-de-produto-com-ia
+   from src/i18n/portfolioAIEnhanced.ts. Image files live here. */
+const TRANSFORMATION_FILES = [
+    {
+        original: "ANTES raw ox cheek.webp",
+        enhanced: "DEPOIS raw ox cheek AI.webp",
+        cooked: "cooked ox cheek.webp"
+    },
+    {
+        original: "ANTESPork - Stir Fry Strips.webp",
+        enhanced: "DEPOIS pork stir.webp",
+        cooked: "cooked pork stir.webp"
+    },
+    {
+        original: "original valentines steak.webp",
+        enhanced: "raw valentines steak.webp",
+        cooked: "cooked valentine's steak.webp"
+    }
+];
+const APPLICATION_ICONS = [<Megaphone size={28} />, <Monitor size={28} />, <Mail size={28} />];
 
 export default function PortfolioAIEnhanced() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const { lang, to } = useLang();
+    const c = COPY[lang];
     const assetPath = "/projects/ai-enhanced/";
 
-    const transformations = [
-        {
-            title: "Hero Product",
-            original: "ANTES raw ox cheek.webp",
-            enhanced: "DEPOIS raw ox cheek AI.webp",
-            cooked: "cooked ox cheek.webp"
-        },
-        {
-            title: "Signature Range",
-            original: "ANTESPork - Stir Fry Strips.webp",
-            enhanced: "DEPOIS pork stir.webp",
-            cooked: "cooked pork stir.webp"
-        },
-        {
-            title: "Seasonal Special",
-            original: "original valentines steak.webp",
-            enhanced: "raw valentines steak.webp",
-            cooked: "cooked valentine's steak.webp"
-        }
-    ];
+    const transformations = c.transformations.map((t, i) => ({ ...t, ...TRANSFORMATION_FILES[i] }));
 
     const ImageWithFallback = ({ src, alt }: { src: string, alt: string }) => (
         <img 
@@ -48,7 +54,7 @@ export default function PortfolioAIEnhanced() {
                     e.currentTarget.parentElement.style.alignItems = 'center';
                     e.currentTarget.parentElement.style.justifyContent = 'center';
                     e.currentTarget.parentElement.style.aspectRatio = '1/1';
-                    e.currentTarget.parentElement.innerHTML = '<span style="color:#999;font-size:0.8rem;text-align:center;">Image<br/>Not Found</span>';
+                    e.currentTarget.parentElement.innerHTML = `<span style="color:#999;font-size:0.8rem;text-align:center;">${c.missingHtml}</span>`;
                 }
             }}
         />
@@ -57,16 +63,16 @@ export default function PortfolioAIEnhanced() {
     return (
         <>
         <Seo
-            title="AI-Enhanced Product Imagery | Portfolio"
-            description="AI-enhanced product imagery: before and after transformations of raw food photography using generative AI, cutting production cost without losing brand quality."
-            path="/portfolio-ai-enhanced"
+            title={c.title}
+            description={c.description}
+            path={c.path}
         />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "1000px", margin: "0 auto" }}>
 
                 {/* Navigation */}
                 <Link
-                    to="/portfolio"
+                    to={to("/portfolio")}
                     style={{
                         display: "inline-flex",
                         alignItems: "center",
@@ -78,7 +84,7 @@ export default function PortfolioAIEnhanced() {
                         fontFamily: "var(--font-heading)"
                     }}
                 >
-                    <ArrowLeft size={16} /> Back to Portfolio
+                    <ArrowLeft size={16} /> {c.back}
                 </Link>
 
                 {/* Header Section */}
@@ -98,7 +104,7 @@ export default function PortfolioAIEnhanced() {
                             lineHeight: 1.1,
                             letterSpacing: "-0.02em"
                         }}>
-                            AI-Enhanced Product Imagery
+                            {c.h1}
                         </h1>
                         <p style={{ 
                             fontFamily: "var(--font-heading)", 
@@ -109,7 +115,7 @@ export default function PortfolioAIEnhanced() {
                             margin: 0,
                             fontWeight: 500
                         }}>
-                            AI Creative Production
+                            {c.subtitle}
                         </p>
                     </div>
                     
@@ -117,12 +123,12 @@ export default function PortfolioAIEnhanced() {
                     
                     <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap' }}>
                         <div>
-                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>Category</p>
-                            <p style={{ fontWeight: 600, fontFamily: "var(--font-body)" }}>AI Creative Production</p>
+                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>{c.categoryLabel}</p>
+                            <p style={{ fontWeight: 600, fontFamily: "var(--font-body)" }}>{c.category}</p>
                         </div>
                         <div>
-                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>Focus</p>
-                            <p style={{ fontWeight: 600, fontFamily: "var(--font-body)" }}>Visual Enhancement & Scalability</p>
+                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>{c.focusLabel}</p>
+                            <p style={{ fontWeight: 600, fontFamily: "var(--font-body)" }}>{c.focus}</p>
                         </div>
                     </div>
                 </header>
@@ -135,7 +141,7 @@ export default function PortfolioAIEnhanced() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
-                        Project Overview
+                        {c.overviewTitle}
                     </h2>
                     <div style={{ 
                         fontFamily: "var(--font-body)", 
@@ -144,9 +150,9 @@ export default function PortfolioAIEnhanced() {
                         color: "var(--text-secondary)",
                         fontWeight: 300 
                     }}>
-                        <p style={{ marginBottom: "1rem" }}>AI-assisted product imagery development for a UK premium food e-commerce brand.</p>
-                        <p style={{ marginBottom: "1rem" }}>The objective was to improve the visual quality and consistency of product images used across advertising campaigns, email marketing, and website product listings.</p>
-                        <p>AI tools were used to enhance existing photography and generate new visual assets that better communicate product quality while reducing production time and dependency on traditional photoshoots.</p>
+                        <p style={{ marginBottom: "1rem" }}>{c.overview[0]}</p>
+                        <p style={{ marginBottom: "1rem" }}>{c.overview[1]}</p>
+                        <p>{c.overview[2]}</p>
                     </div>
                 </section>
 
@@ -158,7 +164,7 @@ export default function PortfolioAIEnhanced() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
-                        The Challenge
+                        {c.challengeTitle}
                     </h2>
                     <div style={{ 
                         fontFamily: "var(--font-body)", 
@@ -167,8 +173,8 @@ export default function PortfolioAIEnhanced() {
                         color: "var(--text-secondary)",
                         fontWeight: 300 
                     }}>
-                        <p style={{ marginBottom: "1rem" }}>Many product images lacked visual consistency and did not fully communicate the premium quality of the products.</p>
-                        <p>Producing new professional photography for every campaign or product listing required significant time and cost, limiting the ability to rapidly create marketing assets.</p>
+                        <p style={{ marginBottom: "1rem" }}>{c.challenge[0]}</p>
+                        <p>{c.challenge[1]}</p>
                     </div>
                 </section>
 
@@ -180,7 +186,7 @@ export default function PortfolioAIEnhanced() {
                     className="portfolio-section-card" style={{ marginBottom: "6rem", background: "white", padding: "4rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
-                        The Solution
+                        {c.solutionTitle}
                     </h2>
                     <p style={{ 
                         fontFamily: "var(--font-body)", 
@@ -190,11 +196,11 @@ export default function PortfolioAIEnhanced() {
                         fontWeight: 300,
                         marginBottom: "2rem"
                     }}>
-                        AI image generation and enhancement tools were used to improve existing product imagery and create additional marketing visuals.
+                        {c.solution}
                     </p>
                     
                     <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "1.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
-                        The process included:
+                        {c.processTitle}
                     </h3>
                     <ul style={{ 
                         fontFamily: "var(--font-body)", 
@@ -205,10 +211,10 @@ export default function PortfolioAIEnhanced() {
                         listStyleType: "disc",
                         paddingLeft: "1.5rem"
                     }}>
-                        <li>enhancing lighting, texture and colour balance</li>
-                        <li>creating cleaner product compositions</li>
-                        <li>generating cooked and styled variations of the products</li>
-                        <li>producing assets suitable for marketing campaigns, product listings and email content</li>
+                        <li>{c.process[0]}</li>
+                        <li>{c.process[1]}</li>
+                        <li>{c.process[2]}</li>
+                        <li>{c.process[3]}</li>
                     </ul>
                 </section>
 
@@ -220,7 +226,7 @@ export default function PortfolioAIEnhanced() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "3rem", color: "var(--text-primary)", textAlign: "center" }}>
-                        Before & After Product Transformations
+                        {c.beforeAfterTitle}
                     </h2>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "4rem" }}>
@@ -231,16 +237,16 @@ export default function PortfolioAIEnhanced() {
                                 </h3>
                                 <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem" }}>
                                     <div>
-                                        <p style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.75rem", fontFamily: "var(--font-body)", fontWeight: 500, textAlign: "center" }}>Original Image</p>
-                                        <div><ImageWithFallback src={`${assetPath}${item.original}`} alt={`${item.title} Original`} /></div>
+                                        <p style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.75rem", fontFamily: "var(--font-body)", fontWeight: 500, textAlign: "center" }}>{c.originalLabel}</p>
+                                        <div><ImageWithFallback src={`${assetPath}${item.original}`} alt={item.alts[0]} /></div>
                                     </div>
                                     <div>
-                                        <p style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "white", background: "var(--accent-primary)", padding: "0.2rem 0.5rem", borderRadius: "12px", marginBottom: "0.75rem", fontFamily: "var(--font-body)", fontWeight: 600, textAlign: "center" }}>AI-Enhanced Image</p>
-                                        <div><ImageWithFallback src={`${assetPath}${item.enhanced}`} alt={`${item.title} Enhanced`} /></div>
+                                        <p style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "white", background: "var(--accent-primary)", padding: "0.2rem 0.5rem", borderRadius: "12px", marginBottom: "0.75rem", fontFamily: "var(--font-body)", fontWeight: 600, textAlign: "center" }}>{c.enhancedLabel}</p>
+                                        <div><ImageWithFallback src={`${assetPath}${item.enhanced}`} alt={item.alts[1]} /></div>
                                     </div>
                                     <div>
-                                        <p style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.75rem", fontFamily: "var(--font-body)", fontWeight: 500, textAlign: "center" }}>Cooked / Styled</p>
-                                        <div><ImageWithFallback src={`${assetPath}${item.cooked}`} alt={`${item.title} Cooked`} /></div>
+                                        <p style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.75rem", fontFamily: "var(--font-body)", fontWeight: 500, textAlign: "center" }}>{c.cookedLabel}</p>
+                                        <div><ImageWithFallback src={`${assetPath}${item.cooked}`} alt={item.alts[2]} /></div>
                                     </div>
                                 </div>
                             </div>
@@ -256,7 +262,7 @@ export default function PortfolioAIEnhanced() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
-                        Marketing Applications
+                        {c.applicationsTitle}
                     </h2>
                     <p style={{ 
                         fontFamily: "var(--font-body)", 
@@ -266,15 +272,11 @@ export default function PortfolioAIEnhanced() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        The improved product imagery can be used across multiple marketing channels:
+                        {c.applicationsIntro}
                     </p>
                     
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "2rem" }}>
-                        {[
-                            { title: "Advertising Creatives", desc: "High-converting assets for Meta and Google campaigns.", icon: <Megaphone size={28} /> },
-                            { title: "Website Product Pages", desc: "Hero and PDP imagery that builds trust and drives conversions.", icon: <Monitor size={28} /> },
-                            { title: "Email Marketing Visuals", desc: "Polished product shots for campaigns, flows, and newsletters.", icon: <Mail size={28} /> },
-                        ].map((app, i) => (
+                        {c.applications.map((a, i) => ({ ...a, icon: APPLICATION_ICONS[i] })).map((app, i) => (
                             <div
                                 key={i}
                                 style={{
@@ -323,7 +325,7 @@ export default function PortfolioAIEnhanced() {
                         <CheckCircle2 style={{ color: "var(--accent-secondary)", flexShrink: 0 }} size={40} />
                         <div>
                             <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "2rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}>
-                                Impact
+                                {c.impactTitle}
                             </h2>
                             <div style={{ 
                                 fontFamily: "var(--font-body)", 
@@ -332,10 +334,10 @@ export default function PortfolioAIEnhanced() {
                                 color: "var(--text-secondary)"
                             }}>
                                 <p style={{ marginBottom: "1rem" }}>
-                                    AI-enhanced imagery enabled faster production of high-quality marketing assets while improving visual consistency across product listings and campaigns.
+                                    {c.impact[0]}
                                 </p>
                                 <p>
-                                    This approach reduced dependency on traditional photoshoots while allowing more flexible creative production for marketing campaigns.
+                                    {c.impact[1]}
                                 </p>
                             </div>
                         </div>
@@ -345,9 +347,9 @@ export default function PortfolioAIEnhanced() {
                 <RelatedLinks
                     className="related-links--open"
                     items={[
-                        { kicker: RELATED.work, to: "/portfolio-ai-product-photography", label: "AI product photography" },
-                        { kicker: RELATED.reading, to: "/blog/ai-product-descriptions-food-brands", label: "AI product descriptions, done safely" },
-                        { kicker: RELATED.work, to: "/portfolio-email-marketing", label: "Email campaigns for the same brand" },
+                        { kicker: RELATED.work, to: "/portfolio-ai-product-photography", label: c.related[0] },
+                        { kicker: RELATED.reading, to: "/blog/ai-product-descriptions-food-brands", label: c.related[1] },
+                        { kicker: RELATED.work, to: "/portfolio-email-marketing", label: c.related[2] },
                     ]}
                 />
 
@@ -359,14 +361,14 @@ export default function PortfolioAIEnhanced() {
                     style={{ textAlign: "center", paddingTop: "4rem", borderTop: "1px solid var(--border-color)" }}
                 >
                     <p style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "1.1rem" }}>
-                        Looking to elevate your product imagery with AI?
+                        {c.ctaText}
                     </p>
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <Link to="/contact" className="btn btn-primary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
-                            Let's Discuss Your Project
+                        <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
+                            {c.ctaPrimary}
                         </Link>
-                        <Link to="/portfolio" className="btn btn-secondary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
-                            View All Work
+                        <Link to={to("/portfolio")} className="btn btn-secondary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
+                            {c.ctaSecondary}
                         </Link>
                     </div>
                 </div>

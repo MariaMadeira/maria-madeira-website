@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { useLang } from "../hooks/useLang";
 
 /**
  * Contextual onward links, sat above a page's CTA or author bio.
@@ -11,12 +12,23 @@ import { ArrowRight } from "lucide-react";
  *
  * Blog posts and portfolio pages pass `items` instead, each with its own
  * label from RELATED, so the label says what kind of page the link leads to.
+ * On a /pt page the fixed labels are shown in Portuguese and each link goes to
+ * the Portuguese page when it is live; pages pass their own link text.
  */
 export const RELATED = {
     reading: "Related reading",
     service: "Related service",
     work: "Related work",
 } as const;
+
+/* Portuguese for the fixed labels; pages pass their own link text. */
+const PT_LABELS: Record<string, string> = {
+    "Related reading": "Leitura relacionada",
+    "Related service": "Serviço relacionado",
+    "Related work": "Trabalho relacionado",
+    "Next case study": "Próximo caso de estudo",
+    "Related pages": "Páginas relacionadas",
+};
 
 interface RelatedLink {
     to: string;
@@ -32,6 +44,8 @@ type RelatedLinksProps =
     | { items: RelatedItem[]; service?: never; next?: never; className?: string };
 
 export default function RelatedLinks(props: RelatedLinksProps) {
+    const { lang, to: localize } = useLang();
+    const tr = (label: string) => (lang === "pt" ? PT_LABELS[label] ?? label : label);
     const items: { kicker: string; to: string; label: string }[] = props.items ?? [
         { kicker: RELATED.service, ...props.service },
         { kicker: "Next case study", ...props.next },
@@ -41,11 +55,11 @@ export default function RelatedLinks(props: RelatedLinksProps) {
         .join(" ");
 
     return (
-        <nav aria-label="Related pages" className={classes}>
+        <nav aria-label={tr("Related pages")} className={classes}>
             {items.map(({ kicker, to, label }) => (
                 <div key={to} className="related-links-item">
-                    <p className="related-links-label">{kicker}</p>
-                    <Link to={to} className="related-links-link">
+                    <p className="related-links-label">{tr(kicker)}</p>
+                    <Link to={localize(to)} className="related-links-link">
                         {label} <ArrowRight size={16} />
                     </Link>
                 </div>

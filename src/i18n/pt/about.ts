@@ -7,15 +7,20 @@ import type en from "../en/about";
  * links, schema) in src/lib/credentials.ts; only the text shown on the page
  * is translated here, entry for entry.
  */
-const PT_CREDENTIAL_TEXT: Record<string, { name: string; issuer: string; note?: string }> = {
-    "Klaviyo Practitioner": { name: "Klaviyo Practitioner", issuer: "Klaviyo Academy, 2026" },
-    "Klaviyo Sales": { name: "Klaviyo Sales", issuer: "Klaviyo Academy, 2026" },
-    "Klaviyo Partner (K:Partners programme)": { name: "Klaviyo Partner (programa K:Partners)", issuer: "Klaviyo, 2026" },
-    "Certified Digital Marketing Professional": { name: "Certified Digital Marketing Professional", issuer: "Digital Marketing Institute, 2021", note: "Com créditos atribuídos no Scottish Credit and Qualifications Framework (SCQF)" },
-    "Postgraduate programme in Artificial Intelligence for Design": { name: "Pós-graduação em Inteligência Artificial para o Design", issuer: "IADE, Universidade Europeia, Lisboa, 2025" },
-    "Postgraduate programme in Journalism Practice and Studies": { name: "Pós-graduação em Jornalismo: Práticas e Estudos", issuer: "Escola Superior de Comunicação Social, Lisboa, 2019" },
-    "Bachelor's degree in Fashion and Textile Design": { name: "Licenciatura em Design de Moda e Têxtil", issuer: "Instituto Politécnico de Castelo Branco, 2012" },
-};
+/* Entry for entry, in the order of CREDENTIAL_GROUPS (certifications, then education). */
+const PT_CREDENTIAL_TEXT: { name: string; issuer: string; note?: string }[][] = [
+    [
+        { name: "Klaviyo Practitioner", issuer: "Klaviyo Academy, 2026" },
+        { name: "Klaviyo Sales", issuer: "Klaviyo Academy, 2026" },
+        { name: "Klaviyo Partner (programa K:Partners)", issuer: "Klaviyo, 2026" },
+        { name: "Certified Digital Marketing Professional", issuer: "Digital Marketing Institute, 2021", note: "Com créditos atribuídos no Scottish Credit and Qualifications Framework (SCQF)" },
+    ],
+    [
+        { name: "Pós-graduação em Inteligência Artificial para o Design", issuer: "IADE, Universidade Europeia, Lisboa, 2025" },
+        { name: "Pós-graduação em Jornalismo: Práticas e Estudos", issuer: "Escola Superior de Comunicação Social, Lisboa, 2019" },
+        { name: "Licenciatura em Design de Moda e Têxtil", issuer: "Instituto Politécnico de Castelo Branco, 2012" },
+    ],
+];
 const PT_GROUP_TITLE: Record<string, string> = { Certifications: "Certificações", Education: "Formação" };
 
 const pt: typeof en = {
@@ -38,10 +43,10 @@ const pt: typeof en = {
     toolsTitle: "Ferramentas e plataformas",
     credentialsTitle: "Credenciais",
     credentialsIntro: "As certificações e a formação por trás do trabalho que faço para os clientes.",
-    credentialGroups: CREDENTIAL_GROUPS.map((g) => ({
+    credentialGroups: CREDENTIAL_GROUPS.map((g, gi) => ({
         title: PT_GROUP_TITLE[g.title] ?? g.title,
-        items: g.items.map((c) => {
-            const text = PT_CREDENTIAL_TEXT[c.name];
+        items: g.items.map((c, ci) => {
+            const text = PT_CREDENTIAL_TEXT[gi][ci];
             return { name: text.name, issuer: text.issuer, note: text.note, verifyUrl: c.verifyUrl };
         }),
     })),

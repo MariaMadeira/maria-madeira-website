@@ -312,10 +312,8 @@ function AeoCheck() {
 }
 
 export default function ServicesAEO() {
-    const { lang, to, englishOnly } = useLang();
+    const { lang, to } = useLang();
     const t = COPY[lang];
-    /* "(em inglês)" on links whose target has no Portuguese page yet. */
-    const label = (text: string, path: string) => (englishOnly(path) ? text + t.englishSuffix : text);
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
@@ -378,7 +376,7 @@ export default function ServicesAEO() {
                     {t.whatIsText}
                 </p>
                 <p style={{ marginTop: "1.25rem", fontSize: "1.05rem" }}>
-                    <Link to={to("/blog/what-is-aeo")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{label(t.guideLink, "/blog/what-is-aeo")}</Link>
+                    <Link to={to("/blog/what-is-aeo")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.guideLink}</Link>
                 </p>
             </section>
 
@@ -432,7 +430,7 @@ export default function ServicesAEO() {
                     </p>
                 ))}
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", margin: 0 }}>
-                    {t.comparisonLead}<Link to={to("/blog/best-aeo-agencies-ecommerce-europe")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{label(t.comparisonLink, "/blog/best-aeo-agencies-ecommerce-europe")}</Link>
+                    {t.comparisonLead}<Link to={to("/blog/best-aeo-agencies-ecommerce-europe")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.comparisonLink}</Link>
                 </p>
             </section>
 
@@ -453,11 +451,11 @@ export default function ServicesAEO() {
                         {t.proofCard.text}
                     </p>
                     <span style={{ marginTop: "0.75rem", display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.9rem" }}>
-                        {label(t.proofCard.link, "/case-study-bodysurf-school")} <ArrowRight size={16} />
+                        {t.proofCard.link} <ArrowRight size={16} />
                     </span>
                 </Link>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: "1.5rem 0 0" }}>
-                    {t.proofNote[0]}<Link to={to("/case-study-seo")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{label(t.proofNote[1], "/case-study-seo")}</Link>{t.proofNote[2]}
+                    {t.proofNote[0]}<Link to={to("/case-study-seo")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.proofNote[1]}</Link>{t.proofNote[2]}
                 </p>
             </section>
 

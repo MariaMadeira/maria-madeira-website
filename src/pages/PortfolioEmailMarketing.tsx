@@ -3,92 +3,48 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Seo from "../components/Seo";
 import RelatedLinks, { RELATED } from "../components/RelatedLinks";
+import { useLang } from "../hooks/useLang";
+import COPY from "../i18n/portfolioEmailMarketing";
+
+/* Renders /portfolio-email-marketing and /pt/portefolio-email-marketing from
+   src/i18n/portfolioEmailMarketing.ts. Icons and images live here. */
+const STAGE_ICONS = [<Mail size={20} />, <Zap size={20} />, <ShoppingCart size={20} />, <Star size={20} />, <RefreshCw size={20} />, <Users size={20} />];
+const FLOW_ICONS = [<Mail size={28} />, <Zap size={28} />, <ShoppingCart size={28} />, <Star size={28} />, <RefreshCw size={28} />, <Users size={28} />];
+const EMAIL_IMAGES = [
+    "/projects/email-marketing/ads-offer.webp",
+    "/projects/email-marketing/ox-1.webp",
+    "/projects/email-marketing/ox-2.webp",
+    "/projects/email-marketing/replenishment.webp",
+    "/projects/email-marketing/recipe.webp",
+];
 
 export default function PortfolioEmailMarketing() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    const lifecycleStages = [
-        { from: "Subscriber", flow: "Welcome Series", icon: <Mail size={20} /> },
-        { from: "Visitor", flow: "Browse Abandonment", icon: <Zap size={20} /> },
-        { from: "Checkout", flow: "Abandoned Checkout", icon: <ShoppingCart size={20} /> },
-        { from: "Customer", flow: "Post Purchase Flow", icon: <Star size={20} /> },
-        { from: "Repeat Customer", flow: "Replenishment Flow", icon: <RefreshCw size={20} /> },
-        { from: "Inactive Customer", flow: "Win Back Flow", icon: <Users size={20} /> },
-    ];
+    const { lang, to } = useLang();
+    const c = COPY[lang];
+    const lifecycleStages = c.lifecycleStages.map((stage, i) => ({ ...stage, icon: STAGE_ICONS[i] }));
 
-    const keyFlows = [
-        {
-            title: "Welcome Series",
-            icon: <Mail size={28} />,
-            description: "Onboards new subscribers and introduces the brand, building trust from the first touchpoint and driving the first purchase."
-        },
-        {
-            title: "Browse Abandonment",
-            icon: <Zap size={28} />,
-            description: "Re-engages visitors who browsed products but didn't add to cart, keeping the brand top-of-mind and recovering intent."
-        },
-        {
-            title: "Abandoned Checkout",
-            icon: <ShoppingCart size={28} />,
-            description: "Recovers lost sales from customers who started checkout but didn't complete their purchase: a high-ROI flow."
-        },
-        {
-            title: "Post Purchase Flow",
-            icon: <Star size={28} />,
-            description: "Follows up after a purchase to thank customers, encourage reviews, and introduce complementary products."
-        },
-        {
-            title: "Replenishment Flow",
-            icon: <RefreshCw size={28} />,
-            description: "Timed reminders sent to repeat customers when they're likely to run out of a product, driving repeat purchases."
-        },
-        {
-            title: "Win Back Flow",
-            icon: <Users size={28} />,
-            description: "Re-activates lapsed customers who haven't purchased in a defined period with tailored incentives and messaging."
-        },
-    ];
+    const keyFlows = c.keyFlows.map((flow, i) => ({ ...flow, icon: FLOW_ICONS[i] }));
 
-    const segments = [
-        {
-            name: "Hero Product Customers",
-            description: "Customers who purchased the signature range, enabling targeted content around related products, recipes and promotions."
-        },
-        {
-            name: "Specialty Range Customers",
-            description: "Customers with a preference for a specialty product line, allowing for highly relevant messaging and cross-sell opportunities."
-        },
-    ];
+    const segments = c.segments;
 
-    const contentFlows = [
-        {
-            title: "Recipe & Inspiration Flow",
-            description: "Sent to customers after purchase to provide recipe ideas and cooking inspiration, building brand affinity and encouraging repeat engagement."
-        },
-        {
-            title: "Brand Kitchen Series",
-            description: "A content-led email series aligned with the brand's identity, celebrating produce and storytelling to deepen customer connection."
-        },
-        {
-            title: "Birthday Email",
-            description: "A personalised email sent on a customer's birthday with a special offer, reinforcing loyalty and driving incremental purchases."
-        },
-    ];
+    const contentFlows = c.contentFlows;
 
     return (
         <>
         <Seo
-            title="Lifecycle Email Marketing System | Portfolio"
-            description="A full lifecycle email marketing system: welcome, browse abandonment, checkout recovery, post-purchase, replenishment, and win-back flows built in Klaviyo."
-            path="/portfolio-email-marketing"
+            title={c.title}
+            description={c.description}
+            path={c.path}
         />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "1000px", margin: "0 auto" }}>
 
                 {/* Navigation */}
                 <Link
-                    to="/portfolio"
+                    to={to("/portfolio")}
                     style={{
                         display: "inline-flex",
                         alignItems: "center",
@@ -100,7 +56,7 @@ export default function PortfolioEmailMarketing() {
                         fontFamily: "var(--font-heading)"
                     }}
                 >
-                    <ArrowLeft size={16} /> Back to Portfolio
+                    <ArrowLeft size={16} /> {c.back}
                 </Link>
 
                 {/* Header */}
@@ -120,7 +76,7 @@ export default function PortfolioEmailMarketing() {
                             lineHeight: 1.1,
                             letterSpacing: "-0.02em"
                         }}>
-                            Lifecycle Email Marketing System
+                            {c.h1}
                         </h1>
                         <p style={{
                             fontFamily: "var(--font-heading)",
@@ -131,7 +87,7 @@ export default function PortfolioEmailMarketing() {
                             margin: 0,
                             fontWeight: 500
                         }}>
-                            Email Automation & Retention Strategy
+                            {c.subtitle}
                         </p>
                     </div>
 
@@ -139,16 +95,16 @@ export default function PortfolioEmailMarketing() {
 
                     <div style={{ display: "flex", gap: "3rem", flexWrap: "wrap" }}>
                         <div>
-                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>Category</p>
-                            <p style={{ fontWeight: 600, fontFamily: "var(--font-sans)" }}>Email Marketing Strategy</p>
+                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>{c.categoryLabel}</p>
+                            <p style={{ fontWeight: 600, fontFamily: "var(--font-sans)" }}>{c.category}</p>
                         </div>
                         <div>
-                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>Platform</p>
-                            <p style={{ fontWeight: 600, fontFamily: "var(--font-sans)" }}>Klaviyo</p>
+                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>{c.platformLabel}</p>
+                            <p style={{ fontWeight: 600, fontFamily: "var(--font-sans)" }}>{c.platform}</p>
                         </div>
                         <div>
-                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>Focus</p>
-                            <p style={{ fontWeight: 600, fontFamily: "var(--font-sans)" }}>Retention & Revenue Automation</p>
+                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>{c.focusLabel}</p>
+                            <p style={{ fontWeight: 600, fontFamily: "var(--font-sans)" }}>{c.focus}</p>
                         </div>
                     </div>
                 </header>
@@ -161,7 +117,7 @@ export default function PortfolioEmailMarketing() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
-                        Project Overview
+                        {c.overviewTitle}
                     </h2>
                     <div style={{
                         fontFamily: "var(--font-sans)",
@@ -171,10 +127,10 @@ export default function PortfolioEmailMarketing() {
                         fontWeight: 300
                     }}>
                         <p style={{ marginBottom: "1rem" }}>
-                            Designed and implemented a lifecycle email marketing system for an e-commerce brand using Klaviyo.
+                            {c.overview[0]}
                         </p>
                         <p>
-                            The objective was to increase customer retention, recover abandoned purchases and generate consistent revenue through automated email flows that support every stage of the customer journey.
+                            {c.overview[1]}
                         </p>
                     </div>
                 </section>
@@ -187,7 +143,7 @@ export default function PortfolioEmailMarketing() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
-                        Lifecycle Strategy
+                        {c.strategyTitle}
                     </h2>
                     <p style={{
                         fontFamily: "var(--font-sans)",
@@ -197,7 +153,7 @@ export default function PortfolioEmailMarketing() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        The lifecycle email system was designed to support the entire customer journey using automation. Each flow guides customers through the funnel while encouraging conversions and repeat purchases.
+                        {c.strategy}
                     </p>
 
                     {/* Lifecycle flow diagram */}
@@ -292,7 +248,7 @@ export default function PortfolioEmailMarketing() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
-                        Key Automation Flows
+                        {c.flowsTitle}
                     </h2>
                     <p style={{
                         fontFamily: "var(--font-sans)",
@@ -302,7 +258,7 @@ export default function PortfolioEmailMarketing() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        Six core automation flows were built to cover the full customer lifecycle, each with a distinct purpose and targeted messaging strategy.
+                        {c.flowsIntro}
                     </p>
 
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
@@ -364,7 +320,7 @@ export default function PortfolioEmailMarketing() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
-                        Email Designs
+                        {c.designsTitle}
                     </h2>
                     <p style={{
                         fontFamily: "var(--font-sans)",
@@ -374,17 +330,11 @@ export default function PortfolioEmailMarketing() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        Each email was designed to reflect the brand's bold, food-first identity: combining strong visuals, direct copy, and clear calls to action to drive engagement and conversions.
+                        {c.designs}
                     </p>
 
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "1.5rem", alignItems: "start" }}>
-                        {[
-                            { src: "/projects/email-marketing/ads-offer.webp", label: "Welcome / Offer Flow" },
-                            { src: "/projects/email-marketing/ox-1.webp", label: "Product Segment: Email 1" },
-                            { src: "/projects/email-marketing/ox-2.webp", label: "Product Segment: Email 2" },
-                            { src: "/projects/email-marketing/replenishment.webp", label: "30-Day Replenishment Flow" },
-                            { src: "/projects/email-marketing/recipe.webp", label: "Recipe Content Flow" },
-                        ].map((email, i) => (
+                        {c.emailLabels.map((label, i) => ({ src: EMAIL_IMAGES[i], label })).map((email, i) => (
                             <div
                                 key={i}
 
@@ -429,7 +379,7 @@ export default function PortfolioEmailMarketing() {
                     className="portfolio-section-card" style={{ marginBottom: "6rem", background: "white", padding: "4rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
-                        Segmentation Strategy
+                        {c.segmentationTitle}
                     </h2>
                     <p style={{
                         fontFamily: "var(--font-sans)",
@@ -439,7 +389,7 @@ export default function PortfolioEmailMarketing() {
                         fontWeight: 300,
                         marginBottom: "2.5rem"
                     }}>
-                        Advanced segmentation was implemented based on customer purchase behaviour, enabling targeted communication and more relevant messaging for each audience group.
+                        {c.segmentation}
                     </p>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
@@ -499,7 +449,7 @@ export default function PortfolioEmailMarketing() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
-                        Content & Engagement Flows
+                        {c.contentTitle}
                     </h2>
                     <p style={{
                         fontFamily: "var(--font-sans)",
@@ -509,7 +459,7 @@ export default function PortfolioEmailMarketing() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        Beyond transactional automation, additional flows were created to increase engagement and maintain ongoing communication with customers.
+                        {c.contentIntro}
                     </p>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
@@ -582,7 +532,7 @@ export default function PortfolioEmailMarketing() {
                         <CheckCircle2 style={{ color: "var(--accent-secondary)", flexShrink: 0 }} size={40} />
                         <div>
                             <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "2rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}>
-                                Impact
+                                {c.impactTitle}
                             </h2>
                             <div style={{
                                 fontFamily: "var(--font-sans)",
@@ -591,13 +541,13 @@ export default function PortfolioEmailMarketing() {
                                 color: "var(--text-secondary)"
                             }}>
                                 <p style={{ marginBottom: "1rem" }}>
-                                    The lifecycle automation system became a consistent revenue driver for the brand.
+                                    {c.impact[0]}
                                 </p>
                                 <p style={{ marginBottom: "1rem" }}>
-                                    Key flows such as the Welcome Series, Browse Abandonment and Abandoned Checkout played a major role in recovering lost sales and converting subscribers into customers.
+                                    {c.impact[1]}
                                 </p>
                                 <p>
-                                    Content-driven flows also helped maintain engagement and strengthen brand loyalty over time.
+                                    {c.impact[2]}
                                 </p>
                             </div>
                         </div>
@@ -607,9 +557,9 @@ export default function PortfolioEmailMarketing() {
                 <RelatedLinks
                     className="related-links--open"
                     items={[
-                        { kicker: RELATED.service, to: "/services/email-marketing", label: "Email marketing and Klaviyo consulting" },
-                        { kicker: RELATED.work, to: "/case-study-email", label: "£134K from email in 12 months" },
-                        { kicker: RELATED.work, to: "/portfolio-ai-enhanced", label: "AI-enhanced imagery for the same brand" },
+                        { kicker: RELATED.service, to: "/services/email-marketing", label: c.related[0] },
+                        { kicker: RELATED.work, to: "/case-study-email", label: c.related[1] },
+                        { kicker: RELATED.work, to: "/portfolio-ai-enhanced", label: c.related[2] },
                     ]}
                 />
 
@@ -621,14 +571,14 @@ export default function PortfolioEmailMarketing() {
                     style={{ textAlign: "center", paddingTop: "4rem", borderTop: "1px solid var(--border-color)" }}
                 >
                     <p style={{ fontFamily: "var(--font-sans)", color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "1.1rem" }}>
-                        Ready to build a retention system for your brand?
+                        {c.ctaText}
                     </p>
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <Link to="/contact" className="btn btn-primary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
-                            Let's Discuss Your Project
+                        <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
+                            {c.ctaPrimary}
                         </Link>
-                        <Link to="/portfolio" className="btn btn-secondary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
-                            View All Work
+                        <Link to={to("/portfolio")} className="btn btn-secondary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
+                            {c.ctaSecondary}
                         </Link>
                     </div>
                 </div>

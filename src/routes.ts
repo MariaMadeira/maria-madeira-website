@@ -48,8 +48,8 @@ export const ROUTES: RouteDef[] = [
     { path: "/portfolio-ai-product-photography", load: () => import("./pages/PortfolioAIProductPhotography") },
     { path: "/portfolio-email-marketing", load: () => import("./pages/PortfolioEmailMarketing") },
     { path: "/portfolio-click-collect", load: () => import("./pages/PortfolioClickCollect") },
-    { path: "/pt", load: () => import("./pages/PtHome") },
-    { path: "/pt/servicos/email-marketing", load: () => import("./pages/PtServicosEmailMarketing") },
+    { path: "/pt", load: () => import("./pages/Home") },
+    { path: "/pt/servicos/email-marketing", load: () => import("./pages/ServicesEmailMarketing") },
     { path: "/pt/contacto", load: () => import("./pages/PtContacto") },
     // Batch 1: the English components, rendering their Portuguese copy.
     { path: "/pt/servicos", load: () => import("./pages/Services") },
@@ -59,6 +59,26 @@ export const ROUTES: RouteDef[] = [
     { path: "/pt/precos", load: () => import("./pages/Pricing") },
     { path: "/pt/sobre", load: () => import("./pages/About") },
     { path: "/pt/informacao-ia", load: () => import("./pages/AiInformation") },
+    // Batches 2 to 4: case studies, portfolio and blog, same components.
+    { path: "/pt/casos-de-estudo", load: () => import("./pages/CaseStudies") },
+    { path: "/pt/caso-google-ads", load: () => import("./pages/CaseStudyGoogleAds") },
+    { path: "/pt/caso-email", load: () => import("./pages/CaseStudyEmail") },
+    { path: "/pt/caso-seo", load: () => import("./pages/CaseStudySEO") },
+    { path: "/pt/caso-click-collect", load: () => import("./pages/CaseStudyClickCollect") },
+    { path: "/pt/caso-bodysurf-school", load: () => import("./pages/CaseStudyBodysurfSchool") },
+    { path: "/pt/portefolio", load: () => import("./pages/Portfolio") },
+    { path: "/pt/portefolio-rita-antunes", load: () => import("./pages/PortfolioRitaAntunes") },
+    { path: "/pt/portefolio-ousadia", load: () => import("./pages/PortfolioOusadia") },
+    { path: "/pt/portefolio-imagens-de-produto-com-ia", load: () => import("./pages/PortfolioAIEnhanced") },
+    { path: "/pt/portefolio-fotografia-de-produto-com-ia", load: () => import("./pages/PortfolioAIProductPhotography") },
+    { path: "/pt/portefolio-email-marketing", load: () => import("./pages/PortfolioEmailMarketing") },
+    { path: "/pt/portefolio-click-collect", load: () => import("./pages/PortfolioClickCollect") },
+    { path: "/pt/blog", load: () => import("./pages/Blog") },
+    { path: "/pt/blog/o-que-e-aeo", load: () => import("./pages/BlogWhatIsAEO") },
+    { path: "/pt/blog/melhores-agencias-aeo-ecommerce-europa", load: () => import("./pages/BlogBestAeoAgencies") },
+    { path: "/pt/blog/anuncios-chatgpt-europa", load: () => import("./pages/BlogChatGptAdsEurope") },
+    { path: "/pt/blog/descricoes-de-produto-com-ia-marcas-alimentares", load: () => import("./pages/BlogAiProductDescriptions") },
+    { path: "/pt/blog/fluxos-vs-campanhas-klaviyo", load: () => import("./pages/BlogKlaviyoFlowsVsCampaigns") },
 ];
 
 /**

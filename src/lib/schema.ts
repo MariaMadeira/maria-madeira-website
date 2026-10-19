@@ -18,7 +18,7 @@ interface CaseStudyMeta {
     description: string;
     /**
      * ISO date (YYYY-MM-DD) of the first git commit that introduced the page.
-     * Derived from `git log` at author time — real and verifiable, not guessed.
+     * Derived from `git log` at author time: real and verifiable, not guessed.
      */
     datePublished: string;
     /**
@@ -30,6 +30,8 @@ interface CaseStudyMeta {
     dateModified: string;
     /** Short breadcrumb label; defaults to the headline. */
     breadcrumb?: string;
+    /** "pt" for the /pt twin: inLanguage pt-PT and a Portuguese trail. */
+    lang?: "en" | "pt";
 }
 
 /**
@@ -38,8 +40,10 @@ interface CaseStudyMeta {
  * attributed Articles makes them far more citable. Dates are git-derived (see
  * CaseStudyMeta) so both datePublished and dateModified are real.
  */
-export function caseStudyJsonLd({ path, headline, description, datePublished, dateModified, breadcrumb }: CaseStudyMeta) {
+export function caseStudyJsonLd({ path, headline, description, datePublished, dateModified, breadcrumb, lang = "en" }: CaseStudyMeta) {
     const url = `${SITE_URL}${path}`;
+    const pt = lang === "pt";
+    const hub = pt ? `${SITE_URL}/pt/casos-de-estudo` : `${SITE_URL}/case-studies`;
     return {
         "@context": "https://schema.org",
         "@graph": [
@@ -53,13 +57,14 @@ export function caseStudyJsonLd({ path, headline, description, datePublished, da
                 "datePublished": datePublished,
                 "dateModified": dateModified,
                 "mainEntityOfPage": url,
-                "isPartOf": { "@id": `${SITE_URL}/case-studies#collection` },
+                ...(pt ? { "inLanguage": "pt-PT" } : {}),
+                "isPartOf": { "@id": `${hub}#collection` },
             },
             {
                 "@type": "BreadcrumbList",
                 "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
-                    { "@type": "ListItem", "position": 2, "name": "Case Studies", "item": `${SITE_URL}/case-studies` },
+                    { "@type": "ListItem", "position": 1, "name": pt ? "Início" : "Home", "item": pt ? `${SITE_URL}/pt` : `${SITE_URL}/` },
+                    { "@type": "ListItem", "position": 2, "name": pt ? "Casos de estudo" : "Case Studies", "item": hub },
                     { "@type": "ListItem", "position": 3, "name": breadcrumb ?? headline, "item": url },
                 ],
             },
@@ -77,6 +82,8 @@ interface PortfolioMeta {
     about: { type: "Brand" | "Organization"; name: string };
     /** Root-relative path to a representative image from the project. */
     image: string;
+    /** "pt" for the /pt twin: inLanguage pt-PT and a Portuguese trail. */
+    lang?: "en" | "pt";
 }
 
 /**
@@ -86,8 +93,9 @@ interface PortfolioMeta {
  * pages join the site's entity graph instead of standing outside it as the only
  * content type with no structured data at all.
  */
-export function portfolioJsonLd({ path, name, description, about, image }: PortfolioMeta) {
+export function portfolioJsonLd({ path, name, description, about, image, lang = "en" }: PortfolioMeta) {
     const url = `${SITE_URL}${path}`;
+    const pt = lang === "pt";
     return {
         "@context": "https://schema.org",
         "@graph": [
@@ -100,12 +108,13 @@ export function portfolioJsonLd({ path, name, description, about, image }: Portf
                 "creator": PERSON_REF,
                 "about": { "@type": about.type, "name": about.name },
                 "image": `${SITE_URL}${image}`,
+                ...(pt ? { "inLanguage": "pt-PT" } : {}),
             },
             {
                 "@type": "BreadcrumbList",
                 "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
-                    { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": `${SITE_URL}/portfolio` },
+                    { "@type": "ListItem", "position": 1, "name": pt ? "Início" : "Home", "item": pt ? `${SITE_URL}/pt` : `${SITE_URL}/` },
+                    { "@type": "ListItem", "position": 2, "name": pt ? "Portefólio" : "Portfolio", "item": pt ? `${SITE_URL}/pt/portefolio` : `${SITE_URL}/portfolio` },
                     { "@type": "ListItem", "position": 3, "name": name, "item": url },
                 ],
             },

@@ -3,35 +3,41 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Seo from "../components/Seo";
 import RelatedLinks, { RELATED } from "../components/RelatedLinks";
+import { useLang } from "../hooks/useLang";
+import COPY from "../i18n/portfolioAIProductPhotography";
+
+/* Renders /portfolio-ai-product-photography and
+   /pt/portefolio-fotografia-de-produto-com-ia from
+   src/i18n/portfolioAIProductPhotography.ts. Image files live here. */
+const TRANSFORMATION_FILES = [
+    {
+        original: "ANTES Cotswold Fudge Butterscotch.webp",
+        enhanced: "DEPOIS Cotswold Fudge Butterscotch.webp"
+    },
+    {
+        original: "Antes Cotswold Fudge chocolate.webp",
+        enhanced: "DEPOIS Cotswold Fudge chocolate.webp"
+    },
+    {
+        original: "Antes Ginger Jelly.webp",
+        enhanced: "DEPOIS ginger jelly.webp"
+    },
+    {
+        original: "antes mixed berry jam.webp",
+        enhanced: "depois mixed berry jam.webp"
+    }
+];
+const APPLICATION_ICONS = [<Monitor size={28} />, <Mail size={28} />, <Megaphone size={28} />, <Share2 size={28} />];
 
 export default function PortfolioAIProductPhotography() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const { lang, to } = useLang();
+    const c = COPY[lang];
     const assetPath = "/projects/ai-product/";
 
-    const transformations = [
-        {
-            title: "Butterscotch Fudge",
-            original: "ANTES Cotswold Fudge Butterscotch.webp",
-            enhanced: "DEPOIS Cotswold Fudge Butterscotch.webp"
-        },
-        {
-            title: "Chocolate Fudge",
-            original: "Antes Cotswold Fudge chocolate.webp",
-            enhanced: "DEPOIS Cotswold Fudge chocolate.webp"
-        },
-        {
-            title: "Ginger Jelly",
-            original: "Antes Ginger Jelly.webp",
-            enhanced: "DEPOIS ginger jelly.webp"
-        },
-        {
-            title: "Mixed Berry Jam",
-            original: "antes mixed berry jam.webp",
-            enhanced: "depois mixed berry jam.webp"
-        }
-    ];
+    const transformations = c.transformations.map((t, i) => ({ ...t, ...TRANSFORMATION_FILES[i] }));
 
     const ImageWithFallback = ({ src, alt }: { src: string, alt: string }) => (
         <img 
@@ -50,7 +56,7 @@ export default function PortfolioAIProductPhotography() {
                     e.currentTarget.parentElement.style.alignItems = 'center';
                     e.currentTarget.parentElement.style.justifyContent = 'center';
                     e.currentTarget.parentElement.style.aspectRatio = '1/1';
-                    e.currentTarget.parentElement.innerHTML = '<span style="color:#999;font-size:0.8rem;text-align:center;">Image<br/>Not Found</span>';
+                    e.currentTarget.parentElement.innerHTML = `<span style="color:#999;font-size:0.8rem;text-align:center;">${c.missingHtml}</span>`;
                 }
             }}
         />
@@ -59,16 +65,16 @@ export default function PortfolioAIProductPhotography() {
     return (
         <>
         <Seo
-            title="AI Product Photography | Portfolio"
-            description="AI product photography delivering studio-quality packshots without a traditional photoshoot: used across web, email, and paid social for a UK food brand."
-            path="/portfolio-ai-product-photography"
+            title={c.title}
+            description={c.description}
+            path={c.path}
         />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "1000px", margin: "0 auto" }}>
 
                 {/* Navigation */}
                 <Link
-                    to="/portfolio"
+                    to={to("/portfolio")}
                     style={{
                         display: "inline-flex",
                         alignItems: "center",
@@ -80,7 +86,7 @@ export default function PortfolioAIProductPhotography() {
                         fontFamily: "var(--font-heading)"
                     }}
                 >
-                    <ArrowLeft size={16} /> Back to Portfolio
+                    <ArrowLeft size={16} /> {c.back}
                 </Link>
 
                 {/* Header Section */}
@@ -100,7 +106,7 @@ export default function PortfolioAIProductPhotography() {
                             lineHeight: 1.1,
                             letterSpacing: "-0.02em"
                         }}>
-                            AI Product Photography
+                            {c.h1}
                         </h1>
                         <p style={{ 
                             fontFamily: "var(--font-heading)", 
@@ -111,7 +117,7 @@ export default function PortfolioAIProductPhotography() {
                             margin: 0,
                             fontWeight: 500
                         }}>
-                            AI Creative Production
+                            {c.subtitle}
                         </p>
                     </div>
                     
@@ -119,8 +125,8 @@ export default function PortfolioAIProductPhotography() {
                     
                     <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap' }}>
                         <div>
-                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>Category</p>
-                            <p style={{ fontWeight: 600, fontFamily: "var(--font-body)" }}>AI Creative Production</p>
+                            <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>{c.categoryLabel}</p>
+                            <p style={{ fontWeight: 600, fontFamily: "var(--font-body)" }}>{c.category}</p>
                         </div>
                     </div>
                 </header>
@@ -133,7 +139,7 @@ export default function PortfolioAIProductPhotography() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
-                        Project Overview
+                        {c.overviewTitle}
                     </h2>
                     <div style={{ 
                         fontFamily: "var(--font-body)", 
@@ -142,8 +148,8 @@ export default function PortfolioAIProductPhotography() {
                         color: "var(--text-secondary)",
                         fontWeight: 300 
                     }}>
-                        <p style={{ marginBottom: "1rem" }}>This project focused on transforming simple product packshots into high-quality product photography scenes using AI-generated environments.</p>
-                        <p>The objective was to create visually appealing marketing images that communicate product quality while reducing the need for traditional photography production.</p>
+                        <p style={{ marginBottom: "1rem" }}>{c.overview[0]}</p>
+                        <p>{c.overview[1]}</p>
                     </div>
                 </section>
 
@@ -155,7 +161,7 @@ export default function PortfolioAIProductPhotography() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
-                        The Challenge
+                        {c.challengeTitle}
                     </h2>
                     <div style={{ 
                         fontFamily: "var(--font-body)", 
@@ -164,9 +170,9 @@ export default function PortfolioAIProductPhotography() {
                         color: "var(--text-secondary)",
                         fontWeight: 300 
                     }}>
-                        <p style={{ marginBottom: "1rem" }}>The available product images consisted of simple packshots with no environmental context.</p>
-                        <p style={{ marginBottom: "1rem" }}>While suitable for catalogue listings, these images lacked the visual storytelling needed for marketing campaigns and e-commerce product pages.</p>
-                        <p>Producing traditional product photography would require additional studio setups, styling and photography resources.</p>
+                        <p style={{ marginBottom: "1rem" }}>{c.challenge[0]}</p>
+                        <p style={{ marginBottom: "1rem" }}>{c.challenge[1]}</p>
+                        <p>{c.challenge[2]}</p>
                     </div>
                 </section>
 
@@ -178,7 +184,7 @@ export default function PortfolioAIProductPhotography() {
                     className="portfolio-section-card" style={{ marginBottom: "6rem", background: "white", padding: "4rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
-                        The Solution
+                        {c.solutionTitle}
                     </h2>
                     <p style={{ 
                         fontFamily: "var(--font-body)", 
@@ -188,11 +194,11 @@ export default function PortfolioAIProductPhotography() {
                         fontWeight: 300,
                         marginBottom: "2rem"
                     }}>
-                        AI tools were used to generate realistic product photography scenes around the existing packshot images.
+                        {c.solution}
                     </p>
                     
                     <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "1.25rem", fontWeight: 600, marginBottom: "1rem", color: "var(--text-primary)" }}>
-                        This included creating:
+                        {c.includedTitle}
                     </h3>
                     <ul style={{ 
                         fontFamily: "var(--font-body)", 
@@ -203,10 +209,10 @@ export default function PortfolioAIProductPhotography() {
                         listStyleType: "disc",
                         paddingLeft: "1.5rem"
                     }}>
-                        <li>realistic surfaces and backgrounds</li>
-                        <li>natural lighting and shadows</li>
-                        <li>contextual product styling</li>
-                        <li>cohesive visual composition</li>
+                        <li>{c.included[0]}</li>
+                        <li>{c.included[1]}</li>
+                        <li>{c.included[2]}</li>
+                        <li>{c.included[3]}</li>
                     </ul>
                     
                     <p style={{ 
@@ -218,7 +224,7 @@ export default function PortfolioAIProductPhotography() {
                         marginTop: "2rem",
                         marginBottom: 0
                     }}>
-                        The result was a set of marketing-ready product images that feel like professional product photography.
+                        {c.solutionResult}
                     </p>
                 </section>
 
@@ -230,7 +236,7 @@ export default function PortfolioAIProductPhotography() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "3rem", color: "var(--text-primary)", textAlign: "center" }}>
-                        Before & After Product Images
+                        {c.beforeAfterTitle}
                     </h2>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "4rem" }}>
@@ -241,12 +247,12 @@ export default function PortfolioAIProductPhotography() {
                                 </h3>
                                 <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "2rem" }}>
                                     <div>
-                                        <p style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "1rem", fontFamily: "var(--font-body)", fontWeight: 500, textAlign: "center" }}>Original Packshot</p>
-                                        <div><ImageWithFallback src={`${assetPath}${item.original}`} alt={`${item.title} Original`} /></div>
+                                        <p style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-secondary)", marginBottom: "1rem", fontFamily: "var(--font-body)", fontWeight: 500, textAlign: "center" }}>{c.originalLabel}</p>
+                                        <div><ImageWithFallback src={`${assetPath}${item.original}`} alt={item.alts[0]} /></div>
                                     </div>
                                     <div>
-                                        <p style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "white", background: "var(--accent-primary)", padding: "0.3rem 0.5rem", borderRadius: "12px", marginBottom: "1rem", fontFamily: "var(--font-body)", fontWeight: 600, textAlign: "center" }}>AI-Generated Environment</p>
-                                        <div><ImageWithFallback src={`${assetPath}${item.enhanced}`} alt={`${item.title} AI-Generated`} /></div>
+                                        <p style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "white", background: "var(--accent-primary)", padding: "0.3rem 0.5rem", borderRadius: "12px", marginBottom: "1rem", fontFamily: "var(--font-body)", fontWeight: 600, textAlign: "center" }}>{c.generatedLabel}</p>
+                                        <div><ImageWithFallback src={`${assetPath}${item.enhanced}`} alt={item.alts[1]} /></div>
                                     </div>
                                 </div>
                             </div>
@@ -262,7 +268,7 @@ export default function PortfolioAIProductPhotography() {
                     style={{ marginBottom: "6rem" }}
                 >
                     <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "var(--text-primary)" }}>
-                        Marketing Applications
+                        {c.applicationsTitle}
                     </h2>
                     <p style={{ 
                         fontFamily: "var(--font-body)", 
@@ -272,16 +278,11 @@ export default function PortfolioAIProductPhotography() {
                         fontWeight: 300,
                         marginBottom: "3rem"
                     }}>
-                        These visuals can be used for:
+                        {c.applicationsIntro}
                     </p>
                     
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem" }}>
-                        {[
-                            { title: "Website product listings", desc: "Hero images and PDP visuals that convert browsers into buyers.", icon: <Monitor size={28} /> },
-                            { title: "Email marketing campaigns", desc: "Scroll-stopping imagery for campaigns, flows, and newsletters.", icon: <Mail size={28} /> },
-                            { title: "Paid advertising creatives", desc: "High-quality assets for Meta and Google ads.", icon: <Megaphone size={28} /> },
-                            { title: "Social media marketing", desc: "On-brand visuals built for Instagram, Pinterest, and beyond.", icon: <Share2 size={28} /> },
-                        ].map((app, i) => (
+                        {c.applications.map((a, i) => ({ ...a, icon: APPLICATION_ICONS[i] })).map((app, i) => (
                             <div
                                 key={i}
                                 style={{
@@ -330,7 +331,7 @@ export default function PortfolioAIProductPhotography() {
                         <CheckCircle2 style={{ color: "var(--accent-secondary)", flexShrink: 0 }} size={40} />
                         <div>
                             <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "2rem", marginBottom: "1.5rem", color: "var(--text-primary)" }}>
-                                Impact
+                                {c.impactTitle}
                             </h2>
                             <div style={{ 
                                 fontFamily: "var(--font-body)", 
@@ -339,10 +340,10 @@ export default function PortfolioAIProductPhotography() {
                                 color: "var(--text-secondary)"
                             }}>
                                 <p style={{ marginBottom: "1rem" }}>
-                                    AI-generated product photography enabled the rapid creation of high-quality marketing visuals without the cost and time associated with traditional studio photography.
+                                    {c.impact[0]}
                                 </p>
                                 <p>
-                                    The approach improved visual consistency while allowing faster production of creative assets for marketing campaigns.
+                                    {c.impact[1]}
                                 </p>
                             </div>
                         </div>
@@ -352,8 +353,8 @@ export default function PortfolioAIProductPhotography() {
                 <RelatedLinks
                     className="related-links--open"
                     items={[
-                        { kicker: RELATED.work, to: "/portfolio-ai-enhanced", label: "AI-enhanced product imagery" },
-                        { kicker: RELATED.reading, to: "/blog/ai-product-descriptions-food-brands", label: "AI product descriptions, done safely" },
+                        { kicker: RELATED.work, to: "/portfolio-ai-enhanced", label: c.related[0] },
+                        { kicker: RELATED.reading, to: "/blog/ai-product-descriptions-food-brands", label: c.related[1] },
                     ]}
                 />
 
@@ -365,14 +366,14 @@ export default function PortfolioAIProductPhotography() {
                     style={{ textAlign: "center", paddingTop: "4rem", borderTop: "1px solid var(--border-color)" }}
                 >
                     <p style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "1.1rem" }}>
-                        Looking to elevate your product imagery with AI?
+                        {c.ctaText}
                     </p>
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                        <Link to="/contact" className="btn btn-primary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
-                            Let's Discuss Your Project
+                        <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
+                            {c.ctaPrimary}
                         </Link>
-                        <Link to="/portfolio" className="btn btn-secondary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
-                            View All Work
+                        <Link to={to("/portfolio")} className="btn btn-secondary" style={{ padding: "1.2rem 2.5rem", borderRadius: "50px" }}>
+                            {c.ctaSecondary}
                         </Link>
                     </div>
                 </div>

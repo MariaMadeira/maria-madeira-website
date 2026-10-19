@@ -70,7 +70,6 @@ const pt: typeof en = {
     ],
     ctaTitle: "Quer anúncios que ultrapassem o seu ponto de equilíbrio?",
     ctaButton: "Vamos falar de estratégia",
-    englishSuffix: " (em inglês)",
 };
 
 export default pt;

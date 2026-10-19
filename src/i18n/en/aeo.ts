@@ -109,7 +109,6 @@ const en = {
     ],
     ctaTitle: "Become the answer AI recommends",
     ctaText: "Book a free strategy call and we'll map where AI search sees you today, and how to become the cited default in your category.",
-    englishSuffix: "",
 };
 
 export default en;
