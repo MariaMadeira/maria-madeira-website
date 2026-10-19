@@ -1782,3 +1782,110 @@ select:focus {
   line-height: 1.6;
   color: var(--text-secondary);
 }
+
+/* ========================= */
+/* Credentials (/about)       */
+/* ========================= */
+/* Plain rows rather than cards: the section sits inside the bio column, where a
+   grid of cards would be too narrow to read. */
+.credentials {
+  margin-top: 2.5rem;
+}
+
+.credentials-title {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.credentials-intro {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0 0 1.5rem;
+}
+
+.credential-group + .credential-group {
+  margin-top: 2rem;
+}
+
+.credential-group-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.credential-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.credential {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.credential-name {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.credential-issuer {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0.2rem 0 0;
+}
+
+.credential-note {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0.35rem 0 0;
+}
+
+.credential-verify {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-secondary);
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.credential-verify:hover {
+  color: var(--accent-hover);
+  gap: 10px;
+}
+
+/* Trust line: one short text badge, used at the top of the email pages. */
+.trust-line {
+  /* Normal text flow, not flex: the badge holds one sentence, and flex would
+     turn each text run into an item and space the full stop away from it. */
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+}
+
+.trust-line a {
+  color: var(--accent-secondary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.trust-line a:hover {
+  color: var(--accent-hover);
+}

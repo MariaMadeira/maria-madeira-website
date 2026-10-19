@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Search, Repeat, Users, LineChart, ArrowRight, Mail, Quote } from "lucide-react";
 import Seo from "../components/Seo";
+import { PRACTITIONER_URL } from "../lib/credentials";
 
 const SITE_URL = "https://mariamadeira.com";
 
@@ -216,6 +217,12 @@ export default function ServicesEmailMarketing() {
                     </h1>
                     <p style={{ color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8, marginBottom: "2.5rem" }}>
                         Lifecycle flows that sell on autopilot, segmentation that sends the right message to the right customer, and the deliverability discipline that keeps it all landing in the inbox.
+                    </p>
+                    <p className="trust-line" style={{ marginBottom: "2rem" }}>
+                        Klaviyo Partner.{" "}
+                        <a href={PRACTITIONER_URL} target="_blank" rel="noopener">
+                            Klaviyo Practitioner certified
+                        </a>.
                     </p>
                     <Link to="/contact" className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
                         Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />

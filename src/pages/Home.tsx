@@ -3,6 +3,7 @@ import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft, 
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { useInView } from "../hooks/useInView";
+import { PROGRAM_MEMBERSHIP } from "../lib/credentials";
 
 // Email figures are verified Klaviyo data for the last 12 months (Jul 2024 –
 // Jul 2025); Google Ads figures are the full account export for 1 Oct 2025 to
@@ -29,11 +30,9 @@ const HOME_JSON_LD = {
             "jobTitle": "Growth Strategist",
             "description": "Growth strategist for brands that sell online: websites, Answer Engine Optimisation (AEO), SEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands.",
             "sameAs": ["https://www.linkedin.com/in/maria-madeira-growth", "https://influee.co/partnership/maria-madeira"],
-            "memberOf": {
-                "@type": "Organization",
-                "name": "Klaviyo K:Partners",
-                "url": "https://www.klaviyo.com/partners"
-            },
+            // Identical to the About node: same @id, so two different values
+            // would contradict each other on one merged entity.
+            "memberOf": PROGRAM_MEMBERSHIP,
             "knowsAbout": ["Answer Engine Optimisation (AEO)", "SEO", "Email Marketing", "Klaviyo", "Google Ads", "Meta Ads", "AI Marketing", "Growth Strategy", "Paid Acquisition", "Lifecycle Marketing"]
         },
         // Split out of a single ProfessionalService node: that type descends from

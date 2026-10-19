@@ -4,6 +4,7 @@ import Seo from "../components/Seo";
 import RelatedLinks from "../components/RelatedLinks";
 import { EmailRevenueChart } from "../components/ResultCharts";
 import { caseStudyJsonLd } from "../lib/schema";
+import { PRACTITIONER_URL } from "../lib/credentials";
 
 // Git-derived (git log src/pages/CaseStudyEmail.tsx). Bump PUBLISHED never;
 // bump MODIFIED whenever the numbers below are updated.
@@ -77,6 +78,12 @@ export default function CaseStudyEmail() {
                     </h1>
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
                         {SUBTITLE}
+                    </p>
+                    <p className="trust-line" style={{ marginTop: "-1.5rem", marginBottom: "3rem" }}>
+                        Klaviyo Partner.{" "}
+                        <a href={PRACTITIONER_URL} target="_blank" rel="noopener">
+                            Klaviyo Practitioner certified
+                        </a>.
                     </p>
                 </div>
 

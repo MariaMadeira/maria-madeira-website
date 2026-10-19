@@ -2,6 +2,7 @@ import { Linkedin, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { SITE_URL, PERSON_ID } from "../lib/schema";
+import { CREDENTIAL_GROUPS, HAS_CREDENTIAL, PROGRAM_MEMBERSHIP } from "../lib/credentials";
 
 // The About page is the canonical entity page for the Maria Madeira brand, so it
 // carries the richest Person node. Same @id as the homepage (#person) so search
@@ -13,14 +14,10 @@ const SAME_AS = [
     "https://influee.co/partnership/maria-madeira",
 ];
 
-// Person.memberOf accepts an Organization, so the Klaviyo partnership fits the
-// canonical Person node without inventing a shape. Same @id as the homepage, so
-// the two nodes merge rather than competing.
-const MEMBER_OF = {
-    "@type": "Organization",
-    "name": "Klaviyo K:Partners",
-    "url": "https://www.klaviyo.com/partners",
-};
+// The Klaviyo partnership is a programme membership rather than an
+// organisation the person belongs to, so it uses ProgramMembership. The
+// homepage node carries the identical value: same @id means the two merge, and
+// two different memberOf values on one entity would contradict each other.
 
 const ABOUT_JSON_LD = {
     "@context": "https://schema.org",
@@ -49,7 +46,8 @@ const ABOUT_JSON_LD = {
             ],
             "knowsLanguage": ["English", "Portuguese"],
             "sameAs": SAME_AS,
-            "memberOf": MEMBER_OF,
+            "hasCredential": HAS_CREDENTIAL,
+            "memberOf": PROGRAM_MEMBERSHIP,
         },
         {
             "@type": "BreadcrumbList",
@@ -174,6 +172,38 @@ export default function About() {
                                 <Linkedin size={20} /> LinkedIn <ExternalLink size={14} opacity={0.5} />
                             </a>
                         </div>
+
+                        {/* Credentials: after the bio, before the CTA. */}
+                        <section className="credentials">
+                            <h2 className="credentials-title">Credentials</h2>
+                            <p className="credentials-intro">
+                                Certifications and education behind the work I do for clients.
+                            </p>
+                            {CREDENTIAL_GROUPS.map((group) => (
+                                <div key={group.title} className="credential-group">
+                                    <h3 className="credential-group-title">{group.title}</h3>
+                                    <ul className="credential-list">
+                                        {group.items.map((c) => (
+                                            <li key={c.name} className="credential">
+                                                <p className="credential-name">{c.name}</p>
+                                                <p className="credential-issuer">{c.issuer}</p>
+                                                {c.note && <p className="credential-note">{c.note}</p>}
+                                                {c.verifyUrl && (
+                                                    <a
+                                                        className="credential-verify"
+                                                        href={c.verifyUrl}
+                                                        target="_blank"
+                                                        rel="noopener"
+                                                    >
+                                                        Verify credential <ExternalLink size={13} />
+                                                    </a>
+                                                )}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </section>
 
                         <div style={{ marginTop: "2rem" }}>
                             <Link to="/contact" className="btn btn-primary">
