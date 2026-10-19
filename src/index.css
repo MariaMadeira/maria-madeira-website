@@ -383,6 +383,132 @@ ul {
   width: 100%;
 }
 
+/* Services submenu (desktop). The panel's top padding bridges the gap to the
+   trigger, so the pointer can cross it without the menu closing. */
+.nav-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.nav-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  padding: 4px;
+  border-radius: 4px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.nav-dropdown-toggle svg {
+  transition: transform 0.2s ease;
+}
+
+.nav-dropdown-toggle:hover,
+.nav-dropdown-toggle[aria-expanded="true"] {
+  color: var(--accent-secondary);
+}
+
+.nav-dropdown-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-toggle:focus-visible,
+.nav-dropdown-link:focus-visible,
+.mobile-accordion-toggle:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 2px;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: -1rem;
+  padding-top: 0.9rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+}
+
+.nav-dropdown-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.nav-dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem;
+  min-width: 240px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(59, 49, 44, 0.1);
+}
+
+.nav-dropdown-link {
+  display: block;
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.nav-dropdown-link:hover,
+.nav-dropdown-link.active {
+  background: var(--bg-secondary);
+  color: var(--accent-secondary);
+}
+
+.nav-dropdown-all {
+  margin-top: 0.35rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Services accordion (mobile menu) */
+.mobile-accordion-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.mobile-accordion-toggle svg {
+  transition: transform 0.2s ease;
+}
+
+.mobile-accordion-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.mobile-submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 1rem 1rem;
+}
+
+.mobile-submenu a {
+  display: block;
+  padding: 0.6rem 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
 .mobile-toggle {
   display: none;
 }
