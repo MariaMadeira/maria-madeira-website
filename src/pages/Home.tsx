@@ -7,10 +7,13 @@ import { PROGRAM_MEMBERSHIP } from "../lib/credentials";
 
 // Email figures are verified Klaviyo data for the last 12 months (Jul 2024 –
 // Jul 2025); Google Ads figures are the full account export for 1 Oct 2025 to
-// 26 Aug 2026. The headline numbers live in the Measurable Impact grid; these
-// supporting metrics appear nowhere else on the page. The client's total store
-// revenue is deliberately underivable: the email share is given as a fraction,
-// never as a percentage, because an exact share next to £134K reconstructs it.
+// 26 Aug 2026. The four headline numbers (£134K, 2.2x AI impressions, 50.4%,
+// 532% Google Ads ROAS) live in the Measurable Impact grid; these supporting
+// metrics appear nowhere else on the page. 2.2x is the first week against the
+// last of the Generative AI features report, 18 May to 24 Aug 2026: the same
+// figure, array and window published on /case-study-seo. The client's total
+// store revenue stays underivable, so the email share appears only as "over a
+// third", never as a percentage: an exact share next to £134K reconstructs it.
 const SUPPORTING_METRICS = [
     { to: 48.3, prefix: "£", suffix: "K", decimals: 1, label: "Flow Revenue", detail: "From automated lifecycle flows, +82.5% YoY" },
     { to: 7.27, prefix: "", suffix: "%", decimals: 2, label: "Flow Click Rate", detail: "Across automated email flows, last 12 months" },
@@ -506,10 +509,10 @@ export default function Home() {
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            over &#8531;
+                            <AnimatedCounter from={0} to={2.2} suffix="x" decimals={1} />
                         </h3>
-                        <p style={{ fontWeight: 600 }}>Email Revenue Share</p>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>of total store revenue (last 12 months)</p>
+                        <p style={{ fontWeight: 600 }}>AI Search Impressions</p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>Daily impressions in Google&apos;s AI features, first vs last week</p>
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
