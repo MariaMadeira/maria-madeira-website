@@ -30,7 +30,7 @@ Verified results from recent engagements include £134K in email-attributed reve
 
 ## Writing
 - [What is AEO? Answer Engine Optimisation explained](https://mariamadeira.com/blog/what-is-aeo): how brands get cited by AI answer engines, how AEO differs from SEO and GEO, and where to start.
-- [Klaviyo flows vs campaigns: four years of data](https://mariamadeira.com/blog/klaviyo-flows-vs-campaigns): in 2024, Klaviyo flows earned 43% of a UK food brand's email revenue and 16x more per recipient than campaigns. Four years of real data and what to set up first.
+- [Why your automated emails earn more than your campaigns](https://mariamadeira.com/blog/klaviyo-flows-vs-campaigns): automated flows are a small share of sends and a large share of email revenue. What the research says, four years of data from a real UK brand, and the flows to build first.
 - [Inside ChatGPT Ads in Europe](https://mariamadeira.com/blog/chatgpt-ads-europe): a walkthrough of opening a European ChatGPT advertiser account, the real minimums and limits, and why AEO comes first.
 
 ## About

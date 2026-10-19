@@ -22,6 +22,8 @@
  * direct labels rather than by hue alone.
  */
 
+import { EMAIL_PERIODS } from "../data/emailRevenue";
+
 /* ── Source data ───────────────────────────────────────────
  * Google Ads: full account export, 1 October 2025 to 26 August 2026 (11 months).
  * ROAS is revenue ÷ spend for the same month, so the three arrays reconcile.
@@ -652,19 +654,6 @@ export function OutcomesBar() {
 }
 
 
-/* ── Email programme data (Klaviyo) ──────────────────────────
- * Attributed revenue by period in £K, split between campaign sends and
- * automated flows. 2021 covers September to December, when the programme
- * started, so it is a four-month period next to four full-year ones.
- * Segments sum to the labelled total (2021 rounds to £33.1K from 33.0).
- */
-const EMAIL_PERIODS = [
-    { lines: ["2021", "(Sep to Dec)"], campaigns: 25.9, flows: 7.1, total: "£33.1K" },
-    { lines: ["2022"], campaigns: 47.4, flows: 18.9, total: "£66.3K" },
-    { lines: ["2023"], campaigns: 52.8, flows: 23.4, total: "£76.2K" },
-    { lines: ["2024"], campaigns: 64.8, flows: 48.2, total: "£113K" },
-    { lines: ["12 months", "to Jul 2025"], campaigns: 86.1, flows: 48.3, total: "£134.4K" },
-];
 const EMAIL_NOTE = "2021 covers September to December, when the programme started.";
 const EMAIL_SOURCE = "Source: Klaviyo Business Overview exports.";
 /* Campaigns take the deeper brown and sit at the base; flows take the lighter

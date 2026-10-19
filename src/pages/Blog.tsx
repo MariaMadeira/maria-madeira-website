@@ -7,10 +7,10 @@ const SITE_URL = "https://mariamadeira.com";
 export const POSTS = [
     {
         slug: "klaviyo-flows-vs-campaigns",
-        title: "What four years of Klaviyo data taught me about email for small brands",
-        excerpt: "In 2024, Klaviyo flows earned 43% of a UK food brand's email revenue and 16x more per recipient than campaigns. Four years of real data and what to set up first.",
+        title: "Why your automated emails earn more than your campaigns",
+        excerpt: "Automated flows are a small share of sends and a large share of email revenue. What the research says, four years of data from a real UK brand, and the flows to build first.",
         category: "Email Marketing",
-        readTime: "6 min read",
+        readTime: "7 min read",
         date: "19 October 2026",
     },
     {
