@@ -40,16 +40,37 @@ const tone = (i: number) => TONES[i % TONES.length];
 const INK = "#3B312C";       /* --text-primary */
 const INK_SOFT = "#6B5B52";  /* --text-secondary */
 
-/* ── Visual 2: the customer journey ── */
-const JOURNEY = [
-    { icon: UserPlus, moment: "Signs up", flow: "Welcome series" },
-    { icon: Eye, moment: "Browses, doesn't buy", flow: "Browse abandonment" },
-    { icon: ShoppingCart, moment: "Leaves a basket", flow: "Abandoned checkout" },
-    { icon: PackageCheck, moment: "Buys for the first time", flow: "Thank you and cross-sell" },
-    { icon: RefreshCw, moment: "Is about to run out", flow: "Replenishment" },
-    { icon: Moon, moment: "Goes quiet", flow: "Win-back" },
-    { icon: Cake, moment: "Has a birthday", flow: "Birthday email" },
+/* ── Visual 2: the customer journey, in three phases. The two top earners
+       are the welcome and abandoned checkout flows (Omnisend: 76% of
+       automation orders). ── */
+const JOURNEY_PHASES = [
+    {
+        title: "Before the first order",
+        stops: [
+            { icon: UserPlus, moment: "Signs up", flow: "Welcome series", when: "Right after sign-up", top: true },
+            { icon: Eye, moment: "Browses, doesn't buy", flow: "Browse abandonment", when: "A day after browsing", top: false },
+            { icon: ShoppingCart, moment: "Leaves a basket", flow: "Abandoned checkout", when: "Within a few hours", top: true },
+        ],
+    },
+    {
+        title: "The first order",
+        stops: [
+            { icon: PackageCheck, moment: "Buys for the first time", flow: "Thank you and cross-sell", when: "After the order ships", top: false },
+        ],
+    },
+    {
+        title: "After",
+        stops: [
+            { icon: RefreshCw, moment: "Is about to run out", flow: "Replenishment", when: "Before they run out", top: false },
+            { icon: Moon, moment: "Goes quiet", flow: "Win-back", when: "After a few quiet months", top: false },
+            { icon: Cake, moment: "Has a birthday", flow: "Birthday email", when: "On their birthday", top: false },
+        ],
+    },
 ];
+const JOURNEY_DESC = `Seven moments in a customer's journey, in three phases, each with the flow that answers it and when it is sent. ${(() => {
+    let n = 0;
+    return JOURNEY_PHASES.map((ph) => `${ph.title}: ${ph.stops.map((st) => `${++n}. ${st.moment}: ${st.flow}, sent ${st.when.toLowerCase()}${st.top ? " (top earner)" : ""}.`).join(" ")}`).join(" ");
+})()} Welcome and abandoned cart emails drove 76% of all orders from automations, according to Omnisend's 2026 Ecommerce Marketing Report.`;
 
 /* ── Visual 3: the flows that do the heavy lifting ── */
 const CORE_FLOWS = [
@@ -265,12 +286,21 @@ export default function BlogKlaviyoFlowsVsCampaigns() {
                 .kfc-visual { margin: 2rem 0; padding: clamp(1.25rem, 3vw, 2rem); background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 16px; }
                 .kfc-visual-title { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600; color: var(--text-primary); margin: 0 0 1.5rem; }
                 .kfc-two { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 2.5rem; }
-                .kfc-journey { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.75rem; position: relative; }
-                .kfc-journey::before { content: ""; position: absolute; top: 22px; left: 7%; right: 7%; height: 2px; background: var(--border-color); }
-                .kfc-stop { position: relative; text-align: center; }
-                .kfc-stop-icon { width: 44px; height: 44px; margin: 0 auto 0.75rem; border-radius: 50%; background: var(--bg-secondary); border: 2px solid var(--accent-secondary); color: var(--accent-secondary); display: flex; align-items: center; justify-content: center; position: relative; }
-                .kfc-stop-moment { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4; margin: 0 0 0.35rem; }
-                .kfc-stop-flow { font-size: 0.88rem; font-weight: 700; color: var(--text-primary); line-height: 1.35; margin: 0; }
+                .kj-phases { display: grid; grid-template-columns: 3fr 1.15fr 3fr; gap: 0.75rem; position: relative; }
+                .kj-phase { background: rgba(176, 137, 104, 0.07); border-radius: 12px; padding: 0 0.5rem 1rem; }
+                .kj-phase-title { height: 2.25rem; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.68rem; line-height: 1.2; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: ${INK_SOFT}; margin: 0; }
+                .kj-stops { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 0.5rem; }
+                .kj-stop { text-align: center; position: relative; z-index: 1; }
+                .kj-badge-row { height: 1.5rem; display: flex; align-items: flex-end; justify-content: center; }
+                .kj-top { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: ${DEEP}; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+                .kj-circle { width: 48px; height: 48px; border-radius: 50%; margin: 0.4rem auto 0.7rem; background: #F5EEE6; border: 2px solid ${DEEP}; color: ${DEEP}; display: flex; align-items: center; justify-content: center; position: relative; }
+                .kj-circle--top { background: ${DEEP}; color: #fff; }
+                .kj-num { position: absolute; top: -6px; right: -9px; width: 20px; height: 20px; border-radius: 50%; background: #fff; border: 1.5px solid ${DEEP}; color: ${DEEP}; font-size: 0.68rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+                .kj-moment { font-size: 0.8rem; color: ${INK_SOFT}; line-height: 1.35; margin: 0 0 0.3rem; }
+                .kj-flow { font-size: 0.86rem; font-weight: 700; color: ${INK}; line-height: 1.3; margin: 0 0 0.3rem; }
+                .kj-when { font-size: 0.78rem; color: ${DEEP}; line-height: 1.35; margin: 0; }
+                .kj-line { position: absolute; left: 3%; right: 6px; top: calc(2.25rem + 1.5rem + 0.4rem + 23px); height: 2px; background: #CBBBAA; z-index: 0; }
+                .kj-line::after { content: ""; position: absolute; right: -6px; top: -5px; border-left: 10px solid #CBBBAA; border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
                 .kfc-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
                 .kfc-card { border: 1px solid var(--border-color); border-radius: 12px; padding: 1.25rem; background: var(--bg-primary); }
                 .kfc-card-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--accent-glow); color: var(--accent-secondary); display: flex; align-items: center; justify-content: center; margin-bottom: 0.85rem; }
@@ -285,12 +315,22 @@ export default function BlogKlaviyoFlowsVsCampaigns() {
                 .kfc-phone { width: 250px; max-width: 100%; margin: 0 auto; border: 10px solid #2d2926; border-radius: 34px; background: #fff; overflow: hidden; box-shadow: 0 16px 40px rgba(59, 49, 44, 0.12); }
                 .kfc-weeks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
                 .kfc-week { border: 1px solid var(--border-color); border-top: 4px solid var(--accent-secondary); border-radius: 12px; padding: 1.1rem; background: var(--bg-primary); }
+                /* The journey needs about 840px across; narrower, it runs down the left. */
+                @media (max-width: 900px) {
+                    .kj-phases { grid-template-columns: 1fr; }
+                    .kj-phase { padding: 0 0.75rem 0.9rem; }
+                    .kj-phase-title { height: 2rem; justify-content: flex-start; text-align: left; padding-left: 62px; }
+                    .kj-stops { grid-auto-flow: row; grid-auto-columns: auto; gap: 1.1rem; }
+                    .kj-stop { display: grid; grid-template-columns: 48px 1fr; column-gap: 0.9rem; text-align: left; align-items: start; }
+                    .kj-circle { grid-column: 1; grid-row: 1 / span 4; margin: 0; }
+                    .kj-badge-row { grid-column: 2; height: auto; justify-content: flex-start; margin-bottom: 0.3rem; }
+                    .kj-badge-row:empty { display: none; }
+                    .kj-moment, .kj-flow, .kj-when { grid-column: 2; }
+                    .kj-line { left: calc(0.75rem + 23px); right: auto; width: 2px; height: auto; top: calc(2rem + 24px); bottom: 1.6rem; }
+                    .kj-line::after { right: auto; top: auto; left: -5px; bottom: -8px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid #CBBBAA; border-bottom: none; }
+                }
                 @media (max-width: 720px) {
                     .kfc-two, .kfc-cards, .kfc-weeks { grid-template-columns: 1fr; }
-                    .kfc-journey { grid-template-columns: 1fr; gap: 1.1rem; }
-                    .kfc-journey::before { top: 22px; bottom: 22px; left: 21px; right: auto; width: 2px; height: auto; }
-                    .kfc-stop { display: grid; grid-template-columns: 44px 1fr; gap: 0 1rem; text-align: left; align-items: center; }
-                    .kfc-stop-icon { margin: 0; grid-row: span 2; }
                     .kfc-wide { display: none; }
                     .kfc-narrow { display: block; }
                 }
@@ -352,17 +392,33 @@ export default function BlogKlaviyoFlowsVsCampaigns() {
                 {/* Visual 2 */}
                 <figure className="kfc-visual">
                     <p className="kfc-visual-title">The customer journey, and the flow for each moment</p>
-                    <Visual id="kfc-journey" title="The customer journey, and the flow for each moment" desc={JOURNEY.map((s, i) => `${i + 1}. ${s.moment}: ${s.flow}.`).join(" ")}>
-                        <ol className="kfc-journey">
-                            {JOURNEY.map(({ icon: Icon, moment, flow }, i) => (
-                                <li key={flow} className="kfc-stop">
-                                    <div className="kfc-stop-icon" style={{ color: tone(i).fg, borderColor: tone(i).fg, background: `linear-gradient(${tone(i).bg}, ${tone(i).bg}), var(--bg-secondary)` }}><Icon size={20} aria-hidden="true" /></div>
-                                    <p className="kfc-stop-moment">{moment}</p>
-                                    <p className="kfc-stop-flow">{flow}</p>
-                                </li>
+                    <Visual id="kfc-journey" title="The customer journey, and the flow for each moment" desc={JOURNEY_DESC}>
+                        <div className="kj-phases">
+                            {JOURNEY_PHASES.map((ph, pi) => (
+                                <div key={ph.title} className="kj-phase">
+                                    <p className="kj-phase-title">{ph.title}</p>
+                                    <ol className="kj-stops" start={JOURNEY_PHASES.slice(0, pi).reduce((n, p) => n + p.stops.length, 0) + 1}>
+                                        {ph.stops.map(({ icon: Icon, moment, flow, when, top }, si) => (
+                                            <li key={flow} className="kj-stop">
+                                                <div className="kj-badge-row">{top && <span className="kj-top">Top earner</span>}</div>
+                                                <div className={top ? "kj-circle kj-circle--top" : "kj-circle"}>
+                                                    <Icon size={20} aria-hidden="true" />
+                                                    <span className="kj-num">{JOURNEY_PHASES.slice(0, pi).reduce((n, p) => n + p.stops.length, 0) + si + 1}</span>
+                                                </div>
+                                                <p className="kj-moment">{moment}</p>
+                                                <p className="kj-flow">{flow}</p>
+                                                <p className="kj-when">{when}</p>
+                                            </li>
+                                        ))}
+                                    </ol>
+                                </div>
                             ))}
-                        </ol>
+                            <div className="kj-line" aria-hidden="true" />
+                        </div>
                     </Visual>
+                    <p style={CAPTION}>
+                        Welcome and abandoned cart emails drove 76% of all orders from automations. Source: Omnisend 2026 Ecommerce Marketing Report.
+                    </p>
                 </figure>
 
                 <h2 style={H2}>The flows that do the heavy lifting</h2>
