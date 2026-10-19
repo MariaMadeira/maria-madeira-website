@@ -4,8 +4,15 @@ import Seo from "../components/Seo";
 import { SITE_URL, PERSON_ID } from "../lib/schema";
 import { PAID_ADS_SERVICE } from "../lib/links";
 import { WAYS_TO_WORK } from "../lib/pricing";
+import { BODYSURF_TESTIMONIAL as t } from "../data/testimonials";
 
 const PAGE_URL = `${SITE_URL}/pricing`;
+
+const STEPS = [
+    { lead: "A free call", rest: "tell me about the brand and what isn't working." },
+    { lead: "A written quote", rest: "scope and price agreed in writing before anything starts." },
+    { lead: "The work", rest: "done by me, with direct access throughout." },
+];
 const AI_CHECK_CONTACT = "/contact?topic=ai-search-check";
 
 const BY_SERVICE = [
@@ -91,6 +98,8 @@ export default function Pricing() {
             <style>{`
                 .pr-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: stretch; }
                 @media (max-width: 860px) { .pr-cards { grid-template-columns: 1fr; } }
+                .pr-steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+                @media (max-width: 860px) { .pr-steps { grid-template-columns: 1fr; } }
                 .pr-check { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem 2rem; flex-wrap: wrap; }
             `}</style>
 
@@ -131,7 +140,12 @@ export default function Pricing() {
                         <div key={w.name} className="card" style={{ padding: "2rem", display: "flex", flexDirection: "column" }}>
                             <h2 style={{ fontSize: "1.4rem", margin: "0 0 1rem" }}>{w.name}</h2>
                             <p style={{ fontFamily: "var(--font-heading)", fontSize: "2rem", fontWeight: 600, lineHeight: 1.1, color: "var(--text-primary)", margin: 0 }}>{w.price}</p>
-                            <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.75rem", fontWeight: 700, color: "var(--accent-secondary)", margin: "0.6rem 0 1.5rem" }}>{w.type}</p>
+                            <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.75rem", fontWeight: 700, color: "var(--accent-secondary)", margin: "0.6rem 0 0.75rem" }}>{w.type}</p>
+                            <p style={{ fontSize: "0.88rem", fontStyle: "italic", lineHeight: 1.5, margin: "0 0 1.5rem" }}>
+                                <Link to={w.proof.to} style={{ color: "var(--text-secondary)", textDecoration: "underline", textUnderlineOffset: "3px", textDecorationColor: "var(--border-color)" }}>
+                                    {w.proof.text}
+                                </Link>
+                            </p>
                             <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem", display: "flex", flexDirection: "column", gap: "0.75rem", flex: 1 }}>
                                 {w.items.map((item) => (
                                     <li key={item} style={{ display: "flex", gap: "0.6rem", color: "var(--text-secondary)", lineHeight: 1.6, fontSize: "0.95rem" }}>
@@ -147,9 +161,32 @@ export default function Pricing() {
                     ))}
                 </div>
             </section>
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", textAlign: "center", margin: "0 auto 5rem", maxWidth: "720px" }}>
+            <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", textAlign: "center", margin: "0 auto 3rem", maxWidth: "720px" }}>
                 Ad spend for Google and Meta is paid directly by you to the platform and is not included in any price.
             </p>
+
+            {/* Testimonial, the same object as the homepage carousel */}
+            <section style={{ maxWidth: "720px", margin: "0 auto 5rem" }}>
+                <figure className="card testimonial-card" style={{ margin: 0 }}>
+                    <div className="testimonial-body">
+                        {t.badge && <span className="testimonial-badge">{t.badge}</span>}
+                        <blockquote className="testimonial-quote">"{t.quote}"</blockquote>
+                    </div>
+                    {t.readMore && (
+                        <Link to={t.readMore} className="testimonial-readmore">
+                            Read the full recommendation <ArrowRight size={15} />
+                        </Link>
+                    )}
+                    <figcaption className="testimonial-attribution">
+                        <span className="testimonial-monogram" aria-hidden="true">{t.monogram}</span>
+                        <span>
+                            <span className="testimonial-name">{t.name}</span>
+                            {t.role && <span className="testimonial-role">{t.role}</span>}
+                            <span className="testimonial-context">{t.context}</span>
+                        </span>
+                    </figcaption>
+                </figure>
+            </section>
 
             {/* Starting prices by service */}
             <section style={{ maxWidth: "820px", margin: "0 auto 5rem" }}>
@@ -166,6 +203,25 @@ export default function Pricing() {
                         </li>
                     ))}
                 </ul>
+            </section>
+
+            {/* How it works */}
+            <section style={{ marginBottom: "5rem" }}>
+                <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>How it works</h2>
+                </div>
+                <ol className="pr-steps">
+                    {STEPS.map((s, i) => (
+                        <li key={s.lead} className="card" style={{ background: "var(--bg-secondary)", position: "relative", padding: "2rem 2rem 1.75rem" }}>
+                            <span aria-hidden="true" style={{ position: "absolute", top: "1.25rem", right: "1.5rem", fontFamily: "var(--font-heading)", fontSize: "2.2rem", fontWeight: 800, color: "var(--accent-primary)", opacity: 0.4, lineHeight: 1 }}>
+                                {String(i + 1).padStart(2, "0")}
+                            </span>
+                            <p style={{ color: "var(--text-secondary)", fontSize: "1rem", lineHeight: 1.7, margin: "1.75rem 0 0" }}>
+                                <strong style={{ color: "var(--text-primary)" }}>{s.lead}:</strong> {s.rest}
+                            </p>
+                        </li>
+                    ))}
+                </ol>
             </section>
 
             {/* FAQ, all answers visible */}
@@ -187,7 +243,10 @@ export default function Pricing() {
 
             {/* Final CTA */}
             <section style={{ textAlign: "center", background: "var(--bg-secondary)", padding: "clamp(3rem, 6vw, 5rem) 2rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}>
-                <h2 style={{ fontSize: "2rem", marginBottom: "2.5rem" }}>Not sure which fits?</h2>
+                <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Not sure which fits?</h2>
+                <p style={{ color: "var(--text-secondary)", fontSize: "1.1rem", maxWidth: "560px", margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
+                    Book a free call and I'll tell you honestly where I would start, including when I'm not the right fit.
+                </p>
                 <Link to="/contact" className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
                     Let's Talk Strategy <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                 </Link>

@@ -3,6 +3,8 @@ import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft, 
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { PAID_ADS_SERVICE } from "../lib/links";
+import { BODYSURF_TESTIMONIAL } from "../data/testimonials";
+import type { Testimonial } from "../data/testimonials";
 import { useInView } from "../hooks/useInView";
 import { PROGRAM_MEMBERSHIP } from "../lib/credentials";
 
@@ -124,7 +126,7 @@ function AnimatedCounter({ from = 0, to, decimals = 0, prefix = "", suffix = "",
 /** LinkedIn has no per-recommendation URL, so both links land on the list. */
 const RECOMMENDATIONS_URL = "https://www.linkedin.com/in/maria-madeira-growth/details/recommendations/";
 
-const TESTIMONIALS = [
+const TESTIMONIALS: Testimonial[] = [
     {
         name: "Wilfred Emmanuel-Jones",
         badge: "Client",
@@ -136,15 +138,7 @@ const TESTIMONIALS = [
         quote: "I could give her something that was little more than an idea in my head and she would go away, work it out and come back with something real. [...] She built our email marketing, worked on our e-commerce, creative, advertising and SEO, helped us launch our app and later became one of the people pushing us to understand and use AI properly within the business.",
         readMore: RECOMMENDATIONS_URL,
     },
-    {
-        name: "The Bodysurf School",
-        badge: "Client",
-        role: null,
-        context: "Recommended on LinkedIn",
-        monogram: "BS",
-        quote: "Something we thought would be pricey and difficult to create, she built in just one month, and our monthly costs are low. On top of that, we're now ranking number one on search engines and AI tools whenever you search for bodysurf. She's easy to work with, super hands-on, and delivered exactly what she promised, within the timeframe she promised.",
-        readMore: "/case-study-bodysurf-school",
-    },
+    BODYSURF_TESTIMONIAL,
     {
         name: "Adel Sidiqi",
         badge: null,
