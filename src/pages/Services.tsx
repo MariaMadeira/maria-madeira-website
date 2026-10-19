@@ -19,6 +19,16 @@ const SERVICES_JSON_LD = {
     ],
 };
 
+const SERVICE_LINK_STYLE = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "6px",
+    color: "var(--accent-secondary)",
+    fontWeight: 600,
+    fontSize: "0.9rem",
+    transition: "gap 0.3s ease",
+} as const;
+
 export default function Services() {
     const services = [
         {
@@ -52,8 +62,10 @@ export default function Services() {
         {
             icon: <BarChart size={40} />,
             title: "Paid Advertising",
-            description: "Media buying and campaign management across Meta, Google, TikTok, and more. Data-driven allocation to maximise Return on Ad Spend (ROAS).",
+            description: "Media buying and campaign management across Google, Meta and Microsoft Ads. Every campaign measured against your break-even return on ad spend (ROAS).",
             link: PAID_ADS_SERVICE,
+            cta: "Paid ads service",
+            secondaryLink: "/case-study-google-ads",
         },
         {
             icon: <Cpu size={40} />,
@@ -148,21 +160,16 @@ export default function Services() {
                             </p>
                         )}
                         {service.link && (
-                            <Link 
-                                to={service.link} 
-                                style={{ 
-                                    display: "inline-flex", 
-                                    alignItems: "center", 
-                                    gap: "6px", 
-                                    color: "var(--accent-secondary)", 
-                                    fontWeight: 600, 
-                                    fontSize: "0.9rem", 
-                                    marginTop: "1.5rem",
-                                    transition: "gap 0.3s ease"
-                                }}
-                            >
-                                {service.cta ?? "See results"} <ArrowRight size={16} />
-                            </Link>
+                            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem 1.75rem", marginTop: "1.5rem" }}>
+                                <Link to={service.link} style={SERVICE_LINK_STYLE}>
+                                    {service.cta ?? "See results"} <ArrowRight size={16} />
+                                </Link>
+                                {service.secondaryLink && (
+                                    <Link to={service.secondaryLink} style={SERVICE_LINK_STYLE}>
+                                        See results <ArrowRight size={16} />
+                                    </Link>
+                                )}
+                            </div>
                         )}
                     </div>
                 ))}

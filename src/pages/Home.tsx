@@ -2,6 +2,7 @@ import { useRef, useEffect, useState, useCallback, useSyncExternalStore } from "
 import { ArrowRight, BarChart, Maximize, TrendingUp, Cpu, Mail, ArrowRightLeft, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import { PAID_ADS_SERVICE } from "../lib/links";
 import { useInView } from "../hooks/useInView";
 import { PROGRAM_MEMBERSHIP } from "../lib/credentials";
 
@@ -666,7 +667,7 @@ export default function Home() {
                         { icon: <TrendingUp size={22} />, title: 'Growth Strategy', desc: 'A plan for what to fix first, based on your numbers, not guesswork. Then I build it.', link: '/services' },
                         { icon: <Sparkles size={22} />, title: 'AI Search Visibility (AEO)', desc: "Getting brands cited and recommended by ChatGPT, Perplexity and Google's AI Overviews, not just ranked.", link: '/services/aeo' },
                         { icon: <Mail size={22} />, title: 'Email Marketing & Automation', desc: 'You have a list of customers you never email. I turn it into a channel that sells while you sleep.', link: '/services/email-marketing' },
-                        { icon: <BarChart size={22} />, title: 'Paid Advertising', desc: 'Ads that pay for themselves, with every pound tracked against what it brings back.' },
+                        { icon: <BarChart size={22} />, title: 'Paid Advertising', desc: 'Ads that pay for themselves, with every pound tracked against what it brings back.', link: PAID_ADS_SERVICE },
                         { icon: <Cpu size={22} />, title: 'AI & Automation Systems', desc: 'The repetitive work (content, reporting, data entry) done by machines, so your time goes where it earns.' },
                         { icon: <Maximize size={22} />, title: 'Creative Direction', desc: 'Product photography and brand assets that look like the premium products you sell.' },
                         { icon: <ArrowRightLeft size={22} />, title: 'Platform Migration', desc: 'Migrations planned around what they put at risk: rankings, revenue, customer data.', link: '/services/websites' },

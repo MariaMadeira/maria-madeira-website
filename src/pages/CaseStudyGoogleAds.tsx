@@ -4,9 +4,10 @@ import Seo from "../components/Seo";
 import RelatedLinks from "../components/RelatedLinks";
 import { GoogleAdsCharts } from "../components/ResultCharts";
 import { caseStudyJsonLd } from "../lib/schema";
+import { PAID_ADS_SERVICE } from "../lib/links";
 
 // Git-derived (git log src/pages/CaseStudyGoogleAds.tsx). Bump MODIFIED
-// whenever the numbers below are updated — this is an ongoing engagement.
+// whenever the numbers below are updated: this is an ongoing engagement.
 const PUBLISHED = "2026-03-16";
 const MODIFIED = "2026-08-26";
 
@@ -167,7 +168,7 @@ export default function CaseStudyGoogleAds() {
                 </section>
 
                 <RelatedLinks
-                    service={{ to: "/services", label: "Growth strategy and paid acquisition" }}
+                    service={{ to: PAID_ADS_SERVICE, label: "Google and Meta Ads management" }}
                     next={{ to: "/case-study-email", label: "An unused email list became the brand's biggest revenue channel" }}
                 />
 

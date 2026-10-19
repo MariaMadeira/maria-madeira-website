@@ -3,6 +3,7 @@ import { ArrowLeft, Clock, Calendar, User, MapPin, Wallet, Layout, Lock, Shield 
 import type { LucideIcon } from "lucide-react";
 import Seo from "../components/Seo";
 import RelatedLinks, { RELATED } from "../components/RelatedLinks";
+import { PAID_ADS_SERVICE } from "../lib/links";
 
 const SITE_URL = "https://mariamadeira.com";
 const PATH = "/blog/chatgpt-ads-europe";
@@ -424,6 +425,8 @@ export default function BlogChatGptAdsEurope() {
                 <RelatedLinks
                     className="related-links--open"
                     items={[
+                        { kicker: RELATED.service, to: PAID_ADS_SERVICE, label: "Google and Meta Ads management" },
+                        { kicker: RELATED.reading, to: "/case-study-google-ads", label: "Five pounds back for every pound spent" },
                         { kicker: RELATED.reading, to: "/blog/what-is-aeo", label: "What is AEO?" },
                         { kicker: RELATED.reading, to: "/case-study-seo", label: "AI search impressions up 2.2x" },
                     ]}

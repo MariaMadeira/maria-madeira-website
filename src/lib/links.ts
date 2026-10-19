@@ -1,10 +1,6 @@
 /**
- * Internal destinations that are expected to move.
- *
- * There is no paid advertising service page yet, so every link that stands for
- * the paid ads service points at the Google Ads case study instead. When
- * /services/paid-ads exists, change it here. Links that mean the case study
- * itself (the hub, the homepage results, the case study cycle) keep the literal
- * path and should not move.
+ * The paid advertising service page, which every link standing for the paid
+ * ads service reads from. Links that mean the Google Ads case study itself
+ * (the hub, the homepage results, the case study cycle) keep the literal path.
  */
-export const PAID_ADS_SERVICE = "/case-study-google-ads";
+export const PAID_ADS_SERVICE = "/services/paid-ads";

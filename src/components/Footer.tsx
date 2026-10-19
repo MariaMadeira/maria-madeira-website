@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Mail } from "lucide-react";
+import { PAID_ADS_SERVICE } from "../lib/links";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -50,6 +51,7 @@ export default function Footer() {
                             <li><Link to="/services/websites" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Website Strategy &amp; Build</Link></li>
                             <li><Link to="/services/aeo" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>AI Search Visibility (AEO)</Link></li>
                             <li><Link to="/services/email-marketing" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Email Marketing &amp; Klaviyo</Link></li>
+                            <li><Link to={PAID_ADS_SERVICE} style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Paid Ads</Link></li>
                             <li><Link to="/case-studies" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Case Studies</Link></li>
                             <li><Link to="/portfolio" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Portfolio</Link></li>
                             <li><Link to="/blog" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Blog</Link></li>
