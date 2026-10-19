@@ -119,7 +119,7 @@ const en = {
         a: "If you want to ",
         aeoLink: "know where your brand stands",
         b: " before a competitor pays to sit under your answer, I offer a ",
-        contactLink: "20-minute diagnosis call",
+        contactLink: "free 30-minute call",
         c: ". I will show you what ChatGPT says about your category today, with your brand in it or not.",
     },
     related: ["Google and Meta Ads management", "Five pounds back for every pound spent", "What is AEO?", "AI search impressions up 2.2x"],

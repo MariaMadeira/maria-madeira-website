@@ -31,7 +31,7 @@ const pt: typeof en = {
     impact: [
         ["Com ", { b: "£26,5K" }, " de investimento em anúncios ao longo de onze meses, as campanhas otimizadas geraram ", { b: "£141K" }, " de receita atribuída, um retorno de ", { b: "532%" }, " face ao ponto de equilíbrio de ", { b: "400%" }, " do cliente."],
         ["Esse valor veio de ", { b: "2161 conversões" }, ". Dez dos onze meses terminaram acima do ponto de equilíbrio: fevereiro de 2026 ficou nos 396%, a quatro pontos, e todos os outros meses passaram a linha com folga."],
-        ["Este caso mostra como uma gestão de campanhas estruturada e uma otimização contínua podem fazer dos anúncios pagos um canal de crescimento rentável e capaz de escalar."],
+        ["Este caso mostra como uma gestão de campanhas estruturada e uma otimização contínua podem fazer dos anúncios pagos um canal de crescimento rentável e com margem para crescer."],
     ],
     serviceLink: "Gestão de Google Ads e Meta Ads",
     nextLink: "Uma lista de email por aproveitar tornou-se o maior canal de receita da marca",

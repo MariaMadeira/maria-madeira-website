@@ -8,7 +8,7 @@ const pt: typeof en = {
     eyebrow: "Anúncios pagos",
     h1Lead: "Google Ads e Meta Ads para e-commerce, ",
     h1Accent: "medidos face ao seu ponto de equilíbrio",
-    intro: "A maioria das contas de anúncios mostra um ROAS e fica por aí. O número que importa é aquele de que as suas margens precisam. Começo por calcular o seu ROAS de equilíbrio, o retorno mínimo de que as suas margens precisam, e depois construo campanhas no Google Ads, Meta Ads e Microsoft Ads para o ultrapassar, mês após mês. Trabalho ao nível de uma agência, feito pela pessoa com quem fala.",
+    intro: "A maioria das contas de anúncios mostra um ROAS e fica por aí. O número que importa é o que as suas margens exigem. Começo por calcular o seu ROAS de equilíbrio e depois construo campanhas no Google Ads, Meta Ads e Microsoft Ads para o ultrapassar, mês após mês. Trabalho ao nível de uma agência, feito pela pessoa com quem fala.",
     results: [
         { value: "532%", label: "Retorno do investimento em anúncios, face a um ponto de equilíbrio de 400%" },
         { value: "£141K", label: "Receita atribuída a partir de £26,5K de investimento em anúncios" },

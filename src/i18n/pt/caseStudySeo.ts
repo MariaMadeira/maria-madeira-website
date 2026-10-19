@@ -42,7 +42,7 @@ const pt: typeof en = {
         { label: "Gluten-Free Kebabs, cliques", before: null, after: null, badge: "+229%" },
         { label: "Gluten-Free Cakes, posição", before: "37,4", after: "14", badge: "+23 lugares" },
         { label: "Gluten-Free Sausages, posição", before: "11,2", after: "7,5", badge: "página 1" },
-        { label: "Receita Oven-baked lamb steaks", before: null, after: "762 cliques em 28 dias", badge: "posição 6,1" },
+        { label: "Página de receita: Oven-baked lamb steaks", before: null, after: "762 cliques em 28 dias", badge: "posição 6,1" },
     ],
     checkTitle: "Cada alteração, verificada aos 30 dias",
     checkSubline: "117 páginas reavaliadas com os dados do Search Console",

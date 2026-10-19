@@ -23,7 +23,7 @@ const pt: typeof en = {
         { value: "Mais de um terço", label: "Da receita total da loja", detail: "Vinda do email, em 12 meses" },
     ],
     definitionTitle: "Como é um bom email marketing",
-    definition: "O email marketing de ciclo de vida é receita de um canal próprio, construída com fluxos automáticos, segmentação e campanhas, e não com newsletters avulsas. Envia a mensagem certa ao cliente certo no momento certo, e mede-se em receita atribuída, não em aberturas.",
+    definition: "O email marketing de ciclo de vida gera receita num canal que é seu, com fluxos automáticos, segmentação e campanhas, e não com newsletters avulsas. Envia a mensagem certa ao cliente certo no momento certo, e mede-se em receita atribuída, não em aberturas.",
     curveTitle: "A curva que se acumula",
     curveSub: "Números reais de um só cliente, do início até hoje.",
     curve: [
@@ -33,7 +33,7 @@ const pt: typeof en = {
     whatTitle: "O que faço",
     whatIDo: [
         { title: "Auditoria ao Klaviyo", line: "Fluxos, segmentos, entregabilidade e atribuição de receita, comparados com os valores de referência." },
-        { title: "Fluxos automáticos", line: "Sequências de boas-vindas, carrinho e navegação abandonados, pós-compra, reposição e reconquista que vendem sozinhas." },
+        { title: "Fluxos automáticos", line: "Sequências de boas-vindas, carrinho e navegação abandonados, pós-compra, reposição e reconquista que trabalham sem intervenção." },
         { title: "Campanhas e segmentação", line: "A mensagem certa para cada parte da lista, protegendo a entregabilidade à medida que a lista cresce." },
         { title: "Medição", line: "Receita atribuída, desempenho de cada fluxo e saúde da lista, todos os meses." },
     ],
@@ -86,7 +86,7 @@ const pt: typeof en = {
         },
         {
             q: "Que fluxos de email deve ter qualquer loja online?",
-            a: "No mínimo: uma série de boas-vindas para novos subscritores, navegação abandonada e carrinho abandonado para recuperar quem estava quase a comprar, um fluxo pós-compra para conquistar a segunda encomenda e um fluxo de reconquista para clientes que se estão a afastar. Os fluxos de reposição ajudam em produtos de consumo. Estas automações vendem sozinhas, e é por isso que rendem mais por envio do que as campanhas.",
+            a: "No mínimo: uma série de boas-vindas para novos subscritores, navegação abandonada e carrinho abandonado para recuperar quem estava quase a comprar, um fluxo pós-compra para conquistar a segunda encomenda e um fluxo de reconquista para clientes que se estão a afastar. Os fluxos de reposição ajudam em produtos de consumo. Estas automações correm sozinhas, e é por isso que rendem mais por envio do que as campanhas.",
         },
         {
             q: "Quanto tempo demora o email marketing a dar resultados?",

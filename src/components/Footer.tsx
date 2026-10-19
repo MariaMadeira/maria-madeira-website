@@ -57,7 +57,7 @@ const COPY: Record<Lang, {
         companyLinks: [
             { name: "Sobre", path: "/about" },
             { name: "Contacto", path: "/contact" },
-            { name: "AI Information", path: "/ai-information" },
+            { name: "Informação para IA", path: "/ai-information" },
         ],
         touch: "Fale comigo",
         touchLine: "Quer fazer crescer a sua marca? Vamos conversar.",

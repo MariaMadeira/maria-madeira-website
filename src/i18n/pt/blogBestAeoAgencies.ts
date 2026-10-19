@@ -20,7 +20,7 @@ const pt: typeof en = {
     published: "Publicado a 14 de julho de 2026",
     updated: "Atualizado a 14 de julho de 2026",
     readTime: "10 min de leitura",
-    lead: "As marcas de e-commerce na Europa que procuram ajuda com a otimização para motores de resposta (AEO) têm duas opções realistas: agências especializadas (normalmente GBP 3K a 10K por mês, melhores para marcas com orçamentos maiores e equipas internas para as coordenar) e consultores independentes (custo mais baixo, atenção sénior direta, melhores para marcas pequenas e médias). Este guia apresenta sete agências que vale a pena avaliar, aquilo em que cada uma é realmente boa, como avaliar qualquer uma delas e onde entra um consultor independente.",
+    lead: "As marcas de e-commerce na Europa que procuram ajuda com a otimização para motores de resposta (AEO) têm duas opções realistas: agências especializadas (normalmente GBP 3K a 10K por mês, melhores para marcas com orçamentos maiores e equipas internas para as coordenar) e consultores independentes (custo mais baixo, atenção sénior direta, melhores para marcas pequenas e médias). Este guia apresenta sete agências que vale a pena avaliar, aquilo em que cada uma é realmente boa, como avaliar qualquer uma delas e onde entra uma consultora independente.",
     disclosureLabel: "Declaração de interesses",
     disclosure: "Sou a Maria Madeira, consultora independente de AEO e crescimento, o que quer dizer que concorro com algumas das empresas abaixo em certos projetos. É precisamente por isso que fiquei fora da lista: um \"os melhores\" escrito por quem se inclui nele vale pouco. As agências são descritas com base em informação publicada, ordenadas por mérito para trabalho de e-commerce, e várias são a escolha certa, em vez de mim, para situações concretas. Onde eu me encaixo está explicado à parte, com transparência, no fim.",
     tableTitle: "A seleção num relance",
@@ -55,7 +55,7 @@ const pt: typeof en = {
             name: "Digital Landscope",
             location: "Glasgow, Reino Unido",
             knownFor: "Especialistas em ChatGPT Search",
-            body: "Uma agência mais pequena, com consultores que têm em média mais de dez anos de pesquisa, focada especificamente na visibilidade no ChatGPT Search e no Google AI Mode, com resultados publicados invulgarmente concretos: um cliente passou de zero para dez compras de utilizadores do ChatGPT Search no primeiro mês após a implementação.",
+            body: "Uma agência mais pequena, com consultores que têm em média mais de dez anos de pesquisa, focada especificamente na visibilidade no ChatGPT Search e no Modo IA da Google (AI Mode), com resultados publicados invulgarmente concretos: um cliente passou de zero para dez compras de utilizadores do ChatGPT Search no primeiro mês após a implementação.",
             bestFit: "Lojas que querem um trabalho focado, com resultados que se atribuem diretamente.",
         },
         {

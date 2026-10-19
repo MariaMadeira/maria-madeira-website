@@ -46,7 +46,7 @@ const pt: typeof en = {
         {
             slug: "best-aeo-agencies-ecommerce-europe",
             title: "As melhores agências de AEO para marcas de e-commerce na Europa (2026), e onde entra uma consultora independente",
-            excerpt: "Uma seleção, com pesquisa feita, de sete agências de AEO para marcas europeias de e-commerce, uma tabela comparativa, cinco perguntas para as avaliar e os casos em que um consultor independente é a melhor escolha.",
+            excerpt: "Uma seleção, com pesquisa feita, de sete agências de AEO para marcas europeias de e-commerce, uma tabela comparativa, cinco perguntas para as avaliar e os casos em que uma consultora independente é a melhor escolha.",
             category: "Pesquisa com IA",
             readTime: "10 min de leitura",
             date: "14 de julho de 2026",

@@ -23,7 +23,7 @@ const pt: typeof en = {
         {
             title: "Rita Antunes Psicologia",
             category: "Identidade de marca",
-            description: "Uma identidade clínica premium que converte contactos de terapia de valor elevado.",
+            description: "Uma identidade clínica premium que atrai pedidos de consulta de valor elevado.",
         },
         {
             title: "Ousadia Artcraft",

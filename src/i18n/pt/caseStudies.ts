@@ -35,7 +35,7 @@ const pt: typeof en = {
             title: "Uma lista de email por aproveitar tornou-se o maior canal de receita da marca",
             category: "Email marketing",
             problem: "Um canal de email pouco aproveitado, com poucas automações ao longo do ciclo de vida do cliente.",
-            results: "£134K de receita atribuída · +88,9% face ao ano anterior, nos últimos 12 meses",
+            results: "£134K de receita atribuída · +88,9% face ao ano anterior, nos 12 meses até julho de 2025",
         },
         {
             title: "Uma loja a perder vendas por causa das filas, e a solução: pré-encomendas pelo telemóvel",

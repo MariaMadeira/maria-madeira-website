@@ -112,7 +112,7 @@ const pt: typeof en = {
     ],
     related: [
         { to: "/blog/chatgpt-ads-europe", label: "Por dentro dos ChatGPT Ads na Europa" },
-        { to: "/blog/ai-product-descriptions-food-brands", label: "Descrições de produto com IA, feitas em segurança" },
+        { to: "/blog/ai-product-descriptions-food-brands", label: "Descrições de produto com IA, sem riscos" },
     ],
 };
 

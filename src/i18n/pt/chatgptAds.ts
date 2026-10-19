@@ -120,10 +120,10 @@ const pt: typeof en = {
         a: "Se quer ",
         aeoLink: "saber onde está a sua marca",
         b: " antes de um concorrente pagar para ficar por baixo da sua resposta, ofereço uma ",
-        contactLink: "chamada de diagnóstico de 20 minutos",
+        contactLink: "conversa gratuita de 30 minutos",
         c: ". Mostro-lhe o que o ChatGPT diz hoje sobre a sua categoria, com ou sem a sua marca.",
     },
-    related: ["Gestão de Google Ads e Meta Ads", "Cinco libras de volta por cada libra investida", "O que é o AEO?", "Impressões na pesquisa com IA 2,2x maiores"],
+    related: ["Gestão de Google Ads e Meta Ads", "Cinco libras de retorno por cada libra investida", "O que é o AEO?", "Impressões na pesquisa com IA 2,2x maiores"],
     signOff: "Maria Madeira é consultora de crescimento independente e ajuda marcas de alimentação e bebidas do Reino Unido e da Europa com SEO, AEO, email marketing e aquisição paga.",
 };
 

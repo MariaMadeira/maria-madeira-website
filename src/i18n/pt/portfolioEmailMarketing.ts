@@ -20,7 +20,7 @@ const pt: typeof en = {
         "O objetivo era aumentar a retenção de clientes, recuperar compras abandonadas e gerar receita constante com fluxos automáticos de email que acompanham cada fase da jornada do cliente.",
     ],
     strategyTitle: "Estratégia de ciclo de vida",
-    strategy: "O sistema foi desenhado para acompanhar toda a jornada do cliente com automação. Cada fluxo guia o cliente pelo funil e incentiva conversões e compras repetidas.",
+    strategy: "Desenhei o sistema para acompanhar toda a jornada do cliente com automação. Cada fluxo guia o cliente pelo funil e incentiva conversões e compras repetidas.",
     lifecycleStages: [
         { from: "Subscritor", flow: "Série de boas-vindas" },
         { from: "Visitante", flow: "Navegação abandonada" },
@@ -30,7 +30,7 @@ const pt: typeof en = {
         { from: "Cliente inativo", flow: "Fluxo de reconquista" },
     ],
     flowsTitle: "Principais fluxos automáticos",
-    flowsIntro: "Foram criados seis fluxos automáticos essenciais para cobrir todo o ciclo de vida do cliente, cada um com uma função própria e mensagens direcionadas.",
+    flowsIntro: "Criei seis fluxos automáticos essenciais para cobrir todo o ciclo de vida do cliente, cada um com uma função própria e mensagens direcionadas.",
     keyFlows: [
         { title: "Série de boas-vindas", description: "Recebe os novos subscritores e apresenta a marca, criando confiança desde o primeiro contacto e levando à primeira compra." },
         { title: "Navegação abandonada", description: "Volta a falar com quem viu produtos mas não os pôs no carrinho, mantendo a marca presente e recuperando a intenção de compra." },
@@ -40,7 +40,7 @@ const pt: typeof en = {
         { title: "Fluxo de reconquista", description: "Reativa clientes que não compram há um determinado período, com incentivos e mensagens à medida." },
     ],
     designsTitle: "Design dos emails",
-    designs: "Cada email foi desenhado para refletir a identidade forte da marca, com a comida em primeiro lugar: visuais fortes, texto direto e chamadas para a ação claras, para gerar interação e conversões.",
+    designs: "Desenhei cada email para refletir a identidade forte da marca, com a comida em primeiro lugar: visuais fortes, texto direto e chamadas para a ação claras, para gerar interação e conversões.",
     emailLabels: [
         "Fluxo de boas-vindas / oferta",
         "Segmento de produto: email 1",
@@ -49,13 +49,13 @@ const pt: typeof en = {
         "Fluxo de conteúdo com receitas",
     ],
     segmentationTitle: "Estratégia de segmentação",
-    segmentation: "Foi implementada uma segmentação avançada com base no comportamento de compra, para comunicar de forma direcionada e com mensagens mais relevantes para cada grupo.",
+    segmentation: "Implementei uma segmentação avançada com base no comportamento de compra, para comunicar de forma direcionada e com mensagens mais relevantes para cada grupo.",
     segments: [
         { name: "Clientes do produto principal", description: "Clientes que compraram a gama emblemática, o que permite conteúdos direcionados sobre produtos relacionados, receitas e promoções." },
         { name: "Clientes da gama de especialidade", description: "Clientes que preferem uma linha de especialidade, o que permite mensagens muito relevantes e oportunidades de venda cruzada." },
     ],
     contentTitle: "Fluxos de conteúdo e interação",
-    contentIntro: "Além da automação transacional, foram criados fluxos adicionais para aumentar a interação e manter uma comunicação contínua com os clientes.",
+    contentIntro: "Além da automação transacional, criei fluxos adicionais para aumentar a interação e manter uma comunicação contínua com os clientes.",
     contentFlows: [
         { title: "Fluxo de receitas e inspiração", description: "Enviado depois da compra, com ideias de receitas e inspiração para cozinhar, para reforçar a ligação à marca e incentivar novas interações." },
         { title: "Série \"Cozinha da marca\"", description: "Uma série de emails de conteúdo alinhada com a identidade da marca, que celebra os produtos e conta histórias para aprofundar a ligação com o cliente." },

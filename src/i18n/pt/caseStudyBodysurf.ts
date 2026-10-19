@@ -37,7 +37,7 @@ const pt: typeof en = {
         },
         {
             title: "Bilingue desde o início",
-            description: "Tradução completa para português sobre o site em inglês, em todas as páginas, formulários e passos do checkout. Os nomes de locais e o nome da marca ficam em inglês; tudo o resto lê-se em português europeu natural.",
+            description: "Tradução completa para português, a partir do site em inglês, em todas as páginas, formulários e passos do checkout. Os nomes de locais e o nome da marca ficam em inglês; tudo o resto lê-se em português europeu natural.",
         },
         {
             title: "Bases de SEO e AEO",

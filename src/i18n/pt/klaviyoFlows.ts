@@ -176,7 +176,7 @@ const pt: typeof en = {
             a: "Segundo os benchmarks do Klaviyo, os fluxos valem cerca de 41% da receita de email. Se os seus trazem muito menos de um terço, os fluxos são normalmente o primeiro sítio a ver.",
         },
     ],
-    related: ["Email marketing e consultoria Klaviyo", "Descrições de produto com IA, com segurança"],
+    related: ["Email marketing e consultoria Klaviyo", "Descrições de produto com IA, sem riscos"],
     author: " é consultora de crescimento independente para marcas que vendem online. Geriu o programa Klaviyo desta marca de 2021 a 2025, é Klaviyo Partner e tem o certificado Klaviyo Practitioner.",
 };
 
