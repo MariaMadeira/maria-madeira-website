@@ -1,10 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import { Linkedin, Mail } from "lucide-react";
 import { PAID_ADS_SERVICE } from "../lib/links";
-import { langOf, type Lang } from "../lib/i18n";
+import { langOf, ptLink, type Lang } from "../lib/i18n";
 
-/* Footer copy per language. On /pt pages, links to pages that only exist in
-   English keep their English URL. */
+/* Footer copy per language, with English paths throughout. On /pt pages each
+   path goes through ptLink, so it reaches the Portuguese page once live. */
 const COPY: Record<Lang, {
     home: string; blurb: string; nav: string; navLinks: { name: string; path: string }[];
     company: string; companyLinks: { name: string; path: string }[];
@@ -46,7 +46,7 @@ const COPY: Record<Lang, {
             { name: "Serviços", path: "/services" },
             { name: "Sites", path: "/services/websites" },
             { name: "AEO e SEO", path: "/services/aeo" },
-            { name: "Email marketing e Klaviyo", path: "/pt/servicos/email-marketing" },
+            { name: "Email marketing e Klaviyo", path: "/services/email-marketing" },
             { name: "Anúncios pagos", path: PAID_ADS_SERVICE },
             { name: "Casos de estudo", path: "/case-studies" },
             { name: "Portefólio", path: "/portfolio" },
@@ -56,7 +56,7 @@ const COPY: Record<Lang, {
         company: "Empresa",
         companyLinks: [
             { name: "Sobre", path: "/about" },
-            { name: "Contacto", path: "/pt/contacto" },
+            { name: "Contacto", path: "/contact" },
             { name: "AI Information", path: "/ai-information" },
         ],
         touch: "Fale comigo",
@@ -72,7 +72,9 @@ const LINK = { color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" } as const;
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
-    const t = COPY[langOf(useLocation().pathname)];
+    const lang = langOf(useLocation().pathname);
+    const t = COPY[lang];
+    const localize = (path: string) => (lang === "pt" ? ptLink(path).to : path);
 
     return (
         <footer style={{ 
@@ -116,7 +118,7 @@ export default function Footer() {
                     <div>
                         <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>{t.nav}</h2>
                         <ul style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                            {t.navLinks.map((l) => <li key={l.path}><Link to={l.path} style={LINK}>{l.name}</Link></li>)}
+                            {t.navLinks.map((l) => <li key={l.path}><Link to={localize(l.path)} style={LINK}>{l.name}</Link></li>)}
                         </ul>
                     </div>
 
@@ -124,7 +126,7 @@ export default function Footer() {
                     <div>
                         <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>{t.company}</h2>
                         <ul style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                            {t.companyLinks.map((l) => <li key={l.path}><Link to={l.path} style={LINK}>{l.name}</Link></li>)}
+                            {t.companyLinks.map((l) => <li key={l.path}><Link to={localize(l.path)} style={LINK}>{l.name}</Link></li>)}
                         </ul>
                     </div>
 

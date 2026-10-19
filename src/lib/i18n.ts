@@ -1,25 +1,64 @@
 /**
- * The Portuguese pages (/pt) and their English twins.
+ * The Portuguese site (/pt) and its English twins.
  *
- * PAIRS is the single list of translated pages: Seo reads it for hreflang,
- * the navbar for the EN | PT switch, and prerender.mjs for <html lang> and
- * the sitemap's xhtml:link alternates. A page with no entry has no twin, so
- * it carries no cross-language hreflang, and the switch falls back to the
- * other language's homepage.
+ * PT_PAGES is the single register of every planned Portuguese page. Only
+ * entries marked "live" exist: they are routed and prerendered, get hreflang,
+ * appear in the sitemap and are where the EN | PT switch and the /pt pages'
+ * internal links go. A "draft" page is not routed at all, so its URL 404s
+ * until its review batch is approved and the entry flips to "live" (and its
+ * route is added to src/routes.ts, built from the same components as the
+ * English page with the copy in a per-language file).
+ *
+ * Batches: 0 = phase 1 (live), 1 = services, pricing, about, AI information,
+ * 2 = case studies, 3 = portfolio, 4 = blog. Review files: docs/pt-review/.
  */
-export const PAIRS: { en: string; pt: string }[] = [
-    { en: "/", pt: "/pt" },
-    { en: "/services/email-marketing", pt: "/pt/servicos/email-marketing" },
-    { en: "/contact", pt: "/pt/contacto" },
+export type Lang = "en" | "pt";
+
+export const PT_PAGES: { en: string; pt: string; status: "live" | "draft"; batch: number }[] = [
+    { en: "/", pt: "/pt", status: "live", batch: 0 },
+    { en: "/services/email-marketing", pt: "/pt/servicos/email-marketing", status: "live", batch: 0 },
+    { en: "/contact", pt: "/pt/contacto", status: "live", batch: 0 },
+
+    { en: "/services", pt: "/pt/servicos", status: "draft", batch: 1 },
+    { en: "/services/aeo", pt: "/pt/servicos/aeo", status: "draft", batch: 1 },
+    { en: "/services/paid-ads", pt: "/pt/servicos/anuncios", status: "draft", batch: 1 },
+    { en: "/services/websites", pt: "/pt/servicos/sites", status: "draft", batch: 1 },
+    { en: "/pricing", pt: "/pt/precos", status: "draft", batch: 1 },
+    { en: "/about", pt: "/pt/sobre", status: "draft", batch: 1 },
+    { en: "/ai-information", pt: "/pt/informacao-ia", status: "draft", batch: 1 },
+
+    { en: "/case-studies", pt: "/pt/casos-de-estudo", status: "draft", batch: 2 },
+    { en: "/case-study-google-ads", pt: "/pt/caso-google-ads", status: "draft", batch: 2 },
+    { en: "/case-study-email", pt: "/pt/caso-email", status: "draft", batch: 2 },
+    { en: "/case-study-seo", pt: "/pt/caso-seo", status: "draft", batch: 2 },
+    { en: "/case-study-click-collect", pt: "/pt/caso-click-collect", status: "draft", batch: 2 },
+    { en: "/case-study-bodysurf-school", pt: "/pt/caso-bodysurf-school", status: "draft", batch: 2 },
+
+    { en: "/portfolio", pt: "/pt/portefolio", status: "draft", batch: 3 },
+    { en: "/portfolio-rita-antunes", pt: "/pt/portefolio-rita-antunes", status: "draft", batch: 3 },
+    { en: "/portfolio-ousadia", pt: "/pt/portefolio-ousadia", status: "draft", batch: 3 },
+    { en: "/portfolio-ai-enhanced", pt: "/pt/portefolio-ai-enhanced", status: "draft", batch: 3 },
+    { en: "/portfolio-ai-product-photography", pt: "/pt/portefolio-ai-product-photography", status: "draft", batch: 3 },
+    { en: "/portfolio-email-marketing", pt: "/pt/portefolio-email-marketing", status: "draft", batch: 3 },
+    { en: "/portfolio-click-collect", pt: "/pt/portefolio-click-collect", status: "draft", batch: 3 },
+
+    // Blog slugs are proposals until batch 4 is approved.
+    { en: "/blog", pt: "/pt/blog", status: "draft", batch: 4 },
+    { en: "/blog/what-is-aeo", pt: "/pt/blog/o-que-e-aeo", status: "draft", batch: 4 },
+    { en: "/blog/best-aeo-agencies-ecommerce-europe", pt: "/pt/blog/melhores-agencias-aeo-ecommerce-europa", status: "draft", batch: 4 },
+    { en: "/blog/chatgpt-ads-europe", pt: "/pt/blog/anuncios-chatgpt-europa", status: "draft", batch: 4 },
+    { en: "/blog/ai-product-descriptions-food-brands", pt: "/pt/blog/descricoes-de-produto-com-ia-marcas-alimentares", status: "draft", batch: 4 },
+    { en: "/blog/klaviyo-flows-vs-campaigns", pt: "/pt/blog/fluxos-vs-campanhas-klaviyo", status: "draft", batch: 4 },
 ];
 
-export type Lang = "en" | "pt";
+/** The live pairs: what hreflang, the sitemap and the switch use. */
+export const PAIRS = PT_PAGES.filter((p) => p.status === "live").map(({ en, pt }) => ({ en, pt }));
 
 export function langOf(path: string): Lang {
     return path === "/pt" || path.startsWith("/pt/") ? "pt" : "en";
 }
 
-/** The same page in the other language, or null when it has no twin. */
+/** The same page in the other language, or null when it has no live twin. */
 export function twinOf(path: string): string | null {
     const pair = PAIRS.find((p) => p.en === path || p.pt === path);
     if (!pair) return null;
@@ -40,4 +79,14 @@ export function alternatesOf(path: string): { hreflang: string; path: string }[]
         { hreflang: "pt-PT", path: pair.pt },
         { hreflang: "x-default", path: pair.en },
     ];
+}
+
+/**
+ * A link from a Portuguese page to an English path: the Portuguese twin once
+ * it is live, otherwise the English page, flagged so the label can say
+ * "(em inglês)". Approving a batch updates these links with no other change.
+ */
+export function ptLink(enPath: string): { to: string; english: boolean } {
+    const pair = PAIRS.find((p) => p.en === enPath);
+    return pair ? { to: pair.pt, english: false } : { to: enPath, english: true };
 }

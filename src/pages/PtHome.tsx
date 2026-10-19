@@ -4,6 +4,7 @@ import Seo from "../components/Seo";
 import { CERTIFICATIONS } from "../lib/credentials";
 import { PAID_ADS_SERVICE } from "../lib/links";
 import { SITE_URL, PERSON_ID } from "../lib/schema";
+import { ptLink } from "../lib/i18n";
 
 /* Portuguese homepage. Every figure matches its English case study; decimals
    use the Portuguese comma (2,2x). No prices appear on the /pt pages. */
@@ -20,7 +21,7 @@ const RESULTS = [
 
 const SERVICES = [
     { title: "AEO e SEO", text: "Para que a sua marca apareça no Google e seja recomendada pelo ChatGPT, Perplexity e Gemini.", to: "/services/aeo" },
-    { title: "Email marketing e Klaviyo", text: "Fluxos automáticos e campanhas que trazem os clientes de volta.", to: "/pt/servicos/email-marketing" },
+    { title: "Email marketing e Klaviyo", text: "Fluxos automáticos e campanhas que trazem os clientes de volta.", to: "/services/email-marketing" },
     { title: "Google e Meta Ads", text: "Campanhas medidas face ao seu ponto de equilíbrio, não face a médias genéricas.", to: PAID_ADS_SERVICE },
     { title: "Sites", text: "Shopify e WordPress, preparados para a pesquisa com IA desde o primeiro dia.", to: "/services/websites" },
 ];
@@ -119,8 +120,8 @@ export default function PtHome() {
                             <p className="text-gradient-accent" style={{ fontFamily: "var(--font-heading)", fontSize: "3rem", fontWeight: 700, marginBottom: "0.5rem", lineHeight: 1 }}>{r.value}</p>
                             <p style={{ fontWeight: 600 }}>{r.label}</p>
                             <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", margin: "0.5rem 0 1.25rem", flex: 1 }}>{r.detail}</p>
-                            <Link to={r.to} hrefLang="en-GB" style={{ ...LINK_STYLE, justifyContent: "center" }}>
-                                Ver caso (em inglês) <ArrowRight size={16} />
+                            <Link to={ptLink(r.to).to} hrefLang={ptLink(r.to).english ? "en-GB" : undefined} style={{ ...LINK_STYLE, justifyContent: "center" }}>
+                                {ptLink(r.to).english ? "Ver caso (em inglês)" : "Ver caso"} <ArrowRight size={16} />
                             </Link>
                         </div>
                     ))}
@@ -134,7 +135,7 @@ export default function PtHome() {
                 </div>
                 <div className="grid-2" style={{ gap: "1.5rem", maxWidth: "980px", margin: "0 auto" }}>
                     {SERVICES.map((s) => (
-                        <Link key={s.title} to={s.to} hrefLang={s.to.startsWith("/pt") ? undefined : "en-GB"} className="card hover-lift" style={{ display: "flex", flexDirection: "column", gap: "0.5rem", padding: "2rem" }}>
+                        <Link key={s.title} to={ptLink(s.to).to} hrefLang={ptLink(s.to).english ? "en-GB" : undefined} className="card hover-lift" style={{ display: "flex", flexDirection: "column", gap: "0.5rem", padding: "2rem" }}>
                             <h3 style={{ margin: 0, fontSize: "1.3rem" }}>{s.title}</h3>
                             <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, margin: 0, flex: 1 }}>{s.text}</p>
                             <span style={{ ...LINK_STYLE, marginTop: "0.75rem" }}><ArrowRight size={16} /></span>

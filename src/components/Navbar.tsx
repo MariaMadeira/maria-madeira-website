@@ -4,15 +4,16 @@ import { useState, useEffect, useRef } from "react";
 import type { FocusEvent, KeyboardEvent } from "react";
 import { createPortal } from "react-dom";
 import { PAID_ADS_SERVICE } from "../lib/links";
-import { langOf, switchTarget, type Lang } from "../lib/i18n";
+import { langOf, switchTarget, ptLink, type Lang } from "../lib/i18n";
 
 /**
  * Services submenu. The desktop list is always in the markup, hidden with
  * visibility rather than unmounted, so the links are in the prerendered HTML
  * and crawlable; visibility also keeps them out of the tab order while closed.
  */
-/* Navbar copy per language. On /pt pages, links to pages that only exist in
-   English keep their English URL, with no marker. */
+/* Navbar copy per language, with English paths throughout. On /pt pages each
+   path goes through ptLink, so it reaches the Portuguese page once that page
+   is live and the English one until then, with no marker. */
 const COPY: Record<Lang, {
     home: string; homePath: string; links: { name: string; path: string }[];
     services: { name: string; path: string }[]; allServices: string; servicesMenu: string;
@@ -53,7 +54,7 @@ const COPY: Record<Lang, {
             { name: "Sobre", path: "/about" },
         ],
         services: [
-            { name: "Email marketing e Klaviyo", path: "/pt/servicos/email-marketing" },
+            { name: "Email marketing e Klaviyo", path: "/services/email-marketing" },
             { name: "Anúncios pagos", path: PAID_ADS_SERVICE },
             { name: "AEO e SEO", path: "/services/aeo" },
             { name: "Sites", path: "/services/websites" },
@@ -127,10 +128,12 @@ export default function Navbar() {
 
     const lang = langOf(location.pathname);
     const t = COPY[lang];
-    const links = t.links;
-    const SERVICE_MENU = t.services;
+    const localize = (path: string) => (lang === "pt" ? ptLink(path).to : path);
+    const links = t.links.map((l) => ({ ...l, path: localize(l.path) }));
+    const SERVICE_MENU = t.services.map((l) => ({ ...l, path: localize(l.path) }));
+    const allServicesPath = localize("/services");
 
-    const isServices = location.pathname === "/services" || location.pathname.startsWith("/services/") || location.pathname.startsWith("/pt/servicos/");
+    const isServices = location.pathname === "/services" || location.pathname.startsWith("/services/") || location.pathname === "/pt/servicos" || location.pathname.startsWith("/pt/servicos/");
 
     // Esc closes the submenu and hands focus back to its toggle.
     const onServicesKeyDown = (e: KeyboardEvent) => {
@@ -157,7 +160,7 @@ export default function Navbar() {
 
                     {/* Desktop Nav */}
                     <div className="nav-links" style={{ alignItems: 'center', gap: '1.5rem' }}>
-                        {links.map((link) => link.path === "/services" ? (
+                        {links.map((link) => link.path === allServicesPath ? (
                             <div
                                 key={link.path}
                                 className="nav-dropdown"
@@ -189,8 +192,8 @@ export default function Navbar() {
                                 </button>
                                 <div id="services-menu" className={`nav-dropdown-menu ${servicesOpen ? "open" : ""}`}>
                                     <ul>
-                                        {[...SERVICE_MENU, { name: t.allServices, path: "/services" }].map((item) => (
-                                            <li key={item.path} className={item.path === "/services" ? "nav-dropdown-all" : undefined}>
+                                        {[...SERVICE_MENU, { name: t.allServices, path: allServicesPath }].map((item) => (
+                                            <li key={item.path} className={item.path === allServicesPath ? "nav-dropdown-all" : undefined}>
                                                 <Link
                                                     to={item.path}
                                                     className={`nav-dropdown-link ${location.pathname === item.path ? "active" : ""}`}
@@ -267,7 +270,7 @@ export default function Navbar() {
                     >
                         {t.home}
                     </Link>
-                    {links.map((link) => link.path === "/services" ? (
+                    {links.map((link) => link.path === allServicesPath ? (
                         <div key={link.path} style={{ borderBottom: '1px solid var(--border-color)' }}>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                 <Link
@@ -290,7 +293,7 @@ export default function Navbar() {
                                 </button>
                             </div>
                             <ul id="mobile-services-menu" hidden={!mobileServicesOpen} className="mobile-submenu">
-                                {[...SERVICE_MENU, { name: t.allServices, path: "/services" }].map((item) => (
+                                {[...SERVICE_MENU, { name: t.allServices, path: allServicesPath }].map((item) => (
                                     <li key={item.path}>
                                         <Link
                                             to={item.path}

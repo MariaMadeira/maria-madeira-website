@@ -4,6 +4,7 @@ import Seo from "../components/Seo";
 import KlaviyoPartnerBadge from "../components/KlaviyoPartnerBadge";
 import { PRACTITIONER_URL } from "../lib/credentials";
 import { SITE_URL, PERSON_ID } from "../lib/schema";
+import { ptLink } from "../lib/i18n";
 
 /* Portuguese twin of /services/email-marketing. The figures match
    /case-study-email, in the Portuguese number format. The Service carries no
@@ -139,8 +140,8 @@ export default function PtServicosEmailMarketing() {
                 <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", margin: "1rem 0 0.5rem" }}>
                     Marca de alimentação premium do Reino Unido, 2021 a 2025. Fonte: relatórios do Klaviyo.
                 </p>
-                <Link to="/case-study-email" hrefLang="en-GB" style={{ ...LINK_STYLE, fontSize: "0.95rem" }}>
-                    Ver o caso completo (em inglês) <ArrowRight size={16} />
+                <Link to={ptLink("/case-study-email").to} hrefLang={ptLink("/case-study-email").english ? "en-GB" : undefined} style={{ ...LINK_STYLE, fontSize: "0.95rem" }}>
+                    {ptLink("/case-study-email").english ? "Ver o caso completo (em inglês)" : "Ver o caso completo"} <ArrowRight size={16} />
                 </Link>
             </section>
 
@@ -191,8 +192,8 @@ export default function PtServicosEmailMarketing() {
                     ))}
                 </div>
                 <p style={{ margin: "2rem 0 0", textAlign: "center" }}>
-                    <Link to="/blog/klaviyo-flows-vs-campaigns" hrefLang="en-GB" style={LINK_STYLE}>
-                        Leia o artigo sobre fluxos vs. campanhas (em inglês) <ArrowRight size={16} />
+                    <Link to={ptLink("/blog/klaviyo-flows-vs-campaigns").to} hrefLang={ptLink("/blog/klaviyo-flows-vs-campaigns").english ? "en-GB" : undefined} style={LINK_STYLE}>
+                        {ptLink("/blog/klaviyo-flows-vs-campaigns").english ? "Leia o artigo sobre fluxos vs. campanhas (em inglês)" : "Leia o artigo sobre fluxos vs. campanhas"} <ArrowRight size={16} />
                     </Link>
                 </p>
             </section>
