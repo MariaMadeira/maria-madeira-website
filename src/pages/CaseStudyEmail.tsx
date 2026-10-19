@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import RelatedLinks from "../components/RelatedLinks";
@@ -207,6 +207,11 @@ export default function CaseStudyEmail() {
                             Email revenue rose every period since the programme began: £33K in the last four months of 2021, £66K in 2022, £76K in 2023, £113K in 2024 and £134K in the twelve months to July 2025. Flows grew from 21% to 36% of email revenue over the same span, and campaign open rates moved from the 53rd to the 78th percentile of Klaviyo&apos;s benchmark.
                         </p>
                     </div>
+                    <p style={{ margin: "1.5rem 0 0" }}>
+                        <Link to="/blog/klaviyo-flows-vs-campaigns" style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
+                            Klaviyo flows vs campaigns: four years of data <ArrowRight size={16} />
+                        </Link>
+                    </p>
                 </section>
 
                 <RelatedLinks

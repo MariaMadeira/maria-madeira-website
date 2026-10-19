@@ -6,6 +6,14 @@ const SITE_URL = "https://mariamadeira.com";
 
 export const POSTS = [
     {
+        slug: "klaviyo-flows-vs-campaigns",
+        title: "What four years of Klaviyo data taught me about email for small brands",
+        excerpt: "In 2024, Klaviyo flows earned 43% of a UK food brand's email revenue and 16x more per recipient than campaigns. Four years of real data and what to set up first.",
+        category: "Email Marketing",
+        readTime: "6 min read",
+        date: "19 October 2026",
+    },
+    {
         slug: "ai-product-descriptions-food-brands",
         title: "AI Product Descriptions for Food and Drink Brands: What Can Go Wrong, and How to Do It Safely",
         excerpt: "A UK food brand let an AI agent write its product descriptions. Here's what went wrong, why it matters more for food, and a safer way to use AI on your product pages.",

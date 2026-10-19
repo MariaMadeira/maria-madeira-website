@@ -328,6 +328,11 @@ export default function ServicesEmailMarketing() {
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: "1.5rem 0 0" }}>
                     The full breakdown of how that system was built, flow by flow, is in the <Link to="/case-study-email" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>email marketing case study</Link>.
                 </p>
+                <p style={{ margin: "1rem 0 0" }}>
+                    <Link to="/blog/klaviyo-flows-vs-campaigns" style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
+                        Klaviyo flows vs campaigns: four years of data <ArrowRight size={16} />
+                    </Link>
+                </p>
             </section>
 
             {/* Pricing */}
