@@ -64,6 +64,7 @@ export default function Footer() {
                         <ul style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
                             <li><Link to="/about" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>About</Link></li>
                             <li><Link to="/contact" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Contact</Link></li>
+                            <li><Link to="/ai-information" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>AI Information</Link></li>
                         </ul>
                     </div>
 
