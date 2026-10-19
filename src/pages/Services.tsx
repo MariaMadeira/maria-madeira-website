@@ -44,6 +44,7 @@ export default function Services() {
             description: "Get cited and recommended by AI assistants (ChatGPT, Perplexity, Gemini, and Google AI Overviews) as search shifts from ranked links to synthesised answers.",
             link: "/services/aeo",
             cta: "Explore AEO",
+            price: "From £750",
         },
         {
             icon: <Mail size={40} />,
@@ -51,6 +52,7 @@ export default function Services() {
             description: "Lifecycle flows, segmentation and campaigns that turn email into a compounding, attributed-revenue channel. Klaviyo audits, builds and monthly measurement.",
             link: "/services/email-marketing",
             cta: "Explore email marketing",
+            price: "From £750 a month",
         },
         {
             icon: <TrendingUp size={40} />,
@@ -65,6 +67,7 @@ export default function Services() {
             description: "Media buying and campaign management across Google, Meta and Microsoft Ads. Every campaign measured against your break-even return on ad spend (ROAS).",
             link: PAID_ADS_SERVICE,
             cta: "Paid ads service",
+            price: "From £500 a month per platform",
             secondaryLink: "/case-study-google-ads",
         },
         {
@@ -140,6 +143,11 @@ export default function Services() {
                         </div>
                         <h3>{service.title}</h3>
                         <p style={{ flex: 1 }}>{service.description}</p>
+                        {service.price && (
+                            <p style={{ fontSize: "0.9rem", fontWeight: 600, color: "var(--text-secondary)", margin: "1rem 0 0" }}>
+                                {service.price}
+                            </p>
+                        )}
                         {service.link && (
                             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem 1.75rem", marginTop: "1.5rem" }}>
                                 <Link to={service.link} style={SERVICE_LINK_STYLE}>

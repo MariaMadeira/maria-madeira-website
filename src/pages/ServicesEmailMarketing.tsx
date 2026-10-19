@@ -53,6 +53,10 @@ const FAQS: { q: string; a: string }[] = [
         q: "How long until email marketing shows results?",
         a: "Flows start capturing revenue as soon as they go live, often within the first few weeks, because they trigger on behaviour that is already happening. The compounding gains (higher open rates, sharper segmentation and a larger engaged list) build over months. For context, one program grew email-attributed revenue from £33K in 2021 to £134K in 2025.",
     },
+    {
+        q: "How much does a Klaviyo consultant cost?",
+        a: "Klaviyo setup with core flows starts from £1,200, and monthly email marketing from £750 a month. The final price depends on the size of your list, how many flows are needed, and how many campaigns go out each month.",
+    },
 ];
 
 const EMAIL_JSON_LD = {
@@ -67,6 +71,10 @@ const EMAIL_JSON_LD = {
             "description": EMAIL_DEFINITION,
             "provider": { "@id": `${SITE_URL}/#person` },
             "areaServed": "Worldwide",
+            "offers": [
+                { "@type": "Offer", "name": "Klaviyo setup with core flows", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1200, "priceCurrency": "GBP" } },
+                { "@type": "Offer", "name": "Monthly email marketing", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 750, "priceCurrency": "GBP", "unitText": "per month" } },
+            ],
         },
         {
             "@type": "FAQPage",
@@ -319,6 +327,16 @@ export default function ServicesEmailMarketing() {
                 </Link>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: "1.5rem 0 0" }}>
                     The full breakdown of how that system was built, flow by flow, is in the <Link to="/case-study-email" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>email marketing case study</Link>.
+                </p>
+            </section>
+
+            {/* Pricing */}
+            <section style={{ marginBottom: "5rem", maxWidth: "820px", margin: "0 auto 5rem" }}>
+                <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Pricing</h2>
+                </div>
+                <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", margin: 0 }}>
+                    Klaviyo setup with core flows starts from £1,200. Monthly email marketing starts from £750 a month. You get a written quote after the first call, once the scope is clear.
                 </p>
             </section>
 

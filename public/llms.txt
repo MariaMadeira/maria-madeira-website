@@ -15,6 +15,11 @@ Verified results from recent engagements include £134K in email-attributed reve
 - [Paid advertising](https://mariamadeira.com/services/paid-ads): Google, Meta and Microsoft Ads for e-commerce brands, managed against the client's break-even ROAS. Example: 532% ROAS against a 400% break-even over 11 months.
 - [All services](https://mariamadeira.com/services): the full list, including growth strategy, paid advertising, creative direction and e-commerce platform migration.
 
+## Pricing (UK, GBP, starting prices)
+- AEO audit from £750; ongoing AEO from £800 a month
+- Klaviyo setup with core flows from £1,200; monthly email marketing from £750 a month
+- Google Ads or Meta Ads management from £500 a month per platform, ad spend not included
+
 ## Case studies
 - [Email lifecycle revenue growth](https://mariamadeira.com/case-study-email): a Klaviyo lifecycle system that grew email-attributed revenue to £134K over 12 months.
 - [Google Ads revenue growth](https://mariamadeira.com/case-study-google-ads): structured campaigns delivering a 532% ROAS against a 400% break-even over 11 months.

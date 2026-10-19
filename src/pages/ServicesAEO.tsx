@@ -58,6 +58,10 @@ const FAQS: { q: string; a: string }[] = [
         q: "How do you measure AEO?",
         a: "By tracking whether and how you're cited across AI assistants (ChatGPT, Perplexity, Gemini and AI Overviews), monitoring AI-referred traffic in analytics, and testing category questions to see if your brand surfaces. The goal is measurable presence in answers, not just rankings.",
     },
+    {
+        q: "How much does AEO consulting cost?",
+        a: "An AEO audit starts from £750 and ongoing AEO work from £800 a month. The final price depends on the size of the site, how many pages and products need work, and whether implementation is included.",
+    },
 ];
 
 const AEO_JSON_LD = {
@@ -72,6 +76,10 @@ const AEO_JSON_LD = {
             "description": AEO_DEFINITION,
             "provider": { "@id": `${SITE_URL}/#person` },
             "areaServed": "Worldwide",
+            "offers": [
+                { "@type": "Offer", "name": "AEO audit", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 750, "priceCurrency": "GBP" } },
+                { "@type": "Offer", "name": "Ongoing AEO", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 800, "priceCurrency": "GBP", "unitText": "per month" } },
+            ],
         },
         {
             "@type": "FAQPage",
@@ -471,7 +479,17 @@ export default function ServicesAEO() {
                 </p>
             </section>
 
-            {/* FAQ — all answers visible, no accordions */}
+            {/* Pricing */}
+            <section style={{ marginBottom: "5rem", maxWidth: "820px", margin: "0 auto 5rem" }}>
+                <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Pricing</h2>
+                </div>
+                <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", margin: 0 }}>
+                    An AEO audit starts from £750. Ongoing AEO work starts from £800 a month. You get a written quote after the first call, once the scope is clear.
+                </p>
+            </section>
+
+            {/* FAQ: all answers visible, no accordions */}
             <section style={{ marginBottom: "5rem", maxWidth: "820px", margin: "0 auto 5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "3rem" }}>
                     <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Frequently asked questions</h2>

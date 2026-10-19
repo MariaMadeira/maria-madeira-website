@@ -44,6 +44,10 @@ const FAQS: { q: string; a: string; link?: { to: string; label: string } }[] = [
         a: "Probably not yet. ChatGPT Ads are in beta, with a minimum daily budget that Google and Meta don't have. I tested the Ads Manager with my own account and wrote up what I found.",
         link: { to: "/blog/chatgpt-ads-europe", label: "Inside ChatGPT Ads in Europe" },
     },
+    {
+        q: "How much does Google Ads or Meta Ads management cost?",
+        a: "Management starts from £500 a month per platform. Ad spend is separate and paid directly by you to Google or Meta, so you always see exactly what goes into the ads and what goes to management.",
+    },
 ];
 
 const PAID_ADS_JSON_LD = {
@@ -57,6 +61,9 @@ const PAID_ADS_JSON_LD = {
             "url": PAGE_URL,
             "provider": { "@id": PERSON_ID },
             "areaServed": "GB",
+            "offers": [
+                { "@type": "Offer", "name": "Google Ads or Meta Ads management", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 500, "priceCurrency": "GBP", "unitText": "per month, per platform" } },
+            ],
         },
         {
             "@type": "FAQPage",
@@ -178,6 +185,16 @@ export default function ServicesPaidAds() {
                         E-commerce brands selling direct to consumers, especially in food and drink, who are spending on ads or ready to, and want a senior person running the account directly.
                     </p>
                 </blockquote>
+            </section>
+
+            {/* Pricing */}
+            <section style={{ marginBottom: "5rem", maxWidth: "820px", margin: "0 auto 5rem" }}>
+                <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Pricing</h2>
+                </div>
+                <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", margin: 0 }}>
+                    Google Ads or Meta Ads management starts from £500 a month per platform. Ad spend is paid directly by you to Google or Meta and is not included. You get a written quote after the first call, once the scope is clear.
+                </p>
             </section>
 
             {/* FAQ, all answers visible */}
