@@ -10,7 +10,7 @@ const BASE_URL = 'https://mariamadeira.com'
 // Import the SSR bundle built by vite build --ssr. The route list comes from
 // src/routes.ts via this bundle, so a route added there is prerendered and
 // listed in the sitemap without touching this file.
-const { render, routePaths, notFoundPath } = await import('./dist/server/entry-server.js')
+const { render, routePaths, notFoundPath, PAIRS, langOf } = await import('./dist/server/entry-server.js')
 
 const routes = routePaths
 
@@ -42,7 +42,10 @@ async function renderPage(route) {
   // Inject per-page head tags and SSR body into the template.
   // Replacer functions keep `$&`, `$1` etc. in page content from being treated
   // as replacement patterns.
+  // The template says en-GB; the Portuguese pages declare pt-PT.
+  const lang = langOf(route) === 'pt' ? 'pt-PT' : 'en-GB'
   return template
+    .replace('<html lang="en-GB">', () => `<html lang="${lang}">`)
     .replace('<!--app-head-->', () => headTags)
     .replace('<div id="root"></div>', () => `<div id="root">${html}</div>`)
 }
@@ -81,10 +84,21 @@ if (distinct.size === 1) {
   console.warn('Warning: every URL would carry the same lastmod, which crawlers ignore. Re-run scripts/route-dates.mjs.')
 }
 
+// Translated pages list every language version, themselves included, as
+// xhtml:link alternates, matching the hreflang tags in each page's head.
+const url = r => `${BASE_URL}${r === '/' ? '' : r}`
+const alternates = r => {
+  const pair = PAIRS.find(p => p.en === r || p.pt === r)
+  if (!pair) return ''
+  return [['en-GB', pair.en], ['pt-PT', pair.pt], ['x-default', pair.en]]
+    .map(([lang, path]) => `
+    <xhtml:link rel="alternate" hreflang="${lang}" href="${url(path)}"/>`).join('')
+}
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${routes.map(r => `  <url>
-    <loc>${BASE_URL}${r === '/' ? '' : r}</loc>${routeDates[r] ? `
+    <loc>${url(r)}</loc>${alternates(r)}${routeDates[r] ? `
     <lastmod>${routeDates[r]}</lastmod>` : ''}
     <changefreq>monthly</changefreq>
     <priority>${r === '/' ? '1.0' : '0.8'}</priority>

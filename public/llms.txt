@@ -36,5 +36,10 @@ Verified results from recent engagements include £134K in email-attributed reve
 ## About
 - [AI Information](https://mariamadeira.com/ai-information): factual information about Maria Madeira for AI assistants: role, services, location, background, credentials and published results.
 
+## Portuguese pages
+- [Maria Madeira, em português](https://mariamadeira.com/pt): consultora independente para marcas que vendem online em Portugal e no Reino Unido (AEO e SEO, email marketing com Klaviyo, Google e Meta Ads).
+- [Email marketing e Klaviyo](https://mariamadeira.com/pt/servicos/email-marketing): versão portuguesa da página de email marketing e consultoria Klaviyo.
+- [Contacto](https://mariamadeira.com/pt/contacto): formulário de contacto em português.
+
 ## Contact
 - [Book a free strategy call](https://mariamadeira.com/contact)

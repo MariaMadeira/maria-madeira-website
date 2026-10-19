@@ -7,6 +7,9 @@ import { ROUTES, NOT_FOUND } from './routes'
 
 const BY_PATH = new Map([...ROUTES, NOT_FOUND].map((r) => [r.path, r]))
 
+/** Language pairs and detection, for <html lang> and the sitemap alternates. */
+export { PAIRS, langOf } from './lib/i18n'
+
 /** Paths prerender.mjs should render and list in the sitemap. */
 export const routePaths = ROUTES.map((r) => r.path)
 

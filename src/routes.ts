@@ -48,6 +48,9 @@ export const ROUTES: RouteDef[] = [
     { path: "/portfolio-ai-product-photography", load: () => import("./pages/PortfolioAIProductPhotography") },
     { path: "/portfolio-email-marketing", load: () => import("./pages/PortfolioEmailMarketing") },
     { path: "/portfolio-click-collect", load: () => import("./pages/PortfolioClickCollect") },
+    { path: "/pt", load: () => import("./pages/PtHome") },
+    { path: "/pt/servicos/email-marketing", load: () => import("./pages/PtServicosEmailMarketing") },
+    { path: "/pt/contacto", load: () => import("./pages/PtContacto") },
 ];
 
 /**

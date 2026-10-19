@@ -513,14 +513,57 @@ ul {
   display: none;
 }
 
-/* The desktop links need about 1180px with the logo beside them; below that
+/* EN | PT switch. In the desktop links it sits before the CTA; below the
+   breakpoint it moves into the bar beside the menu toggle. */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.lang-switch-link {
+  color: var(--text-secondary);
+}
+
+.lang-switch-link:hover,
+.lang-switch-link:focus-visible {
+  color: var(--accent-secondary);
+}
+
+.nav-mobile-tools {
+  display: none;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+/* Phones: the switch shares the bar with the logo and the menu toggle, so
+   the wordmark tightens a little to stay on one line. */
+@media (max-width: 480px) {
+  .nav-mobile-tools {
+    gap: 0.75rem;
+  }
+  .nav-logo-text {
+    font-size: 1rem !important;
+    letter-spacing: 0.06em !important;
+    white-space: nowrap;
+  }
+}
+
+/* The desktop links, with the EN | PT switch, need about 1240px with the
+   logo beside them (the Portuguese labels are the longer set); below that
    the logo and the CTA wrap or clip, so the hamburger menu takes over. */
-@media (max-width: 1180px) {
+@media (max-width: 1240px) {
   .nav-links {
     display: none !important;
   }
   .mobile-toggle {
     display: block !important;
+  }
+  .nav-mobile-tools {
+    display: flex;
   }
 }
 

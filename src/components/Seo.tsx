@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { alternatesOf } from "../lib/i18n";
 
 const SITE_URL = "https://mariamadeira.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og/og-default.png`;
@@ -41,6 +42,10 @@ export default function Seo({
             <title>{title}</title>
             <meta name="description" content={description} />
             <link rel="canonical" href={canonical} />
+            {/* Only pages with a translation get hreflang; see src/lib/i18n.ts. */}
+            {alternatesOf(path).map((alt) => (
+                <link key={alt.hreflang} rel="alternate" hrefLang={alt.hreflang} href={`${SITE_URL}${alt.path}`} />
+            ))}
             {noIndex && <meta name="robots" content="noindex" />}
 
             <meta property="og:type" content="website" />

@@ -1,9 +1,78 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Linkedin, Mail } from "lucide-react";
 import { PAID_ADS_SERVICE } from "../lib/links";
+import { langOf, type Lang } from "../lib/i18n";
+
+/* Footer copy per language. On /pt pages, links to pages that only exist in
+   English keep their English URL. */
+const COPY: Record<Lang, {
+    home: string; blurb: string; nav: string; navLinks: { name: string; path: string }[];
+    company: string; companyLinks: { name: string; path: string }[];
+    touch: string; touchLine: string; cta: string; ctaPath: string; based: [string, string]; rights: string;
+}> = {
+    en: {
+        home: "/",
+        blurb: "Growth Strategist for modern brands that sell online, looking to scale through data-driven decisions and AI-powered marketing.",
+        nav: "Navigation",
+        navLinks: [
+            { name: "Services", path: "/services" },
+            { name: "Website Strategy & Build", path: "/services/websites" },
+            { name: "AI Search Visibility (AEO)", path: "/services/aeo" },
+            { name: "Email Marketing & Klaviyo", path: "/services/email-marketing" },
+            { name: "Paid Ads", path: PAID_ADS_SERVICE },
+            { name: "Case Studies", path: "/case-studies" },
+            { name: "Portfolio", path: "/portfolio" },
+            { name: "Blog", path: "/blog" },
+            { name: "Pricing", path: "/pricing" },
+        ],
+        company: "Company",
+        companyLinks: [
+            { name: "About", path: "/about" },
+            { name: "Contact", path: "/contact" },
+            { name: "AI Information", path: "/ai-information" },
+        ],
+        touch: "Get in Touch",
+        touchLine: "Ready to scale your brand? Let's talk.",
+        cta: "Book a Free Strategy Call",
+        ctaPath: "/contact",
+        based: ["Based in Lisbon, Portugal.", "Working Globally."],
+        rights: "All rights reserved.",
+    },
+    pt: {
+        home: "/pt",
+        blurb: "Consultora de crescimento para marcas que vendem online, com decisões baseadas em dados e marketing apoiado por IA.",
+        nav: "Navegação",
+        navLinks: [
+            { name: "Serviços", path: "/services" },
+            { name: "Sites", path: "/services/websites" },
+            { name: "AEO e SEO", path: "/services/aeo" },
+            { name: "Email marketing e Klaviyo", path: "/pt/servicos/email-marketing" },
+            { name: "Anúncios pagos", path: PAID_ADS_SERVICE },
+            { name: "Casos de estudo", path: "/case-studies" },
+            { name: "Portefólio", path: "/portfolio" },
+            { name: "Blog", path: "/blog" },
+            { name: "Preços", path: "/pricing" },
+        ],
+        company: "Empresa",
+        companyLinks: [
+            { name: "Sobre", path: "/about" },
+            { name: "Contacto", path: "/pt/contacto" },
+            { name: "AI Information", path: "/ai-information" },
+        ],
+        touch: "Fale comigo",
+        touchLine: "Quer fazer crescer a sua marca? Vamos conversar.",
+        cta: "Marcar conversa gratuita",
+        ctaPath: "/pt/contacto",
+        based: ["Baseada em Lisboa, Portugal.", "A trabalhar com marcas em Portugal e no Reino Unido."],
+        rights: "Todos os direitos reservados.",
+    },
+};
+
+const LINK = { color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" } as const;
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const t = COPY[langOf(useLocation().pathname)];
 
     return (
         <footer style={{ 
@@ -21,7 +90,7 @@ export default function Footer() {
                 }}>
                     {/* Brand Section */}
                     <div>
-                        <Link to="/" style={{
+                        <Link to={t.home} style={{
                             fontFamily: "var(--font-display)",
                             fontSize: "1.5rem",
                             fontWeight: 400,
@@ -39,44 +108,34 @@ export default function Footer() {
                             lineHeight: 1.6,
                             maxWidth: "300px"
                         }}>
-                            Growth Strategist for modern brands that sell online, looking to scale through data-driven decisions and AI-powered marketing.
+                            {t.blurb}
                         </p>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>Navigation</h2>
+                        <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>{t.nav}</h2>
                         <ul style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                            <li><Link to="/services" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Services</Link></li>
-                            <li><Link to="/services/websites" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Website Strategy &amp; Build</Link></li>
-                            <li><Link to="/services/aeo" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>AI Search Visibility (AEO)</Link></li>
-                            <li><Link to="/services/email-marketing" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Email Marketing &amp; Klaviyo</Link></li>
-                            <li><Link to={PAID_ADS_SERVICE} style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Paid Ads</Link></li>
-                            <li><Link to="/case-studies" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Case Studies</Link></li>
-                            <li><Link to="/portfolio" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Portfolio</Link></li>
-                            <li><Link to="/blog" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Blog</Link></li>
-                            <li><Link to="/pricing" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Pricing</Link></li>
+                            {t.navLinks.map((l) => <li key={l.path}><Link to={l.path} style={LINK}>{l.name}</Link></li>)}
                         </ul>
                     </div>
 
                     {/* Company */}
                     <div>
-                        <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>Company</h2>
+                        <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>{t.company}</h2>
                         <ul style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                            <li><Link to="/about" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>About</Link></li>
-                            <li><Link to="/contact" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>Contact</Link></li>
-                            <li><Link to="/ai-information" style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" }}>AI Information</Link></li>
+                            {t.companyLinks.map((l) => <li key={l.path}><Link to={l.path} style={LINK}>{l.name}</Link></li>)}
                         </ul>
                     </div>
 
                     {/* Get in Touch */}
                     <div>
-                        <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>Get in Touch</h2>
+                        <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>{t.touch}</h2>
                         <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", marginBottom: "1.25rem" }}>
-                            Ready to scale your brand? Let's talk.
+                            {t.touchLine}
                         </p>
                         <Link
-                            to="/contact"
+                            to={t.ctaPath}
                             style={{
                                 display: "inline-block",
                                 padding: "0.7rem 1.5rem",
@@ -89,14 +148,14 @@ export default function Footer() {
                                 marginBottom: "1.5rem",
                             }}
                         >
-                            Book a Free Strategy Call
+                            {t.cta}
                         </Link>
                         <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem" }}>
                             <a href="https://www.linkedin.com/in/maria-madeira-growth" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.7)", transition: "color 0.3s ease" }} aria-label="LinkedIn"><Linkedin size={20} /></a>
                             <a href="mailto:info@mariamadeira.com" style={{ color: "rgba(255,255,255,0.7)", transition: "color 0.3s ease" }} aria-label="Email"><Mail size={20} /></a>
                         </div>
                         <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem", marginTop: "1rem" }}>
-                            Based in Lisbon, Portugal.<br />Working Globally.
+                            {t.based[0]}<br />{t.based[1]}
                         </p>
                     </div>
                 </div>
@@ -111,7 +170,7 @@ export default function Footer() {
                     gap: "1rem"
                 }}>
                     <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem" }}>
-                        © {currentYear} Maria Madeira. All rights reserved.
+                        © {currentYear} Maria Madeira. {t.rights}
                     </p>
                 </div>
             </div>
