@@ -4,8 +4,8 @@ import type en from "../en/portfolioRitaAntunes";
 const pt: typeof en = {
     path: "/pt/portefolio-rita-antunes",
     title: "Rita Antunes: identidade de marca | Maria Madeira",
-    description: "Identidade de marca e direção visual para Rita Antunes Psicologia: uma identidade clínica premium, pensada para converter contactos de terapia de valor elevado.",
-    schemaDescription: "Identidade de marca e direção visual para Rita Antunes Psicologia: uma identidade clínica premium, pensada para converter contactos de terapia de valor elevado.",
+    description: "Identidade de marca para uma clínica de psicologia: uma identidade clínica premium que atrai pedidos de consulta de valor elevado.",
+    schemaDescription: "Identidade de marca para uma clínica de psicologia: uma identidade clínica premium que atrai pedidos de consulta de valor elevado.",
     back: "Voltar ao portefólio",
     h1: "Rita Antunes",
     subtitle: "Psicologia",

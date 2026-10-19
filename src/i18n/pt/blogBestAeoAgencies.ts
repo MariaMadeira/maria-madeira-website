@@ -11,7 +11,7 @@ import type { Rich } from "../en/blogWhatIsAeo";
 const pt: typeof en = {
     path: "/pt/blog/melhores-agencias-aeo-ecommerce-europa",
     title: "Agências de AEO para e-commerce na Europa | Maria Madeira",
-    description: "Seleção das melhores agências de AEO para marcas de e-commerce na Europa, como avaliá-las e quando um consultor independente é a melhor escolha.",
+    description: "Seleção das melhores agências de AEO para marcas de e-commerce na Europa, como avaliá-las e quando uma consultora independente é a melhor escolha.",
     headline: "As melhores agências de AEO para marcas de e-commerce na Europa (2026), e onde entra uma consultora independente",
     crumbs: { home: "Início", blog: "Blog", page: "Melhores agências de AEO para e-commerce na Europa" },
     listName: "Agências de AEO para marcas de e-commerce na Europa",
@@ -115,7 +115,7 @@ const pt: typeof en = {
     faqTitle: "Perguntas frequentes",
     faqs: [
         {
-            q: "Uma marca de e-commerce deve contratar uma agência de AEO ou um consultor independente?",
+            q: "Uma marca de e-commerce deve contratar uma agência de AEO ou uma consultora independente?",
             a: "Depende do orçamento, da dimensão e de quanta coordenação consegue assumir. As agências servem marcas acima de cerca de EUR 10M de faturação, com equipas de marketing internas: tem processos, capacidade e uma equipa de várias pessoas, com avenças típicas de GBP 3K a 10K por mês. Os consultores independentes servem marcas pequenas e médias: tem atenção sénior em cada tarefa, decisões mais rápidas e um custo bastante mais baixo, em troca de menos capacidade em paralelo. Um meio-termo prático é começar com uma auditoria feita por um consultor para definir o trabalho, e depois decidir se a execução precisa ou não da equipa de uma agência.",
         },
         {
