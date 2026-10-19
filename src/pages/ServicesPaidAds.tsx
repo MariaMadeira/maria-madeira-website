@@ -87,6 +87,7 @@ export default function ServicesPaidAds() {
                 title="Google & Meta Ads Consultant for E-commerce | Maria Madeira"
                 description="Independent Google and Meta Ads consultant for e-commerce brands. Every campaign measured against your break-even, with Klaviyo to keep the customers."
                 path="/services/paid-ads"
+                ogImage="/og/og-paid-ads.png"
                 jsonLd={PAID_ADS_JSON_LD}
             />
 

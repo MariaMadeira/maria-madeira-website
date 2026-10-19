@@ -279,7 +279,7 @@ export default function PortfolioAIProductPhotography() {
                         {[
                             { title: "Website product listings", desc: "Hero images and PDP visuals that convert browsers into buyers.", icon: <Monitor size={28} /> },
                             { title: "Email marketing campaigns", desc: "Scroll-stopping imagery for campaigns, flows, and newsletters.", icon: <Mail size={28} /> },
-                            { title: "Paid advertising creatives", desc: "High-quality assets for Meta, Google, and TikTok ads.", icon: <Megaphone size={28} /> },
+                            { title: "Paid advertising creatives", desc: "High-quality assets for Meta and Google ads.", icon: <Megaphone size={28} /> },
                             { title: "Social media marketing", desc: "On-brand visuals built for Instagram, Pinterest, and beyond.", icon: <Share2 size={28} /> },
                         ].map((app, i) => (
                             <div

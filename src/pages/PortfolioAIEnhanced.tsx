@@ -271,7 +271,7 @@ export default function PortfolioAIEnhanced() {
                     
                     <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "2rem" }}>
                         {[
-                            { title: "Advertising Creatives", desc: "High-converting assets for Meta, Google, and TikTok campaigns.", icon: <Megaphone size={28} /> },
+                            { title: "Advertising Creatives", desc: "High-converting assets for Meta and Google campaigns.", icon: <Megaphone size={28} /> },
                             { title: "Website Product Pages", desc: "Hero and PDP imagery that builds trust and drives conversions.", icon: <Monitor size={28} /> },
                             { title: "Email Marketing Visuals", desc: "Polished product shots for campaigns, flows, and newsletters.", icon: <Mail size={28} /> },
                         ].map((app, i) => (
