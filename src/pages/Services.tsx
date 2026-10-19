@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { SITE_URL } from "../lib/schema";
 import { PAID_ADS_SERVICE } from "../lib/links";
+import { WAYS_TO_WORK } from "../lib/pricing";
 
 // Matches the BreadcrumbList each child service page already carries, so the
 // hub is not the one rung missing from the trail.
@@ -238,6 +239,24 @@ export default function Services() {
                         <p style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--text-primary)", marginBottom: "0.2rem" }}>Will Fuller</p>
                         <p style={{ fontSize: "0.82rem", color: "var(--accent-secondary)", fontWeight: 600 }}>WordPress Developer · Former colleague</p>
                     </div>
+                </div>
+            </div>
+
+            {/* Ways to work, short version of /pricing */}
+            <div style={{ marginBottom: "6rem" }}>
+                <div className="grid-3" style={{ gap: "1.5rem" }}>
+                    {WAYS_TO_WORK.map((w) => (
+                        <div key={w.name} className="card" style={{ padding: "1.75rem" }}>
+                            <h3 style={{ fontSize: "1.25rem", margin: "0 0 0.75rem" }}>{w.name}</h3>
+                            <p style={{ fontFamily: "var(--font-heading)", fontSize: "1.6rem", fontWeight: 600, lineHeight: 1.1, color: "var(--text-primary)", margin: 0 }}>{w.price}</p>
+                            <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.75rem", fontWeight: 700, color: "var(--accent-secondary)", margin: "0.6rem 0 0" }}>{w.type}</p>
+                        </div>
+                    ))}
+                </div>
+                <div style={{ textAlign: "center", marginTop: "2rem" }}>
+                    <Link to="/pricing" style={{ ...SERVICE_LINK_STYLE, fontSize: "1rem" }}>
+                        See pricing <ArrowRight size={16} />
+                    </Link>
                 </div>
             </div>
 

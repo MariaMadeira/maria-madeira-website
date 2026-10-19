@@ -513,9 +513,11 @@ ul {
   display: none;
 }
 
-@media (max-width: 768px) {
+/* The desktop links need about 1180px with the logo beside them; below that
+   the logo and the CTA wrap or clip, so the hamburger menu takes over. */
+@media (max-width: 1180px) {
   .nav-links {
-    display: none;
+    display: none !important;
   }
   .mobile-toggle {
     display: block !important;

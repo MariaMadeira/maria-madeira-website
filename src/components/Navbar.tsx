@@ -62,6 +62,7 @@ export default function Navbar() {
         { name: "Case Studies", path: "/case-studies" },
         { name: "Portfolio", path: "/portfolio" },
         { name: "Blog", path: "/blog" },
+        { name: "Pricing", path: "/pricing" },
         { name: "About", path: "/about" },
     ];
 

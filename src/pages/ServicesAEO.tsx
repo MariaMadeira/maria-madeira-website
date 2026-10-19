@@ -487,6 +487,11 @@ export default function ServicesAEO() {
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", margin: 0 }}>
                     An AEO audit starts from £750. Ongoing AEO work starts from £800 a month. You get a written quote after the first call, once the scope is clear.
                 </p>
+                <p style={{ margin: "1.25rem 0 0" }}>
+                    <Link to="/pricing" style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
+                        See all ways to work with me <ArrowRight size={16} />
+                    </Link>
+                </p>
             </section>
 
             {/* FAQ: all answers visible, no accordions */}

@@ -182,7 +182,7 @@ export default function ServicesPaidAds() {
                 <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1.5rem", textAlign: "center" }}>Who it's for</h2>
                 <blockquote style={{ background: "var(--accent-glow)", border: "1px solid var(--border-color)", borderLeft: "4px solid var(--accent-secondary)", borderRadius: "16px", padding: "clamp(1.5rem, 4vw, 2.5rem)", margin: 0 }}>
                     <p style={{ fontSize: "1.2rem", lineHeight: 1.7, color: "var(--text-primary)", fontWeight: 500, margin: 0 }}>
-                        E-commerce brands selling direct to consumers, especially in food and drink, who are spending on ads or ready to, and want a senior person running the account directly.
+                        Brands that sell online, in the UK and Portugal, that are spending on ads or ready to, and want a senior person running the account directly.
                     </p>
                 </blockquote>
             </section>
@@ -194,6 +194,11 @@ export default function ServicesPaidAds() {
                 </div>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", margin: 0 }}>
                     Google Ads or Meta Ads management starts from £500 a month per platform. Ad spend is paid directly by you to Google or Meta and is not included. You get a written quote after the first call, once the scope is clear.
+                </p>
+                <p style={{ margin: "1.25rem 0 0" }}>
+                    <Link to="/pricing" style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
+                        See all ways to work with me <ArrowRight size={16} />
+                    </Link>
                 </p>
             </section>
 

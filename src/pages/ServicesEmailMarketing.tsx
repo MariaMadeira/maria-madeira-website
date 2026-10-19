@@ -338,6 +338,11 @@ export default function ServicesEmailMarketing() {
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", margin: 0 }}>
                     Klaviyo setup with core flows starts from £1,200. Monthly email marketing starts from £750 a month. You get a written quote after the first call, once the scope is clear.
                 </p>
+                <p style={{ margin: "1.25rem 0 0" }}>
+                    <Link to="/pricing" style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
+                        See all ways to work with me <ArrowRight size={16} />
+                    </Link>
+                </p>
             </section>
 
             {/* FAQ, all answers visible */}

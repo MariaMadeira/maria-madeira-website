@@ -25,6 +25,7 @@ export const ROUTES: RouteDef[] = [
     { path: "/services/aeo", load: () => import("./pages/ServicesAEO") },
     { path: "/services/email-marketing", load: () => import("./pages/ServicesEmailMarketing") },
     { path: "/services/paid-ads", load: () => import("./pages/ServicesPaidAds") },
+    { path: "/pricing", load: () => import("./pages/Pricing") },
     { path: "/about", load: () => import("./pages/About") },
     { path: "/ai-information", load: () => import("./pages/AiInformation") },
     { path: "/contact", load: () => import("./pages/Contact") },
