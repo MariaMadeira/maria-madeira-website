@@ -2,12 +2,14 @@ import { Linkedin, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { SITE_URL, PERSON_ID } from "../lib/schema";
-import { CREDENTIAL_GROUPS, HAS_CREDENTIAL, PROGRAM_MEMBERSHIP } from "../lib/credentials";
+import { HAS_CREDENTIAL, PROGRAM_MEMBERSHIP } from "../lib/credentials";
+import { useLang } from "../hooks/useLang";
+import COPY from "../i18n/about";
 
 // The About page is the canonical entity page for the Maria Madeira brand, so it
 // carries the richest Person node. Same @id as the homepage (#person) so search
 // and answer engines merge them into one entity. sameAs is the single strongest
-// lever for entity recognition — add more verified profiles (Instagram, X,
+// lever for entity recognition: add more verified profiles (Instagram, X,
 // Crunchbase, guest-post bylines) to this array as they come online.
 const SAME_AS = [
     "https://www.linkedin.com/in/maria-madeira-growth",
@@ -59,7 +61,32 @@ const ABOUT_JSON_LD = {
     ],
 };
 
+/* The Portuguese page points at the same Person by @id rather than repeating
+   it, so the entity is defined once, on the English page. */
+const PT_JSON_LD = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "ProfilePage",
+            "@id": `${SITE_URL}/pt/sobre#profilepage`,
+            "url": `${SITE_URL}/pt/sobre`,
+            "name": "Sobre a Maria Madeira",
+            "inLanguage": "pt-PT",
+            "mainEntity": { "@id": PERSON_ID },
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
+                { "@type": "ListItem", "position": 2, "name": "Sobre", "item": `${SITE_URL}/pt/sobre` },
+            ],
+        },
+    ],
+};
+
 export default function About() {
+    const { lang, to } = useLang();
+    const t = COPY[lang];
     const tools = [
         "Klaviyo", "Shopify", "WooCommerce", "Google Ads", "Meta Ads", "Meta Business Suite",
         "Google Analytics", "Google Search Console", "Semrush", "Ahrefs", "Microsoft Clarity",
@@ -71,10 +98,10 @@ export default function About() {
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="About Maria Madeira | Growth Strategist"
-                description="Meet Maria Madeira, a growth strategist and creative marketing specialist who bridges data-driven performance with storytelling for brands that sell online."
-                path="/about"
-                jsonLd={ABOUT_JSON_LD}
+                title={t.title}
+                description={t.description}
+                path={t.path}
+                jsonLd={lang === "pt" ? PT_JSON_LD : ABOUT_JSON_LD}
             />
 
             <div className="grid-2" style={{ alignItems: "flex-start", gap: "4rem" }}>
@@ -102,7 +129,7 @@ export default function About() {
                             />
                             <img
                                 src="/maria-notebook-800.jpg"
-                                alt="Maria Madeira standing by a window holding a notebook"
+                                alt={t.imgAlt}
                                 width="1600"
                                 height="2133"
                                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%', display: 'block' }}
@@ -121,31 +148,21 @@ export default function About() {
                         marginBottom: '1rem',
                         display: 'block'
                     }}>
-                        The Strategy Behind the Growth
+                        {t.eyebrow}
                     </span>
                     <h1 className="section-title" style={{ textAlign: "left", marginBottom: "2rem", fontSize: "3.5rem" }}>
-                        Hi, I'm <span className="text-gradient">Maria Madeira</span>
+                        {t.h1Lead}<span className="text-gradient">Maria Madeira</span>
                     </h1>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8 }}>
-                        <p>
-                            A Growth Strategist with 5 years of experience helping brands that sell online scale through email marketing, paid acquisition, and AI-powered systems.
-                        </p>
-
-                        <p>
-                            My work spans the full funnel: from building Klaviyo lifecycle systems that generated £134K in attributed revenue over 12 months, to managing Google Ads campaigns that returned 532% ROAS over eleven months, ten of them above the client's break-even, to building a Click & Collect app and designing custom AI prompt systems for SEO, AEO, and visual content production.
-                        </p>
+                        {t.paragraphs.map((p) => <p key={p}>{p}</p>)}
 
                         <p style={{ fontStyle: 'italic', borderLeft: '4px solid var(--accent-primary)', paddingLeft: '1.5rem', margin: '1rem 0', color: 'var(--text-primary)' }}>
-                            "I believe growth is not just about numbers, but about building sustainable systems that deliver long-term value to customers."
+                            {t.quote}
                         </p>
 
                         <ul style={{ listStyle: 'none', padding: 0 }}>
-                            {[
-                                "5 years scaling brands that sell online in the UK food sector",
-                                "Builder of AI workflows for content, SEO/AEO, and image generation",
-                                "Specialist in turning email lists into consistent revenue engines"
-                            ].map((item, i) => (
+                            {t.highlights.map((item, i) => (
                                 <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '0.8rem' }}>
                                     <span style={{ color: "var(--accent-secondary)", display: 'flex' }}>✓</span>
                                     {item}
@@ -156,7 +173,7 @@ export default function About() {
                         {/* Tools & Platforms Section */}
                         <div style={{ marginTop: '2rem' }}>
                             <h2 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
-                                Tools & Platforms
+                                {t.toolsTitle}
                             </h2>
                             <div className="tools-grid">
                                 {tools.map((tool, i) => (
@@ -175,11 +192,11 @@ export default function About() {
 
                         {/* Credentials: after the bio, before the CTA. */}
                         <section className="credentials">
-                            <h2 className="credentials-title">Credentials</h2>
+                            <h2 className="credentials-title">{t.credentialsTitle}</h2>
                             <p className="credentials-intro">
-                                Certifications and education behind the work I do for clients.
+                                {t.credentialsIntro}
                             </p>
-                            {CREDENTIAL_GROUPS.map((group) => (
+                            {t.credentialGroups.map((group) => (
                                 <div key={group.title} className="credential-group">
                                     <h3 className="credential-group-title">{group.title}</h3>
                                     <ul className="credential-list">
@@ -195,7 +212,7 @@ export default function About() {
                                                         target="_blank"
                                                         rel="noopener"
                                                     >
-                                                        Verify credential <ExternalLink size={13} />
+                                                        {t.verify} <ExternalLink size={13} />
                                                     </a>
                                                 )}
                                             </li>
@@ -206,8 +223,8 @@ export default function About() {
                         </section>
 
                         <div style={{ marginTop: "2rem" }}>
-                            <Link to="/contact" className="btn btn-primary">
-                                Let's Work Together
+                            <Link to={to("/contact")} className="btn btn-primary">
+                                {t.cta}
                             </Link>
                         </div>
                     </div>

@@ -51,6 +51,14 @@ export const ROUTES: RouteDef[] = [
     { path: "/pt", load: () => import("./pages/PtHome") },
     { path: "/pt/servicos/email-marketing", load: () => import("./pages/PtServicosEmailMarketing") },
     { path: "/pt/contacto", load: () => import("./pages/PtContacto") },
+    // Batch 1: the English components, rendering their Portuguese copy.
+    { path: "/pt/servicos", load: () => import("./pages/Services") },
+    { path: "/pt/servicos/aeo", load: () => import("./pages/ServicesAEO") },
+    { path: "/pt/servicos/anuncios", load: () => import("./pages/ServicesPaidAds") },
+    { path: "/pt/servicos/sites", load: () => import("./pages/ServicesWebsites") },
+    { path: "/pt/precos", load: () => import("./pages/Pricing") },
+    { path: "/pt/sobre", load: () => import("./pages/About") },
+    { path: "/pt/informacao-ia", load: () => import("./pages/AiInformation") },
 ];
 
 /**

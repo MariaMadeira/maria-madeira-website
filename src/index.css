@@ -552,10 +552,10 @@ ul {
   }
 }
 
-/* The desktop links, with the EN | PT switch, need about 1240px with the
-   logo beside them (the Portuguese labels are the longer set); below that
-   the logo and the CTA wrap or clip, so the hamburger menu takes over. */
-@media (max-width: 1240px) {
+/* The desktop links, with the EN | PT switch, need about 1270px with the
+   logo beside them (the Portuguese labels and CTA are the longer set); below
+   that the logo and the CTA wrap or clip, so the hamburger menu takes over. */
+@media (max-width: 1279px) {
   .nav-links {
     display: none !important;
   }

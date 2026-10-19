@@ -40,6 +40,13 @@ Verified results from recent engagements include £134K in email-attributed reve
 - [Maria Madeira, em português](https://mariamadeira.com/pt): consultora independente para marcas que vendem online em Portugal e no Reino Unido (AEO e SEO, email marketing com Klaviyo, Google e Meta Ads).
 - [Email marketing e Klaviyo](https://mariamadeira.com/pt/servicos/email-marketing): versão portuguesa da página de email marketing e consultoria Klaviyo.
 - [Contacto](https://mariamadeira.com/pt/contacto): formulário de contacto em português.
+- [Serviços](https://mariamadeira.com/pt/servicos): todos os serviços, em português.
+- [AEO](https://mariamadeira.com/pt/servicos/aeo): otimização para motores de resposta, para a sua marca ser citada e recomendada pelo ChatGPT, Perplexity, Gemini e Vista geral de IA da Google.
+- [Anúncios pagos](https://mariamadeira.com/pt/servicos/anuncios): Google Ads, Meta Ads e Microsoft Ads para e-commerce, medidos face ao ROAS de equilíbrio.
+- [Sites](https://mariamadeira.com/pt/servicos/sites): estratégia e construção de sites, com SEO e AEO de raiz.
+- [Formas de trabalhar](https://mariamadeira.com/pt/precos): Auditoria de crescimento, projetos e acompanhamento mensal, com proposta por escrito.
+- [Sobre](https://mariamadeira.com/pt/sobre): percurso, credenciais e ferramentas da Maria Madeira.
+- [Informação para IA](https://mariamadeira.com/pt/informacao-ia): factos sobre a Maria Madeira para assistentes de IA, em português.
 
 ## Contact
 - [Book a free strategy call](https://mariamadeira.com/contact)

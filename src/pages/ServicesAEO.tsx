@@ -2,67 +2,18 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Sparkles, Search, Database, FileText, LineChart, MessageSquare, ArrowRight, Users, MousePointerClick, Quote, Bot } from "lucide-react";
 import Seo from "../components/Seo";
+import { useLang } from "../hooks/useLang";
+import COPY from "../i18n/aeo";
 
+/* Renders /services/aeo and /pt/servicos/aeo from src/i18n/aeo.ts. Icons,
+   scores and links live here; every word lives in the copy file. */
 const SITE_URL = "https://mariamadeira.com";
 
-/* ── Quotable definition (kept in prose below too; this is the snippet) ── */
-const AEO_DEFINITION =
-    "Answer Engine Optimisation (AEO) is the practice of optimising a brand to be cited and recommended by AI answer engines like ChatGPT, Perplexity, Gemini, and Google's AI Overviews. Where SEO competes for a ranked link, AEO competes to be the answer itself: the source the AI names when someone asks for a recommendation.";
+const WHY_ICONS = [<Users size={24} />, <MousePointerClick size={24} />, <Sparkles size={24} />];
+const WHAT_ICONS = [<Search size={26} />, <Database size={26} />, <FileText size={26} />, <LineChart size={26} />];
 
-/* ── "Why now" qualitative cards (no fabricated numbers) ──────────── */
-const WHY_NOW = [
-    { icon: <Users size={24} />, title: "Buyers ask AI first", line: "More people ask ChatGPT, Perplexity and Gemini for recommendations before they ever open a search results page." },
-    { icon: <MousePointerClick size={24} />, title: "Zero-click answers", line: "AI Overviews and assistant answers increasingly replace the list of blue links. The answer arrives without a click." },
-    { icon: <Sparkles size={24} />, title: "Early movers win", line: "Brands that get cited now become the default answer, while competitors who wait stay invisible in the response." },
-];
-
-/* ── "What I do" — quotable, always static ─────────────────────────── */
-const WHAT_I_DO = [
-    { icon: <Search size={26} />, title: "AI Visibility Audit", line: "Where you appear (or don't) across ChatGPT, Perplexity, Gemini and Google AI Overviews." },
-    { icon: <Database size={26} />, title: "Entity & Schema Foundation", line: "Structured data and entity signals that machines can read, trust, and attribute to you." },
-    { icon: <FileText size={26} />, title: "Answer-Ready Content", line: "Pages and copy structured to be lifted and cited directly inside AI answers." },
-    { icon: <LineChart size={26} />, title: "Measurement", line: "Tracking citations across AI assistants and the traffic they refer back to you." },
-];
-
-/* ── FAQ — drives both the visible section and the FAQPage schema ──── */
-const FAQS: { q: string; a: string }[] = [
-    {
-        q: "What does an AEO consultant do for an e-commerce brand?",
-        a: "Four stages, and I deliver all four. It starts with an AI visibility audit that records where you appear, or do not, across ChatGPT, Perplexity, Gemini and Google AI Overviews. The rest is implementation: structured data and entity signals machines can read and attribute to you, pages and copy structured to be lifted and cited inside AI answers, and citation tracking set up so you can see what changed. Nothing is handed over as a list of recommendations for someone else to action.",
-    },
-    {
-        q: "Should an e-commerce brand hire an AEO consultant or an agency?",
-        a: "It depends on your size and how much coordination you can absorb. An agency gives you process and parallel capacity, which suits brands with an internal marketing team to brief and manage them. An independent consultant gives you senior attention on every task and direct contact with the person doing the work, rather than briefing a team through an account manager. I have published an open comparison of the European agency options, including where I fit and where an agency is the better choice.",
-    },
-    {
-        q: "Do you implement the work, or only advise?",
-        a: "I implement it. The audit is the starting point, not the deliverable. From there I do the work: structured data, entity consistency, page and content changes, and citation tracking across ChatGPT, Perplexity, Gemini and AI Overviews. If the site itself needs rebuilding to support any of it, I do that too. You are working directly with the person doing the work, not briefing a team through an account manager.",
-    },
-    {
-        q: "What is answer engine optimisation?",
-        a: "Answer engine optimisation (AEO) is the practice of structuring your brand, content, and data so AI assistants cite and recommend you when they answer questions. Instead of chasing a blue-link ranking, AEO aims to make your business the answer that tools like ChatGPT, Perplexity, and Google's AI Overviews return.",
-    },
-    {
-        q: "How is AEO different from SEO?",
-        a: "SEO optimises for ranked links on a search results page; AEO optimises to be the cited source inside an AI-generated answer. SEO leans on keywords and backlinks, while AEO leans on clear entities, structured data, and content written to be lifted. They overlap, but AEO assumes the user may never see a list of links at all.",
-    },
-    {
-        q: "How long does AEO take to show results?",
-        a: "It depends on how often AI engines recrawl and how established your brand entity already is. Early signals (appearing in AI answers for niche questions) often show within weeks, while becoming the default recommendation in a competitive category takes longer. AEO is a compounding investment, not an overnight switch.",
-    },
-    {
-        q: "Do I still need traditional SEO?",
-        a: "Yes. Crawlable pages, quality content, and authority are exactly what AI engines draw on, so AEO builds on strong SEO rather than replacing it. The two are complementary: SEO keeps you findable, and AEO makes you the recommended answer.",
-    },
-    {
-        q: "How do you measure AEO?",
-        a: "By tracking whether and how you're cited across AI assistants (ChatGPT, Perplexity, Gemini and AI Overviews), monitoring AI-referred traffic in analytics, and testing category questions to see if your brand surfaces. The goal is measurable presence in answers, not just rankings.",
-    },
-    {
-        q: "How much does AEO consulting cost?",
-        a: "An AEO audit starts from £750 and ongoing AEO work from £800 a month. The final price depends on the size of the site, how many pages and products need work, and whether implementation is included.",
-    },
-];
+/* ── FAQ: drives both the visible section and the FAQPage schema ── */
+const FAQS = COPY.en.faqs;
 
 const AEO_JSON_LD = {
     "@context": "https://schema.org",
@@ -73,7 +24,7 @@ const AEO_JSON_LD = {
             "name": "Answer Engine Optimisation (AEO)",
             "serviceType": "Answer Engine Optimisation",
             "url": `${SITE_URL}/services/aeo`,
-            "description": AEO_DEFINITION,
+            "description": COPY.en.definition,
             "provider": { "@id": `${SITE_URL}/#person` },
             "areaServed": "Worldwide",
             "offers": [
@@ -101,21 +52,59 @@ const AEO_JSON_LD = {
     ],
 };
 
+/* The Portuguese page: no offers, the page's language and a Portuguese trail. */
+const PT_URL = `${SITE_URL}/pt/servicos/aeo`;
+const PT_JSON_LD = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": `${PT_URL}#webpage`,
+            "url": PT_URL,
+            "name": "Consultora de AEO",
+            "inLanguage": "pt-PT",
+            "isPartOf": { "@id": `${SITE_URL}/#website` },
+            "mainEntity": { "@id": `${PT_URL}#service` },
+        },
+        {
+            "@type": "Service",
+            "@id": `${PT_URL}#service`,
+            "name": "Otimização para motores de resposta (AEO)",
+            "serviceType": "Otimização para motores de resposta",
+            "url": PT_URL,
+            "description": COPY.pt.definition,
+            "provider": { "@id": `${SITE_URL}/#person` },
+            "areaServed": "Worldwide",
+        },
+        {
+            "@type": "FAQPage",
+            "@id": `${PT_URL}#faq`,
+            "inLanguage": "pt-PT",
+            "mainEntity": COPY.pt.faqs.map((f) => ({
+                "@type": "Question",
+                "name": f.q,
+                "acceptedAnswer": { "@type": "Answer", "text": f.a },
+            })),
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
+                { "@type": "ListItem", "position": 2, "name": "Serviços", "item": `${SITE_URL}/pt/servicos` },
+                { "@type": "ListItem", "position": 3, "name": "AEO", "item": PT_URL },
+            ],
+        },
+    ],
+};
+
 /* ── Hero: user-controlled mock AI chat (Without AEO / With AEO) ───── */
-const CHAT_QUESTION = "What's the best specialty coffee brand in Europe?";
 // Both states share one answer, word for word; only the brand name and citation
 // change. The "Without/With AEO" framing lives in the toggle above the card, so
 // the AI answer itself never editorialises. Layout is identical between states.
-const CHAT_ANSWER_PRE = "For specialty coffee in Europe, the standout is";
-const CHAT_ANSWER_POST = ", consistently cited for quality and transparency.";
-const CHAT_STATES = [
-    { label: "Without AEO", cite: "Nordkaffe", href: "nordkaffe.example", you: false },
-    { label: "With AEO", cite: "Your Brand", href: "yourbrand.com", you: true },
-];
-
 function AiChatDemo() {
+    const c = COPY[useLang().lang].chat;
     const [active, setActive] = useState(0); // 0 = Without AEO (default)
-    const s = CHAT_STATES[active];
+    const s = { ...c.states[active], you: active === 1 };
     // Same pill treatment in both states; only the tone (accent vs neutral) differs.
     const tone = s.you
         ? { fg: "var(--accent-secondary)", bg: "var(--accent-glow)" }
@@ -130,13 +119,13 @@ function AiChatDemo() {
                     className="aeo-switch-label"
                     style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.9rem", fontWeight: active === 0 ? 700 : 500, color: active === 0 ? "var(--accent-secondary)" : "var(--text-secondary)", transition: "color 0.15s ease" }}
                 >
-                    {CHAT_STATES[0].label}
+                    {c.states[0].label}
                 </button>
                 <button
                     type="button"
                     role="switch"
                     aria-checked={active === 1}
-                    aria-label="Show the AI answer with AEO applied"
+                    aria-label={c.switchLabel}
                     onClick={() => setActive(active === 1 ? 0 : 1)}
                     className="aeo-switch"
                     style={{
@@ -160,27 +149,27 @@ function AiChatDemo() {
                     className="aeo-switch-label"
                     style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.9rem", fontWeight: active === 1 ? 700 : 500, color: active === 1 ? "var(--accent-secondary)" : "var(--text-secondary)", transition: "color 0.15s ease" }}
                 >
-                    {CHAT_STATES[1].label}
+                    {c.states[1].label}
                 </button>
             </div>
 
             <div className="aeo-chat card" style={{ padding: "1.5rem", background: "var(--bg-primary)" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1.25rem", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--text-secondary)" }}>
-                    <Bot size={16} /> AI Assistant
+                    <Bot size={16} /> {c.assistant}
                 </div>
-                {/* user question — identical in both states */}
+                {/* user question: identical in both states */}
                 <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "1rem" }}>
                     <span style={{ background: "var(--accent-secondary)", color: "#fff", padding: "0.6rem 0.9rem", borderRadius: "14px 14px 4px 14px", fontSize: "0.9rem", maxWidth: "85%" }}>
-                        {CHAT_QUESTION}
+                        {c.question}
                     </span>
                 </div>
-                {/* assistant answer — same layout; brand name, citation and accent tone differ */}
+                {/* assistant answer: same layout; brand name, citation and accent tone differ */}
                 <div key={active} className="aeo-answer" style={{ display: "flex", gap: "0.6rem" }}>
                     <span style={{ flexShrink: 0, width: "28px", height: "28px", borderRadius: "50%", background: "var(--bg-tertiary)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent-secondary)" }}><Sparkles size={15} /></span>
                     <span style={{ fontSize: "0.9rem", lineHeight: 1.55, color: "var(--text-primary)" }}>
-                        {CHAT_ANSWER_PRE}{" "}
-                        <strong style={{ color: tone.fg }}>{s.cite}</strong>{CHAT_ANSWER_POST}
-                        <span style={{ display: "inline-flex", alignItems: "center", gap: "5px", marginTop: "0.5rem", fontSize: "0.78rem", fontWeight: 600, color: tone.fg, background: tone.bg, padding: "3px 10px", borderRadius: "20px" }}><Quote size={12} /> Cited: {s.href}</span>
+                        {c.answerPre}{" "}
+                        <strong style={{ color: tone.fg }}>{s.cite}</strong>{c.answerPost}
+                        <span style={{ display: "inline-flex", alignItems: "center", gap: "5px", marginTop: "0.5rem", fontSize: "0.78rem", fontWeight: 600, color: tone.fg, background: tone.bg, padding: "3px 10px", borderRadius: "20px" }}><Quote size={12} /> {c.cited}{s.href}</span>
                     </span>
                 </div>
             </div>
@@ -189,18 +178,12 @@ function AiChatDemo() {
 }
 
 /* ── "Why now" before/after era toggle ─────────────────────────────── */
-const SERP_2015 = [
-    { title: "Top 10 Specialty Coffee Brands in Europe [2015]", url: "thecoffeelist.example › best-brands", snippet: "Our definitive roundup of the finest specialty coffee roasters across Europe this year, ranked and reviewed." },
-    { title: "Best Coffee Brands: Reviews & Rankings", url: "brandrankings.example › coffee", snippet: "Independent star ratings and reader reviews for the leading European coffee brands and roasters." },
-    { title: "10 European Coffee Roasters You Should Know", url: "roasterreview.example › guides", snippet: "From Oslo to Lisbon, the roasters shaping Europe's third-wave specialty coffee scene." },
-    { title: "Coffee Brand Comparison: Which is Best?", url: "comparecoffee.example › compare", snippet: "Side-by-side comparison of price, roast profile and sourcing across the top specialty brands." },
-];
-
 function SearchEraToggle() {
+    const c = COPY[useLang().lang].era;
     const [era, setEra] = useState<"2015" | "2026">("2026");
     return (
         <div style={{ maxWidth: "680px", margin: "0 auto" }}>
-            <div role="tablist" aria-label="How search changed" style={{ display: "flex", gap: "0.5rem", justifyContent: "center", marginBottom: "1.5rem" }}>
+            <div role="tablist" aria-label={c.tablist} style={{ display: "flex", gap: "0.5rem", justifyContent: "center", marginBottom: "1.5rem" }}>
                 {(["2015", "2026"] as const).map((e) => (
                     <button
                         key={e}
@@ -215,38 +198,38 @@ function SearchEraToggle() {
                             color: era === e ? "#fff" : "var(--text-secondary)",
                         }}
                     >
-                        Search in {e}
+                        {c.tab}{e}
                     </button>
                 ))}
             </div>
 
             <div key={era} className="animate-fade-in card" style={{ padding: "1.5rem", background: "var(--bg-primary)" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", border: "1px solid var(--border-color)", borderRadius: "10px", padding: "0.6rem 0.9rem", marginBottom: "1.25rem", color: "var(--text-secondary)", fontSize: "0.9rem" }}>
-                    <Search size={16} /> best specialty coffee brand in europe
+                    <Search size={16} /> {c.query}
                 </div>
                 {era === "2015" ? (
                     <div style={{ display: "flex", flexDirection: "column", gap: "1.1rem" }}>
-                        {SERP_2015.map((r) => (
+                        {c.serp.map((r) => (
                             <div key={r.title}>
                                 <p style={{ color: "var(--accent-secondary)", fontSize: "0.95rem", fontWeight: 600, marginBottom: "0.2rem" }}>{r.title}</p>
                                 <p style={{ color: "#3a7d3a", fontSize: "0.75rem", marginBottom: "0.3rem" }}>{r.url}</p>
                                 <p style={{ color: "var(--text-secondary)", fontSize: "0.82rem", lineHeight: 1.5, margin: 0 }}>{r.snippet}</p>
                             </div>
                         ))}
-                        <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", fontStyle: "italic", marginTop: "0.25rem" }}>Ten blue links. The user does the research.</p>
+                        <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", fontStyle: "italic", marginTop: "0.25rem" }}>{c.note2015}</p>
                     </div>
                 ) : (
                     <div style={{ display: "flex", gap: "0.6rem" }}>
                         <span style={{ flexShrink: 0, width: "28px", height: "28px", borderRadius: "50%", background: "var(--bg-tertiary)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent-secondary)" }}><Sparkles size={15} /></span>
                         <div>
                             <p style={{ fontSize: "0.95rem", lineHeight: 1.6, color: "var(--text-primary)", marginBottom: "0.75rem" }}>
-                                For specialty coffee in Europe, the standout is{" "}
-                                <strong style={{ color: "var(--accent-secondary)" }}>Your Brand</strong>, consistently cited for quality and transparency.
+                                {c.answerPre}{" "}
+                                <strong style={{ color: "var(--accent-secondary)" }}>{c.answerBrand}</strong>{c.answerPost}
                             </p>
                             <span style={{ display: "inline-flex", alignItems: "center", gap: "5px", fontSize: "0.78rem", fontWeight: 600, color: "var(--accent-secondary)", background: "var(--accent-glow)", padding: "3px 10px", borderRadius: "20px" }}>
-                                <Quote size={12} /> Cited: yourbrand.com
+                                <Quote size={12} /> {c.cited}
                             </span>
-                            <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", fontStyle: "italic", marginTop: "0.9rem" }}>One answer. One cited source. That's the slot AEO wins.</p>
+                            <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", fontStyle: "italic", marginTop: "0.9rem" }}>{c.note2026}</p>
                         </div>
                     </div>
                 )}
@@ -255,34 +238,30 @@ function SearchEraToggle() {
     );
 }
 
-/* ── "Is AI recommending you?" 3-question check ────────────────────── */
-const CHECK: { prompt: string; options: { label: string; score: number }[] }[] = [
-    { prompt: "Have you asked ChatGPT about your category and looked for your brand?", options: [{ label: "Yes, and I appear", score: 2 }, { label: "Yes, and I don't", score: 0 }, { label: "Never checked", score: 1 }] },
-    { prompt: "Does your site have structured data (schema markup)?", options: [{ label: "Yes", score: 2 }, { label: "Not sure", score: 1 }, { label: "No", score: 0 }] },
-    { prompt: "Is your content written to answer questions directly?", options: [{ label: "Yes", score: 2 }, { label: "Somewhat", score: 1 }, { label: "No", score: 0 }] },
-];
-const VERDICTS = [
-    { min: 5, label: "You're AEO-ready", copy: "You're already doing the groundwork AI engines reward. The opportunity now is to press the advantage and become the default answer in your category before competitors catch up." },
-    { min: 3, label: "Half-built for AI search", copy: "You have some of the signals AI engines look for, but gaps are leaving citations on the table. Tightening your structure and answer-ready content could move you from occasionally mentioned to consistently recommended." },
-    { min: 0, label: "Invisible to AI answers", copy: "Right now AI assistants have little reason to cite you, so they recommend someone else. The good news: this is early, the field is open, and the fixes are well understood." },
-];
+/* ── "Is AI recommending you?" 3-question check: scores per option and the
+       minimum score of each verdict, in the copy's order ── */
+const SCORES = [[2, 0, 1], [2, 1, 0], [2, 1, 0]];
+const VERDICT_MIN = [5, 3, 0];
 
 function AeoCheck() {
+    const { lang, to } = useLang();
+    const c = COPY[lang].check;
     const [step, setStep] = useState(-1); // -1 intro, 0..2 questions, 3 result
     const [scores, setScores] = useState<number[]>([]);
     const total = scores.reduce((a, b) => a + b, 0);
-    const verdict = VERDICTS.find((v) => total >= v.min) ?? VERDICTS[VERDICTS.length - 1];
+    const vi = VERDICT_MIN.findIndex((min) => total >= min);
+    const verdict = c.verdicts[vi === -1 ? c.verdicts.length - 1 : vi];
 
     const answer = (sc: number) => { setScores([...scores, sc]); setStep(step + 1); };
     const reset = () => { setScores([]); setStep(-1); };
 
     return (
         <div className="card glass-panel" style={{ maxWidth: "680px", margin: "0 auto", padding: "clamp(1.75rem, 4vw, 3rem)", display: "flex", flexDirection: "column" }}>
-            {step >= 0 && step < CHECK.length && (
+            {step >= 0 && step < c.questions.length && (
                 <div style={{ marginBottom: "2rem" }}>
-                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>Question {step + 1} of {CHECK.length}</p>
+                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>{c.questionOf[0]}{step + 1}{c.questionOf[1]}{c.questions.length}</p>
                     <div style={{ display: "flex", gap: "0.4rem" }}>
-                        {CHECK.map((_, i) => (
+                        {c.questions.map((_, i) => (
                             <span key={i} style={{ flex: 1, height: "4px", borderRadius: "2px", background: i <= step ? "var(--accent-secondary)" : "var(--border-color)", transition: "background 0.4s ease" }} />
                         ))}
                     </div>
@@ -291,21 +270,21 @@ function AeoCheck() {
 
             {step === -1 && (
                 <div key="intro" className="animate-fade-in" style={{ display: "flex", flexDirection: "column" }}>
-                    <h3 style={{ fontSize: "1.6rem", marginBottom: "0.75rem" }}>Is AI <span className="text-gradient">recommending you</span>?</h3>
+                    <h3 style={{ fontSize: "1.6rem", marginBottom: "0.75rem" }}>{c.titleLead}<span className="text-gradient">{c.titleAccent}</span>{c.titleTail}</h3>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
-                        Three quick questions on how ready your brand is to be cited by AI assistants. Instant and private. Nothing leaves your browser.
+                        {c.intro}
                     </p>
                     <button onClick={() => setStep(0)} className="btn btn-primary" style={{ alignSelf: "flex-start", padding: "0.9rem 2rem" }}>
-                        Start the check <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                        {c.start} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                     </button>
                 </div>
             )}
 
-            {step >= 0 && step < CHECK.length && (
+            {step >= 0 && step < c.questions.length && (
                 <div key={step} className="animate-fade-in" style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-                    <h3 style={{ fontSize: "1.4rem", lineHeight: 1.3, marginBottom: "1.75rem" }}>{CHECK[step].prompt}</h3>
+                    <h3 style={{ fontSize: "1.4rem", lineHeight: 1.3, marginBottom: "1.75rem" }}>{c.questions[step].prompt}</h3>
                     <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                        {CHECK[step].options.map((o) => (
+                        {c.questions[step].options.map((label, oi) => ({ label, score: SCORES[step][oi] })).map((o) => (
                             <button key={o.label} onClick={() => answer(o.score)} className="ws-option" style={{ textAlign: "left", padding: "1rem 1.25rem", background: "var(--bg-primary)", border: "1px solid var(--border-color)", borderRadius: "12px", color: "var(--text-primary)", fontSize: "1rem", fontWeight: 500, cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}>
                                 {o.label}
                                 <ArrowRight size={16} className="ws-option-arrow" />
@@ -315,16 +294,16 @@ function AeoCheck() {
                 </div>
             )}
 
-            {step >= CHECK.length && (
+            {step >= c.questions.length && (
                 <div key="result" className="animate-fade-in" style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>Your result</p>
+                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>{c.yourResult}</p>
                     <h3 style={{ fontSize: "1.9rem", lineHeight: 1.2, marginBottom: "1rem" }}><span className="text-gradient">{verdict.label}</span></h3>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "2rem" }}>{verdict.copy}</p>
                     <div style={{ marginTop: "auto", display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
-                        <Link to="/contact" className="btn btn-primary" style={{ padding: "0.9rem 2rem" }}>
-                            Get your AEO audit: Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                        <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "0.9rem 2rem" }}>
+                            {c.resultCta} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                         </Link>
-                        <button onClick={reset} style={{ background: "transparent", border: "none", color: "var(--text-secondary)", cursor: "pointer", fontSize: "0.9rem", fontWeight: 500, textDecoration: "underline", textUnderlineOffset: "3px" }}>Start over</button>
+                        <button onClick={reset} style={{ background: "transparent", border: "none", color: "var(--text-secondary)", cursor: "pointer", fontSize: "0.9rem", fontWeight: 500, textDecoration: "underline", textUnderlineOffset: "3px" }}>{c.restart}</button>
                     </div>
                 </div>
             )}
@@ -333,14 +312,18 @@ function AeoCheck() {
 }
 
 export default function ServicesAEO() {
+    const { lang, to, englishOnly } = useLang();
+    const t = COPY[lang];
+    /* "(em inglês)" on links whose target has no Portuguese page yet. */
+    const label = (text: string, path: string) => (englishOnly(path) ? text + t.englishSuffix : text);
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="AEO Consultant for E-commerce Brands | Maria Madeira"
-                description="AEO audits with a measured baseline, for e-commerce and food and drink brands. Get cited and recommended by ChatGPT, Perplexity, Gemini and Google AI Overviews, not just ranked."
-                path="/services/aeo"
+                title={t.title}
+                description={t.description}
+                path={t.path}
                 ogImage="/og/og-aeo.png"
-                jsonLd={AEO_JSON_LD}
+                jsonLd={lang === "pt" ? PT_JSON_LD : AEO_JSON_LD}
             />
 
             <style>{`
@@ -366,16 +349,16 @@ export default function ServicesAEO() {
             <section className="aeo-hero" style={{ marginBottom: "5rem" }}>
                 <div>
                     <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
-                        Answer Engine Optimisation
+                        {t.eyebrow}
                     </p>
                     <h1 className="section-title" style={{ marginBottom: "1.5rem", textAlign: "left" }}>
-                        Get found and <span className="text-gradient">recommended by AI</span>, not just ranked by Google
+                        {t.h1Lead}<span className="text-gradient">{t.h1Accent}</span>{t.h1Tail}
                     </h1>
                     <p style={{ color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8, marginBottom: "2.5rem" }}>
-                        Search is shifting from links to answers. AEO makes sure that when an AI assistant answers "who's the best?", the answer is you.
+                        {t.intro}
                     </p>
-                    <Link to="/contact" className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
-                        Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                    <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
+                        {t.cta} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                     </Link>
                 </div>
                 <div style={{ display: "flex", justifyContent: "center" }}>
@@ -383,31 +366,31 @@ export default function ServicesAEO() {
                 </div>
             </section>
 
-            {/* What is AEO — quotable callout */}
+            {/* What is AEO: the quotable callout */}
             <section style={{ marginBottom: "5rem", maxWidth: "820px", margin: "0 auto 5rem" }}>
-                <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1.5rem", textAlign: "center" }}>What is AEO?</h2>
+                <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1.5rem", textAlign: "center" }}>{t.whatIsTitle}</h2>
                 <blockquote style={{ background: "var(--accent-glow)", border: "1px solid var(--border-color)", borderLeft: "4px solid var(--accent-secondary)", borderRadius: "16px", padding: "clamp(1.5rem, 4vw, 2.5rem)", margin: 0 }}>
                     <p style={{ fontSize: "1.2rem", lineHeight: 1.7, color: "var(--text-primary)", fontWeight: 500, margin: 0 }}>
-                        {AEO_DEFINITION}
+                        {t.definition}
                     </p>
                 </blockquote>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, marginTop: "1.75rem", fontSize: "1.05rem" }}>
-                    Traditional SEO earns you a position in a list of links and trusts the user to click and compare. AEO works one layer up: it shapes the entities, structured data, and answer-ready content that AI engines synthesise into a single response, so your brand is the one named, quoted, and linked.
+                    {t.whatIsText}
                 </p>
                 <p style={{ marginTop: "1.25rem", fontSize: "1.05rem" }}>
-                    <Link to="/blog/what-is-aeo" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>Read the full guide: What is AEO?</Link>
+                    <Link to={to("/blog/what-is-aeo")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{label(t.guideLink, "/blog/what-is-aeo")}</Link>
                 </p>
             </section>
 
             {/* Why now */}
             <section style={{ marginBottom: "5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Why now</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.whyTitle}</h2>
                 </div>
                 <div className="grid-3" style={{ marginBottom: "3.5rem" }}>
-                    {WHY_NOW.map((c) => (
+                    {t.why.map((c, i) => (
                         <div key={c.title} className="card" style={{ display: "flex", flexDirection: "column" }}>
-                            <div style={{ width: "48px", height: "48px", borderRadius: "12px", background: "var(--accent-glow)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.25rem", color: "var(--accent-secondary)" }}>{c.icon}</div>
+                            <div style={{ width: "48px", height: "48px", borderRadius: "12px", background: "var(--accent-glow)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.25rem", color: "var(--accent-secondary)" }}>{WHY_ICONS[i]}</div>
                             <h3 style={{ fontSize: "1.15rem", marginBottom: "0.5rem" }}>{c.title}</h3>
                             <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", lineHeight: 1.6, margin: 0 }}>{c.line}</p>
                         </div>
@@ -419,16 +402,16 @@ export default function ServicesAEO() {
             {/* What I do */}
             <section style={{ marginBottom: "5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>What I do</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.whatTitle}</h2>
                     <p style={{ color: "var(--text-secondary)", fontSize: "1.05rem", lineHeight: 1.8, maxWidth: "760px", margin: "0 auto", textAlign: "left" }}>
-                        Four stages, and I deliver all four. The audit tells you where you stand. The other three are implementation: schema, entity signals and answer-ready content built into your site, and citation tracking set up so you can see what changed. Nothing is handed over as a list of recommendations for someone else to action.
+                        {t.whatIntro}
                     </p>
                 </div>
                 <div className="aeo-steps">
-                    {WHAT_I_DO.map((s, i) => (
+                    {t.what.map((s, i) => (
                         <div key={s.title} style={{ textAlign: "center" }}>
                             <div style={{ width: "64px", height: "64px", borderRadius: "50%", background: "var(--bg-primary)", border: "2px solid var(--accent-secondary)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.25rem", color: "var(--accent-secondary)", position: "relative" }}>
-                                {s.icon}
+                                {WHAT_ICONS[i]}
                                 <span style={{ position: "absolute", top: "-8px", right: "-8px", width: "26px", height: "26px", borderRadius: "50%", background: "var(--accent-secondary)", color: "#fff", fontSize: "0.8rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>{i + 1}</span>
                             </div>
                             <h3 style={{ fontSize: "1.1rem", marginBottom: "0.5rem" }}>{s.title}</h3>
@@ -441,16 +424,15 @@ export default function ServicesAEO() {
             {/* Built alongside the rest */}
             <section style={{ marginBottom: "5rem", maxWidth: "820px", margin: "0 auto 5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Built alongside the rest, not bolted on</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.alongsideTitle}</h2>
                 </div>
-                <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "1.25rem" }}>
-                    AEO runs on the same foundations as everything else in search: site structure, clean markup, content that answers real questions, and enough authority for engines to trust you. When those are weak, AEO has nothing to stand on.
-                </p>
-                <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "1.25rem" }}>
-                    That is why I do not sell it on its own. I build websites, run SEO, and run Klaviyo email for the same brands, so the AEO work lands on foundations I can fix rather than foundations I have to work around. One person doing the strategy and the build, with no gap between what gets recommended and what gets shipped.
-                </p>
+                {t.alongside.map((p) => (
+                    <p key={p} style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "1.25rem" }}>
+                        {p}
+                    </p>
+                ))}
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", margin: 0 }}>
-                    Deciding between an agency and an independent? <Link to="/blog/best-aeo-agencies-ecommerce-europe" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>I wrote a comparison of the European options, including where I fit.</Link>
+                    {t.comparisonLead}<Link to={to("/blog/best-aeo-agencies-ecommerce-europe")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{label(t.comparisonLink, "/blog/best-aeo-agencies-ecommerce-europe")}</Link>
                 </p>
             </section>
 
@@ -462,34 +444,34 @@ export default function ServicesAEO() {
             {/* Proof */}
             <section style={{ marginBottom: "5rem", maxWidth: "680px", margin: "0 auto 5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Proof</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.proofTitle}</h2>
                 </div>
-                <Link to="/case-study-bodysurf-school" className="card hover-lift" style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                    <p className="text-gradient-accent" style={{ fontSize: "0.85rem", fontWeight: 700, margin: 0 }}>Case Study</p>
-                    <h3 style={{ margin: 0 }}>The Bodysurf School</h3>
+                <Link to={to("/case-study-bodysurf-school")} className="card hover-lift" style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                    <p className="text-gradient-accent" style={{ fontSize: "0.85rem", fontWeight: 700, margin: 0 }}>{t.proofCard.kicker}</p>
+                    <h3 style={{ margin: 0 }}>{t.proofCard.title}</h3>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, margin: "0.25rem 0 0" }}>
-                        SEO and AEO foundations built into a full site rebuild: structured, answer-ready, and findable in both classic and AI search.
+                        {t.proofCard.text}
                     </p>
                     <span style={{ marginTop: "0.75rem", display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.9rem" }}>
-                        Read the case study <ArrowRight size={16} />
+                        {label(t.proofCard.link, "/case-study-bodysurf-school")} <ArrowRight size={16} />
                     </span>
                 </Link>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: "1.5rem 0 0" }}>
-                    For the same work applied to an existing catalogue rather than a new build, read the <Link to="/case-study-seo" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>SEO and AEO case study</Link>.
+                    {t.proofNote[0]}<Link to={to("/case-study-seo")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{label(t.proofNote[1], "/case-study-seo")}</Link>{t.proofNote[2]}
                 </p>
             </section>
 
             {/* Pricing */}
             <section style={{ marginBottom: "5rem", maxWidth: "820px", margin: "0 auto 5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Pricing</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.pricingTitle}</h2>
                 </div>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", margin: 0 }}>
-                    An AEO audit starts from £750. Ongoing AEO work starts from £800 a month. You get a written quote after the first call, once the scope is clear.
+                    {t.pricingText}
                 </p>
                 <p style={{ margin: "1.25rem 0 0" }}>
-                    <Link to="/pricing" style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
-                        See all ways to work with me <ArrowRight size={16} />
+                    <Link to={to("/pricing")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
+                        {t.pricingLink} <ArrowRight size={16} />
                     </Link>
                 </p>
             </section>
@@ -497,10 +479,10 @@ export default function ServicesAEO() {
             {/* FAQ: all answers visible, no accordions */}
             <section style={{ marginBottom: "5rem", maxWidth: "820px", margin: "0 auto 5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Frequently asked questions</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.faqTitle}</h2>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-                    {FAQS.map((f) => (
+                    {t.faqs.map((f) => (
                         <div key={f.q} className="card" style={{ padding: "1.75rem" }}>
                             <h3 style={{ fontSize: "1.15rem", marginBottom: "0.75rem", display: "flex", alignItems: "flex-start", gap: "0.6rem" }}>
                                 <MessageSquare size={18} style={{ flexShrink: 0, marginTop: "3px", color: "var(--accent-secondary)" }} /> {f.q}
@@ -516,12 +498,12 @@ export default function ServicesAEO() {
                 <div style={{ display: "inline-flex", width: "56px", height: "56px", borderRadius: "50%", background: "var(--accent-glow)", alignItems: "center", justifyContent: "center", color: "var(--accent-secondary)", marginBottom: "1.5rem" }}>
                     <Sparkles size={28} />
                 </div>
-                <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Become the answer AI recommends</h2>
+                <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.ctaTitle}</h2>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1.1rem", maxWidth: "560px", margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
-                    Book a free strategy call and we'll map where AI search sees you today, and how to become the cited default in your category.
+                    {t.ctaText}
                 </p>
-                <Link to="/contact" className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
-                    Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
+                    {t.cta} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                 </Link>
             </section>
         </div>

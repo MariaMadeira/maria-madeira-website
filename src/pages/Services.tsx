@@ -1,9 +1,12 @@
 import { TrendingUp, Mail, BarChart, Cpu, Maximize, ArrowRight, ArrowRightLeft, Globe, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import type { ReactNode } from "react";
 import Seo from "../components/Seo";
 import { SITE_URL } from "../lib/schema";
 import { PAID_ADS_SERVICE } from "../lib/links";
-import { WAYS_TO_WORK } from "../lib/pricing";
+import { useLang } from "../hooks/useLang";
+import COPY from "../i18n/services";
+import { WAYS } from "../i18n/shared";
 
 // Matches the BreadcrumbList each child service page already carries, so the
 // hub is not the one rung missing from the trail.
@@ -20,6 +23,41 @@ const SERVICES_JSON_LD = {
     ],
 };
 
+/* The Portuguese hub: same trail, in Portuguese, and the page's language. */
+const PT_JSON_LD = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": `${SITE_URL}/pt/servicos#webpage`,
+            "url": `${SITE_URL}/pt/servicos`,
+            "name": "Serviços",
+            "inLanguage": "pt-PT",
+            "isPartOf": { "@id": `${SITE_URL}/#website` },
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
+                { "@type": "ListItem", "position": 2, "name": "Serviços", "item": `${SITE_URL}/pt/servicos` },
+            ],
+        },
+    ],
+};
+
+/* Icons, links and emphasis per card; the text comes from src/i18n/services.ts
+   in the same order. */
+const SERVICE_CARDS: { icon: ReactNode; link?: string; featured?: boolean; secondaryLink?: string }[] = [
+    { icon: <Globe size={40} />, link: "/services/websites" },
+    { icon: <Sparkles size={40} />, link: "/services/aeo" },
+    { icon: <Mail size={40} />, link: "/services/email-marketing" },
+    { icon: <TrendingUp size={40} />, featured: true, link: "/case-study-bodysurf-school" },
+    { icon: <BarChart size={40} />, link: PAID_ADS_SERVICE, secondaryLink: "/case-study-google-ads" },
+    { icon: <Cpu size={40} /> },
+    { icon: <Maximize size={40} />, link: "/portfolio" },
+    { icon: <ArrowRightLeft size={40} />, link: "/case-study-seo" },
+];
+
 const SERVICE_LINK_STYLE = {
     display: "inline-flex",
     alignItems: "center",
@@ -31,78 +69,23 @@ const SERVICE_LINK_STYLE = {
 } as const;
 
 export default function Services() {
-    const services = [
-        {
-            icon: <Globe size={40} />,
-            title: "Website Strategy & Build",
-            description: "Turn an outdated website into a growth engine: strategy, a rebuild or targeted improvements, and SEO and AEO built in from the ground up so customers find you on Google and in AI search.",
-            link: "/services/websites",
-            cta: "Explore website services",
-        },
-        {
-            icon: <Sparkles size={40} />,
-            title: "Answer Engine Optimisation (AEO)",
-            description: "Get cited and recommended by AI assistants (ChatGPT, Perplexity, Gemini, and Google AI Overviews) as search shifts from ranked links to synthesised answers.",
-            link: "/services/aeo",
-            cta: "Explore AEO",
-            price: "From £750",
-        },
-        {
-            icon: <Mail size={40} />,
-            title: "Email Marketing & Klaviyo Consulting",
-            description: "Lifecycle flows, segmentation and campaigns that turn email into a compounding, attributed-revenue channel. Klaviyo audits, builds and monthly measurement.",
-            link: "/services/email-marketing",
-            cta: "Explore email marketing",
-            price: "From £750 a month",
-        },
-        {
-            icon: <TrendingUp size={40} />,
-            title: "Growth Strategy",
-            description: "Holistic approaches to acquiring and retaining customers. From market positioning to full-funnel optimisation, we build strategies designed to scale aggressive growth objectives sustainably.",
-            featured: true,
-            link: "/case-study-bodysurf-school",
-        },
-        {
-            icon: <BarChart size={40} />,
-            title: "Paid Advertising",
-            description: "Media buying and campaign management across Google, Meta and Microsoft Ads. Every campaign measured against your break-even return on ad spend (ROAS).",
-            link: PAID_ADS_SERVICE,
-            cta: "Paid ads service",
-            price: "From £500 a month per platform",
-            secondaryLink: "/case-study-google-ads",
-        },
-        {
-            icon: <Cpu size={40} />,
-            title: "AI Marketing Systems",
-            description: "Implementation of modern AI tools to accelerate content creation, automate manual workflows, and enrich data analysis, keeping you ahead of competitors.",
-        },
-        {
-            icon: <Maximize size={40} />,
-            title: "Creative Direction",
-            description: "Translating analytical insights into compelling visual stories. Overseeing brand voice and design language to ensure top-tier performance.",
-            link: "/portfolio",
-        },
-        {
-            icon: <ArrowRightLeft size={40} />,
-            title: "E-commerce Platform Migration",
-            description: "Seamless migrations between e-commerce platforms that protect SEO rankings, preserve customer data, and maintain revenue continuity throughout the transition.",
-            link: "/case-study-seo",
-        },
-    ];
+    const { lang, to } = useLang();
+    const t = COPY[lang];
+    const services = SERVICE_CARDS.map((card, i) => ({ ...card, ...t.cards[i] }));
 
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="E-commerce Growth Services | Maria Madeira"
-                description="Growth strategy, email marketing automation, paid advertising, AI marketing systems, and creative direction: services built to scale e-commerce revenue."
-                path="/services"
-                jsonLd={SERVICES_JSON_LD}
+                title={t.title}
+                description={t.description}
+                path={t.path}
+                jsonLd={lang === "pt" ? PT_JSON_LD : SERVICES_JSON_LD}
             />
 
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>
-                <h1 className="section-title" style={{ marginBottom: "1rem" }}>Services <span className="text-gradient">& Expertise</span></h1>
+                <h1 className="section-title" style={{ marginBottom: "1rem" }}>{t.h1Lead}<span className="text-gradient">{t.h1Accent}</span></h1>
                 <p style={{ color: "var(--text-secondary)", maxWidth: "700px", margin: "0 auto", fontSize: "1.1rem" }}>
-                    Driving growth through a blend of strategic planning, creative production, and technical automation.
+                    {t.intro}
                 </p>
             </div>
 
@@ -136,7 +119,7 @@ export default function Services() {
                                 textTransform: "uppercase",
                                 letterSpacing: "0.1em",
                             }}>
-                                Most Popular
+                                {t.mostPopular}
                             </span>
                         )}
                         <div className="text-gradient-accent" style={{ marginBottom: "1.5rem" }}>
@@ -151,12 +134,12 @@ export default function Services() {
                         )}
                         {service.link && (
                             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem 1.75rem", marginTop: "1.5rem" }}>
-                                <Link to={service.link} style={SERVICE_LINK_STYLE}>
-                                    {service.cta ?? "See results"} <ArrowRight size={16} />
+                                <Link to={to(service.link)} style={SERVICE_LINK_STYLE}>
+                                    {service.cta || t.seeResults} <ArrowRight size={16} />
                                 </Link>
                                 {service.secondaryLink && (
-                                    <Link to={service.secondaryLink} style={SERVICE_LINK_STYLE}>
-                                        See results <ArrowRight size={16} />
+                                    <Link to={to(service.secondaryLink)} style={SERVICE_LINK_STYLE}>
+                                        {t.seeResults} <ArrowRight size={16} />
                                     </Link>
                                 )}
                             </div>
@@ -168,9 +151,9 @@ export default function Services() {
             {/* How it works */}
             <div style={{ marginTop: "8rem", marginBottom: "8rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-                    <h2 className="section-title" style={{ marginBottom: "1rem" }}>How It <span className="text-gradient">Works</span></h2>
+                    <h2 className="section-title" style={{ marginBottom: "1rem" }}>{t.howLead}<span className="text-gradient">{t.howAccent}</span></h2>
                     <p style={{ color: "var(--text-secondary)", maxWidth: "600px", margin: "0 auto", fontSize: "1.05rem" }}>
-                        A focused, three-step process built around your goals and your data.
+                        {t.howIntro}
                     </p>
                 </div>
 
@@ -195,7 +178,7 @@ export default function Services() {
                             />
                             <img
                                 src="/maria-videocall-800.jpg"
-                                alt="Maria Madeira talking with a client on a video call"
+                                alt={t.imgAlt}
                                 width="1600"
                                 height="2133"
                                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 15%", display: "block" }}
@@ -204,11 +187,7 @@ export default function Services() {
                     </div>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-                        {[
-                            { step: "01", title: "Audit", desc: "We start by mapping your current funnel, channels, and data, identifying the biggest gaps and highest-leverage opportunities." },
-                            { step: "02", title: "Strategy", desc: "A tailored growth plan is built around your goals: which channels to prioritise, what to automate, and how to sequence execution." },
-                            { step: "03", title: "Execute", desc: "Campaigns go live, systems are built, and performance is monitored weekly, with ongoing optimisation to compound results over time." },
-                        ].map((item) => (
+                        {t.steps.map((s, i) => ({ step: String(i + 1).padStart(2, "0"), ...s })).map((item) => (
                             <div key={item.step} className="card" style={{ background: "var(--bg-secondary)", position: "relative", padding: "2rem 2.5rem" }}>
                                 <span style={{
                                     position: "absolute", top: "1.25rem", right: "1.5rem",
@@ -226,8 +205,11 @@ export default function Services() {
             {/* Testimonial */}
             <div style={{ marginBottom: "8rem", background: "var(--bg-secondary)", borderRadius: "24px", padding: "3.5rem", border: "1px solid var(--border-color)" }}>
                 <p style={{ fontSize: "1.1rem", lineHeight: 1.8, fontStyle: "italic", color: "var(--text-secondary)", marginBottom: "2rem" }}>
-                    "Maria completely transformed our email marketing strategy. When she took over our Klaviyo account, she achieved 125% growth in email attributed revenue and boosted our automated flows by over 100%. Our open rates went from 28% to 48%, and click rates more than doubled."
+                    {t.testimonial.quote}
                 </p>
+                {t.testimonial.note && (
+                    <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", margin: "-1rem 0 2rem" }}>{t.testimonial.note}</p>
+                )}
                 <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                     <div style={{
                         width: "44px", height: "44px", borderRadius: "50%", flexShrink: 0,
@@ -236,8 +218,8 @@ export default function Services() {
                         fontWeight: 700, fontSize: "0.85rem", color: "var(--accent-secondary)",
                     }}>WF</div>
                     <div>
-                        <p style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--text-primary)", marginBottom: "0.2rem" }}>Will Fuller</p>
-                        <p style={{ fontSize: "0.82rem", color: "var(--accent-secondary)", fontWeight: 600 }}>WordPress Developer · Former colleague</p>
+                        <p style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--text-primary)", marginBottom: "0.2rem" }}>{t.testimonial.name}</p>
+                        <p style={{ fontSize: "0.82rem", color: "var(--accent-secondary)", fontWeight: 600 }}>{t.testimonial.role}</p>
                     </div>
                 </div>
             </div>
@@ -245,31 +227,31 @@ export default function Services() {
             {/* Ways to work, short version of /pricing */}
             <div style={{ marginBottom: "6rem" }}>
                 <div className="grid-3" style={{ gap: "1.5rem" }}>
-                    {WAYS_TO_WORK.map((w) => (
+                    {WAYS[lang].map((w) => (
                         <div key={w.name} className="card" style={{ padding: "1.75rem" }}>
                             <h3 style={{ fontSize: "1.25rem", margin: "0 0 0.75rem" }}>{w.name}</h3>
-                            <p style={{ fontFamily: "var(--font-heading)", fontSize: "1.6rem", fontWeight: 600, lineHeight: 1.1, color: "var(--text-primary)", margin: 0 }}>{w.price}</p>
+                            {t.waysShowPrice && <p style={{ fontFamily: "var(--font-heading)", fontSize: "1.6rem", fontWeight: 600, lineHeight: 1.1, color: "var(--text-primary)", margin: 0 }}>{w.price}</p>}
                             <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.75rem", fontWeight: 700, color: "var(--accent-secondary)", margin: "0.6rem 0 0" }}>{w.type}</p>
                         </div>
                     ))}
                 </div>
                 <div style={{ textAlign: "center", marginTop: "2rem" }}>
-                    <Link to="/pricing" style={{ ...SERVICE_LINK_STYLE, fontSize: "1rem" }}>
-                        See pricing <ArrowRight size={16} />
+                    <Link to={to("/pricing")} style={{ ...SERVICE_LINK_STYLE, fontSize: "1rem" }}>
+                        {t.seePricing} <ArrowRight size={16} />
                     </Link>
                 </div>
             </div>
 
             <div style={{ textAlign: "center", background: "var(--bg-secondary)", padding: "5rem 2rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}>
-                <h2 style={{ fontSize: "2.5rem", marginBottom: "1.5rem" }}>Ready to scale your brand?</h2>
+                <h2 style={{ fontSize: "2.5rem", marginBottom: "1.5rem" }}>{t.ctaTitle}</h2>
                 <p style={{ color: "var(--text-secondary)", marginBottom: "1rem", fontSize: "1.2rem", maxWidth: "600px", margin: "0 auto 1rem" }}>
-                    Let's discuss how we can implement these growth systems for your business.
+                    {t.ctaText}
                 </p>
                 <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", marginBottom: "3rem" }}>
-                    A free 30-minute call. No commitment.
+                    {t.ctaNote}
                 </p>
-                <Link to="/contact" className="btn btn-primary" style={{ padding: "1.2rem 3rem", fontSize: "1.1rem" }}>
-                    Book a Free Strategy Call <ArrowRight size={20} style={{ marginLeft: "10px" }} />
+                <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1.2rem 3rem", fontSize: "1.1rem" }}>
+                    {t.ctaButton} <ArrowRight size={20} style={{ marginLeft: "10px" }} />
                 </Link>
             </div>
         </div>

@@ -2,45 +2,15 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Check, Quote, Sparkles } from "lucide-react";
 import Seo from "../components/Seo";
 import { SITE_URL, PERSON_ID } from "../lib/schema";
-import { PAID_ADS_SERVICE } from "../lib/links";
-import { WAYS_TO_WORK } from "../lib/pricing";
-import { BODYSURF_TESTIMONIAL as t } from "../data/testimonials";
+import { BODYSURF_TESTIMONIAL } from "../data/testimonials";
+import { useLang } from "../hooks/useLang";
+import COPY from "../i18n/pricing";
+import { WAYS, testimonialFor } from "../i18n/shared";
 
+/* Renders /pricing and /pt/precos from src/i18n/pricing.ts. */
 const PAGE_URL = `${SITE_URL}/pricing`;
-
-const STEPS = [
-    { lead: "A free call", rest: "tell me about the brand and what isn't working." },
-    { lead: "A written quote", rest: "scope and price agreed in writing before anything starts." },
-    { lead: "The work", rest: "done by me, with direct access throughout." },
-];
 const AI_CHECK_CONTACT = "/contact?topic=ai-search-check";
-
-const BY_SERVICE = [
-    { name: "AEO", text: "audit £750, ongoing from £800 a month", to: "/services/aeo" },
-    { name: "Email and Klaviyo", text: "setup with core flows from £1,200, monthly from £750 a month", to: "/services/email-marketing" },
-    { name: "Paid ads", text: "management from £500 a month per platform", to: PAID_ADS_SERVICE },
-    { name: "Websites", text: "quoted per project", to: "/services/websites" },
-];
-
-/* ── FAQ (drives the visible section and the FAQPage schema) ───────── */
-const FAQS: { q: string; a: string }[] = [
-    {
-        q: "Which option should I start with?",
-        a: "If you are not sure where the gaps are, start with the Growth Audit. If you already know what needs building, a project is quicker. If you want someone running a channel every month, choose monthly work.",
-    },
-    {
-        q: "What is included in the free AI Search Check?",
-        a: "I ask ChatGPT and Perplexity about three of your products and send you a short written note on what they say about your brand and who they recommend instead.",
-    },
-    {
-        q: "Is ad spend included in the monthly price?",
-        a: "No. Ad spend is paid directly by you to Google or Meta. The monthly price covers management only, so you always see what goes into the ads and what goes to management.",
-    },
-    {
-        q: "Is there a minimum term?",
-        a: "Monthly work has a minimum of three months. The Growth Audit and projects are one-off, with no ongoing commitment.",
-    },
-];
+const FAQS = COPY.en.faqs;
 
 const PRICING_JSON_LD = {
     "@context": "https://schema.org",
@@ -83,16 +53,60 @@ const PRICING_JSON_LD = {
     ],
 };
 
+/* The Portuguese page publishes no prices, so its Service carries no offers. */
+const PT_URL = `${SITE_URL}/pt/precos`;
+const PT_JSON_LD = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": `${PT_URL}#webpage`,
+            "url": PT_URL,
+            "name": "Formas de trabalhar comigo",
+            "inLanguage": "pt-PT",
+            "isPartOf": { "@id": `${SITE_URL}/#website` },
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
+                { "@type": "ListItem", "position": 2, "name": "Preços", "item": PT_URL },
+            ],
+        },
+        {
+            "@type": "Service",
+            "@id": `${PT_URL}#service`,
+            "name": "Consultoria de crescimento para marcas que vendem online",
+            "url": PT_URL,
+            "provider": { "@id": PERSON_ID },
+            "areaServed": ["PT", "GB"],
+        },
+        {
+            "@type": "FAQPage",
+            "@id": `${PT_URL}#faq`,
+            "inLanguage": "pt-PT",
+            "mainEntity": COPY.pt.faqs.map((f) => ({
+                "@type": "Question",
+                "name": f.q,
+                "acceptedAnswer": { "@type": "Answer", "text": f.a },
+            })),
+        },
+    ],
+};
+
 const LINK_STYLE = { display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 } as const;
 
 export default function Pricing() {
+    const { lang, to } = useLang();
+    const c = COPY[lang];
+    const t = testimonialFor(BODYSURF_TESTIMONIAL, lang);
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="Pricing | Maria Madeira"
-                description="Three ways to work with Maria Madeira: a fixed-price Growth Audit, defined projects, or ongoing monthly work on AEO, email and paid ads. Starting prices published."
-                path="/pricing"
-                jsonLd={PRICING_JSON_LD}
+                title={c.title}
+                description={c.description}
+                path={c.path}
+                jsonLd={lang === "pt" ? PT_JSON_LD : PRICING_JSON_LD}
             />
 
             <style>{`
@@ -106,13 +120,13 @@ export default function Pricing() {
             {/* Hero */}
             <section style={{ maxWidth: "820px", margin: "0 auto 3rem", textAlign: "center" }}>
                 <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
-                    Pricing
+                    {c.eyebrow}
                 </p>
                 <h1 className="section-title" style={{ marginBottom: "1.5rem" }}>
-                    Ways to work with me
+                    {c.h1}
                 </h1>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8, margin: 0 }}>
-                    Start with an audit, hire me for a defined project, or work with me month to month. Every price below is a starting point, and you get a written quote before any work begins.
+                    {c.intro}
                 </p>
             </section>
 
@@ -121,14 +135,14 @@ export default function Pricing() {
                 <div className="pr-check">
                     <div style={{ flex: "1 1 420px" }}>
                         <h2 style={{ fontSize: "1.4rem", margin: "0 0 0.5rem", display: "flex", alignItems: "center", gap: "0.6rem" }}>
-                            <Sparkles size={22} style={{ color: "var(--accent-secondary)", flexShrink: 0 }} aria-hidden="true" /> Free AI Search Check
+                            <Sparkles size={22} style={{ color: "var(--accent-secondary)", flexShrink: 0 }} aria-hidden="true" /> {c.check.title}
                         </h2>
                         <p style={{ color: "var(--text-primary)", fontSize: "1.05rem", lineHeight: 1.7, margin: 0 }}>
-                            I ask ChatGPT and Perplexity about three of your products and send you a short written note on what they say.
+                            {c.check.text}
                         </p>
                     </div>
-                    <Link to={AI_CHECK_CONTACT} className="btn btn-primary" style={{ padding: "0.9rem 2rem", whiteSpace: "nowrap" }}>
-                        Request a free check <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                    <Link to={to(AI_CHECK_CONTACT)} className="btn btn-primary" style={{ padding: "0.9rem 2rem", whiteSpace: "nowrap" }}>
+                        {c.check.button} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                     </Link>
                 </div>
             </section>
@@ -136,13 +150,13 @@ export default function Pricing() {
             {/* Three ways */}
             <section style={{ marginBottom: "1.5rem" }}>
                 <div className="pr-cards">
-                    {WAYS_TO_WORK.map((w) => (
+                    {WAYS[lang].map((w) => (
                         <div key={w.name} className="card" style={{ padding: "2rem", display: "flex", flexDirection: "column" }}>
                             <h2 style={{ fontSize: "1.4rem", margin: "0 0 1rem" }}>{w.name}</h2>
                             <p style={{ fontFamily: "var(--font-heading)", fontSize: "2rem", fontWeight: 600, lineHeight: 1.1, color: "var(--text-primary)", margin: 0 }}>{w.price}</p>
                             <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.75rem", fontWeight: 700, color: "var(--accent-secondary)", margin: "0.6rem 0 0.75rem" }}>{w.type}</p>
                             <p style={{ fontSize: "0.88rem", fontStyle: "italic", lineHeight: 1.5, margin: "0 0 1.5rem" }}>
-                                <Link to={w.proof.to} style={{ color: "var(--text-secondary)", textDecoration: "underline", textUnderlineOffset: "3px", textDecorationColor: "var(--border-color)" }}>
+                                <Link to={to(w.proof.to)} style={{ color: "var(--text-secondary)", textDecoration: "underline", textUnderlineOffset: "3px", textDecorationColor: "var(--border-color)" }}>
                                     {w.proof.text}
                                 </Link>
                             </p>
@@ -154,7 +168,7 @@ export default function Pricing() {
                                     </li>
                                 ))}
                             </ul>
-                            <Link to="/contact" className="btn btn-secondary" style={{ justifyContent: "center", padding: "0.85rem 1.5rem" }}>
+                            <Link to={to("/contact")} className="btn btn-secondary" style={{ justifyContent: "center", padding: "0.85rem 1.5rem" }}>
                                 {w.cta}
                             </Link>
                         </div>
@@ -162,7 +176,7 @@ export default function Pricing() {
                 </div>
             </section>
             <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", textAlign: "center", margin: "0 auto 3rem", maxWidth: "720px" }}>
-                Ad spend for Google and Meta is paid directly by you to the platform and is not included in any price.
+                {c.adSpend}
             </p>
 
             {/* Testimonial, the same object as the homepage carousel */}
@@ -171,10 +185,11 @@ export default function Pricing() {
                     <div className="testimonial-body">
                         {t.badge && <span className="testimonial-badge">{t.badge}</span>}
                         <blockquote className="testimonial-quote">"{t.quote}"</blockquote>
+                        {t.note && <p className="testimonial-context" style={{ marginTop: "0.75rem" }}>{t.note}</p>}
                     </div>
                     {t.readMore && (
-                        <Link to={t.readMore} className="testimonial-readmore">
-                            Read the full recommendation <ArrowRight size={15} />
+                        <Link to={to(t.readMore)} className="testimonial-readmore">
+                            {t.readMoreLabel} <ArrowRight size={15} />
                         </Link>
                     )}
                     <figcaption className="testimonial-attribution">
@@ -191,12 +206,12 @@ export default function Pricing() {
             {/* Starting prices by service */}
             <section style={{ maxWidth: "820px", margin: "0 auto 5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Starting prices by service</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{c.byServiceTitle}</h2>
                 </div>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0, borderTop: "1px solid var(--border-color)" }}>
-                    {BY_SERVICE.map((s) => (
+                    {c.byService.map((s) => (
                         <li key={s.to} style={{ borderBottom: "1px solid var(--border-color)", padding: "1.1rem 0" }}>
-                            <Link to={s.to} style={{ ...LINK_STYLE, fontSize: "1.05rem" }}>
+                            <Link to={to(s.to)} style={{ ...LINK_STYLE, fontSize: "1.05rem" }}>
                                 {s.name}
                             </Link>
                             <span style={{ color: "var(--text-secondary)", fontSize: "1.05rem" }}>: {s.text}</span>
@@ -208,10 +223,10 @@ export default function Pricing() {
             {/* How it works */}
             <section style={{ marginBottom: "5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>How it works</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{c.howTitle}</h2>
                 </div>
                 <ol className="pr-steps">
-                    {STEPS.map((s, i) => (
+                    {c.steps.map((s, i) => (
                         <li key={s.lead} className="card" style={{ background: "var(--bg-secondary)", position: "relative", padding: "2rem 2rem 1.75rem" }}>
                             <span aria-hidden="true" style={{ position: "absolute", top: "1.25rem", right: "1.5rem", fontFamily: "var(--font-heading)", fontSize: "2.2rem", fontWeight: 800, color: "var(--accent-primary)", opacity: 0.4, lineHeight: 1 }}>
                                 {String(i + 1).padStart(2, "0")}
@@ -227,10 +242,10 @@ export default function Pricing() {
             {/* FAQ, all answers visible */}
             <section style={{ maxWidth: "820px", margin: "0 auto 5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>Frequently asked questions</h2>
+                    <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{c.faqTitle}</h2>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-                    {FAQS.map((f) => (
+                    {c.faqs.map((f) => (
                         <div key={f.q} className="card" style={{ padding: "1.75rem" }}>
                             <h3 style={{ fontSize: "1.15rem", marginBottom: "0.75rem", display: "flex", alignItems: "flex-start", gap: "0.6rem" }}>
                                 <Quote size={18} style={{ flexShrink: 0, marginTop: "3px", color: "var(--accent-secondary)" }} /> {f.q}
@@ -243,12 +258,12 @@ export default function Pricing() {
 
             {/* Final CTA */}
             <section style={{ textAlign: "center", background: "var(--bg-secondary)", padding: "clamp(3rem, 6vw, 5rem) 2rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}>
-                <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Not sure which fits?</h2>
+                <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>{c.ctaTitle}</h2>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1.1rem", maxWidth: "560px", margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
-                    Book a free call and I'll tell you honestly where I would start, including when I'm not the right fit.
+                    {c.ctaText}
                 </p>
-                <Link to="/contact" className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
-                    Let's Talk Strategy <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
+                    {c.ctaButton} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                 </Link>
             </section>
         </div>

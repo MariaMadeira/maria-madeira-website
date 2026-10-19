@@ -2,8 +2,31 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Search, Compass, Hammer, ArrowRight, Globe, TrendingUp, ShoppingBag } from "lucide-react";
 import Seo from "../components/Seo";
+import { useLang } from "../hooks/useLang";
+import COPY from "../i18n/websites";
 
 const SITE_URL = "https://mariamadeira.com";
+const PT_JSON_LD = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": `${SITE_URL}/pt/servicos/sites#webpage`,
+            "url": `${SITE_URL}/pt/servicos/sites`,
+            "name": "Estratégia e construção de sites",
+            "inLanguage": "pt-PT",
+            "isPartOf": { "@id": `${SITE_URL}/#website` },
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
+                { "@type": "ListItem", "position": 2, "name": "Serviços", "item": `${SITE_URL}/pt/servicos` },
+                { "@type": "ListItem", "position": 3, "name": "Estratégia e construção de sites", "item": `${SITE_URL}/pt/servicos/sites` },
+            ],
+        },
+    ],
+};
 const WEBSITES_JSON_LD = {
     "@context": "https://schema.org",
     "@graph": [
@@ -18,97 +41,46 @@ const WEBSITES_JSON_LD = {
     ],
 };
 
-/* ── How it works: 3 steps ─────────────────────────────── */
-const STEPS = [
-    { icon: <Search size={26} />, title: "Audit", line: "We find where your current site leaks visibility, trust, and revenue." },
-    { icon: <Compass size={26} />, title: "Strategy", line: "A clear plan for search, AI discovery, and conversion, tied to your goals." },
-    { icon: <Hammer size={26} />, title: "Build or Improve", line: "A rebuild or targeted fixes, with SEO and AEO wired in from the ground up." },
+/* Renders /services/websites and /pt/servicos/sites from src/i18n/websites.ts.
+   Icons, scores and links live here; every word lives in the copy file. */
+const STEP_ICONS = [<Search size={26} />, <Compass size={26} />, <Hammer size={26} />];
+
+/* ── Website Health Check: scores per option, in the copy's order ── */
+const SCORES = [
+    [3, 2, 0],
+    [3, 2, 0, 1],
+    [3, 1, 1],
+    [3, 1, 0],
 ];
+const TIER_MIN = [9, 5, 0];
 
-/* ── Website Health Check ──────────────────────────────── */
-interface Option { label: string; score: number }
-interface Question { key: string; prompt: string; options: Option[] }
-
-const QUESTIONS: Question[] = [
-    {
-        key: "redesign",
-        prompt: "When was your site last redesigned?",
-        options: [
-            { label: "Less than a year ago", score: 3 },
-            { label: "1–3 years ago", score: 2 },
-            { label: "3+ years ago", score: 0 },
-        ],
-    },
-    {
-        key: "google",
-        prompt: "Do you show up on Google for what you sell?",
-        options: [
-            { label: "Yes, reliably", score: 3 },
-            { label: "Sometimes", score: 2 },
-            { label: "No", score: 0 },
-            { label: "I don't know", score: 1 },
-        ],
-    },
-    {
-        key: "ai",
-        prompt: "Have you asked ChatGPT or Perplexity about businesses like yours and checked if you appear?",
-        options: [
-            { label: "Yes, and I appear", score: 3 },
-            { label: "Yes, and I don't", score: 1 },
-            { label: "Never tried", score: 1 },
-        ],
-    },
-    {
-        key: "convert",
-        prompt: "Does your site clearly convert visitors (bookings, sales, leads)?",
-        options: [
-            { label: "Yes", score: 3 },
-            { label: "Could be better", score: 1 },
-            { label: "No", score: 0 },
-        ],
-    },
-];
-
-interface Tier { min: number; label: string; diagnosis: (site: string) => string }
-const TIERS: Tier[] = [
-    {
-        min: 9,
-        label: "Strong foundation",
-        diagnosis: (site) =>
-            `${site} is already doing its job. The opportunity now is compounding: turning a solid base into a growth engine across search, AI discovery, and conversion.`,
-    },
-    {
-        min: 5,
-        label: "Leaving money on the table",
-        diagnosis: (site) =>
-            `The bones of ${site} are there, but visitors and revenue are slipping through the gaps: dated design, thin search visibility, or a funnel that doesn't quite close.`,
-    },
-    {
-        min: 0,
-        label: "Invisible to modern search",
-        diagnosis: (site) =>
-            `Customers can't find ${site} where they now look (Google and AI assistants alike), and the visitors who do arrive aren't converting. All of it is fixable, and the upside is large.`,
-    },
-];
-
-function tierFor(score: number): Tier {
-    return TIERS.find((t) => score >= t.min) ?? TIERS[TIERS.length - 1];
+function tierIndex(score: number): number {
+    const i = TIER_MIN.findIndex((min) => score >= min);
+    return i === -1 ? TIER_MIN.length - 1 : i;
 }
 
-// Pull a readable label from whatever the visitor typed. Pure string work — no
+// Pull a readable label from whatever the visitor typed. Pure string work: no
 // network request is ever made with the URL; it is only used in the copy.
-function siteLabel(raw: string): string {
+function siteLabel(raw: string, fallback: string): string {
     const cleaned = raw.trim().replace(/^https?:\/\//i, "").replace(/^www\./i, "").split("/")[0];
-    return cleaned ? cleaned : "your site";
+    return cleaned ? cleaned : fallback;
+}
+
+/** Fill "{site}"; in Portuguese, a sentence that opens with it starts in capitals. */
+function diagnose(template: string, site: string, capitalise: boolean): string {
+    const text = template.replace("{site}", site);
+    return capitalise && template.startsWith("{site}") ? text.charAt(0).toUpperCase() + text.slice(1) : text;
 }
 
 function HealthCheck() {
+    const { lang, to } = useLang();
+    const c = COPY[lang].check;
     const [url, setUrl] = useState("");
     // step: -1 = intro, 0..3 = questions, 4 = result
     const [step, setStep] = useState(-1);
     const [scores, setScores] = useState<number[]>([]);
 
-    const site = siteLabel(url);
+    const site = siteLabel(url, c.defaultSite);
 
     const answer = (score: number) => {
         const next = [...scores, score];
@@ -129,13 +101,13 @@ function HealthCheck() {
             style={{ maxWidth: "680px", margin: "0 auto", padding: "clamp(1.75rem, 4vw, 3rem)", minHeight: "420px", display: "flex", flexDirection: "column" }}
         >
             {/* Progress */}
-            {step >= 0 && step < QUESTIONS.length && (
+            {step >= 0 && step < c.questions.length && (
                 <div style={{ marginBottom: "2rem" }}>
                     <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>
-                        Question {step + 1} of {QUESTIONS.length}
+                        {c.questionOf[0]}{step + 1}{c.questionOf[1]}{c.questions.length}
                     </p>
                     <div style={{ display: "flex", gap: "0.4rem" }}>
-                        {QUESTIONS.map((_, i) => (
+                        {c.questions.map((_, i) => (
                             <span
                                 key={i}
                                 style={{
@@ -155,35 +127,35 @@ function HealthCheck() {
             {step === -1 && (
                 <div key="intro" className="animate-fade-in" style={{ display: "flex", flexDirection: "column", flex: 1 }}>
                     <h3 style={{ fontSize: "1.6rem", marginBottom: "0.75rem" }}>
-                        Website <span className="text-gradient">Health Check</span>
+                        {c.titleLead}<span className="text-gradient">{c.titleAccent}</span>
                     </h3>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "2rem" }}>
-                        Four quick questions. An honest read on whether your site is a growth engine or quietly costing you. Takes under a minute. Nothing is submitted or fetched.
+                        {c.intro}
                     </p>
                     <label htmlFor="ws-url" style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "0.5rem", display: "block" }}>
-                        Your website <span style={{ opacity: 0.6, textTransform: "none", letterSpacing: 0 }}>(optional)</span>
+                        {c.fieldLabel}<span style={{ opacity: 0.6, textTransform: "none", letterSpacing: 0 }}>{c.fieldOptional}</span>
                     </label>
                     <input
                         id="ws-url"
                         type="text"
                         value={url}
                         onChange={(e) => setUrl(e.target.value)}
-                        placeholder="yourbrand.com"
+                        placeholder={c.placeholder}
                         autoComplete="off"
                         style={{ padding: "14px", background: "var(--bg-primary)", border: "1px solid var(--border-color)", borderRadius: "10px", color: "var(--text-primary)", fontSize: "1rem", marginBottom: "2rem" }}
                     />
                     <button onClick={() => setStep(0)} className="btn btn-primary" style={{ marginTop: "auto", alignSelf: "flex-start", padding: "0.9rem 2rem" }}>
-                        Start the check <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                        {c.start} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                     </button>
                 </div>
             )}
 
             {/* Questions */}
-            {step >= 0 && step < QUESTIONS.length && (
+            {step >= 0 && step < c.questions.length && (
                 <div key={step} className="animate-fade-in" style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-                    <h3 style={{ fontSize: "1.45rem", lineHeight: 1.3, marginBottom: "1.75rem" }}>{QUESTIONS[step].prompt}</h3>
+                    <h3 style={{ fontSize: "1.45rem", lineHeight: 1.3, marginBottom: "1.75rem" }}>{c.questions[step].prompt}</h3>
                     <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                        {QUESTIONS[step].options.map((o) => (
+                        {c.questions[step].options.map((label, oi) => ({ label, score: SCORES[step][oi] })).map((o) => (
                             <button
                                 key={o.label}
                                 onClick={() => answer(o.score)}
@@ -213,25 +185,25 @@ function HealthCheck() {
             )}
 
             {/* Result */}
-            {step >= QUESTIONS.length && (() => {
-                const tier = tierFor(total);
+            {step >= c.questions.length && (() => {
+                const tier = c.tiers[tierIndex(total)];
                 return (
                     <div key="result" className="animate-fade-in" style={{ display: "flex", flexDirection: "column", flex: 1 }}>
                         <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>
-                            {site === "your site" ? "Your result" : `The quick read on ${site}`}
+                            {site === c.defaultSite ? c.yourResult : `${c.quickReadOn}${site}`}
                         </p>
                         <h3 style={{ fontSize: "1.9rem", lineHeight: 1.2, marginBottom: "1rem" }}>
                             <span className="text-gradient">{tier.label}</span>
                         </h3>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "2rem" }}>
-                            {tier.diagnosis(site)}
+                            {diagnose(tier.diagnosis, site, c.capitaliseSiteAtStart)}
                         </p>
                         <div style={{ marginTop: "auto", display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
-                            <Link to="/contact" className="btn btn-primary" style={{ padding: "0.9rem 2rem" }}>
-                                Get the full audit: Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                            <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "0.9rem 2rem" }}>
+                                {c.resultCta} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                             </Link>
                             <button onClick={reset} className="ws-restart" style={{ background: "transparent", border: "none", color: "var(--text-secondary)", cursor: "pointer", fontSize: "0.9rem", fontWeight: 500, textDecoration: "underline", textUnderlineOffset: "3px" }}>
-                                Start over
+                                {c.restart}
                             </button>
                         </div>
                     </div>
@@ -241,22 +213,22 @@ function HealthCheck() {
     );
 }
 
-/* ── Proof cards ───────────────────────────────────────── */
-const PROOF = [
-    { category: "Website Build", title: "The Bodysurf School", result: "Brochure site → bilingual booking engine with local payments live", link: "/case-study-bodysurf-school" },
-    { category: "Brand & Web Identity", title: "Rita Antunes", result: "A premium clinical identity built to convert high-ticket leads", link: "/portfolio-rita-antunes" },
-    { category: "Brand & Creative", title: "Ousadia", result: "A bold artisan brand system: logo, visual language, art direction", link: "/portfolio-ousadia" },
-];
+/* ── Proof cards: links per card, text from the copy in the same order ── */
+const PROOF_LINKS = ["/case-study-bodysurf-school", "/portfolio-rita-antunes", "/portfolio-ousadia"];
 
 export default function ServicesWebsites() {
+    const { lang, to, englishOnly } = useLang();
+    const t = COPY[lang];
+    const label = (text: string, path: string) => (englishOnly(path) ? text + t.englishSuffix : text);
+    const proof = t.proof.map((p, i) => ({ ...p, link: PROOF_LINKS[i] }));
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="Website Strategy & SEO/AEO Consultant | Maria Madeira"
-                description="Turn an outdated website into a growth engine: strategy, a rebuild or targeted fixes, with SEO and AEO built in from the start for brands that sell online."
-                path="/services/websites"
+                title={t.title}
+                description={t.description}
+                path={t.path}
                 ogImage="/og/og-websites.png"
-                jsonLd={WEBSITES_JSON_LD}
+                jsonLd={lang === "pt" ? PT_JSON_LD : WEBSITES_JSON_LD}
             />
 
             <style>{`
@@ -278,26 +250,26 @@ export default function ServicesWebsites() {
             {/* Hero */}
             <section style={{ textAlign: "center", maxWidth: "760px", margin: "0 auto 5rem" }}>
                 <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
-                    Website Strategy & Build
+                    {t.eyebrow}
                 </p>
                 <h1 className="section-title" style={{ marginBottom: "1.5rem" }}>
-                    Turn an outdated website into a <span className="text-gradient">growth engine</span>
+                    {t.h1Lead}<span className="text-gradient">{t.h1Accent}</span>
                 </h1>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8, marginBottom: "2.5rem" }}>
-                    Strategy first, then a rebuild or targeted improvements, with SEO and AEO built in from the ground up, so customers find you on Google and in AI search alike.
+                    {t.intro}
                 </p>
-                <Link to="/contact" className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
-                    Book a Free Strategy Call <ArrowRight size={18} style={{ marginLeft: "8px" }} />
+                <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
+                    {t.cta} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                 </Link>
             </section>
 
             {/* How it works */}
             <section style={{ marginBottom: "5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-                    <h2 className="section-title" style={{ marginBottom: "1rem", fontSize: "2rem" }}>How it works</h2>
+                    <h2 className="section-title" style={{ marginBottom: "1rem", fontSize: "2rem" }}>{t.howTitle}</h2>
                 </div>
                 <div className="ws-steps">
-                    {STEPS.map((s, i) => (
+                    {t.steps.map((s, i) => ({ ...s, icon: STEP_ICONS[i] })).map((s, i) => (
                         <div key={s.title} style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
                             <div style={{ width: "68px", height: "68px", borderRadius: "50%", background: "var(--bg-primary)", border: "2px solid var(--accent-secondary)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.25rem", color: "var(--accent-secondary)", position: "relative" }}>
                                 {s.icon}
@@ -312,7 +284,7 @@ export default function ServicesWebsites() {
                 </div>
             </section>
 
-            {/* Health Check — centerpiece */}
+            {/* Health Check: the centrepiece */}
             <section style={{ marginBottom: "5rem" }}>
                 <HealthCheck />
             </section>
@@ -320,27 +292,27 @@ export default function ServicesWebsites() {
             {/* Proof */}
             <section style={{ marginBottom: "5rem" }}>
                 <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-                    <h2 className="section-title" style={{ marginBottom: "1rem", fontSize: "2rem" }}>Recent work</h2>
+                    <h2 className="section-title" style={{ marginBottom: "1rem", fontSize: "2rem" }}>{t.recentTitle}</h2>
                     <p style={{ color: "var(--text-secondary)", maxWidth: "600px", margin: "0 auto" }}>
-                        Hover a project for the headline result.
+                        {t.recentIntro}
                     </p>
                 </div>
                 <div className="grid-3">
-                    {PROOF.map((p) => (
-                        <Link key={p.title} to={p.link} className="card hover-lift-sm ws-proof" style={{ display: "flex", flexDirection: "column" }}>
+                    {proof.map((p) => (
+                        <Link key={p.title} to={to(p.link)} className="card hover-lift-sm ws-proof" style={{ display: "flex", flexDirection: "column" }}>
                             <p className="text-gradient-accent" style={{ fontSize: "0.85rem", fontWeight: 700, marginBottom: "0.5rem" }}>{p.category}</p>
                             <h3 style={{ marginBottom: "0.25rem" }}>{p.title}</h3>
                             <div className="ws-proof-result" style={{ background: "var(--accent-glow)", borderRadius: "10px", padding: "0.85rem 1rem", borderLeft: "3px solid var(--accent-secondary)" }}>
                                 <p style={{ fontSize: "0.9rem", color: "var(--text-primary)", fontWeight: 600, margin: 0 }}>{p.result}</p>
                             </div>
                             <span style={{ marginTop: "auto", paddingTop: "1.25rem", display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.9rem" }}>
-                                View project <ArrowRight size={16} />
+                                {t.viewProject} <ArrowRight size={16} />
                             </span>
                         </Link>
                     ))}
                 </div>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: "2rem auto 0", maxWidth: "680px", textAlign: "center" }}>
-                    The build behind the first of those, from brief to booking engine, is written up in the <Link to="/case-study-bodysurf-school" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>Bodysurf School case study</Link>. The brand and visual work behind the other two, and the rest of the identity projects, sits in the <Link to="/portfolio" style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>portfolio</Link>.
+                    {t.proofNote[0]}<Link to={to("/case-study-bodysurf-school")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{label(t.proofNote[1], "/case-study-bodysurf-school")}</Link>{t.proofNote[2]}<Link to={to("/portfolio")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.proofNote[3]}</Link>{t.proofNote[4]}
                 </p>
             </section>
 
@@ -351,9 +323,9 @@ export default function ServicesWebsites() {
                         <ShoppingBag size={26} />
                     </div>
                     <div>
-                        <h2 style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>Who this is for</h2>
+                        <h2 style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>{t.whoTitle}</h2>
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>
-                            Brands and businesses that sell or take bookings online, and know their website should be doing more of the selling. Whether you need a full rebuild or focused improvements, the starting point is the same: an honest audit and a plan.
+                            {t.who}
                         </p>
                     </div>
                 </div>
@@ -364,12 +336,12 @@ export default function ServicesWebsites() {
                 <div style={{ display: "inline-flex", width: "56px", height: "56px", borderRadius: "50%", background: "var(--accent-glow)", alignItems: "center", justifyContent: "center", color: "var(--accent-secondary)", marginBottom: "1.5rem" }}>
                     <TrendingUp size={28} />
                 </div>
-                <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>Ready to make your site earn its keep?</h2>
+                <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.ctaTitle}</h2>
                 <p style={{ color: "var(--text-secondary)", fontSize: "1.1rem", maxWidth: "560px", margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
-                    Book a free strategy call and we'll walk through your audit together. No commitment, no pressure.
+                    {t.ctaText}
                 </p>
-                <Link to="/contact" className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
-                    <Globe size={18} style={{ marginRight: "8px" }} /> Book a Free Strategy Call
+                <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
+                    <Globe size={18} style={{ marginRight: "8px" }} /> {t.cta}
                 </Link>
             </section>
         </div>

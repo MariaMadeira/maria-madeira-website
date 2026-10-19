@@ -14,33 +14,43 @@ português; nenhum preço nas páginas de serviço, em /pt/precos nem no schema
 delas (onde o inglês tem preço, entra a frase "Proposta por escrito, com âmbito
 e preço fechados, depois de uma primeira conversa.").
 
-## Decisões para si (antes de aprovar)
+## Estado: aprovado e publicado (19 de outubro de 2026)
 
-1. **Preços repetidos nos cartões.** A frase da proposta por escrito entra em
-   cinco sítios em /pt/servicos e /pt/precos (cartões de AEO, email e anúncios,
-   e os três cartões de formas de trabalhar). Num cartão, fica longa e repetida.
-   Sugestão: nos cartões, só "Proposta por escrito"; a frase completa fica no
-   texto de introdução de /pt/precos e nos blocos "Preços" das páginas de
-   serviço. Marcado com **[D1]**.
-2. **Secção "Starting prices by service" em /pt/precos.** Sem valores, a secção
-   perde o sentido. Proposta: trocar por "Por serviço", com o que cada serviço
-   inclui e link para a página. **[D2]**
-3. **Testemunhos.** São recomendações do LinkedIn, citadas palavra a palavra.
-   Proposta: manter a citação em inglês, com o nome e o cargo traduzidos. A
-   alternativa é traduzir com a nota "(traduzido do inglês)". **[D3]**
-4. **Nomes da formação em /pt/sobre.** Usei os nomes em português, mas
-   confirme os nomes oficiais dos cursos no IADE e na ESCS. **[D4]**
-5. **"(em inglês)" nos links.** Links para páginas ainda sem versão
-   portuguesa (casos de estudo, artigos do blog) levam "(em inglês)" e
-   apontam para o inglês. Quando o lote dessas páginas for aprovado, passam a
-   apontar para a versão PT e o "(em inglês)" desaparece sozinho.
-6. **Verificação gratuita em /pt/precos.** O link vai para /pt/contacto, que
-   ainda não pré-preenche o assunto como o /contact?topic=ai-search-check faz
-   em inglês. Posso acrescentar isso ao formulário PT. **[D5]**
-7. **Exemplo da demonstração em /pt/servicos/aeo.** A pergunta de exemplo
-   ("melhor café de especialidade da Europa") e os resultados fictícios do
-   Google de 2015 foram traduzidos. O nome inventado "Nordkaffe" fica igual e
-   "Your Brand" passa a "A Sua Marca". **[D6]**
+O texto final das sete páginas está nos ficheiros de tradução
+`src/i18n/pt/*.ts`, que são a fonte de verdade. As tabelas abaixo ficam como
+registo da revisão; onde diferem dos ficheiros, valem os ficheiros.
+
+Decisões aprovadas:
+
+1. **D1** Nos cartões com preço, só "Proposta por escrito". A frase completa
+   ("Proposta por escrito, com âmbito e preço fechados, depois de uma primeira
+   conversa.") aparece só na introdução de /pt/precos e no bloco de orçamento
+   de cada página de serviço. Em /pt/servicos, os três cartões de formas de
+   trabalhar não têm linha de preço.
+2. **D2** Em /pt/precos, a secção chama-se "Por serviço", com as quatro
+   linhas da tabela abaixo.
+3. **D3** Os testemunhos ficam em inglês, palavra a palavra, com a nota
+   "(recomendação original em inglês)" a seguir. Nome e cargo traduzidos.
+4. **D4** Nomes da formação confirmados, como na tabela de /pt/sobre.
+5. **D5** "Pedir a verificação gratuita" leva a
+   /pt/contacto?topic=ai-search-check, que pré-preenche o pedido.
+6. **D6** Demonstração do chat como na tabela ("Nordkaffe", "A Sua Marca",
+   "asuamarca.pt").
+
+Alterações aprovadas depois da revisão:
+
+- "resumos de IA da Google" passa a "Vista geral de IA da Google (AI
+  Overviews)" na primeira vez em cada página e "Vista geral de IA" a seguir.
+- "ponto de equilíbrio do retorno do investimento em anúncios (ROAS)" passa a
+  "ROAS de equilíbrio" (cartão 5 de /pt/servicos e introdução de
+  /pt/servicos/anuncios).
+- "Compra de media" passa a "Compra de meios".
+- Nas páginas de serviço, o bloco "Preços" chama-se "Orçamento".
+- Os botões "Marcar conversa gratuita" passam a "Marcar uma conversa
+  gratuita" (incluindo a navbar e o footer das páginas /pt).
+- Edições de linha em /pt/servicos/aeo, /pt/servicos/anuncios e
+  /pt/informacao-ia, e titles e meta descriptions novos para
+  /pt/servicos/aeo, /pt/servicos/anuncios, /pt/servicos/sites e /pt/precos.
 
 Slugs propostos para o lote 4 (blog), para aprovar quando lá chegarmos:
 
@@ -118,7 +128,7 @@ Slugs propostos para o lote 4 (blog), para aprovar quando lá chegarmos:
 
 | | Inglês | Português |
 |---|---|---|
-| Citação | "Maria completely transformed our email marketing strategy. When she took over our Klaviyo account, she achieved 125% growth in email attributed revenue and boosted our automated flows by over 100%. Our open rates went from 28% to 48%, and click rates more than doubled." | Proposta: manter em inglês. Se traduzir: "A Maria transformou por completo a nossa estratégia de email marketing. Quando assumiu a nossa conta Klaviyo, fez crescer 125% a receita atribuída ao email e mais do que duplicou os fluxos automáticos. As taxas de abertura passaram de 28% para 48% e as taxas de clique mais do que duplicaram." (traduzido do inglês) |
+| Citação | "Maria completely transformed our email marketing strategy. When she took over our Klaviyo account, she achieved 125% growth in email attributed revenue and boosted our automated flows by over 100%. Our open rates went from 28% to 48%, and click rates more than doubled." | Igual, em inglês, seguida de "(recomendação original em inglês)" |
 | Nome · cargo | Will Fuller · WordPress Developer · Former colleague | Will Fuller · Programador WordPress · Antigo colega |
 
 ### Formas de trabalhar (versão curta de /pricing)
@@ -501,7 +511,7 @@ Slugs propostos para o lote 4 (blog), para aprovar quando lá chegarmos:
 
 | | Inglês | Português |
 |---|---|---|
-| Citação | "Something we thought would be pricey and difficult to create, she built in just one month, and our monthly costs are low. On top of that, we're now ranking number one on search engines and AI tools whenever you search for bodysurf. She's easy to work with, super hands-on, and delivered exactly what she promised, within the timeframe she promised." | Proposta: manter em inglês. Se traduzir: "Algo que achávamos que ia ser caro e difícil de criar, ela construiu num só mês, e os nossos custos mensais são baixos. Além disso, estamos agora em primeiro lugar nos motores de pesquisa e nas ferramentas de IA sempre que se pesquisa por bodysurf. É fácil trabalhar com ela, muito prática, e entregou exatamente o que prometeu, no prazo que prometeu." (traduzido do inglês) |
+| Citação | "Something we thought would be pricey and difficult to create, she built in just one month, and our monthly costs are low. On top of that, we're now ranking number one on search engines and AI tools whenever you search for bodysurf. She's easy to work with, super hands-on, and delivered exactly what she promised, within the timeframe she promised." | Igual, em inglês, seguida de "(recomendação original em inglês)" |
 | Atribuição | The Bodysurf School · Client · Recommended on LinkedIn · Read the full recommendation | The Bodysurf School · Cliente · Recomendação no LinkedIn · Ler a recomendação completa |
 
 ### Por serviço **[D2]**

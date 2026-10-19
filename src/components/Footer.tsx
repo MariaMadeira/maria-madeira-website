@@ -61,7 +61,7 @@ const COPY: Record<Lang, {
         ],
         touch: "Fale comigo",
         touchLine: "Quer fazer crescer a sua marca? Vamos conversar.",
-        cta: "Marcar conversa gratuita",
+        cta: "Marcar uma conversa gratuita",
         ctaPath: "/pt/contacto",
         based: ["Baseada em Lisboa, Portugal.", "A trabalhar com marcas em Portugal e no Reino Unido."],
         rights: "Todos os direitos reservados.",

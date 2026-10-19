@@ -61,7 +61,7 @@ const COPY: Record<Lang, {
         ],
         allServices: "Todos os serviços",
         servicesMenu: "Menu de serviços",
-        cta: "Marcar conversa gratuita",
+        cta: "Marcar uma conversa gratuita",
         ctaPath: "/pt/contacto",
         toggle: "Abrir ou fechar o menu",
     },

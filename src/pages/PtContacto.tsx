@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
+import { useLocation } from "react-router-dom";
 import { Mail, Linkedin, Send, CheckCircle } from "lucide-react";
 import Seo from "../components/Seo";
 import { SITE_URL } from "../lib/schema";
@@ -19,18 +20,40 @@ const JSON_LD = {
     "about": { "@id": `${SITE_URL}/#person` },
 };
 
+/* Enquiry presets reachable as /pt/contacto?topic=<key>, mirroring /contact.
+   Anything else, including no parameter, leaves the page as it is. */
+const TOPICS: Record<string, { subject: string; intro: string; message: string; h1: string; submitLabel: string }> = {
+    "ai-search-check": {
+        subject: "Verificação gratuita na pesquisa com IA (PT)",
+        intro: "Verificação gratuita na pesquisa com IA: indique a sua marca e o seu site, e respondo com uma nota curta.",
+        message: "Marca:\n",
+        h1: "Pedir a verificação gratuita",
+        submitLabel: "Pedir a minha verificação gratuita",
+    },
+};
+
 const FIELD = { padding: "14px", background: "var(--bg-primary)", border: "1px solid var(--border-color)", borderRadius: "10px", color: "var(--text-primary)", fontSize: "1rem" } as const;
 const LABEL = { fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", textTransform: "uppercase" } as const;
 
+const subscribeNever = () => () => {};
+
 export default function PtContacto() {
     const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+
+    /* The prerendered page is the no-topic state. During hydration React uses
+       the server snapshot (false), so the first client render matches that
+       HTML; the query is read from the render after. */
+    const { search } = useLocation();
+    const hydrated = useSyncExternalStore(subscribeNever, () => true, () => false);
+    const topicKey = hydrated ? new URLSearchParams(search).get("topic") : null;
+    const preset = topicKey ? TOPICS[topicKey] ?? null : null;
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setStatus("submitting");
         const form = e.currentTarget;
         const formData = new FormData(form);
-        const subject = `Pedido pelo site (PT) de ${formData.get("name")}`;
+        const subject = `${preset ? preset.subject : "Pedido pelo site (PT)"} de ${formData.get("name")}`;
         formData.append("_subject", subject);
 
         const mailto = () => {
@@ -59,7 +82,7 @@ export default function PtContacto() {
 
             <div className="grid-2 contact-grid" style={{ maxWidth: "1100px", margin: "0 auto", gap: "4rem" }}>
                 <div>
-                    <h1 className="section-title" style={{ textAlign: "left", marginBottom: "1.5rem" }}>Vamos conversar</h1>
+                    <h1 className="section-title" style={{ textAlign: "left", marginBottom: "1.5rem" }}>{preset ? preset.h1 : "Vamos conversar"}</h1>
                     <p style={{ color: "var(--text-secondary)", marginBottom: "2.5rem", fontSize: "1.1rem", lineHeight: 1.8 }}>
                         Conte-me sobre a sua marca e o que gostaria de melhorar. Respondo pessoalmente.
                     </p>
@@ -96,6 +119,11 @@ export default function PtContacto() {
                         </div>
                     ) : (
                         <form style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }} onSubmit={handleSubmit}>
+                            {preset && (
+                                <p style={{ margin: 0, padding: "1rem 1.25rem", background: "var(--accent-glow)", borderLeft: "3px solid var(--accent-secondary)", borderRadius: "10px", color: "var(--text-primary)", fontSize: "0.95rem", lineHeight: 1.7 }}>
+                                    {preset.intro}
+                                </p>
+                            )}
                             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                                 <label htmlFor="name" style={LABEL}>Nome</label>
                                 <input type="text" id="name" name="name" required autoComplete="name" style={FIELD} />
@@ -110,10 +138,10 @@ export default function PtContacto() {
                             </div>
                             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                                 <label htmlFor="message" style={LABEL}>Mensagem</label>
-                                <textarea id="message" name="message" rows={5} required style={{ ...FIELD, resize: "vertical" }} />
+                                <textarea key={topicKey ?? "default"} defaultValue={preset ? preset.message : ""} id="message" name="message" rows={5} required style={{ ...FIELD, resize: "vertical" }} />
                             </div>
                             <button type="submit" className="btn btn-primary" style={{ width: "100%", marginTop: "1rem" }} disabled={status === "submitting"}>
-                                Enviar <Send size={18} style={{ marginLeft: "10px" }} />
+                                {preset ? preset.submitLabel : "Enviar"} <Send size={18} style={{ marginLeft: "10px" }} />
                             </button>
                         </form>
                     )}

@@ -19,13 +19,13 @@ export const PT_PAGES: { en: string; pt: string; status: "live" | "draft"; batch
     { en: "/services/email-marketing", pt: "/pt/servicos/email-marketing", status: "live", batch: 0 },
     { en: "/contact", pt: "/pt/contacto", status: "live", batch: 0 },
 
-    { en: "/services", pt: "/pt/servicos", status: "draft", batch: 1 },
-    { en: "/services/aeo", pt: "/pt/servicos/aeo", status: "draft", batch: 1 },
-    { en: "/services/paid-ads", pt: "/pt/servicos/anuncios", status: "draft", batch: 1 },
-    { en: "/services/websites", pt: "/pt/servicos/sites", status: "draft", batch: 1 },
-    { en: "/pricing", pt: "/pt/precos", status: "draft", batch: 1 },
-    { en: "/about", pt: "/pt/sobre", status: "draft", batch: 1 },
-    { en: "/ai-information", pt: "/pt/informacao-ia", status: "draft", batch: 1 },
+    { en: "/services", pt: "/pt/servicos", status: "live", batch: 1 },
+    { en: "/services/aeo", pt: "/pt/servicos/aeo", status: "live", batch: 1 },
+    { en: "/services/paid-ads", pt: "/pt/servicos/anuncios", status: "live", batch: 1 },
+    { en: "/services/websites", pt: "/pt/servicos/sites", status: "live", batch: 1 },
+    { en: "/pricing", pt: "/pt/precos", status: "live", batch: 1 },
+    { en: "/about", pt: "/pt/sobre", status: "live", batch: 1 },
+    { en: "/ai-information", pt: "/pt/informacao-ia", status: "live", batch: 1 },
 
     { en: "/case-studies", pt: "/pt/casos-de-estudo", status: "draft", batch: 2 },
     { en: "/case-study-google-ads", pt: "/pt/caso-google-ads", status: "draft", batch: 2 },
@@ -87,6 +87,10 @@ export function alternatesOf(path: string): { hreflang: string; path: string }[]
  * "(em inglês)". Approving a batch updates these links with no other change.
  */
 export function ptLink(enPath: string): { to: string; english: boolean } {
-    const pair = PAIRS.find((p) => p.en === enPath);
-    return pair ? { to: pair.pt, english: false } : { to: enPath, english: true };
+    // Keep any query or hash: /contact?topic=x becomes /pt/contacto?topic=x.
+    const cut = enPath.search(/[?#]/);
+    const base = cut === -1 ? enPath : enPath.slice(0, cut);
+    const rest = cut === -1 ? "" : enPath.slice(cut);
+    const pair = PAIRS.find((p) => p.en === base);
+    return pair ? { to: pair.pt + rest, english: false } : { to: enPath, english: true };
 }
