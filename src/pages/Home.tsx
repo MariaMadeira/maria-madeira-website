@@ -7,10 +7,10 @@ import { PROGRAM_MEMBERSHIP } from "../lib/credentials";
 
 // Email figures are verified Klaviyo data for the last 12 months (Jul 2024 –
 // Jul 2025); Google Ads figures are the full account export for 1 Oct 2025 to
-// 26 Aug 2026. The four headline numbers (£134K, 37.8% revenue share, 50.4%,
-// 532% Google Ads ROAS) live in the Measurable Impact grid; these supporting
-// metrics appear nowhere else on the page. The client's total store revenue is
-// deliberately absent: the share is published, the absolute figure is not.
+// 26 Aug 2026. The headline numbers live in the Measurable Impact grid; these
+// supporting metrics appear nowhere else on the page. The client's total store
+// revenue is deliberately underivable: the email share is given as a fraction,
+// never as a percentage, because an exact share next to £134K reconstructs it.
 const SUPPORTING_METRICS = [
     { to: 48.3, prefix: "£", suffix: "K", decimals: 1, label: "Flow Revenue", detail: "From automated lifecycle flows, +82.5% YoY" },
     { to: 7.27, prefix: "", suffix: "%", decimals: 2, label: "Flow Click Rate", detail: "Across automated email flows, last 12 months" },
@@ -506,7 +506,7 @@ export default function Home() {
                     </div>
                     <div className="card text-center reveal-item" style={{ textAlign: 'center', background: 'var(--bg-primary)' }}>
                         <h3 className="text-gradient-accent" style={{ fontSize: '3rem', marginBottom: '0.5rem', lineHeight: 1 }}>
-                            <AnimatedCounter from={0} to={37.8} suffix="%" decimals={1} />
+                            over &#8531;
                         </h3>
                         <p style={{ fontWeight: 600 }}>Email Revenue Share</p>
                         <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.5rem' }}>of total store revenue (last 12 months)</p>
@@ -733,7 +733,7 @@ export default function Home() {
                                 </li>
                                 <li className="case-study-item">
                                     <span className="case-study-item-bullet" aria-hidden="true">✦</span>
-                                    <span>37.8% of total store revenue</span>
+                                    <span>Over a third of store revenue</span>
                                 </li>
                             </ul>
                             <Link to="/case-study-email" className="case-study-link">

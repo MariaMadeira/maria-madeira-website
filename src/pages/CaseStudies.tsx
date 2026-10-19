@@ -5,7 +5,7 @@ import { SITE_URL } from "../lib/schema";
 const HEADLINE_RESULTS = [
     { value: "£134K", label: "Email revenue (12 mo, +88.9%)" },
     { value: "50.4%", label: "Campaign open rate" },
-    { value: "37.8%", label: "Email share of store revenue" },
+    { value: "Over a third", label: "Email share of store revenue" },
     { value: "532%", label: "Google Ads ROAS" },
 ];
 

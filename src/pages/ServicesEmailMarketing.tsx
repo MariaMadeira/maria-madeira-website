@@ -10,7 +10,7 @@ const SITE_URL = "https://mariamadeira.com";
 const HERO_STATS = [
     { value: "£134K", label: "Email-attributed revenue", detail: "Last 12 months, +88.9% YoY" },
     { value: "50.4%", label: "Campaign open rate", detail: "78th percentile industry benchmark" },
-    { value: "37.8%", label: "Of total store revenue", detail: "Driven by email over 12 months" },
+    { value: "Over a third", label: "Of total store revenue", detail: "Driven by email over 12 months" },
 ];
 
 /* ── Quotable definition (mirrors the AEO "What is AEO?" callout) ──── */
@@ -43,7 +43,7 @@ const FAQS: { q: string; a: string }[] = [
     },
     {
         q: "How much revenue should email generate for an e-commerce brand?",
-        a: "There is no single number, but for a well-built lifecycle program email is usually one of a store's top channels, often a quarter or more of total revenue. For one brand I work with, email reached 37.8% of total store revenue over the last 12 months.",
+        a: "There is no single number, but for a well-built lifecycle program email is usually one of a store's top channels, often a quarter or more of total revenue. For one brand I work with, email reached over a third of total store revenue over the last 12 months.",
     },
     {
         q: "What email flows should every store have?",
