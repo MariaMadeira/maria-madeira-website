@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Search, Repeat, Users, LineChart, ArrowRight, Mail, Quote } from "lucide-react";
 import Seo from "../components/Seo";
+import KlaviyoPartnerBadge from "../components/KlaviyoPartnerBadge";
 import { PRACTITIONER_URL } from "../lib/credentials";
 
 const SITE_URL = "https://mariamadeira.com";
@@ -202,31 +203,16 @@ export default function ServicesEmailMarketing() {
                     <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
                         Email Marketing & Klaviyo Consulting
                     </p>
-                    {/* Text only for now; the tier badge asset from the partner portal replaces the ✦ once downloaded. */}
-                    <p
-                        style={{
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: "0.5rem",
-                            fontSize: "0.85rem",
-                            fontWeight: 600,
-                            color: "var(--accent-secondary)",
-                            background: "var(--bg-secondary)",
-                            border: "1px solid var(--border-color)",
-                            borderRadius: "999px",
-                            padding: "0.4rem 0.95rem",
-                            marginBottom: "1.25rem",
-                        }}
-                    >
-                        <span aria-hidden="true">✦</span> Official Klaviyo Partner
-                    </p>
+                    <div style={{ marginBottom: "1.25rem" }}>
+                        <KlaviyoPartnerBadge eager />
+                    </div>
                     <h1 className="section-title" style={{ marginBottom: "1.5rem", textAlign: "left" }}>
                         Turn email into a <span className="text-gradient">compounding revenue channel</span>, not a newsletter chore
                     </h1>
                     <p style={{ color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8, marginBottom: "2.5rem" }}>
                         Lifecycle flows that sell on autopilot, segmentation that sends the right message to the right customer, and the deliverability discipline that keeps it all landing in the inbox.
                     </p>
-                    {/* The eyebrow above the H1 already says Klaviyo Partner. */}
+                    {/* The badge above the H1 already says Klaviyo Partner. */}
                     <p className="trust-line" style={{ marginBottom: "2rem" }}>
                         <a href={PRACTITIONER_URL} target="_blank" rel="noopener">
                             Klaviyo Practitioner certified

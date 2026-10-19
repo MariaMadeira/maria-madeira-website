@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import { ArrowLeft, Clock, ArrowRight, UserPlus, Eye, ShoppingCart, PackageCheck, RefreshCw, Moon, Cake, Mail, Undo2 } from "lucide-react";
 import Seo from "../components/Seo";
 import RelatedLinks, { RELATED } from "../components/RelatedLinks";
+import KlaviyoPartnerBadge from "../components/KlaviyoPartnerBadge";
+import { PRACTITIONER_URL } from "../lib/credentials";
 import { EMAIL_PERIODS } from "../data/emailRevenue";
 
 const SITE_URL = "https://mariamadeira.com";
@@ -312,6 +314,7 @@ export default function BlogKlaviyoFlowsVsCampaigns() {
                 .kfc-legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0 0 1rem; padding: 0; list-style: none; font-size: 0.88rem; color: var(--text-secondary); }
                 .kfc-legend span { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 0.45rem; vertical-align: -1px; }
                 .kfc-narrow { display: none; }
+                .kfc-cta-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem 1.5rem; margin-bottom: 1rem; }
                 .kfc-phone { width: 250px; max-width: 100%; margin: 0 auto; border: 10px solid #2d2926; border-radius: 34px; background: #fff; overflow: hidden; box-shadow: 0 16px 40px rgba(59, 49, 44, 0.12); }
                 .kfc-weeks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
                 .kfc-week { border: 1px solid var(--border-color); border-top: 4px solid var(--accent-secondary); border-radius: 12px; padding: 1.1rem; background: var(--bg-primary); }
@@ -330,6 +333,7 @@ export default function BlogKlaviyoFlowsVsCampaigns() {
                     .kj-line::after { right: auto; top: auto; left: -5px; bottom: -8px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 10px solid #CBBBAA; border-bottom: none; }
                 }
                 @media (max-width: 720px) {
+                    .kfc-cta-head { flex-direction: column-reverse; align-items: flex-start; }
                     .kfc-two, .kfc-cards, .kfc-weeks { grid-template-columns: 1fr; }
                     .kfc-wide { display: none; }
                     .kfc-narrow { display: block; }
@@ -567,14 +571,14 @@ export default function BlogKlaviyoFlowsVsCampaigns() {
 
                 {/* CTA */}
                 <div style={{ ...calloutBox, marginTop: "3.5rem" }}>
-                    <p style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontSize: "0.85rem", fontWeight: 600, color: "var(--accent-secondary)", background: "var(--bg-secondary)", border: "1px solid var(--border-color)", borderRadius: "999px", padding: "0.4rem 0.95rem", margin: "0 0 1.25rem" }}>
-                        <span aria-hidden="true">✦</span> Official Klaviyo Partner
-                    </p>
-                    <h2 style={{ fontSize: "1.5rem", margin: "0 0 1rem", lineHeight: 1.25, color: "var(--text-primary)" }}>
-                        Want help building yours?
-                    </h2>
+                    <div className="kfc-cta-head">
+                        <h2 style={{ fontSize: "1.5rem", margin: 0, lineHeight: 1.25, color: "var(--text-primary)" }}>
+                            Want help building yours?
+                        </h2>
+                        <KlaviyoPartnerBadge />
+                    </div>
                     <p style={{ color: "var(--text-primary)", fontSize: "1.05rem", lineHeight: 1.8, margin: "0 0 1.75rem" }}>
-                        If you have a list but fewer than three flows, there is usually revenue sitting in your account already. I'm a Klaviyo Partner and hold the Klaviyo Practitioner certificate. Klaviyo setup with core flows starts from £1,200, and monthly email marketing from £750 a month. Not sure where to start? The Growth Audit (£750) reviews your account and gives you a prioritised plan.
+                        If you have a list but fewer than three flows, there is usually revenue sitting in your account already. As a Klaviyo Partner with the <a href={PRACTITIONER_URL} target="_blank" rel="noopener" style={linkStyle}>Practitioner certificate</a>, I can build this for you. Klaviyo setup with core flows starts from £1,200, and monthly email marketing from £750 a month. Not sure where to start? The Growth Audit (£750) reviews your account and gives you a prioritised plan.
                     </p>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
                         <Link to="/services/email-marketing" className="btn btn-primary" style={{ padding: "0.9rem 2rem", fontSize: "1rem" }}>
