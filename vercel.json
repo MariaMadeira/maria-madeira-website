@@ -11,6 +11,11 @@
       "permanent": true
     },
     {
+      "source": "/favicon.png",
+      "destination": "/favicon-96.png",
+      "statusCode": 301
+    },
+    {
       "source": "/results",
       "destination": "/case-studies",
       "permanent": true
