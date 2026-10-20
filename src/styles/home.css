@@ -67,9 +67,29 @@
   opacity: 0.75;
   transition: filter 0.2s ease, opacity 0.2s ease;
 }
+/* A knockout logo is already in the dark tint: no filter, same opacity, and
+   the full-colour file fades in over it on hover. */
+.logo-swap {
+  position: relative;
+  display: block;
+}
+.logo-strip-row .logo-swap img {
+  filter: none;
+}
+.logo-strip-row .logo-swap img + img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
 @media (hover: hover) and (pointer: fine) {
   .logo-strip-row img:hover {
     filter: none;
+    opacity: 1;
+  }
+  .logo-strip-row .logo-swap:hover img:first-child {
+    opacity: 0;
+  }
+  .logo-strip-row .logo-swap:hover img + img {
     opacity: 1;
   }
 }

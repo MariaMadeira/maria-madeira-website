@@ -140,9 +140,12 @@ const PT_JSON_LD = {
    monochrome tint is CSS (home.css), full colour on hover. A brand with no
    file renders its name as text. */
 const LOGO_DIR = "/brand-assets/logos/";
-const BRANDS: { name: string; file: string | null; width: number; height: number }[] = [
+/* `colour`: a logo whose file is already single-colour (a knockout in the
+   strip's dark tint) skips the CSS filter and swaps to this full-colour file
+   on hover. */
+const BRANDS: { name: string; file: string | null; width: number; height: number; colour?: string }[] = [
     { name: "The Black Farmer", file: "the-black-farmer.webp", width: 81, height: 44 },
-    { name: "The Bodysurf School", file: "the-bodysurf-school.webp", width: 40, height: 48 },
+    { name: "The Bodysurf School", file: "the-bodysurf-school-mono.svg", width: 44, height: 44, colour: "the-bodysurf-school.webp" },
     { name: "Wiltshire Country Fayre", file: "wiltshire-country-fayre.webp", width: 101, height: 44 },
     { name: "Smorgasbord", file: "smorgasbord.webp", width: 146, height: 24 },
     { name: "Ousadia", file: "ousadia.svg", width: 91, height: 44 },
@@ -454,7 +457,12 @@ export default function Home() {
                 <ul className="logo-strip-row">
                     {BRANDS.map((b) => (
                         <li key={b.name}>
-                            {b.file ? (
+                            {b.file && b.colour ? (
+                                <span className="logo-swap">
+                                    <img src={LOGO_DIR + b.file} alt={b.name} width={b.width} height={b.height} loading="lazy" decoding="async" />
+                                    <img src={LOGO_DIR + b.colour} alt="" aria-hidden="true" width={b.width} height={b.height} loading="lazy" decoding="async" />
+                                </span>
+                            ) : b.file ? (
                                 <img src={LOGO_DIR + b.file} alt={b.name} width={b.width} height={b.height} loading="lazy" decoding="async" />
                             ) : (
                                 <span className="logo-strip-name">{b.name}</span>
