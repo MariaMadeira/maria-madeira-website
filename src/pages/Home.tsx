@@ -12,7 +12,6 @@ import { decimal } from "../lib/format";
 import COPY from "../i18n/home";
 import PORTFOLIO from "../i18n/portfolio";
 import ABOUT from "../i18n/about";
-import "../styles/home.css";
 
 /* Renders / and /pt from src/i18n/home.ts. Visuals, images and links live
    here; every word lives in the copy file. The Portuguese page uses its own

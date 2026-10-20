@@ -8,7 +8,6 @@ import { SITE_URL, PERSON_ID } from "../lib/schema";
 import { CREDENTIAL_GROUPS, HAS_CREDENTIAL, PROGRAM_MEMBERSHIP } from "../lib/credentials";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/about";
-import "../styles/about.css";
 
 // The About page is the canonical entity page for the Maria Madeira brand, so it
 // carries the richest Person node. Same @id as the homepage (#person) so search

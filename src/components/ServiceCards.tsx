@@ -3,7 +3,6 @@ import { PAID_ADS_SERVICE } from "../lib/links";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/serviceCards";
 import { AdsThumb, ChatThumb } from "./ServiceThumbs";
-import "../styles/home.css";
 
 /* Visual and link per card, in the copy's order (src/i18n/serviceCards.ts). */
 const CARDS: { link: string; visual: "aeo" | "paid" | { src: string; position?: string } }[] = [
