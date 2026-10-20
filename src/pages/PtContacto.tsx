@@ -22,18 +22,24 @@ const JSON_LD = {
 
 /* Enquiry presets reachable as /pt/contacto?topic=<key>, mirroring /contact.
    Anything else, including no parameter, leaves the page as it is. */
-const TOPICS: Record<string, { subject: string; intro: string; message: string; h1: string; submitLabel: string }> = {
+const TOPICS: Record<string, { subject: string; intro: string; message: string; h1: string; submitLabel: string; need: string }> = {
     "ai-search-check": {
         subject: "Verificação gratuita na pesquisa com IA (PT)",
         intro: "Verificação gratuita na pesquisa com IA: indique a sua marca e o seu site, e respondo com uma nota curta.",
         message: "Marca:\n",
         h1: "Pedir a verificação gratuita",
         submitLabel: "Pedir a minha verificação gratuita",
+        need: "Pesquisa com IA e SEO",
     },
 };
 
+/* Options of the "Em que precisa de ajuda?" select, in the order of /contact.
+   Each value is the label itself, so the enquiry email reads in plain words. */
+const NEEDS = ["Pesquisa com IA e SEO", "Email e Klaviyo", "Anúncios pagos", "Website", "Ainda não sei"];
+
 const FIELD = { padding: "14px", background: "var(--bg-primary)", border: "1px solid var(--border-color)", borderRadius: "10px", color: "var(--text-primary)", fontSize: "1rem" } as const;
 const LABEL = { fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", textTransform: "uppercase" } as const;
+const OPTIONAL = { fontWeight: 500, textTransform: "none" } as const;
 
 const subscribeNever = () => () => {};
 
@@ -57,7 +63,7 @@ export default function PtContacto() {
         formData.append("_subject", subject);
 
         const mailto = () => {
-            const body = `Nome: ${formData.get("name")}\nEmail: ${formData.get("email")}\nSite: ${formData.get("website") || "-"}\n\n${formData.get("message")}`;
+            const body = `Nome: ${formData.get("name")}\nEmail: ${formData.get("email")}\nSite: ${formData.get("website") || "-"}\nPrecisa de ajuda com: ${formData.get("need") || "-"}\n\n${formData.get("message")}`;
             window.location.href = `mailto:info@mariamadeira.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         };
 
@@ -133,16 +139,26 @@ export default function PtContacto() {
                                 <input type="email" id="email" name="email" required autoComplete="email" style={FIELD} />
                             </div>
                             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                                <label htmlFor="website" style={LABEL}>Site (opcional)</label>
+                                <label htmlFor="website" style={LABEL}>Website <span style={OPTIONAL}>(opcional)</span></label>
                                 <input type="text" id="website" name="website" autoComplete="url" inputMode="url" style={FIELD} />
                             </div>
                             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                                <label htmlFor="need" style={LABEL}>Em que precisa de ajuda? <span style={OPTIONAL}>(opcional)</span></label>
+                                <select key={topicKey ?? "default"} defaultValue={preset ? preset.need : ""} id="need" name="need" style={FIELD}>
+                                    <option value="">Escolha uma opção</option>
+                                    {NEEDS.map((n) => <option key={n} value={n}>{n}</option>)}
+                                </select>
+                            </div>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                                 <label htmlFor="message" style={LABEL}>Mensagem</label>
-                                <textarea key={topicKey ?? "default"} defaultValue={preset ? preset.message : ""} id="message" name="message" rows={5} required style={{ ...FIELD, resize: "vertical" }} />
+                                <textarea key={topicKey ?? "default"} defaultValue={preset ? preset.message : ""} id="message" name="message" rows={5} required style={{ ...FIELD, resize: "vertical" }} placeholder="O que gostaria de melhorar ou fazer crescer?" />
                             </div>
                             <button type="submit" className="btn btn-primary" style={{ width: "100%", marginTop: "1rem" }} disabled={status === "submitting"}>
-                                {preset ? preset.submitLabel : "Enviar"} <Send size={18} style={{ marginLeft: "10px" }} />
+                                {preset ? preset.submitLabel : "Enviar mensagem"} <Send size={18} style={{ marginLeft: "10px" }} />
                             </button>
+                            <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", textAlign: "center", margin: 0 }}>
+                                Sem compromisso, sem pressão.
+                            </p>
                         </form>
                     )}
                 </div>
