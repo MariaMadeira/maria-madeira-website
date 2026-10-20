@@ -90,7 +90,7 @@ const pt: typeof en = {
         },
         {
             q: "Quanto tempo demora o email marketing a dar resultados?",
-            a: "Os fluxos começam a gerar receita assim que entram no ar, muitas vezes nas primeiras semanas, porque são ativados por comportamentos que já estão a acontecer. Os ganhos que se acumulam (taxas de abertura mais altas, segmentação mais precisa e uma lista mais envolvida) constroem-se ao longo de meses. Como referência, um programa fez crescer a receita atribuída ao email de £33K em 2021 (de setembro a dezembro) para £134K nos 12 meses até julho de 2025.",
+            a: "Os fluxos começam a gerar receita assim que ficam ativos, muitas vezes nas primeiras semanas, porque são disparados por comportamentos que já estão a acontecer. Os ganhos compostos (taxas de abertura mais altas, segmentação mais fina e uma lista envolvida maior) constroem-se ao longo de meses. Para contexto, um programa que montei passou de £33K de receita atribuída ao email nos primeiros quatro meses (2021) para £134K nos 12 meses até julho de 2025.",
         },
         {
             q: "Quanto custa uma consultora de Klaviyo?",

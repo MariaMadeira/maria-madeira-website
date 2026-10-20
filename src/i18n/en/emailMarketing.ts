@@ -99,7 +99,7 @@ const en = {
         },
         {
             q: "How long until email marketing shows results?",
-            a: "Flows start capturing revenue as soon as they go live, often within the first few weeks, because they trigger on behaviour that is already happening. The compounding gains (higher open rates, sharper segmentation and a larger engaged list) build over months. For context, one programme grew email-attributed revenue from £33K in 2021 to £134K in 2025.",
+            a: "Flows start capturing revenue as soon as they go live, often within the first few weeks, because they trigger on behaviour that is already happening. The compounding gains (higher open rates, sharper segmentation and a larger engaged list) build over months. For context, one programme I built grew email-attributed revenue from £33K in its first four months (2021) to £134K in the 12 months to July 2025.",
         },
         {
             q: "How much does a Klaviyo consultant cost?",
