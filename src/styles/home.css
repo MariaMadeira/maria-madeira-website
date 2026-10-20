@@ -585,7 +585,7 @@
 
 /* ── Illustrated service thumbnails (ServiceThumbs.tsx) ── */
 .thumb-chat,
-.thumb-ads {
+.thumb-listings {
   width: 100%;
   height: 100%;
   padding: 1rem;
@@ -641,16 +641,18 @@
   padding: 2px 8px;
   border-radius: 20px;
 }
-.thumb-ads {
+.thumb-listings {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 0.75rem;
   align-items: center;
   padding: 1rem 0.9rem;
 }
-/* Same visual weight as the chat thumbnail: dark label and headline,
+/* Class names avoid "ad" and "sponsored": ad blockers hide elements by
+   those names (EasyList has ##.thumb-ads), which emptied this card.
+   Same visual weight as the chat thumbnail: dark label and headline,
    mid-grey body lines, a light brown image and a brand brown button. */
-.thumb-ad {
+.thumb-listing {
   background: var(--bg-secondary);
   border: 1px solid #D9CFC5;
   border-radius: 12px;
@@ -661,7 +663,7 @@
   gap: 0.5rem;
   min-width: 0;
 }
-.thumb-ad-tag {
+.thumb-listing-label {
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -676,21 +678,21 @@
 .thumb-line-title { height: 10px; width: 90%; background: var(--text-primary); }
 .thumb-line-short { width: 65%; }
 .thumb-line-name { width: 60%; height: 6px; }
-.thumb-ad-head { display: flex; align-items: center; gap: 0.4rem; }
-.thumb-ad-avatar {
+.thumb-listing-head { display: flex; align-items: center; gap: 0.4rem; }
+.thumb-listing-avatar {
   width: 16px;
   height: 16px;
   border-radius: 50%;
   background: var(--color-dark-brown);
   flex-shrink: 0;
 }
-.thumb-ad-image {
+.thumb-listing-picture {
   display: block;
   aspect-ratio: 4 / 3;
   border-radius: 8px;
   background: var(--color-light-beige);
 }
-.thumb-ad-button {
+.thumb-listing-cta {
   align-self: stretch;
   text-align: center;
   font-size: 0.7rem;

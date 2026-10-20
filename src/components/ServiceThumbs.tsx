@@ -31,20 +31,20 @@ export function ChatThumb({ label, lang }: { label: string; lang: Lang }) {
 export function AdsThumb({ label, lang }: { label: string; lang: Lang }) {
     const t: Thumbs = COPY[lang].thumbs;
     return (
-        <div className="thumb-ads" role="img" aria-label={label}>
-            <div className="thumb-ad thumb-ad-search" aria-hidden="true">
-                <span className="thumb-ad-tag">{t.sponsored}</span>
+        <div className="thumb-listings" role="img" aria-label={label}>
+            <div className="thumb-listing thumb-listing-search" aria-hidden="true">
+                <span className="thumb-listing-label">{t.sponsored}</span>
                 <span className="thumb-line thumb-line-title" />
                 <span className="thumb-line" />
                 <span className="thumb-line thumb-line-short" />
             </div>
-            <div className="thumb-ad thumb-ad-social" aria-hidden="true">
-                <div className="thumb-ad-head">
-                    <span className="thumb-ad-avatar" />
+            <div className="thumb-listing thumb-listing-feed" aria-hidden="true">
+                <div className="thumb-listing-head">
+                    <span className="thumb-listing-avatar" />
                     <span className="thumb-line thumb-line-name" />
                 </div>
-                <span className="thumb-ad-image" />
-                <span className="thumb-ad-button">{t.shopNow}</span>
+                <span className="thumb-listing-picture" />
+                <span className="thumb-listing-cta">{t.shopNow}</span>
             </div>
         </div>
     );
