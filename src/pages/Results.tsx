@@ -178,17 +178,17 @@ export default function Results() {
                     <Link to="/case-study-email" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
                         <h4 style={{ marginBottom: '1rem' }}>Email Growth Case Study</h4>
                         <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>How we generated £134K through lifecycle automation and advanced segmentation.</p>
-                        <span style={{ color: 'var(--accent-secondary)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
+                        <span style={{ color: 'var(--accent-text)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
                     </Link>
                     <Link to="/case-study-google-ads" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
                         <h4 style={{ marginBottom: '1rem' }}>Paid Acquisition Deep-Dive</h4>
                         <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>£141K in Google Ads attributed revenue at a 532% return through data-driven targeting and creative testing.</p>
-                        <span style={{ color: 'var(--accent-secondary)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
+                        <span style={{ color: 'var(--accent-text)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
                     </Link>
                     <Link to="/case-study-seo" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
                         <h4 style={{ marginBottom: '1rem' }}>SEO & Organic Scaling</h4>
                         <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Building sustainable long-term growth through content and technical optimisation.</p>
-                        <span style={{ color: 'var(--accent-secondary)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
+                        <span style={{ color: 'var(--accent-text)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
                     </Link>
                 </div>
             </section>
@@ -203,11 +203,11 @@ export default function Results() {
                         width: "44px", height: "44px", borderRadius: "50%", flexShrink: 0,
                         background: "var(--accent-glow)", border: "1px solid var(--accent-primary)",
                         display: "flex", alignItems: "center", justifyContent: "center",
-                        fontWeight: 700, fontSize: "0.85rem", color: "var(--accent-secondary)",
+                        fontWeight: 700, fontSize: "0.85rem", color: "var(--accent-text)",
                     }}>AS</div>
                     <div>
                         <p style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--text-primary)", marginBottom: "0.2rem" }}>Adel Sidiqi</p>
-                        <p style={{ fontSize: "0.82rem", color: "var(--accent-secondary)", fontWeight: 600 }}>Digital Marketing Manager at Ocado Zoom · Former colleague</p>
+                        <p style={{ fontSize: "0.82rem", color: "var(--accent-text)", fontWeight: 600 }}>Digital Marketing Manager at Ocado Zoom · Former colleague</p>
                     </div>
                 </div>
             </div>

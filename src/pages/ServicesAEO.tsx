@@ -118,7 +118,7 @@ function AiChatDemo() {
                     type="button"
                     onClick={() => setActive(0)}
                     className="aeo-switch-label"
-                    style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.9rem", fontWeight: active === 0 ? 700 : 500, color: active === 0 ? "var(--accent-secondary)" : "var(--text-secondary)", transition: "color 0.15s ease" }}
+                    style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.9rem", fontWeight: active === 0 ? 700 : 500, color: active === 0 ? "var(--accent-text)" : "var(--text-secondary)", transition: "color 0.15s ease" }}
                 >
                     {c.states[0].label}
                 </button>
@@ -148,7 +148,7 @@ function AiChatDemo() {
                     type="button"
                     onClick={() => setActive(1)}
                     className="aeo-switch-label"
-                    style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.9rem", fontWeight: active === 1 ? 700 : 500, color: active === 1 ? "var(--accent-secondary)" : "var(--text-secondary)", transition: "color 0.15s ease" }}
+                    style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.9rem", fontWeight: active === 1 ? 700 : 500, color: active === 1 ? "var(--accent-text)" : "var(--text-secondary)", transition: "color 0.15s ease" }}
                 >
                     {c.states[1].label}
                 </button>
@@ -160,7 +160,7 @@ function AiChatDemo() {
                 </div>
                 {/* user question: identical in both states */}
                 <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "1rem" }}>
-                    <span style={{ background: "var(--accent-secondary)", color: "#fff", padding: "0.6rem 0.9rem", borderRadius: "14px 14px 4px 14px", fontSize: "0.9rem", maxWidth: "85%" }}>
+                    <span style={{ background: "var(--accent-text)", color: "#fff", padding: "0.6rem 0.9rem", borderRadius: "14px 14px 4px 14px", fontSize: "0.9rem", maxWidth: "85%" }}>
                         {c.question}
                     </span>
                 </div>
@@ -199,7 +199,7 @@ function AeoCheck() {
         <div className="card glass-panel" style={{ maxWidth: "680px", margin: "0 auto", padding: "clamp(1.75rem, 4vw, 3rem)", display: "flex", flexDirection: "column" }}>
             {step >= 0 && step < c.questions.length && (
                 <div style={{ marginBottom: "2rem" }}>
-                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>{c.questionOf[0]}{step + 1}{c.questionOf[1]}{c.questions.length}</p>
+                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-text)", marginBottom: "0.75rem" }}>{c.questionOf[0]}{step + 1}{c.questionOf[1]}{c.questions.length}</p>
                     <div style={{ display: "flex", gap: "0.4rem" }}>
                         {c.questions.map((_, i) => (
                             <span key={i} style={{ flex: 1, height: "4px", borderRadius: "2px", background: i <= step ? "var(--accent-secondary)" : "var(--border-color)", transition: "background 0.4s ease" }} />
@@ -236,7 +236,7 @@ function AeoCheck() {
 
             {step >= c.questions.length && (
                 <div key="result" className="animate-fade-in" style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>{c.yourResult}</p>
+                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-text)", marginBottom: "0.75rem" }}>{c.yourResult}</p>
                     <h3 style={{ fontSize: "1.9rem", lineHeight: 1.2, marginBottom: "1rem" }}><span className="text-gradient">{verdict.label}</span></h3>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "2rem" }}>{verdict.copy}</p>
                     <div style={{ marginTop: "auto", display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
@@ -286,7 +286,7 @@ export default function ServicesAEO() {
             {/* Hero */}
             <section className="aeo-hero" style={{ marginBottom: "5rem" }}>
                 <div>
-                    <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
+                    <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-text)", fontWeight: 600, marginBottom: "1rem" }}>
                         {t.eyebrow}
                     </p>
                     <h1 className="section-title" style={{ marginBottom: "1.5rem", textAlign: "left" }}>
@@ -316,7 +316,7 @@ export default function ServicesAEO() {
                     {t.whatIsText}
                 </p>
                 <p style={{ marginTop: "1.25rem", fontSize: "1.05rem" }}>
-                    <Link to={to("/blog/what-is-aeo")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.guideLink}</Link>
+                    <Link to={to("/blog/what-is-aeo")} style={{ color: "var(--accent-text)", fontWeight: 600 }}>{t.guideLink}</Link>
                 </p>
             </section>
 
@@ -349,7 +349,7 @@ export default function ServicesAEO() {
                         <div key={s.title} style={{ textAlign: "center" }}>
                             <div style={{ width: "64px", height: "64px", borderRadius: "50%", background: "var(--bg-primary)", border: "2px solid var(--accent-secondary)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.25rem", color: "var(--accent-secondary)", position: "relative" }}>
                                 {WHAT_ICONS[i]}
-                                <span style={{ position: "absolute", top: "-8px", right: "-8px", width: "26px", height: "26px", borderRadius: "50%", background: "var(--accent-secondary)", color: "#fff", fontSize: "0.8rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>{i + 1}</span>
+                                <span style={{ position: "absolute", top: "-8px", right: "-8px", width: "26px", height: "26px", borderRadius: "50%", background: "var(--accent-text)", color: "#fff", fontSize: "0.8rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>{i + 1}</span>
                             </div>
                             <h3 style={{ fontSize: "1.1rem", marginBottom: "0.5rem" }}>{s.title}</h3>
                             <p style={{ color: "var(--text-secondary)", fontSize: "0.92rem", lineHeight: 1.6, maxWidth: "240px", margin: "0 auto" }}>{s.line}</p>
@@ -369,7 +369,7 @@ export default function ServicesAEO() {
                     </p>
                 ))}
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", margin: 0 }}>
-                    {t.comparisonLead}<Link to={to("/blog/best-aeo-agencies-ecommerce-europe")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.comparisonLink}</Link>
+                    {t.comparisonLead}<Link to={to("/blog/best-aeo-agencies-ecommerce-europe")} style={{ color: "var(--accent-text)", fontWeight: 600 }}>{t.comparisonLink}</Link>
                 </p>
             </section>
 
@@ -418,7 +418,7 @@ export default function ServicesAEO() {
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, margin: "0.25rem 0 0" }}>
                         {t.proofCard.text}
                     </p>
-                    <span style={{ marginTop: "0.75rem", display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.9rem" }}>
+                    <span style={{ marginTop: "0.75rem", display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600, fontSize: "0.9rem" }}>
                         {t.proofCard.link} <ArrowRight size={16} />
                     </span>
                 </Link>
@@ -433,7 +433,7 @@ export default function ServicesAEO() {
                     {t.pricingText}
                 </p>
                 <p style={{ margin: "1.25rem 0 0" }}>
-                    <Link to={to("/pricing")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
+                    <Link to={to("/pricing")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600 }}>
                         {t.pricingLink} <ArrowRight size={16} />
                     </Link>
                 </p>

@@ -9,7 +9,7 @@ const TOPICS: Record<string, { subject: string; intro: string; message: string; 
     "ai-search-check": {
         subject: "AI search check",
         intro: "AI search check: tell me your brand and website, and I'll get back to you with a short note.",
-        message: "Brand:\nWebsite:\n",
+        message: "Brand:\n",
         h1: "Free AI search check",
         submitLabel: "Request my check",
         need: "AI search and SEO",

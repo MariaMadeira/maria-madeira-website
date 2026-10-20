@@ -46,7 +46,7 @@ const en = {
     ],
     check: {
         questionOf: ["Question ", " of "],
-        titleLead: "Is your email program ",
+        titleLead: "Is your email programme ",
         titleAccent: "underperforming",
         titleTail: "?",
         intro: "Three quick questions on how hard your email channel is working. Instant and private. Nothing leaves your browser.",
@@ -91,7 +91,7 @@ const en = {
         },
         {
             q: "How much revenue should email generate for an e-commerce brand?",
-            a: "There is no single number, but for a well-built lifecycle program email is usually one of a store's top channels, often a quarter or more of total revenue. For one brand I work with, email reached over a third of total store revenue over the last 12 months.",
+            a: "There is no single number, but for a well-built lifecycle programme email is usually one of a store's top channels, often a quarter or more of total revenue. For one brand I work with, email reached over a third of total store revenue in the 12 months to July 2025.",
         },
         {
             q: "What email flows should every store have?",
@@ -99,7 +99,7 @@ const en = {
         },
         {
             q: "How long until email marketing shows results?",
-            a: "Flows start capturing revenue as soon as they go live, often within the first few weeks, because they trigger on behaviour that is already happening. The compounding gains (higher open rates, sharper segmentation and a larger engaged list) build over months. For context, one program grew email-attributed revenue from £33K in 2021 to £134K in 2025.",
+            a: "Flows start capturing revenue as soon as they go live, often within the first few weeks, because they trigger on behaviour that is already happening. The compounding gains (higher open rates, sharper segmentation and a larger engaged list) build over months. For context, one programme grew email-attributed revenue from £33K in 2021 to £134K in 2025.",
         },
         {
             q: "How much does a Klaviyo consultant cost?",

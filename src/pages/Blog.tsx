@@ -52,7 +52,7 @@ export default function Blog() {
             />
 
             <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-                <span style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem", display: "block" }}>
+                <span style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-text)", fontWeight: 600, marginBottom: "1rem", display: "block" }}>
                     {t.eyebrow}
                 </span>
                 <h1 className="section-title" style={{ marginBottom: "1rem" }}>{t.h1}</h1>
@@ -65,7 +65,7 @@ export default function Blog() {
                 {t.posts.map((post) => (
                     <Link key={post.slug} to={to(`/blog/${post.slug}`)} className="card hover-lift" style={{ display: "block", padding: "2.5rem" }}>
                         <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.25rem", flexWrap: "wrap" }}>
-                            <span style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--accent-secondary)", background: "var(--accent-glow)", padding: "4px 12px", borderRadius: "6px" }}>
+                            <span style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--accent-text)", background: "var(--accent-glow)", padding: "4px 12px", borderRadius: "6px" }}>
                                 {post.category}
                             </span>
                             <span style={{ display: "flex", alignItems: "center", gap: "4px", fontSize: "0.8rem", color: "var(--text-secondary)", opacity: 0.7 }}>
@@ -79,7 +79,7 @@ export default function Blog() {
                         <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "1.5rem", fontSize: "0.95rem" }}>
                             {post.excerpt}
                         </p>
-                        <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.9rem" }}>
+                        <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600, fontSize: "0.9rem" }}>
                             {t.readArticle} <ArrowRight size={14} />
                         </span>
                     </Link>

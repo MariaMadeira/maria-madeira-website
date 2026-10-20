@@ -73,7 +73,7 @@ const JSON_LD = { en: articleJsonLd("en"), pt: articleJsonLd("pt") };
 /* Shared prose styles for the reading column, matching the other articles. */
 const P = { color: "var(--text-secondary)", fontSize: "1.05rem", lineHeight: 1.85, marginBottom: "1.25rem" } as const;
 const H2 = { fontSize: "1.6rem", marginTop: "3.5rem", marginBottom: "1.25rem", lineHeight: 1.25 } as const;
-const linkStyle = { color: "var(--accent-secondary)", fontWeight: 600 } as const;
+const linkStyle = { color: "var(--accent-text)", fontWeight: 600 } as const;
 const strong = { color: "var(--text-primary)", fontWeight: 700 } as const;
 const calloutBox = { background: "var(--accent-glow)", border: "1px solid var(--border-color)", borderLeft: "4px solid var(--accent-secondary)", borderRadius: "16px", padding: "clamp(1.5rem, 4vw, 2.5rem)" } as const;
 
@@ -104,7 +104,7 @@ export default function BlogChatGptAdsEurope() {
                 .cga-table-frame { overflow-x: auto; border: 1px solid var(--border-color); border-radius: 16px; background: var(--bg-secondary); }
                 .cga-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
                 .cga-table th, .cga-table td { text-align: left; padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--border-color); vertical-align: middle; line-height: 1.55; }
-                .cga-table thead th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-secondary); background: var(--accent-glow); }
+                .cga-table thead th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-text); background: var(--accent-glow); }
                 .cga-table tbody tr:last-child td { border-bottom: none; }
                 .cga-table tbody th { text-align: left; font-weight: 700; color: var(--text-primary); white-space: nowrap; }
                 .cga-table td { color: var(--text-secondary); }
@@ -136,7 +136,7 @@ export default function BlogChatGptAdsEurope() {
                 .cga-bar-fill { display: block; height: 100%; border-radius: 999px; background: var(--accent-primary); }
                 .cga-bar-fill.is-highlight { background: var(--accent-secondary); }
                 .cga-bar-value { font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); text-align: right; white-space: nowrap; }
-                .cga-bar-value.is-highlight { color: var(--accent-secondary); }
+                .cga-bar-value.is-highlight { color: var(--accent-text); }
 
                 /* Caveats: side by side on desktop. */
                 .cga-caveats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
@@ -159,11 +159,11 @@ export default function BlogChatGptAdsEurope() {
             `}</style>
 
             <article style={{ maxWidth: "900px", margin: "0 auto" }}>
-                <Link to={to("/blog")} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", fontSize: "0.95rem", color: "var(--accent-secondary)", marginBottom: "2rem", fontWeight: 500 }}>
+                <Link to={to("/blog")} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", fontSize: "0.95rem", color: "var(--accent-text)", marginBottom: "2rem", fontWeight: 500 }}>
                     <ArrowLeft size={16} /> {t.allArticles}
                 </Link>
 
-                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.8rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
+                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.8rem", color: "var(--accent-text)", fontWeight: 600, marginBottom: "1rem" }}>
                     {t.eyebrow}
                 </p>
                 <h1 className="section-title" style={{ textAlign: "left", marginBottom: "1.25rem" }}>
@@ -189,7 +189,7 @@ export default function BlogChatGptAdsEurope() {
 
                 {/* Facts panel */}
                 <div style={{ ...calloutBox, marginBottom: "1.5rem" }}>
-                    <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.72rem", fontWeight: 700, color: "var(--accent-secondary)", margin: "0 0 1.25rem" }}>
+                    <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.72rem", fontWeight: 700, color: "var(--accent-text)", margin: "0 0 1.25rem" }}>
                         {t.factsTitle}
                     </p>
                     <ul className="cga-facts">
@@ -244,7 +244,7 @@ export default function BlogChatGptAdsEurope() {
                         <div className="cga-mock-sub" />
                     </div>
                     <div>
-                        <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.72rem", fontWeight: 700, color: "var(--accent-secondary)", margin: "0 0 1rem" }}>
+                        <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.72rem", fontWeight: 700, color: "var(--accent-text)", margin: "0 0 1rem" }}>
                             {t.adPartsTitle}
                         </p>
                         <ul className="cga-legend">
@@ -263,7 +263,7 @@ export default function BlogChatGptAdsEurope() {
 
                 {/* Character limit bar chart */}
                 <figure style={{ ...calloutBox, margin: "0 0 2.5rem" }}>
-                    <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.72rem", fontWeight: 700, color: "var(--accent-secondary)", margin: "0 0 1.5rem" }}>
+                    <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.72rem", fontWeight: 700, color: "var(--accent-text)", margin: "0 0 1.5rem" }}>
                         {t.charsTitle}
                     </p>
                     <ul className="cga-bars">

@@ -17,7 +17,7 @@ const en = {
     quoteAuthor: "Wilfred Emmanuel-Jones, Founder, The Black Farmer",
     /** Shown after the quote on /pt only; empty on the English page. */
     quoteNote: "",
-    timelineTitle: "TODO-COPY",
+    timelineTitle: "How I got here",
     timeline: [
         { year: "2012", label: "Degree in Fashion and Textile Design, IPCB" },
         { year: "2019", label: "Postgraduate programme in Journalism, ESCS Lisbon" },

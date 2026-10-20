@@ -94,7 +94,7 @@ const PT_JSON_LD = {
     ],
 };
 
-const LINK_STYLE = { display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 } as const;
+const LINK_STYLE = { display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600 } as const;
 
 export default function Pricing() {
     const { lang, to } = useLang();
@@ -119,7 +119,7 @@ export default function Pricing() {
 
             {/* Hero */}
             <section style={{ maxWidth: "820px", margin: "0 auto 3rem", textAlign: "center" }}>
-                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
+                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-text)", fontWeight: 600, marginBottom: "1rem" }}>
                     {c.eyebrow}
                 </p>
                 <h1 className="section-title" style={{ marginBottom: "1.5rem" }}>
@@ -154,7 +154,7 @@ export default function Pricing() {
                         <div key={w.name} className="card" style={{ padding: "2rem", display: "flex", flexDirection: "column" }}>
                             <h2 style={{ fontSize: "1.4rem", margin: "0 0 1rem" }}>{w.name}</h2>
                             <p style={{ fontFamily: "var(--font-heading)", fontSize: "2rem", fontWeight: 600, lineHeight: 1.1, color: "var(--text-primary)", margin: 0 }}>{w.price}</p>
-                            <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.75rem", fontWeight: 700, color: "var(--accent-secondary)", margin: "0.6rem 0 0.75rem" }}>{w.type}</p>
+                            <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.75rem", fontWeight: 700, color: "var(--accent-text)", margin: "0.6rem 0 0.75rem" }}>{w.type}</p>
                             <p style={{ fontSize: "0.88rem", fontStyle: "italic", lineHeight: 1.5, margin: "0 0 1.5rem" }}>
                                 <Link to={to(w.proof.to)} style={{ color: "var(--text-secondary)", textDecoration: "underline", textUnderlineOffset: "3px", textDecorationColor: "var(--border-color)" }}>
                                     {w.proof.text}
@@ -228,7 +228,7 @@ export default function Pricing() {
                 <ol className="pr-steps">
                     {c.steps.map((s, i) => (
                         <li key={s.lead} className="card" style={{ background: "var(--bg-secondary)", position: "relative", padding: "2rem 2rem 1.75rem" }}>
-                            <span aria-hidden="true" style={{ position: "absolute", top: "1.25rem", right: "1.5rem", fontFamily: "var(--font-heading)", fontSize: "2.2rem", fontWeight: 800, color: "var(--accent-primary)", opacity: 0.4, lineHeight: 1 }}>
+                            <span aria-hidden="true" style={{ position: "absolute", top: "1.25rem", right: "1.5rem", fontFamily: "var(--font-heading)", fontSize: "2.2rem", fontWeight: 800, color: "var(--accent-secondary)", lineHeight: 1 }}>
                                 {String(i + 1).padStart(2, "0")}
                             </span>
                             <p style={{ color: "var(--text-secondary)", fontSize: "1rem", lineHeight: 1.7, margin: "1.75rem 0 0" }}>

@@ -49,7 +49,7 @@ const SERVICE_LINK_STYLE = {
     display: "inline-flex",
     alignItems: "center",
     gap: "6px",
-    color: "var(--accent-secondary)",
+    color: "var(--accent-text)",
     fontWeight: 600,
     fontSize: "0.9rem",
     transition: "gap 0.3s ease",
@@ -122,7 +122,7 @@ export default function Services() {
                                 <span aria-hidden="true" style={{
                                     position: "absolute", top: "1.25rem", right: "1.5rem",
                                     fontFamily: "var(--font-heading)", fontSize: "2.2rem", fontWeight: 800,
-                                    color: "var(--accent-primary)", lineHeight: 1,
+                                    color: "var(--accent-secondary)", lineHeight: 1,
                                 }}>{item.step}</span>
                                 <h3 style={{ marginBottom: "0.5rem", fontSize: "1.25rem" }}>{item.title}</h3>
                                 <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
@@ -145,11 +145,11 @@ export default function Services() {
                         width: "44px", height: "44px", borderRadius: "50%", flexShrink: 0,
                         background: "var(--accent-glow)", border: "1px solid var(--accent-primary)",
                         display: "flex", alignItems: "center", justifyContent: "center",
-                        fontWeight: 700, fontSize: "0.85rem", color: "var(--accent-secondary)",
+                        fontWeight: 700, fontSize: "0.85rem", color: "var(--accent-text)",
                     }}>WF</div>
                     <div>
                         <p style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--text-primary)", marginBottom: "0.2rem" }}>{t.testimonial.name}</p>
-                        <p style={{ fontSize: "0.82rem", color: "var(--accent-secondary)", fontWeight: 600 }}>{t.testimonial.role}</p>
+                        <p style={{ fontSize: "0.82rem", color: "var(--accent-text)", fontWeight: 600 }}>{t.testimonial.role}</p>
                     </div>
                 </div>
             </div>
@@ -161,7 +161,7 @@ export default function Services() {
                         <div key={w.name} className="card" style={{ padding: "1.75rem" }}>
                             <h3 style={{ fontSize: "1.25rem", margin: "0 0 0.75rem" }}>{w.name}</h3>
                             {t.waysShowPrice && <p style={{ fontFamily: "var(--font-heading)", fontSize: "1.6rem", fontWeight: 600, lineHeight: 1.1, color: "var(--text-primary)", margin: 0 }}>{w.price}</p>}
-                            <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.75rem", fontWeight: 700, color: "var(--accent-secondary)", margin: "0.6rem 0 0" }}>{w.type}</p>
+                            <p style={{ textTransform: "uppercase", letterSpacing: "0.12em", fontSize: "0.75rem", fontWeight: 700, color: "var(--accent-text)", margin: "0.6rem 0 0" }}>{w.type}</p>
                         </div>
                     ))}
                 </div>

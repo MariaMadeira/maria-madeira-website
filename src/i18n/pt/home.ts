@@ -31,13 +31,13 @@ const pt: typeof en = {
         /* "Impacto mensurável" is the existing title of the equivalent
            section; the new subtitle and card labels await translation. */
         title: "Impacto mensurável",
-        sub: "TODO-PT",
+        sub: "De contas reais de clientes. Cada número leva ao caso de estudo.",
         link: "Ver o caso",
         cards: [
-            { value: "£134K", label: "TODO-PT" },
-            { value: "532%", label: "TODO-PT" },
-            { value: "+78%", label: "TODO-PT" },
-            { value: "TODO-PT", label: "TODO-PT" },
+            { value: "£134K", label: "Receita de email em 12 meses, marca alimentar premium do Reino Unido" },
+            { value: "532%", label: "ROAS de Google Ads em 11 meses (ROAS de equilíbrio: 400%)" },
+            { value: "+78%", label: "Cliques orgânicos em quatro meses" },
+            { value: "Página 2 → 1", label: "Posição média no Google, de 15,2 para 9,4" },
         ],
     },
     whatIDo: {

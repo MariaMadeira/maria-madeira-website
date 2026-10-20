@@ -52,7 +52,7 @@ export default function CaseStudyBodysurfSchool() {
                         alignItems: "center",
                         gap: "0.4rem",
                         fontSize: "0.95rem",
-                        color: "var(--accent-secondary)",
+                        color: "var(--accent-text)",
                         marginBottom: "2.5rem",
                         fontWeight: 500,
                     }}
@@ -66,7 +66,7 @@ export default function CaseStudyBodysurfSchool() {
                         style={{
                             fontSize: "0.85rem",
                             fontWeight: 600,
-                            color: "var(--accent-secondary)",
+                            color: "var(--accent-text)",
                             textTransform: "uppercase",
                             letterSpacing: "0.08em",
                             marginBottom: "0.75rem",
@@ -233,7 +233,7 @@ export default function CaseStudyBodysurfSchool() {
                                     justifyContent: "center",
                                     fontWeight: 700,
                                     fontSize: "0.85rem",
-                                    color: "var(--accent-secondary)",
+                                    color: "var(--accent-text)",
                                 }}
                             >
                                 BS

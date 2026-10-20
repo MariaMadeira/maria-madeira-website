@@ -91,7 +91,7 @@ const PT_JSON_LD = {
     ],
 };
 
-const LINK_STYLE = { display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.95rem" } as const;
+const LINK_STYLE = { display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600, fontSize: "0.95rem" } as const;
 
 export default function ServicesPaidAds() {
     const { lang, to } = useLang();
@@ -116,7 +116,7 @@ export default function ServicesPaidAds() {
 
             {/* Hero */}
             <section style={{ maxWidth: "820px", marginBottom: "3.5rem" }}>
-                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
+                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-text)", fontWeight: 600, marginBottom: "1rem" }}>
                     {t.eyebrow}
                 </p>
                 <h1 className="section-title" style={{ marginBottom: "1.5rem", textAlign: "left" }}>
@@ -204,7 +204,7 @@ export default function ServicesPaidAds() {
                     {t.pricingText}
                 </p>
                 <p style={{ margin: "1.25rem 0 0" }}>
-                    <Link to={to("/pricing")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
+                    <Link to={to("/pricing")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600 }}>
                         {t.pricingLink} <ArrowRight size={16} />
                     </Link>
                 </p>

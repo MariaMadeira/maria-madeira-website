@@ -46,9 +46,7 @@ function Wins({ c, lang }: { c: Copy; lang: Lang }) {
                                         <span className="cs-bar-value">{w.after}</span>
                                     </div>
                                 </div>
-                            ) : (
-                                <p className="cs-todo">{c.missingData}</p>
-                            )}
+                            ) : null}
                         </li>
                     ))}
                 </ul>
@@ -134,7 +132,7 @@ export default function CaseStudySEO() {
                         alignItems: "center",
                         gap: "0.4rem",
                         fontSize: "0.95rem",
-                        color: "var(--accent-secondary)",
+                        color: "var(--accent-text)",
                         marginBottom: "2.5rem",
                         fontWeight: 500,
                     }}
@@ -148,7 +146,7 @@ export default function CaseStudySEO() {
                         style={{
                             fontSize: "0.85rem",
                             fontWeight: 600,
-                            color: "var(--accent-secondary)",
+                            color: "var(--accent-text)",
                             textTransform: "uppercase",
                             letterSpacing: "0.08em",
                             marginBottom: "0.75rem",
@@ -198,7 +196,7 @@ export default function CaseStudySEO() {
                         style={{
                             fontSize: "0.85rem",
                             fontWeight: 600,
-                            color: "var(--accent-secondary)",
+                            color: "var(--accent-text)",
                             textTransform: "uppercase",
                             letterSpacing: "0.08em",
                             marginBottom: "0.75rem",
@@ -262,7 +260,7 @@ export default function CaseStudySEO() {
                         style={{
                             fontSize: "0.85rem",
                             fontWeight: 600,
-                            color: "var(--accent-secondary)",
+                            color: "var(--accent-text)",
                             textTransform: "uppercase",
                             letterSpacing: "0.08em",
                             marginBottom: "0.75rem",

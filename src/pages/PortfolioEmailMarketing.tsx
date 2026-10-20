@@ -50,7 +50,7 @@ export default function PortfolioEmailMarketing() {
                         alignItems: "center",
                         gap: "0.5rem",
                         fontSize: "0.9rem",
-                        color: "var(--accent-secondary)",
+                        color: "var(--accent-text)",
                         marginBottom: "3rem",
                         fontWeight: 500,
                         fontFamily: "var(--font-heading)"
@@ -284,7 +284,7 @@ export default function PortfolioEmailMarketing() {
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
-                                    color: "var(--accent-secondary)"
+                                    color: "var(--accent-text)"
                                 }}>
                                     {flow.icon}
                                 </div>

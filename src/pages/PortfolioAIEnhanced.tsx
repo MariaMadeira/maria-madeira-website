@@ -78,7 +78,7 @@ export default function PortfolioAIEnhanced() {
                         alignItems: "center",
                         gap: "0.5rem",
                         fontSize: "0.9rem",
-                        color: "var(--accent-secondary)",
+                        color: "var(--accent-text)",
                         marginBottom: "3rem",
                         fontWeight: 500,
                         fontFamily: "var(--font-heading)"
@@ -295,7 +295,7 @@ export default function PortfolioAIEnhanced() {
                                     width: "60px", height: "60px", borderRadius: "16px",
                                     background: "var(--accent-glow)", border: "1px solid var(--accent-primary)",
                                     display: "flex", alignItems: "center", justifyContent: "center",
-                                    color: "var(--accent-secondary)"
+                                    color: "var(--accent-text)"
                                 }}>
                                     {app.icon}
                                 </div>

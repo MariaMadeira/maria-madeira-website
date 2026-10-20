@@ -120,7 +120,7 @@ const JSON_LD = { en: articleJsonLd("en"), pt: articleJsonLd("pt") };
 /* Shared prose styles for the reading column, matching the other articles. */
 const P = { color: "var(--text-secondary)", fontSize: "1.05rem", lineHeight: 1.85, marginBottom: "1.25rem" } as const;
 const H2 = { fontSize: "1.6rem", marginTop: "3.5rem", marginBottom: "1.25rem", lineHeight: 1.25 } as const;
-const linkStyle = { color: "var(--accent-secondary)", fontWeight: 600 } as const;
+const linkStyle = { color: "var(--accent-text)", fontWeight: 600 } as const;
 const calloutBox = { background: "var(--accent-glow)", border: "1px solid var(--border-color)", borderLeft: "4px solid var(--accent-secondary)", borderRadius: "16px", padding: "clamp(1.5rem, 4vw, 2.5rem)" } as const;
 const CAPTION = { color: "var(--text-secondary)", fontSize: "0.85rem", lineHeight: 1.6, margin: "0.85rem 0 0" } as const;
 
@@ -318,11 +318,11 @@ export default function BlogKlaviyoFlowsVsCampaigns() {
             `}</style>
 
             <article style={{ maxWidth: "900px", margin: "0 auto" }}>
-                <Link to={to("/blog")} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", fontSize: "0.95rem", color: "var(--accent-secondary)", marginBottom: "2rem", fontWeight: 500 }}>
+                <Link to={to("/blog")} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", fontSize: "0.95rem", color: "var(--accent-text)", marginBottom: "2rem", fontWeight: 500 }}>
                     <ArrowLeft size={16} /> {t.allArticles}
                 </Link>
 
-                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.8rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
+                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.8rem", color: "var(--accent-text)", fontWeight: 600, marginBottom: "1rem" }}>
                     {t.eyebrow}
                 </p>
                 <h1 className="section-title" style={{ textAlign: "left", marginBottom: "1.25rem" }}>
@@ -606,7 +606,7 @@ export default function BlogKlaviyoFlowsVsCampaigns() {
 
                 {/* Author box, in the shared AuthorBio treatment with this article's own line */}
                 <div style={{ marginTop: "3.5rem", paddingTop: "2rem", borderTop: "1px solid var(--border-color)", color: "var(--text-secondary)", fontStyle: "italic", lineHeight: 1.7 }}>
-                    <Link to={to("/about")} style={{ color: "var(--accent-secondary)", fontWeight: 600, fontStyle: "normal" }}>Maria Madeira</Link>{t.author}
+                    <Link to={to("/about")} style={{ color: "var(--accent-text)", fontWeight: 600, fontStyle: "normal" }}>Maria Madeira</Link>{t.author}
                 </div>
             </article>
         </div>

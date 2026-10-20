@@ -72,7 +72,7 @@ const JSON_LD = { en: articleJsonLd("en"), pt: articleJsonLd("pt") };
 /* Shared prose styles for the reading column, matching the other articles. */
 const P = { color: "var(--text-secondary)", fontSize: "1.05rem", lineHeight: 1.85, marginBottom: "1.25rem" } as const;
 const H2 = { fontSize: "1.6rem", marginTop: "3.5rem", marginBottom: "1.25rem", lineHeight: 1.25 } as const;
-const linkStyle = { color: "var(--accent-secondary)", fontWeight: 600 } as const;
+const linkStyle = { color: "var(--accent-text)", fontWeight: 600 } as const;
 const strong = { color: "var(--text-primary)", fontWeight: 700 } as const;
 const calloutBox = { background: "var(--accent-glow)", border: "1px solid var(--border-color)", borderLeft: "4px solid var(--accent-secondary)", borderRadius: "16px", padding: "clamp(1.5rem, 4vw, 2.5rem)" } as const;
 
@@ -99,11 +99,11 @@ export default function BlogAiProductDescriptions() {
             />
 
             <article style={{ maxWidth: "900px", margin: "0 auto" }}>
-                <Link to={to("/blog")} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", fontSize: "0.95rem", color: "var(--accent-secondary)", marginBottom: "2rem", fontWeight: 500 }}>
+                <Link to={to("/blog")} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", fontSize: "0.95rem", color: "var(--accent-text)", marginBottom: "2rem", fontWeight: 500 }}>
                     <ArrowLeft size={16} /> {t.allArticles}
                 </Link>
 
-                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.8rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
+                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.8rem", color: "var(--accent-text)", fontWeight: 600, marginBottom: "1rem" }}>
                     {t.eyebrow}
                 </p>
                 <h1 className="section-title" style={{ textAlign: "left", marginBottom: "1.25rem" }}>
@@ -170,7 +170,7 @@ export default function BlogAiProductDescriptions() {
                     <ol style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "1.1rem" }}>
                         {t.workflow.map((step, i) => (
                             <li key={step.lead} style={{ display: "flex", gap: "0.85rem", alignItems: "flex-start" }}>
-                                <span style={{ flexShrink: 0, width: "26px", height: "26px", borderRadius: "50%", background: "var(--accent-secondary)", color: "#fff", fontWeight: 700, fontSize: "0.8rem", display: "flex", alignItems: "center", justifyContent: "center", marginTop: "1px" }}>{i + 1}</span>
+                                <span style={{ flexShrink: 0, width: "26px", height: "26px", borderRadius: "50%", background: "var(--accent-text)", color: "#fff", fontWeight: 700, fontSize: "0.8rem", display: "flex", alignItems: "center", justifyContent: "center", marginTop: "1px" }}>{i + 1}</span>
                                 <span style={{ color: "var(--text-primary)", lineHeight: 1.6, fontSize: "1rem" }}>
                                     <strong style={strong}>{step.lead}</strong>{step.rest}
                                 </span>

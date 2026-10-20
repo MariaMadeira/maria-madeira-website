@@ -11,6 +11,9 @@
   --accent-primary: #CBBBAA;
   --accent-secondary: #B08968;
   --accent-hover: #9c785c;
+  /* The accent for text under 18px: #B08968 is about 3:1 on cream and
+     fails AA; this darker brown is 4.7:1 or more on every page background. */
+  --accent-text: #7E5F45;
   --accent-glow: rgba(176, 137, 104, 0.15);
 
   --border-color: #E8E2DB;
@@ -368,7 +371,7 @@ ul {
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--accent-secondary);
+  color: var(--accent-text);
 }
 
 .nav-link::after {
@@ -419,7 +422,7 @@ ul {
 .nav-dropdown-trigger:hover .nav-link,
 .nav-dropdown-trigger[aria-expanded="true"],
 .nav-dropdown-trigger[aria-expanded="true"] .nav-link {
-  color: var(--accent-secondary);
+  color: var(--accent-text);
 }
 
 .nav-dropdown-trigger:hover .nav-link::after,
@@ -483,7 +486,7 @@ ul {
 .nav-dropdown-link:hover,
 .nav-dropdown-link.active {
   background: var(--bg-secondary);
-  color: var(--accent-secondary);
+  color: var(--accent-text);
 }
 
 /* "All services" leads the list, set off from the services below it. */
@@ -552,7 +555,7 @@ ul {
 
 .lang-switch-link:hover,
 .lang-switch-link:focus-visible {
-  color: var(--accent-secondary);
+  color: var(--accent-text);
 }
 
 .nav-mobile-tools {
@@ -803,7 +806,7 @@ ul {
 .case-study-category {
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--accent-secondary);
+  color: var(--accent-text);
   text-transform: uppercase;
   letter-spacing: 0.14em;
   margin-bottom: 0.75rem;
@@ -846,7 +849,7 @@ ul {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--accent-secondary);
+  color: var(--accent-text);
   font-weight: 600;
   font-size: 0.95rem;
   margin-top: auto;
@@ -954,7 +957,7 @@ ul {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: var(--accent-secondary);
+  color: var(--accent-text);
   font-weight: 600;
   font-size: 0.9rem;
   transition: gap 0.2s ease, color 0.2s ease;
@@ -985,7 +988,7 @@ ul {
   justify-content: center;
   font-weight: 700;
   font-size: 0.85rem;
-  color: var(--accent-secondary);
+  color: var(--accent-text);
 }
 
 .testimonial-name {
@@ -999,7 +1002,7 @@ ul {
 .testimonial-role {
   display: block;
   font-size: 0.82rem;
-  color: var(--accent-secondary);
+  color: var(--accent-text);
   font-weight: 600;
   margin-bottom: 0.2rem;
 }
@@ -1008,7 +1011,6 @@ ul {
   display: block;
   font-size: 0.78rem;
   color: var(--text-secondary);
-  opacity: 0.75;
 }
 
 .testimonial-controls {
@@ -1120,7 +1122,7 @@ ul {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--accent-secondary);
+  color: var(--accent-text);
   margin-bottom: 0.5rem;
 }
 
@@ -1725,7 +1727,7 @@ select:focus {
   gap: 6px;
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--accent-secondary);
+  color: var(--accent-text);
   line-height: 1.4;
   transition: gap 0.2s ease, color 0.2s ease;
 }
@@ -2005,7 +2007,6 @@ select:focus {
 .cs-bar--after { background: var(--accent-secondary); }
 .cs-bar-value { font-family: var(--font-heading); font-weight: 600; font-size: 0.95rem; color: var(--text-primary); }
 .cs-bar-value--before { font-family: var(--font-sans); font-weight: 500; color: var(--text-secondary); }
-.cs-todo { font-weight: 700; color: var(--negative); margin: 0; }
 .cs-scale { display: block; width: 100%; max-width: 480px; height: auto; }
 .cs-scale-note { font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0; }
 .cs-wins-top { border-color: var(--accent-secondary); }
@@ -2146,7 +2147,7 @@ select:focus {
 }
 
 .trust-line a {
-  color: var(--accent-secondary);
+  color: var(--accent-text);
   text-decoration: underline;
   text-underline-offset: 2px;
 }

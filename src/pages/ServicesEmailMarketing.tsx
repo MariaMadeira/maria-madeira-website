@@ -101,7 +101,7 @@ const PT_JSON_LD = {
     ],
 };
 
-/* ── "Is your email program underperforming?" mini-check: scores per option
+/* ── "Is your email programme underperforming?" mini-check: scores per option
        and the minimum score of each verdict, in the copy's order ── */
 const SCORES = [[0, 1, 2], [0, 1, 2], [0, 1, 2]];
 const VERDICT_MIN = [5, 3, 0];
@@ -121,7 +121,7 @@ function EmailCheck() {
         <div className="card glass-panel" style={{ maxWidth: "680px", margin: "0 auto", padding: "clamp(1.75rem, 4vw, 3rem)", display: "flex", flexDirection: "column" }}>
             {step >= 0 && step < c.questions.length && (
                 <div style={{ marginBottom: "2rem" }}>
-                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>{c.questionOf[0]}{step + 1}{c.questionOf[1]}{c.questions.length}</p>
+                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-text)", marginBottom: "0.75rem" }}>{c.questionOf[0]}{step + 1}{c.questionOf[1]}{c.questions.length}</p>
                     <div style={{ display: "flex", gap: "0.4rem" }}>
                         {c.questions.map((_, i) => (
                             <span key={i} style={{ flex: 1, height: "4px", borderRadius: "2px", background: i <= step ? "var(--accent-secondary)" : "var(--border-color)", transition: "background 0.4s ease" }} />
@@ -158,7 +158,7 @@ function EmailCheck() {
 
             {step >= c.questions.length && (
                 <div key="result" className="animate-fade-in" style={{ display: "flex", flexDirection: "column" }}>
-                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>{c.yourResult}</p>
+                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-text)", marginBottom: "0.75rem" }}>{c.yourResult}</p>
                     <h3 style={{ fontSize: "1.9rem", lineHeight: 1.2, marginBottom: "1rem" }}><span className="text-gradient">{verdict.label}</span></h3>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", marginBottom: "2rem" }}>{verdict.copy}</p>
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
@@ -203,7 +203,7 @@ export default function ServicesEmailMarketing() {
             {/* Hero */}
             <section className="em-hero" style={{ marginBottom: "5rem" }}>
                 <div>
-                    <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
+                    <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-text)", fontWeight: 600, marginBottom: "1rem" }}>
                         {t.eyebrow}
                     </p>
                     <div style={{ marginBottom: "1.25rem" }}>
@@ -228,7 +228,7 @@ export default function ServicesEmailMarketing() {
                 <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                     {t.heroStats.map((st) => (
                         <div key={st.label} className="card" style={{ background: "var(--bg-primary)", padding: "1.5rem" }}>
-                            <div className="text-gradient-accent" style={{ fontSize: "2.2rem", fontWeight: 700, lineHeight: 1 }}>{st.value}</div>
+                            <div style={{ fontSize: "2.2rem", fontWeight: 700, lineHeight: 1, color: "var(--accent-text)" }}>{st.value}</div>
                             <p style={{ fontWeight: 600, margin: "0.5rem 0 0.15rem" }}>{st.label}</p>
                             <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", margin: 0 }}>{st.detail}</p>
                         </div>
@@ -262,7 +262,7 @@ export default function ServicesEmailMarketing() {
                                 <div key={row.label} style={{ marginBottom: i === 0 ? "1.1rem" : 0 }}>
                                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.4rem" }}>
                                         <span style={{ fontSize: "0.85rem", color: "var(--text-secondary)" }}>{row.label}</span>
-                                        <span style={{ fontWeight: 700, fontSize: "1.1rem", color: i === 1 ? "var(--accent-secondary)" : "var(--text-primary)" }}>{row.value}</span>
+                                        <span style={{ fontWeight: 700, fontSize: "1.1rem", color: i === 1 ? "var(--accent-text)" : "var(--text-primary)" }}>{row.value}</span>
                                     </div>
                                     <div style={{ background: "var(--bg-tertiary)", borderRadius: "6px" }}>
                                         <div className="em-bar" style={{ width: `${row.pct}%`, background: i === 1 ? "var(--accent-secondary)" : "var(--border-color)" }} />
@@ -283,13 +283,13 @@ export default function ServicesEmailMarketing() {
                         <div className="em-pt-results">
                             {x.results.map((r) => (
                                 <div key={r.value} className="card" style={{ background: "var(--bg-primary)", padding: "1.5rem" }}>
-                                    <div className="text-gradient-accent" style={{ fontSize: "2.2rem", fontWeight: 700, lineHeight: 1 }}>{r.value}</div>
+                                    <div style={{ fontSize: "2.2rem", fontWeight: 700, lineHeight: 1, color: "var(--accent-text)" }}>{r.value}</div>
                                     <p style={{ fontSize: "0.92rem", color: "var(--text-secondary)", lineHeight: 1.55, margin: "0.75rem 0 0" }}>{r.label}</p>
                                 </div>
                             ))}
                         </div>
                         <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", margin: "1rem 0 0.5rem" }}>{x.source}</p>
-                        <Link to={to("/case-study-email")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.95rem" }}>
+                        <Link to={to("/case-study-email")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600, fontSize: "0.95rem" }}>
                             {x.caseLink} <ArrowRight size={16} />
                         </Link>
                     </div>
@@ -306,7 +306,7 @@ export default function ServicesEmailMarketing() {
                         <div key={s.title} style={{ textAlign: "center" }}>
                             <div style={{ width: "64px", height: "64px", borderRadius: "50%", background: "var(--bg-primary)", border: "2px solid var(--accent-secondary)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.25rem", color: "var(--accent-secondary)", position: "relative" }}>
                                 {WHAT_ICONS[i]}
-                                <span style={{ position: "absolute", top: "-8px", right: "-8px", width: "26px", height: "26px", borderRadius: "50%", background: "var(--accent-secondary)", color: "#fff", fontSize: "0.8rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>{i + 1}</span>
+                                <span style={{ position: "absolute", top: "-8px", right: "-8px", width: "26px", height: "26px", borderRadius: "50%", background: "var(--accent-text)", color: "#fff", fontSize: "0.8rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>{i + 1}</span>
                             </div>
                             <h3 style={{ fontSize: "1.1rem", marginBottom: "0.5rem" }}>{s.title}</h3>
                             <p style={{ color: "var(--text-secondary)", fontSize: "0.92rem", lineHeight: 1.6, maxWidth: "240px", margin: "0 auto" }}>{s.line}</p>
@@ -336,20 +336,20 @@ export default function ServicesEmailMarketing() {
                     <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.proofTitle}</h2>
                 </div>
                 <Link to={to("/case-study-email")} className="card hover-lift" style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                    <p className="text-gradient-accent" style={{ fontSize: "0.85rem", fontWeight: 700, margin: 0 }}>{t.proofEyebrow}</p>
+                    <p style={{ fontSize: "0.85rem", fontWeight: 700, margin: 0, color: "var(--accent-text)" }}>{t.proofEyebrow}</p>
                     <h3 style={{ margin: 0 }}>{t.proofCardTitle}</h3>
                     <p style={{ color: "var(--text-secondary)", lineHeight: 1.7, margin: "0.25rem 0 0" }}>
                         {t.proofCardText}
                     </p>
-                    <span style={{ marginTop: "0.75rem", display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.9rem" }}>
+                    <span style={{ marginTop: "0.75rem", display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600, fontSize: "0.9rem" }}>
                         {t.proofCardLink} <ArrowRight size={16} />
                     </span>
                 </Link>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: "1.5rem 0 0" }}>
-                    {t.proofParaPre}<Link to={to("/case-study-email")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.proofParaLink}</Link>{t.proofParaPost}
+                    {t.proofParaPre}<Link to={to("/case-study-email")} style={{ color: "var(--accent-text)", fontWeight: 600 }}>{t.proofParaLink}</Link>{t.proofParaPost}
                 </p>
                 <p style={{ margin: "1rem 0 0" }}>
-                    <Link to={to("/blog/klaviyo-flows-vs-campaigns")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
+                    <Link to={to("/blog/klaviyo-flows-vs-campaigns")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600 }}>
                         {t.blogLink} <ArrowRight size={16} />
                     </Link>
                 </p>
@@ -364,7 +364,7 @@ export default function ServicesEmailMarketing() {
                     {t.pricingText}
                 </p>
                 <p style={{ margin: "1.25rem 0 0" }}>
-                    <Link to={to("/pricing")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
+                    <Link to={to("/pricing")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600 }}>
                         {t.pricingLink} <ArrowRight size={16} />
                     </Link>
                 </p>

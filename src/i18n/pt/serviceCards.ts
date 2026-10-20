@@ -11,25 +11,25 @@ const pt: typeof en = {
     cards: [
         {
             title: "Visibilidade na pesquisa com IA (AEO)",
-            line: "TODO-PT",
+            line: "A sua marca encontrada no Google e recomendada pelo ChatGPT, pelo Perplexity e pela Vista geral de IA da Google.",
             price: "Proposta por escrito",
             alt: "",
         },
         {
             title: "Email marketing e automação",
-            line: "Tem uma lista de clientes a quem nunca envia emails. Transformo-a num canal que vende enquanto dorme.",
+            line: "Fluxos e campanhas que transformam a sua lista de clientes em receita constante.",
             price: "Proposta por escrito",
             alt: "Sistema de email de ciclo de vida",
         },
         {
             title: "Anúncios pagos",
-            line: "Anúncios que se pagam a si próprios, com cada cêntimo investido medido face ao que traz de volta.",
+            line: "Google, Meta e Microsoft Ads, medidos face ao seu ROAS de equilíbrio.",
             price: "Proposta por escrito",
             alt: "",
         },
         {
             title: "Estratégia e construção de sites",
-            line: "TODO-PT",
+            line: "Sites em Shopify e WordPress feitos para vender e para serem encontrados.",
             price: "",
             alt: "O site da The Bodysurf School no computador e no telemóvel, com a página para empresas e o carrinho de reservas",
         },
@@ -43,7 +43,7 @@ const pt: typeof en = {
         sponsored: "Patrocinado",
         shopNow: "Comprar",
     },
-    also: "TODO-PT",
+    also: "E ainda: estratégia de crescimento, direção criativa e fotografia de produto, fluxos de trabalho com IA, migrações de plataforma.",
 };
 
 export default pt;

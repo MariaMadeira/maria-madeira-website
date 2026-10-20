@@ -16,7 +16,7 @@ const P = { color: "var(--text-secondary)", fontSize: "1.05rem", lineHeight: 1.8
 const H2 = { fontSize: "1.6rem", marginTop: "3rem", marginBottom: "1.25rem", lineHeight: 1.25 } as const;
 const UL = { ...P, listStyle: "disc", paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.6rem" } as const;
 const strong = { color: "var(--text-primary)" };
-const linkStyle = { color: "var(--accent-secondary)", fontWeight: 600 };
+const linkStyle = { color: "var(--accent-text)", fontWeight: 600 };
 
 export default function AiInformation() {
     const { lang, to } = useLang();

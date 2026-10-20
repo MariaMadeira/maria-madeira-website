@@ -49,7 +49,7 @@ export default function CaseStudyEmail() {
                         alignItems: "center",
                         gap: "0.4rem",
                         fontSize: "0.95rem",
-                        color: "var(--accent-secondary)",
+                        color: "var(--accent-text)",
                         marginBottom: "2.5rem",
                         fontWeight: 500,
                     }}
@@ -63,7 +63,7 @@ export default function CaseStudyEmail() {
                         style={{
                             fontSize: "0.85rem",
                             fontWeight: 600,
-                            color: "var(--accent-secondary)",
+                            color: "var(--accent-text)",
                             textTransform: "uppercase",
                             letterSpacing: "0.08em",
                             marginBottom: "0.75rem",
@@ -119,7 +119,7 @@ export default function CaseStudyEmail() {
                         style={{
                             fontSize: "0.85rem",
                             fontWeight: 600,
-                            color: "var(--accent-secondary)",
+                            color: "var(--accent-text)",
                             textTransform: "uppercase",
                             letterSpacing: "0.08em",
                             marginBottom: "0.75rem",
@@ -176,7 +176,7 @@ export default function CaseStudyEmail() {
                         </p>
                     </div>
                     <p style={{ margin: "1.5rem 0 0" }}>
-                        <Link to={to("/blog/klaviyo-flows-vs-campaigns")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600 }}>
+                        <Link to={to("/blog/klaviyo-flows-vs-campaigns")} style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600 }}>
                             {c.articleLink} <ArrowRight size={16} />
                         </Link>
                     </p>

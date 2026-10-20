@@ -12,7 +12,7 @@ const en = {
     imgAlt: "Maria Madeira talking with a client on a video call",
     steps: [
         { title: "Audit", desc: "I start by mapping your current funnel, channels, and data, identifying the biggest gaps and highest-leverage opportunities." },
-        { title: "Strategy", desc: "A tailored growth plan is built around your goals: which channels to prioritise, what to automate, and how to sequence execution." },
+        { title: "Strategy", desc: "A plan built around your goals: which channels first, what to automate, and in what order." },
         { title: "Execute", desc: "Campaigns go live, systems are built, and performance is monitored weekly, with ongoing optimisation to compound results over time." },
     ],
     testimonial: {

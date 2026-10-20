@@ -103,7 +103,7 @@ function HealthCheck() {
             {/* Progress */}
             {step >= 0 && step < c.questions.length && (
                 <div style={{ marginBottom: "2rem" }}>
-                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>
+                    <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-text)", marginBottom: "0.75rem" }}>
                         {c.questionOf[0]}{step + 1}{c.questionOf[1]}{c.questions.length}
                     </p>
                     <div style={{ display: "flex", gap: "0.4rem" }}>
@@ -189,7 +189,7 @@ function HealthCheck() {
                 const tier = c.tiers[tierIndex(total)];
                 return (
                     <div key="result" className="animate-fade-in" style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-                        <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-secondary)", marginBottom: "0.75rem" }}>
+                        <p style={{ fontSize: "0.8rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent-text)", marginBottom: "0.75rem" }}>
                             {site === c.defaultSite ? c.yourResult : `${c.quickReadOn}${site}`}
                         </p>
                         <h3 style={{ fontSize: "1.9rem", lineHeight: 1.2, marginBottom: "1rem" }}>
@@ -248,7 +248,7 @@ export default function ServicesWebsites() {
 
             {/* Hero */}
             <section style={{ textAlign: "center", maxWidth: "760px", margin: "0 auto 5rem" }}>
-                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
+                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.85rem", color: "var(--accent-text)", fontWeight: 600, marginBottom: "1rem" }}>
                     {t.eyebrow}
                 </p>
                 <h1 className="section-title" style={{ marginBottom: "1.5rem" }}>
@@ -272,7 +272,7 @@ export default function ServicesWebsites() {
                         <div key={s.title} style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
                             <div style={{ width: "68px", height: "68px", borderRadius: "50%", background: "var(--bg-primary)", border: "2px solid var(--accent-secondary)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.25rem", color: "var(--accent-secondary)", position: "relative" }}>
                                 {s.icon}
-                                <span style={{ position: "absolute", top: "-8px", right: "-8px", width: "26px", height: "26px", borderRadius: "50%", background: "var(--accent-secondary)", color: "#fff", fontSize: "0.8rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                <span style={{ position: "absolute", top: "-8px", right: "-8px", width: "26px", height: "26px", borderRadius: "50%", background: "var(--accent-text)", color: "#fff", fontSize: "0.8rem", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>
                                     {i + 1}
                                 </span>
                             </div>
@@ -304,14 +304,14 @@ export default function ServicesWebsites() {
                             <div className="ws-proof-result" style={{ background: "var(--accent-glow)", borderRadius: "10px", padding: "0.85rem 1rem", borderLeft: "3px solid var(--accent-secondary)" }}>
                                 <p style={{ fontSize: "0.9rem", color: "var(--text-primary)", fontWeight: 600, margin: 0 }}>{p.result}</p>
                             </div>
-                            <span style={{ marginTop: "auto", paddingTop: "1.25rem", display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-secondary)", fontWeight: 600, fontSize: "0.9rem" }}>
+                            <span style={{ marginTop: "auto", paddingTop: "1.25rem", display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600, fontSize: "0.9rem" }}>
                                 {t.viewProject} <ArrowRight size={16} />
                             </span>
                         </Link>
                     ))}
                 </div>
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: "2rem auto 0", maxWidth: "680px", textAlign: "center" }}>
-                    {t.proofNote[0]}<Link to={to("/case-study-bodysurf-school")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.proofNote[1]}</Link>{t.proofNote[2]}<Link to={to("/portfolio")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.proofNote[3]}</Link>{t.proofNote[4]}
+                    {t.proofNote[0]}<Link to={to("/case-study-bodysurf-school")} style={{ color: "var(--accent-text)", fontWeight: 600 }}>{t.proofNote[1]}</Link>{t.proofNote[2]}<Link to={to("/portfolio")} style={{ color: "var(--accent-text)", fontWeight: 600 }}>{t.proofNote[3]}</Link>{t.proofNote[4]}
                 </p>
             </section>
 

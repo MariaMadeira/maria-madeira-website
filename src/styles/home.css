@@ -595,7 +595,7 @@
 .thumb-chat-q {
   align-self: flex-end;
   max-width: 85%;
-  background: var(--accent-secondary);
+  background: var(--accent-text);
   color: #fff;
   font-size: 0.72rem;
   line-height: 1.35;

@@ -40,7 +40,6 @@ const pt: typeof en = {
     winsClicks: [
         { name: "Pork Belly Slices", before: 6, after: 34, badge: "+467%" },
         { name: "Bacon Rind On Unsmoked Middle", before: 12, after: 34, badge: "+183%" },
-        { name: "Gluten-Free Kebabs", before: null, after: null, badge: "+229%" },
     ],
     winsPositionTitle: "Mais acima no Google",
     winsPosition: [
@@ -50,7 +49,6 @@ const pt: typeof en = {
     positionAverage: "posição média",
     winsTopTitle: "Página de topo",
     winsTop: { name: "Página de receita: Oven-baked lamb steaks", value: "762 cliques em 28 dias", badge: "posição média 6,1" },
-    missingData: "TODO-DATA",
     checkTitle: "Cada alteração, verificada aos 30 dias",
     checkSubline: "117 páginas reavaliadas com os dados do Search Console",
     outcomes: ["melhoraram", "estáveis ou com resultados mistos", "desceram, cada uma com a causa identificada"],

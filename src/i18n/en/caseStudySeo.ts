@@ -30,13 +30,12 @@ const en = {
         { before: null as string | null, after: "78%", badge: null as string | null, label: "of clicks from non-branded searches, new customers rather than existing ones" },
     ],
     winsTitle: "Biggest wins, page by page",
-    /* Clicks: before and after on one scale per block. Kebabs has no
-       before/after figures in the repo yet, only its badge (TODO-DATA). */
+    /* Clicks: before and after on one scale per block. Gluten-Free Kebabs
+       (+229%) returns once its before and after figures are supplied. */
     winsClicksTitle: "More clicks",
     winsClicks: [
         { name: "Pork Belly Slices", before: 6 as number | null, after: 34 as number | null, badge: "+467%" },
         { name: "Bacon Rind On Unsmoked Middle", before: 12 as number | null, after: 34 as number | null, badge: "+183%" },
-        { name: "Gluten-Free Kebabs", before: null as number | null, after: null as number | null, badge: "+229%" },
     ],
     winsPositionTitle: "Higher in Google",
     winsPosition: [
@@ -46,7 +45,6 @@ const en = {
     positionAverage: "average position",
     winsTopTitle: "Top page",
     winsTop: { name: "Oven-baked lamb steaks recipe", value: "762 clicks in 28 days", badge: "average position 6.1" },
-    missingData: "TODO-DATA",
     checkTitle: "Every change, checked at 30 days",
     checkSubline: "117 pages re-evaluated against Search Console",
     /* The legend under the outcomes bar, in the bar's order. */

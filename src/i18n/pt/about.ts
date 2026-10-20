@@ -30,21 +30,24 @@ const pt: typeof en = {
     imgAlt: "Maria Madeira junto a uma janela, com um caderno na mão",
     eyebrow: "Sobre",
     h1Lead: "Olá, sou a ",
-    paragraphs: ["TODO-PT", "TODO-PT"],
+    paragraphs: [
+        "Consultora de crescimento para marcas que vendem online. Klaviyo Partner, a trabalhar a partir de Lisboa.",
+        "Durante cinco anos trabalhei com Wilfred Emmanuel-Jones no negócio online da The Black Farmer: email, e-commerce, anúncios, SEO, criativos e o lançamento da app. Hoje faço o mesmo trabalho, de forma independente, para marcas no Reino Unido e em Portugal.",
+    ],
     /* The quote stays in English, word for word, as on the homepage. */
     quote: "I could give her something that was little more than an idea in my head and she would go away, work it out and come back with something real. [...] She built our email marketing, worked on our e-commerce, creative, advertising and SEO, helped us launch our app and later became one of the people pushing us to understand and use AI properly within the business.",
     quoteAuthor: "Wilfred Emmanuel-Jones, Fundador, The Black Farmer",
     quoteNote: "(recomendação original em inglês)",
-    timelineTitle: "TODO-PT",
+    timelineTitle: "Como cheguei aqui",
     timeline: [
         { year: "2012", label: "Licenciatura em Design de Moda e Têxtil, IPCB" },
         { year: "2019", label: "Pós-graduação em Jornalismo, ESCS Lisboa" },
         { year: "2021", label: "Certified Digital Marketing Professional (DMI)" },
-        { year: "TODO-PT", label: "TODO-PT" },
+        { year: "2021 a 2026", label: "The Black Farmer: email, e-commerce, anúncios, SEO, app" },
         { year: "2025", label: "Pós-graduação em IA para o Design, IADE Lisboa" },
-        { year: "2026", label: "TODO-PT" },
+        { year: "2026", label: "Certificados Klaviyo Practitioner e Sales · Consultoria independente" },
     ],
-    toolGroups: ["TODO-PT", "TODO-PT", "TODO-PT"],
+    toolGroups: ["Email e e-commerce", "Anúncios e análise", "SEO e IA"],
     toolsTitle: "Ferramentas e plataformas",
     credentialsTitle: "Credenciais",
     credentialsIntro: "As certificações e a formação por trás do trabalho que faço para os clientes.",
@@ -57,7 +60,7 @@ const pt: typeof en = {
     })),
     verify: "Verificar credencial",
     cta: "Vamos trabalhar juntos",
-    ctaTitle: "TODO-PT",
+    ctaTitle: "Vamos ver por onde começar?",
     /* As on /pt/servicos. */
     ctaLine: "Uma conversa gratuita de 30 minutos. Sem compromisso.",
 };

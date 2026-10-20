@@ -96,7 +96,7 @@ const en = {
         { q: "How much does AEO consulting cost?", a: "An AEO audit starts from £750 and ongoing AEO work from £800 a month. The final price depends on the size of the site, how many pages and products need work, and whether implementation is included." },
     ],
     ctaTitle: "Become the answer AI recommends",
-    ctaText: "Book a free call and I'll map where AI search sees you today, and how to become the cited default in your category.",
+    ctaText: "A free call to see where AI search places you today.",
 };
 
 export default en;

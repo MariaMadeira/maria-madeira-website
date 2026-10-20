@@ -107,7 +107,7 @@ export default function CaseStudies() {
                             border: "1px solid var(--border-color)",
                             borderLeft: "4px solid var(--accent-secondary)"
                         }}>
-                            <p style={{ fontWeight: 600, color: "var(--accent-secondary)", margin: 0 }}>{study.results}</p>
+                            <p style={{ fontWeight: 600, color: "var(--accent-text)", margin: 0 }}>{study.results}</p>
                         </div>
 
                         {study.link ? (

@@ -49,7 +49,7 @@ export default function PortfolioClickCollect() {
                         alignItems: "center",
                         gap: "0.5rem",
                         fontSize: "0.9rem",
-                        color: "var(--accent-secondary)",
+                        color: "var(--accent-text)",
                         marginBottom: "3rem",
                         fontWeight: 500,
                         fontFamily: "var(--font-heading)"
@@ -358,7 +358,7 @@ export default function PortfolioClickCollect() {
                                     fontSize: "0.85rem",
                                     fontFamily: "var(--font-heading)",
                                     fontWeight: 600,
-                                    color: "var(--accent-secondary)",
+                                    color: "var(--accent-text)",
                                     textDecoration: "none"
                                 }}
                             >

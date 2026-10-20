@@ -33,7 +33,7 @@ const en = {
             title: "An unused email list became a revenue channel",
             category: "Email Marketing",
             problem: "Email channel underutilised with limited lifecycle automation.",
-            results: "£134K attributed revenue · +88.9% YoY over the last 12 months",
+            results: "£134K attributed revenue · +88.9% year on year, 12 months to July 2025",
         },
         {
             title: "A shop losing sales to queues, fixed with a mobile pre-order system",

@@ -67,7 +67,7 @@ const ARTICLE_JSON_LD = { en: articleJsonLd("en"), pt: articleJsonLd("pt") };
 const P = { color: "var(--text-secondary)", fontSize: "1.05rem", lineHeight: 1.85, marginBottom: "1.25rem" } as const;
 const H2 = { fontSize: "1.6rem", marginTop: "3rem", marginBottom: "1.25rem", lineHeight: 1.25 } as const;
 const strong = { color: "var(--text-primary)" };
-const linkStyle = { color: "var(--accent-secondary)", fontWeight: 600 };
+const linkStyle = { color: "var(--accent-text)", fontWeight: 600 };
 // Shared "liftable block" callout: the definition and the five-question test
 // both use this so the article's two quotable blocks read as one pattern.
 const calloutBox = { background: "var(--accent-glow)", border: "1px solid var(--border-color)", borderLeft: "4px solid var(--accent-secondary)", borderRadius: "16px", padding: "clamp(1.5rem, 4vw, 2.5rem)" } as const;
@@ -93,11 +93,11 @@ export default function BlogWhatIsAEO() {
             />
 
             <article style={{ maxWidth: "760px", margin: "0 auto" }}>
-                <Link to={to("/blog")} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", fontSize: "0.95rem", color: "var(--accent-secondary)", marginBottom: "2rem", fontWeight: 500 }}>
+                <Link to={to("/blog")} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", fontSize: "0.95rem", color: "var(--accent-text)", marginBottom: "2rem", fontWeight: 500 }}>
                     <ArrowLeft size={16} /> {t.back}
                 </Link>
 
-                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.8rem", color: "var(--accent-secondary)", fontWeight: 600, marginBottom: "1rem" }}>
+                <p style={{ textTransform: "uppercase", letterSpacing: "0.2em", fontSize: "0.8rem", color: "var(--accent-text)", fontWeight: 600, marginBottom: "1rem" }}>
                     {t.category}
                 </p>
                 <h1 className="section-title" style={{ textAlign: "left", marginBottom: "1.25rem" }}>
