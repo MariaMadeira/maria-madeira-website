@@ -133,18 +133,20 @@ const PT_JSON_LD = {
 };
 
 /* ── Logo strip ─────────────────────────────────────────── */
-/* Brand logos, monochrome in the dark brown, from /public/brand-assets/logos/.
-   AVAILABLE_LOGOS lists the files that exist: a brand renders its logo only
-   when its file is listed here, and its name as text otherwise. Today no
-   logo file exists, so every brand renders as text. */
+/* Brand logos from /public/brand-assets/logos/ (originals in design-assets/),
+   trimmed, transparent and exported at twice their display height. Each logo
+   has its own display height so they read at the same visual size: the
+   one-line Smorgasbord wordmark sits lower than the stacked logos. The
+   monochrome tint is CSS (home.css), full colour on hover. A brand with no
+   file renders its name as text. */
 const LOGO_DIR = "/brand-assets/logos/";
-const AVAILABLE_LOGOS: string[] = [];
-const BRANDS = [
-    { name: "The Black Farmer", file: "the-black-farmer.svg" },
-    { name: "Smorgasbord", file: "smorgasbord.svg" },
-    { name: "Ousadia", file: "ousadia.svg" },
-    { name: "Wiltshire Country Fayre", file: "wiltshire-country-fayre.svg" },
-    { name: "Rita Antunes", file: "rita-antunes.svg" },
+const BRANDS: { name: string; file: string | null; width: number; height: number }[] = [
+    { name: "The Black Farmer", file: "the-black-farmer.webp", width: 81, height: 44 },
+    { name: "The Bodysurf School", file: "the-bodysurf-school.webp", width: 40, height: 48 },
+    { name: "Wiltshire Country Fayre", file: "wiltshire-country-fayre.webp", width: 101, height: 44 },
+    { name: "Smorgasbord", file: "smorgasbord.webp", width: 146, height: 24 },
+    { name: "Ousadia", file: "ousadia.svg", width: 91, height: 44 },
+    { name: "Rita Antunes", file: "rita-antunes.webp", width: 74, height: 44 },
 ];
 
 /* ── Testimonials ───────────────────────────────────────── */
@@ -452,8 +454,8 @@ export default function Home() {
                 <ul className="logo-strip-row">
                     {BRANDS.map((b) => (
                         <li key={b.name}>
-                            {AVAILABLE_LOGOS.includes(b.file) ? (
-                                <img src={LOGO_DIR + b.file} alt={b.name} height={32} loading="lazy" decoding="async" />
+                            {b.file ? (
+                                <img src={LOGO_DIR + b.file} alt={b.name} width={b.width} height={b.height} loading="lazy" decoding="async" />
                             ) : (
                                 <span className="logo-strip-name">{b.name}</span>
                             )}

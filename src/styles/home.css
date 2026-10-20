@@ -54,14 +54,24 @@
   margin: 0;
 }
 .logo-strip-row li {
-  height: 32px;
+  height: 48px;
   display: flex;
   align-items: center;
 }
+/* One treatment for every logo: grey, tinted toward the dark brown text
+   colour, slightly faded; full colour on hover where there is a mouse. */
 .logo-strip-row img {
-  height: 32px;
-  width: auto;
   display: block;
+  width: auto;
+  filter: grayscale(1) sepia(0.5) brightness(0.45) contrast(2);
+  opacity: 0.75;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .logo-strip-row img:hover {
+    filter: none;
+    opacity: 1;
+  }
 }
 .logo-strip-name {
   font-family: var(--font-heading);
