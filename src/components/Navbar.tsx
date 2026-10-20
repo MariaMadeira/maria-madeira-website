@@ -1,22 +1,26 @@
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import type { FocusEvent, KeyboardEvent } from "react";
+import type { FocusEvent, KeyboardEvent, MouseEvent, PointerEvent } from "react";
 import { createPortal } from "react-dom";
 import { PAID_ADS_SERVICE } from "../lib/links";
 import { langOf, switchTarget, ptLink, type Lang } from "../lib/i18n";
 
 /**
- * Services submenu. The desktop list is always in the markup, hidden with
- * visibility rather than unmounted, so the links are in the prerendered HTML
- * and crawlable; visibility also keeps them out of the tab order while closed.
+ * Services submenu. "Services" is a button, not a link: hover opens the menu
+ * for a mouse, a tap toggles it on touch, and Enter, Space or Arrow Down open
+ * it from the keyboard and move focus to its first item ("All services").
+ * Escape closes it and returns focus to the button. The desktop list is
+ * always in the markup, hidden with visibility rather than unmounted, so the
+ * links are in the prerendered HTML and crawlable; visibility also keeps them
+ * out of the tab order while closed.
  */
 /* Navbar copy per language, with English paths throughout. On /pt pages each
    path goes through ptLink, so it reaches the Portuguese page once that page
    is live and the English one until then, with no marker. */
 const COPY: Record<Lang, {
     home: string; homePath: string; links: { name: string; path: string }[];
-    services: { name: string; path: string }[]; allServices: string; servicesMenu: string;
+    services: { name: string; path: string }[]; allServices: string;
     cta: string; ctaPath: string; toggle: string;
 }> = {
     en: {
@@ -37,8 +41,7 @@ const COPY: Record<Lang, {
             { name: "Websites", path: "/services/websites" },
         ],
         allServices: "All services",
-        servicesMenu: "Services menu",
-        cta: "Book a Free Strategy Call",
+        cta: "Book a free call",
         ctaPath: "/contact",
         toggle: "Toggle navigation menu",
     },
@@ -60,7 +63,6 @@ const COPY: Record<Lang, {
             { name: "Sites", path: "/services/websites" },
         ],
         allServices: "Todos os serviços",
-        servicesMenu: "Menu de serviços",
         cta: "Marcar uma conversa gratuita",
         ctaPath: "/pt/contacto",
         toggle: "Abrir ou fechar o menu",
@@ -75,7 +77,7 @@ function LangSwitch({ lang, path, onNavigate }: { lang: Lang; path: string; onNa
         code === lang ? (
             <span aria-current="true" style={{ fontWeight: 700, color: "var(--text-primary)" }}>{label}</span>
         ) : (
-            <Link to={target} hrefLang={code === "pt" ? "pt-PT" : "en-GB"} lang={code === "pt" ? "pt-PT" : "en-GB"} aria-label={name} onClick={onNavigate} className="lang-switch-link">{label}</Link>
+            <Link to={target} hrefLang={code === "pt" ? "pt-PT" : "en-GB"} lang={code === "pt" ? "pt-PT" : "en-GB"} aria-label={`${label}, ${name}`} onClick={onNavigate} className="lang-switch-link">{label}</Link>
         );
     return (
         <span className="lang-switch">
@@ -102,6 +104,15 @@ export default function Navbar() {
     const [servicesOpen, setServicesOpen] = useState(false);
     const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
     const servicesToggle = useRef<HTMLButtonElement>(null);
+    const servicesBox = useRef<HTMLDivElement>(null);
+    const servicesMenu = useRef<HTMLUListElement>(null);
+    const mobileServicesToggle = useRef<HTMLButtonElement>(null);
+    const mobileServicesMenu = useRef<HTMLUListElement>(null);
+    // The pointer type of the press that leads to the next click, and whether
+    // the menu that opens next should take focus (keyboard opening only).
+    const pressType = useRef<string | null>(null);
+    const focusDesktopMenu = useRef(false);
+    const focusMobileMenu = useRef(false);
     const location = useLocation();
 
     useEffect(() => {
@@ -115,6 +126,31 @@ export default function Navbar() {
         document.body.style.overflow = isOpen ? 'hidden' : '';
         return () => { document.body.style.overflow = ''; };
     }, [isOpen]);
+
+    // A keyboard-opened menu hands focus to its first item once it is visible.
+    useEffect(() => {
+        if (servicesOpen && focusDesktopMenu.current) {
+            focusDesktopMenu.current = false;
+            servicesMenu.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+        }
+    }, [servicesOpen]);
+    useEffect(() => {
+        if (mobileServicesOpen && focusMobileMenu.current) {
+            focusMobileMenu.current = false;
+            mobileServicesMenu.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+        }
+    }, [mobileServicesOpen]);
+
+    // A tap or click outside the open desktop menu closes it (touch has no
+    // pointer leave to do that).
+    useEffect(() => {
+        if (!servicesOpen) return;
+        const onDown = (e: Event) => {
+            if (!servicesBox.current?.contains(e.target as Node)) setServicesOpen(false);
+        };
+        document.addEventListener("pointerdown", onDown);
+        return () => document.removeEventListener("pointerdown", onDown);
+    }, [servicesOpen]);
 
     // Close menus on route change, adjusting state during render rather than
     // in an effect so the closed menu paints with the new page.
@@ -130,18 +166,74 @@ export default function Navbar() {
     const t = COPY[lang];
     const localize = (path: string) => (lang === "pt" ? ptLink(path).to : path);
     const links = t.links.map((l) => ({ ...l, path: localize(l.path) }));
-    const SERVICE_MENU = t.services.map((l) => ({ ...l, path: localize(l.path) }));
     const allServicesPath = localize("/services");
+    // "All services" leads the submenu, then each service.
+    const SERVICE_MENU = [
+        { name: t.allServices, path: allServicesPath },
+        ...t.services.map((l) => ({ ...l, path: localize(l.path) })),
+    ];
 
     const isServices = location.pathname === "/services" || location.pathname.startsWith("/services/") || location.pathname === "/pt/servicos" || location.pathname.startsWith("/pt/servicos/");
 
-    // Esc closes the submenu and hands focus back to its toggle.
-    const onServicesKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Escape" && servicesOpen) {
-            setServicesOpen(false);
-            servicesToggle.current?.focus();
+    // Hover opens and closes the desktop menu for a mouse only; a touch tap
+    // also fires pointer enter, and must not open the menu it then toggles.
+    const onServicesEnter = (e: PointerEvent) => { if (e.pointerType === "mouse") setServicesOpen(true); };
+    const onServicesLeave = (e: PointerEvent) => { if (e.pointerType === "mouse") setServicesOpen(false); };
+
+    // Mouse: hover has already opened the menu, so a click keeps it open.
+    // Touch or pen: a tap toggles it. Keyboard (detail 0): Enter or Space
+    // toggles it, and opening moves focus to the first item.
+    const onServicesClick = (e: MouseEvent) => {
+        const type = pressType.current;
+        pressType.current = null;
+        if (e.detail === 0) {
+            if (!servicesOpen) focusDesktopMenu.current = true;
+            setServicesOpen(!servicesOpen);
+        } else if (type === "mouse") {
+            setServicesOpen(true);
+        } else {
+            setServicesOpen((open) => !open);
         }
     };
+
+    // Arrow keys move through the items; Escape closes and returns focus.
+    const menuKeys = (
+        e: KeyboardEvent,
+        open: boolean,
+        setOpen: (v: boolean) => void,
+        toggle: HTMLButtonElement | null,
+        menu: HTMLUListElement | null,
+        focusFlag: { current: boolean },
+    ) => {
+        if (e.key === "Escape" && open) {
+            e.preventDefault();
+            setOpen(false);
+            toggle?.focus();
+            return;
+        }
+        if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+        if (!open) {
+            if (e.target === toggle && e.key === "ArrowDown") {
+                e.preventDefault();
+                focusFlag.current = true;
+                setOpen(true);
+            }
+            return;
+        }
+        const items = Array.from(menu?.querySelectorAll<HTMLAnchorElement>("a") ?? []);
+        if (!items.length) return;
+        e.preventDefault();
+        const i = items.indexOf(document.activeElement as HTMLAnchorElement);
+        const next = e.key === "ArrowDown"
+            ? (i + 1) % items.length
+            : i <= 0 ? items.length - 1 : i - 1;
+        items[next].focus();
+    };
+
+    const onServicesKeyDown = (e: KeyboardEvent) =>
+        menuKeys(e, servicesOpen, setServicesOpen, servicesToggle.current, servicesMenu.current, focusDesktopMenu);
+    const onMobileServicesKeyDown = (e: KeyboardEvent) =>
+        menuKeys(e, mobileServicesOpen, setMobileServicesOpen, mobileServicesToggle.current, mobileServicesMenu.current, focusMobileMenu);
 
     // Tabbing out of the submenu closes it.
     const onServicesBlur = (e: FocusEvent<HTMLDivElement>) => {
@@ -163,41 +255,36 @@ export default function Navbar() {
                         {links.map((link) => link.path === allServicesPath ? (
                             <div
                                 key={link.path}
+                                ref={servicesBox}
                                 className="nav-dropdown"
-                                onMouseEnter={() => setServicesOpen(true)}
-                                onMouseLeave={() => setServicesOpen(false)}
+                                onPointerEnter={onServicesEnter}
+                                onPointerLeave={onServicesLeave}
                                 onKeyDown={onServicesKeyDown}
                                 onBlur={onServicesBlur}
                             >
-                                <Link
-                                    to={link.path}
-                                    className={`nav-link ${isServices ? "active" : ""}`}
-                                    style={{ fontSize: '0.9rem', fontWeight: 500 }}
-                                    aria-current={location.pathname === link.path ? "page" : undefined}
-                                >
-                                    {link.name}
-                                </Link>
                                 <button
                                     ref={servicesToggle}
                                     type="button"
-                                    className="nav-dropdown-toggle"
+                                    className="nav-dropdown-trigger"
                                     aria-expanded={servicesOpen}
                                     aria-controls="services-menu"
-                                    aria-label={t.servicesMenu}
-                                    // A pointer click lands after hover has already opened the
-                                    // menu, so it only opens; Enter and Space (detail 0) toggle.
-                                    onClick={(e) => setServicesOpen((open) => (e.detail > 0 ? true : !open))}
+                                    onPointerDown={(e) => { pressType.current = e.pointerType; }}
+                                    onClick={onServicesClick}
                                 >
+                                    <span className={`nav-link ${isServices ? "active" : ""}`} style={{ fontSize: '0.9rem', fontWeight: 500 }}>
+                                        {link.name}
+                                    </span>
                                     <ChevronDown size={14} aria-hidden="true" />
                                 </button>
                                 <div id="services-menu" className={`nav-dropdown-menu ${servicesOpen ? "open" : ""}`}>
-                                    <ul>
-                                        {[...SERVICE_MENU, { name: t.allServices, path: allServicesPath }].map((item) => (
+                                    <ul ref={servicesMenu}>
+                                        {SERVICE_MENU.map((item) => (
                                             <li key={item.path} className={item.path === allServicesPath ? "nav-dropdown-all" : undefined}>
                                                 <Link
                                                     to={item.path}
                                                     className={`nav-dropdown-link ${location.pathname === item.path ? "active" : ""}`}
                                                     aria-current={location.pathname === item.path ? "page" : undefined}
+                                                    onClick={() => setServicesOpen(false)}
                                                 >
                                                     {item.name}
                                                 </Link>
@@ -271,29 +358,24 @@ export default function Navbar() {
                         {t.home}
                     </Link>
                     {links.map((link) => link.path === allServicesPath ? (
-                        <div key={link.path} style={{ borderBottom: '1px solid var(--border-color)' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                <Link
-                                    to={link.path}
-                                    onClick={() => setIsOpen(false)}
-                                    style={{ ...MOBILE_LINK_STYLE, flex: 1, color: isServices ? 'var(--accent-secondary)' : 'var(--text-primary)' }}
-                                    aria-current={location.pathname === link.path ? 'page' : undefined}
-                                >
-                                    {link.name}
-                                </Link>
-                                <button
-                                    type="button"
-                                    className="mobile-accordion-toggle"
-                                    aria-expanded={mobileServicesOpen}
-                                    aria-controls="mobile-services-menu"
-                                    aria-label={t.servicesMenu}
-                                    onClick={() => setMobileServicesOpen((open) => !open)}
-                                >
-                                    <ChevronDown size={22} aria-hidden="true" />
-                                </button>
-                            </div>
-                            <ul id="mobile-services-menu" hidden={!mobileServicesOpen} className="mobile-submenu">
-                                {[...SERVICE_MENU, { name: t.allServices, path: allServicesPath }].map((item) => (
+                        <div key={link.path} style={{ borderBottom: '1px solid var(--border-color)' }} onKeyDown={onMobileServicesKeyDown}>
+                            <button
+                                ref={mobileServicesToggle}
+                                type="button"
+                                className="mobile-accordion-toggle"
+                                aria-expanded={mobileServicesOpen}
+                                aria-controls="mobile-services-menu"
+                                onClick={(e) => {
+                                    if (e.detail === 0 && !mobileServicesOpen) focusMobileMenu.current = true;
+                                    setMobileServicesOpen((open) => !open);
+                                }}
+                                style={{ ...MOBILE_LINK_STYLE, display: 'flex', color: isServices ? 'var(--accent-secondary)' : 'var(--text-primary)' }}
+                            >
+                                <span>{link.name}</span>
+                                <ChevronDown size={22} aria-hidden="true" />
+                            </button>
+                            <ul id="mobile-services-menu" ref={mobileServicesMenu} hidden={!mobileServicesOpen} className="mobile-submenu">
+                                {SERVICE_MENU.map((item) => (
                                     <li key={item.path}>
                                         <Link
                                             to={item.path}

@@ -37,7 +37,7 @@ const en = {
     relatedService: "Website strategy and build",
     relatedWork: "Rita Antunes: brand identity",
     ctaText: "Need a bold identity for your creative venture?",
-    ctaPrimary: "Start a Project",
+    ctaPrimary: "Book a free call",
     ctaSecondary: "View All Work",
 };
 

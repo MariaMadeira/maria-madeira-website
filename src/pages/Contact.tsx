@@ -1,33 +1,42 @@
-import { Mail, Linkedin, Send, CheckCircle, Clock } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Mail, Linkedin, Send, CheckCircle } from "lucide-react";
+import { useState, useSyncExternalStore } from "react";
 import { useLocation } from "react-router-dom";
 import Seo from "../components/Seo";
 
 /* Enquiry presets reachable as /contact?topic=<key>. Anything else, including no
    parameter at all, leaves the page exactly as it was. */
-const TOPICS: Record<string, { subject: string; intro: string; message: string; h1Lead: string; h1Accent: string; submitLabel: string }> = {
+const TOPICS: Record<string, { subject: string; intro: string; message: string; h1: string; submitLabel: string; need: string }> = {
     "ai-search-check": {
         subject: "AI search check",
         intro: "AI search check: tell me your brand and website, and I'll get back to you with a short note.",
         message: "Brand:\nWebsite:\n",
-        h1Lead: "Request Your ",
-        h1Accent: "AI Search Check",
-        submitLabel: "Request my AI search check",
+        h1: "Free AI search check",
+        submitLabel: "Request my check",
+        need: "AI search and SEO",
     },
 };
+
+/* Options of the "What do you need help with?" select. Each value is the label
+   itself, so the enquiry email reads in plain words. */
+const NEEDS = ["AI search and SEO", "Email and Klaviyo", "Paid ads", "Website", "Not sure yet"];
+
+const FIELD = { padding: "14px", background: "var(--bg-primary)", border: "1px solid var(--border-color)", borderRadius: "10px", color: "var(--text-primary)", fontSize: "1rem" } as const;
+const LABEL = { fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", textTransform: "uppercase" } as const;
+const OPTIONAL = { fontWeight: 500, textTransform: "none" } as const;
+
+const subscribeNever = () => () => {};
 
 export default function Contact() {
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
     const [errorMessage, setErrorMessage] = useState("");
 
-    /* The prerendered /contact HTML is the no-topic state, so the query string is
-       read only after mount. Reading it during render would make the first client
-       render disagree with that HTML and introduce a hydration mismatch. */
+    /* The prerendered /contact HTML is the no-topic state. During hydration React
+       uses the server snapshot (false), so the first client render matches that
+       HTML; the query string is read from the render after. Same pattern as
+       PtContacto.tsx. */
     const { search } = useLocation();
-    const [topicKey, setTopicKey] = useState<string | null>(null);
-    useEffect(() => {
-        setTopicKey(new URLSearchParams(search).get("topic"));
-    }, [search]);
+    const hydrated = useSyncExternalStore(subscribeNever, () => true, () => false);
+    const topicKey = hydrated ? new URLSearchParams(search).get("topic") : null;
     const preset = topicKey ? TOPICS[topicKey] ?? null : null;
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -59,7 +68,7 @@ export default function Contact() {
                 const message = formData.get("message") as string;
 
                 const subject = encodeURIComponent(preset ? preset.subject : `Website enquiry from ${name}`);
-                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nWebsite: ${formData.get("website") || "-"}\nNeeds help with: ${formData.get("need") || "-"}\n\n${message}`);
                 window.location.href = `mailto:info@mariamadeira.com?subject=${subject}&body=${body}`;
                 setStatus("success");
             }
@@ -67,7 +76,7 @@ export default function Contact() {
             // Offline / network error: fallback to mailto
             const formDataObj = Object.fromEntries(formData.entries());
             const subject = encodeURIComponent(preset ? preset.subject : `Website enquiry from ${formDataObj.name}`);
-            const body = encodeURIComponent(`Name: ${formDataObj.name}\nEmail: ${formDataObj.email}\n\n${formDataObj.message}`);
+            const body = encodeURIComponent(`Name: ${formDataObj.name}\nEmail: ${formDataObj.email}\nWebsite: ${formDataObj.website || "-"}\nNeeds help with: ${formDataObj.need || "-"}\n\n${formDataObj.message}`);
             window.location.href = `mailto:info@mariamadeira.com?subject=${subject}&body=${body}`;
             setStatus("success");
         }
@@ -81,31 +90,13 @@ export default function Contact() {
                 path="/contact"
             />
 
-            <h1 className="section-title">{preset ? preset.h1Lead : "Book a Free "}<span className="text-gradient">{preset ? preset.h1Accent : "Strategy Call"}</span></h1>
+            <h1 className="section-title">{preset ? preset.h1 : "Let's talk"}</h1>
 
             <div className="grid-2 contact-grid" style={{ maxWidth: "1100px", margin: "0 auto", gap: "4rem" }}>
                 <div className="reveal-left is-visible">
-                    <h2 style={{ fontSize: "2.5rem", marginBottom: "1.5rem" }}>Ready to scale?</h2>
-                    <p style={{ color: "var(--text-secondary)", marginBottom: "2rem", fontSize: "1.1rem", lineHeight: 1.8 }}>
-                        Whether you need a full-funnel strategy or specialized support with email and paid advertising, let's discuss how we can partner to achieve your growth objectives.
+                    <p style={{ color: "var(--text-secondary)", marginBottom: "2.5rem", fontSize: "1.1rem", lineHeight: 1.8 }}>
+                        Tell me about your brand and what isn't working. I'll reply within 24 hours, usually with a few times for a free 30-minute call.
                     </p>
-
-                    {/* Response time note */}
-                    <div style={{ 
-                        display: "flex", 
-                        alignItems: "center", 
-                        gap: "0.75rem", 
-                        padding: "1rem 1.25rem", 
-                        background: "var(--accent-glow)", 
-                        borderRadius: "12px", 
-                        marginBottom: "2.5rem",
-                        border: "1px solid var(--border-color)"
-                    }}>
-                        <Clock size={18} className="text-gradient-accent" />
-                        <span style={{ fontSize: "0.9rem", color: "var(--text-secondary)" }}>
-                            I typically respond within <strong style={{ color: "var(--text-primary)" }}>24 hours</strong>
-                        </span>
-                    </div>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
                         <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
@@ -146,31 +137,30 @@ export default function Contact() {
                                 </p>
                             )}
                             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                                <label htmlFor="name" style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", textTransform: 'uppercase' }}>Name</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    required
-                                    style={{ padding: "14px", background: "var(--bg-primary)", border: "1px solid var(--border-color)", borderRadius: "10px", color: "var(--text-primary)", fontSize: "1rem" }}
-                                    placeholder="Your name"
-                                />
+                                <label htmlFor="name" style={LABEL}>Name</label>
+                                <input type="text" id="name" name="name" required autoComplete="name" style={FIELD} placeholder="Your name" />
                             </div>
 
                             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                                <label htmlFor="email" style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", textTransform: 'uppercase' }}>Email</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    required
-                                    style={{ padding: "14px", background: "var(--bg-primary)", border: "1px solid var(--border-color)", borderRadius: "10px", color: "var(--text-primary)", fontSize: "1rem" }}
-                                    placeholder="Your email address"
-                                />
+                                <label htmlFor="email" style={LABEL}>Email</label>
+                                <input type="email" id="email" name="email" required autoComplete="email" style={FIELD} placeholder="Your email address" />
                             </div>
 
                             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                                <label htmlFor="message" style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--text-secondary)", textTransform: 'uppercase' }}>Message</label>
+                                <label htmlFor="website" style={LABEL}>Website <span style={OPTIONAL}>(optional)</span></label>
+                                <input type="text" id="website" name="website" autoComplete="url" inputMode="url" style={FIELD} />
+                            </div>
+
+                            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                                <label htmlFor="need" style={LABEL}>What do you need help with? <span style={OPTIONAL}>(optional)</span></label>
+                                <select key={topicKey ?? "default"} defaultValue={preset ? preset.need : ""} id="need" name="need" style={FIELD}>
+                                    <option value="">Optional</option>
+                                    {NEEDS.map((n) => <option key={n} value={n}>{n}</option>)}
+                                </select>
+                            </div>
+
+                            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                                <label htmlFor="message" style={LABEL}>Message</label>
                                 <textarea
                                     key={topicKey ?? "default"}
                                     defaultValue={preset ? preset.message : ""}
@@ -178,7 +168,7 @@ export default function Contact() {
                                     name="message"
                                     rows={5}
                                     required
-                                    style={{ padding: "14px", background: "var(--bg-primary)", border: "1px solid var(--border-color)", borderRadius: "10px", color: "var(--text-primary)", resize: "vertical", fontSize: "1rem" }}
+                                    style={{ ...FIELD, resize: "vertical" }}
                                     placeholder="How can I help you scale?"
                                 />
                             </div>
@@ -188,11 +178,11 @@ export default function Contact() {
                             )}
 
                             <button type="submit" className="btn btn-primary" style={{ width: "100%", marginTop: '1rem' }} disabled={status === "submitting"}>
-                                {status === "submitting" ? "Sending..." : preset ? preset.submitLabel : "Book a Free Strategy Call"} <Send size={18} style={{ marginLeft: '10px' }} />
+                                {status === "submitting" ? "Sending..." : preset ? preset.submitLabel : "Send message"} <Send size={18} style={{ marginLeft: '10px' }} />
                             </button>
 
                             <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", textAlign: "center", margin: 0 }}>
-                                I respond within 24 hours. No commitment, no pressure.
+                                No commitment, no pressure.
                             </p>
                         </form>
                     )}

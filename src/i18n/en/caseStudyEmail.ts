@@ -42,7 +42,7 @@ const en = {
     serviceLink: "Email marketing and Klaviyo consulting",
     nextLink: "A shop losing sales to queues",
     ctaText: "Have a list you're not making the most of?",
-    ctaButton: "Let's talk about your email",
+    ctaButton: "Book a free call",
 };
 
 export default en;

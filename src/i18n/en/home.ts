@@ -2,17 +2,9 @@
 
 /** Sections only the Portuguese homepage carries (decision D15 A). */
 export interface HomePtExtras {
-    /** "Ver o caso" under the Measurable Impact cards that have a case study. */
-    impactCaseLink: string;
-    howTitle: string;
-    steps: { lead: string; rest: string }[];
     credentialsTitle: string;
     credentials: { name: string; issuer: string; verifyUrl?: string }[];
     verify: string;
-    faqTitle: string;
-    faqs: { q: string; a: string }[];
-    ctaTitle: string;
-    ctaButton: string;
 }
 
 const en = {
@@ -20,72 +12,31 @@ const en = {
     title: "AEO Consultancy for E-commerce Brands | Maria Madeira",
     description: "Answer Engine Optimisation (AEO), SEO and email marketing for UK food and drink e-commerce brands. Agency-level execution from an independent consultant.",
     hero: {
-        eyebrow: "AEO and growth consultancy for e-commerce brands.",
-        h1: "AEO consultancy for e-commerce.",
-        intro: "The output of an agency, without the agency. Answer Engine Optimisation, SEO, email and paid media for brands that want senior work done directly.",
-        cta: "Book a Free Strategy Call",
-        results: "See My Results",
-        credentials: ["5 years scaling brands that sell online", "Klaviyo Partner · Google Ads · Meta Ads", "Lisbon-based, global reach"],
+        eyebrow: "Growth consultant · Klaviyo Partner",
+        h1: "Found in AI search. Paid back by email and ads.",
+        intro: "I'm Maria, a growth consultant for brands that sell online. SEO and AEO, Klaviyo email, Google and Meta Ads, and the website they run on. Senior work, done by me.",
+        cta: "Book a free call",
+        results: "See my results",
         imageAlt: "Maria Madeira, growth consultant, at her desk",
         badgeTitle: "£23.6K Welcome Series",
         badgeText: "Revenue from a single lifecycle flow",
     },
-    impact: {
-        title: "Measurable Impact",
-        sub: "Consistent results across diverse channels, driven by data and optimised for profitable growth.",
-        /* Same order as the counters in the component. */
+    brandsLabel: "Brands I've worked with",
+    results: {
+        title: "Results",
+        sub: "From real client accounts. Every number links to its case study.",
+        /* Link text under each card. */
+        link: "Read case study",
+        /* Same order as the visuals and links in the component. */
         cards: [
-            { label: "Email Revenue", detail: "Attributed to Klaviyo campaigns & flows (12 months to July 2025, +88.9% YoY)" },
-            { label: "AI Search Impressions", detail: "Daily impressions in Google's AI features, first vs last week" },
-            { label: "Campaign Open Rate", detail: "78th percentile industry benchmark" },
-            { label: "Google Ads ROAS", detail: "Average across 11 months, against a 400% break-even" },
+            { value: "£134K", label: "Email revenue in 12 months, UK premium food brand" },
+            { value: "532%", label: "Google Ads ROAS over 11 months (break-even: 400%)" },
+            { value: "+78%", label: "Organic clicks in four months" },
+            { value: "Page 2 → 1", label: "Average Google position, 15.2 to 9.4" },
         ],
     },
-    /* Same order as SUPPORTING_METRICS in the component. */
-    supporting: [
-        { label: "Flow Revenue", detail: "From automated lifecycle flows, +82.5% YoY" },
-        { label: "Flow Click Rate", detail: "Across automated email flows, 12 months to July 2025" },
-        { label: "Campaign Revenue", detail: "From email campaigns, +92.6% YoY" },
-        { label: "Google Ads CPA", detail: "2,161 conversions · Oct 2025 to Aug 2026" },
-    ],
-    brandsLabel: "Trusted by Innovative Brands",
-    testimonials: {
-        title: "Five years with one founder. One month to rank a school number one.",
-        sub: "Clients and colleagues, in their own words, on LinkedIn.",
-        badge: "Client",
-        /* Role and context per person, in the carousel's order. The quotes
-           stay in the component: they are verbatim and never translated. */
-        people: [
-            { role: "Founder, The Black Farmer", context: "Recommended on LinkedIn" },
-            { role: null, context: "Recommended on LinkedIn" },
-            { role: "Digital Marketing Manager at Ocado Zoom", context: "Former colleague · Recommended on LinkedIn" },
-            { role: "Marketing Executive, B2C Growth, CRM & Lifecycle Marketing", context: "Former colleague · Recommended on LinkedIn" },
-            { role: "WordPress Developer", context: "Former colleague · Recommended on LinkedIn" },
-            { role: null, context: "Former colleague · Recommended on LinkedIn" },
-        ] as { role: string | null; context: string }[],
-        readMore: "Read the full recommendation",
-        note: "",
-        carousel: "Testimonials",
-        roledescription: "carousel",
-        prev: "Previous testimonials",
-        next: "Next testimonials",
-        /* "Go to testimonial page {n} of {total}", split around the numbers. */
-        dot: ["Go to testimonial page ", " of ", ""],
-        seeAll: "See all recommendations on LinkedIn",
-    },
-    services: {
-        title: "Core Services",
-        sub: "Strategic solutions designed to drive revenue and improve operational efficiency for scaling brands.",
-        /* Same order as the icons and links in the component. */
-        items: [
-            { title: "Growth Strategy", desc: "A plan for what to fix first, based on your numbers, not guesswork. Then I build it." },
-            { title: "AI Search Visibility (AEO)", desc: "Getting brands cited and recommended by ChatGPT, Perplexity and Google's AI Overviews, not just ranked." },
-            { title: "Email Marketing & Automation", desc: "You have a list of customers you never email. I turn it into a channel that sells while you sleep." },
-            { title: "Paid Advertising", desc: "Ads that pay for themselves, with every pound tracked against what it brings back." },
-            { title: "AI & Automation Systems", desc: "The repetitive work (content, reporting, data entry) done by machines, so your time goes where it earns." },
-            { title: "Creative Direction", desc: "Product photography and brand assets that look like the premium products you sell." },
-            { title: "Platform Migration", desc: "Migrations planned around what they put at risk: rankings, revenue, customer data." },
-        ],
+    whatIDo: {
+        title: "What I do",
     },
     caseStudies: {
         eyebrow: "Case studies",
@@ -114,18 +65,64 @@ const en = {
         readCase: "Read case study",
         viewAll: "View all case studies",
     },
-    work: {
-        title: "Selected Work",
-        sub: "A snapshot of recent projects, from brand identity to AI-powered product photography.",
-        /* Same order as the images and links in the component. */
-        items: [
-            { label: "Brand Identity", title: "Rita Antunes" },
-            { label: "AI Product Photography", title: "Cotswold Fudge" },
-            { label: "Email Marketing", title: "Lifecycle Email System" },
+    how: {
+        title: "How to work with me",
+        /* Prices render on the English page only. */
+        steps: [
+            { name: "Growth Audit", price: "£750", line: "One channel, audited, with a prioritised plan and a 60-minute call." },
+            { name: "Project", price: "from £1,200", line: "A defined piece of work, scoped and priced in writing first." },
+            { name: "Monthly", price: "from £500 a month", line: "Ongoing work on your channels, minimum three months." },
         ],
-        viewAll: "View All Work",
-        closing: "Every project is backed by strategy and measurable results.",
-        closingLink: "Explore the full case studies to see the impact.",
+        seeAll: "See all prices" as string | null,
+    },
+    testimonials: {
+        title: "In their own words",
+        sub: "Recommendations from clients and colleagues on LinkedIn.",
+        badge: "Client",
+        /* Role and context per person, in the order of TESTIMONIALS in the
+           component. The quotes stay in the component: they are verbatim and
+           never translated. */
+        people: [
+            { role: "Founder, The Black Farmer", context: "Recommended on LinkedIn" },
+            { role: null, context: "Recommended on LinkedIn" },
+            { role: "Digital Marketing Manager at Ocado Zoom", context: "Former colleague · Recommended on LinkedIn" },
+            { role: "Marketing Executive", context: "Former colleague · Recommended on LinkedIn" },
+            { role: "WordPress Developer", context: "Former colleague · Recommended on LinkedIn" },
+            { role: null, context: "Former colleague · Recommended on LinkedIn" },
+        ] as { role: string | null; context: string }[],
+        readMore: "Read the full recommendation",
+        note: "",
+        seeAll: "See all recommendations on LinkedIn",
+    },
+    work: {
+        title: "Selected work",
+        viewAll: "View all work",
+    },
+    faq: {
+        title: "Questions",
+        items: [
+            {
+                q: "What does Maria Madeira do?",
+                a: "I'm an independent growth consultant for brands that sell online. I work on SEO and AEO (being found and recommended in Google and AI assistants), Klaviyo email marketing, Google, Meta and Microsoft Ads, and the websites they run on. I do the strategy and the work myself.",
+            },
+            {
+                q: "Where are your clients?",
+                a: "I'm based in Lisbon and work with brands in the UK and Portugal, across sectors. Most of my experience is in food and drink e-commerce, including five years with The Black Farmer.",
+            },
+            {
+                q: "How much does it cost?",
+                a: "A Growth Audit is £750. Projects start from £1,200 and monthly work from £500 a month, with a minimum of three months. You get a written quote before any work begins.",
+            },
+            {
+                q: "Do you only advise, or do you do the work?",
+                a: "I do the work. The audit is where we start; after that I build the flows, run the ads, fix the site and make the content changes myself. You deal directly with me, never an account manager.",
+            },
+        ],
+    },
+    cta: {
+        title: "Tell me about your brand.",
+        line: "A free 30-minute call. No commitment.",
+        button: "Book a free call",
     },
     ptExtras: null as HomePtExtras | null,
 };

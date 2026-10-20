@@ -78,7 +78,7 @@ const en = {
         close: "Twenty minutes, and you will know whether you have an AEO problem.",
     },
     afterTest: [
-        ["Or skip the ramp-up: ", { to: "/contact", text: "book a free strategy call" }, " and I will run the visibility audit on your brand and tell you exactly where you stand."],
+        ["Or skip the ramp-up: ", { to: "/contact", text: "book a free call" }, " and I will run the visibility audit on your brand and tell you exactly where you stand."],
         ["If you are evaluating outside help, see my comparison of ", { to: "/blog/best-aeo-agencies-ecommerce-europe", text: "the best AEO agencies for e-commerce in Europe" }, ", and where an independent consultant fits."],
     ] as Rich[],
     faqTitle: "Frequently asked questions",

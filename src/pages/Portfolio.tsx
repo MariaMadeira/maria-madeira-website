@@ -56,7 +56,7 @@ export default function Portfolio() {
 
             <div className="card-grid">
                 {filteredProjects.map((project) => (
-                    <div key={project.title} style={{ animation: 'fadeIn 0.4s ease forwards' }}>
+                    <div key={project.title} style={{ animation: 'fadeIn 0.3s ease both' }}>
                         <Link to={to(project.link)} className="portfolio-card">
                             <div className="portfolio-image-container hover-scale">
                                 <div style={{

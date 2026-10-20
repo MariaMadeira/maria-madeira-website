@@ -9,7 +9,7 @@ const en = {
     h1Accent: "recommended by AI",
     h1Tail: ", not just ranked by Google",
     intro: "Search is shifting from links to answers. AEO makes sure that when an AI assistant answers \"who's the best?\", the answer is you.",
-    cta: "Book a Free Strategy Call",
+    cta: "Book a free call",
     chat: {
         question: "What's the best specialty coffee brand in Europe?",
         answerPre: "For specialty coffee in Europe, the standout is",
@@ -31,23 +31,6 @@ const en = {
         { title: "Zero-click answers", line: "AI Overviews and assistant answers increasingly replace the list of blue links. The answer arrives without a click." },
         { title: "Early movers win", line: "Brands that get cited now become the default answer, while competitors who wait stay invisible in the response." },
     ],
-    era: {
-        tablist: "How search changed",
-        tab: "Search in ",
-        query: "best specialty coffee brand in europe",
-        serp: [
-            { title: "Top 10 Specialty Coffee Brands in Europe [2015]", url: "thecoffeelist.example › best-brands", snippet: "Our definitive roundup of the finest specialty coffee roasters across Europe this year, ranked and reviewed." },
-            { title: "Best Coffee Brands: Reviews & Rankings", url: "brandrankings.example › coffee", snippet: "Independent star ratings and reader reviews for the leading European coffee brands and roasters." },
-            { title: "10 European Coffee Roasters You Should Know", url: "roasterreview.example › guides", snippet: "From Oslo to Lisbon, the roasters shaping Europe's third-wave specialty coffee scene." },
-            { title: "Coffee Brand Comparison: Which is Best?", url: "comparecoffee.example › compare", snippet: "Side-by-side comparison of price, roast profile and sourcing across the top specialty brands." },
-        ],
-        note2015: "Ten blue links. The user does the research.",
-        answerPre: "For specialty coffee in Europe, the standout is",
-        answerBrand: "Your Brand",
-        answerPost: ", consistently cited for quality and transparency.",
-        cited: "Cited: yourbrand.com",
-        note2026: "One answer. One cited source. That's the slot AEO wins.",
-    },
     whatTitle: "What I do",
     whatIntro: "Four stages, and I deliver all four. The audit tells you where you stand. The other three are implementation: schema, entity signals and answer-ready content built into your site, and citation tracking set up so you can see what changed. Nothing is handed over as a list of recommendations for someone else to action.",
     what: [
@@ -81,17 +64,22 @@ const en = {
             { label: "Half-built for AI search", copy: "You have some of the signals AI engines look for, but gaps are leaving citations on the table. Tightening your structure and answer-ready content could move you from occasionally mentioned to consistently recommended." },
             { label: "Invisible to AI answers", copy: "Right now AI assistants have little reason to cite you, so they recommend someone else. The good news: this is early, the field is open, and the fixes are well understood." },
         ],
-        resultCta: "Get your AEO audit: Book a Free Strategy Call",
+        resultCta: "Get your AEO audit: Book a free call",
         restart: "Start over",
     },
     proofTitle: "Proof",
+    seoCard: {
+        kicker: "SEO and AEO case study",
+        title: "A catalogue invisible to Google, rebuilt page by page",
+        items: ["Clicks from 4.5K to 8.0K (+78%) in four months", "Average position from 15.2 to 9.4"],
+        alt: "Line chart of organic clicks rising 78 percent over four months",
+    },
     proofCard: {
         kicker: "Case Study",
         title: "The Bodysurf School",
         text: "SEO and AEO foundations built into a full site rebuild: structured, answer-ready, and findable in both classic and AI search.",
         link: "Read the case study",
     },
-    proofNote: ["For the same work applied to an existing catalogue rather than a new build, read the ", "SEO and AEO case study", "."],
     pricingTitle: "Pricing",
     pricingText: "An AEO audit starts from £750. Ongoing AEO work starts from £800 a month. You get a written quote after the first call, once the scope is clear.",
     pricingLink: "See all ways to work with me",
@@ -108,7 +96,7 @@ const en = {
         { q: "How much does AEO consulting cost?", a: "An AEO audit starts from £750 and ongoing AEO work from £800 a month. The final price depends on the size of the site, how many pages and products need work, and whether implementation is included." },
     ],
     ctaTitle: "Become the answer AI recommends",
-    ctaText: "Book a free strategy call and we'll map where AI search sees you today, and how to become the cited default in your category.",
+    ctaText: "Book a free call and I'll map where AI search sees you today, and how to become the cited default in your category.",
 };
 
 export default en;

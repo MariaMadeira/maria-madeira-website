@@ -1,9 +1,9 @@
 /** English copy. See src/i18n/caseStudyBodysurf.ts. */
 const en = {
     path: "/case-study-bodysurf-school",
-    title: "Five surf school locations, zero online bookings. Live in eight weeks.",
+    title: "Five surf school locations, zero online bookings. Live in one month.",
     description: "Case study: turning a Portuguese surf school website into a bilingual online booking engine with local payment methods and SEO and AEO foundations built in.",
-    h1: "Five surf school locations, zero online bookings. Live in eight weeks.",
+    h1: "Five surf school locations, zero online bookings. Live in one month.",
     schemaDescription: "Turning a Portuguese surf school website into a bilingual online booking engine with local payment methods and SEO and AEO foundations built in.",
     breadcrumb: "The Bodysurf School",
     back: "Back to Case Studies",
@@ -57,7 +57,7 @@ const en = {
     serviceLink: "Website strategy and build",
     nextLink: "Found on Google and in AI answers",
     ctaText: "Turning a website into a booking engine takes strategy before design.",
-    ctaButton: "Let's Talk Strategy",
+    ctaButton: "Book a free call",
 };
 
 export default en;

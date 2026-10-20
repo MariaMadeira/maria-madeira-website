@@ -46,7 +46,7 @@ const en = {
     ],
     ctaTitle: "Not sure which fits?",
     ctaText: "Book a free call and I'll tell you honestly where I would start, including when I'm not the right fit.",
-    ctaButton: "Let's Talk Strategy",
+    ctaButton: "Book a free call",
 };
 
 export default en;

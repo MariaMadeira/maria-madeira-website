@@ -22,28 +22,27 @@ const pt: typeof en = {
         intro: "O trabalho de uma agência, sem a agência. Otimização para motores de resposta (AEO), SEO, email e anúncios pagos para marcas que querem trabalho sénior, feito diretamente.",
         cta: "Marcar uma conversa gratuita",
         results: "Ver os resultados",
-        credentials: ["5 anos a fazer crescer marcas que vendem online", "Klaviyo Partner · Google Ads · Meta Ads", "Baseada em Lisboa, com alcance internacional"],
         imageAlt: "Maria Madeira, consultora de crescimento, à secretária",
         badgeTitle: "£23,6K com a série de boas-vindas",
         badgeText: "Receita de um único fluxo automático",
     },
-    impact: {
+    brandsLabel: "Marcas que confiaram no meu trabalho",
+    results: {
+        /* "Impacto mensurável" is the existing title of the equivalent
+           section; the new subtitle and card labels await translation. */
         title: "Impacto mensurável",
-        sub: "Resultados consistentes em vários canais, guiados por dados e otimizados para um crescimento rentável.",
+        sub: "TODO-PT",
+        link: "Ver o caso",
         cards: [
-            { label: "Receita de email", detail: "Atribuída a campanhas e fluxos do Klaviyo (12 meses até julho de 2025, +88,9% face ao ano anterior)" },
-            { label: "Impressões na pesquisa com IA", detail: "Impressões diárias nas funcionalidades de IA da Google, primeira vs. última semana (maio a agosto de 2026)" },
-            { label: "Taxa de abertura das campanhas", detail: "Percentil 78 face à referência do setor" },
-            { label: "ROAS no Google Ads", detail: "Média de 11 meses, face a um ponto de equilíbrio de 400%" },
+            { value: "£134K", label: "TODO-PT" },
+            { value: "532%", label: "TODO-PT" },
+            { value: "+78%", label: "TODO-PT" },
+            { value: "TODO-PT", label: "TODO-PT" },
         ],
     },
-    supporting: [
-        { label: "Receita dos fluxos", detail: "Dos fluxos automáticos de ciclo de vida, +82,5% face ao ano anterior" },
-        { label: "Taxa de clique dos fluxos", detail: "Nos fluxos automáticos de email, 12 meses até julho de 2025" },
-        { label: "Receita das campanhas", detail: "Das campanhas de email, +92,6% face ao ano anterior" },
-        { label: "Custo por aquisição (CPA) no Google Ads", detail: "2161 conversões · outubro de 2025 a agosto de 2026" },
-    ],
-    brandsLabel: "Marcas que confiaram no meu trabalho",
+    whatIDo: {
+        title: "Serviços principais",
+    },
     testimonials: {
         title: "Cinco anos com um fundador. Um mês para pôr uma escola em primeiro lugar.",
         sub: "Clientes e colegas, nas palavras deles, no LinkedIn.",
@@ -58,25 +57,7 @@ const pt: typeof en = {
         ],
         readMore: "Ler a recomendação completa",
         note: "(recomendação original em inglês)",
-        carousel: "Testemunhos",
-        roledescription: "carrossel",
-        prev: "Testemunhos anteriores",
-        next: "Testemunhos seguintes",
-        dot: ["Ir para a página ", " de ", " dos testemunhos"],
         seeAll: "Ver todas as recomendações no LinkedIn",
-    },
-    services: {
-        title: "Serviços principais",
-        sub: "Soluções estratégicas para aumentar a receita e tornar a operação mais eficiente em marcas que estão a crescer.",
-        items: [
-            { title: "Estratégia de crescimento", desc: "Um plano do que corrigir primeiro, com base nos seus números e não em palpites. Depois, sou eu que o ponho em prática." },
-            { title: "Visibilidade na pesquisa com IA (AEO)", desc: "Para que a sua marca seja citada e recomendada pelo ChatGPT, pelo Perplexity e pela Vista geral de IA da Google (AI Overviews), e não só posicionada." },
-            { title: "Email marketing e automação", desc: "Tem uma lista de clientes a quem nunca envia emails. Transformo-a num canal que vende enquanto dorme." },
-            { title: "Anúncios pagos", desc: "Anúncios que se pagam a si próprios, com cada cêntimo investido medido face ao que traz de volta." },
-            { title: "Sistemas de IA e automação", desc: "O trabalho repetitivo (conteúdos, relatórios, introdução de dados) feito por máquinas, para que o seu tempo vá para onde rende." },
-            { title: "Direção criativa", desc: "Fotografia de produto e materiais de marca à altura dos produtos premium que vende." },
-            { title: "Migração de plataforma", desc: "Migrações planeadas a partir do que põem em risco: posições na pesquisa, receita, dados dos clientes." },
-        ],
     },
     caseStudies: {
         eyebrow: "Casos de estudo",
@@ -106,31 +87,22 @@ const pt: typeof en = {
     },
     work: {
         title: "Trabalho selecionado",
-        sub: "Uma amostra de projetos recentes, da identidade de marca à fotografia de produto feita com IA.",
-        items: [
-            { label: "Identidade de marca", title: "Rita Antunes" },
-            { label: "Fotografia de produto com IA", title: "Cotswold Fudge" },
-            { label: "Email marketing", title: "Sistema de email de ciclo de vida" },
-        ],
         viewAll: "Ver todo o trabalho",
-        closing: "Cada projeto assenta em estratégia e em resultados mensuráveis.",
-        closingLink: "Veja o impacto nos casos de estudo completos.",
     },
-    ptExtras: {
-        impactCaseLink: "Ver o caso",
-        howTitle: "Como trabalho",
+    /* The Portuguese steps, FAQ and closing call to action (D15 A), now in
+       the shared sections. The steps carry no prices. */
+    how: {
+        title: "Como trabalho",
         steps: [
-            { lead: "Uma conversa gratuita", rest: "conte-me sobre a marca e o que não está a funcionar." },
-            { lead: "Uma proposta por escrito", rest: "âmbito e preço fechados antes de começar." },
-            { lead: "O trabalho", rest: "feito por mim, com acesso direto durante todo o projeto." },
+            { name: "Uma conversa gratuita", price: "", line: "conte-me sobre a marca e o que não está a funcionar." },
+            { name: "Uma proposta por escrito", price: "", line: "âmbito e preço fechados antes de começar." },
+            { name: "O trabalho", price: "", line: "feito por mim, com acesso direto durante todo o projeto." },
         ],
-        credentialsTitle: "Credenciais",
-        credentials: STRIP.map((name) => CERTS.find((c) => c.name === name))
-            .filter((c): c is (typeof CERTS)[number] => Boolean(c))
-            .map((c) => ({ name: c.name, issuer: c.issuer, verifyUrl: c.verifyUrl })),
-        verify: "Verificar credencial",
-        faqTitle: "Perguntas frequentes",
-        faqs: [
+        seeAll: null,
+    },
+    faq: {
+        title: "Perguntas frequentes",
+        items: [
             {
                 q: "Trabalha com marcas em Portugal?",
                 a: "Sim. Trabalho com marcas que vendem online em Portugal e no Reino Unido, de vários setores, com a experiência mais longa em alimentação e bebidas.",
@@ -144,8 +116,18 @@ const pt: typeof en = {
                 a: "Depende dos canais e do volume de trabalho. Depois de uma primeira conversa, envio uma proposta por escrito com o âmbito e o preço fechados.",
             },
         ],
-        ctaTitle: "Vamos ver por onde começar?",
-        ctaButton: "Marcar uma conversa gratuita",
+    },
+    cta: {
+        title: "Vamos ver por onde começar?",
+        line: "",
+        button: "Marcar uma conversa gratuita",
+    },
+    ptExtras: {
+        credentialsTitle: "Credenciais",
+        credentials: STRIP.map((name) => CERTS.find((c) => c.name === name))
+            .filter((c): c is (typeof CERTS)[number] => Boolean(c))
+            .map((c) => ({ name: c.name, issuer: c.issuer, verifyUrl: c.verifyUrl })),
+        verify: "Verificar credencial",
     },
 };
 

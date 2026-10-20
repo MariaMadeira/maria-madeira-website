@@ -34,7 +34,7 @@ const en = {
     serviceLink: "Google and Meta Ads management",
     nextLink: "An unused email list became the brand's biggest revenue channel",
     ctaText: "Want similar results for your brand?",
-    ctaButton: "Let's Talk Strategy",
+    ctaButton: "Book a free call",
 };
 
 export default en;

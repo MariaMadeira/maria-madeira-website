@@ -28,18 +28,23 @@ const pt: typeof en = {
     title: "Sobre a Maria Madeira | Consultora de crescimento",
     description: "Conheça a Maria Madeira, consultora de crescimento e especialista em marketing criativo que junta resultados baseados em dados e boas histórias, para marcas que vendem online.",
     imgAlt: "Maria Madeira junto a uma janela, com um caderno na mão",
-    eyebrow: "A estratégia por trás do crescimento",
+    eyebrow: "Sobre",
     h1Lead: "Olá, sou a ",
-    paragraphs: [
-        "Consultora de crescimento com 5 anos de experiência a ajudar marcas que vendem online a crescer com email marketing, anúncios pagos e sistemas apoiados por IA.",
-        "O meu trabalho cobre todo o funil: desde sistemas de email no Klaviyo que geraram £134K de receita atribuída em 12 meses, a campanhas de Google Ads com um ROAS de 532% em onze meses, dez deles acima do ponto de equilíbrio do cliente, até à criação de uma app de Click & Collect e de sistemas de prompts de IA à medida para SEO, AEO e produção de conteúdos visuais.",
+    paragraphs: ["TODO-PT", "TODO-PT"],
+    /* The quote stays in English, word for word, as on the homepage. */
+    quote: "I could give her something that was little more than an idea in my head and she would go away, work it out and come back with something real. [...] She built our email marketing, worked on our e-commerce, creative, advertising and SEO, helped us launch our app and later became one of the people pushing us to understand and use AI properly within the business.",
+    quoteAuthor: "Wilfred Emmanuel-Jones, Fundador, The Black Farmer",
+    quoteNote: "(recomendação original em inglês)",
+    timelineTitle: "TODO-PT",
+    timeline: [
+        { year: "2012", label: "Licenciatura em Design de Moda e Têxtil" },
+        { year: "2019", label: "Pós-graduação em Jornalismo: Práticas e Estudos" },
+        { year: "2021", label: "Certified Digital Marketing Professional (DMI)" },
+        { year: "TODO-PT", label: "TODO-PT" },
+        { year: "2025", label: "Pós-graduação em Inteligência Artificial para o Design (IADE)" },
+        { year: "2026", label: "TODO-PT" },
     ],
-    quote: "\"Acredito que crescer não é só uma questão de números: é construir sistemas sustentáveis que trazem valor aos clientes a longo prazo.\"",
-    highlights: [
-        "5 anos a fazer crescer marcas que vendem online no setor alimentar do Reino Unido",
-        "Criadora de processos com IA para conteúdos, SEO e AEO, e geração de imagem",
-        "Especialista em transformar listas de email em fontes de receita constante",
-    ],
+    toolGroups: ["TODO-PT", "TODO-PT", "TODO-PT"],
     toolsTitle: "Ferramentas e plataformas",
     credentialsTitle: "Credenciais",
     credentialsIntro: "As certificações e a formação por trás do trabalho que faço para os clientes.",
@@ -52,6 +57,9 @@ const pt: typeof en = {
     })),
     verify: "Verificar credencial",
     cta: "Vamos trabalhar juntos",
+    ctaTitle: "TODO-PT",
+    /* As on /pt/servicos. */
+    ctaLine: "Uma conversa gratuita de 30 minutos. Sem compromisso.",
 };
 
 export default pt;

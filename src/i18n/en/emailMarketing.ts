@@ -23,7 +23,7 @@ const en = {
     trustPre: "",
     trustLink: "Klaviyo Practitioner certified",
     trustPost: ".",
-    cta: "Book a Free Strategy Call",
+    cta: "Book a free call",
     heroStats: [
         { value: "£134K", label: "Email-attributed revenue", detail: "12 months to July 2025, +88.9% YoY" },
         { value: "50.4%", label: "Campaign open rate", detail: "78th percentile industry benchmark" },
@@ -63,7 +63,7 @@ const en = {
             { label: "Room to compound", copy: "The basics are in place, but revenue is leaking between the gaps. Fuller lifecycle flows and smarter segmentation can lift email from a nice-to-have into a top channel." },
             { label: "Underperforming", copy: "Email is leaving significant revenue on the table right now. The good news: the fixes (flows, segmentation and deliverability) are well understood and compound quickly." },
         ],
-        resultCta: "Get your email audit: Book a Free Strategy Call",
+        resultCta: "Get your email audit: Book a free call",
         restart: "Start over",
     },
     proofTitle: "Proof",
@@ -107,8 +107,8 @@ const en = {
         },
     ],
     ctaTitle: "Make email your best-performing channel",
-    ctaText: "Book a free strategy call and we'll find the revenue your email program is leaving on the table.",
-    ctaButton: "Book a Free Strategy Call",
+    ctaText: "Book a free call and I'll find the revenue your email programme is leaving on the table.",
+    ctaButton: "Book a free call",
     ptExtras: null as EmailPtExtras | null,
 };
 

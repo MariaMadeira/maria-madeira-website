@@ -6,18 +6,27 @@ const en = {
     title: "About Maria Madeira | Growth Strategist",
     description: "Meet Maria Madeira, a growth strategist and creative marketing specialist who bridges data-driven performance with storytelling for brands that sell online.",
     imgAlt: "Maria Madeira standing by a window holding a notebook",
-    eyebrow: "The Strategy Behind the Growth",
+    eyebrow: "About",
     h1Lead: "Hi, I'm ",
     paragraphs: [
-        "A Growth Strategist with 5 years of experience helping brands that sell online scale through email marketing, paid acquisition, and AI-powered systems.",
-        "My work spans the full funnel: from building Klaviyo lifecycle systems that generated £134K in attributed revenue over 12 months, to managing Google Ads campaigns that returned 532% ROAS over eleven months, ten of them above the client's break-even, to building a Click & Collect app and designing custom AI prompt systems for SEO, AEO, and visual content production.",
+        "Growth consultant for brands that sell online. Klaviyo Partner, based in Lisbon.",
+        "For five years I worked with Wilfred Emmanuel-Jones on The Black Farmer's online business: email, e-commerce, ads, SEO, creative and the launch of the app. Today I do the same work, independently, for brands in the UK and Portugal.",
     ],
-    quote: "\"I believe growth is not just about numbers, but about building sustainable systems that deliver long-term value to customers.\"",
-    highlights: [
-        "5 years scaling brands that sell online in the UK food sector",
-        "Builder of AI workflows for content, SEO/AEO, and image generation",
-        "Specialist in turning email lists into consistent revenue engines",
+    /* Wilfred's excerpt, word for word as on the homepage featured card. */
+    quote: "I could give her something that was little more than an idea in my head and she would go away, work it out and come back with something real. [...] She built our email marketing, worked on our e-commerce, creative, advertising and SEO, helped us launch our app and later became one of the people pushing us to understand and use AI properly within the business.",
+    quoteAuthor: "Wilfred Emmanuel-Jones, Founder, The Black Farmer",
+    /** Shown after the quote on /pt only; empty on the English page. */
+    quoteNote: "",
+    timelineTitle: "TODO-COPY",
+    timeline: [
+        { year: "2012", label: "Degree in Fashion and Textile Design" },
+        { year: "2019", label: "Postgraduate programme in Journalism" },
+        { year: "2021", label: "Certified Digital Marketing Professional (DMI)" },
+        { year: "2021 to 2026", label: "The Black Farmer: email, e-commerce, ads, SEO, app" },
+        { year: "2025", label: "Postgraduate programme in AI for Design (IADE)" },
+        { year: "2026", label: "Klaviyo Practitioner and Sales certificates · Independent consultancy" },
     ],
+    toolGroups: ["Email and e-commerce", "Ads and analytics", "SEO and AI"],
     toolsTitle: "Tools & Platforms",
     credentialsTitle: "Credentials",
     credentialsIntro: "Certifications and education behind the work I do for clients.",
@@ -26,7 +35,9 @@ const en = {
         items: g.items.map((c) => ({ name: c.name, issuer: c.issuer, note: c.note, verifyUrl: c.verifyUrl })),
     })),
     verify: "Verify credential",
-    cta: "Let's Work Together",
+    cta: "Book a free call",
+    ctaTitle: "Tell me about your brand.",
+    ctaLine: "A free 30-minute call. No commitment.",
 };
 
 export default en;

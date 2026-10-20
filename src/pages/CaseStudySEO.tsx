@@ -6,6 +6,8 @@ import { AiImpressionsChart, AiVisibilityChart, OutcomesBar } from "../component
 import { caseStudyJsonLd } from "../lib/schema";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/caseStudySeo";
+import { decimal } from "../lib/format";
+import type { Lang } from "../lib/i18n";
 
 // Git-derived (git log src/pages/CaseStudySEO.tsx). Bump MODIFIED whenever the
 // case study's details are updated.
@@ -15,6 +17,89 @@ const MODIFIED = "2026-10-16";
 /* Legend colours, in the order of the outcomes bar. */
 const OUTCOME_COLOURS = ["var(--positive)", "var(--text-secondary)", "var(--negative)"];
 const OUTCOME_COUNTS = [60, 52, 5];
+
+type Copy = (typeof COPY)["en"];
+
+/* Biggest wins in three blocks: click bars on one scale, position moves on a
+   scale with 1 on the right, and the single top page. */
+function Wins({ c, lang }: { c: Copy; lang: Lang }) {
+    const maxClicks = Math.max(...c.winsClicks.map((w) => w.after ?? 0));
+    return (
+        <div className="cs-wins-blocks">
+            <div className="cs-wins-block">
+                <h4 className="cs-wins-title">{c.winsClicksTitle}</h4>
+                <ul className="cs-wins-list">
+                    {c.winsClicks.map((w) => (
+                        <li key={w.name} className="cs-bar-row">
+                            <div className="cs-bar-head">
+                                <p className="cs-win-label">{w.name}</p>
+                                <span className="cs-badge cs-badge--positive">{w.badge}</span>
+                            </div>
+                            {w.before !== null && w.after !== null ? (
+                                <div className="cs-bars">
+                                    <div className="cs-bar-line">
+                                        <span className="cs-bar cs-bar--before" style={{ width: `${(w.before / maxClicks) * 85}%` }} />
+                                        <span className="cs-bar-value cs-bar-value--before">{w.before}</span>
+                                    </div>
+                                    <div className="cs-bar-line">
+                                        <span className="cs-bar cs-bar--after" style={{ width: `${(w.after / maxClicks) * 85}%` }} />
+                                        <span className="cs-bar-value">{w.after}</span>
+                                    </div>
+                                </div>
+                            ) : (
+                                <p className="cs-todo">{c.missingData}</p>
+                            )}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <div className="cs-wins-block">
+                <h4 className="cs-wins-title">{c.winsPositionTitle}</h4>
+                <ul className="cs-wins-list">
+                    {c.winsPosition.map((w) => (
+                        <li key={w.name} className="cs-bar-row">
+                            <div className="cs-bar-head">
+                                <p className="cs-win-label">{w.name}</p>
+                                <span className="cs-badge cs-badge--positive">{w.badge}</span>
+                            </div>
+                            <PositionScale before={w.before} after={w.after} label={`${w.name}: ${c.positionAverage} ${decimal(String(w.before), lang)} → ${decimal(String(w.after), lang)}`} />
+                            <p className="cs-scale-note">{c.positionAverage} {decimal(String(w.before), lang)} → {decimal(String(w.after), lang)}</p>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <div className="cs-wins-block cs-wins-top">
+                <h4 className="cs-wins-title">{c.winsTopTitle}</h4>
+                <p className="cs-win-label">{c.winsTop.name}</p>
+                <p className="cs-tile-value">{c.winsTop.value}</p>
+                <span className="cs-badge cs-badge--positive">{c.winsTop.badge}</span>
+            </div>
+        </div>
+    );
+}
+
+/* Google position on a horizontal scale: 1 on the right, page boundaries
+   every 10 places, grey dot before, dark dot after, arrow between. */
+function PositionScale({ before, after, label }: { before: number; after: number; label: string }) {
+    const max = Math.ceil(before / 10) * 10;
+    const W = 320, L = 14, R = 306;
+    const x = (pos: number) => R - ((pos - 1) / (max - 1)) * (R - L);
+    const ticks = Array.from({ length: max / 10 - 1 }, (_, i) => (i + 1) * 10 + 0.5);
+    return (
+        <svg className="cs-scale" viewBox={`0 0 ${W} 40`} role="img" aria-label={label}>
+            <line x1={L} y1="20" x2={R} y2="20" stroke="var(--border-color)" strokeWidth="2" />
+            {ticks.map((t) => <line key={t} x1={x(t)} y1="13" x2={x(t)} y2="27" stroke="var(--border-color)" strokeWidth="1.5" />)}
+            <text x={R} y="38" textAnchor="end" fontSize="10" fill="var(--text-secondary)" fontFamily="var(--font-sans)">1</text>
+            <text x={L} y="38" textAnchor="start" fontSize="10" fill="var(--text-secondary)" fontFamily="var(--font-sans)">{max}</text>
+            <line x1={x(before) + 8} y1="20" x2={x(after) - 11} y2="20" stroke="var(--text-primary)" strokeWidth="1.5" />
+            <path d={`M ${x(after) - 11} 16 L ${x(after) - 7} 20 L ${x(after) - 11} 24`} fill="none" stroke="var(--text-primary)" strokeWidth="1.5" />
+            <circle cx={x(before)} cy="20" r="6" fill="#C9C4BD" />
+            <circle cx={x(after)} cy="20" r="6" fill="var(--text-primary)" />
+        </svg>
+    );
+}
 
 export default function CaseStudySEO() {
     const { lang, to } = useLang();
@@ -156,22 +241,8 @@ export default function CaseStudySEO() {
                     <h3 style={{ fontSize: "1.25rem", margin: "2.5rem 0 1.25rem", color: "var(--text-primary)" }}>
                         {c.winsTitle}
                     </h3>
-                    <ul className="cs-wins">
-                        {c.wins.map((w) => (
-                            <li key={w.label} className="cs-win">
-                                <p className="cs-win-label">{w.label}</p>
-                                <span className="cs-win-right">
-                                    {w.after && (
-                                        <span className="cs-win-values">
-                                            {w.before && <span className="cs-win-before">{w.before} → </span>}
-                                            {w.after}
-                                        </span>
-                                    )}
-                                    <span className="cs-badge cs-badge--positive">{w.badge}</span>
-                                </span>
-                            </li>
-                        ))}
-                    </ul>
+                    <p className="cs-subline">{c.searchSubline}</p>
+                    <Wins c={c} lang={lang} />
 
                     <h3 style={{ fontSize: "1.25rem", margin: "2.5rem 0 0.5rem", color: "var(--text-primary)" }}>
                         {c.checkTitle}

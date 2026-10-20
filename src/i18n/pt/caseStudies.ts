@@ -44,7 +44,7 @@ const pt: typeof en = {
             results: "App de Click & Collect para telemóvel · Lições sobre a adoção do digital no comércio físico",
         },
         {
-            title: "Cinco locais, zero reservas online. Um site feito de raiz em oito semanas.",
+            title: "Cinco locais, zero reservas online. Um site feito de raiz num mês.",
             category: "Site da The Bodysurf School",
             problem: "Uma escola de surf em crescimento, com cinco locais na costa, dependia de pedidos feitos à mão: sem reservas online, sem pagamentos e sem estratégia de visibilidade na pesquisa.",
             results: "Site reconstruído de raiz: reservas online com métodos de pagamento locais, site bilingue e bases de SEO e AEO.",

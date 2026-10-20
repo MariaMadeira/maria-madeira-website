@@ -2,6 +2,12 @@ import { Link, useLocation } from "react-router-dom";
 import { Linkedin, Mail } from "lucide-react";
 import { PAID_ADS_SERVICE } from "../lib/links";
 import { langOf, ptLink, type Lang } from "../lib/i18n";
+import KlaviyoPartnerBadge from "./KlaviyoPartnerBadge";
+
+/* Rule 9 asset check, decided at build time: public/klaviyo-partner-badge.png
+   ships today. Set to false if the file is ever removed and the footer shows
+   the text fallback instead. */
+const HAS_PARTNER_BADGE = true;
 
 /* Footer copy per language, with English paths throughout. On /pt pages each
    path goes through ptLink, so it reaches the Portuguese page once live. */
@@ -12,7 +18,7 @@ const COPY: Record<Lang, {
 }> = {
     en: {
         home: "/",
-        blurb: "Growth Strategist for modern brands that sell online, looking to scale through data-driven decisions and AI-powered marketing.",
+        blurb: "Independent growth consultant for brands that sell online: SEO and AEO, Klaviyo email, paid ads and websites.",
         nav: "Navigation",
         navLinks: [
             { name: "Services", path: "/services" },
@@ -32,10 +38,10 @@ const COPY: Record<Lang, {
             { name: "AI Information", path: "/ai-information" },
         ],
         touch: "Get in Touch",
-        touchLine: "Ready to scale your brand? Let's talk.",
-        cta: "Book a Free Strategy Call",
+        touchLine: "Tell me about your brand.",
+        cta: "Book a free call",
         ctaPath: "/contact",
-        based: ["Based in Lisbon, Portugal.", "Working Globally."],
+        based: ["Based in Lisbon, Portugal.", "Working globally."],
         rights: "All rights reserved.",
     },
     pt: {
@@ -68,7 +74,9 @@ const COPY: Record<Lang, {
     },
 };
 
-const LINK = { color: "rgba(255,255,255,0.7)", fontSize: "0.95rem" } as const;
+/* Footer links and icons keep a 44px tap target on touch screens. */
+const LINK = { color: "rgba(255,255,255,0.7)", fontSize: "0.95rem", display: "inline-flex", alignItems: "center", minHeight: "44px" } as const;
+const ICON = { color: "rgba(255,255,255,0.7)", transition: "color 0.3s ease", display: "inline-flex", alignItems: "center", justifyContent: "center", width: "44px", height: "44px" } as const;
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -99,7 +107,9 @@ export default function Footer() {
                             letterSpacing: "0.2em",
                             textTransform: "uppercase",
                             color: "white",
-                            display: "block",
+                            display: "flex",
+                            alignItems: "center",
+                            minHeight: "44px",
                             marginBottom: "1.5rem"
                         }}>
                             Maria Madeira
@@ -117,7 +127,7 @@ export default function Footer() {
                     {/* Quick Links */}
                     <div>
                         <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>{t.nav}</h2>
-                        <ul style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+                        <ul style={{ display: "flex", flexDirection: "column", gap: 0 }}>
                             {t.navLinks.map((l) => <li key={l.path}><Link to={localize(l.path)} style={LINK}>{l.name}</Link></li>)}
                         </ul>
                     </div>
@@ -125,7 +135,7 @@ export default function Footer() {
                     {/* Company */}
                     <div>
                         <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>{t.company}</h2>
-                        <ul style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+                        <ul style={{ display: "flex", flexDirection: "column", gap: 0 }}>
                             {t.companyLinks.map((l) => <li key={l.path}><Link to={localize(l.path)} style={LINK}>{l.name}</Link></li>)}
                         </ul>
                     </div>
@@ -138,25 +148,21 @@ export default function Footer() {
                         </p>
                         <Link
                             to={t.ctaPath}
-                            style={{
-                                display: "inline-block",
-                                padding: "0.7rem 1.5rem",
-                                background: "var(--accent-secondary)",
-                                color: "white",
-                                borderRadius: "10px",
-                                fontWeight: 600,
-                                fontSize: "0.9rem",
-                                transition: "background 0.3s ease",
-                                marginBottom: "1.5rem",
-                            }}
+                            className="btn btn-primary"
+                            style={{ padding: "0.7rem 1.5rem", fontSize: "0.9rem", marginBottom: "1rem" }}
                         >
                             {t.cta}
                         </Link>
-                        <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem" }}>
-                            <a href="https://www.linkedin.com/in/maria-madeira-growth" target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.7)", transition: "color 0.3s ease" }} aria-label="LinkedIn"><Linkedin size={20} /></a>
-                            <a href="mailto:info@mariamadeira.com" style={{ color: "rgba(255,255,255,0.7)", transition: "color 0.3s ease" }} aria-label="Email"><Mail size={20} /></a>
+                        <div style={{ display: "flex", gap: "0.25rem", marginLeft: "-12px" }}>
+                            <a href="https://www.linkedin.com/in/maria-madeira-growth" target="_blank" rel="noopener noreferrer" style={ICON} aria-label="LinkedIn"><Linkedin size={20} /></a>
+                            <a href="mailto:info@mariamadeira.com" style={ICON} aria-label="Email"><Mail size={20} /></a>
                         </div>
-                        <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem", marginTop: "1rem" }}>
+                        <div style={{ marginTop: "0.75rem" }}>
+                            {HAS_PARTNER_BADGE
+                                ? <KlaviyoPartnerBadge height={44} />
+                                : <span style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.85rem", fontWeight: 600 }}>Klaviyo Partner</span>}
+                        </div>
+                        <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.85rem", marginTop: "1rem" }}>
                             {t.based[0]}<br />{t.based[1]}
                         </p>
                     </div>
@@ -171,7 +177,7 @@ export default function Footer() {
                     flexWrap: "wrap",
                     gap: "1rem"
                 }}>
-                    <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem" }}>
+                    <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.85rem" }}>
                         © {currentYear} Maria Madeira. {t.rights}
                     </p>
                 </div>

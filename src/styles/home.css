@@ -1,0 +1,546 @@
+/* Homepage and /services, visual-first redesign. Loaded by Home.tsx and
+   ServiceCards.tsx; the shared tokens (colours, fonts, .card, .btn) stay in
+   src/index.css. */
+
+/* ── Hero ─────────────────────────────────────────────── */
+/* Never break inside a word, on any viewport: no hyphenation, no
+   anywhere-wrapping; balance the lines instead. */
+.home-hero-h1 {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+  -webkit-hyphens: manual;
+  text-wrap: balance;
+}
+
+/* ── Section heads ────────────────────────────────────── */
+.home-section {
+  padding: 4.5rem 0;
+}
+.home-head {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+.home-head .section-title {
+  margin-bottom: 0.75rem;
+}
+.home-sub {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Logo strip ───────────────────────────────────────── */
+.logo-strip {
+  padding: 2rem 0 3rem;
+  text-align: center;
+}
+.logo-strip-label {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin: 0 0 1.5rem;
+}
+.logo-strip-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 2.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.logo-strip-row li {
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+.logo-strip-row img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+.logo-strip-name {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .logo-strip-row { gap: 0.75rem 1.5rem; }
+  .logo-strip-name { font-size: 0.72rem; letter-spacing: 0.1em; }
+}
+
+/* ── Results ──────────────────────────────────────────── */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.result-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 1.75rem 1.5rem 1.5rem;
+  color: inherit;
+  transition: transform 0.25s ease-out, border-color 0.25s ease-out;
+}
+.result-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-primary);
+}
+.result-value {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.2vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text-primary);
+  margin: 0 0 0.6rem;
+  white-space: nowrap;
+}
+.result-label {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin: 0 0 1.25rem;
+}
+.result-card .mini-visual {
+  margin-top: auto;
+}
+.mini-visual {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+.result-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1rem;
+  color: var(--color-dark-brown);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+@media (max-width: 900px) {
+  .results-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .results-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ── Service cards (homepage and /services) ───────────── */
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.service-cards > li {
+  display: flex;
+}
+.service-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  overflow: hidden;
+  color: inherit;
+  transition: transform 0.25s ease-out, border-color 0.25s ease-out, box-shadow 0.25s ease-out;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 12px 30px rgba(59, 49, 44, 0.08);
+}
+.service-card:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 3px;
+}
+/* The thumbnail takes about 60% of the card. */
+.service-card-thumb {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+.service-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.service-card-thumb-chart {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1.25rem;
+  box-sizing: border-box;
+}
+.service-card-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.service-card-body {
+  padding: 1.25rem 1.35rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.service-card-title {
+  font-size: 1.15rem;
+  margin: 0 0 0.4rem;
+}
+.service-card-line {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+.service-card-price {
+  margin: auto 0 0;
+  padding-top: 0.9rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.service-cards-also {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 1.75rem auto 0;
+  max-width: 44rem;
+}
+@media (max-width: 1000px) {
+  .service-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .service-cards { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ── How to work with me ──────────────────────────────── */
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.how-step {
+  position: relative;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+/* The connector: from this step's icon to the next one's. */
+.how-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: calc(50% + 36px);
+  width: calc(100% + 2.5rem - 72px);
+  height: 2px;
+  background: var(--accent-primary);
+}
+.how-step-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent-secondary);
+  color: var(--color-dark-brown);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+.how-step-name {
+  font-size: 1.2rem;
+  margin: 0 0 0.25rem;
+}
+.how-step-price {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-dark-brown);
+  margin: 0 0 0.5rem;
+}
+.how-step-line {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0 auto;
+  max-width: 18rem;
+}
+/* The Portuguese lines start in lower case (they followed a colon). */
+.how-step-line::first-letter {
+  text-transform: uppercase;
+}
+.how-more {
+  text-align: center;
+  margin-top: 2.25rem;
+}
+.how-more a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-dark-brown);
+  font-weight: 600;
+}
+@media (max-width: 760px) {
+  .how-steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+    max-width: 26rem;
+    margin: 0 auto;
+  }
+  .how-step {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    column-gap: 1rem;
+    text-align: left;
+    padding: 0;
+  }
+  .how-step-icon {
+    grid-row: span 3;
+    margin: 0;
+  }
+  .how-step-line {
+    margin: 0;
+    max-width: none;
+  }
+  .how-step:not(:last-child)::after {
+    top: 60px;
+    left: 27px;
+    width: 2px;
+    height: calc(100% - 60px + 2rem - 4px);
+  }
+}
+
+/* ── In their own words ───────────────────────────────── */
+.quote-featured {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  margin: 0 0 1.5rem;
+}
+.quote-featured blockquote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin: 0 0 1.25rem;
+}
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 1.4rem;
+}
+.quote-card blockquote {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin: 0 0 1rem;
+}
+.quote-note {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin: -0.5rem 0 1rem;
+}
+.quote-card figcaption,
+.quote-featured figcaption {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.quote-monogram {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--accent-glow);
+  border: 1px solid var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--color-dark-brown);
+}
+.quote-name {
+  display: block;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+.quote-role {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.quote-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-dark-brown);
+  background: var(--accent-glow);
+  border-radius: 6px;
+  padding: 3px 10px;
+  margin-bottom: 0.9rem;
+  align-self: flex-start;
+}
+.quote-readmore {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-dark-brown);
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin: 0 0 1.25rem;
+}
+
+/* ── Selected work ────────────────────────────────────── */
+.work-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.work-item {
+  display: block;
+  color: inherit;
+}
+.work-item-img {
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+.work-item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease-out;
+}
+.work-item:hover .work-item-img img {
+  transform: scale(1.04);
+}
+.work-item-caption {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-dark-brown);
+}
+/* Mobile: a horizontal scroller that stays inside its own box, so the page
+   itself never scrolls sideways. */
+@media (max-width: 700px) {
+  .work-strip {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    max-width: 100%;
+    padding-bottom: 0.5rem;
+  }
+  .work-strip > li {
+    flex: 0 0 72%;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+}
+
+/* ── Questions ────────────────────────────────────────── */
+.faq-list {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.faq-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+}
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 1.4rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.08rem;
+  color: var(--text-primary);
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item summary::after {
+  content: "+";
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--color-dark-brown);
+}
+.faq-item[open] summary::after {
+  content: "−";
+}
+.faq-item summary:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 2px;
+  border-radius: 16px;
+}
+.faq-item p {
+  margin: 0;
+  padding: 0 1.4rem 1.3rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}

@@ -37,7 +37,7 @@ const en = {
     serviceLink: "Growth strategy and product experiments",
     nextLink: "Five surf school locations, zero online bookings",
     ctaText: "Have a product idea you want to explore?",
-    ctaButton: "Let's Talk Strategy",
+    ctaButton: "Book a free call",
 };
 
 export default en;

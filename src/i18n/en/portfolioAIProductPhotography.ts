@@ -57,7 +57,7 @@ const en = {
     ],
     related: ["AI-enhanced product imagery", "AI product descriptions, done safely"],
     ctaText: "Looking to elevate your product imagery with AI?",
-    ctaPrimary: "Let's Discuss Your Project",
+    ctaPrimary: "Book a free call",
     ctaSecondary: "View All Work",
 };
 

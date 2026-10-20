@@ -146,11 +146,18 @@ ul {
   color: var(--text-primary);
 }
 
-/* Animations */
+/* Animations
+   Motion rules (site-wide): no count-ups on numbers; fade-ins last at most
+   300ms and start when 10% of the element is in view (see useInView);
+   everything is static under prefers-reduced-motion. Nothing may wait at low
+   opacity for JavaScript: the prerendered HTML shows all content at full
+   opacity, and the hidden starting state of a scroll reveal applies only once
+   useInView has armed the element (.reveal-armed), which it does only for
+   elements that are still below the fold when the page hydrates. */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(8px);
   }
 
   to {
@@ -159,68 +166,51 @@ ul {
   }
 }
 
+/* Page entrance. Pure CSS, so it also runs on the no-JS prerendered page;
+   with fill-mode both it ends at full opacity. */
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn 0.3s ease-out both;
 }
 
 /* ── Scroll-triggered reveal classes ───────────────────────────── */
-/* Elements start hidden; JS adds .is-visible via IntersectionObserver */
+/* Visible by default. useInView adds .reveal-armed to an element that is out
+   of view at hydration, which hides it until it scrolls in; React then sets
+   .is-visible and it fades in over 300ms. */
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-scale {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.reveal-scale.is-visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.reveal-left.is-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal-right {
-  opacity: 0;
-  transform: translateX(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.reveal-right.is-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Stagger children: each .reveal-item inside a .stagger-container gets a delay */
+.reveal,
+.reveal-scale,
+.reveal-left,
+.reveal-right,
 .stagger-container .reveal-item {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
-.stagger-container.is-visible .reveal-item:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0s; }
-.stagger-container.is-visible .reveal-item:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
-.stagger-container.is-visible .reveal-item:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
-.stagger-container.is-visible .reveal-item:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
-.stagger-container.is-visible .reveal-item:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
-.stagger-container.is-visible .reveal-item:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
-.stagger-container.is-visible .reveal-item:nth-child(7) { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
-.stagger-container.is-visible .reveal-item:nth-child(8) { opacity: 1; transform: translateY(0); transition-delay: 0.7s; }
-.stagger-container.is-visible .reveal-item:nth-child(n+9) { opacity: 1; transform: translateY(0); transition-delay: 0.8s; }
+
+.reveal.reveal-armed:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.reveal-scale.reveal-armed:not(.is-visible) {
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+.reveal-left.reveal-armed:not(.is-visible) {
+  opacity: 0;
+  transform: translateX(-12px);
+}
+
+.reveal-right.reveal-armed:not(.is-visible) {
+  opacity: 0;
+  transform: translateX(12px);
+}
+
+/* Stagger children: they fade in together (no per-item delay), so no card
+   sits faded while its neighbours are already readable. */
+.stagger-container.reveal-armed:not(.is-visible) .reveal-item {
+  opacity: 0;
+  transform: translateY(12px);
+}
 
 /* Hover lift utility */
 .hover-lift {
@@ -238,19 +228,33 @@ ul {
 
 /* Hover scale utility */
 .hover-scale {
-  transition: transform 0.4s ease-out;
+  transition: transform 0.3s ease-out;
 }
 .hover-scale:hover {
   transform: scale(1.03);
 }
 
-/* Respect reduced motion */
+/* Respect reduced motion: no reveals, no entrance fades, no looping or
+   sliding motion anywhere. The catch-all beats inline animation and
+   transition styles too (!important), and zeroes delays, so an element that
+   starts at opacity 0 inline still lands at its final, visible state. */
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal-scale, .reveal-left, .reveal-right,
   .stagger-container .reveal-item {
-    opacity: 1;
-    transform: none;
-    transition: none;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-fade-in {
+    animation: none;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -287,7 +291,7 @@ ul {
   opacity: 0.6;
 }
 
-/* About portrait — desktop height */
+/* About portrait: desktop height */
 .about-portrait {
   height: 550px;
 }
@@ -383,42 +387,54 @@ ul {
   width: 100%;
 }
 
-/* Services submenu (desktop). The panel's top padding bridges the gap to the
-   trigger, so the pointer can cross it without the menu closing. */
+/* Services submenu (desktop). The trigger is a button (Services and a
+   chevron) with a 44px hit area; the panel's top padding bridges the gap to
+   the trigger, so the pointer can cross it without the menu closing. */
 .nav-dropdown {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.2rem;
 }
 
-.nav-dropdown-toggle {
-  display: flex;
+.nav-dropdown-trigger {
+  display: inline-flex;
   align-items: center;
+  gap: 0.3rem;
+  min-height: 44px;
+  padding: 0 0.25rem;
+  margin: 0 -0.25rem;
   background: transparent;
   border: none;
-  padding: 4px;
-  border-radius: 4px;
+  border-radius: 6px;
+  font: inherit;
   color: var(--text-primary);
   cursor: pointer;
 }
 
-.nav-dropdown-toggle svg {
+.nav-dropdown-trigger svg {
   transition: transform 0.2s ease;
 }
 
-.nav-dropdown-toggle:hover,
-.nav-dropdown-toggle[aria-expanded="true"] {
+.nav-dropdown-trigger:hover,
+.nav-dropdown-trigger:hover .nav-link,
+.nav-dropdown-trigger[aria-expanded="true"],
+.nav-dropdown-trigger[aria-expanded="true"] .nav-link {
   color: var(--accent-secondary);
 }
 
-.nav-dropdown-toggle[aria-expanded="true"] svg {
+.nav-dropdown-trigger:hover .nav-link::after,
+.nav-dropdown-trigger[aria-expanded="true"] .nav-link::after {
+  width: 100%;
+}
+
+.nav-dropdown-trigger[aria-expanded="true"] svg {
   transform: rotate(180deg);
 }
 
-.nav-dropdown-toggle:focus-visible,
+.nav-dropdown-trigger:focus-visible,
 .nav-dropdown-link:focus-visible,
-.mobile-accordion-toggle:focus-visible {
+.mobile-accordion-toggle:focus-visible,
+.mobile-submenu a:focus-visible {
   outline: 2px solid var(--accent-secondary);
   outline-offset: 2px;
 }
@@ -427,18 +443,18 @@ ul {
   position: absolute;
   top: 100%;
   left: -1rem;
-  padding-top: 0.9rem;
+  padding-top: 0.5rem;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-4px);
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
 }
 
 .nav-dropdown-menu.open {
   opacity: 1;
   visibility: visible;
   transform: none;
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .nav-dropdown-menu ul {
@@ -453,8 +469,10 @@ ul {
 }
 
 .nav-dropdown-link {
-  display: block;
-  padding: 0.6rem 0.85rem;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 0.85rem;
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 500;
@@ -468,26 +486,28 @@ ul {
   color: var(--accent-secondary);
 }
 
+/* "All services" leads the list, set off from the services below it. */
 .nav-dropdown-all {
-  margin-top: 0.35rem;
-  padding-top: 0.35rem;
-  border-top: 1px solid var(--border-color);
+  margin-bottom: 0.35rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
-/* Services accordion (mobile menu) */
+/* Services accordion (mobile menu): the whole "Services" row is the button. */
 .mobile-accordion-toggle {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 44px;
   background: transparent;
   border: none;
-  color: var(--text-primary);
+  text-align: left;
   cursor: pointer;
 }
 
 .mobile-accordion-toggle svg {
+  flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
@@ -502,8 +522,10 @@ ul {
 }
 
 .mobile-submenu a {
-  display: block;
-  padding: 0.6rem 0;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.25rem 0;
   font-size: 1.05rem;
   font-weight: 500;
   text-decoration: none;
@@ -560,10 +582,23 @@ ul {
     display: none !important;
   }
   .mobile-toggle {
-    display: block !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
   }
   .nav-mobile-tools {
     display: flex;
+  }
+  /* Touch targets: the EN | PT links and the logo get 44px of height. */
+  .nav-mobile-tools .lang-switch-link,
+  .navbar .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    min-width: 32px;
+    justify-content: center;
   }
 }
 
@@ -1214,7 +1249,7 @@ select:focus {
 }
 
 /* ========================= */
-/* Tablet — ≤ 768px           */
+/* Tablet: ≤ 768px           */
 /* ========================= */
 @media (max-width: 768px) {
 
@@ -1269,7 +1304,7 @@ select:focus {
     padding: 1rem !important;
   }
 
-  /* Hero split layout — stack on mobile */
+  /* Hero split layout: stack on mobile */
   .hero {
     padding-top: 5rem !important;
     padding-bottom: 2rem !important;
@@ -1320,7 +1355,7 @@ select:focus {
     object-position: 55% 25% !important;
   }
 
-  /* Move floating badge inside image on mobile — no overflow */
+  /* Move floating badge inside image on mobile: no overflow */
   .hero-image-col .hero-badge {
     left: 0.75rem !important;
     bottom: 0.75rem !important;
@@ -1328,19 +1363,19 @@ select:focus {
     padding: 0.75rem 1rem !important;
   }
 
-  /* Hide scroll indicator on mobile — it sits awkwardly between stacked sections */
+  /* Hide scroll indicator on mobile: it sits awkwardly between stacked sections */
   .scroll-indicator {
     display: none !important;
   }
 
-  /* Hero credential badges — stack cleanly */
+  /* Hero credential badges: stack cleanly */
   .hero-text-col .hero-credentials {
     flex-direction: column !important;
     gap: 0.6rem !important;
     align-items: flex-start;
   }
 
-  /* Hero CTA buttons — full width on mobile */
+  /* Hero CTA buttons: full width on mobile */
   .hero-text-col > div[style*="gap: \"1rem\""],
   .hero-text-col > div[style*='gap: "1rem"'] {
     flex-direction: column !important;
@@ -1352,7 +1387,7 @@ select:focus {
     text-align: center !important;
   }
 
-  /* Brands row — allow 2-per-row on mobile, no overflow */
+  /* Brands row: allow 2-per-row on mobile, no overflow */
   .brands-row {
     gap: 0 !important;
     justify-content: center !important;
@@ -1364,12 +1399,12 @@ select:focus {
     letter-spacing: 0.1em !important;
   }
 
-  /* Service cards — reduce padding on mobile */
+  /* Service cards: reduce padding on mobile */
   .grid-3 .card {
     padding: 1.5rem !important;
   }
 
-  /* Portfolio preview — 1 col on mobile */
+  /* Portfolio preview: 1 col on mobile */
   .portfolio-preview-grid {
     grid-template-columns: 1fr !important;
   }
@@ -1397,7 +1432,7 @@ select:focus {
     gap: 2rem !important;
   }
 
-  /* Portfolio inner pages — only reduce vertical padding, never touch sides */
+  /* Portfolio inner pages: only reduce vertical padding, never touch sides */
   .portfolio-page-inner {
     padding-top: 3rem !important;
     padding-bottom: 3rem !important;
@@ -1474,7 +1509,7 @@ select:focus {
 }
 
 /* ========================= */
-/* Mobile — ≤ 480px           */
+/* Mobile: ≤ 480px           */
 /* ========================= */
 @media (max-width: 480px) {
 
@@ -1934,6 +1969,43 @@ select:focus {
   /* Label above values once the row cannot hold both. */
   .cs-win { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   .cs-win-right { margin-left: 0; }
+}
+
+/* Biggest wins: three blocks (click bars, position scales, top page). */
+.cs-wins-blocks { display: grid; gap: 1.25rem; margin: 0 0 1.5rem; }
+.cs-wins-block {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+.cs-wins-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 1rem;
+}
+.cs-wins-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.25rem; }
+.cs-bar-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.cs-bar-head .cs-badge { margin-top: 0; }
+.cs-bars { display: grid; gap: 0.35rem; }
+.cs-bar-line { display: flex; align-items: center; gap: 0.5rem; }
+.cs-bar { display: block; height: 14px; border-radius: 4px; min-width: 4px; }
+.cs-bar--before { background: #C9C4BD; }
+.cs-bar--after { background: var(--accent-secondary); }
+.cs-bar-value { font-family: var(--font-heading); font-weight: 600; font-size: 0.95rem; color: var(--text-primary); }
+.cs-bar-value--before { font-family: var(--font-sans); font-weight: 500; color: var(--text-secondary); }
+.cs-todo { font-weight: 700; color: var(--negative); margin: 0; }
+.cs-scale { display: block; width: 100%; max-width: 480px; height: auto; }
+.cs-scale-note { font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0; }
+.cs-wins-top { border-color: var(--accent-secondary); }
+.cs-wins-top .cs-tile-value { margin: 0.35rem 0 0; }
+
+@media (min-width: 900px) {
+  .cs-wins-blocks { grid-template-columns: 1fr 1fr; }
+  .cs-wins-top { grid-column: 1 / -1; }
 }
 
 /* Pull quote: a real user query, so it reads as speech rather than body copy. */

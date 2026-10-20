@@ -30,14 +30,23 @@ const en = {
         { before: null as string | null, after: "78%", badge: null as string | null, label: "of clicks from non-branded searches, new customers rather than existing ones" },
     ],
     winsTitle: "Biggest wins, page by page",
-    wins: [
-        { label: "Pork Belly Slices, clicks", before: "6" as string | null, after: "34" as string | null, badge: "+467%" },
-        { label: "Bacon Rind On Unsmoked Middle, clicks", before: "12" as string | null, after: "34" as string | null, badge: "+183%" },
-        { label: "Gluten-Free Kebabs, clicks", before: null as string | null, after: null as string | null, badge: "+229%" },
-        { label: "Gluten-Free Cakes, position", before: "37.4" as string | null, after: "14" as string | null, badge: "+23 places" },
-        { label: "Gluten-Free Sausages, position", before: "11.2" as string | null, after: "7.5" as string | null, badge: "page 1" },
-        { label: "Oven-baked lamb steaks recipe", before: null as string | null, after: "762 clicks in 28 days" as string | null, badge: "position 6.1" },
+    /* Clicks: before and after on one scale per block. Kebabs has no
+       before/after figures in the repo yet, only its badge (TODO-DATA). */
+    winsClicksTitle: "More clicks",
+    winsClicks: [
+        { name: "Pork Belly Slices", before: 6 as number | null, after: 34 as number | null, badge: "+467%" },
+        { name: "Bacon Rind On Unsmoked Middle", before: 12 as number | null, after: 34 as number | null, badge: "+183%" },
+        { name: "Gluten-Free Kebabs", before: null as number | null, after: null as number | null, badge: "+229%" },
     ],
+    winsPositionTitle: "Higher in Google",
+    winsPosition: [
+        { name: "Gluten-Free Cakes", before: 37.4, after: 14, badge: "page 4 → page 2" },
+        { name: "Gluten-Free Sausages", before: 11.2, after: 7.5, badge: "page 2 → page 1" },
+    ],
+    positionAverage: "average position",
+    winsTopTitle: "Top page",
+    winsTop: { name: "Oven-baked lamb steaks recipe", value: "762 clicks in 28 days", badge: "average position 6.1" },
+    missingData: "TODO-DATA",
     checkTitle: "Every change, checked at 30 days",
     checkSubline: "117 pages re-evaluated against Search Console",
     /* The legend under the outcomes bar, in the bar's order. */

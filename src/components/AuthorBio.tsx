@@ -5,7 +5,7 @@ import { useLang } from "../hooks/useLang";
 // same wording; update it here and all articles follow. Portuguese as approved
 // in docs/pt-review/lote-2-3-4.md.
 const COPY = {
-    en: { text: "Maria Madeira is a growth strategist for brands that sell online: website strategy and build, SEO and AEO, email marketing, and paid acquisition.", cta: "Book a free strategy call" },
+    en: { text: "Maria Madeira is a growth strategist for brands that sell online: website strategy and build, SEO and AEO, email marketing, and paid acquisition.", cta: "Book a free call" },
     pt: { text: "Maria Madeira é consultora de crescimento para marcas que vendem online: estratégia e construção de sites, SEO e AEO, email marketing e anúncios pagos.", cta: "Marque uma conversa gratuita" },
 };
 

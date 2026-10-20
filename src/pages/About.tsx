@@ -1,10 +1,14 @@
 import { Linkedin, ExternalLink } from "lucide-react";
-import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import FinalCta from "../components/FinalCta";
+import KlaviyoPartnerBadge from "../components/KlaviyoPartnerBadge";
+import ToolTile from "../components/ToolTile";
+import { TOOL_GROUPS } from "../lib/toolLogos";
 import { SITE_URL, PERSON_ID } from "../lib/schema";
-import { HAS_CREDENTIAL, PROGRAM_MEMBERSHIP } from "../lib/credentials";
+import { CREDENTIAL_GROUPS, HAS_CREDENTIAL, PROGRAM_MEMBERSHIP } from "../lib/credentials";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/about";
+import "../styles/about.css";
 
 // The About page is the canonical entity page for the Maria Madeira brand, so it
 // carries the richest Person node. Same @id as the homepage (#person) so search
@@ -84,19 +88,32 @@ const PT_JSON_LD = {
     ],
 };
 
+/* Wilfred's full recommendation, as linked from the homepage featured card. */
+const RECOMMENDATIONS_URL = "https://www.linkedin.com/in/maria-madeira-growth/details/recommendations/";
+
+/* Badge images for the credentials, keyed by the English credential name in
+   src/lib/credentials.ts. A badge renders only when its file is listed in
+   AVAILABLE_BADGES; until then the entry keeps its text card. To switch one
+   on, add the file to /public and its path to AVAILABLE_BADGES. */
+const BADGES: Record<string, string> = {
+    "Klaviyo Practitioner": "/klaviyo-practitioner.png",
+    "Klaviyo Sales": "/klaviyo-sales.png",
+    "Klaviyo Partner (K:Partners programme)": "/klaviyo-partner-badge.png",
+};
+const AVAILABLE_BADGES: string[] = ["/klaviyo-partner-badge.png"];
+const PARTNER_BADGE = "/klaviyo-partner-badge.png";
+
+function badgeFor(enName: string): string | null {
+    const src = BADGES[enName];
+    return src && AVAILABLE_BADGES.includes(src) ? src : null;
+}
+
 export default function About() {
     const { lang, to } = useLang();
     const t = COPY[lang];
-    const tools = [
-        "Klaviyo", "Shopify", "WooCommerce", "Google Ads", "Meta Ads", "Meta Business Suite",
-        "Google Analytics", "Google Search Console", "Semrush", "Ahrefs", "Microsoft Clarity",
-        "Figma", "Adobe", "Canva", "Midjourney", "Runway / Kling",
-        "ChatGPT", "Claude", "Manus", "Perplexity", "Antigravity",
-        "Mailchimp", "Zapier", "Notion", "Asana", "Azure"
-    ];
 
     return (
-        <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
+        <div className="container about-page" style={{ paddingTop: "6rem", paddingBottom: "0" }}>
             <Seo
                 title={t.title}
                 description={t.description}
@@ -104,18 +121,11 @@ export default function About() {
                 jsonLd={lang === "pt" ? PT_JSON_LD : ABOUT_JSON_LD}
             />
 
-            <div className="grid-2" style={{ alignItems: "flex-start", gap: "4rem" }}>
-
-                <div className="reveal-scale is-visible" style={{ position: 'relative' }}>
-                    <div className="bg-glow" style={{ top: '-10%', left: '-10%', width: '300px', height: '300px', opacity: 0.6 }} />
-                    <div
-                        className="card glass-panel about-portrait"
-                        style={{
-                            borderRadius: "24px",
-                            overflow: "hidden",
-                            padding: 0,
-                        }}
-                    >
+            {/* Intro */}
+            <div className="grid-2" style={{ alignItems: "flex-start", gap: "4rem", marginBottom: "6rem" }}>
+                <div style={{ position: "relative" }}>
+                    <div className="bg-glow" style={{ top: "-10%", left: "-10%", width: "300px", height: "300px", opacity: 0.6 }} />
+                    <div className="card glass-panel about-portrait" style={{ borderRadius: "24px", overflow: "hidden", padding: 0 }}>
                         <picture>
                             <source
                                 type="image/webp"
@@ -132,104 +142,124 @@ export default function About() {
                                 alt={t.imgAlt}
                                 width="1600"
                                 height="2133"
-                                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%', display: 'block' }}
+                                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 15%", display: "block" }}
                             />
                         </picture>
                     </div>
                 </div>
 
-                <div className="reveal-right is-visible" style={{ transitionDelay: '0.2s' }}>
-                    <span style={{ 
-                        textTransform: 'uppercase', 
-                        letterSpacing: '0.2em', 
-                        fontSize: '0.85rem', 
-                        color: 'var(--accent-secondary)',
-                        fontWeight: 600,
-                        marginBottom: '1rem',
-                        display: 'block'
-                    }}>
-                        {t.eyebrow}
-                    </span>
+                <div>
+                    <span className="about-eyebrow">{t.eyebrow}</span>
                     <h1 className="section-title" style={{ textAlign: "left", marginBottom: "2rem", fontSize: "3.5rem" }}>
                         {t.h1Lead}<span className="text-gradient">Maria Madeira</span>
                     </h1>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8 }}>
-                        {t.paragraphs.map((p) => <p key={p}>{p}</p>)}
+                        {t.paragraphs.map((p, i) => <p key={i} style={{ margin: 0 }}>{p}</p>)}
 
-                        <p style={{ fontStyle: 'italic', borderLeft: '4px solid var(--accent-primary)', paddingLeft: '1.5rem', margin: '1rem 0', color: 'var(--text-primary)' }}>
-                            {t.quote}
-                        </p>
+                        <figure className="about-quote">
+                            <blockquote cite={RECOMMENDATIONS_URL}>
+                                <p>{t.quote}</p>
+                            </blockquote>
+                            <figcaption>
+                                <a href={RECOMMENDATIONS_URL} target="_blank" rel="noopener noreferrer">
+                                    {t.quoteAuthor} <ExternalLink size={13} aria-hidden="true" />
+                                </a>
+                                {t.quoteNote && <span className="about-quote-note">{t.quoteNote}</span>}
+                            </figcaption>
+                        </figure>
 
-                        <ul style={{ listStyle: 'none', padding: 0 }}>
-                            {t.highlights.map((item, i) => (
-                                <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '0.8rem' }}>
-                                    <span style={{ color: "var(--accent-secondary)", display: 'flex' }}>✓</span>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-
-                        {/* Tools & Platforms Section */}
-                        <div style={{ marginTop: '2rem' }}>
-                            <h2 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
-                                {t.toolsTitle}
-                            </h2>
-                            <div className="tools-grid">
-                                {tools.map((tool, i) => (
-                                    <span key={i} className="tool-badge" style={{ opacity: 0, transform: 'translateY(10px)', transition: `opacity 0.4s ease ${i * 0.05}s, transform 0.4s ease ${i * 0.05}s`, animation: `fadeIn 0.4s ease ${i * 0.05 + 0.3}s forwards` }}>
-                                        {tool}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div style={{ display: "flex", gap: "1.5rem", marginTop: "1rem" }}>
-                            <a href="https://www.linkedin.com/in/maria-madeira-growth" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontWeight: 600 }}>
+                        <div style={{ display: "flex", gap: "1.5rem" }}>
+                            <a href="https://www.linkedin.com/in/maria-madeira-growth" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-primary)", fontWeight: 600 }}>
                                 <Linkedin size={20} /> LinkedIn <ExternalLink size={14} opacity={0.5} />
                             </a>
-                        </div>
-
-                        {/* Credentials: after the bio, before the CTA. */}
-                        <section className="credentials">
-                            <h2 className="credentials-title">{t.credentialsTitle}</h2>
-                            <p className="credentials-intro">
-                                {t.credentialsIntro}
-                            </p>
-                            {t.credentialGroups.map((group) => (
-                                <div key={group.title} className="credential-group">
-                                    <h3 className="credential-group-title">{group.title}</h3>
-                                    <ul className="credential-list">
-                                        {group.items.map((c) => (
-                                            <li key={c.name} className="credential">
-                                                <p className="credential-name">{c.name}</p>
-                                                <p className="credential-issuer">{c.issuer}</p>
-                                                {c.note && <p className="credential-note">{c.note}</p>}
-                                                {c.verifyUrl && (
-                                                    <a
-                                                        className="credential-verify"
-                                                        href={c.verifyUrl}
-                                                        target="_blank"
-                                                        rel="noopener"
-                                                    >
-                                                        {t.verify} <ExternalLink size={13} />
-                                                    </a>
-                                                )}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </section>
-
-                        <div style={{ marginTop: "2rem" }}>
-                            <Link to={to("/contact")} className="btn btn-primary">
-                                {t.cta}
-                            </Link>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Timeline: one dot and one short label per step. */}
+            <section className="about-section">
+                <h2 className="about-section-title">{t.timelineTitle}</h2>
+                <ol className="about-timeline">
+                    {t.timeline.map((step, i) => (
+                        <li key={i} className="about-timeline-step">
+                            <span className="about-timeline-dot" aria-hidden="true" />
+                            <span className="about-timeline-year">{step.year}</span>
+                            <span className="about-timeline-label">{step.label}</span>
+                        </li>
+                    ))}
+                </ol>
+            </section>
+
+            {/* Tools: twelve logos in three groups. */}
+            <section className="about-section">
+                <h2 className="about-section-title">{t.toolsTitle}</h2>
+                <div className="about-tool-groups">
+                    {TOOL_GROUPS.map((group, gi) => (
+                        <div key={gi}>
+                            <h3 className="about-tool-group-title">{t.toolGroups[gi]}</h3>
+                            <ul className="about-tool-grid">
+                                {group.map((tool) => <ToolTile key={tool.name} tool={tool} />)}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Credentials: badge images where the file exists, text cards otherwise. */}
+            <section className="credentials about-section">
+                <h2 className="about-section-title">{t.credentialsTitle}</h2>
+                <p className="credentials-intro">{t.credentialsIntro}</p>
+                {t.credentialGroups.map((group, gi) => {
+                    const enItems = CREDENTIAL_GROUPS[gi].items;
+                    const withBadge = group.items.map((c, ci) => ({ c, badge: badgeFor(enItems[ci].name) }));
+                    const badges = withBadge.filter((x) => x.badge);
+                    const cards = withBadge.filter((x) => !x.badge);
+                    return (
+                        <div key={group.title} className="credential-group">
+                            <h3 className="credential-group-title">{group.title}</h3>
+                            {badges.length > 0 && (
+                                <ul className="about-badges">
+                                    {badges.map(({ c, badge }) => (
+                                        <li key={c.name} className="about-badge">
+                                            {badge === PARTNER_BADGE ? (
+                                                <KlaviyoPartnerBadge height={72} />
+                                            ) : c.verifyUrl ? (
+                                                <a href={c.verifyUrl} target="_blank" rel="noopener" style={{ display: "inline-block", lineHeight: 0 }}>
+                                                    <img src={badge as string} alt={`${c.name}: ${t.verify}`} height={96} loading="lazy" decoding="async" style={{ height: "96px", width: "auto" }} />
+                                                </a>
+                                            ) : (
+                                                <img src={badge as string} alt={c.name} height={96} loading="lazy" decoding="async" style={{ height: "96px", width: "auto" }} />
+                                            )}
+                                            <p className="credential-name">{c.name}</p>
+                                            <p className="credential-issuer">{c.issuer}</p>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                            {cards.length > 0 && (
+                                <ul className="credential-list">
+                                    {cards.map(({ c }) => (
+                                        <li key={c.name} className="credential">
+                                            <p className="credential-name">{c.name}</p>
+                                            <p className="credential-issuer">{c.issuer}</p>
+                                            {c.note && <p className="credential-note">{c.note}</p>}
+                                            {c.verifyUrl && (
+                                                <a className="credential-verify" href={c.verifyUrl} target="_blank" rel="noopener">
+                                                    {t.verify} <ExternalLink size={13} />
+                                                </a>
+                                            )}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                    );
+                })}
+            </section>
+
+            <FinalCta title={t.ctaTitle} line={t.ctaLine} button={t.cta} to={to("/contact")} photo />
         </div>
     );
 }

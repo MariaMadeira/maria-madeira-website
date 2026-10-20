@@ -21,7 +21,7 @@ const en = {
             title: "Found on Google and in AI answers, four months after a migration that left the site invisible",
             category: "SEO / AEO Optimisation",
             problem: "After migrating from WordPress to Shopify, the new website lacked proper SEO structure and was not optimised for AI-powered search and answer engines.",
-            results: "SEO and AEO optimisation improving site structure, search visibility, and AI discoverability.",
+            results: "Clicks from 4.5K to 8.0K (+78%) in four months · Average position from 15.2 to 9.4",
         },
         {
             title: "Five pounds back for every pound spent, over eleven months",
@@ -30,7 +30,7 @@ const en = {
             results: "£141K attributed revenue from £26.5K ad spend · 532% ROAS (client break-even: 400%) · 10 of 11 months above break-even",
         },
         {
-            title: "An unused email list became the brand's biggest revenue channel",
+            title: "An unused email list became a revenue channel",
             category: "Email Marketing",
             problem: "Email channel underutilised with limited lifecycle automation.",
             results: "£134K attributed revenue · +88.9% YoY over the last 12 months",
@@ -42,7 +42,7 @@ const en = {
             results: "Mobile Click & Collect app built · Key learnings on digital adoption in physical retail",
         },
         {
-            title: "Five surf school locations, zero online bookings. Built from scratch in eight weeks.",
+            title: "Five surf school locations, zero online bookings. Built from scratch in one month.",
             category: "The Bodysurf School Website",
             problem: "A growing surf school with five coastal locations relied on manual enquiries, with no online booking, no payment processing, and no search visibility strategy.",
             results: "Full rebuild delivered: online booking with local payment methods, bilingual site, SEO and AEO foundations.",

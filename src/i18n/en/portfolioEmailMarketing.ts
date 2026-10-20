@@ -69,7 +69,7 @@ const en = {
     ],
     related: ["Email marketing and Klaviyo consulting", "£134K from email in 12 months", "AI-enhanced imagery for the same brand"],
     ctaText: "Ready to build a retention system for your brand?",
-    ctaPrimary: "Let's Discuss Your Project",
+    ctaPrimary: "Book a free call",
     ctaSecondary: "View All Work",
 };
 

@@ -8,7 +8,7 @@ const pt: typeof en = {
     path: "/pt/caso-bodysurf-school",
     title: "The Bodysurf School: reservas online de raiz | Maria Madeira",
     description: "Caso de estudo: o site de uma escola de surf portuguesa transformado num motor de reservas online bilingue, com pagamentos locais e bases de SEO e AEO.",
-    h1: "Cinco locais, zero reservas online. Um site feito de raiz em oito semanas.",
+    h1: "Cinco locais, zero reservas online. Um site feito de raiz num mês.",
     schemaDescription: "Como o site de uma escola de surf portuguesa passou a ser um motor de reservas online bilingue, com métodos de pagamento locais e bases de SEO e AEO de raiz.",
     breadcrumb: "The Bodysurf School",
     back: "Voltar aos casos de estudo",

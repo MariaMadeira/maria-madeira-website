@@ -1,9 +1,9 @@
-import { TrendingUp, Mail, BarChart, Cpu, Maximize, ArrowRight, ArrowRightLeft, Globe, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import type { ReactNode } from "react";
 import Seo from "../components/Seo";
+import FinalCta from "../components/FinalCta";
+import ServiceCards from "../components/ServiceCards";
 import { SITE_URL } from "../lib/schema";
-import { PAID_ADS_SERVICE } from "../lib/links";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/services";
 import { WAYS } from "../i18n/shared";
@@ -45,19 +45,6 @@ const PT_JSON_LD = {
     ],
 };
 
-/* Icons, links and emphasis per card; the text comes from src/i18n/services.ts
-   in the same order. */
-const SERVICE_CARDS: { icon: ReactNode; link?: string; featured?: boolean; secondaryLink?: string }[] = [
-    { icon: <Globe size={40} />, link: "/services/websites" },
-    { icon: <Sparkles size={40} />, link: "/services/aeo" },
-    { icon: <Mail size={40} />, link: "/services/email-marketing" },
-    { icon: <TrendingUp size={40} />, featured: true, link: "/case-study-bodysurf-school" },
-    { icon: <BarChart size={40} />, link: PAID_ADS_SERVICE, secondaryLink: "/case-study-google-ads" },
-    { icon: <Cpu size={40} /> },
-    { icon: <Maximize size={40} />, link: "/portfolio" },
-    { icon: <ArrowRightLeft size={40} />, link: "/case-study-seo" },
-];
-
 const SERVICE_LINK_STYLE = {
     display: "inline-flex",
     alignItems: "center",
@@ -71,10 +58,9 @@ const SERVICE_LINK_STYLE = {
 export default function Services() {
     const { lang, to } = useLang();
     const t = COPY[lang];
-    const services = SERVICE_CARDS.map((card, i) => ({ ...card, ...t.cards[i] }));
 
     return (
-        <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
+        <div className="container animate-fade-in" style={{ paddingTop: "6rem" }}>
             <Seo
                 title={t.title}
                 description={t.description}
@@ -89,64 +75,8 @@ export default function Services() {
                 </p>
             </div>
 
-            <div className="grid-2" style={{ gap: "3rem" }}>
-                {services.map((service, index) => (
-                    <div
-                        key={index}
-                        className="card glass-panel hover-lift"
-                        style={{ 
-                            padding: "3rem",
-                            ...(service.featured ? {
-                                borderColor: "var(--accent-secondary)",
-                                boxShadow: "0 4px 25px rgba(176, 137, 104, 0.12)",
-                                position: "relative" as const,
-                            } : {}),
-                            display: "flex",
-                            flexDirection: "column" as const,
-                        }}
-                    >
-                        {service.featured && (
-                            <span style={{
-                                position: "absolute",
-                                top: "1rem",
-                                right: "1rem",
-                                background: "var(--accent-secondary)",
-                                color: "white",
-                                fontSize: "0.7rem",
-                                fontWeight: 700,
-                                padding: "4px 12px",
-                                borderRadius: "6px",
-                                textTransform: "uppercase",
-                                letterSpacing: "0.1em",
-                            }}>
-                                {t.mostPopular}
-                            </span>
-                        )}
-                        <div className="text-gradient-accent" style={{ marginBottom: "1.5rem" }}>
-                            {service.icon}
-                        </div>
-                        <h3>{service.title}</h3>
-                        <p style={{ flex: 1 }}>{service.description}</p>
-                        {service.price && (
-                            <p style={{ fontSize: "0.9rem", fontWeight: 600, color: "var(--text-secondary)", margin: "1rem 0 0" }}>
-                                {service.price}
-                            </p>
-                        )}
-                        {service.link && (
-                            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem 1.75rem", marginTop: "1.5rem" }}>
-                                <Link to={to(service.link)} style={SERVICE_LINK_STYLE}>
-                                    {service.cta || t.seeResults} <ArrowRight size={16} />
-                                </Link>
-                                {service.secondaryLink && (
-                                    <Link to={to(service.secondaryLink)} style={SERVICE_LINK_STYLE}>
-                                        {t.seeResults} <ArrowRight size={16} />
-                                    </Link>
-                                )}
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </div>
+            {/* The four visual service cards, shared with the homepage. */}
+            <ServiceCards showPrice headingLevel={2} />
 
             {/* How it works */}
             <div style={{ marginTop: "8rem", marginBottom: "8rem" }}>
@@ -189,10 +119,10 @@ export default function Services() {
                     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
                         {t.steps.map((s, i) => ({ step: String(i + 1).padStart(2, "0"), ...s })).map((item) => (
                             <div key={item.step} className="card" style={{ background: "var(--bg-secondary)", position: "relative", padding: "2rem 2.5rem" }}>
-                                <span style={{
+                                <span aria-hidden="true" style={{
                                     position: "absolute", top: "1.25rem", right: "1.5rem",
                                     fontFamily: "var(--font-heading)", fontSize: "2.2rem", fontWeight: 800,
-                                    color: "var(--accent-primary)", opacity: 0.4, lineHeight: 1,
+                                    color: "var(--accent-primary)", lineHeight: 1,
                                 }}>{item.step}</span>
                                 <h3 style={{ marginBottom: "0.5rem", fontSize: "1.25rem" }}>{item.title}</h3>
                                 <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
@@ -242,18 +172,7 @@ export default function Services() {
                 </div>
             </div>
 
-            <div style={{ textAlign: "center", background: "var(--bg-secondary)", padding: "5rem 2rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}>
-                <h2 style={{ fontSize: "2.5rem", marginBottom: "1.5rem" }}>{t.ctaTitle}</h2>
-                <p style={{ color: "var(--text-secondary)", marginBottom: "1rem", fontSize: "1.2rem", maxWidth: "600px", margin: "0 auto 1rem" }}>
-                    {t.ctaText}
-                </p>
-                <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", marginBottom: "3rem" }}>
-                    {t.ctaNote}
-                </p>
-                <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1.2rem 3rem", fontSize: "1.1rem" }}>
-                    {t.ctaButton} <ArrowRight size={20} style={{ marginLeft: "10px" }} />
-                </Link>
-            </div>
+            <FinalCta title={t.ctaTitle} line={t.ctaNote} button={t.ctaButton} to={to("/contact")} />
         </div>
     );
 }

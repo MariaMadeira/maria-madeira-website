@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Sparkles, Search, Database, FileText, LineChart, MessageSquare, ArrowRight, Users, MousePointerClick, Quote, Bot } from "lucide-react";
 import Seo from "../components/Seo";
+import FinalCta from "../components/FinalCta";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/aeo";
 
@@ -177,67 +178,6 @@ function AiChatDemo() {
     );
 }
 
-/* ── "Why now" before/after era toggle ─────────────────────────────── */
-function SearchEraToggle() {
-    const c = COPY[useLang().lang].era;
-    const [era, setEra] = useState<"2015" | "2026">("2026");
-    return (
-        <div style={{ maxWidth: "680px", margin: "0 auto" }}>
-            <div role="tablist" aria-label={c.tablist} style={{ display: "flex", gap: "0.5rem", justifyContent: "center", marginBottom: "1.5rem" }}>
-                {(["2015", "2026"] as const).map((e) => (
-                    <button
-                        key={e}
-                        role="tab"
-                        aria-selected={era === e}
-                        onClick={() => setEra(e)}
-                        className="aeo-era-btn"
-                        style={{
-                            padding: "0.6rem 1.4rem", borderRadius: "10px", fontWeight: 600, fontSize: "0.9rem", cursor: "pointer",
-                            border: `1px solid ${era === e ? "var(--accent-secondary)" : "var(--border-color)"}`,
-                            background: era === e ? "var(--accent-secondary)" : "transparent",
-                            color: era === e ? "#fff" : "var(--text-secondary)",
-                        }}
-                    >
-                        {c.tab}{e}
-                    </button>
-                ))}
-            </div>
-
-            <div key={era} className="animate-fade-in card" style={{ padding: "1.5rem", background: "var(--bg-primary)" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", border: "1px solid var(--border-color)", borderRadius: "10px", padding: "0.6rem 0.9rem", marginBottom: "1.25rem", color: "var(--text-secondary)", fontSize: "0.9rem" }}>
-                    <Search size={16} /> {c.query}
-                </div>
-                {era === "2015" ? (
-                    <div style={{ display: "flex", flexDirection: "column", gap: "1.1rem" }}>
-                        {c.serp.map((r) => (
-                            <div key={r.title}>
-                                <p style={{ color: "var(--accent-secondary)", fontSize: "0.95rem", fontWeight: 600, marginBottom: "0.2rem" }}>{r.title}</p>
-                                <p style={{ color: "#3a7d3a", fontSize: "0.75rem", marginBottom: "0.3rem" }}>{r.url}</p>
-                                <p style={{ color: "var(--text-secondary)", fontSize: "0.82rem", lineHeight: 1.5, margin: 0 }}>{r.snippet}</p>
-                            </div>
-                        ))}
-                        <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", fontStyle: "italic", marginTop: "0.25rem" }}>{c.note2015}</p>
-                    </div>
-                ) : (
-                    <div style={{ display: "flex", gap: "0.6rem" }}>
-                        <span style={{ flexShrink: 0, width: "28px", height: "28px", borderRadius: "50%", background: "var(--bg-tertiary)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent-secondary)" }}><Sparkles size={15} /></span>
-                        <div>
-                            <p style={{ fontSize: "0.95rem", lineHeight: 1.6, color: "var(--text-primary)", marginBottom: "0.75rem" }}>
-                                {c.answerPre}{" "}
-                                <strong style={{ color: "var(--accent-secondary)" }}>{c.answerBrand}</strong>{c.answerPost}
-                            </p>
-                            <span style={{ display: "inline-flex", alignItems: "center", gap: "5px", fontSize: "0.78rem", fontWeight: 600, color: "var(--accent-secondary)", background: "var(--accent-glow)", padding: "3px 10px", borderRadius: "20px" }}>
-                                <Quote size={12} /> {c.cited}
-                            </span>
-                            <p style={{ fontSize: "0.8rem", color: "var(--text-secondary)", fontStyle: "italic", marginTop: "0.9rem" }}>{c.note2026}</p>
-                        </div>
-                    </div>
-                )}
-            </div>
-        </div>
-    );
-}
-
 /* ── "Is AI recommending you?" 3-question check: scores per option and the
        minimum score of each verdict, in the copy's order ── */
 const SCORES = [[2, 0, 1], [2, 1, 0], [2, 1, 0]];
@@ -315,7 +255,7 @@ export default function ServicesAEO() {
     const { lang, to } = useLang();
     const t = COPY[lang];
     return (
-        <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
+        <div className="container animate-fade-in" style={{ paddingTop: "6rem" }}>
             <Seo
                 title={t.title}
                 description={t.description}
@@ -385,7 +325,7 @@ export default function ServicesAEO() {
                 <div style={{ textAlign: "center", marginBottom: "3rem" }}>
                     <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.whyTitle}</h2>
                 </div>
-                <div className="grid-3" style={{ marginBottom: "3.5rem" }}>
+                <div className="grid-3">
                     {t.why.map((c, i) => (
                         <div key={c.title} className="card" style={{ display: "flex", flexDirection: "column" }}>
                             <div style={{ width: "48px", height: "48px", borderRadius: "12px", background: "var(--accent-glow)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1.25rem", color: "var(--accent-secondary)" }}>{WHY_ICONS[i]}</div>
@@ -394,7 +334,6 @@ export default function ServicesAEO() {
                         </div>
                     ))}
                 </div>
-                <SearchEraToggle />
             </section>
 
             {/* What I do */}
@@ -444,6 +383,35 @@ export default function ServicesAEO() {
                 <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
                     <h2 className="section-title" style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.proofTitle}</h2>
                 </div>
+                {/* SEO case study first: the homepage card's clicks chart, reused as an image */}
+                <div className="case-study-card" style={{ marginBottom: "1.5rem" }}>
+                    <div className="case-study-media-slot">
+                        <img
+                            className="case-study-media-img"
+                            src={lang === "pt" ? "/card-seo-clicks-pt.svg" : "/card-seo-clicks.svg"}
+                            alt={t.seoCard.alt}
+                            width={640}
+                            height={400}
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <div className="case-study-card-body">
+                        <p className="case-study-category">{t.seoCard.kicker}</p>
+                        <h3 className="case-study-card-title">{t.seoCard.title}</h3>
+                        <ul className="case-study-items-list">
+                            {t.seoCard.items.map((item) => (
+                                <li key={item} className="case-study-item">
+                                    <span className="case-study-item-bullet" aria-hidden="true">✦</span>
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                        <Link to={to("/case-study-seo")} className="case-study-link">
+                            {t.proofCard.link} <ArrowRight size={16} />
+                        </Link>
+                    </div>
+                </div>
                 <Link to={to("/case-study-bodysurf-school")} className="card hover-lift" style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                     <p className="text-gradient-accent" style={{ fontSize: "0.85rem", fontWeight: 700, margin: 0 }}>{t.proofCard.kicker}</p>
                     <h3 style={{ margin: 0 }}>{t.proofCard.title}</h3>
@@ -454,9 +422,6 @@ export default function ServicesAEO() {
                         {t.proofCard.link} <ArrowRight size={16} />
                     </span>
                 </Link>
-                <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: "1.5rem 0 0" }}>
-                    {t.proofNote[0]}<Link to={to("/case-study-seo")} style={{ color: "var(--accent-secondary)", fontWeight: 600 }}>{t.proofNote[1]}</Link>{t.proofNote[2]}
-                </p>
             </section>
 
             {/* Pricing */}
@@ -492,18 +457,7 @@ export default function ServicesAEO() {
             </section>
 
             {/* Final CTA */}
-            <section style={{ textAlign: "center", background: "var(--bg-secondary)", padding: "clamp(3rem, 6vw, 5rem) 2rem", borderRadius: "24px", border: "1px solid var(--border-color)" }}>
-                <div style={{ display: "inline-flex", width: "56px", height: "56px", borderRadius: "50%", background: "var(--accent-glow)", alignItems: "center", justifyContent: "center", color: "var(--accent-secondary)", marginBottom: "1.5rem" }}>
-                    <Sparkles size={28} />
-                </div>
-                <h2 style={{ fontSize: "2rem", marginBottom: "1rem" }}>{t.ctaTitle}</h2>
-                <p style={{ color: "var(--text-secondary)", fontSize: "1.1rem", maxWidth: "560px", margin: "0 auto 2.5rem", lineHeight: 1.7 }}>
-                    {t.ctaText}
-                </p>
-                <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
-                    {t.cta} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
-                </Link>
-            </section>
+            <FinalCta title={t.ctaTitle} line={t.ctaText} button={t.cta} to={to("/contact")} />
         </div>
     );
 }

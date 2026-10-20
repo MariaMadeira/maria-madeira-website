@@ -41,7 +41,7 @@ const en = {
     relatedService: "Website strategy and build",
     relatedWork: "Ousadia: brand identity",
     ctaText: "Looking for a unique visual identity for your practice?",
-    ctaPrimary: "Let's Talk",
+    ctaPrimary: "Book a free call",
     ctaSecondary: "View All Work",
 };
 

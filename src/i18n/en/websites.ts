@@ -7,10 +7,10 @@ const en = {
     h1Lead: "Turn an outdated website into a ",
     h1Accent: "growth engine",
     intro: "Strategy first, then a rebuild or targeted improvements, with SEO and AEO built in from the ground up, so customers find you on Google and in AI search alike.",
-    cta: "Book a Free Strategy Call",
+    cta: "Book a free call",
     howTitle: "How it works",
     steps: [
-        { title: "Audit", line: "We find where your current site leaks visibility, trust, and revenue." },
+        { title: "Audit", line: "I find where your current site leaks visibility, trust, and revenue." },
         { title: "Strategy", line: "A clear plan for search, AI discovery, and conversion, tied to your goals." },
         { title: "Build or Improve", line: "A rebuild or targeted fixes, with SEO and AEO wired in from the ground up." },
     ],
@@ -38,7 +38,7 @@ const en = {
             { label: "Leaving money on the table", diagnosis: "The bones of {site} are there, but visitors and revenue are slipping through the gaps: dated design, thin search visibility, or a funnel that doesn't quite close." },
             { label: "Invisible to modern search", diagnosis: "Customers can't find {site} where they now look (Google and AI assistants alike), and the visitors who do arrive aren't converting. All of it is fixable, and the upside is large." },
         ],
-        resultCta: "Get the full audit: Book a Free Strategy Call",
+        resultCta: "Get the full audit: Book a free call",
         restart: "Start over",
     },
     recentTitle: "Recent work",
@@ -59,7 +59,7 @@ const en = {
     whoTitle: "Who this is for",
     who: "Brands and businesses that sell or take bookings online, and know their website should be doing more of the selling. Whether you need a full rebuild or focused improvements, the starting point is the same: an honest audit and a plan.",
     ctaTitle: "Ready to make your site earn its keep?",
-    ctaText: "Book a free strategy call and we'll walk through your audit together. No commitment, no pressure.",
+    ctaText: "Book a free call and we'll walk through your audit together. No commitment, no pressure.",
 };
 
 export default en;

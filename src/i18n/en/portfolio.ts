@@ -17,7 +17,7 @@ const en = {
         {
             title: "Lifecycle Email Marketing",
             category: "Email Marketing",
-            description: "Driving £134K in attributed revenue over 12 months through advanced lifecycle flows and retention-first automation strategies.",
+            description: "£134K in attributed email revenue over 12 months, from lifecycle flows and campaigns.",
         },
         {
             title: "Rita Antunes Psicologia",

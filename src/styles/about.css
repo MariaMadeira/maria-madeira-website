@@ -1,0 +1,236 @@
+/* /about and /pt/sobre: intro quote, timeline, tool logos, credential badges.
+   Colours come from the variables in src/index.css. No animation: every
+   element is at full opacity from the first paint. */
+
+.about-eyebrow {
+  display: block;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  /* The deep brown: the accent is too light for small text on the page. */
+  color: var(--color-dark-brown);
+}
+
+/* Wilfred's excerpt */
+.about-quote {
+  margin: 0.5rem 0 0;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-secondary);
+  border-radius: 16px;
+}
+
+.about-quote blockquote {
+  margin: 0;
+}
+
+.about-quote blockquote p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.about-quote figcaption {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.about-quote figcaption a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--color-dark-brown);
+}
+
+.about-quote figcaption a:hover {
+  color: var(--color-dark-brown-hover);
+}
+
+.about-quote-note {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Sections below the intro */
+.about-section {
+  max-width: 880px;
+  margin: 0 auto 5rem;
+}
+
+.about-section-title {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin: 0 0 2rem;
+}
+
+/* Timeline: a vertical line, one dot per step, year then label. */
+.about-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.about-timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 2px;
+  background: var(--border-color);
+}
+
+.about-timeline-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0 0 1.5rem 2.25rem;
+}
+
+.about-timeline-step:last-child {
+  padding-bottom: 0;
+}
+
+.about-timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 3px solid var(--accent-secondary);
+}
+
+.about-timeline-step:last-child .about-timeline-dot {
+  background: var(--accent-secondary);
+}
+
+.about-timeline-year {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.about-timeline-label {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* Tools: three labelled groups of logo tiles. */
+.about-tool-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about-tool-group-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  margin: 0 0 0.75rem;
+}
+
+.about-tool-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.about-tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 104px;
+  padding: 1rem 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.about-tool-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--color-dark-brown);
+  flex-shrink: 0;
+}
+
+.about-tool-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+/* No icon in Simple Icons: the name, set in the logo colour. */
+.about-tool-fallback {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-dark-brown);
+}
+
+/* Credential badges */
+.about-badges {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+}
+
+.about-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.about-badge > :first-child {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .container.about-page {
+    padding-top: 3rem !important;
+  }
+
+  .about-section {
+    margin-bottom: 4rem;
+  }
+
+  .about-section-title {
+    font-size: 1.6rem;
+  }
+
+  .about-timeline-step {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .about-tool-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
