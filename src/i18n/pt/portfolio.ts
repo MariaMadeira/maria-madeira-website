@@ -18,7 +18,7 @@ const pt: typeof en = {
         {
             title: "Email marketing de ciclo de vida",
             category: "Email marketing",
-            description: "£134K de receita atribuída em 12 meses, com fluxos automáticos avançados ao longo do ciclo de vida e uma automação pensada primeiro para a retenção.",
+            description: "£134K de receita atribuída nos 12 meses até julho de 2025, com fluxos automáticos avançados ao longo do ciclo de vida e uma automação pensada primeiro para a retenção.",
         },
         {
             title: "Rita Antunes Psicologia",

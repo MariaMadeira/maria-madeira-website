@@ -67,7 +67,7 @@ const en = {
         "Key flows such as the Welcome Series, Browse Abandonment and Abandoned Checkout played a major role in recovering lost sales and converting subscribers into customers.",
         "Content-driven flows also helped maintain engagement and strengthen brand loyalty over time.",
     ],
-    related: ["Email marketing and Klaviyo consulting", "£134K from email in 12 months", "AI-enhanced imagery for the same brand"],
+    related: ["Email marketing and Klaviyo consulting", "£134K from email in the 12 months to July 2025", "AI-enhanced imagery for the same brand"],
     ctaText: "Ready to build a retention system for your brand?",
     ctaPrimary: "Book a free call",
     ctaSecondary: "View All Work",

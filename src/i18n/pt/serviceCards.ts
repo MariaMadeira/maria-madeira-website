@@ -10,13 +10,13 @@ import type en from "../en/serviceCards";
 const pt: typeof en = {
     cards: [
         {
-            title: "Visibilidade na pesquisa com IA (AEO)",
+            title: "Pesquisa com IA e SEO",
             line: "A sua marca encontrada no Google e recomendada pelo ChatGPT, pelo Perplexity e pela Vista geral de IA da Google.",
             price: "Proposta por escrito",
             alt: "",
         },
         {
-            title: "Email marketing e automação",
+            title: "Email e Klaviyo",
             line: "Fluxos e campanhas que transformam a sua lista de clientes em receita constante.",
             price: "Proposta por escrito",
             alt: "Sistema de email de ciclo de vida",
@@ -28,7 +28,7 @@ const pt: typeof en = {
             alt: "",
         },
         {
-            title: "Estratégia e construção de sites",
+            title: "Sites",
             line: "Sites em Shopify e WordPress feitos para vender e para serem encontrados.",
             price: "",
             alt: "O site da The Bodysurf School no computador e no telemóvel, com a página para empresas e o carrinho de reservas",

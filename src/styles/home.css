@@ -140,6 +140,14 @@
   margin: 0 0 0.6rem;
   white-space: nowrap;
 }
+.result-value--long {
+  font-size: clamp(1.7rem, 2.4vw, 2.2rem);
+  white-space: normal;
+  /* Same box height as the full-size values, so the labels line up. */
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(2.2rem, 3.2vw, 2.8rem);
+}
 .result-label {
   font-size: 0.95rem;
   line-height: 1.45;
@@ -578,114 +586,61 @@
 /* ── Illustrated service thumbnails (ServiceThumbs.tsx) ── */
 .thumb-chat,
 .thumb-ads {
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
-  box-sizing: border-box;
-  font-family: var(--font-sans);
-}
-.thumb-chat > div {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.6rem;
-}
-.thumb-chat p { margin: 0; }
-.thumb-chat-q {
-  align-self: flex-end;
-  max-width: 85%;
-  background: var(--accent-text);
-  color: #fff;
-  font-size: 0.72rem;
-  line-height: 1.35;
-  padding: 0.45rem 0.65rem;
-  border-radius: 12px 12px 4px 12px;
-}
-.thumb-chat-a {
-  display: flex;
-  gap: 0.45rem;
-  font-size: 0.72rem;
-  line-height: 1.4;
-  color: var(--text-primary);
-}
-.thumb-chat-a strong { color: var(--color-dark-brown); }
-.thumb-chat-avatar {
-  flex-shrink: 0;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: rgba(176, 137, 104, 0.16);
-  color: var(--accent-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.thumb-chat-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  margin-top: 0.35rem;
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: var(--color-dark-brown);
-  background: rgba(176, 137, 104, 0.16);
-  padding: 2px 8px;
-  border-radius: 20px;
-}
-.thumb-ads {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 0.6rem;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 0.75rem;
   align-items: center;
+  padding: 1rem 0.9rem;
 }
+/* Same visual weight as the chat thumbnail: dark label and headline,
+   mid-grey body lines, a light brown image and a brand brown button. */
 .thumb-ad {
   background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 0.6rem;
+  border: 1px solid #D9CFC5;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(59, 49, 44, 0.08);
+  padding: 0.8rem 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.5rem;
   min-width: 0;
 }
 .thumb-ad-tag {
-  font-size: 0.6rem;
+  font-size: 0.72rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 .thumb-line {
   display: block;
-  height: 5px;
-  border-radius: 3px;
-  background: #C9C4BD;
+  height: 7px;
+  border-radius: 4px;
+  background: #A79C92;
   width: 100%;
 }
-.thumb-line-url { width: 55%; height: 4px; }
-.thumb-line-title { height: 7px; width: 85%; background: var(--color-dark-brown); opacity: 0.85; }
-.thumb-line-short { width: 60%; }
-.thumb-line-name { width: 60%; }
-.thumb-ad-head { display: flex; align-items: center; gap: 0.35rem; }
+.thumb-line-title { height: 10px; width: 90%; background: var(--text-primary); }
+.thumb-line-short { width: 65%; }
+.thumb-line-name { width: 60%; height: 6px; }
+.thumb-ad-head { display: flex; align-items: center; gap: 0.4rem; }
 .thumb-ad-avatar {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background: var(--accent-secondary);
+  background: var(--color-dark-brown);
   flex-shrink: 0;
 }
 .thumb-ad-image {
   display: block;
   aspect-ratio: 4 / 3;
-  border-radius: 6px;
-  background: var(--accent-primary);
+  border-radius: 8px;
+  background: var(--color-light-beige);
 }
 .thumb-ad-button {
   align-self: stretch;
   text-align: center;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 700;
   color: #fff;
   background: var(--color-dark-brown);
-  border-radius: 6px;
-  padding: 0.3rem 0;
+  border-radius: 7px;
+  padding: 0.4rem 0;
 }

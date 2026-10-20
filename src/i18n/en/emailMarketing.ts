@@ -27,7 +27,7 @@ const en = {
     heroStats: [
         { value: "£134K", label: "Email-attributed revenue", detail: "12 months to July 2025, +88.9% YoY" },
         { value: "50.4%", label: "Campaign open rate", detail: "78th percentile industry benchmark" },
-        { value: "Over a third", label: "Of total store revenue", detail: "Driven by email over 12 months" },
+        { value: "Over a third", label: "Of total store revenue", detail: "Driven by email in the 12 months to July 2025" },
     ],
     definitionTitle: "What great email looks like",
     definition: "Lifecycle email marketing is owned-channel revenue built on automated flows, segmentation and campaigns, not one-off newsletters. It sends the right message to the right customer at the right moment, and it is measured in attributed revenue rather than opens.",

@@ -67,7 +67,7 @@ const pt: typeof en = {
         "Fluxos como a série de boas-vindas, a navegação abandonada e o checkout abandonado tiveram um papel importante na recuperação de vendas perdidas e na conversão de subscritores em clientes.",
         "Os fluxos de conteúdo também ajudaram a manter a interação e a reforçar a fidelização à marca ao longo do tempo.",
     ],
-    related: ["Email marketing e consultoria Klaviyo", "£134K de email em 12 meses", "Imagens melhoradas com IA para a mesma marca"],
+    related: ["Email marketing e consultoria Klaviyo", "£134K de email nos 12 meses até julho de 2025", "Imagens melhoradas com IA para a mesma marca"],
     ctaText: "Quer criar um sistema de retenção para a sua marca?",
     ctaPrimary: "Marcar uma conversa gratuita",
     ctaSecondary: "Ver todo o portefólio",

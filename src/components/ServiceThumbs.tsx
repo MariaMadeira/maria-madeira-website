@@ -34,7 +34,6 @@ export function AdsThumb({ label, lang }: { label: string; lang: Lang }) {
         <div className="thumb-ads" role="img" aria-label={label}>
             <div className="thumb-ad thumb-ad-search" aria-hidden="true">
                 <span className="thumb-ad-tag">{t.sponsored}</span>
-                <span className="thumb-line thumb-line-url" />
                 <span className="thumb-line thumb-line-title" />
                 <span className="thumb-line" />
                 <span className="thumb-line thumb-line-short" />

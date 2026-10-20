@@ -20,7 +20,7 @@ const pt: typeof en = {
     heroStats: [
         { value: "£134K", label: "Receita atribuída ao email", detail: "12 meses até julho de 2025, +88,9% face ao ano anterior" },
         { value: "50,4%", label: "Taxa de abertura das campanhas", detail: "Percentil 78 face à referência do setor" },
-        { value: "Mais de um terço", label: "Da receita total da loja", detail: "Vinda do email, em 12 meses" },
+        { value: "Mais de um terço", label: "Da receita total da loja", detail: "Vinda do email, nos 12 meses até julho de 2025" },
     ],
     definitionTitle: "Como é um bom email marketing",
     definition: "O email marketing de ciclo de vida gera receita num canal que é seu, com fluxos automáticos, segmentação e campanhas, e não com newsletters avulsas. Envia a mensagem certa ao cliente certo no momento certo, e mede-se em receita atribuída, não em aberturas.",

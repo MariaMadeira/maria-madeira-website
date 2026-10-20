@@ -41,7 +41,7 @@ const pt: typeof en = {
         ],
     },
     whatIDo: {
-        title: "Serviços principais",
+        title: "O que faço",
     },
     testimonials: {
         title: "Cinco anos com um fundador. Um mês para pôr uma escola em primeiro lugar.",

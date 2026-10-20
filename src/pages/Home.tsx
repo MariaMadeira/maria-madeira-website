@@ -260,7 +260,8 @@ function Results() {
                 {r.cards.map((card, i) => (
                     <li key={RESULT_LINKS[i] + i}>
                         <Link to={to(RESULT_LINKS[i])} className="result-card">
-                            <p className="result-value">{card.value}</p>
+                            {/* A value longer than "Page 2 → 1" (the Portuguese "Página 2 → 1") steps down a size so it fits the card. */}
+                            <p className={`result-value${card.value.length > 10 ? " result-value--long" : ""}`}>{card.value}</p>
                             <p className="result-label">{card.label}</p>
                             {visuals[i]}
                             <span className="result-link">{r.link} <ArrowRight size={15} /></span>
