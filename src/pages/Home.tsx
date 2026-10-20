@@ -149,7 +149,7 @@ const BRANDS: { name: string; file: string | null; width: number; height: number
     { name: "Wiltshire Country Fayre", file: "wiltshire-country-fayre.webp", width: 101, height: 44 },
     { name: "Smorgasbord", file: "smorgasbord.webp", width: 146, height: 24 },
     { name: "Ousadia", file: "ousadia.svg", width: 91, height: 44 },
-    { name: "Rita Antunes", file: "rita-antunes.webp", width: 74, height: 44 },
+    { name: "Rita Antunes", file: "rita-antunes-mono.svg", width: 93, height: 44, colour: "rita-antunes.webp" },
 ];
 
 /* ── Testimonials ───────────────────────────────────────── */
