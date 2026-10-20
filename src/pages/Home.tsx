@@ -227,7 +227,7 @@ const RESULT_LINKS = ["/case-study-email", "/case-study-google-ads", "/case-stud
 const WORK = [
     { image: "/projects/click-collect/app-mockups.webp", link: "/portfolio-click-collect" },
     { image: "/projects/email-marketing/recipe.webp", link: "/portfolio-email-marketing" },
-    { image: "/projects/rita-antunes/mockup-stationery.webp", link: "/portfolio-rita-antunes" },
+    { image: "/projects/rita-antunes/mockup-cards.webp", link: "/portfolio-rita-antunes" },
     { image: "/projects/ousadia/moodboard.webp", link: "/portfolio-ousadia" },
     { image: "/projects/ai-enhanced/cooked ox cheek.webp", link: "/portfolio-ai-enhanced" },
     { image: "/projects/ai-product/DEPOIS Cotswold Fudge Butterscotch.webp", link: "/portfolio-ai-product-photography" },
@@ -276,7 +276,8 @@ function Testimonials() {
     const { lang, to } = useLang();
     const c = COPY[lang].testimonials;
     // Badge, role and context come from the copy; the quote stays verbatim.
-    const list = TESTIMONIALS.map((tm, i) => ({ ...tm, badge: tm.badge ? c.badge : null, role: c.people[i].role, context: c.people[i].context }));
+    // Every card carries its tag: Client or Former colleague.
+    const list = TESTIMONIALS.map((tm, i) => ({ ...tm, badge: c.people[i].tag, role: c.people[i].role, context: c.people[i].context }));
     const featured = list[0];
     const attribution = (t: typeof featured) => (
         <figcaption>

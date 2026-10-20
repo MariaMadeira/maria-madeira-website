@@ -1241,6 +1241,14 @@ ul {
 /* Form focus states          */
 /* ========================= */
 input:focus,
+/* Form controls use the site font; browsers default textareas to monospace
+   and inputs to the system font. */
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
 textarea:focus,
 select:focus {
   outline: none;

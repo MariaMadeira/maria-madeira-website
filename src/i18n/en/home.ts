@@ -83,13 +83,13 @@ const en = {
            component. The quotes stay in the component: they are verbatim and
            never translated. */
         people: [
-            { role: "Founder, The Black Farmer", context: "Recommended on LinkedIn" },
-            { role: null, context: "Recommended on LinkedIn" },
-            { role: "Digital Marketing Manager at Ocado Zoom", context: "Former colleague · Recommended on LinkedIn" },
-            { role: "Marketing Executive", context: "Former colleague · Recommended on LinkedIn" },
-            { role: "WordPress Developer", context: "Former colleague · Recommended on LinkedIn" },
-            { role: null, context: "Former colleague · Recommended on LinkedIn" },
-        ] as { role: string | null; context: string }[],
+            { role: "Founder, The Black Farmer", context: "Recommended on LinkedIn", tag: "Client" },
+            { role: null, context: "Recommended on LinkedIn", tag: "Client" },
+            { role: "Digital Marketing Manager at Ocado Zoom", context: "Former colleague · Recommended on LinkedIn", tag: "Former colleague" },
+            { role: "Marketing Executive", context: "Former colleague · Recommended on LinkedIn", tag: "Former colleague" },
+            { role: "WordPress Developer", context: "Former colleague · Recommended on LinkedIn", tag: "Former colleague" },
+            { role: null, context: "Former colleague · Recommended on LinkedIn", tag: "Former colleague" },
+        ] as { role: string | null; context: string; tag: string }[],
         readMore: "Read the full recommendation",
         note: "",
         seeAll: "See all recommendations on LinkedIn",

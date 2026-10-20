@@ -211,7 +211,10 @@ export default function About() {
             <section className="credentials about-section">
                 <h2 className="about-section-title">{t.credentialsTitle}</h2>
                 <p className="credentials-intro">{t.credentialsIntro}</p>
+                {/* Education is on the timeline, so only Certifications show here;
+                    the schema (HAS_CREDENTIAL) still lists every credential. */}
                 {t.credentialGroups.map((group, gi) => {
+                    if (CREDENTIAL_GROUPS[gi].title === "Education") return null;
                     const enItems = CREDENTIAL_GROUPS[gi].items;
                     const withBadge = group.items.map((c, ci) => ({ c, badge: badgeFor(enItems[ci].name) }));
                     const badges = withBadge.filter((x) => x.badge);

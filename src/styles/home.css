@@ -574,3 +574,118 @@
   color: var(--text-secondary);
   line-height: 1.75;
 }
+
+/* ── Illustrated service thumbnails (ServiceThumbs.tsx) ── */
+.thumb-chat,
+.thumb-ads {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+}
+.thumb-chat > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6rem;
+}
+.thumb-chat p { margin: 0; }
+.thumb-chat-q {
+  align-self: flex-end;
+  max-width: 85%;
+  background: var(--accent-secondary);
+  color: #fff;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  padding: 0.45rem 0.65rem;
+  border-radius: 12px 12px 4px 12px;
+}
+.thumb-chat-a {
+  display: flex;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+.thumb-chat-a strong { color: var(--color-dark-brown); }
+.thumb-chat-avatar {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(176, 137, 104, 0.16);
+  color: var(--accent-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thumb-chat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--color-dark-brown);
+  background: rgba(176, 137, 104, 0.16);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+.thumb-ads {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 0.6rem;
+  align-items: center;
+}
+.thumb-ad {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+.thumb-ad-tag {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.thumb-line {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: #C9C4BD;
+  width: 100%;
+}
+.thumb-line-url { width: 55%; height: 4px; }
+.thumb-line-title { height: 7px; width: 85%; background: var(--color-dark-brown); opacity: 0.85; }
+.thumb-line-short { width: 60%; }
+.thumb-line-name { width: 60%; }
+.thumb-ad-head { display: flex; align-items: center; gap: 0.35rem; }
+.thumb-ad-avatar {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-secondary);
+  flex-shrink: 0;
+}
+.thumb-ad-image {
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  background: var(--accent-primary);
+}
+.thumb-ad-button {
+  align-self: stretch;
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--color-dark-brown);
+  border-radius: 6px;
+  padding: 0.3rem 0;
+}

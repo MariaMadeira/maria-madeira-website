@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { PAID_ADS_SERVICE } from "../lib/links";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/serviceCards";
-import { AiAnswerVisual, RoasBarsVisual } from "./MiniVisuals";
+import { AdsThumb, ChatThumb } from "./ServiceThumbs";
 import "../styles/home.css";
 
 /* Visual and link per card, in the copy's order (src/i18n/serviceCards.ts). */
@@ -36,11 +36,9 @@ export default function ServiceCards({ showPrice = false, headingLevel = 3 }: { 
                             <Link to={to(card.link)} className="service-card">
                                 <div className="service-card-thumb">
                                     {card.visual === "aeo" ? (
-                                        <AiAnswerVisual label={t.title} />
+                                        <ChatThumb label={t.title} lang={lang} />
                                     ) : card.visual === "paid" ? (
-                                        <div className="service-card-thumb-chart">
-                                            <RoasBarsVisual label={t.title} className="service-card-svg" />
-                                        </div>
+                                        <AdsThumb label={t.title} lang={lang} />
                                     ) : (
                                         <img
                                             src={card.visual.src}

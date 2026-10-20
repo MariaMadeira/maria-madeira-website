@@ -27,6 +27,16 @@ const en = {
             alt: "The Bodysurf School website on desktop and mobile showing the corporate page and booking cart",
         },
     ],
+    /* Text inside the two illustrated thumbnails (AI search, paid ads). */
+    thumbs: {
+        question: "Where can I buy the best olive oil online?",
+        answerPre: "Most recommended: ",
+        brand: "Your Brand",
+        answerPost: ", cited for quality and fast UK delivery.",
+        source: "yourbrand.com",
+        sponsored: "Sponsored",
+        shopNow: "Shop now",
+    },
     also: "Also: growth strategy, creative direction and product photography, AI workflows, platform migrations.",
 };
 

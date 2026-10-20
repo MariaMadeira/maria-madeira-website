@@ -35,9 +35,9 @@ const COPY: Record<Lang, {
             { name: "About", path: "/about" },
         ],
         services: [
-            { name: "Email Marketing & Klaviyo", path: "/services/email-marketing" },
-            { name: "Paid Ads", path: PAID_ADS_SERVICE },
-            { name: "AEO & SEO", path: "/services/aeo" },
+            { name: "AI search and SEO", path: "/services/aeo" },
+            { name: "Email and Klaviyo", path: "/services/email-marketing" },
+            { name: "Paid ads", path: PAID_ADS_SERVICE },
             { name: "Websites", path: "/services/websites" },
         ],
         allServices: "All services",

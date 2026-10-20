@@ -154,7 +154,7 @@ export default function Contact() {
                             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                                 <label htmlFor="need" style={LABEL}>What do you need help with? <span style={OPTIONAL}>(optional)</span></label>
                                 <select key={topicKey ?? "default"} defaultValue={preset ? preset.need : ""} id="need" name="need" style={FIELD}>
-                                    <option value="">Optional</option>
+                                    <option value="">Choose one</option>
                                     {NEEDS.map((n) => <option key={n} value={n}>{n}</option>)}
                                 </select>
                             </div>
@@ -169,7 +169,7 @@ export default function Contact() {
                                     rows={5}
                                     required
                                     style={{ ...FIELD, resize: "vertical" }}
-                                    placeholder="How can I help you scale?"
+                                    placeholder="What would you like to fix or grow?"
                                 />
                             </div>
 

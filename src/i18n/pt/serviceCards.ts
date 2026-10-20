@@ -34,6 +34,15 @@ const pt: typeof en = {
             alt: "O site da The Bodysurf School no computador e no telemóvel, com a página para empresas e o carrinho de reservas",
         },
     ],
+    thumbs: {
+        question: "TODO-PT",
+        answerPre: "TODO-PT ",
+        brand: "TODO-PT",
+        answerPost: "",
+        source: "yourbrand.com",
+        sponsored: "TODO-PT",
+        shopNow: "TODO-PT",
+    },
     also: "TODO-PT",
 };
 
