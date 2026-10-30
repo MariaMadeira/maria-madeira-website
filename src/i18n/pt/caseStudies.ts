@@ -52,6 +52,7 @@ const pt: typeof en = {
         {
             title: "dePapier Translations: identidade e site bilingue",
             category: "Website e identidade digital",
+            problem: "uma tradutora certificada sem domínio, sem email profissional e com o nome em versões diferentes online.",
             results: "Uma tradutora certificada passa de uma página gratuita para domínio, email e site bilingue próprios.",
         },
     ],

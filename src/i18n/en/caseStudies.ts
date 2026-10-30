@@ -50,6 +50,7 @@ const en = {
         {
             title: "dePapier Translations: identity and bilingual website",
             category: "Website and digital identity",
+            problem: "a certified translator with no domain, no business email and her name in different versions online.",
             results: "A certified translator moves from a free page to her own domain, email and bilingual site.",
         },
     ],

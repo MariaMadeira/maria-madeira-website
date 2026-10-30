@@ -30,7 +30,7 @@ const pt: typeof en = {
     ],
     beforeLabel: "Antes",
     afterLabel: "Depois",
-    before: "Página gratuita no Google Sites, sem domínio próprio, sem email profissional, o nome dela em versões diferentes online",
+    before: "Página gratuita no Google Sites, sem domínio próprio, sem email profissional, nome em versões diferentes online",
     after: "depapiertranslations.com, email profissional, um só nome, site bilingue",
 
     approachTitle: "A abordagem",
@@ -52,8 +52,8 @@ const pt: typeof en = {
     siteMap: {
         home: "Início",
         services: "Serviços",
-        children: ["Jurídica", "Literária", "Revisão e edição"],
-        rest: ["Sobre", "Contactos", "Privacidade", "Blog"],
+        children: ["Tradução Jurídica", "Tradução Literária", "Revisão e Edição de Texto"],
+        rest: ["Sobre", "Contactos", "Política de Privacidade", "Blog"],
     },
     structureImage: "/projects/depapier/depapier-desktop-services-transparent.webp",
     structureSize: [1600, 851],

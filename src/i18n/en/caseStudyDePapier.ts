@@ -53,9 +53,9 @@ const en = {
         children: ["Legal", "Literary", "Proofreading and editing"],
         rest: ["About", "Contact", "Privacy", "Blog"],
     },
-    structureImage: "/projects/depapier/depapier-en-desktop-service-cards-transparent.webp",
-    structureSize: [1600, 935],
-    structureAlt: "Service cards on the English site, each with a small icon, a short description and a link",
+    structureImage: "/projects/depapier/depapier-en-desktop-services-transparent.webp",
+    structureSize: [1600, 797],
+    structureAlt: "Translation Services page of the dePapier Translations website",
 
     designTitle: "Design",
     design: [
