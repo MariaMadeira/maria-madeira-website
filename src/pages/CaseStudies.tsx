@@ -12,6 +12,7 @@ const STUDY_LINKS = [
     "/case-study-email",
     "/case-study-click-collect",
     "/case-study-bodysurf-school",
+    "/case-study-depapier-translations",
 ];
 
 /**
@@ -95,9 +96,11 @@ export default function CaseStudies() {
                         </p>
                         <h3>{study.title}</h3>
                         <div style={{ marginTop: "1rem", flex: 1 }}>
-                            <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", marginBottom: "1rem" }}>
-                                <strong>{c.problemLabel}</strong> {study.problem}
-                            </p>
+                            {study.problem && (
+                                <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", marginBottom: "1rem" }}>
+                                    <strong>{c.problemLabel}</strong> {study.problem}
+                                </p>
+                            )}
                         </div>
 
                         <div style={{ 

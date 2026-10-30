@@ -33,6 +33,7 @@ export const PT_PAGES: { en: string; pt: string; status: "live" | "draft"; batch
     { en: "/case-study-seo", pt: "/pt/caso-seo", status: "live", batch: 2 },
     { en: "/case-study-click-collect", pt: "/pt/caso-click-collect", status: "live", batch: 2 },
     { en: "/case-study-bodysurf-school", pt: "/pt/caso-bodysurf-school", status: "live", batch: 2 },
+    { en: "/case-study-depapier-translations", pt: "/pt/caso-depapier-translations", status: "live", batch: 2 },
 
     { en: "/portfolio", pt: "/pt/portefolio", status: "live", batch: 3 },
     { en: "/portfolio-rita-antunes", pt: "/pt/portefolio-rita-antunes", status: "live", batch: 3 },

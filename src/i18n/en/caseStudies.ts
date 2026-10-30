@@ -47,6 +47,11 @@ const en = {
             problem: "A growing surf school with five coastal locations relied on manual enquiries, with no online booking, no payment processing, and no search visibility strategy.",
             results: "Full rebuild delivered: online booking with local payment methods, bilingual site, SEO and AEO foundations.",
         },
+        {
+            title: "dePapier Translations: identity and bilingual website",
+            category: "Website and digital identity",
+            results: "A certified translator moves from a free page to her own domain, email and bilingual site.",
+        },
     ],
 };
 

@@ -2047,6 +2047,161 @@ select:focus {
 }
 
 /* ========================= */
+/* Website case study pieces  */
+/* ========================= */
+/* Mockups are exported on transparent backgrounds, so they sit straight on the
+   page with no frame. */
+.cs-mockup {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.cs-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+.cs-list strong { color: var(--text-primary); }
+
+.cs-glance {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin-bottom: 3.5rem;
+}
+.cs-glance-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-text);
+  margin: 0 0 1rem;
+}
+.cs-glance dl { margin: 0; display: grid; gap: 0.85rem; }
+.cs-glance-row {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-color);
+}
+.cs-glance-row:first-child { border-top: 0; padding-top: 0; }
+.cs-glance dt { font-weight: 600; color: var(--text-primary); }
+.cs-glance dd { margin: 0; color: var(--text-secondary); line-height: 1.7; }
+
+/* Before is grey, after carries the positive green: the same semantics as
+   the result tiles. */
+.cs-before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+.cs-before-after-col {
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+.cs-before-after-col--before { background: var(--bg-primary); }
+.cs-before-after-col--after { background: var(--bg-secondary); border-left: 4px solid var(--positive); }
+.cs-before-after-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.5rem;
+  color: var(--text-secondary);
+}
+.cs-before-after-col--after .cs-before-after-label { color: var(--positive); }
+.cs-before-after-text { margin: 0; line-height: 1.7; }
+.cs-before-after-col--before .cs-before-after-text { color: var(--text-secondary); }
+.cs-before-after-col--after .cs-before-after-text { color: var(--text-primary); font-weight: 500; }
+
+/* Site map: Home on top, its pages in a row, Services' subpages under it. */
+.cs-sitemap {
+  margin: 1.5rem 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+.cs-sitemap ul { list-style: none; margin: 0; padding: 0; }
+.cs-sitemap > ul > li { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.cs-sitemap > ul > li > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  width: 100%;
+}
+.cs-sitemap > ul > li > ul > li { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+.cs-sitemap > ul > li > ul > li > ul { display: grid; gap: 0.4rem; padding-left: 0.75rem; border-left: 2px solid var(--border-color); }
+.cs-sitemap-node {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.45rem 0.85rem;
+}
+.cs-sitemap-node--root { background: var(--text-primary); color: var(--bg-secondary); border-color: var(--text-primary); }
+.cs-sitemap-node--child { font-weight: 500; font-size: 0.82rem; color: var(--text-secondary); }
+
+.cs-palette {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.cs-swatch { display: flex; flex-direction: column; gap: 0.2rem; }
+.cs-swatch-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 72px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 0.4rem;
+}
+.cs-swatch-chip--type {
+  background: var(--bg-secondary);
+  font-family: "Poppins", var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.cs-swatch-name { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); }
+.cs-swatch-hex { font-size: 0.82rem; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+
+.cs-perf-value {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin: 0.5rem 0 0;
+}
+
+@media (max-width: 620px) {
+  .cs-glance { padding: 1.5rem; }
+  .cs-glance-row { grid-template-columns: 1fr; gap: 0.25rem; }
+  .cs-before-after { grid-template-columns: 1fr; }
+  .cs-palette { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ========================= */
 /* Credentials (/about)       */
 /* ========================= */
 /* Plain rows rather than cards: the section sits inside the bio column, where a

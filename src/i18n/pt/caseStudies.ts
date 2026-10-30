@@ -49,6 +49,11 @@ const pt: typeof en = {
             problem: "Uma escola de surf em crescimento, com cinco locais na costa, dependia de pedidos feitos à mão: sem reservas online, sem pagamentos e sem estratégia de visibilidade na pesquisa.",
             results: "Site reconstruído de raiz: reservas online com métodos de pagamento locais, site bilingue e bases de SEO e AEO.",
         },
+        {
+            title: "dePapier Translations: identidade e site bilingue",
+            category: "Website e identidade digital",
+            results: "Uma tradutora certificada passa de uma página gratuita para domínio, email e site bilingue próprios.",
+        },
     ],
 };
 

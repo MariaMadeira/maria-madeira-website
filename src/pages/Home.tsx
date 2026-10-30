@@ -149,6 +149,7 @@ const BRANDS: { name: string; file: string | null; width: number; height: number
     { name: "Smorgasbord", file: "smorgasbord.webp", width: 146, height: 24 },
     { name: "Ousadia", file: "ousadia.svg", width: 91, height: 44 },
     { name: "Rita Antunes", file: "rita-antunes-mono.svg", width: 93, height: 44, colour: "rita-antunes.webp" },
+    { name: "dePapier Translations", file: "depapier-mono.webp", width: 137, height: 36, colour: "depapier.webp" },
 ];
 
 /* ── Testimonials ───────────────────────────────────────── */
