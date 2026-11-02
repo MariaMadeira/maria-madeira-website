@@ -75,7 +75,7 @@ const pt: typeof en = {
     ctaButton: "Marcar uma conversa gratuita",
 
     heroImage: "/projects/depapier/depapier-desktop-mobile-hero-transparent.webp",
-    heroSize: [1600, 1067],
+    heroSize: [1600, 805],
     quotesImage: "/projects/depapier/depapier-desktop-quote-factors-transparent.webp",
     quotesSize: [1600, 823],
     ogImage: "/og/og-case-study-depapier-pt.png",

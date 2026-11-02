@@ -74,7 +74,7 @@ const en = {
     ctaButton: "Book a free call",
 
     heroImage: "/projects/depapier/depapier-en-desktop-mobile-hero-transparent.webp",
-    heroSize: [1600, 1001],
+    heroSize: [1600, 805],
     quotesImage: "/projects/depapier/depapier-en-desktop-quote-factors-transparent.webp",
     quotesSize: [1600, 751],
     ogImage: "/og/og-case-study-depapier.png",

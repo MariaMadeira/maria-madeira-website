@@ -21,7 +21,7 @@ const pt: typeof en = {
     overview: "Uma casa nova para uma tradutora certificada que geria o negócio a partir de uma página gratuita no Google Sites: domínio próprio, uma identidade coerente e um site em português e inglês.",
 
     siteTitle: "O site",
-    site: { src: `${IMG}depapier-desktop-mobile-hero-transparent.webp`, width: 1600, height: 1067, alt: "A página inicial da dePapier Translations no computador e no telemóvel", caption: "PÁGINA INICIAL · COMPUTADOR E TELEMÓVEL" },
+    site: { src: `${IMG}depapier-desktop-mobile-hero-transparent.webp`, width: 1600, height: 805, alt: "A página inicial da dePapier Translations no computador e no telemóvel", caption: "PÁGINA INICIAL · COMPUTADOR E TELEMÓVEL" },
 
     pagesTitle: "Páginas principais",
     pages: [
