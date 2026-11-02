@@ -27,7 +27,7 @@ const pt: typeof en = {
     path: "/pt/sobre",
     title: "Sobre a Maria Madeira | Consultora de crescimento em Lisboa",
     description: "Maria Madeira, consultora de crescimento em Lisboa: SEO, pesquisa com IA, email no Klaviyo e anúncios para lojas online em Portugal e no Reino Unido.",
-    imgAlt: "Maria Madeira junto a uma janela, com um caderno na mão",
+    imgAlt: "Maria Madeira, consultora de crescimento em Lisboa",
     eyebrow: "Sobre",
     h1Lead: "Olá, sou a ",
     paragraphs: [

@@ -5,7 +5,7 @@ import FinalCta from "../components/FinalCta";
 import KlaviyoPartnerBadge from "../components/KlaviyoPartnerBadge";
 import ToolTile from "../components/ToolTile";
 import { TOOL_GROUPS } from "../lib/toolLogos";
-import { PERSON_REF, breadcrumbNode, webPageNode, withEntities } from "../lib/schema";
+import { PERSON_PHOTO, PERSON_REF, breadcrumbNode, webPageNode, withEntities } from "../lib/schema";
 import { CREDENTIAL_GROUPS } from "../lib/credentials";
 import type { Lang } from "../lib/i18n";
 import { useLang } from "../hooks/useLang";
@@ -61,6 +61,10 @@ export default function About() {
                 description={t.description}
                 path={t.path}
                 jsonLd={JSON_LD[lang]}
+                ogImage={PERSON_PHOTO.path}
+                ogImageWidth={PERSON_PHOTO.width}
+                ogImageHeight={PERSON_PHOTO.height}
+                ogImageAlt={t.imgAlt}
             />
 
             {/* Intro */}

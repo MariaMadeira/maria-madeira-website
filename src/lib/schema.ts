@@ -66,13 +66,33 @@ const ALUMNI_OF = EDUCATION
     .map((c) => (c.schema as Node | undefined)?.recognizedBy)
     .filter((org): org is Node => Boolean(org));
 
+/**
+ * Maria's portrait, the photo on /about, at a stable URL with a descriptive
+ * file name. The same file is the og:image of /about and /pt/sobre.
+ */
+export const PERSON_PHOTO = {
+    path: "/images/maria-madeira-growth-consultant.jpg",
+    width: 1200,
+    height: 1607,
+    alt: "Maria Madeira, growth consultant in Lisbon",
+} as const;
+
+const PERSON_IMAGE = {
+    "@type": "ImageObject",
+    "url": `${SITE_URL}${PERSON_PHOTO.path}`,
+    "contentUrl": `${SITE_URL}${PERSON_PHOTO.path}`,
+    "width": PERSON_PHOTO.width,
+    "height": PERSON_PHOTO.height,
+    "caption": PERSON_PHOTO.alt,
+};
+
 /** The Person, in full. Every page with JSON-LD declares exactly this object. */
 export const PERSON_NODE = {
     "@type": "Person",
     "@id": PERSON_ID,
     "name": "Maria Madeira",
     "url": `${SITE_URL}/about`,
-    "image": `${SITE_URL}/maria-notebook-800.jpg`,
+    "image": PERSON_IMAGE,
     "jobTitle": "Growth Consultant",
     "description": PERSON_DESCRIPTION,
     // Neutral on purpose: it names what she does and where, never anyone else

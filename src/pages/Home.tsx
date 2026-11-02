@@ -64,7 +64,8 @@ const JSON_LD = { en: homeJsonLd("en"), pt: homeJsonLd("pt") };
 /* Brand logos from /public/brand-assets/logos/ (originals in design-assets/),
    trimmed, transparent and exported at twice their display height. Each logo
    has its own display height so they read at the same visual size: the
-   one-line Smorgasbord wordmark sits lower than the stacked logos. The
+   one-line Smorgasbord wordmark sits lower than the stacked logos, and is
+   set inline because the base img rule (index.css) is height: auto. The
    monochrome tint is CSS (home.css), full colour on hover. A brand with no
    file renders its name as text. */
 const LOGO_DIR = "/brand-assets/logos/";
@@ -393,11 +394,11 @@ export default function Home() {
                         <li key={b.name}>
                             {b.file && b.colour ? (
                                 <span className="logo-swap">
-                                    <img src={LOGO_DIR + b.file} alt={b.name} width={b.width} height={b.height} loading="lazy" decoding="async" />
-                                    <img src={LOGO_DIR + b.colour} alt="" aria-hidden="true" width={b.width} height={b.height} loading="lazy" decoding="async" />
+                                    <img src={LOGO_DIR + b.file} alt={b.name} width={b.width} height={b.height} style={{ height: b.height }} loading="lazy" decoding="async" />
+                                    <img src={LOGO_DIR + b.colour} alt="" aria-hidden="true" width={b.width} height={b.height} style={{ height: b.height }} loading="lazy" decoding="async" />
                                 </span>
                             ) : b.file ? (
-                                <img src={LOGO_DIR + b.file} alt={b.name} width={b.width} height={b.height} loading="lazy" decoding="async" />
+                                <img src={LOGO_DIR + b.file} alt={b.name} width={b.width} height={b.height} style={{ height: b.height }} loading="lazy" decoding="async" />
                             ) : (
                                 <span className="logo-strip-name">{b.name}</span>
                             )}
