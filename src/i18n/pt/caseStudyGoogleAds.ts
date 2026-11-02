@@ -5,7 +5,7 @@ const pt: typeof en = {
     path: "/pt/caso-google-ads",
     title: "Caso de estudo Google Ads: ROAS de 532% | Maria Madeira",
     description: "Caso de estudo de Google Ads: £26,5K em anúncios geraram £141K de receita atribuída em onze meses, um retorno de 532% face a um ponto de equilíbrio de 400%.",
-    h1: "Cinco libras de retorno por cada libra investida, ao longo de onze meses",
+    h1: "5,32 £ de retorno por cada 1 £ investida, ao longo de onze meses",
     schemaDescription: "Como uma estrutura de campanhas organizada e testes de criativos transformaram £26,5K de investimento em anúncios em £141K de receita atribuída, um retorno de 532% face a um ponto de equilíbrio de 400%.",
     breadcrumb: "Google Ads",
     back: "Voltar aos casos de estudo",

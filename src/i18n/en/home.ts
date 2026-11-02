@@ -56,7 +56,7 @@ const en = {
             {
                 alt: "Bar chart of monthly return on ad spend over eleven months against a 400 percent break-even",
                 category: "Paid advertising",
-                title: "Every pound spent returned five, over eleven months",
+                title: "£5.32 back for every £1 spent, over eleven months",
                 items: ["£141K attributed revenue, 11 months", "532% ROAS (client break-even: 400%)", "10 of 11 months above break-even"],
             },
             {

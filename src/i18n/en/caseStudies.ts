@@ -24,7 +24,7 @@ const en = {
             results: "Clicks from 4.5K to 8.0K (+78%) in four months · Average position from 15.2 to 9.4",
         },
         {
-            title: "Five pounds back for every pound spent, over eleven months",
+            title: "£5.32 back for every £1 spent, over eleven months",
             category: "Paid Advertising",
             problem: "Paid acquisition needed to scale profitably while maintaining strong return on ad spend.",
             results: "£141K attributed revenue from £26.5K ad spend · 532% ROAS (client break-even: 400%) · 10 of 11 months above break-even",

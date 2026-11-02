@@ -3,7 +3,7 @@ const en = {
     path: "/case-study-google-ads",
     title: "Google Ads Case Study: 532% ROAS, 11 Months | Maria Madeira",
     description: "Google Ads case study: £26.5K of ad spend returned £141K in attributed revenue over eleven months, a 532% blended return against a 400% break-even.",
-    h1: "Five pounds back for every pound spent, over eleven months",
+    h1: "£5.32 back for every £1 spent, over eleven months",
     schemaDescription: "How structured campaign architecture and creative testing turned £26.5K of ad spend into £141K in attributed revenue, a 532% return against a 400% break-even.",
     breadcrumb: "Google Ads",
     back: "Back to Case Studies",

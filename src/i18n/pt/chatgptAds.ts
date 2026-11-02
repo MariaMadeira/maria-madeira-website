@@ -124,7 +124,7 @@ const pt: typeof en = {
         contactLink: "conversa gratuita de 30 minutos",
         c: ". Mostro-lhe o que o ChatGPT diz hoje sobre a sua categoria, com ou sem a sua marca.",
     },
-    related: ["Gestão de Google Ads e Meta Ads", "Cinco libras de retorno por cada libra investida", "O que é o AEO?", "Impressões na pesquisa com IA 2,2x maiores"],
+    related: ["Gestão de Google Ads e Meta Ads", "5,32 £ de retorno por cada 1 £ investida", "O que é o AEO?", "Impressões na pesquisa com IA 2,2x maiores"],
     signOff: "Maria Madeira é consultora de crescimento independente, baseada em Lisboa, e ajuda marcas de e-commerce em Portugal e no Reino Unido com SEO, pesquisa com IA, email marketing no Klaviyo e anúncios pagos.",
     sourcesTitle: "Fontes",
     sources: [

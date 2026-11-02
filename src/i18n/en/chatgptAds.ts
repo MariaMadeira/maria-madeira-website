@@ -125,7 +125,7 @@ const en = {
         contactLink: "free 30-minute call",
         c: ". I will show you what ChatGPT says about your category today, with your brand in it or not.",
     },
-    related: ["Google and Meta Ads management", "Five pounds back for every pound spent", "What is AEO?", "AI search impressions up 2.2x"],
+    related: ["Google and Meta Ads management", "£5.32 back for every £1 spent", "What is AEO?", "AI search impressions up 2.2x"],
     signOff: "Maria Madeira is an independent growth consultant based in Lisbon, helping e-commerce brands in the UK and Portugal with SEO, AI search, Klaviyo email marketing and paid ads.",
     sourcesTitle: "Sources",
     /* Checked 2 November 2026. The help centre table lists the minimum per billing currency. */

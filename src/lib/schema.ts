@@ -42,13 +42,15 @@ export const AREA_SERVED = [
 const ADDRESS = { "@type": "PostalAddress", "addressLocality": "Lisbon", "addressCountry": "PT" };
 
 /**
- * Third-party profiles that answer 200 without a login (checked 2 November
- * 2026). Add a profile only once it does; every page picks it up. LinkedIn
- * (sends logged-out visitors to its sign-up wall) and Malt (bot check, could
- * not be confirmed) are left out on that rule. Credential pages are not
- * profiles: they stay in hasCredential.
+ * Third-party profiles, public and Maria's own. Fiverr, Contra, Clutch and
+ * Influee answered 200 logged out on 2 November 2026. LinkedIn and Malt turn
+ * away logged-out bots (sign-up wall, bot check) but are public profiles, so
+ * they are listed by Maria's decision. Credential pages are not profiles:
+ * they stay in hasCredential.
  */
 export const SAME_AS = [
+    "https://www.linkedin.com/in/maria-madeira-growth",
+    "https://www.malt.com/profile/mariamadeira",
     "https://www.fiverr.com/maria_mmadeira",
     "https://contra.com/maria_madeira_1pwgye97",
     "https://clutch.co/profile/maria-madeira",

@@ -66,7 +66,7 @@ const en = {
     visibilityDesc: "Horizontal bar chart of Semrush AI Visibility scores across five tracked brands. The category leader scores 31, The Black Farmer 27, and three further competitors score 22, 22 and 14. Only The Black Farmer is highlighted.",
     sources: "Sources: Google Search Console (Generative AI features report, available from 18 May 2026), Semrush AI Visibility, August 2026.",
     serviceLink: "SEO and AEO",
-    nextLink: "Google Ads: five pounds back for every pound spent",
+    nextLink: "Google Ads: £5.32 back for every £1 spent",
     ctaText: "Curious what ChatGPT says about your products?",
     ctaButton: "Get a free AI search check",
 };

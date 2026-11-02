@@ -26,7 +26,7 @@ const pt: typeof en = {
             results: "Cliques de 4,5K para 8,0K (+78%) em quatro meses · Posição média de 15,2 para 9,4",
         },
         {
-            title: "Cinco libras de retorno por cada libra investida, ao longo de onze meses",
+            title: "5,32 £ de retorno por cada 1 £ investida, ao longo de onze meses",
             category: "Anúncios pagos",
             problem: "A aquisição paga precisava de crescer com lucro, sem perder um bom retorno do investimento em anúncios.",
             results: "£141K de receita atribuída a partir de £26,5K de investimento em anúncios · ROAS de 532% (ponto de equilíbrio do cliente: 400%) · 10 de 11 meses acima do ponto de equilíbrio",

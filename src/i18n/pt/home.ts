@@ -74,7 +74,7 @@ const pt: typeof en = {
             {
                 alt: "Gráfico de barras do retorno mensal do investimento em anúncios ao longo de onze meses, face a um ponto de equilíbrio de 400%",
                 category: "Anúncios pagos",
-                title: "Cada libra investida rendeu cinco, ao longo de onze meses",
+                title: "5,32 £ de retorno por cada 1 £ investida, ao longo de onze meses",
                 items: ["£141K de receita atribuída, 11 meses", "ROAS de 532% (ponto de equilíbrio do cliente: 400%)", "10 de 11 meses acima do ponto de equilíbrio"],
             },
             {

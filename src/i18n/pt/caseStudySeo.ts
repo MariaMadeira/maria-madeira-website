@@ -67,7 +67,7 @@ const pt: typeof en = {
     visibilityDesc: "Gráfico de barras horizontais com a pontuação no Semrush AI Visibility de cinco marcas acompanhadas. O líder da categoria tem 31, a The Black Farmer 27 e outros três concorrentes 22, 22 e 14. Só a The Black Farmer está destacada.",
     sources: "Fontes: Google Search Console (relatório Generative AI features, disponível desde 18 de maio de 2026), Semrush AI Visibility, agosto de 2026.",
     serviceLink: "SEO e AEO",
-    nextLink: "Google Ads: cinco libras de retorno por cada libra investida",
+    nextLink: "Google Ads: 5,32 £ de retorno por cada 1 £ investida",
     ctaText: "Tem curiosidade em saber o que o ChatGPT diz sobre os seus produtos?",
     ctaButton: "Pedir a verificação gratuita",
 };
