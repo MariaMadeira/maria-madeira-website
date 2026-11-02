@@ -279,14 +279,6 @@ export default function CaseStudyDePapier() {
                     <p style={{ ...p, marginTop: "1.25rem" }}>{c.performanceNote}</p>
                 </section>
 
-                {/* Built to be hers */}
-                <section style={{ marginBottom: "3.5rem" }}>
-                    <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>{c.ownedTitle}</h2>
-                    <p style={p}>{c.owned}</p>
-                    <p style={p}><strong style={{ color: "var(--text-primary)" }}>{c.stackLabel}</strong> {c.stack}</p>
-                    <Mockup src={c.ownedImage} alt={c.ownedAlt} width={c.ownedSize[0]} height={c.ownedSize[1]} />
-                </section>
-
                 {/* What's next */}
                 <section style={{ marginBottom: "3.5rem" }}>
                     <h2 style={{ fontSize: "1.75rem", marginBottom: "1.25rem", color: "var(--text-primary)" }}>{c.nextTitle}</h2>

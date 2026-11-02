@@ -119,16 +119,8 @@ const pt: typeof en = {
     ],
     performanceNote: "Converti as imagens para WebP no servidor e corrigi 207 ligações que ainda apontavam para http.",
 
-    ownedTitle: "Feito para ser dela",
-    owned: "Tudo funciona nas contas da própria Cristiana: domínio, alojamento, email e WordPress. O site usa apenas plugins gratuitos e não precisa de contas externas nem de avença mensal, para que ela o possa gerir sozinha.",
-    stackLabel: "Tecnologia:",
-    stack: "WordPress, Astra, Spectra, Polylang, Rank Math, Forminator, EWWW Image Optimizer, Click to Chat, alojamento OVH, domínio Namecheap.",
-    ownedImage: "/projects/depapier/depapier-en-desktop-footer-credit-transparent.webp",
-    ownedSize: [1600, 782],
-    ownedAlt: "O apelo final e o rodapé do site em inglês, com o crédito do website",
-
     nextTitle: "Próximos passos",
-    next: "O SEO local aprofundado e o trabalho para a pesquisa com IA ficam como fases opcionais. Vou acrescentar resultados de pedidos e visibilidade quando o site tiver dados reais para mostrar.",
+    next: "Agora o trabalho do site é ser encontrado. A base está feita: um nome coerente, páginas nas duas línguas e respostas que os motores de pesquisa e os assistentes de IA podem citar. Seguem-se o SEO local aprofundado, os primeiros artigos do blog e o trabalho para a pesquisa com IA. Vou acrescentar resultados de pedidos e visibilidade quando o site tiver dados reais para mostrar.",
 
     serviceLink: "Estratégia e construção de sites",
     nextLink: "Cinco locais, zero reservas online",

@@ -117,16 +117,8 @@ const en = {
     ],
     performanceNote: "I converted images to WebP on the server and fixed 207 links that still pointed to http.",
 
-    ownedTitle: "Built to be hers",
-    owned: "Everything runs in Cristiana's own accounts: domain, hosting, email and WordPress. The site uses free plugins only and needs no external accounts or monthly retainer, so she can run it on her own.",
-    stackLabel: "Stack:",
-    stack: "WordPress, Astra, Spectra, Polylang, Rank Math, Forminator, EWWW Image Optimizer, Click to Chat, OVH hosting, Namecheap domain.",
-    ownedImage: "/projects/depapier/depapier-en-desktop-footer-credit-transparent.webp",
-    ownedSize: [1600, 782],
-    ownedAlt: "Closing call to action and footer of the English site, with the website credit",
-
     nextTitle: "What's next",
-    next: "Deeper local SEO and AI search work are optional next phases. I will add enquiry and visibility results once the site has real data to show.",
+    next: "The site's job now is to be found. The groundwork is in place: one consistent name, pages in both languages and answers that search engines and AI assistants can quote. Next come deeper local SEO, the first blog articles and AI search work. I will add enquiry and visibility results once the site has real data to show.",
 
     serviceLink: "Website strategy and build",
     nextLink: "Five surf school locations, zero online bookings",
