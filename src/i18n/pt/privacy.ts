@@ -34,13 +34,13 @@ const pt: typeof en = {
                 "Para guardar um registo da nossa correspondência: o meu interesse legítimo em poder consultar o que foi falado e combinado (artigo 6.º, n.º 1, alínea f), do RGPD).",
             ],
             after: [
-                "Não o adiciono a nenhuma lista de emails e não vendo nem partilho os seus dados com ninguém para fins de marketing.",
+                "As mensagens do formulário vão apenas para a Formspree e para a minha caixa de correio. Não são adicionadas ao Klaviyo nem a nenhuma lista de emails, e não vendo nem partilho os seus dados com ninguém para fins de marketing.",
             ],
         },
         {
             title: "Quem mais trata os dados",
             list: [
-                "A Formspree, Inc. entrega as mensagens do formulário de contacto na minha caixa de correio. Trata os dados nos Estados Unidos. A sua política de privacidade diz que só transfere dados pessoais quando a lei o permite e que toma medidas para os manter devidamente protegidos.",
+                "A Formspree, Inc. entrega as mensagens do formulário de contacto na minha caixa de correio. Trata os dados nos Estados Unidos, por isso enviar o formulário transfere os seus dados para fora da UE. Essa transferência assenta nas garantias que o RGPD exige para transferências para os Estados Unidos (Capítulo V): as cláusulas contratuais-tipo aprovadas pela Comissão Europeia, ou o Quadro de Privacidade de Dados UE-EUA quando o fornecedor está certificado.",
                 "A Vercel Inc. aloja este site. Como qualquer serviço de alojamento, guarda registos do servidor, como endereços IP, por razões de segurança e para manter o site a funcionar. A Vercel está sediada nos Estados Unidos e é certificada ao abrigo do Quadro de Privacidade de Dados UE-EUA.",
                 "O meu fornecedor de email guarda os emails que envio e recebo.",
             ],
@@ -48,7 +48,7 @@ const pt: typeof en = {
         {
             title: "Durante quanto tempo guardo os dados",
             paragraphs: [
-                "Os pedidos que não dão origem a trabalho são apagados no prazo de 24 meses. Se se tornar cliente, a nossa correspondência é guardada durante o tempo exigido por lei, por exemplo pelas regras contabilísticas e fiscais.",
+                "Os pedidos são guardados durante 24 meses após o nosso último contacto e depois apagados. Se se tornar cliente, a nossa correspondência é guardada durante o tempo exigido por lei, por exemplo pelas regras contabilísticas e fiscais.",
             ],
         },
         {

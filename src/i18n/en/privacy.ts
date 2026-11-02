@@ -32,13 +32,13 @@ const en = {
                 "To keep a record of our correspondence: my legitimate interest in being able to refer back to what was discussed and agreed (Article 6(1)(f)).",
             ],
             after: [
-                "I don't add you to a mailing list, and I don't sell or share your details with anyone for marketing.",
+                "Form messages go only to Formspree and my inbox. They are not added to Klaviyo or any mailing list, and I don't sell or share your details with anyone for marketing.",
             ],
         },
         {
             title: "Who else handles it",
             list: [
-                "Formspree, Inc. delivers contact form messages to my inbox. It processes data in the United States. Its privacy policy says it transfers personal data only where the law permits and takes steps to keep it appropriately protected.",
+                "Formspree, Inc. delivers contact form messages to my inbox. It processes data in the United States, so sending the form transfers your details outside the EU. That transfer relies on the safeguards GDPR requires for transfers to the United States (Chapter V): the Standard Contractual Clauses approved by the European Commission, or the EU-US Data Privacy Framework where the provider is certified.",
                 "Vercel Inc. hosts this website. Like any host, it keeps server logs, such as IP addresses, for security and to keep the site running. Vercel is based in the United States and certified under the EU-US Data Privacy Framework.",
                 "My email provider stores the emails I send and receive.",
             ],
@@ -46,7 +46,7 @@ const en = {
         {
             title: "How long I keep it",
             paragraphs: [
-                "Enquiries that don't lead to work are deleted within 24 months. If you become a client, our correspondence is kept for as long as the law requires, for example under accounting and tax rules.",
+                "Enquiries are kept for 24 months after our last contact, then deleted. If you become a client, our correspondence is kept for as long as the law requires, for example under accounting and tax rules.",
             ],
         },
         {

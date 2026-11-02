@@ -16,7 +16,7 @@ Last updated: 2026-11-02
 - [SEO and AI search optimisation (AEO)](https://mariamadeira.com/services/aeo): SEO for e-commerce brands, plus getting cited and recommended by ChatGPT, Perplexity, Gemini and Google AI Overviews. Audit, then implementation.
 - [Klaviyo email marketing](https://mariamadeira.com/services/email-marketing): Klaviyo email marketing consulting from an official Klaviyo Partner: lifecycle flows, segmentation and campaigns measured in attributed revenue.
 - [Google, Meta and Microsoft Ads](https://mariamadeira.com/services/paid-ads): paid ads for e-commerce brands, every campaign measured against the client's break-even ROAS.
-- [Websites](https://mariamadeira.com/services/websites): WordPress and Shopify websites with SEO and AI search built in, including bookings and payments; quoted per project.
+- [Websites](https://mariamadeira.com/services/websites): building and migrating stores on Shopify and WordPress, with SEO and AI search built in, including bookings and payments; quoted per project.
 
 ## Pricing
 - [Pricing](https://mariamadeira.com/pricing): UK prices in GBP. Growth Audit £750, fixed, one-off. Projects from £1,200 (for example Klaviyo setup with core flows, or a website). Monthly work from £500 a month, minimum three months. By service: AEO audit £750 and ongoing AEO from £800 a month; monthly email marketing from £750 a month; Google Ads or Meta Ads management from £500 a month per platform, ad spend not included; websites quoted per project.
@@ -65,7 +65,7 @@ Last updated: 2026-11-02
 - [SEO e pesquisa com IA](https://mariamadeira.com/pt/servicos/aeo): SEO e otimização para a pesquisa com IA (AEO) para lojas online em Portugal: a marca encontrada no Google e recomendada pelo ChatGPT, Perplexity, Gemini e Vista geral de IA da Google.
 - [Especialista Klaviyo em Portugal](https://mariamadeira.com/pt/servicos/email-marketing): email marketing no Klaviyo com uma Klaviyo Partner oficial: fluxos automáticos, segmentação e campanhas.
 - [Google Ads e Meta Ads](https://mariamadeira.com/pt/servicos/anuncios): anúncios pagos para e-commerce, medidos face ao ROAS de equilíbrio de cada marca.
-- [Sites](https://mariamadeira.com/pt/servicos/sites): sites WordPress e Shopify com SEO e pesquisa com IA de raiz, incluindo reservas e pagamentos.
+- [Sites](https://mariamadeira.com/pt/servicos/sites): construção e migração de lojas em Shopify e WordPress, com SEO e pesquisa com IA de raiz, incluindo reservas e pagamentos.
 - [Formas de trabalhar](https://mariamadeira.com/pt/precos): Auditoria de crescimento, projetos e acompanhamento mensal. A página portuguesa não publica preços: cada trabalho tem proposta por escrito, com âmbito e preço fechados.
 - [Sobre](https://mariamadeira.com/pt/sobre): percurso, resultados publicados, ferramentas e credenciais.
 - [Informação para IA](https://mariamadeira.com/pt/informacao-ia): factos sobre a Maria Madeira para assistentes de IA, em português.

@@ -26,7 +26,7 @@ const MODIFIED = { en: "2026-11-02", pt: "2026-11-02" };
 const FACT_ICONS: LucideIcon[] = [Calendar, User, MapPin, Wallet, Layout, Lock];
 
 /* ── Minimum spend across the three platforms named in the caveats section ── */
-const BUDGET_HIGHLIGHT = [false, false, true];
+const BUDGET_HIGHLIGHT = [false, true];
 
 /* ── Character ceilings, scaled against the widest field in the set ── */
 const CHAR_COUNTS: { chars: number; highlight: boolean }[] = [

@@ -32,7 +32,7 @@ const pt: typeof en = {
             results: "£141K de receita atribuída a partir de £26,5K de investimento em anúncios · ROAS de 532% (ponto de equilíbrio do cliente: 400%) · 10 de 11 meses acima do ponto de equilíbrio",
         },
         {
-            title: "De setembro de 2021 a julho de 2025: o email chegou a £134K por ano e a mais de um terço da receita da loja",
+            title: "De setembro de 2021 a julho de 2025: o email chegou a £134K em 12 meses e a mais de um terço da receita da loja",
             category: "Email marketing",
             problem: "Três fluxos automáticos e campanhas enviadas de vez em quando, com a maior parte da receita de email a vir de promoções pontuais.",
             results: "£134K de receita atribuída nos 12 meses até julho de 2025 · +88,9% face aos 12 meses anteriores (até julho de 2024)",

@@ -62,8 +62,8 @@ const pt: typeof en = {
     who: "Marcas e negócios em Portugal e no Reino Unido que vendem ou recebem reservas online e sabem que o site devia estar a vender mais. Seja uma reconstrução completa ou melhorias focadas, o ponto de partida é o mesmo: uma auditoria honesta e um plano.",
     platformsTitle: "Que plataforma, e porquê",
     platforms: [
-        "Construo em WordPress e em Shopify, e a plataforma segue a forma como vende. O WordPress serve sites que precisam de reservas, conteúdos flexíveis ou duas línguas. A The Bodysurf School e a dePapier Translations funcionam em WordPress: um recebe reservas e pagamentos para cinco locais de surf, o outro é o site bilingue de uma tradutora certificada.",
-        "O Shopify serve marcas cujo negócio é um catálogo de produtos. O trabalho em Shopify publicado neste site é de pesquisa: depois de uma marca de alimentação premium do Reino Unido passar de WooCommerce para Shopify, reescrevi 30 coleções e refiz mais de 60 páginas de produto para o Google e a pesquisa com IA, e os cliques orgânicos subiram 78% em quatro meses.",
+        "Faço a construção e migração de lojas em Shopify e WordPress, e a plataforma segue a forma como vende. O WordPress serve sites que precisam de reservas, conteúdos flexíveis ou duas línguas. A The Bodysurf School e a dePapier Translations funcionam em WordPress: um recebe reservas e pagamentos para cinco locais de surf, o outro é o site bilingue de uma tradutora certificada.",
+        "O Shopify serve marcas cujo negócio é um catálogo de produtos. Migrei o smorgasbordfood.com de WordPress para Shopify. O caso de estudo em Shopify publicado neste site é de pesquisa: depois de uma marca de alimentação premium do Reino Unido passar de WooCommerce para Shopify, reescrevi 30 coleções e refiz mais de 60 páginas de produto para o Google e a pesquisa com IA, e os cliques orgânicos subiram 78% em quatro meses.",
     ],
     includedTitle: "O que inclui um projeto de site",
     included: [
@@ -84,7 +84,7 @@ const pt: typeof en = {
     faqs: [
         {
             q: "Constrói sites em Shopify ou em WordPress?",
-            a: "Nos dois. O WordPress serve sites que precisam de reservas, conteúdos flexíveis ou duas línguas, e é por isso que a The Bodysurf School e a dePapier Translations funcionam nele. O Shopify serve marcas cujo negócio é um catálogo de produtos. Recomendo a plataforma depois da auditoria, com base na forma como vende, e não naquilo que prefiro construir.",
+            a: "Nos dois: faço a construção e migração de lojas em Shopify e WordPress. O WordPress serve sites que precisam de reservas, conteúdos flexíveis ou duas línguas, e é por isso que a The Bodysurf School e a dePapier Translations funcionam nele. O Shopify serve marcas cujo negócio é um catálogo de produtos. Recomendo a plataforma depois da auditoria, com base na forma como vende, e não naquilo que prefiro construir.",
         },
         {
             q: "Quanto tempo demora um site novo?",

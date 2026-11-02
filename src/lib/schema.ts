@@ -49,6 +49,7 @@ const ADDRESS = { "@type": "PostalAddress", "addressLocality": "Lisbon", "addres
 export const SAME_AS = [
     "https://www.linkedin.com/in/maria-madeira-growth",
     "https://influee.co/partnership/maria-madeira",
+    "https://www.fiverr.com/maria_mmadeira",
 ];
 
 /** The canonical one-sentence description, the same wherever the entity is introduced. */

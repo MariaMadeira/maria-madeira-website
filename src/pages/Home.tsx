@@ -117,7 +117,7 @@ const TESTIMONIALS: (Testimonial & { short?: string })[] = [
         role: "Marketing Executive",
         context: "Former colleague · Recommended on LinkedIn",
         monogram: "IA",
-        quote: "Working under Maria's guidance at The Black Farmer was an incredible experience. As my senior, she taught me the ins and outs of marketing, from brand strategy to high-impact email campaigns. Her ability to grab customer attention and her deep business knowledge are truly inspiring. Anyone would be lucky to have Maria leading their marketing efforts!",
+        quote: "Anyone would be lucky to have Maria leading their marketing efforts!",
         short: "Anyone would be lucky to have Maria leading their marketing efforts!",
         readMore: null,
     },

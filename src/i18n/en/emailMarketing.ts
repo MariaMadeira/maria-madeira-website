@@ -26,7 +26,7 @@ const en = {
     cta: "Book a free call",
     heroStats: [
         { value: "£134K", label: "Email-attributed revenue", detail: "12 months to July 2025, +88.9% on the previous 12 months (to July 2024)" },
-        { value: "50.4%", label: "Average campaign open rate", detail: "12 months to July 2025, 78th percentile benchmark" },
+        { value: "50.4%", label: "Average campaign open rate", detail: "12 months to July 2025; 78th percentile, Klaviyo industry benchmark, June 2025" },
         { value: "Over a third", label: "Of total store revenue", detail: "Driven by email in the 12 months to July 2025" },
     ],
     definitionTitle: "What great email looks like",
@@ -34,7 +34,7 @@ const en = {
     curveTitle: "The compounding curve",
     curveSub: "Real figures from one engagement, 2022 to July 2025.",
     curve: [
-        { title: "Average campaign open rate", from: { label: "2022", value: "28.1%" }, to: { label: "12 months to Jul 2025", value: "50.4%" }, note: "78th percentile against Klaviyo's industry benchmark in the 12 months to July 2025" },
+        { title: "Average campaign open rate", from: { label: "2022", value: "28.1%" }, to: { label: "12 months to Jul 2025", value: "50.4%" }, note: "78th percentile, Klaviyo industry benchmark, June 2025" },
         { title: "Email-attributed revenue", from: { label: "Previous 12 months (to Jul 2024)", value: "c. £71K" }, to: { label: "12 months to Jul 2025", value: "£134K" }, note: "+88.9% on the previous 12 months (to July 2024)" },
     ],
     whatTitle: "What I do",

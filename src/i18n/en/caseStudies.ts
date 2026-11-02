@@ -30,7 +30,7 @@ const en = {
             results: "£141K attributed revenue from £26.5K ad spend · 532% ROAS (client break-even: 400%) · 10 of 11 months above break-even",
         },
         {
-            title: "September 2021 to July 2025: email grew to £134K a year and over a third of store revenue",
+            title: "September 2021 to July 2025: email grew to £134K in 12 months and over a third of store revenue",
             category: "Email Marketing",
             problem: "Three automated flows and occasional campaign sends, with most email revenue coming from one-off promotions.",
             results: "£134K attributed revenue in the 12 months to July 2025 · +88.9% on the previous 12 months (to July 2024)",

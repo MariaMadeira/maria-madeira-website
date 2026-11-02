@@ -41,12 +41,12 @@ export default function Results() {
     const { ref: emailRef, inView: emailInView } = useInView({ rootMargin: '-50px', once: true });
     const { ref: paidRef, inView: paidInView } = useInView({ rootMargin: '-50px', once: true });
 
-    // Verified Klaviyo data, last 12 months (Jul 2024 – Jul 2025). The 2024
-    // calendar-year flow click rate was 9.14%; the 12-month figure is 7.27%.
+    // Verified Klaviyo data, 12 months to July 2025. The flow click rate is
+    // published for this window only (7.3%); there is no 2024 comparison.
     const emailMetrics = [
         { label: "Attributed email revenue, 12 months to July 2025 (+88.9% on the previous 12 months, to July 2024)", to: 134, prefix: "£", suffix: "K", decimals: 0 },
-        { label: "Average campaign open rate, 12 months to July 2025 (78th percentile)", to: 50.4, prefix: "", suffix: "%", decimals: 1 },
-        { label: "Click rate from automated flows, 12 months to July 2025", to: 7.27, prefix: "", suffix: "%", decimals: 2 },
+        { label: "Average campaign open rate, 12 months to July 2025 (78th percentile, Klaviyo industry benchmark, June 2025)", to: 50.4, prefix: "", suffix: "%", decimals: 1 },
+        { label: "Click rate from automated flows, 12 months to July 2025", to: 7.3, prefix: "", suffix: "%", decimals: 1 },
         { label: "Revenue from automated email flows, 12 months to July 2025", to: 48.3, prefix: "£", suffix: "K", decimals: 1 }
     ];
 

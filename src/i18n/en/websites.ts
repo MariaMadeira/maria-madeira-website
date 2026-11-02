@@ -62,8 +62,8 @@ const en = {
        Bodysurf, dePapier and SEO case studies, and the price from lib/pricing.ts. */
     platformsTitle: "Which platform, and why",
     platforms: [
-        "I build on WordPress and Shopify, and the platform follows how you sell. WordPress suits sites that need bookings, flexible content or two languages. The Bodysurf School and dePapier Translations both run on it: one takes bookings and payments for five surf locations, the other is a bilingual site for a certified translator.",
-        "Shopify suits brands whose business is a product catalogue. The Shopify work published on this site is search work: after a UK premium food brand moved from WooCommerce to Shopify, I rewrote 30 collections and rebuilt more than 60 product pages for Google and AI search, and organic clicks rose 78% in four months.",
+        "I build and migrate stores on Shopify and WordPress, and the platform follows how you sell. WordPress suits sites that need bookings, flexible content or two languages. The Bodysurf School and dePapier Translations both run on it: one takes bookings and payments for five surf locations, the other is a bilingual site for a certified translator.",
+        "Shopify suits brands whose business is a product catalogue. I migrated smorgasbordfood.com from WordPress to Shopify. The Shopify case study published on this site is search work: after a UK premium food brand moved from WooCommerce to Shopify, I rewrote 30 collections and rebuilt more than 60 product pages for Google and AI search, and organic clicks rose 78% in four months.",
     ],
     includedTitle: "What a website project includes",
     included: [
@@ -85,7 +85,7 @@ const en = {
     faqs: [
         {
             q: "Do you build on Shopify or WordPress?",
-            a: "Both. WordPress suits sites that need bookings, flexible content or two languages, which is why The Bodysurf School and dePapier Translations run on it. Shopify suits brands whose business is a product catalogue. I recommend the platform after the audit, based on how you sell, not on what I prefer to build.",
+            a: "Both: I build and migrate stores on Shopify and WordPress. WordPress suits sites that need bookings, flexible content or two languages, which is why The Bodysurf School and dePapier Translations run on it. Shopify suits brands whose business is a product catalogue. I recommend the platform after the audit, based on how you sell, not on what I prefer to build.",
         },
         {
             q: "How long does a new website take?",

@@ -83,7 +83,7 @@ const en = {
     caveats: [
         {
             title: "The minimum budget is a real barrier.",
-            body: "Google Ads has no minimum: you can run at 2 euros a day. Meta sets only a small daily floor, which depends on your account currency and what the ad set is optimised for. ChatGPT Ads asks for 25 dollars a day, or 15 euros or pounds, roughly 750 dollars or 450 euros a month, as the entry ticket. That excludes the cheap exploratory test most small brands are used to. The upside, if there is one: a floor this high forces you to design the test before you spend. Either you commit to a proper 30-day trial with tracking in place, or you stay out. For many food and drink brands, staying out for now is the right call.",
+            body: "Meta sets only a small daily floor, which depends on your account currency and what the ad set is optimised for. ChatGPT Ads asks for 25 dollars a day, or 15 euros or pounds, roughly 750 dollars or 450 euros a month, as the entry ticket. That excludes the cheap exploratory test most small brands are used to. The upside, if there is one: a floor this high forces you to design the test before you spend. Either you commit to a proper 30-day trial with tracking in place, or you stay out. For many food and drink brands, staying out for now is the right call.",
         },
         {
             title: "A \"Sponsored\" label costs trust in the one place people came for honesty.",
@@ -91,15 +91,14 @@ const en = {
         },
     ],
     table: {
-        caption: "Minimum daily budget compared across Google Ads, Meta Ads and ChatGPT Ads",
+        caption: "Minimum daily budget compared across Meta Ads and ChatGPT Ads",
         head: ["Platform", "Minimum daily budget", "Monthly minimum"],
         /* Same order as the highlight flags in the page. */
         rows: [
-            { platform: "Google Ads", daily: "No minimum", monthly: "None" },
             { platform: "Meta Ads", daily: "Small floor, set per currency", monthly: "Low, depends on currency and optimisation" },
             { platform: "ChatGPT Ads", daily: "25 US dollars, 15 euros or 15 pounds", monthly: "About 750 US dollars, or about 450 euros or pounds" },
         ],
-        figcaption: "Entry cost compared. Google and Meta let you test for the price of a coffee; ChatGPT Ads does not.",
+        figcaption: "Entry cost compared. Meta lets you test on a small daily budget; ChatGPT Ads does not.",
     },
     meansTitle: "What this means if you run a food and drink brand",
     means1: "The organic and paid layers now compete for the same conversation, and they are not equals. The organic answer is the recommendation; the paid card is the advert. My second test showed brands winning ChatGPT recommendations today on the strength of awards, reviews, structured data and clear product information. From this month, a competitor can pay to appear beneath that same answer, but they cannot pay their way into the answer itself.",

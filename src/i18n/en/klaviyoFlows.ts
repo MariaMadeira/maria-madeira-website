@@ -16,7 +16,7 @@ const en = {
     summary: {
         a: "Automated emails, called flows in Klaviyo, are a small share of what a brand sends and a large share of what it earns. Across 150,000 brands, ",
         link: "Omnisend",
-        b: " found automations were 2% of email sends and 30% of email revenue. At a UK food brand I worked with for five years, flows earned about 16 times more per recipient than campaigns. Here is why, and which flows to build first.",
+        b: " found automations were 2% of email sends and 30% of email revenue. At a UK food brand I worked with for five years, flows earned about 16 times more per recipient than campaigns in 2024. Here is why, and which flows to build first.",
     },
 
     /* Visual 1 */
@@ -114,7 +114,7 @@ const en = {
     v5Caption: "Klaviyo attributed revenue, calendar years 2022 to 2024. The programme started in September 2021, so 2021 is not a full year and is not shown. Source: Klaviyo Business Overview exports.",
 
     /* Visual 6 */
-    v6Title: "Revenue per recipient, 2024",
+    v6Title: "2024, revenue per recipient, flows vs campaigns",
     v6Desc: "Revenue per recipient in 2024 at a UK food brand: an automated email earned about 16 times more than a campaign email. The campaign bar is 1 unit long and the automated bar 16 units.",
     v6Campaign: "Campaign email",
     v6Automated: "Automated email",
@@ -139,7 +139,7 @@ const en = {
     v7Caption: "Illustrative example, not the brand's actual email.",
 
     honestTitle: "The honest part",
-    honest: "Not every number went up. As more flows went live, flow click rate fell from 8.5% in 2024 to 7.3% in the 12 months to July 2025, while far more people were receiving flows. More flows reach more people, but each one needs its own testing, or the average slips.",
+    honest: "Not every number is a headline. Flow click rate was 7.3% in the 12 months to July 2025. More flows reach more people, but each one needs its own testing, or the average slips.",
 
     /* Visual 8: the first 30 days */
     v8Title: "Your first 30 days of flows",

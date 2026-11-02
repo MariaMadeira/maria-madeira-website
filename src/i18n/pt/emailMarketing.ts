@@ -19,7 +19,7 @@ const pt: typeof en = {
     cta: "Marcar uma conversa gratuita",
     heroStats: [
         { value: "£134K", label: "Receita atribuída ao email", detail: "12 meses até julho de 2025, +88,9% face aos 12 meses anteriores (até julho de 2024)" },
-        { value: "50,4%", label: "Taxa de abertura média das campanhas", detail: "12 meses até julho de 2025, percentil 78 da referência do setor" },
+        { value: "50,4%", label: "Taxa de abertura média das campanhas", detail: "12 meses até julho de 2025; percentil 78, benchmark do setor do Klaviyo, junho de 2025" },
         { value: "Mais de um terço", label: "Da receita total da loja", detail: "Vinda do email, nos 12 meses até julho de 2025" },
     ],
     definitionTitle: "Como é um bom email marketing",
@@ -115,7 +115,7 @@ const pt: typeof en = {
     ctaButton: "Marcar uma conversa gratuita",
     ptExtras: {
         results: [
-            { value: "16x", label: "mais receita por destinatário nos emails automáticos do que nas campanhas, em 2024" },
+            { value: "16x", label: "2024, receita por destinatário, fluxos vs. campanhas" },
             { value: "£23,6K", label: "gerados por um único fluxo, a série de boas-vindas da lista das caixas, 12 meses até julho de 2025" },
             { value: "3 → 14", label: "fluxos automáticos em produção, de 2021 a 2025" },
         ],

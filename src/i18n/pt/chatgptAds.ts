@@ -83,7 +83,7 @@ const pt: typeof en = {
     caveats: [
         {
             title: "O orçamento mínimo é uma barreira a sério.",
-            body: "O Google Ads não tem mínimo: pode anunciar com 2 euros por dia. A Meta define apenas um mínimo diário baixo, que depende da moeda da conta e daquilo para que o conjunto de anúncios está otimizado. O ChatGPT Ads pede 25 dólares por dia, ou 15 euros ou libras, cerca de 750 dólares ou 450 euros por mês, só para entrar. Isso exclui o teste exploratório barato a que a maioria das pequenas marcas está habituada. O lado bom, se houver algum: um mínimo tão alto obriga a desenhar o teste antes de gastar. Ou se compromete com um teste a sério de 30 dias, com a medição montada, ou fica de fora. Para muitas marcas de alimentação e bebidas, ficar de fora por agora é a decisão certa.",
+            body: "A Meta define apenas um mínimo diário baixo, que depende da moeda da conta e daquilo para que o conjunto de anúncios está otimizado. O ChatGPT Ads pede 25 dólares por dia, ou 15 euros ou libras, cerca de 750 dólares ou 450 euros por mês, só para entrar. Isso exclui o teste exploratório barato a que a maioria das pequenas marcas está habituada. O lado bom, se houver algum: um mínimo tão alto obriga a desenhar o teste antes de gastar. Ou se compromete com um teste a sério de 30 dias, com a medição montada, ou fica de fora. Para muitas marcas de alimentação e bebidas, ficar de fora por agora é a decisão certa.",
         },
         {
             title: "Uma etiqueta \"Patrocinado\" custa confiança no único sítio onde as pessoas procuram uma resposta honesta.",
@@ -91,14 +91,13 @@ const pt: typeof en = {
         },
     ],
     table: {
-        caption: "Orçamento diário mínimo no Google Ads, no Meta Ads e no ChatGPT Ads, em comparação",
+        caption: "Orçamento diário mínimo no Meta Ads e no ChatGPT Ads, em comparação",
         head: ["Plataforma", "Orçamento diário mínimo", "Mínimo mensal"],
         rows: [
-            { platform: "Google Ads", daily: "Sem mínimo", monthly: "Nenhum" },
             { platform: "Meta Ads", daily: "Mínimo baixo, definido por moeda", monthly: "Baixo, depende da moeda e da otimização" },
             { platform: "ChatGPT Ads", daily: "25 dólares americanos, 15 euros ou 15 libras", monthly: "Cerca de 750 dólares americanos, ou cerca de 450 euros ou libras" },
         ],
-        figcaption: "Custo de entrada, em comparação. A Google e a Meta deixam-no testar pelo preço de um café; o ChatGPT Ads não.",
+        figcaption: "Custo de entrada, em comparação. A Meta deixa-o testar com um orçamento diário baixo; o ChatGPT Ads não.",
     },
     meansTitle: "O que isto significa para uma marca de alimentação e bebidas",
     means1: "A camada orgânica e a camada paga disputam agora a mesma conversa, e não estão em pé de igualdade. A resposta orgânica é a recomendação; o cartão pago é o anúncio. O meu segundo teste mostrou marcas a ganhar hoje recomendações do ChatGPT graças a prémios, avaliações, dados estruturados e informação clara sobre os produtos. A partir deste mês, um concorrente pode pagar para aparecer por baixo dessa resposta, mas não pode pagar para entrar na própria resposta.",

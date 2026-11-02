@@ -18,7 +18,7 @@ const pt: typeof en = {
     summary: {
         a: "Os emails automáticos, a que o Klaviyo chama fluxos (flows), são uma pequena parte do que uma marca envia e uma grande parte do que fatura. Em 150 000 marcas, a ",
         link: "Omnisend",
-        b: " concluiu que as automações eram 2% dos envios de email e 30% da receita de email. Numa marca de alimentação do Reino Unido com quem trabalhei durante cinco anos, os fluxos renderam cerca de 16 vezes mais por destinatário do que as campanhas. Explico porquê e que fluxos criar primeiro.",
+        b: " concluiu que as automações eram 2% dos envios de email e 30% da receita de email. Numa marca de alimentação do Reino Unido com quem trabalhei durante cinco anos, os fluxos renderam cerca de 16 vezes mais por destinatário do que as campanhas em 2024. Explico porquê e que fluxos criar primeiro.",
     },
 
     v1Title: "Poucos envios, muita receita",
@@ -132,7 +132,7 @@ const pt: typeof en = {
     v7Caption: "Exemplo ilustrativo, não é o email real da marca.",
 
     honestTitle: "A parte honesta",
-    honest: "Nem todos os números subiram. À medida que entravam mais fluxos no ar, a taxa de clique dos fluxos desceu de 8,5% em 2024 para 7,3% nos 12 meses até julho de 2025, enquanto muitas mais pessoas passaram a receber fluxos. Mais fluxos chegam a mais pessoas, mas cada um precisa dos seus próprios testes, senão a média desce.",
+    honest: "Nem todos os números dão manchete. A taxa de clique dos fluxos foi de 7,3% nos 12 meses até julho de 2025. Mais fluxos chegam a mais pessoas, mas cada um precisa dos seus próprios testes, senão a média desce.",
 
     v8Title: "Os seus primeiros 30 dias de fluxos",
     weeks: [
