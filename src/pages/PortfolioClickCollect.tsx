@@ -263,7 +263,7 @@ export default function PortfolioClickCollect() {
                                         width: "36px",
                                         height: "36px",
                                         borderRadius: "50%",
-                                        background: "var(--accent-secondary)",
+                                        background: "var(--accent-text)",
                                         color: "white",
                                         display: "flex",
                                         alignItems: "center",

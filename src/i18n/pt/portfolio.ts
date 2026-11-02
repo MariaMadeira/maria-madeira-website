@@ -23,7 +23,7 @@ const pt: typeof en = {
         {
             title: "The Bodysurf School",
             category: "Sites",
-            description: "Site bilingue com reservas online para uma escola de bodysurf com cinco praias.",
+            description: "Site bilingue com reservas online para uma escola de bodysurf com cinco locais.",
         },
         {
             title: "Email marketing de ciclo de vida",

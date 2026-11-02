@@ -22,7 +22,7 @@ const en = {
         {
             title: "The Bodysurf School",
             category: "Websites",
-            description: "A bilingual booking website for a bodysurf school with five beach locations.",
+            description: "A bilingual booking website for a bodysurf school with five locations.",
         },
         {
             title: "Lifecycle Email Marketing",
