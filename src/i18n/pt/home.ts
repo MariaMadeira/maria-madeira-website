@@ -33,6 +33,7 @@ const pt: typeof en = {
         title: "Impacto mensurável",
         sub: "De contas reais de clientes. Cada número leva ao caso de estudo.",
         link: "Ver o caso",
+        emailCaption: "+88,9% face a c. £71K, 12 meses anteriores (até julho de 2024)",
         emailBars: "Duas barras: c. £71K nos 12 meses anteriores (até julho de 2024) e £134K nos 12 meses até julho de 2025, mais 88,9%",
         cards: [
             { value: "£134K", label: "Receita de email, 12 meses até julho de 2025, marca de alimentação premium do Reino Unido" },

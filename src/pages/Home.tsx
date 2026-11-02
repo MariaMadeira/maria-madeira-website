@@ -194,6 +194,8 @@ function Results() {
                             <p className={`result-value${card.value.length > 10 ? " result-value--long" : ""}`}>{card.value}</p>
                             <p className="result-label">{card.label}</p>
                             {visuals[i]}
+                            {/* The email bars carry their period in visible text, not only in the aria-label. */}
+                            {i === 0 && <p className="result-caption">{r.emailCaption}</p>}
                             <span className="result-link">{r.link} <ArrowRight size={15} /></span>
                         </Link>
                     </li>

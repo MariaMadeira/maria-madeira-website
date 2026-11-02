@@ -32,8 +32,6 @@ const pt: typeof en = {
         visibilityTitle: "2.º de 5 no Semrush AI Visibility",
         visibilitySubtitle: "Distância para o líder da categoria reduzida de 8 para 4 pontos em três semanas, de 5 a 24 de agosto de 2026.",
         visibilityA11yTitle: "Pontuação no Semrush AI Visibility entre as marcas acompanhadas",
-        visibilityLabels: ["Líder da categoria", "The Black Farmer", "Concorrente", "Concorrente", "Concorrente"],
-        visibilityDesc: "Gráfico de barras horizontais com a pontuação no Semrush AI Visibility de cinco marcas acompanhadas. O líder da categoria tem 31, a The Black Farmer 27 e outros três concorrentes 22, 22 e 14. Só a The Black Farmer está destacada.",
     },
     outcomes: {
         title: "Resultados da reavaliação aos 30 dias",

@@ -32,7 +32,7 @@ const en = {
     definitionTitle: "What great email looks like",
     definition: "Lifecycle email marketing is owned-channel revenue built on automated flows, segmentation and campaigns, not one-off newsletters. It sends the right message to the right customer at the right moment, and it is measured in attributed revenue rather than opens.",
     curveTitle: "The compounding curve",
-    curveSub: "Real figures from one engagement, start to now.",
+    curveSub: "Real figures from one engagement, 2022 to July 2025.",
     curve: [
         { title: "Average campaign open rate", from: { label: "2022", value: "28.1%" }, to: { label: "12 months to Jul 2025", value: "50.4%" }, note: "78th percentile against Klaviyo's industry benchmark in the 12 months to July 2025" },
         { title: "Email-attributed revenue", from: { label: "Previous 12 months (to Jul 2024)", value: "c. £71K" }, to: { label: "12 months to Jul 2025", value: "£134K" }, note: "+88.9% on the previous 12 months (to July 2024)" },

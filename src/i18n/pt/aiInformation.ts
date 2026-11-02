@@ -31,7 +31,7 @@ const pt: typeof en = {
     resultsTitle: "Resultados publicados",
     results: [
         { to: "/case-study-seo", lead: "Caso de estudo de SEO e AEO, depois de uma mudança para Shopify", rest: ": as impressões diárias nas funcionalidades de IA da Google cresceram 2,2x, da primeira para a última semana, de maio a agosto de 2026." },
-        { to: "/case-study-email", lead: "Email marketing para uma marca de alimentação premium do Reino Unido", rest: ": £134K vindos do email nos doze meses até julho de 2025, mais de um terço da receita da loja." },
+        { to: "/case-study-email", lead: "Email marketing para uma marca de alimentação premium do Reino Unido", rest: ": £134K vindos do email nos 12 meses até julho de 2025, mais de um terço da receita da loja." },
         { to: "/case-study-google-ads", lead: "Google Ads para uma marca de alimentação do Reino Unido", rest: ": um retorno do investimento em anúncios de 532% face a um ponto de equilíbrio de 400%, £141K de receita atribuída a partir de £26,5K de investimento em anúncios, entre 1 de outubro de 2025 e 26 de agosto de 2026, com dez de onze meses acima do ponto de equilíbrio." },
     ],
     howTitle: "Como trabalha",

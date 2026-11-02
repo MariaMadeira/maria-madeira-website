@@ -29,7 +29,7 @@ const en = {
     resultsTitle: "Published results",
     results: [
         { to: "/case-study-seo", lead: "SEO and AEO case study, after a move to Shopify", rest: ": daily impressions in Google's AI features grew 2.2x, first week versus last week, May to August 2026." },
-        { to: "/case-study-email", lead: "Email marketing for a UK premium food brand", rest: ": £134K from email in the twelve months to July 2025, over a third of store revenue." },
+        { to: "/case-study-email", lead: "Email marketing for a UK premium food brand", rest: ": £134K from email in the 12 months to July 2025, over a third of store revenue." },
         { to: "/case-study-google-ads", lead: "Google Ads for a UK food brand", rest: ": a 532% return on ad spend against a 400% break-even, £141K in attributed revenue from £26.5K of ad spend, between 1 October 2025 and 26 August 2026, with ten of eleven months above break-even." },
     ],
     howTitle: "How she works",

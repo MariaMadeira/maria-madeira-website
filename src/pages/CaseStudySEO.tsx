@@ -305,7 +305,7 @@ export default function CaseStudySEO() {
                         </figcaption>
                     </figure>
 
-                    <AiVisibilityChart />
+                    <AiVisibilityChart labels={c.visibilityLabels} desc={c.visibilityDesc} />
 
                     <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.6, marginTop: "1.5rem" }}>
                         {c.sources}

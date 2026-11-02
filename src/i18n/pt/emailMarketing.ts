@@ -25,7 +25,7 @@ const pt: typeof en = {
     definitionTitle: "Como é um bom email marketing",
     definition: "O email marketing de ciclo de vida gera receita num canal que é seu, com fluxos automáticos, segmentação e campanhas, e não com newsletters avulsas. Envia a mensagem certa ao cliente certo no momento certo, e mede-se em receita atribuída, não em aberturas.",
     curveTitle: "A curva que se acumula",
-    curveSub: "Números reais de um só cliente, do início até hoje.",
+    curveSub: "Números reais de um só cliente, de 2022 a julho de 2025.",
     curve: [
         { title: "Taxa de abertura média das campanhas", from: { label: "2022", value: "28,1%" }, to: { label: "12 meses até jul. 2025", value: "50,4%" }, note: "Percentil 78 face à referência do setor do Klaviyo, nos 12 meses até julho de 2025" },
         { title: "Receita atribuída ao email", from: { label: "12 meses anteriores (até jul. 2024)", value: "c. £71K" }, to: { label: "12 meses até jul. 2025", value: "£134K" }, note: "+88,9% face aos 12 meses anteriores (até julho de 2024)" },

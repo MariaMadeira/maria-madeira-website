@@ -163,6 +163,12 @@
   max-width: 200px;
   height: auto;
 }
+.result-caption {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  margin: 0.5rem 0 0;
+}
 .result-link {
   display: inline-flex;
   align-items: center;

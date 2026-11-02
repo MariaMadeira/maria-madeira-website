@@ -29,6 +29,8 @@ const en = {
         link: "Read case study",
         /* Same order as the visuals and links in the component. */
         /* The email card's two bars, as the visual's accessible name reads them. */
+        /* Visible caption under the email bars: the base the +88.9% badge compares against. */
+        emailCaption: "+88.9% vs c. £71K, previous 12 months (to July 2024)",
         emailBars: "Two bars: c. £71K in the previous 12 months (to July 2024) and £134K in the 12 months to July 2025, up 88.9%",
         cards: [
             { value: "£134K", label: "Email revenue, 12 months to July 2025, UK premium food brand" },

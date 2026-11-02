@@ -120,10 +120,10 @@ const en = {
     v6Automated: "Automated email",
     v6Note: "Omnisend's data across 150,000 brands found almost exactly the same gap: automated emails earned 16 times more per send.",
 
-    real4: "In 2024, flows brought in 43% of this brand's email revenue, very close to the 41% in Klaviyo's benchmarks.",
+    real4: "In 2024, flows brought in £48.2K of this brand's £113K email revenue, close to the 41% share in Klaviyo's benchmarks.",
 
     oneFlowTitle: "One flow paid for everything else",
-    oneFlow: "The single biggest earner wasn't a clever new automation. It was the welcome series for the brand's box list, which brought in £23.6K in the twelve months to July 2025 on its own.",
+    oneFlow: "The single biggest earner wasn't a clever new automation. It was the welcome series for the brand's box list, which brought in £23.6K in the 12 months to July 2025 on its own.",
 
     /* Visual 7: an invented brand's welcome email */
     v7Big: "£23.6K",
@@ -139,7 +139,7 @@ const en = {
     v7Caption: "Illustrative example, not the brand's actual email.",
 
     honestTitle: "The honest part",
-    honest: "Not every number went up. As more flows went live, flow click rate fell from 8.5% in 2024 to 7.3% in the twelve months to July 2025, while far more people were receiving flows. More flows reach more people, but each one needs its own testing, or the average slips.",
+    honest: "Not every number went up. As more flows went live, flow click rate fell from 8.5% in 2024 to 7.3% in the 12 months to July 2025, while far more people were receiving flows. More flows reach more people, but each one needs its own testing, or the average slips.",
 
     /* Visual 8: the first 30 days */
     v8Title: "Your first 30 days of flows",

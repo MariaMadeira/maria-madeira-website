@@ -34,8 +34,9 @@ const en = {
         visibilityTitle: "2nd of 5 in Semrush AI Visibility",
         visibilitySubtitle: "Gap to the category leader cut from 8 points to 4 in three weeks, 5 to 24 August 2026.",
         visibilityA11yTitle: "Semrush AI Visibility score across the tracked set",
-        visibilityLabels: ["Category leader", "The Black Farmer", "Competitor", "Competitor", "Competitor"],
-        visibilityDesc: "Horizontal bar chart of Semrush AI Visibility scores across five tracked brands. The category leader scores 31, The Black Farmer 27, and three further competitors score 22, 22 and 14. Only The Black Farmer is highlighted.",
+        /* The bar labels and description name the client, so they live in
+           caseStudySeo.ts and reach the chart as props: this module ships with
+           the email and Google Ads case studies, which must not name the client. */
     },
     outcomes: {
         title: "Outcomes of the 30-day re-evaluation",

@@ -540,9 +540,9 @@ function AiImpressionsLine({ variant, desc }: ChartVariantProps) {
 }
 
 /* ── Chart: Semrush AI Visibility across the tracked set ── */
-function AiVisibilityBars({ variant, desc }: ChartVariantProps) {
+function AiVisibilityBars({ variant, desc, labels }: ChartVariantProps & { labels: string[] }) {
     const c = COPY[useLang().lang].ai;
-    const rows = VISIBILITY.map((row, i) => ({ ...row, label: c.visibilityLabels[i] }));
+    const rows = VISIBILITY.map((row, i) => ({ ...row, label: labels[i] }));
     const wide = variant === "wide";
     const X_MAX = 35;
 
@@ -622,17 +622,18 @@ export function AiImpressionsChart() {
 }
 
 /** Horizontal bars of Semrush AI Visibility across the tracked set. */
-export function AiVisibilityChart() {
+/** Bar labels and description come from the SEO case study copy, which names
+ *  the client; this module also ships with the email and Google Ads case studies. */
+export function AiVisibilityChart({ labels, desc }: { labels: string[]; desc: string }) {
     const c = COPY[useLang().lang].ai;
-    const desc = c.visibilityDesc;
     return (
         <ChartFigure
             title={c.visibilityTitle}
             subtitle={c.visibilitySubtitle}
             headingLevel={3}
         >
-            <AiVisibilityBars variant="wide" desc={desc} />
-            <AiVisibilityBars variant="narrow" desc={desc} />
+            <AiVisibilityBars variant="wide" desc={desc} labels={labels} />
+            <AiVisibilityBars variant="narrow" desc={desc} labels={labels} />
         </ChartFigure>
     );
 }

@@ -59,7 +59,7 @@ export default function Results() {
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="Results: £134K Email Revenue (12-Month)"
+                title="Results: £134K Email Revenue, 12 Months to July 2025"
                 description="E-commerce growth results: £134K in email revenue in the 12 months to July 2025 (+88.9% on the previous 12 months, to July 2024), a 50.4% average campaign open rate over the same 12 months, and £141K from Google Ads at a 532% return."
                 path="/results"
             />

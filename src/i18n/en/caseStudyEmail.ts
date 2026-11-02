@@ -5,6 +5,8 @@ const en = {
     // title is a shorter sibling. The schema headline still carries the H1.
     title: "Klaviyo Case Study: £134K a Year From Email | Maria Madeira",
     description: "Klaviyo case study, UK premium food brand: £134K email revenue in the 12 months to July 2025, +88.9% on c. £71K in the previous 12 months (to July 2024).",
+    /* Describes the OG image (c. £71K to £134K, two 12-month windows). */
+    ogImageAlt: "Email revenue: c. £71K in the previous 12 months (to July 2024) to £134K in the 12 months to July 2025, UK premium food brand",
     h1: "September 2021 to July 2025: email grew to £134K a year and over a third of store revenue",
     // The client is not named on this page, so the brand is described rather
     // than identified. The hero subtitle doubles as the schema description.
@@ -34,7 +36,7 @@ const en = {
     rates: [
         { before: "28.1%" as string | null, after: "50.4%", badge: "78th percentile" as string | null, label: "average campaign open rate, 2022 vs the 12 months to July 2025, against Klaviyo's industry benchmark" },
         { before: null as string | null, after: "over a third", badge: null as string | null, label: "of total store revenue attributed to email, 12 months to July 2025" },
-        { before: "8.5%" as string | null, after: "7.3%", badge: "-1.2 pts" as string | null, label: "flow click rate, 2024 vs 12 months to July 2025, as far more people received flows" },
+        { before: "8.5%" as string | null, after: "7.3%", badge: null as string | null, label: "flow click rate, 2024 vs 12 months to July 2025, as far more people received flows" },
     ],
     impactTitle: "Key Impact",
     impact: "Attributed email revenue rose every calendar year: £66.3K in 2022, £76.2K in 2023 and £113K in 2024. In the 12 months to July 2025 it reached £134K, up 88.9% on c. £71K in the previous 12 months (to July 2024), with £86.1K from campaigns and £48.3K from flows. The average campaign open rate rose from 28.1% in 2022 to 50.4% in the 12 months to July 2025, and campaign revenue per recipient from £0.030 to £0.081 over the same two periods.",

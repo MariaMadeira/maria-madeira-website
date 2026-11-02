@@ -27,7 +27,7 @@ const pt: typeof en = {
     searchSubline: "Google Search Console, períodos comparáveis de 28 dias, de maio a agosto de 2026",
     searchTop: [
         { before: "4,5K", after: "8,0K", badge: "+78%", label: "cliques orgânicos" },
-        { before: "15,2", after: "9,4", badge: "5,8 posições acima", label: "posição média no Google, em todas as pesquisas" },
+        { before: "15,2", after: "9,4", badge: "mais acima no Google", label: "posição média no Google, em todas as pesquisas" },
         { before: "479K", after: "997K", badge: "+108%", label: "impressões na pesquisa" },
     ],
     searchMore: [
@@ -63,6 +63,8 @@ const pt: typeof en = {
     quote: "what meat has no gluten? give me a list of gluten-free sausages",
     quoteNote: "(pesquisa original em inglês)",
     quoteCaption: "Uma pesquisa real, em forma de conversa, registada no Search Console. A página Gluten-Free Sausages apareceu na resposta e foi clicada: o primeiro clique documentado do site vindo de uma pergunta ao estilo da IA.",
+    visibilityLabels: ["Líder da categoria", "The Black Farmer", "Concorrente", "Concorrente", "Concorrente"],
+    visibilityDesc: "Gráfico de barras horizontais com a pontuação no Semrush AI Visibility de cinco marcas acompanhadas. O líder da categoria tem 31, a The Black Farmer 27 e outros três concorrentes 22, 22 e 14. Só a The Black Farmer está destacada.",
     sources: "Fontes: Google Search Console (relatório Generative AI features, disponível desde 18 de maio de 2026), Semrush AI Visibility, agosto de 2026.",
     serviceLink: "SEO e AEO",
     nextLink: "Google Ads: cinco libras de retorno por cada libra investida",

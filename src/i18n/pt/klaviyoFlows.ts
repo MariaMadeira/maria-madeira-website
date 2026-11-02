@@ -114,10 +114,10 @@ const pt: typeof en = {
     v6Automated: "Email automático",
     v6Note: "Os dados da Omnisend sobre 150 000 marcas mostram quase exatamente a mesma diferença: os emails automáticos renderam 16 vezes mais por envio.",
 
-    real4: "Em 2024, os fluxos trouxeram 43% da receita de email desta marca, muito perto dos 41% dos benchmarks do Klaviyo.",
+    real4: "Em 2024, os fluxos trouxeram £48,2K dos £113K de receita de email desta marca, perto da quota de 41% dos benchmarks do Klaviyo.",
 
     oneFlowTitle: "Um fluxo pagou tudo o resto",
-    oneFlow: "O fluxo que mais rendeu não foi uma automação nova e engenhosa. Foi a série de boas-vindas para a lista das caixas da marca, que sozinha trouxe £23,6K nos doze meses até julho de 2025.",
+    oneFlow: "O fluxo que mais rendeu não foi uma automação nova e engenhosa. Foi a série de boas-vindas para a lista das caixas da marca, que sozinha trouxe £23,6K nos 12 meses até julho de 2025.",
 
     v7Big: "£23,6K",
     v7Line: "de uma só série de boas-vindas, 12 meses até julho de 2025",
@@ -132,7 +132,7 @@ const pt: typeof en = {
     v7Caption: "Exemplo ilustrativo, não é o email real da marca.",
 
     honestTitle: "A parte honesta",
-    honest: "Nem todos os números subiram. À medida que entravam mais fluxos no ar, a taxa de clique dos fluxos desceu de 8,5% em 2024 para 7,3% nos doze meses até julho de 2025, enquanto muitas mais pessoas passaram a receber fluxos. Mais fluxos chegam a mais pessoas, mas cada um precisa dos seus próprios testes, senão a média desce.",
+    honest: "Nem todos os números subiram. À medida que entravam mais fluxos no ar, a taxa de clique dos fluxos desceu de 8,5% em 2024 para 7,3% nos 12 meses até julho de 2025, enquanto muitas mais pessoas passaram a receber fluxos. Mais fluxos chegam a mais pessoas, mas cada um precisa dos seus próprios testes, senão a média desce.",
 
     v8Title: "Os seus primeiros 30 dias de fluxos",
     weeks: [

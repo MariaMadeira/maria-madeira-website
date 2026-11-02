@@ -21,7 +21,7 @@ const en = {
     searchSubline: "Google Search Console, matched 28-day windows, May to August 2026",
     searchTop: [
         { before: "4.5K", after: "8.0K", badge: "+78%", label: "organic clicks" },
-        { before: "15.2", after: "9.4", badge: "5.8 places higher", label: "average Google position, across all queries" },
+        { before: "15.2", after: "9.4", badge: "higher on Google", label: "average Google position, across all queries" },
         { before: "479K", after: "997K", badge: "+108%", label: "search impressions" },
     ],
     searchMore: [
@@ -60,6 +60,10 @@ const en = {
     quote: "what meat has no gluten? give me a list of gluten-free sausages",
     quoteNote: "",
     quoteCaption: "A real conversational query from Search Console. The Gluten-Free Sausages page was shown in the answer and clicked: the site's first documented click from an AI-style question.",
+    /* AI Visibility chart: kept here, not in resultCharts.ts, so the client's
+       name ships only with this case study. */
+    visibilityLabels: ["Category leader", "The Black Farmer", "Competitor", "Competitor", "Competitor"],
+    visibilityDesc: "Horizontal bar chart of Semrush AI Visibility scores across five tracked brands. The category leader scores 31, The Black Farmer 27, and three further competitors score 22, 22 and 14. Only The Black Farmer is highlighted.",
     sources: "Sources: Google Search Console (Generative AI features report, available from 18 May 2026), Semrush AI Visibility, August 2026.",
     serviceLink: "SEO and AEO",
     nextLink: "Google Ads: five pounds back for every pound spent",

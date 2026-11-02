@@ -31,6 +31,7 @@ export default function CaseStudyEmail() {
             description={c.description}
             path={c.path}
             ogImage="/og/og-case-study-email.png"
+            ogImageAlt={c.ogImageAlt}
             ogType="article"
             jsonLd={caseStudyJsonLd({
                 path: c.path,
