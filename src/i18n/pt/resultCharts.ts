@@ -32,8 +32,6 @@ const pt: typeof en = {
         visibilityTitle: "2.º de 5 no Semrush AI Visibility",
         visibilitySubtitle: "Distância para o líder da categoria reduzida de 8 para 4 pontos em três semanas, de 5 a 24 de agosto de 2026.",
         visibilityA11yTitle: "Pontuação no Semrush AI Visibility entre as marcas acompanhadas",
-        visibilityLabels: ["Líder da categoria", "The Black Farmer", "Concorrente", "Concorrente", "Concorrente"],
-        visibilityDesc: "Gráfico de barras horizontais com a pontuação no Semrush AI Visibility de cinco marcas acompanhadas. O líder da categoria tem 31, a The Black Farmer 27 e outros três concorrentes 22, 22 e 14. Só a The Black Farmer está destacada.",
     },
     outcomes: {
         title: "Resultados da reavaliação aos 30 dias",
@@ -41,14 +39,23 @@ const pt: typeof en = {
         desc: (total, parts) => `Barra empilhada das ${total} páginas reavaliadas aos 30 dias: ${parts.join(", ")}.`,
     },
     email: {
-        title: "Receita de email atribuída por período",
-        subtitle: "Campanhas e fluxos automáticos, valores em milhares de libras (£K)",
+        title: "Receita de email atribuída por ano civil",
+        subtitle: "Campanhas e fluxos automáticos, 2022 a 2024, valores em milhares de libras (£K)",
         campaigns: "Campanhas",
         flows: "Fluxos automáticos",
-        note: "2021 cobre de setembro a dezembro, quando o programa começou.",
+        note: "Só anos civis. O programa começou em setembro de 2021, por isso 2021 não é um ano completo e não aparece. Os 12 meses até julho de 2025 sobrepõem-se a 2024, por isso são comparados com os 12 meses anteriores (até julho de 2024).",
         source: "Fonte: exportações do relatório Business Overview do Klaviyo.",
         desc: (periods) =>
-            `Gráfico de barras empilhadas da receita de email atribuída por período, em milhares de libras, dividida entre campanhas e fluxos automáticos. ${periods.map(([p, c, f, t]) => `${p}, campanhas ${c}, fluxos ${f}, total ${t}`).join("; ")}. Cada período fica acima do anterior.`,
+            `Gráfico de barras empilhadas da receita de email atribuída por ano civil, de 2022 a 2024, em milhares de libras, dividida entre campanhas e fluxos automáticos. ${periods.map(([p, c, f, t]) => `${p}, campanhas ${c}, fluxos ${f}, total ${t}`).join("; ")}. Cada ano fica acima do anterior.`,
+    },
+    windows: {
+        title: "Receita de email atribuída, 12 meses até julho de 2025 face aos 12 meses anteriores",
+        subtitle: "Dois períodos comparáveis de 12 meses",
+        previous: "12 meses anteriores (até jul. 2024)",
+        latest: "12 meses até jul. 2025",
+        note: (growth) => `Mais ${growth}% face aos 12 meses anteriores (até julho de 2024).`,
+        desc: (growth) =>
+            `Gráfico de barras horizontais que compara a receita de email atribuída em dois períodos de 12 meses: c. £71K nos 12 meses anteriores (até julho de 2024) e £134K nos 12 meses até julho de 2025, mais ${growth}%.`,
     },
 };
 

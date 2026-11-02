@@ -1,16 +1,22 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Clock, ArrowRight, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import Seo from "../components/Seo";
 import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 import AuthorBio from "../components/AuthorBio";
+import Byline from "../components/Byline";
 import { useLang } from "../hooks/useLang";
+import { blogPostingNode, breadcrumbNode, faqNode, withEntities } from "../lib/schema";
 import COPY from "../i18n/aiDescriptions";
 
 /* Renders /blog/ai-product-descriptions-food-brands and its /pt twin from
    src/i18n/aiDescriptions.ts. Links live here; every word lives in the copy. */
-const SITE_URL = "https://mariamadeira.com";
 const OG_IMAGE = "/og/og-blog-ai-product-descriptions.png";
-const PUBLISHED_ISO = "2026-09-24";
+/* Per language. English: the date the post shows. Portuguese: the commit
+   that put the /pt post live; its text has not changed since (git log
+   src/i18n/pt/aiDescriptions.ts). Bump MODIFIED, in the language that
+   changed, with the visible text; the byline renders these same strings. */
+const PUBLISHED = { en: "2026-09-24", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-11-02", pt: "2026-11-02" };
 
 /* The contact form now recognises this topic and sets the subject, intro line and
    message prefill from it. A mailto here failed silently for anyone without a
@@ -22,50 +28,21 @@ const AEO_FAQ_INDEX = 3;
 
 function articleJsonLd(lang: "en" | "pt") {
     const t = COPY[lang];
-    const pageUrl = `${SITE_URL}${t.path}`;
-    const home = lang === "pt" ? `${SITE_URL}/pt` : `${SITE_URL}/`;
-    const blog = lang === "pt" ? `${SITE_URL}/pt/blog` : `${SITE_URL}/blog`;
-    const inLanguage = lang === "pt" ? { "inLanguage": "pt-PT" } : {};
-    return {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "BlogPosting",
-                "@id": `${pageUrl}#article`,
-                "headline": t.headline,
-                "description": t.description,
-                ...inLanguage,
-                "author": lang === "pt"
-                    ? { "@id": `${SITE_URL}/#person` }
-                    : { "@type": "Person", "@id": `${SITE_URL}/#person`, "name": "Maria Madeira" },
-                "publisher": { "@id": `${SITE_URL}/#person` },
-                "datePublished": PUBLISHED_ISO,
-                "dateModified": PUBLISHED_ISO,
-                "mainEntityOfPage": pageUrl,
-                "image": `${SITE_URL}${OG_IMAGE}`,
-                "isPartOf": { "@id": `${blog}#blog` },
-                "articleSection": t.articleSection,
-            },
-            {
-                "@type": "FAQPage",
-                "@id": `${pageUrl}#faq`,
-                ...inLanguage,
-                "mainEntity": t.faqs.map((f) => ({
-                    "@type": "Question",
-                    "name": f.q,
-                    "acceptedAnswer": { "@type": "Answer", "text": f.a },
-                })),
-            },
-            {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": t.breadcrumb[0], "item": home },
-                    { "@type": "ListItem", "position": 2, "name": t.breadcrumb[1], "item": blog },
-                    { "@type": "ListItem", "position": 3, "name": t.breadcrumb[2], "item": pageUrl },
-                ],
-            },
-        ],
-    };
+    const blogPath = lang === "pt" ? "/pt/blog" : "/blog";
+    return withEntities([
+        blogPostingNode({
+            path: t.path,
+            headline: t.headline,
+            description: t.description,
+            datePublished: PUBLISHED[lang],
+            dateModified: MODIFIED[lang],
+            image: OG_IMAGE,
+            lang,
+            articleSection: t.articleSection,
+        }),
+        faqNode(t.path, lang, t.faqs),
+        breadcrumbNode(lang, [[t.breadcrumb[1], blogPath], [t.breadcrumb[2], t.path]]),
+    ]);
 }
 const JSON_LD = { en: articleJsonLd("en"), pt: articleJsonLd("pt") };
 
@@ -95,6 +72,7 @@ export default function BlogAiProductDescriptions() {
                 description={t.description}
                 path={t.path}
                 ogImage={OG_IMAGE}
+                ogType="article"
                 jsonLd={JSON_LD[lang]}
             />
 
@@ -110,13 +88,7 @@ export default function BlogAiProductDescriptions() {
                     {t.headline}
                 </h1>
 
-                {/* byline + dates */}
-                <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap", color: "var(--text-secondary)", fontSize: "0.9rem", marginBottom: "2.5rem", paddingBottom: "2rem", borderBottom: "1px solid var(--border-color)" }}>
-                    <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>Maria Madeira</span>
-                    <span>{t.published}{t.publishedHuman}</span>
-                    <span>{t.updated}{t.publishedHuman}</span>
-                    <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><Clock size={13} />{t.readTime}</span>
-                </div>
+                <Byline published={PUBLISHED[lang]} modified={MODIFIED[lang]} readTime={t.readTime} />
 
                 {t.intro.map((text) => (
                     <p key={text} style={P}>
@@ -220,6 +192,7 @@ export default function BlogAiProductDescriptions() {
                 <RelatedLinks
                     className="related-links--open"
                     items={[
+                        { kicker: RELATED.service, to: "/services/aeo", label: t.relatedService },
                         { kicker: RELATED.reading, to: "/portfolio-ai-product-photography", label: t.related[0] },
                         { kicker: RELATED.reading, to: "/case-study-seo", label: t.related[1] },
                     ]}

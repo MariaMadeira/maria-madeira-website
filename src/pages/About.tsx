@@ -1,91 +1,34 @@
-import { Linkedin, ExternalLink } from "lucide-react";
+import { Linkedin, ExternalLink, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import FinalCta from "../components/FinalCta";
 import KlaviyoPartnerBadge from "../components/KlaviyoPartnerBadge";
 import ToolTile from "../components/ToolTile";
 import { TOOL_GROUPS } from "../lib/toolLogos";
-import { SITE_URL, PERSON_ID } from "../lib/schema";
-import { CREDENTIAL_GROUPS, HAS_CREDENTIAL, PROGRAM_MEMBERSHIP } from "../lib/credentials";
+import { PERSON_REF, breadcrumbNode, webPageNode, withEntities } from "../lib/schema";
+import { CREDENTIAL_GROUPS } from "../lib/credentials";
+import type { Lang } from "../lib/i18n";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/about";
 
-// The About page is the canonical entity page for the Maria Madeira brand, so it
-// carries the richest Person node. Same @id as the homepage (#person) so search
-// and answer engines merge them into one entity. sameAs is the single strongest
-// lever for entity recognition: add more verified profiles (Instagram, X,
-// Crunchbase, guest-post bylines) to this array as they come online.
-const SAME_AS = [
-    "https://www.linkedin.com/in/maria-madeira-growth",
-    "https://influee.co/partnership/maria-madeira",
-];
+// The About page is the entity page for Maria Madeira, so it is the Person's
+// url and the ProfilePage's subject. The Person itself (sameAs, credentials,
+// Klaviyo membership, location) is the shared node in src/lib/schema.ts,
+// declared identically on every page; add new verified profiles to SAME_AS
+// there, not here.
+function aboutJsonLd(lang: Lang) {
+    const t = COPY[lang];
+    return withEntities([
+        webPageNode({ type: "ProfilePage", path: t.path, name: lang === "pt" ? "Sobre a Maria Madeira" : "About Maria Madeira", lang, "mainEntity": PERSON_REF }),
+        breadcrumbNode(lang, [[lang === "pt" ? "Sobre" : "About", t.path]]),
+    ]);
+}
+const JSON_LD = { en: aboutJsonLd("en"), pt: aboutJsonLd("pt") };
 
-// The Klaviyo partnership is a programme membership rather than an
-// organisation the person belongs to, so it uses ProgramMembership. The
-// homepage node carries the identical value: same @id means the two merge, and
-// two different memberOf values on one entity would contradict each other.
-
-const ABOUT_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "ProfilePage",
-            "@id": `${SITE_URL}/about#profilepage`,
-            "url": `${SITE_URL}/about`,
-            "name": "About Maria Madeira",
-            "mainEntity": { "@id": PERSON_ID },
-        },
-        {
-            "@type": "Person",
-            "@id": PERSON_ID,
-            "name": "Maria Madeira",
-            "url": SITE_URL,
-            "image": `${SITE_URL}/maria-notebook-800.jpg`,
-            "jobTitle": "E-commerce Growth Strategist",
-            "description": "Maria Madeira is a growth strategist for brands that sell online: website strategy and build, SEO and AEO, email marketing and Klaviyo, and paid acquisition. Based in Lisbon, working globally.",
-            "homeLocation": { "@type": "Place", "name": "Lisbon, Portugal" },
-            "knowsAbout": [
-                "E-commerce Growth", "Email Marketing", "Klaviyo", "Lifecycle Marketing",
-                "Google Ads", "Meta Ads", "Paid Acquisition", "Search Engine Optimisation",
-                "Answer Engine Optimisation", "AI Marketing", "Creative Direction",
-                "Shopify", "E-commerce Platform Migration",
-            ],
-            "knowsLanguage": ["English", "Portuguese"],
-            "sameAs": SAME_AS,
-            "hasCredential": HAS_CREDENTIAL,
-            "memberOf": PROGRAM_MEMBERSHIP,
-        },
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
-                { "@type": "ListItem", "position": 2, "name": "About", "item": `${SITE_URL}/about` },
-            ],
-        },
-    ],
-};
-
-/* The Portuguese page points at the same Person by @id rather than repeating
-   it, so the entity is defined once, on the English page. */
-const PT_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "ProfilePage",
-            "@id": `${SITE_URL}/pt/sobre#profilepage`,
-            "url": `${SITE_URL}/pt/sobre`,
-            "name": "Sobre a Maria Madeira",
-            "inLanguage": "pt-PT",
-            "mainEntity": { "@id": PERSON_ID },
-        },
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
-                { "@type": "ListItem", "position": 2, "name": "Sobre", "item": `${SITE_URL}/pt/sobre` },
-            ],
-        },
-    ],
-};
+/* The case studies the "work" paragraphs name, in the copy's caseLinks order. */
+const CASE_LINKS = ["/case-study-email", "/case-study-google-ads", "/case-study-seo", "/case-study-bodysurf-school", "/case-study-depapier-translations"];
+/* The first paragraphs sit beside the portrait; the rest move below the timeline. */
+const HERO_PARAGRAPHS = 2;
 
 /* Wilfred's full recommendation, as linked from the homepage featured card. */
 const RECOMMENDATIONS_URL = "https://www.linkedin.com/in/maria-madeira-growth/details/recommendations/";
@@ -117,7 +60,7 @@ export default function About() {
                 title={t.title}
                 description={t.description}
                 path={t.path}
-                jsonLd={lang === "pt" ? PT_JSON_LD : ABOUT_JSON_LD}
+                jsonLd={JSON_LD[lang]}
             />
 
             {/* Intro */}
@@ -141,6 +84,7 @@ export default function About() {
                                 alt={t.imgAlt}
                                 width="1600"
                                 height="2133"
+                                fetchPriority="high"
                                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 15%", display: "block" }}
                             />
                         </picture>
@@ -154,7 +98,7 @@ export default function About() {
                     </h1>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8 }}>
-                        {t.paragraphs.map((p, i) => <p key={i} style={{ margin: 0 }}>{p}</p>)}
+                        {t.paragraphs.slice(0, HERO_PARAGRAPHS).map((p, i) => <p key={i} style={{ margin: 0 }}>{p}</p>)}
 
                         <figure className="about-quote">
                             <blockquote cite={RECOMMENDATIONS_URL}>
@@ -168,10 +112,16 @@ export default function About() {
                             </figcaption>
                         </figure>
 
-                        <div style={{ display: "flex", gap: "1.5rem" }}>
+                        <div style={{ display: "flex", gap: "0.75rem 1.5rem", flexWrap: "wrap" }}>
                             <a href="https://www.linkedin.com/in/maria-madeira-growth" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-primary)", fontWeight: 600 }}>
                                 <Linkedin size={20} /> LinkedIn <ExternalLink size={14} opacity={0.5} />
                             </a>
+                            <Link to={to("/services")} style={{ display: "flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600 }}>
+                                {t.servicesLink} <ArrowRight size={16} />
+                            </Link>
+                            <Link to={to("/ai-information")} style={{ display: "flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600 }}>
+                                {t.factsLink} <ArrowRight size={16} />
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -189,6 +139,23 @@ export default function About() {
                         </li>
                     ))}
                 </ol>
+            </section>
+
+            {/* The rest of the story: results, websites, how I work, education. */}
+            <section className="about-section">
+                <h2 className="about-section-title">{t.workTitle}</h2>
+                <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", color: "var(--text-secondary)", fontSize: "1.1rem", lineHeight: 1.8, maxWidth: "760px" }}>
+                    {t.paragraphs.slice(HERO_PARAGRAPHS).map((p, i) => <p key={i} style={{ margin: 0 }}>{p}</p>)}
+                </div>
+                <ul style={{ listStyle: "none", padding: 0, margin: "2rem 0 0", display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+                    {t.caseLinks.map((label, i) => (
+                        <li key={CASE_LINKS[i]}>
+                            <Link to={to(CASE_LINKS[i])} style={{ display: "inline-flex", alignItems: "center", gap: "6px", minHeight: "44px", color: "var(--accent-text)", fontWeight: 600 }}>
+                                {label} <ArrowRight size={16} aria-hidden="true" />
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
             </section>
 
             {/* Tools: twelve logos in three groups. */}

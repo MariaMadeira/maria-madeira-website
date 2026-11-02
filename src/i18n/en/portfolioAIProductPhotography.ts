@@ -35,10 +35,10 @@ const en = {
     /* Same order as the image files in the component; alts are original,
        AI-generated. */
     transformations: [
-        { title: "Butterscotch Fudge", alts: ["Butterscotch Fudge Original", "Butterscotch Fudge AI-Generated"] },
-        { title: "Chocolate Fudge", alts: ["Chocolate Fudge Original", "Chocolate Fudge AI-Generated"] },
-        { title: "Ginger Jelly", alts: ["Ginger Jelly Original", "Ginger Jelly AI-Generated"] },
-        { title: "Mixed Berry Jam", alts: ["Mixed Berry Jam Original", "Mixed Berry Jam AI-Generated"] },
+        { title: "Butterscotch Fudge", alts: ["Bag of Butterscotch Fudge on a white background, original packshot", "Bag of Butterscotch Fudge on a linen cloth on a wooden table, with pieces of fudge beside it, AI-generated scene"] },
+        { title: "Chocolate Fudge", alts: ["Bag of Chocolate Fudge on a white background, original packshot", "Bag of Chocolate Fudge on a linen cloth on a wooden table, with cubes of fudge beside it, AI-generated scene"] },
+        { title: "Ginger Jelly", alts: ["Jar of Ginger Jelly on a white background, original packshot", "Jar of Ginger Jelly on a linen cloth on a wooden table, with a spoon and sliced ginger, AI-generated scene"] },
+        { title: "Mixed Berry Jam", alts: ["Jar of Mixed Berry Jam on a white background, original packshot", "Jar of Mixed Berry Jam on a linen cloth, with a spoon and red berries behind it, AI-generated scene"] },
     ],
     /* Shown only if an image fails to load. */
     missingHtml: "Image<br/>Not Found",
@@ -58,7 +58,7 @@ const en = {
     related: ["AI-enhanced product imagery", "AI product descriptions, done safely"],
     ctaText: "Looking to elevate your product imagery with AI?",
     ctaPrimary: "Book a free call",
-    ctaSecondary: "View All Work",
+    ctaSecondary: "See the full portfolio",
 };
 
 export default en;

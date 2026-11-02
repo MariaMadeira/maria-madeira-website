@@ -41,26 +41,26 @@ export default function Results() {
     const { ref: emailRef, inView: emailInView } = useInView({ rootMargin: '-50px', once: true });
     const { ref: paidRef, inView: paidInView } = useInView({ rootMargin: '-50px', once: true });
 
-    // Verified Klaviyo data, last 12 months (Jul 2024 – Jul 2025). The 2024
-    // calendar-year flow click rate was 9.14%; the 12-month figure is 7.27%.
+    // Verified Klaviyo data, 12 months to July 2025. The flow click rate is
+    // published for this window only (7.3%); there is no 2024 comparison.
     const emailMetrics = [
-        { label: "Attributed email revenue (last 12 months, +88.9% YoY)", to: 134, prefix: "£", suffix: "K", decimals: 0 },
-        { label: "Average campaign open rate (78th percentile)", to: 50.4, prefix: "", suffix: "%", decimals: 1 },
-        { label: "Click rate from automated flows", to: 7.27, prefix: "", suffix: "%", decimals: 2 },
-        { label: "Revenue generated from automated email flows", to: 48.3, prefix: "£", suffix: "K", decimals: 1 }
+        { label: "Attributed email revenue, 12 months to July 2025 (+88.9% on the previous 12 months, to July 2024)", to: 134, prefix: "£", suffix: "K", decimals: 0 },
+        { label: "Average campaign open rate, 12 months to July 2025 (78th percentile, Klaviyo industry benchmark, June 2025)", to: 50.4, prefix: "", suffix: "%", decimals: 1 },
+        { label: "Click rate from automated flows, 12 months to July 2025", to: 7.3, prefix: "", suffix: "%", decimals: 1 },
+        { label: "Revenue from automated email flows, 12 months to July 2025", to: 48.3, prefix: "£", suffix: "K", decimals: 1 }
     ];
 
     const paidMetrics: Array<{ label: string; to: number; prefix: string; suffix: string; decimals: number; subtitle: string; range?: string }> = [
         { label: "Google Ads Attributed Revenue", to: 141, prefix: "£", suffix: "K", decimals: 0, subtitle: "From £26.5K spend, 1 Oct 2025 to 26 Aug 2026." },
-        { label: "Google Ads ROAS", to: 532, prefix: "", suffix: "%", decimals: 0, subtitle: "£141K attributed revenue on £26.5K spend, against a 400% break-even." },
-        { label: "Cost per Conversion", to: 12.27, prefix: "£", suffix: "", decimals: 2, subtitle: "Across 2,161 Google Ads conversions." }
+        { label: "Google Ads ROAS", to: 532, prefix: "", suffix: "%", decimals: 0, subtitle: "£141K attributed revenue on £26.5K spend, October 2025 to August 2026, against a 400% break-even." },
+        { label: "Cost per Purchase", to: 12.27, prefix: "£", suffix: "", decimals: 2, subtitle: "Across 2,161 Google Ads purchases." }
     ];
 
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="Results: £134K Email Revenue (12-Month)"
-                description="Measurable e-commerce growth results: £134K in email revenue (+88.9% YoY), a 50.4% average open rate, and £141K in Google Ads attributed revenue at a 532% return."
+                title="Results: £134K Email Revenue, 12 Months to July 2025"
+                description="E-commerce growth results: £134K in email revenue in the 12 months to July 2025 (+88.9% on the previous 12 months, to July 2024), a 50.4% average campaign open rate over the same 12 months, and £141K from Google Ads at a 532% Google Ads ROAS, October 2025 to August 2026."
                 path="/results"
             />
 
@@ -111,7 +111,7 @@ export default function Results() {
                         <div style={{ width: '40px', height: '2px', background: 'var(--accent-secondary)', margin: '1rem 0', opacity: 0.4 }}></div>
                         <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", maxWidth: "300px" }}>
                             {i === 0 && "Substantial growth in direct sales from Klaviyo campaigns."}
-                            {i === 1 && "Outperforming industry averages by 2.5x."}
+                            {i === 1 && "Up from 28.1% in 2022."}
                             {i === 2 && "Highly targeted automated systems that never sleep."}
                             {i === 3 && "Passive income streams built through customer journey mapping."}
                         </p>
@@ -177,12 +177,12 @@ export default function Results() {
                 <div className="grid-3" style={{ marginTop: '3rem' }}>
                     <Link to="/case-study-email" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
                         <h4 style={{ marginBottom: '1rem' }}>Email Growth Case Study</h4>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>How we generated £134K through lifecycle automation and advanced segmentation.</p>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>How we generated £134K in the 12 months to July 2025 through lifecycle automation and advanced segmentation.</p>
                         <span style={{ color: 'var(--accent-text)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
                     </Link>
                     <Link to="/case-study-google-ads" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
                         <h4 style={{ marginBottom: '1rem' }}>Paid Acquisition Deep-Dive</h4>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>£141K in Google Ads attributed revenue at a 532% return through data-driven targeting and creative testing.</p>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>£141K in Google Ads attributed revenue at a 532% Google Ads ROAS (October 2025 to August 2026) through data-driven targeting and creative testing.</p>
                         <span style={{ color: 'var(--accent-text)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
                     </Link>
                     <Link to="/case-study-seo" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>

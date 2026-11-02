@@ -1,7 +1,7 @@
 /** English copy. See src/i18n/caseStudyBodysurf.ts. */
 const en = {
     path: "/case-study-bodysurf-school",
-    title: "Five surf school locations, zero online bookings. Live in one month.",
+    title: "Bodysurf School Booking Site Case Study | Maria Madeira",
     description: "Case study: turning a Portuguese surf school website into a bilingual online booking engine with local payment methods and SEO and AEO foundations built in.",
     h1: "Five surf school locations, zero online bookings. Live in one month.",
     schemaDescription: "Turning a Portuguese surf school website into a bilingual online booking engine with local payment methods and SEO and AEO foundations built in.",
@@ -55,7 +55,7 @@ const en = {
     quoteNote: "",
     quoteContext: "Client · Recommended on LinkedIn",
     serviceLink: "Website strategy and build",
-    nextLink: "Found on Google and in AI answers",
+    nextLink: "Organic clicks up 78% in four months",
     galleryLink: "See the project gallery",
     ctaText: "Turning a website into a booking engine takes strategy before design.",
     ctaButton: "Book a free call",

@@ -16,7 +16,7 @@ export default function NotFound() {
         >
             <Seo
                 title="Page Not Found | Maria Madeira"
-                description="The page you are looking for does not exist or has moved. Explore case studies, portfolio work, and growth services from strategist Maria Madeira instead."
+                description="The page you are looking for does not exist or has moved. Explore case studies, portfolio work, and growth services from Maria Madeira, an independent growth consultant in Lisbon."
                 path="/404"
                 noIndex
             />

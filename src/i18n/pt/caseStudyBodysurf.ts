@@ -6,7 +6,7 @@ import type en from "../en/caseStudyBodysurf";
  */
 const pt: typeof en = {
     path: "/pt/caso-bodysurf-school",
-    title: "The Bodysurf School: reservas online de raiz | Maria Madeira",
+    title: "Caso Bodysurf School: reservas online | Maria Madeira",
     description: "Caso de estudo: o site de uma escola de surf portuguesa transformado num motor de reservas online bilingue, com pagamentos locais e bases de SEO e AEO.",
     h1: "Cinco locais, zero reservas online. Um site feito de raiz num mês.",
     schemaDescription: "Como o site de uma escola de surf portuguesa passou a ser um motor de reservas online bilingue, com métodos de pagamento locais e bases de SEO e AEO de raiz.",
@@ -59,7 +59,7 @@ const pt: typeof en = {
     quoteNote: "(recomendação original em inglês)",
     quoteContext: "Cliente · Recomendação no LinkedIn",
     serviceLink: "Estratégia e construção de sites",
-    nextLink: "Visível no Google e nas respostas de IA",
+    nextLink: "Cliques orgânicos com mais 78% em quatro meses",
     galleryLink: "Ver a galeria do projeto",
     ctaText: "Transformar um site num motor de reservas pede estratégia antes do design.",
     ctaButton: "Vamos falar de estratégia",

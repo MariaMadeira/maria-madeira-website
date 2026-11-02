@@ -2,7 +2,7 @@
 const en = {
     path: "/portfolio-bodysurf-school",
     title: "The Bodysurf School Website | Portfolio",
-    description: "Bilingual WordPress website with online booking and payment for a bodysurf school with five locations in Portugal.",
+    description: "Bilingual WordPress website with online booking and MB Way and Multibanco payments for a bodysurf school with five locations in Portugal.",
     back: "Back to Portfolio",
     h1: "The Bodysurf School",
     subtitle: "WEBSITE AND BOOKING SYSTEM",
@@ -41,7 +41,7 @@ const en = {
     role: "Growth strategy, UX/UI, WordPress build, booking and payments, and SEO and AEO.",
 
     ctaText: "Want to read the full story behind this project?",
-    ctaButton: "View Case Study",
+    ctaButton: "Read The Bodysurf School case study",
 };
 
 export default en;

@@ -12,6 +12,10 @@ const en = {
     publishedHuman: "9 September 2026",
     published: "Published ",
     updated: "Updated ",
+    /** The visible "Updated" date. The page shows publishedHuman there until it reads this key. */
+    updatedHuman: "2 November 2026",
+    /** One line under the dates: what the 2 November update changed. */
+    changeNote: "Updated 2 November 2026: added the euro and pound minimums from OpenAI's help centre, corrected the Meta comparison and added the sources.",
     readTime: " 7 min read",
     intro: [
         "ChatGPT Ads went live across 31 European markets on 24 August 2026. That is every EU member state plus Iceland, Liechtenstein, Norway and Switzerland, joining the UK, which opened in June. Self-service access followed on 31 August: any business registered in these markets can now open an advertiser account at ads.openai.com.",
@@ -23,7 +27,7 @@ const en = {
         "Live in 31 European markets since 24 August 2026; self-service since 31 August at ads.openai.com",
         "Ads show only on Free and Go plans; Plus, Pro and Enterprise stay ad-free",
         "Country-level targeting only in Europe (no cities or postcodes)",
-        "Minimum budget: 25 US dollars per day in the initial flow",
+        "Minimum budget: 25 US dollars a day, or 15 euros or 15 pounds on EUR and GBP accounts",
         "Ad format: square image, 50-character title, 52-character subtext",
         "Account country, currency and name are permanent once set",
     ],
@@ -42,7 +46,7 @@ const en = {
     walk: [
         { lead: "The ad is built from your website.", body: " The system extracted my services accurately, which suggests structured data and clear copy feed straight into the draft. It also picked a stock photo of a woman who is not me, and wrote copy around my company's registered location rather than my target market. The lesson for any brand: the auto-generated ad is a starting point that reflects whatever your site communicates, ambiguities included. Review every element before it goes anywhere near a customer." },
         { lead: "The recommended plan is a template, not a recommendation.", body: " My \"recommended plan\" arrived with targeting set to the United States and a budget of 100 US dollars per day. A Portuguese account, a European business, and the default points at America with a 3,000-dollar monthly spend. A distracted small business could approve that screen and burn a month's budget in the wrong country. Edit everything." },
-        { lead: "The real numbers.", body: " The minimum daily budget in the initial flow is 25 US dollars per day, which the platform enforces (I tried 10 and it refused). That is roughly 750 dollars a month as the entry ticket. Not the few-euros-a-day test Meta allows, but low enough for a controlled 30-day test. Currency localises when you formally create the account: mine offered EUR, with a note that minimums adjust to the account currency." },
+        { lead: "The real numbers.", body: " The minimum daily budget in the initial flow is 25 US dollars per day, which the platform enforces (I tried 10 and it refused). That is roughly 750 dollars a month as the entry ticket. Not the few-euros-a-day test Meta allows, but low enough for a controlled 30-day test. Currency localises when you formally create the account: mine offered EUR, with a note that minimums adjust to the account currency. OpenAI's help centre now lists the minimum as 15 euros a day for EUR accounts and 15 pounds for GBP accounts, so a European or UK account starts at about 450 euros or pounds a month." },
         { lead: "Decisions you cannot undo.", body: " Account name, country and currency lock permanently at account creation, and the screen says so in plain text. Budget type (daily versus campaign total) also locks once a campaign starts. Choose carefully, and use the exact registered name of your business." },
         { lead: "The ad format.", body: " One image (square, 800 by 800 pixels), your advertiser name and logo, a title capped at 50 characters and a subtext capped at 52. That subtext limit is brutal: a Google Ads ad gives you three 30-character headlines, 90 characters in total, and Meta's primary text runs to 125 before truncation. ChatGPT gives you 52 for the whole message. There is no room for storytelling, only for one concrete promise. For a food brand, \"Award-winning Cumberland sausages, delivered\" beats any lifestyle framing. The destination URL locks to your verified domain; you can append a path or query string, which matters for UTM tracking and dedicated landing pages." },
     ],
@@ -67,7 +71,7 @@ const en = {
     charsCaption: "Maximum characters per copy field, scaled against the longest.",
     payment: { lead: "Payment.", body: " You are charged only for eligible clicks after the ad is approved and serving. Adding a card triggers a temporary authorisation hold, typically released within seven days, and you can save the whole setup without launching anything." },
     termsTitle: "What the terms say (and why food and drink brands should read them)",
-    terms1: "Three things in OpenAI's Advertising Tools Terms deserve attention.",
+    terms1: "Three things in OpenAI's Ad Tools Terms deserve attention.",
     terms2: "The AI creative tools can generate, translate and adapt your ad, including adapting it dynamically to the context of a user's conversation. Depending on your settings, generated creative can be applied to your campaign automatically. You remain responsible for every claim in it, and OpenAI explicitly does not warrant that generated creative is accurate, legal or compliant. For food and drink, where health claims, allergen statements and origin claims are regulated, that combination demands human supervision of the creative settings from day one.",
     terms3: {
         lead: "Custom audiences accept first-party data only. No data brokers, no purchased lists. Brands that have built genuine email audiences, through ",
@@ -79,7 +83,7 @@ const en = {
     caveats: [
         {
             title: "The minimum budget is a real barrier.",
-            body: "Google Ads has no minimum: you can run at 2 euros a day. Meta is the same. ChatGPT Ads asks for 25 dollars a day, roughly 750 a month, as the entry ticket. That excludes the cheap exploratory test most small brands are used to. The upside, if there is one: a floor this high forces you to design the test before you spend. Either you commit to a proper 30-day trial with tracking in place, or you stay out. For many food and drink brands, staying out for now is the right call.",
+            body: "Meta sets only a small daily floor, which depends on your account currency and what the ad set is optimised for. ChatGPT Ads asks for 25 dollars a day, or 15 euros or pounds, roughly 750 dollars or 450 euros a month, as the entry ticket. That excludes the cheap exploratory test most small brands are used to. The upside, if there is one: a floor this high forces you to design the test before you spend. Either you commit to a proper 30-day trial with tracking in place, or you stay out. For many food and drink brands, staying out for now is the right call.",
         },
         {
             title: "A \"Sponsored\" label costs trust in the one place people came for honesty.",
@@ -87,15 +91,14 @@ const en = {
         },
     ],
     table: {
-        caption: "Minimum daily budget compared across Google Ads, Meta Ads and ChatGPT Ads",
+        caption: "Minimum daily budget compared across Meta Ads and ChatGPT Ads",
         head: ["Platform", "Minimum daily budget", "Monthly minimum"],
         /* Same order as the highlight flags in the page. */
         rows: [
-            { platform: "Google Ads", daily: "No minimum", monthly: "None" },
-            { platform: "Meta Ads", daily: "No minimum", monthly: "None" },
-            { platform: "ChatGPT Ads", daily: "25 US dollars", monthly: "About 750 US dollars" },
+            { platform: "Meta Ads", daily: "Small floor, set per currency", monthly: "Low, depends on currency and optimisation" },
+            { platform: "ChatGPT Ads", daily: "25 US dollars, 15 euros or 15 pounds", monthly: "About 750 US dollars, or about 450 euros or pounds" },
         ],
-        figcaption: "Entry cost compared. Google and Meta let you test for the price of a coffee; ChatGPT Ads does not.",
+        figcaption: "Entry cost compared. Meta lets you test on a small daily budget; ChatGPT Ads does not.",
     },
     meansTitle: "What this means if you run a food and drink brand",
     means1: "The organic and paid layers now compete for the same conversation, and they are not equals. The organic answer is the recommendation; the paid card is the advert. My second test showed brands winning ChatGPT recommendations today on the strength of awards, reviews, structured data and clear product information. From this month, a competitor can pay to appear beneath that same answer, but they cannot pay their way into the answer itself.",
@@ -107,7 +110,7 @@ const en = {
         },
         {
             title: "Paid second, and only with a designed test.",
-            body: "If you have the organic base and 750 dollars a month to commit for 30 days, the early-mover economics are genuine: reported ad frequency is low, competition is thin, and in the US pilot retail and grocery took the largest share of early inventory because shopping questions dominate ChatGPT's commercial queries.",
+            body: "If you have the organic base and about 450 euros or pounds (750 dollars) a month to commit for 30 days, the early-mover economics are genuine: reported ad frequency is low, competition is thin, and in the US pilot retail and grocery took the largest share of early inventory because shopping questions dominate ChatGPT's commercial queries.",
         },
         {
             title: "Never paid instead of organic.",
@@ -122,8 +125,17 @@ const en = {
         contactLink: "free 30-minute call",
         c: ". I will show you what ChatGPT says about your category today, with your brand in it or not.",
     },
-    related: ["Google and Meta Ads management", "Five pounds back for every pound spent", "What is AEO?", "AI search impressions up 2.2x"],
-    signOff: "Maria Madeira is an independent growth consultant helping UK and European food and drink brands with SEO, AEO, email marketing and paid acquisition.",
+    related: ["Google and Meta Ads management", "£5.32 back for every £1 spent", "What is AEO?", "AI search impressions up 2.2x"],
+    signOff: "Maria Madeira is an independent growth consultant based in Lisbon, helping e-commerce brands in the UK and Portugal with SEO, AI search, Klaviyo email marketing and paid ads.",
+    sourcesTitle: "Sources",
+    /* Checked 2 November 2026. The help centre table lists the minimum per billing currency. */
+    sources: [
+        { label: "OpenAI, \"ChatGPT Ads expands across Europe\" (18 August 2026)", href: "https://openai.com/index/chatgpt-ads-expands-across-europe/" },
+        { label: "OpenAI Help Center, \"Create campaigns for ChatGPT Ads\": minimum daily budget by billing currency", href: "https://help.openai.com/en/articles/20001210-create-campaigns-for-chatgpt" },
+        { label: "OpenAI, Ad Tools Terms", href: "https://openai.com/policies/ad-tools-terms/" },
+        { label: "Meta for Developers, Marketing API: minimum daily budget reference", href: "https://developers.facebook.com/docs/marketing-api/reference/minimum-budget" },
+    ],
+    sourcesNote: "Sources checked on 2 November 2026. The account walkthrough is my own, done before this post was first published on 9 September 2026.",
 };
 
 export default en;

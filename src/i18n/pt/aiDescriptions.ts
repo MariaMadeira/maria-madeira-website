@@ -95,6 +95,7 @@ const pt: typeof en = {
         b: ".",
     },
     related: ["Fotografia de produto com IA para uma marca de alimentação do Reino Unido", "Impressões na pesquisa com IA 2,2x maiores"],
+    relatedService: "SEO e otimização para a pesquisa com IA (AEO) para e-commerce",
 };
 
 export default pt;

@@ -1,66 +1,99 @@
 # Maria Madeira
 
-> Maria Madeira is a growth strategist for brands that sell online, covering website strategy, AI search (Answer Engine Optimisation), email marketing and Klaviyo, paid acquisition, and creative direction. Based in Lisbon, working globally.
+> Maria Madeira is an independent growth consultant based in Lisbon, Portugal, who helps e-commerce brands in the UK and Portugal get found on Google and in AI search, and grow revenue with Klaviyo email marketing and paid ads.
 
-Verified results from recent engagements include £134K in email-attributed revenue in the 12 months to July 2025 (up 88.9% year on year, over a third of total store revenue), a 50.4% average campaign open rate, and Google Ads at a 532% ROAS against a 400% break-even over 11 months.
+She works on her own and does the work herself: SEO and AI search optimisation (AEO and GEO: being found on Google and recommended by ChatGPT, Perplexity, Gemini and Google AI Overviews), Klaviyo email marketing, Google, Meta and Microsoft Ads, and websites (WordPress and Shopify). Most of her experience is in food and drink e-commerce, including five years with a UK premium food brand. She works in English and Portuguese, remotely, in the UK time zone. Contact: info@mariamadeira.com. LinkedIn: https://www.linkedin.com/in/maria-madeira-growth
 
-## Partnerships
-- Official Klaviyo Partner (K:Partners programme).
-- Influee partner for UGC and creator campaigns: https://influee.co/partnership/maria-madeira
+Published results, each with its period stated on the linked page:
+- Email (Klaviyo), UK premium food brand: £134K in attributed email revenue in the 12 months to July 2025, up 88.9% on c. £71K in the previous 12 months (to July 2024), and over a third of store revenue; 50.4% average campaign open rate, 12 months to July 2025, up from 28.1% in 2022.
+- Google Ads, UK food brand: a 532% Google Ads ROAS against a 400% break-even, £141K in attributed revenue from £26.5K of ad spend, 1 October 2025 to 26 August 2026.
+- SEO and AI search case study, after a move from WooCommerce to Shopify: organic clicks up 78% (4.5K to 8.0K) and average Google position from 15.2 to 9.4 across all queries, in matched 28-day windows from May to August 2026; daily impressions in Google's AI features up 2.2x, first week to last week.
+
+Last updated: 2026-11-02
 
 ## Services
-- [Website Strategy & Build](https://mariamadeira.com/services/websites): strategy, rebuilds and targeted improvements with SEO and AEO built in from the start.
-- [Answer Engine Optimisation (AEO)](https://mariamadeira.com/services/aeo): getting cited and recommended by AI assistants such as ChatGPT, Perplexity, Gemini and Google AI Overviews.
-- [Email Marketing & Klaviyo Consulting](https://mariamadeira.com/services/email-marketing): lifecycle flows, segmentation and campaigns that turn email into a compounding, attributed-revenue channel.
-- [Paid advertising](https://mariamadeira.com/services/paid-ads): Google, Meta and Microsoft Ads for e-commerce brands, managed against the client's break-even ROAS. Example: 532% ROAS against a 400% break-even over 11 months.
-- [All services](https://mariamadeira.com/services): the full list, including growth strategy, paid advertising, creative direction and e-commerce platform migration.
+- [Services](https://mariamadeira.com/services): the four services in one place, with the three ways to work.
+- [SEO and AI search optimisation (AEO)](https://mariamadeira.com/services/aeo): SEO for e-commerce brands, plus getting cited and recommended by ChatGPT, Perplexity, Gemini and Google AI Overviews. Audit, then implementation.
+- [Klaviyo email marketing](https://mariamadeira.com/services/email-marketing): Klaviyo email marketing consulting from an official Klaviyo Partner: lifecycle flows, segmentation and campaigns measured in attributed revenue.
+- [Google, Meta and Microsoft Ads](https://mariamadeira.com/services/paid-ads): paid ads for e-commerce brands, every campaign measured against the client's break-even ROAS.
+- [Websites](https://mariamadeira.com/services/websites): building and migrating stores on Shopify and WordPress, with SEO and AI search built in, including bookings and payments; quoted per project.
 
-## Pricing (UK, GBP, starting prices)
-- AEO audit from £750; ongoing AEO from £800 a month
-- Klaviyo setup with core flows from £1,200; monthly email marketing from £750 a month
-- Google Ads or Meta Ads management from £500 a month per platform, ad spend not included
-- Ways to work: Growth Audit £750 one-off; projects from £1,200; monthly work from £500 a month (minimum three months). Full details at [/pricing](https://mariamadeira.com/pricing).
+## Pricing
+- [Pricing](https://mariamadeira.com/pricing): UK prices in GBP. Growth Audit £750, fixed, one-off. Projects from £1,200 (for example Klaviyo setup with core flows, or a website). Monthly work from £500 a month, minimum three months. By service: AEO audit £750 and ongoing AEO from £800 a month; monthly email marketing from £750 a month; Google Ads or Meta Ads management from £500 a month per platform, ad spend not included; websites quoted per project.
 
 ## Case studies
-- [Email lifecycle revenue growth](https://mariamadeira.com/case-study-email): a Klaviyo lifecycle system that grew email-attributed revenue to £134K in the 12 months to July 2025.
-- [Google Ads revenue growth](https://mariamadeira.com/case-study-google-ads): structured campaigns delivering a 532% ROAS against a 400% break-even over 11 months.
-- [SEO & platform migration](https://mariamadeira.com/case-study-seo): recovering organic and answer-engine visibility after a WordPress to Shopify migration.
-- [The Bodysurf School](https://mariamadeira.com/case-study-bodysurf-school): a brochure site rebuilt into a bilingual booking engine with SEO and AEO foundations.
-- [dePapier Translations](https://mariamadeira.com/case-study-depapier-translations): a certified translator moves from a free page to her own domain, email and bilingual site.
-- [Click & Collect](https://mariamadeira.com/case-study-click-collect): a mobile pre-order experience for a high-traffic retail store.
+- [Case studies](https://mariamadeira.com/case-studies): all six case studies with their headline results.
+- [Klaviyo email programme](https://mariamadeira.com/case-study-email): Klaviyo for a UK premium food brand, September 2021 to July 2025, from three automated flows to fourteen; £134K in the 12 months to July 2025, up 88.9% on c. £71K in the previous 12 months (to July 2024), and over a third of store revenue.
+- [Google Ads](https://mariamadeira.com/case-study-google-ads): £26.5K of ad spend returned £141K in attributed revenue from October 2025 to August 2026, a 532% Google Ads ROAS against a 400% break-even, with ten of eleven months above break-even.
+- [SEO and AI search after a Shopify move](https://mariamadeira.com/case-study-seo): After a move from WooCommerce to Shopify, brand rankings held, but collections and product pages had not been built for search. Four months of SEO and AEO work: organic clicks +78%, average position 15.2 to 9.4, AI-feature impressions 2.2x.
+- [The Bodysurf School](https://mariamadeira.com/case-study-bodysurf-school): a surf school with five locations on the Portuguese coast and no online booking got a bilingual WordPress booking site with MB Way and Multibanco payments, live in one month.
+- [dePapier Translations](https://mariamadeira.com/case-study-depapier-translations): a certified translator in Portugal moved from a free Google Sites page to her own domain, business email and a bilingual WordPress site, in about seven weeks.
+- [Click & Collect](https://mariamadeira.com/case-study-click-collect): a mobile pre-order app for a shop with peak-hour queues; it addressed a real problem, but adoption stayed low, and the case explains why.
+
+## Portfolio
+- [Portfolio](https://mariamadeira.com/portfolio): brand, web, email and AI imagery projects.
+- [The Bodysurf School website](https://mariamadeira.com/portfolio-bodysurf-school): screens from the bilingual booking site.
+- [dePapier Translations website](https://mariamadeira.com/portfolio-depapier): key pages, mobile screens and visual identity.
+- [Lifecycle email marketing system](https://mariamadeira.com/portfolio-email-marketing): welcome, browse abandonment, checkout recovery, post-purchase, replenishment and win-back flows built in Klaviyo.
+- [Click & Collect mobile experience](https://mariamadeira.com/portfolio-click-collect): app UX, campaign creative and in-store screen distribution.
+- [Rita Antunes brand identity](https://mariamadeira.com/portfolio-rita-antunes): identity and visual direction for a psychology practice.
+- [Ousadia brand and creative direction](https://mariamadeira.com/portfolio-ousadia): logo system, visual language and campaign art direction for an artcraft brand.
+- [AI-enhanced product imagery](https://mariamadeira.com/portfolio-ai-enhanced): before and after edits of food product photos with generative AI.
+- [AI product photography](https://mariamadeira.com/portfolio-ai-product-photography): AI-produced packshots used on web, email and paid social for a UK food brand.
 
 ## Writing
-- [What is AEO? Answer Engine Optimisation explained](https://mariamadeira.com/blog/what-is-aeo): how brands get cited by AI answer engines, how AEO differs from SEO and GEO, and where to start.
-- [Why your automated emails earn more than your campaigns](https://mariamadeira.com/blog/klaviyo-flows-vs-campaigns): automated flows are a small share of sends and a large share of email revenue. What the research says, four years of data from a real UK brand, and the flows to build first.
-- [Inside ChatGPT Ads in Europe](https://mariamadeira.com/blog/chatgpt-ads-europe): a walkthrough of opening a European ChatGPT advertiser account, the real minimums and limits, and why AEO comes first.
+- [Blog](https://mariamadeira.com/blog): all articles.
+- [What is AEO?](https://mariamadeira.com/blog/what-is-aeo): Answer Engine Optimisation explained for brands that sell online: how it differs from SEO and GEO, what the work involves, and a five-question test.
+- [Why your automated emails earn more than your campaigns](https://mariamadeira.com/blog/klaviyo-flows-vs-campaigns): Klaviyo flows vs campaigns, with data from a UK brand (September 2021 to July 2025) and the flows to build first.
+- [Inside ChatGPT Ads in Europe](https://mariamadeira.com/blog/chatgpt-ads-europe): a first-hand walkthrough of a European ChatGPT Ads account: minimum daily budget of 25 US dollars (15 euros or 15 pounds on EUR and GBP accounts), locked settings, the ad format, and why AEO comes first. Updated 2 November 2026.
+- [Best AEO agencies for e-commerce in Europe](https://mariamadeira.com/blog/best-aeo-agencies-ecommerce-europe): a comparison of AEO agencies in Europe, the criteria used, and where an independent consultant fits.
+- [AI product descriptions for food brands](https://mariamadeira.com/blog/ai-product-descriptions-food-brands): what can go wrong when AI writes food product copy (allergen, health and origin claims) and how to do it safely.
 
 ## About
-- [AI Information](https://mariamadeira.com/ai-information): factual information about Maria Madeira for AI assistants: role, services, location, background, credentials and published results.
+- [Maria Madeira, homepage](https://mariamadeira.com/): who she is, the four services, headline results and how to work with her.
+- [About Maria Madeira](https://mariamadeira.com/about): background, published results, tools and credentials, with links to verify the Klaviyo certificates.
+- [Facts for AI assistants](https://mariamadeira.com/ai-information): role, services, location, background, credentials and published results, written to be quoted.
+- [Privacy policy](https://mariamadeira.com/privacy): how contact details are handled, under GDPR.
+
+## Partnerships
+- [Klaviyo Partner](https://mariamadeira.com/about): official Klaviyo Partner (K:Partners programme); also holds the Klaviyo Practitioner and Klaviyo Sales certificates (Klaviyo Academy, 2026).
+- [Influee](https://influee.co/partnership/maria-madeira): partner for UGC and creator campaigns.
 
 ## Portuguese pages
-- [Maria Madeira, em português](https://mariamadeira.com/pt): consultora independente para marcas que vendem online em Portugal e no Reino Unido (AEO e SEO, email marketing com Klaviyo, Google e Meta Ads).
-- [Email marketing e Klaviyo](https://mariamadeira.com/pt/servicos/email-marketing): versão portuguesa da página de email marketing e consultoria Klaviyo.
-- [Contacto](https://mariamadeira.com/pt/contacto): formulário de contacto em português.
-- [Serviços](https://mariamadeira.com/pt/servicos): todos os serviços, em português.
-- [AEO](https://mariamadeira.com/pt/servicos/aeo): otimização para motores de resposta, para a sua marca ser citada e recomendada pelo ChatGPT, Perplexity, Gemini e Vista geral de IA da Google.
-- [Anúncios pagos](https://mariamadeira.com/pt/servicos/anuncios): Google Ads, Meta Ads e Microsoft Ads para e-commerce, medidos face ao ROAS de equilíbrio.
-- [Sites](https://mariamadeira.com/pt/servicos/sites): estratégia e construção de sites, com SEO e AEO de raiz.
-- [Formas de trabalhar](https://mariamadeira.com/pt/precos): Auditoria de crescimento, projetos e acompanhamento mensal, com proposta por escrito.
-- [Sobre](https://mariamadeira.com/pt/sobre): percurso, credenciais e ferramentas da Maria Madeira.
+- [Maria Madeira, em português](https://mariamadeira.com/pt): consultora de crescimento independente, baseada em Lisboa, que ajuda marcas de e-commerce em Portugal e no Reino Unido a serem encontradas no Google e na pesquisa com IA, e a crescer com email marketing no Klaviyo e anúncios pagos.
+- [Serviços](https://mariamadeira.com/pt/servicos): os quatro serviços e as três formas de trabalhar.
+- [SEO e pesquisa com IA](https://mariamadeira.com/pt/servicos/aeo): SEO e otimização para a pesquisa com IA (AEO) para lojas online em Portugal: a marca encontrada no Google e recomendada pelo ChatGPT, Perplexity, Gemini e Vista geral de IA da Google.
+- [Especialista Klaviyo em Portugal](https://mariamadeira.com/pt/servicos/email-marketing): email marketing no Klaviyo com uma Klaviyo Partner oficial: fluxos automáticos, segmentação e campanhas.
+- [Google Ads e Meta Ads](https://mariamadeira.com/pt/servicos/anuncios): anúncios pagos para e-commerce, medidos face ao ROAS de equilíbrio de cada marca.
+- [Sites](https://mariamadeira.com/pt/servicos/sites): construção e migração de lojas em Shopify e WordPress, com SEO e pesquisa com IA de raiz, incluindo reservas e pagamentos.
+- [Formas de trabalhar](https://mariamadeira.com/pt/precos): Auditoria de crescimento, projetos e acompanhamento mensal. A página portuguesa não publica preços: cada trabalho tem proposta por escrito, com âmbito e preço fechados.
+- [Sobre](https://mariamadeira.com/pt/sobre): percurso, resultados publicados, ferramentas e credenciais.
 - [Informação para IA](https://mariamadeira.com/pt/informacao-ia): factos sobre a Maria Madeira para assistentes de IA, em português.
-- [Casos de estudo](https://mariamadeira.com/pt/casos-de-estudo): resultados de clientes em Google Ads, email marketing, SEO e AEO, Click & Collect e sites.
-- [Caso: Google Ads](https://mariamadeira.com/pt/caso-google-ads): cinco libras de retorno por cada libra investida, ao longo de onze meses.
-- [Caso: email marketing](https://mariamadeira.com/pt/caso-email): quatro anos de Klaviyo, com o email a trazer £134K por ano e mais de um terço da receita da loja.
-- [Caso: SEO e AEO](https://mariamadeira.com/pt/caso-seo): da página 2 para a página 1 do Google, e duas vezes mais visível nas respostas de IA.
-- [Caso: Click & Collect](https://mariamadeira.com/pt/caso-click-collect): pré-encomendas pelo telemóvel para uma loja que perdia vendas por causa das filas.
-- [Caso: The Bodysurf School](https://mariamadeira.com/pt/caso-bodysurf-school): um site com reservas online feito de raiz num mês.
-- [Portefólio](https://mariamadeira.com/pt/portefolio): projetos de marca, direção criativa, imagens de produto com IA, email marketing e Click & Collect.
-- [Blog](https://mariamadeira.com/pt/blog): artigos sobre AEO, email marketing com Klaviyo, anúncios e IA no e-commerce, em português.
+- [Contacto](https://mariamadeira.com/pt/contacto): formulário de contacto em português.
+- [Política de privacidade](https://mariamadeira.com/pt/privacidade): como são tratados os dados de contacto, segundo o RGPD.
+- [Casos de estudo](https://mariamadeira.com/pt/casos-de-estudo): os seis casos de estudo, com os resultados principais.
+- [Caso: email no Klaviyo](https://mariamadeira.com/pt/caso-email): Klaviyo para uma marca de alimentação premium do Reino Unido, de setembro de 2021 a julho de 2025; £134K nos 12 meses até julho de 2025, mais 88,9% face a c. £71K nos 12 meses anteriores (até julho de 2024), e mais de um terço da receita da loja.
+- [Caso: Google Ads](https://mariamadeira.com/pt/caso-google-ads): ROAS de Google Ads de 532%, de outubro de 2025 a agosto de 2026, face a um ponto de equilíbrio de 400%, £141K de receita atribuída a partir de £26,5K.
+- [Caso: SEO e pesquisa com IA](https://mariamadeira.com/pt/caso-seo): depois de uma mudança de WooCommerce para Shopify: cliques orgânicos +78% e posição média de 15,2 para 9,4 em quatro meses.
+- [Caso: The Bodysurf School](https://mariamadeira.com/pt/caso-bodysurf-school): site de reservas bilingue para uma escola de surf com cinco locais, no ar num mês.
+- [Caso: dePapier Translations](https://mariamadeira.com/pt/caso-depapier-translations): domínio próprio, email profissional e site bilingue para uma tradutora certificada em Portugal, em cerca de sete semanas.
+- [Caso: Click & Collect](https://mariamadeira.com/pt/caso-click-collect): uma app de pré-encomenda para uma loja com filas, e porque é que a adesão ficou baixa.
+- [Portefólio](https://mariamadeira.com/pt/portefolio): projetos de marca, sites, email e imagens de produto com IA.
+- [Portefólio: The Bodysurf School](https://mariamadeira.com/pt/portefolio-bodysurf-school): ecrãs do site de reservas bilingue.
+- [Portefólio: dePapier Translations](https://mariamadeira.com/pt/portefolio-depapier): páginas principais, ecrãs de telemóvel e identidade visual.
+- [Portefólio: email marketing](https://mariamadeira.com/pt/portefolio-email-marketing): sistema de email de ciclo de vida montado no Klaviyo.
+- [Portefólio: Click & Collect](https://mariamadeira.com/pt/portefolio-click-collect): UX da app, criativos de campanha e distribuição em ecrãs na loja.
+- [Portefólio: Rita Antunes](https://mariamadeira.com/pt/portefolio-rita-antunes): identidade de marca para uma clínica de psicologia.
+- [Portefólio: Ousadia](https://mariamadeira.com/pt/portefolio-ousadia): marca e direção criativa para uma marca de artesanato.
+- [Portefólio: imagens de produto com IA](https://mariamadeira.com/pt/portefolio-imagens-de-produto-com-ia): o antes e depois de fotografias de produto alimentar com IA generativa.
+- [Portefólio: fotografia de produto com IA](https://mariamadeira.com/pt/portefolio-fotografia-de-produto-com-ia): fotografias de produto feitas com IA para uma marca de alimentação do Reino Unido.
+- [Blog](https://mariamadeira.com/pt/blog): os artigos em português.
 - [O que é o AEO?](https://mariamadeira.com/pt/blog/o-que-e-aeo): a otimização para motores de resposta explicada a marcas que vendem online.
-- [Agências de AEO para e-commerce na Europa](https://mariamadeira.com/pt/blog/melhores-agencias-aeo-ecommerce-europa): comparação das agências de AEO e onde entra uma consultora independente.
-- [ChatGPT Ads na Europa](https://mariamadeira.com/pt/blog/anuncios-chatgpt-europa): o que se vê numa conta de anunciante europeia do ChatGPT Ads.
-- [Descrições de produto com IA](https://mariamadeira.com/pt/blog/descricoes-de-produto-com-ia-marcas-alimentares): o que pode correr mal nas marcas de alimentação e bebidas, e como fazer com segurança.
 - [Fluxos vs. campanhas no Klaviyo](https://mariamadeira.com/pt/blog/fluxos-vs-campanhas-klaviyo): porque é que os emails automáticos rendem mais do que as campanhas.
+- [ChatGPT Ads na Europa](https://mariamadeira.com/pt/blog/anuncios-chatgpt-europa): o que se vê numa conta de anunciante europeia do ChatGPT Ads, incluindo o orçamento mínimo de 15 euros por dia em contas em EUR.
+- [Agências de AEO para e-commerce na Europa](https://mariamadeira.com/pt/blog/melhores-agencias-aeo-ecommerce-europa): comparação das agências de AEO e onde entra uma consultora independente.
+- [Descrições de produto com IA](https://mariamadeira.com/pt/blog/descricoes-de-produto-com-ia-marcas-alimentares): o que pode correr mal nas marcas de alimentação e bebidas, e como fazer com segurança.
 
 ## Contact
-- [Book a free strategy call](https://mariamadeira.com/contact)
+- [Book a free call](https://mariamadeira.com/contact): a free 30-minute call, by contact form or at info@mariamadeira.com.
+- Legal details: Maria Madeira, NIF 256029342 (Portugal). [Privacy policy](https://mariamadeira.com/privacy).

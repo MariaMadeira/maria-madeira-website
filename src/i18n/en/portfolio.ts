@@ -1,7 +1,7 @@
 /** English copy. See src/i18n/portfolio.ts. */
 const en = {
     path: "/portfolio",
-    title: "Portfolio | Creative & Brand Projects",
+    title: "Portfolio: Brand, Web and Email Projects | Maria Madeira",
     description: "Creative portfolio of Maria Madeira: brand identity, AI-enhanced product imagery, lifecycle email systems, and product UX work for brands that sell online.",
     h1Lead: "Creative ",
     h1Accent: "Portfolio",
@@ -49,6 +49,17 @@ const en = {
             category: "AI Creations",
             description: "Simple product packshots turned into marketing-ready scenes, with AI-generated surfaces, lighting and styling.",
         },
+    ],
+    /** Alt text for each card image, in the order of `projects`: what the image shows. */
+    cardAlts: [
+        "Click & Collect app screens",
+        "dePapier Translations homepage on desktop and mobile",
+        "The Bodysurf School website on desktop and mobile",
+        "Recipe content email from a lifecycle email flow",
+        "Stationery mockup for Rita Antunes Psicologia",
+        "Ousadia Artcraft moodboard",
+        "Braised, shredded ox cheek on a plate with sauce and rosemary, AI-generated product image",
+        "Bag of butterscotch fudge on a linen cloth on a wooden table, AI-generated scene",
     ],
 };
 

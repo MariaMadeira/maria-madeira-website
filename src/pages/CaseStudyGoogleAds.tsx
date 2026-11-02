@@ -2,6 +2,8 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import RelatedLinks from "../components/RelatedLinks";
+import Byline from "../components/Byline";
+import AuthorBio from "../components/AuthorBio";
 import { GoogleAdsCharts } from "../components/ResultCharts";
 import { caseStudyJsonLd } from "../lib/schema";
 import { PAID_ADS_SERVICE } from "../lib/links";
@@ -14,7 +16,7 @@ import COPY from "../i18n/caseStudyGoogleAds";
    language version live (git log); the Portuguese pages went live with the
    /pt routes. Modified: the commit that last changed the page's visible text. */
 const PUBLISHED = { en: "2026-03-16T16:33:25+00:00", pt: "2026-10-19T18:35:44+01:00" };
-const MODIFIED = { en: "2026-10-20T17:09:53+01:00", pt: "2026-10-19T18:57:51+01:00" };
+const MODIFIED = { en: "2026-11-02", pt: "2026-11-02" };
 
 const STRONG = { color: "var(--text-primary)" };
 
@@ -86,6 +88,7 @@ export default function CaseStudyGoogleAds() {
                     <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", marginBottom: "1.5rem", lineHeight: 1.15 }}>
                         {c.h1}
                     </h1>
+                    <Byline published={PUBLISHED[lang]} modified={MODIFIED[lang]} compact />
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
                         {c.intro}
                     </p>
@@ -181,6 +184,8 @@ export default function CaseStudyGoogleAds() {
                         {c.ctaButton}
                     </Link>
                 </div>
+
+                <AuthorBio cta={false} />
 
             </div>
         </div>

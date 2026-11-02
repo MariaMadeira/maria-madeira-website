@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import Seo from "../components/Seo";
 import RelatedLinks, { RELATED } from "../components/RelatedLinks";
+import { portfolioJsonLd } from "../lib/schema";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/portfolioClickCollect";
 
@@ -37,6 +38,13 @@ export default function PortfolioClickCollect() {
             title={c.title}
             description={c.description}
             path={c.path}
+            jsonLd={portfolioJsonLd({
+                path: c.path,
+                name: c.h1.join(" "),
+                description: c.description,
+                image: "/projects/click-collect/app-mockups.webp",
+                lang,
+            })}
         />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "1000px", margin: "0 auto" }}>
@@ -407,6 +415,9 @@ export default function PortfolioClickCollect() {
                             ref={videoRef}
                             src="/projects/click-collect/elevator-video.mp4"
                             style={{ width: "100%", display: "block" }}
+                            /* A 4 MB file that plays only on a tap: fetch just
+                               its metadata (and first frame) until then. */
+                            preload="metadata"
                             playsInline
                             onEnded={() => setIsPlaying(false)}
                         />

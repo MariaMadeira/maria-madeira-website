@@ -11,6 +11,12 @@
       "permanent": true
     },
     {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "maria-madeira-website.vercel.app" }],
+      "destination": "https://mariamadeira.com/$1",
+      "permanent": true
+    },
+    {
       "source": "/favicon.png",
       "destination": "/favicon-96.png",
       "statusCode": 301
@@ -24,6 +30,33 @@
       "source": "/case-study-seo-aeo",
       "destination": "/case-study-seo",
       "statusCode": 301
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(webp|avif|jpg|jpeg|png|gif|svg|ico)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }
+      ]
     }
   ]
 }

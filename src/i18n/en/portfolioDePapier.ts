@@ -50,7 +50,7 @@ const en = {
     role: "Positioning, information architecture, design and WordPress build, copy in both languages and SEO.",
 
     ctaText: "Want to read the full story behind this project?",
-    ctaButton: "View Case Study",
+    ctaButton: "Read the dePapier case study",
 };
 
 export default en;

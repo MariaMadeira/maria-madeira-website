@@ -1,10 +1,10 @@
 /** English copy. See src/i18n/caseStudyDePapier.ts. */
 const en = {
     path: "/case-study-depapier-translations",
-    title: "dePapier Translations case study: website and identity | Maria Madeira",
-    description: "How I gave a certified translator in Portugal her own domain, a consistent identity and a bilingual WordPress site in about seven weeks.",
+    title: "dePapier Translations Website Case Study | Maria Madeira",
+    description: "How I gave a certified translator in Portugal her own domain and business email, a consistent identity and a bilingual WordPress site in about seven weeks.",
     h1: "dePapier Translations: a credible home for a certified translator",
-    schemaDescription: "How I gave a certified translator in Portugal her own domain, a consistent identity and a bilingual WordPress site in about seven weeks.",
+    schemaDescription: "How I gave a certified translator in Portugal her own domain and business email, a consistent identity and a bilingual WordPress site in about seven weeks.",
     breadcrumb: "dePapier Translations",
     back: "Back to Case Studies",
     eyebrow: "Case study · Website and digital identity",

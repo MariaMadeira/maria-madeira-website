@@ -1,24 +1,18 @@
 import { useState, useSyncExternalStore } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Mail, Linkedin, Send, CheckCircle } from "lucide-react";
 import Seo from "../components/Seo";
-import { SITE_URL } from "../lib/schema";
+import { ORG_REF, PERSON_REF, breadcrumbNode, webPageNode, withEntities } from "../lib/schema";
 
 /* Portuguese twin of /contact. Same Formspree form as the English page; the
    subject marks the enquiry as coming from the Portuguese site. */
 const FORMSPREE = "https://formspree.io/f/xvzvrqde";
-const PAGE_URL = `${SITE_URL}/pt/contacto`;
 
-const JSON_LD = {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "@id": `${PAGE_URL}#webpage`,
-    "url": PAGE_URL,
-    "name": "Contacto",
-    "inLanguage": "pt-PT",
-    "isPartOf": { "@id": `${SITE_URL}/#website` },
-    "about": { "@id": `${SITE_URL}/#person` },
-};
+/* Same graph as /contact: the page, its breadcrumb and the shared entities. */
+const JSON_LD = withEntities([
+    webPageNode({ type: "ContactPage", path: "/pt/contacto", name: "Contacto", lang: "pt", about: PERSON_REF, publisher: ORG_REF }),
+    breadcrumbNode("pt", [["Contacto", "/pt/contacto"]]),
+]);
 
 /* Enquiry presets reachable as /pt/contacto?topic=<key>, mirroring /contact.
    Anything else, including no parameter, leaves the page as it is. */
@@ -80,8 +74,8 @@ export default function PtContacto() {
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="Contacto | Maria Madeira"
-                description="Conte-me sobre a sua marca e o que gostaria de melhorar. Respondo pessoalmente."
+                title="Contacto | Maria Madeira, consultora de crescimento"
+                description="Fale com a Maria Madeira, consultora de crescimento em Lisboa, sobre SEO e pesquisa com IA, email no Klaviyo, anúncios ou o seu site. Respondo pessoalmente."
                 path="/pt/contacto"
                 jsonLd={JSON_LD}
             />
@@ -158,6 +152,9 @@ export default function PtContacto() {
                             </button>
                             <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", textAlign: "center", margin: 0 }}>
                                 Sem compromisso, sem pressão.
+                            </p>
+                            <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", textAlign: "center", margin: 0 }}>
+                                Uso os seus dados apenas para lhe responder. <Link to="/pt/privacidade" style={{ color: "var(--accent-text)", fontWeight: 600 }}>Política de privacidade</Link>.
                             </p>
                         </form>
                     )}

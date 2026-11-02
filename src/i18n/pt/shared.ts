@@ -17,7 +17,7 @@ export const WAYS_PT: WayToWork[] = [
             "Reunião de 60 minutos para explicar tudo",
         ],
         cta: "Marcar uma auditoria",
-        proof: { text: "Impressões na pesquisa com IA 2,2x maiores para a The Black Farmer", to: "/case-study-seo" },
+        proof: { text: "Impressões na pesquisa com IA 2,2x maiores num caso de estudo de SEO", to: "/case-study-seo" },
     },
     {
         name: "Projeto",
@@ -29,7 +29,7 @@ export const WAYS_PT: WayToWork[] = [
             "Âmbito e preço fechados por escrito antes de começar",
         ],
         cta: "Falar sobre um projeto",
-        proof: { text: "£134K de email em 12 meses para uma marca de alimentação premium do Reino Unido", to: "/case-study-email" },
+        proof: { text: "£134K de email nos 12 meses até julho de 2025 para uma marca de alimentação premium do Reino Unido", to: "/case-study-email" },
     },
     {
         name: "Acompanhamento mensal",
@@ -42,9 +42,9 @@ export const WAYS_PT: WayToWork[] = [
             "Mínimo de três meses",
         ],
         cta: "Falar sobre acompanhamento mensal",
-        proof: { text: "ROAS de 532% face a um ponto de equilíbrio de 400% para uma marca de alimentação do Reino Unido", to: "/case-study-google-ads" },
+        proof: { text: "ROAS de Google Ads de 532% face a um ponto de equilíbrio de 400% para uma marca de alimentação do Reino Unido, de outubro de 2025 a agosto de 2026", to: "/case-study-google-ads" },
     },
 ];
 
 /** Testimonial framing (D3): the quote stays in English, word for word. */
-export const TESTIMONIAL_LABELS_PT = { badge: "Cliente", context: "Recomendação no LinkedIn", readMore: "Ler a recomendação completa", note: "(recomendação original em inglês)" };
+export const TESTIMONIAL_LABELS_PT = { badge: "Cliente", context: "Recomendação no LinkedIn", readMore: (name: string) => `Caso de estudo da ${name}`, note: "(recomendação original em inglês)" };

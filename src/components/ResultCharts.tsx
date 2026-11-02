@@ -29,16 +29,17 @@
  * charts leave left of the axis, so the margins are the same in both languages.
  */
 
-import { EMAIL_PERIODS } from "../data/emailRevenue";
+import { CALENDAR_YEARS, TWELVE_MONTH_WINDOWS } from "../data/emailRevenue";
 import { useLang } from "../hooks/useLang";
 import type { Lang } from "../lib/i18n";
-import { formatNumber, decimal, monthLabel, EMAIL_PERIOD_LINES_PT } from "../lib/format";
+import { formatNumber, decimal, monthLabel } from "../lib/format";
 import COPY from "../i18n/resultCharts";
 
 /* ── Source data ───────────────────────────────────────────
  * Google Ads: full account export, 1 October 2025 to 26 August 2026 (11 months).
  * ROAS is revenue ÷ spend for the same month, so the three arrays reconcile.
- * Totals: £26,512 spend, £141,073 revenue, 532% blended ROAS.
+ * Totals: £26,512 spend, £141,073 conversion value, 2,161 purchases, 532% Google Ads ROAS
+ * (source: Google Ads Performance Report, 1 October 2025 to 26 August 2026).
  */
 const ADS_MONTHS = ["Oct 25", "Nov 25", "Dec 25", "Jan 26", "Feb 26", "Mar 26", "Apr 26", "May 26", "Jun 26", "Jul 26", "Aug 26"];
 const ADS_ROAS = [552, 481, 561, 511, 396, 511, 526, 668, 653, 562, 429];
@@ -540,9 +541,9 @@ function AiImpressionsLine({ variant, desc }: ChartVariantProps) {
 }
 
 /* ── Chart: Semrush AI Visibility across the tracked set ── */
-function AiVisibilityBars({ variant, desc }: ChartVariantProps) {
+function AiVisibilityBars({ variant, desc, labels }: ChartVariantProps & { labels: string[] }) {
     const c = COPY[useLang().lang].ai;
-    const rows = VISIBILITY.map((row, i) => ({ ...row, label: c.visibilityLabels[i] }));
+    const rows = VISIBILITY.map((row, i) => ({ ...row, label: labels[i] }));
     const wide = variant === "wide";
     const X_MAX = 35;
 
@@ -622,17 +623,18 @@ export function AiImpressionsChart() {
 }
 
 /** Horizontal bars of Semrush AI Visibility across the tracked set. */
-export function AiVisibilityChart() {
+/** Bar labels and description come from the SEO case study copy, which names
+ *  the client; this module also ships with the email and Google Ads case studies. */
+export function AiVisibilityChart({ labels, desc }: { labels: string[]; desc: string }) {
     const c = COPY[useLang().lang].ai;
-    const desc = c.visibilityDesc;
     return (
         <ChartFigure
             title={c.visibilityTitle}
             subtitle={c.visibilitySubtitle}
             headingLevel={3}
         >
-            <AiVisibilityBars variant="wide" desc={desc} />
-            <AiVisibilityBars variant="narrow" desc={desc} />
+            <AiVisibilityBars variant="wide" desc={desc} labels={labels} />
+            <AiVisibilityBars variant="narrow" desc={desc} labels={labels} />
         </ChartFigure>
     );
 }
@@ -693,16 +695,16 @@ export function OutcomesBar() {
 function emailSeries(lang: Lang): Series[] {
     const c = COPY[lang].email;
     return [
-        { name: c.campaigns, colour: DEEP, values: EMAIL_PERIODS.map((p) => p.campaigns) },
-        { name: c.flows, colour: ACCENT, values: EMAIL_PERIODS.map((p) => p.flows) },
+        { name: c.campaigns, colour: DEEP, values: CALENDAR_YEARS.map((p) => p.campaigns) },
+        { name: c.flows, colour: ACCENT, values: CALENDAR_YEARS.map((p) => p.flows) },
     ];
 }
 
-/** The email periods with their labels and totals in the page's language. */
+/** The calendar years with their totals in the page's language. Year labels
+ *  read the same in both languages. */
 function emailPeriods(lang: Lang) {
-    return EMAIL_PERIODS.map((p, i) => ({
+    return CALENDAR_YEARS.map((p) => ({
         ...p,
-        lines: lang === "pt" ? EMAIL_PERIOD_LINES_PT[i] : p.lines,
         total: decimal(p.total, lang),
     }));
 }
@@ -726,7 +728,7 @@ function EmailRevenueStack({ variant, desc }: ChartVariantProps) {
         const plotW = WIDE_W - margin.left - margin.right;
         const plotH = height - margin.top - margin.bottom;
         const base = margin.top + plotH;
-        const band = plotW / EMAIL_PERIODS.length;
+        const band = plotW / CALENDAR_YEARS.length;
         const barW = 58;
         const y = (v: number) => base - (v / EMAIL_Y_MAX) * plotH;
 
@@ -779,7 +781,7 @@ function EmailRevenueStack({ variant, desc }: ChartVariantProps) {
     const rowH = 76;
     const barH = 22;
     const plotW = NARROW_W;
-    const height = EMAIL_PERIODS.length * rowH + 10;
+    const height = CALENDAR_YEARS.length * rowH + 10;
     const x = (v: number) => (v / EMAIL_Y_MAX) * plotW;
 
     return (
@@ -811,7 +813,10 @@ function EmailRevenueStack({ variant, desc }: ChartVariantProps) {
     );
 }
 
-/** Stacked bars of attributed email revenue, campaigns and flows, by period. */
+/** Stacked bars of attributed email revenue, campaigns and flows, by calendar
+ *  year (2022 to 2024). The 12 months to July 2025 overlap 2024, so they are
+ *  never drawn here: EmailWindowsChart compares them with the 12 months
+ *  before. */
 export function EmailRevenueChart() {
     const { lang } = useLang();
     const c = COPY[lang].email;
@@ -832,6 +837,75 @@ export function EmailRevenueChart() {
         >
             <EmailRevenueStack variant="wide" desc={desc} />
             <EmailRevenueStack variant="narrow" desc={desc} />
+        </ChartFigure>
+    );
+}
+
+/* ── Chart: the two 12-month windows behind +88.9% ───────────
+ * c. £71K in the 12 months to July 2024 against £134K in the 12 months to
+ * July 2025 (TWELVE_MONTH_WINDOWS). Same £150K track as the calendar-year
+ * chart, the earlier window in the neutral grey, the later in the accent.
+ * Both drawings put the label above its bar, so only the font and viewBox
+ * change between them.
+ */
+function EmailWindowsBars({ variant, desc }: ChartVariantProps) {
+    const { lang } = useLang();
+    const c = COPY[lang].windows;
+    const titleId = `email-win-${variant}-t`;
+    const descId = `email-win-${variant}-d`;
+    const wide = variant === "wide";
+    const W = wide ? WIDE_W : NARROW_W;
+    const font = wide ? WIDE_FONT : NARROW_FONT;
+    const rowH = wide ? 52 : 76;
+    const barH = wide ? 18 : 22;
+    const labelY = wide ? 14 : 18;
+    const barY = wide ? 22 : 32;
+    const x = (v: number) => (v / EMAIL_Y_MAX) * W;
+    const rows = [
+        { label: c.previous, value: TWELVE_MONTH_WINDOWS.previous.value, total: TWELVE_MONTH_WINDOWS.previous.total, fill: MUTED },
+        { label: c.latest, value: TWELVE_MONTH_WINDOWS.latest.value, total: TWELVE_MONTH_WINDOWS.latest.total, fill: ACCENT },
+    ];
+    const height = rows.length * rowH + 6;
+    return (
+        <svg
+            className={`chart-svg chart-svg-${variant}`}
+            viewBox={`0 0 ${W} ${height}`}
+            role="img"
+            aria-labelledby={`${titleId} ${descId}`}
+            fontSize={font}
+        >
+            <title id={titleId}>{c.title}</title>
+            <desc id={descId}>{desc}</desc>
+            {rows.map((row, i) => {
+                const top = i * rowH + 4;
+                return (
+                    <g key={row.label}>
+                        <text x={0} y={top + labelY} fill={INK_SOFT}>{row.label}</text>
+                        <text x={W} y={top + labelY} textAnchor="end" fill={INK} fontWeight={600}>{row.total}</text>
+                        <rect x={0} y={top + barY} width={W} height={barH} rx={3} fill={RULE} opacity={0.5} />
+                        <rect x={0} y={top + barY} width={r2(x(row.value))} height={barH} rx={3} fill={row.fill} />
+                    </g>
+                );
+            })}
+        </svg>
+    );
+}
+
+/** The +88.9% comparison: 12 months to July 2024 against 12 months to July 2025. */
+export function EmailWindowsChart() {
+    const { lang } = useLang();
+    const c = COPY[lang].windows;
+    const desc = c.desc(decimal(TWELVE_MONTH_WINDOWS.growth, lang));
+    return (
+        <ChartFigure
+            title={c.title}
+            subtitle={c.subtitle}
+            headingLevel={3}
+            note={c.note(decimal(TWELVE_MONTH_WINDOWS.growth, lang))}
+            source={COPY[lang].email.source}
+        >
+            <EmailWindowsBars variant="wide" desc={desc} />
+            <EmailWindowsBars variant="narrow" desc={desc} />
         </ChartFigure>
     );
 }

@@ -18,6 +18,8 @@ export const PT_PAGES: { en: string; pt: string; status: "live" | "draft"; batch
     { en: "/", pt: "/pt", status: "live", batch: 0 },
     { en: "/services/email-marketing", pt: "/pt/servicos/email-marketing", status: "live", batch: 0 },
     { en: "/contact", pt: "/pt/contacto", status: "live", batch: 0 },
+    // Legal page, published in both languages at once (not part of a review batch).
+    { en: "/privacy", pt: "/pt/privacidade", status: "live", batch: 0 },
 
     { en: "/services", pt: "/pt/servicos", status: "live", batch: 1 },
     { en: "/services/aeo", pt: "/pt/servicos/aeo", status: "live", batch: 1 },
@@ -58,6 +60,16 @@ export const PAIRS = PT_PAGES.filter((p) => p.status === "live").map(({ en, pt }
 
 export function langOf(path: string): Lang {
     return path === "/pt" || path.startsWith("/pt/") ? "pt" : "en";
+}
+
+/**
+ * The share card for a page's language. Every card under /og/ has a
+ * Portuguese twin with the same name plus "-pt", so a /pt page gets
+ * /og/og-email-pt.png where the English page uses /og/og-email.png.
+ */
+export function localOgImage(image: string, lang: Lang): string {
+    if (lang !== "pt") return image;
+    return image.replace(/(\/og\/[^/]+?)(?<!-pt)\.png$/, "$1-pt.png");
 }
 
 /** The same page in the other language, or null when it has no live twin. */

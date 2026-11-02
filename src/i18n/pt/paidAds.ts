@@ -3,14 +3,14 @@ import type en from "../en/paidAds";
 /** Portuguese copy, batch 1 as approved in docs/pt-review/lote-1.md. */
 const pt: typeof en = {
     path: "/pt/servicos/anuncios",
-    title: "Google Ads e Meta Ads para e-commerce | Maria Madeira",
-    description: "Consultora independente de Google Ads e Meta Ads para marcas de e-commerce. Cada campanha medida face ao seu ponto de equilíbrio, com o Klaviyo a manter os clientes.",
+    title: "Consultora Google Ads e Meta Ads em Portugal | Maria Madeira",
+    description: "Consultora independente de Google Ads e Meta Ads para lojas online em Portugal e no Reino Unido, com cada campanha medida face ao seu ponto de equilíbrio.",
     eyebrow: "Anúncios pagos",
     h1Lead: "Google Ads e Meta Ads para e-commerce, ",
     h1Accent: "medidos face ao seu ponto de equilíbrio",
-    intro: "A maioria das contas de anúncios mostra um ROAS e fica por aí. O número que importa é o que as suas margens exigem. Começo por calcular o seu ROAS de equilíbrio e depois construo campanhas no Google Ads, Meta Ads e Microsoft Ads para o ultrapassar, mês após mês. Trabalho ao nível de uma agência, feito pela pessoa com quem fala.",
+    intro: "Sou consultora de Google Ads e Meta Ads em Lisboa e trabalho com marcas de e-commerce em Portugal e no Reino Unido. A maioria das contas de anúncios mostra um ROAS e fica por aí. O número que importa é o que as suas margens exigem. Começo por calcular o seu ROAS de equilíbrio e depois construo campanhas no Google Ads, Meta Ads e Microsoft Ads para o ultrapassar, mês após mês. Trabalho ao nível de uma agência, feito pela pessoa com quem fala.",
     results: [
-        { value: "532%", label: "Retorno do investimento em anúncios, face a um ponto de equilíbrio de 400%" },
+        { value: "532%", label: "ROAS de Google Ads, de outubro de 2025 a agosto de 2026, face a um ponto de equilíbrio de 400%" },
         { value: "£141K", label: "Receita atribuída a partir de £26,5K de investimento em anúncios" },
         { value: "10 de 11", label: "Meses acima do ponto de equilíbrio" },
     ],
@@ -29,7 +29,7 @@ const pt: typeof en = {
     emailLink: "Email marketing e consultoria Klaviyo",
     notYetTitle: "Quando lhe digo para ainda não investir",
     notYetText: "Se o acompanhamento de conversões não funciona, as páginas de produto não convertem ou a sua marca não aparece quando a pesquisam, mais investimento em anúncios só torna o problema mais caro. Nesses casos, digo-o, e corrigimos primeiro as bases.",
-    notYetLink: "AEO e visibilidade na pesquisa",
+    notYetLink: "SEO e visibilidade na pesquisa com IA",
     whoTitle: "Para quem é",
     who: "Marcas que vendem online, em Portugal e no Reino Unido, que já investem em anúncios ou estão prontas para começar, e que querem uma pessoa sénior a gerir a conta diretamente.",
     pricingTitle: "Orçamento",
@@ -59,7 +59,7 @@ const pt: typeof en = {
         },
         {
             q: "A minha marca deve investir em ChatGPT Ads?",
-            a: "Provavelmente ainda não. Os ChatGPT Ads estão em fase beta, com um orçamento diário mínimo que a Google e a Meta não têm. Testei o Ads Manager com a minha própria conta e escrevi o que encontrei.",
+            a: "Provavelmente ainda não. Os ChatGPT Ads estão em fase beta, com um orçamento diário mínimo (25 dólares americanos, ou 15 euros ou libras) muito acima do que a Google ou a Meta pedem. Testei o Ads Manager com a minha própria conta e escrevi o que encontrei.",
             link: { to: "/blog/chatgpt-ads-europe", label: "Por dentro dos ChatGPT Ads na Europa" },
         },
         {

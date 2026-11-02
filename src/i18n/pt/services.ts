@@ -4,10 +4,10 @@ import type en from "../en/services";
 const pt: typeof en = {
     path: "/pt/servicos",
     title: "Serviços de crescimento para e-commerce | Maria Madeira",
-    description: "Estratégia de crescimento, email marketing automatizado, anúncios pagos, sistemas de marketing com IA e direção criativa: serviços para fazer crescer as vendas online.",
+    description: "SEO e pesquisa com IA, email marketing no Klaviyo, Google, Meta e Microsoft Ads, e sites para marcas de e-commerce em Portugal e no Reino Unido, feitos por mim.",
     h1Lead: "Serviços ",
     h1Accent: "e especialidades",
-    intro: "Crescimento através de planeamento estratégico, produção criativa e automação técnica, em conjunto.",
+    intro: "Pesquisa com IA e SEO, email no Klaviyo, anúncios pagos e sites: quatro coisas que faço, da estratégia ao lançamento, feitas por mim.",
     howLead: "Como ",
     howAccent: "funciona",
     howIntro: "Um processo focado, em três passos, construído à volta dos seus objetivos e dos seus dados.",

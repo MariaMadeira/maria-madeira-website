@@ -51,6 +51,16 @@ const pt: typeof en = {
             description: "Packshots simples transformados em cenas prontas para marketing, com superfícies, luz e apresentação geradas por IA.",
         },
     ],
+    cardAlts: [
+        "Ecrãs da app de Click & Collect",
+        "A página inicial da dePapier Translations no computador e no telemóvel",
+        "O site da The Bodysurf School no computador e no telemóvel",
+        "Email do fluxo de conteúdo com receitas",
+        "Mockup de papelaria para a Rita Antunes Psicologia",
+        "Moodboard da Ousadia Artcraft",
+        "Bochecha de boi estufada e desfiada num prato, com molho e alecrim, imagem criada com IA",
+        "Saco de Butterscotch Fudge sobre um pano de linho numa mesa de madeira, ambiente gerado por IA",
+    ],
 };
 
 export default pt;

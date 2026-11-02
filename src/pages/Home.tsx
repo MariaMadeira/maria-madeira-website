@@ -7,129 +7,58 @@ import { Sparkline, EmailBarsVisual, RoasBarsVisual, ClicksLineVisual, PositionV
 import { BODYSURF_TESTIMONIAL } from "../data/testimonials";
 import type { Testimonial } from "../data/testimonials";
 import { useLang } from "../hooks/useLang";
-import { PROGRAM_MEMBERSHIP } from "../lib/credentials";
+import type { Lang } from "../lib/i18n";
 import { decimal } from "../lib/format";
+import { PERSON_REF, faqNode, serviceNode, webPageNode, withEntities } from "../lib/schema";
+import { PROJECT_LINKS } from "../data/portfolio";
 import COPY from "../i18n/home";
 import PORTFOLIO from "../i18n/portfolio";
 import ABOUT from "../i18n/about";
+import BLOG from "../i18n/blog";
 
 /* Renders / and /pt from src/i18n/home.ts. Visuals, images and links live
    here; every word lives in the copy file. The Portuguese page uses its own
    steps (no prices), FAQ and closing line in the shared sections, and keeps
    its credentials strip (ptExtras). No number on this page counts up. */
 
-const HOME_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "Person",
-            "@id": "https://mariamadeira.com/#person",
-            "name": "Maria Madeira",
-            "url": "https://mariamadeira.com",
-            "image": "https://mariamadeira.com/maria-hero-800.jpg",
-            "jobTitle": "Growth Strategist",
-            "description": "Growth strategist for brands that sell online: websites, Answer Engine Optimisation (AEO), SEO, Klaviyo email, and paid acquisition. Five years with UK food and drink brands.",
-            "sameAs": ["https://www.linkedin.com/in/maria-madeira-growth", "https://influee.co/partnership/maria-madeira"],
-            // Identical to the About node: same @id, so two different values
-            // would contradict each other on one merged entity.
-            "memberOf": PROGRAM_MEMBERSHIP,
-            "knowsAbout": ["Answer Engine Optimisation (AEO)", "SEO", "Email Marketing", "Klaviyo", "Google Ads", "Meta Ads", "AI Marketing", "Growth Strategy", "Paid Acquisition", "Lifecycle Marketing"]
-        },
-        // Split out of a single ProfessionalService node: that type descends from
-        // LocalBusiness, not Service, so it accepts neither provider nor
-        // serviceType (schema.org deprecated it precisely for that confusion).
-        // The practice is now an Organization and what it sells is a Service.
-        {
-            "@type": "Organization",
-            "@id": "https://mariamadeira.com/#organization",
-            "name": "Maria Madeira",
-            "url": "https://mariamadeira.com",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://mariamadeira.com/apple-touch-icon.png",
-                "width": 180,
-                "height": 180
-            },
-            "description": "Answer Engine Optimisation (AEO), SEO, Klaviyo email and paid acquisition for UK food and drink e-commerce brands. Agency-level execution from an independent consultant.",
-            "sameAs": ["https://www.linkedin.com/in/maria-madeira-growth"],
-            "founder": { "@id": "https://mariamadeira.com/#person" },
-            "areaServed": "Worldwide",
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "email": "info@mariamadeira.com",
-                "contactType": "customer service"
-            }
-        },
-        // No SearchAction: the site has no search, and claiming one that does
-        // not exist is the most common way this node gets ignored.
-        {
-            "@type": "WebSite",
-            "@id": "https://mariamadeira.com/#website",
-            "name": "Maria Madeira",
-            "url": "https://mariamadeira.com",
-            "publisher": { "@id": "https://mariamadeira.com/#organization" }
-        },
-        {
-            "@type": "Service",
-            "@id": "https://mariamadeira.com/#service",
-            "name": "Maria Madeira: Growth Strategy",
-            "description": "Answer Engine Optimisation (AEO), SEO, Klaviyo email and paid acquisition for UK food and drink e-commerce brands. Agency-level execution from an independent consultant.",
-            "provider": { "@id": "https://mariamadeira.com/#organization" },
-            "areaServed": "Worldwide",
-            "serviceType": ["Growth Strategy", "Email Marketing", "Paid Advertising", "AI Marketing Systems", "Creative Direction"]
-        },
-        // The homepage Questions section, word for word (English only).
-        {
-            "@type": "FAQPage",
-            "@id": "https://mariamadeira.com/#faq",
-            "mainEntity": COPY.en.faq.items.map((f) => ({
-                "@type": "Question",
-                "name": f.q,
-                "acceptedAnswer": { "@type": "Answer", "text": f.a }
-            }))
-        }
-    ]
-};
-
-/* The Portuguese page (D16 A): its own WebPage, FAQPage and Service, with no
-   Offer. Person, Organization and WebSite are referenced by @id, never
-   repeated. */
-const PT_URL = "https://mariamadeira.com/pt";
-const PT_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "WebPage",
-            "@id": `${PT_URL}#webpage`,
-            "url": PT_URL,
-            "name": "Consultoria de AEO para marcas de e-commerce",
-            "description": COPY.pt.description,
-            "inLanguage": "pt-PT",
-            "isPartOf": { "@id": "https://mariamadeira.com/#website" },
-            "about": { "@id": "https://mariamadeira.com/#person" },
-            "publisher": { "@id": "https://mariamadeira.com/#organization" },
-        },
-        {
-            "@type": "FAQPage",
-            "@id": `${PT_URL}#faq`,
-            "inLanguage": "pt-PT",
-            "mainEntity": COPY.pt.faq.items.map((f) => ({
-                "@type": "Question",
-                "name": f.q,
-                "acceptedAnswer": { "@type": "Answer", "text": f.a },
-            })),
-        },
-        {
-            "@type": "Service",
-            "@id": `${PT_URL}#service`,
-            "name": "Maria Madeira: Estratégia de crescimento",
-            "description": "Otimização para motores de resposta (AEO), SEO, email no Klaviyo e aquisição paga para marcas de alimentação e bebidas que vendem online. Trabalho de agência, feito por uma consultora independente.",
-            "provider": { "@id": "https://mariamadeira.com/#organization" },
-            "areaServed": "Worldwide",
-            "serviceType": ["Estratégia de crescimento", "Email marketing", "Anúncios pagos", "Sistemas de marketing com IA", "Direção criativa"],
-        },
+/* Person, Organization and WebSite come from src/lib/schema.ts, identical on
+   every page. The homepage adds its own WebPage, the practice's Service (the
+   four services, in the order she sells them) and the Questions section, word
+   for word. Neither language carries an Offer: prices live on /pricing. */
+const SERVICE_TYPES: Record<Lang, string[]> = {
+    en: [
+        "SEO and AI search optimisation (AEO)",
+        "Klaviyo email marketing",
+        "Google, Meta and Microsoft Ads management",
+        "Website strategy and build",
+    ],
+    pt: [
+        "SEO e otimização para a pesquisa com IA (AEO)",
+        "Email marketing no Klaviyo",
+        "Gestão de Google Ads, Meta Ads e Microsoft Ads",
+        "Estratégia e construção de sites",
     ],
 };
+const SERVICE_COPY: Record<Lang, { name: string; description: string }> = {
+    en: {
+        name: "Maria Madeira: growth consultancy for e-commerce brands",
+        description: "SEO and AI search optimisation (AEO), Klaviyo email marketing, Google, Meta and Microsoft Ads, and websites for e-commerce brands in the UK and Portugal. Independent: the consultant does the work herself.",
+    },
+    pt: {
+        name: "Maria Madeira: consultoria de crescimento para marcas de e-commerce",
+        description: "SEO e otimização para a pesquisa com IA (AEO), email marketing no Klaviyo, Google, Meta e Microsoft Ads, e sites para marcas de e-commerce em Portugal e no Reino Unido. Consultora independente, que faz o trabalho ela própria.",
+    },
+};
+
+function homeJsonLd(lang: Lang) {
+    const t = COPY[lang];
+    return withEntities([
+        webPageNode({ path: t.path, name: t.title, description: t.description, lang, "about": PERSON_REF }),
+        serviceNode({ path: t.path, ...SERVICE_COPY[lang], serviceType: SERVICE_TYPES[lang], lang }),
+        faqNode(t.path, lang, t.faq.items),
+    ]);
+}
+const JSON_LD = { en: homeJsonLd("en"), pt: homeJsonLd("pt") };
 
 /* ── Logo strip ─────────────────────────────────────────── */
 /* Brand logos from /public/brand-assets/logos/ (originals in design-assets/),
@@ -188,7 +117,7 @@ const TESTIMONIALS: (Testimonial & { short?: string })[] = [
         role: "Marketing Executive",
         context: "Former colleague · Recommended on LinkedIn",
         monogram: "IA",
-        quote: "Working under Maria's guidance at The Black Farmer was an incredible experience. As my senior, she taught me the ins and outs of marketing, from brand strategy to high-impact email campaigns. Her ability to grab customer attention and her deep business knowledge are truly inspiring. Anyone would be lucky to have Maria leading their marketing efforts!",
+        quote: "Anyone would be lucky to have Maria leading their marketing efforts!",
         short: "Anyone would be lucky to have Maria leading their marketing efforts!",
         readMore: null,
     },
@@ -222,8 +151,9 @@ const GRID_ORDER = [1, 4, 2, 3, 5];
 const RESULT_LINKS = ["/case-study-email", "/case-study-google-ads", "/case-study-seo", "/case-study-seo"];
 
 /* ── Selected work ──────────────────────────────────────── */
-/* Six portfolio images, in the order of the portfolio copy's projects
-   (src/i18n/portfolio.ts), whose category is the caption. */
+/* Six portfolio images. Each one's alt text and caption (the project's title
+   and category in src/i18n/portfolio.ts) are looked up by its link, so
+   reordering the portfolio cannot pair an image with another project. */
 const WORK = [
     { image: "/projects/click-collect/app-mockups.webp", link: "/portfolio-click-collect" },
     { image: "/projects/email-marketing/recipe.webp", link: "/portfolio-email-marketing" },
@@ -245,7 +175,7 @@ function Results() {
     const r = COPY[lang].results;
     const aria = (i: number) => `${r.cards[i].value}: ${r.cards[i].label}`;
     const visuals = [
-        <EmailBarsVisual key="email" label={aria(0)} badge={`+${decimal("88.9", lang)}%`} />,
+        <EmailBarsVisual key="email" label={`${aria(0)}. ${r.emailBars}`} badge={`+${decimal("88.9", lang)}%`} beforeText="c. £71K" afterText="£134K" />,
         <RoasBarsVisual key="roas" label={aria(1)} />,
         <ClicksLineVisual key="clicks" label={aria(2)} from={4.5} to={8.0} fromText={`${decimal("4.5", lang)}K`} toText={`${decimal("8.0", lang)}K`} />,
         <PositionVisual key="position" label={aria(3)} from={15.2} to={9.4} fromText={decimal("15.2", lang)} toText={decimal("9.4", lang)} />,
@@ -260,10 +190,12 @@ function Results() {
                 {r.cards.map((card, i) => (
                     <li key={RESULT_LINKS[i] + i}>
                         <Link to={to(RESULT_LINKS[i])} className="result-card">
-                            {/* A value longer than "Page 2 → 1" (the Portuguese "Página 2 → 1") steps down a size so it fits the card. */}
+                            {/* A value longer than 10 characters (the longest today, "15.2 → 9.4", is exactly 10) steps down a size so it fits the card. */}
                             <p className={`result-value${card.value.length > 10 ? " result-value--long" : ""}`}>{card.value}</p>
                             <p className="result-label">{card.label}</p>
                             {visuals[i]}
+                            {/* The email bars carry their period in visible text, not only in the aria-label. */}
+                            {i === 0 && <p className="result-caption">{r.emailCaption}</p>}
                             <span className="result-link">{r.link} <ArrowRight size={15} /></span>
                         </Link>
                     </li>
@@ -349,7 +281,7 @@ export default function Home() {
                 title={t.title}
                 description={t.description}
                 path={t.path}
-                jsonLd={lang === "pt" ? PT_JSON_LD : HOME_JSON_LD}
+                jsonLd={JSON_LD[lang]}
             />
 
             {/* 1. Hero */}
@@ -483,6 +415,9 @@ export default function Home() {
                     <h2 className="section-title">{t.whatIDo.title}</h2>
                 </div>
                 <ServiceCards />
+                <p className="how-more">
+                    <Link to={to("/services")}>{t.servicesLink} <ArrowRight size={16} /></Link>
+                </p>
             </section>
 
             {/* 5. Case studies */}
@@ -528,7 +463,7 @@ export default function Home() {
                                 />
                             </picture>
                         </div>
-                        <CaseStudyBody card={t.caseStudies.cards[0]} link={to("/case-study-email")} readCase={t.caseStudies.readCase} />
+                        <CaseStudyBody card={t.caseStudies.cards[0]} link={to("/case-study-email")} readCase={t.caseStudyLinks[0]} />
                     </div>
 
                     {/* Card 2 */}
@@ -544,7 +479,7 @@ export default function Home() {
                                 decoding="async"
                             />
                         </div>
-                        <CaseStudyBody card={t.caseStudies.cards[1]} link={to("/case-study-google-ads")} readCase={t.caseStudies.readCase} />
+                        <CaseStudyBody card={t.caseStudies.cards[1]} link={to("/case-study-google-ads")} readCase={t.caseStudyLinks[1]} />
                     </div>
 
                     {/* Card 3 */}
@@ -560,7 +495,7 @@ export default function Home() {
                                 decoding="async"
                             />
                         </div>
-                        <CaseStudyBody card={t.caseStudies.cards[2]} link={to("/case-study-seo")} readCase={t.caseStudies.readCase} />
+                        <CaseStudyBody card={t.caseStudies.cards[2]} link={to("/case-study-seo")} readCase={t.caseStudyLinks[2]} />
                     </div>
                 </div>
 
@@ -622,16 +557,20 @@ export default function Home() {
                     <h2 className="section-title">{t.work.title}</h2>
                 </div>
                 <ul className="work-strip">
-                    {WORK.map((w, i) => (
-                        <li key={w.link}>
-                            <Link to={to(w.link)} className="work-item">
-                                <div className="work-item-img">
-                                    <img src={encodeURI(w.image)} alt={projects[i].title} loading="lazy" decoding="async" />
-                                </div>
-                                <span className="work-item-caption">{projects[i].category}</span>
-                            </Link>
-                        </li>
-                    ))}
+                    {WORK.map((w) => {
+                        const project = projects[PROJECT_LINKS.indexOf(w.link)];
+                        if (!project) return null;
+                        return (
+                            <li key={w.link}>
+                                <Link to={to(w.link)} className="work-item">
+                                    <div className="work-item-img">
+                                        <img src={encodeURI(w.image)} alt={project.title} loading="lazy" decoding="async" />
+                                    </div>
+                                    <span className="work-item-caption">{project.category}</span>
+                                </Link>
+                            </li>
+                        );
+                    })}
                 </ul>
                 <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
                     <Link to={to("/portfolio")} className="btn btn-secondary" style={{ padding: '0.9rem 2.5rem' }}>
@@ -640,7 +579,30 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* 9. Questions: native details/summary, so every answer is in the
+            {/* 9. From the blog: every post, so each one gets a link from the
+                strongest page on the site. */}
+            <section className="home-section">
+                <div className="home-head">
+                    <h2 className="section-title">{t.blog.title}</h2>
+                </div>
+                <ul className="home-posts">
+                    {BLOG[lang].posts.map((post) => (
+                        <li key={post.slug}>
+                            <Link to={to(`/blog/${post.slug}`)} className="home-post">
+                                <span className="home-post-meta">{post.category} · {post.date}</span>
+                                <span className="home-post-title">{post.title}</span>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+                <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+                    <Link to={to("/blog")} className="btn btn-secondary" style={{ padding: '0.9rem 2.5rem' }}>
+                        {t.blog.viewAll} <ArrowRight size={16} style={{ marginLeft: '8px' }} />
+                    </Link>
+                </div>
+            </section>
+
+            {/* 10. Questions: native details/summary, so every answer is in the
                 prerendered HTML. */}
             <section className="home-section">
                 <div className="home-head">
@@ -656,7 +618,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* 10. Final CTA */}
+            {/* 11. Final CTA */}
             <FinalCta
                 title={t.cta.title}
                 line={t.cta.line || undefined}

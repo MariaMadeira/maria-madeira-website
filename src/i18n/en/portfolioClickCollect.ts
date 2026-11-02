@@ -35,7 +35,7 @@ const en = {
     role: "End-to-end ownership across product design, UX, and go-to-market experimentation.",
     relatedService: "Growth strategy and product experiments",
     ctaText: "Want to read the full story behind this experiment?",
-    ctaPrimary: "View Case Study",
+    ctaPrimary: "Read the Click & Collect case study",
     ctaSecondary: "Start a Project",
 };
 

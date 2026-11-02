@@ -1,9 +1,9 @@
 /** English copy. See src/i18n/caseStudyClickCollect.ts. Bold runs are { b: "..." }. */
 const en = {
     path: "/case-study-click-collect",
-    title: "A shop losing sales to queues, fixed with a mobile pre-order system",
+    title: "Click & Collect App Case Study | Maria Madeira",
     description: "Click & collect case study: launching a mobile pre-order experience for a high-traffic retail store, and what low adoption taught us about customer habits.",
-    h1: "A shop losing sales to queues, fixed with a mobile pre-order system",
+    h1: "A mobile pre-order app for a shop with peak-hour queues, and why adoption stayed low",
     schemaDescription: "Launching a mobile pre-order experience for a high-traffic retail store, and what low adoption taught us about customer habits.",
     breadcrumb: "Click & Collect",
     back: "Back to Case Studies",

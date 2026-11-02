@@ -1,24 +1,32 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Clock, Calendar, User, MapPin, Wallet, Layout, Lock, Shield } from "lucide-react";
+import { ArrowLeft, Calendar, User, MapPin, Wallet, Layout, Lock, Shield } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import type { ReactNode } from "react";
 import Seo from "../components/Seo";
 import RelatedLinks, { RELATED } from "../components/RelatedLinks";
+import AuthorBio from "../components/AuthorBio";
+import Byline from "../components/Byline";
 import { PAID_ADS_SERVICE } from "../lib/links";
+import { blogPostingNode, breadcrumbNode, withEntities } from "../lib/schema";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/chatgptAds";
 
 /* Renders /blog/chatgpt-ads-europe and /pt/blog/anuncios-chatgpt-europa from
    src/i18n/chatgptAds.ts. Icons, numbers and links live here; every word
    lives in the copy file. */
-const SITE_URL = "https://mariamadeira.com";
 const OG_IMAGE = "/og/og-blog-chatgpt-ads.png";
-const PUBLISHED_ISO = "2026-09-09";
+/* Per language. English: the date the post shows. Portuguese: the commit
+   that put the /pt post live, and the last one that changed its text (git
+   log src/i18n/pt/chatgptAds.ts). Bump MODIFIED, in the language that
+   changed, with the visible text; the byline renders these same strings. */
+const PUBLISHED = { en: "2026-09-09", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-11-02", pt: "2026-11-02" };
 
 /* ── Facts at a glance: icons for the callout panel, same order as the copy ── */
 const FACT_ICONS: LucideIcon[] = [Calendar, User, MapPin, Wallet, Layout, Lock];
 
 /* ── Minimum spend across the three platforms named in the caveats section ── */
-const BUDGET_HIGHLIGHT = [false, false, true];
+const BUDGET_HIGHLIGHT = [false, true];
 
 /* ── Character ceilings, scaled against the widest field in the set ── */
 const CHAR_COUNTS: { chars: number; highlight: boolean }[] = [
@@ -33,40 +41,21 @@ const CAVEAT_ICONS: LucideIcon[] = [Wallet, Shield];
 
 function articleJsonLd(lang: "en" | "pt") {
     const t = COPY[lang];
-    const pageUrl = `${SITE_URL}${t.path}`;
-    const home = lang === "pt" ? `${SITE_URL}/pt` : `${SITE_URL}/`;
-    const blog = lang === "pt" ? `${SITE_URL}/pt/blog` : `${SITE_URL}/blog`;
-    return {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "BlogPosting",
-                "@id": `${pageUrl}#article`,
-                "headline": t.headline,
-                "description": t.description,
-                ...(lang === "pt" ? { "inLanguage": "pt-PT" } : {}),
-                "author": lang === "pt"
-                    ? { "@id": `${SITE_URL}/#person` }
-                    : { "@type": "Person", "@id": `${SITE_URL}/#person`, "name": "Maria Madeira" },
-                "publisher": { "@id": `${SITE_URL}/#person` },
-                "datePublished": PUBLISHED_ISO,
-                "dateModified": PUBLISHED_ISO,
-                "mainEntityOfPage": pageUrl,
-                "image": `${SITE_URL}${OG_IMAGE}`,
-                "isPartOf": { "@id": `${blog}#blog` },
-                "articleSection": t.articleSection,
-                "about": t.about.map((name) => ({ "@type": "Thing", "name": name })),
-            },
-            {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": t.breadcrumb[0], "item": home },
-                    { "@type": "ListItem", "position": 2, "name": t.breadcrumb[1], "item": blog },
-                    { "@type": "ListItem", "position": 3, "name": t.breadcrumb[2], "item": pageUrl },
-                ],
-            },
-        ],
-    };
+    const blogPath = lang === "pt" ? "/pt/blog" : "/blog";
+    return withEntities([
+        blogPostingNode({
+            path: t.path,
+            headline: t.headline,
+            description: t.description,
+            datePublished: PUBLISHED[lang],
+            dateModified: MODIFIED[lang],
+            image: OG_IMAGE,
+            lang,
+            articleSection: t.articleSection,
+            extra: { "about": t.about.map((name) => ({ "@type": "Thing", "name": name })) },
+        }),
+        breadcrumbNode(lang, [[t.breadcrumb[1], blogPath], [t.breadcrumb[2], t.path]]),
+    ]);
 }
 const JSON_LD = { en: articleJsonLd("en"), pt: articleJsonLd("pt") };
 
@@ -76,6 +65,10 @@ const H2 = { fontSize: "1.6rem", marginTop: "3.5rem", marginBottom: "1.25rem", l
 const linkStyle = { color: "var(--accent-text)", fontWeight: 600 } as const;
 const strong = { color: "var(--text-primary)", fontWeight: 700 } as const;
 const calloutBox = { background: "var(--accent-glow)", border: "1px solid var(--border-color)", borderLeft: "4px solid var(--accent-secondary)", borderRadius: "16px", padding: "clamp(1.5rem, 4vw, 2.5rem)" } as const;
+
+function Ext({ href, children }: { href: string; children: ReactNode }) {
+    return <a href={href} target="_blank" rel="noopener" style={linkStyle}>{children}</a>;
+}
 
 export default function BlogChatGptAdsEurope() {
     const { lang, to } = useLang();
@@ -87,6 +80,7 @@ export default function BlogChatGptAdsEurope() {
                 description={t.description}
                 path={t.path}
                 ogImage={OG_IMAGE}
+                ogType="article"
                 jsonLd={JSON_LD[lang]}
             />
 
@@ -170,13 +164,10 @@ export default function BlogChatGptAdsEurope() {
                     {t.headline}
                 </h1>
 
-                {/* byline + dates */}
-                <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap", color: "var(--text-secondary)", fontSize: "0.9rem", marginBottom: "2.5rem", paddingBottom: "2rem", borderBottom: "1px solid var(--border-color)" }}>
-                    <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>Maria Madeira</span>
-                    <span>{t.published}{t.publishedHuman}</span>
-                    <span>{t.updated}{t.publishedHuman}</span>
-                    <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><Clock size={13} />{t.readTime}</span>
-                </div>
+                <Byline published={PUBLISHED[lang]} modified={MODIFIED[lang]} readTime={t.readTime} />
+                <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", lineHeight: 1.6, fontStyle: "italic", margin: "-1.25rem 0 2.5rem" }}>
+                    {t.changeNote}
+                </p>
 
                 <p style={P}>
                     {t.intro[0]}
@@ -380,6 +371,14 @@ export default function BlogChatGptAdsEurope() {
                     {t.close.a}<Link to={to("/services/aeo")} style={linkStyle}>{t.close.aeoLink}</Link>{t.close.b}<Link to={to("/contact")} style={linkStyle}>{t.close.contactLink}</Link>{t.close.c}
                 </p>
 
+                <h2 style={H2}>{t.sourcesTitle}</h2>
+                <ul style={{ ...P, paddingLeft: "1.25rem", listStyle: "disc", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                    {t.sources.map((s) => (
+                        <li key={s.href}><Ext href={s.href}>{s.label}</Ext></li>
+                    ))}
+                    <li>{t.sourcesNote}</li>
+                </ul>
+
                 <RelatedLinks
                     className="related-links--open"
                     items={[
@@ -390,10 +389,7 @@ export default function BlogChatGptAdsEurope() {
                     ]}
                 />
 
-                {/* Approved sign-off from the article copy, in the shared AuthorBio treatment. */}
-                <div style={{ marginTop: "3.5rem", paddingTop: "2rem", borderTop: "1px solid var(--border-color)", color: "var(--text-secondary)", fontStyle: "italic", lineHeight: 1.7 }}>
-                    {t.signOff}
-                </div>
+                <AuthorBio />
             </article>
         </div>
     );

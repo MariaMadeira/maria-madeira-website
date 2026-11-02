@@ -3,46 +3,34 @@ import { Link } from "react-router-dom";
 import { Search, Compass, Hammer, ArrowRight, Globe, TrendingUp, ShoppingBag } from "lucide-react";
 import Seo from "../components/Seo";
 import { useLang } from "../hooks/useLang";
+import type { Lang } from "../lib/i18n";
+import { SITE_URL, breadcrumbNode, faqNode, serviceNode, webPageNode, withEntities } from "../lib/schema";
 import COPY from "../i18n/websites";
 
-const SITE_URL = "https://mariamadeira.com";
-const PT_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "WebPage",
-            "@id": `${SITE_URL}/pt/servicos/sites#webpage`,
-            "url": `${SITE_URL}/pt/servicos/sites`,
-            "name": "Estratégia e construção de sites",
-            "inLanguage": "pt-PT",
-            "isPartOf": { "@id": `${SITE_URL}/#website` },
-        },
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
-                { "@type": "ListItem", "position": 2, "name": "Serviços", "item": `${SITE_URL}/pt/servicos` },
-                { "@type": "ListItem", "position": 3, "name": "Estratégia e construção de sites", "item": `${SITE_URL}/pt/servicos/sites` },
-            ],
-        },
-    ],
+/* The same graph as the other three service pages: the page, the Service
+   the Organization sells (no Offer: the page publishes no price list), the
+   FAQ word for word from the visible section, and the breadcrumb. */
+const NAMES: Record<Lang, { name: string; crumb: string; services: string }> = {
+    en: { name: "Website Strategy & Build", crumb: "Websites", services: "Services" },
+    pt: { name: "Estratégia e construção de sites", crumb: "Sites", services: "Serviços" },
 };
-const WEBSITES_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
-                { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` },
-                { "@type": "ListItem", "position": 3, "name": "Website Strategy & Build", "item": `${SITE_URL}/services/websites` },
-            ],
-        },
-    ],
-};
+function websitesJsonLd(lang: Lang) {
+    const t = COPY[lang];
+    const n = NAMES[lang];
+    const servicesPath = lang === "pt" ? "/pt/servicos" : "/services";
+    return withEntities([
+        webPageNode({ path: t.path, name: n.name, description: t.description, lang, "mainEntity": { "@id": `${SITE_URL}${t.path}#service` } }),
+        serviceNode({ path: t.path, name: n.name, serviceType: lang === "pt" ? "Estratégia e construção de sites (WordPress e Shopify)" : "Website strategy and build (WordPress and Shopify)", description: t.intro, lang }),
+        faqNode(t.path, lang, t.faqs),
+        breadcrumbNode(lang, [[n.services, servicesPath], [n.crumb, t.path]]),
+    ]);
+}
+const JSON_LD = { en: websitesJsonLd("en"), pt: websitesJsonLd("pt") };
 
 /* Renders /services/websites and /pt/servicos/sites from src/i18n/websites.ts.
    Icons, scores and links live here; every word lives in the copy file. */
+const WS_H2 = { fontSize: "1.6rem", marginTop: "3rem", marginBottom: "1.25rem", lineHeight: 1.25 } as const;
+const WS_P = { color: "var(--text-secondary)", fontSize: "1.05rem", lineHeight: 1.8, marginBottom: "1.25rem" } as const;
 const STEP_ICONS = [<Search size={26} />, <Compass size={26} />, <Hammer size={26} />];
 
 /* ── Website Health Check: scores per option, in the copy's order ── */
@@ -227,7 +215,7 @@ export default function ServicesWebsites() {
                 description={t.description}
                 path={t.path}
                 ogImage="/og/og-websites.png"
-                jsonLd={lang === "pt" ? PT_JSON_LD : WEBSITES_JSON_LD}
+                jsonLd={JSON_LD[lang]}
             />
 
             <style>{`
@@ -327,6 +315,40 @@ export default function ServicesWebsites() {
                             {t.who}
                         </p>
                     </div>
+                </div>
+            </section>
+
+            {/* Platforms, scope, timeline and price: the facts a buyer checks
+                before booking a call, each drawn from the published projects. */}
+            <section style={{ maxWidth: "760px", margin: "0 auto 5rem" }}>
+                <h2 style={WS_H2}>{t.platformsTitle}</h2>
+                {t.platforms.map((para) => <p key={para} style={WS_P}>{para}</p>)}
+
+                <h2 style={WS_H2}>{t.includedTitle}</h2>
+                <ul style={{ ...WS_P, listStyle: "disc", paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+                    {t.included.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+
+                <h2 style={WS_H2}>{t.timelineTitle}</h2>
+                <p style={WS_P}>{t.timeline}</p>
+
+                <h2 style={WS_H2}>{t.pricingTitle}</h2>
+                <p style={WS_P}>{t.pricingText}</p>
+                <p style={WS_P}>
+                    <Link to={to("/pricing")} style={{ color: "var(--accent-text)", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                        {t.pricingLink} <ArrowRight size={16} />
+                    </Link>
+                </p>
+
+                {/* Every answer is visible, and the same list is the FAQPage schema. */}
+                <h2 style={WS_H2}>{t.faqTitle}</h2>
+                <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+                    {t.faqs.map((f) => (
+                        <div key={f.q}>
+                            <h3 style={{ fontSize: "1.15rem", marginBottom: "0.5rem", color: "var(--text-primary)" }}>{f.q}</h3>
+                            <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, margin: 0 }}>{f.a}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
 

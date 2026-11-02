@@ -9,19 +9,19 @@ import type { Para, Rich } from "../en/blogWhatIsAeo";
  */
 const pt: typeof en = {
     path: "/pt/blog/o-que-e-aeo",
-    title: "O que é o AEO? Explicado para lojas online | Maria Madeira",
+    title: "O que é o AEO? Pesquisa com IA explicada | Maria Madeira",
     description: "O AEO explicado: como as marcas são citadas pelo ChatGPT, Perplexity e Vista geral de IA da Google, em que difere do SEO e por onde começar esta semana.",
     headline: "O que é o AEO? A otimização para motores de resposta explicada a marcas que vendem online",
     crumbs: { home: "Início", blog: "Blog", page: "O que é o AEO?" },
     back: "Todos os artigos",
     category: "Pesquisa com IA",
     published: "Publicado a 13 de julho de 2026",
-    updated: "Atualizado a 14 de julho de 2026",
+    updated: "Atualizado a 2 de novembro de 2026",
     readTime: "9 min de leitura",
-    definition: "A otimização para motores de resposta (AEO, de Answer Engine Optimisation) é o trabalho de preparar uma marca para ser citada e recomendada por motores de resposta com IA, como o ChatGPT, o Perplexity, o Gemini e a Vista geral de IA da Google (AI Overviews). Enquanto o SEO disputa um link numa página de resultados, o AEO disputa a própria resposta: a fonte que a IA indica quando alguém pergunta \"qual é a melhor opção para mim?\". Funciona tornando a sua marca legível para as máquinas, com dados estruturados, entidades claras e conteúdos escritos para que uma IA os possa retirar, citar e atribuir à sua marca.",
-    intro: "Esta é a versão curta. O resto do guia explica em que é que o AEO difere do SEO e do GEO, porque é que 2026 é o ano em que deixou de ser opcional, como é o trabalho na prática e como saber se os assistentes de IA recomendam hoje a sua marca ou a da concorrência.",
+    definition: "A otimização para motores de resposta (AEO, de Answer Engine Optimisation) é o trabalho de fazer da sua marca a fonte que o ChatGPT, o Perplexity, o Gemini e a Vista geral de IA da Google (AI Overviews) nomeiam, citam e indicam com link quando alguém lhes faz uma pergunta. No catálogo Shopify de uma marca de alimentação premium do Reino Unido, de maio a agosto de 2026, isso significou três coisas: retirei afirmações de produto que o fornecedor não conseguia confirmar, dei a cada página uma resposta direta a uma pergunta real dos clientes e marquei o fundador como entidade estruturada. Nesse período, as impressões diárias nas funcionalidades de IA da Google cresceram 2,2x da primeira para a última semana.",
+    intro: "Este guia explica em que é que o AEO difere do SEO e do GEO, porque é que 2026 é o ano em que deixou de ser opcional, como é o trabalho na prática e como saber se os assistentes de IA recomendam hoje a sua marca ou a da concorrência.",
     terms: {
-        h2: "SEO, AEO, GEO: três termos, uma mudança",
+        h2: "Em que é que o AEO difere do SEO e do GEO?",
         paras: [
             { text: ["O setor criou uma pequena sopa de letras à volta da pesquisa com IA. Os termos sobrepõem-se, mas não são sinónimos."] },
             { lead: "SEO (otimização para motores de pesquisa)", text: ["procura posições nos resultados de pesquisa clássicos. O utilizador escreve uma pesquisa, recebe uma lista de links e faz ele próprio a comparação. No SEO, o que conta é a posição: a diferença entre estar em terceiro e estar em trigésimo é a diferença entre ter tráfego e ser invisível."] },
@@ -31,7 +31,7 @@ const pt: typeof en = {
         ] as Para[],
     },
     whyNow: {
-        h2: "Porquê agora: as respostas estão a comer a página de resultados",
+        h2: "Porque é que o AEO importa em 2026?",
         paras: [
             { text: ["Três mudanças tornaram o AEO urgente para qualquer marca que vende online."] },
             { lead: "Quem compra pergunta primeiro aos assistentes.", text: ["A pesquisa de produtos que começava no Google começa cada vez mais com uma pergunta ao ChatGPT, ao Perplexity ou ao Gemini: \"Qual é uma boa prenda para quem adora café?\", \"Que plataforma de reservas deve usar uma escola de surf?\". O assistente responde com nomes. Se há perguntas sobre a sua categoria, há um assistente que já está a recomendar alguém. A única questão é quem."] },
@@ -40,7 +40,7 @@ const pt: typeof en = {
         ] as Para[],
     },
     work: {
-        h2: "Como é, na prática, o trabalho de AEO",
+        h2: "Em que consiste o trabalho de AEO?",
         paras: [
             { text: ["Tirando a sigla, o AEO são quatro frentes de trabalho concretas. É a estrutura que uso com clientes, e pode ler na página do serviço ", { to: "/services/aeo", text: "como trabalho como consultora de AEO" }, "."] },
             { lead: "1. Auditoria de visibilidade em IA.", text: ["Antes de otimizar o que quer que seja, meça onde está. Faça ao ChatGPT, ao Perplexity, ao Gemini e à Google (para a Vista geral de IA) as perguntas que os seus clientes fazem: o melhor da categoria, comparações, \"devo usar X?\". Registe quem é nomeado, quem é citado e para que páginas apontam as citações. A maioria das marcas descobre que a resposta da sua categoria pertence a um concorrente, a um marketplace ou a uma lista qualquer de 2019. Esse mapa define o trabalho."] },
@@ -55,11 +55,11 @@ const pt: typeof en = {
             { text: ["A altura mais barata para fazer AEO é enquanto o site está a ser construído, porque entidades, schema e uma estrutura pronta a responder custam quase nada a incluir e muito a acrescentar depois."] },
             { text: ["O ", { to: "/case-study-bodysurf-school", text: "projeto da Bodysurf School" }, " mostra como isto fica na prática. O pedido era uma reconstrução completa: um site de apresentação transformado num motor de reservas bilingue para uma escola de surf. As bases de SEO e AEO entraram desde o primeiro commit: dados estruturados que descrevem a escola, os serviços e a localização como entidades claras, páginas organizadas à volta das perguntas que quem faz surf realmente faz, e todas as respostas importantes em HTML estático, onde o Googlebot e os crawlers de IA as leem sem executar nada. O site compete na pesquisa local clássica e é legível para os motores de resposta, e nenhum dos objetivos prejudicou o outro."] },
             { text: ["A lição geral é esta: AEO feito cedo é arquitetura, não campanha. Se já está a planear reconstruir o site, inclua-o. O meu ", { to: "/services/websites", text: "serviço de estratégia de sites" }, " trata os dois como um só projeto exatamente por isso."] },
-            { text: ["Acrescentar depois é o caso mais difícil, e o mais comum. O ", { to: "/case-study-seo", text: "caso de estudo de SEO e AEO" }, " mostra um catálogo que foi lançado sem nenhum dos dois e onde ambos foram reconstruídos página a página, e o meu ", { to: "/services/aeo", text: "serviço de consultoria de AEO" }, " é esse mesmo trabalho, organizado como serviço."] },
+            { text: ["Acrescentar depois é o caso mais difícil, e o mais comum. O ", { to: "/case-study-seo", text: "caso de estudo de SEO e AEO" }, " mostra um catálogo Shopify cujas coleções e páginas de produto não tinham sido pensadas para a pesquisa, e onde o SEO e o AEO foram reconstruídos página a página, e o meu ", { to: "/services/aeo", text: "serviço de consultoria de AEO" }, " é esse mesmo trabalho, organizado como serviço."] },
         ] as Para[],
     },
     start: {
-        h2: "Por onde começar esta semana",
+        h2: "Como começar com o AEO esta semana?",
         intro: "Três ações, por ordem de esforço:",
         steps: [
             { lead: "Faça o teste das cinco perguntas, mais abaixo.", text: "Em vinte minutos fica a saber se a IA já recomenda a sua marca ou a concorrência." },
@@ -114,6 +114,7 @@ const pt: typeof en = {
         { to: "/blog/chatgpt-ads-europe", label: "Por dentro dos ChatGPT Ads na Europa" },
         { to: "/blog/ai-product-descriptions-food-brands", label: "Descrições de produto com IA, sem riscos" },
     ],
+    relatedService: "SEO e otimização para a pesquisa com IA (AEO) para e-commerce",
 };
 
 export default pt;

@@ -3,8 +3,8 @@ import type en from "../en/pricing";
 /** Portuguese copy, batch 1 as approved in docs/pt-review/lote-1.md. */
 const pt: typeof en = {
     path: "/pt/precos",
-    title: "Formas de trabalhar comigo | Maria Madeira",
-    description: "Três formas de trabalhar comigo: Auditoria de crescimento, projetos definidos ou acompanhamento mensal de AEO, email e anúncios. Proposta por escrito.",
+    title: "Formas de trabalhar: SEO, Klaviyo e anúncios | Maria Madeira",
+    description: "Três formas de trabalhar comigo: Auditoria de crescimento, projetos ou acompanhamento mensal de SEO, pesquisa com IA (AEO), email e anúncios, com proposta escrita.",
     eyebrow: "Preços",
     h1: "Formas de trabalhar comigo",
     intro: "Comece com uma auditoria, contrate-me para um projeto definido ou trabalhe comigo mês a mês. Proposta por escrito, com âmbito e preço fechados, depois de uma primeira conversa.",
@@ -16,7 +16,7 @@ const pt: typeof en = {
     adSpend: "O investimento em anúncios no Google e na Meta é pago diretamente por si à plataforma e não está incluído em nenhuma proposta.",
     byServiceTitle: "Por serviço",
     byService: [
-        { name: "AEO", text: "auditoria ou acompanhamento mensal", to: "/services/aeo" },
+        { name: "SEO e pesquisa com IA (AEO)", text: "auditoria ou acompanhamento mensal", to: "/services/aeo" },
         { name: "Email e Klaviyo", text: "montagem com os fluxos essenciais ou acompanhamento mensal", to: "/services/email-marketing" },
         { name: "Anúncios pagos", text: "gestão mensal por plataforma", to: "/services/paid-ads" },
         { name: "Sites", text: "proposta por projeto", to: "/services/websites" },

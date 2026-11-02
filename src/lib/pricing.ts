@@ -26,7 +26,7 @@ export const WAYS_TO_WORK: WayToWork[] = [
             "60-minute walkthrough call",
         ],
         cta: "Book an audit",
-        proof: { text: "AI search impressions up 2.2x for The Black Farmer", to: "/case-study-seo" },
+        proof: { text: "AI search impressions up 2.2x in an SEO case study", to: "/case-study-seo" },
     },
     {
         name: "Project",
@@ -38,7 +38,7 @@ export const WAYS_TO_WORK: WayToWork[] = [
             "Fixed scope and price agreed in writing before work starts",
         ],
         cta: "Discuss a project",
-        proof: { text: "£134K from email in 12 months for a UK premium food brand", to: "/case-study-email" },
+        proof: { text: "£134K from email in the 12 months to July 2025 for a UK premium food brand", to: "/case-study-email" },
     },
     {
         name: "Monthly",
@@ -51,6 +51,6 @@ export const WAYS_TO_WORK: WayToWork[] = [
             "Minimum three months",
         ],
         cta: "Talk about ongoing work",
-        proof: { text: "532% ROAS against a 400% break-even for a UK food brand", to: "/case-study-google-ads" },
+        proof: { text: "532% Google Ads ROAS against a 400% break-even for a UK food brand, October 2025 to August 2026", to: "/case-study-google-ads" },
     },
 ];

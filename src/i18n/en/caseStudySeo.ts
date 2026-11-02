@@ -1,9 +1,9 @@
 /** English copy. See src/i18n/caseStudySeo.ts. */
 const en = {
     path: "/case-study-seo",
-    title: "From page 2 to page 1 on Google, and twice as visible in AI answers",
+    title: "Shopify SEO Case Study: +78% Organic Clicks | Maria Madeira",
     description: "SEO and AEO for The Black Farmer after its move to Shopify: organic clicks up 78% and average position from 15.2 to 9.4, May to August 2026.",
-    h1: "From page 2 to page 1 on Google, and twice as visible in AI answers",
+    h1: "Organic clicks up 78% and average Google position from 15.2 to 9.4 in four months",
     intro: "SEO and AEO for The Black Farmer after its move to Shopify: organic clicks up 78% and average position from 15.2 to 9.4 across matched 28-day windows, May to August 2026.",
     breadcrumb: "SEO and AEO",
     back: "Back to Case Studies",
@@ -17,11 +17,11 @@ const en = {
         { value: "14+", label: "unverifiable claims removed: gluten-free, free-range and grass-fed statements the supplier could not confirm" },
     ],
     searchEyebrow: "Search results",
-    searchTitle: "Onto page 1 in under four months",
+    searchTitle: "More clicks and higher positions in under four months",
     searchSubline: "Google Search Console, matched 28-day windows, May to August 2026",
     searchTop: [
         { before: "4.5K", after: "8.0K", badge: "+78%", label: "organic clicks" },
-        { before: "15.2", after: "9.4", badge: "page 2 to page 1", label: "average Google position" },
+        { before: "15.2", after: "9.4", badge: "higher on Google", label: "average Google position, across all queries" },
         { before: "479K", after: "997K", badge: "+108%", label: "search impressions" },
     ],
     searchMore: [
@@ -60,9 +60,13 @@ const en = {
     quote: "what meat has no gluten? give me a list of gluten-free sausages",
     quoteNote: "",
     quoteCaption: "A real conversational query from Search Console. The Gluten-Free Sausages page was shown in the answer and clicked: the site's first documented click from an AI-style question.",
+    /* AI Visibility chart: kept here, not in resultCharts.ts, so the client's
+       name ships only with this case study. */
+    visibilityLabels: ["Category leader", "The Black Farmer", "Competitor", "Competitor", "Competitor"],
+    visibilityDesc: "Horizontal bar chart of Semrush AI Visibility scores across five tracked brands. The category leader scores 31, The Black Farmer 27, and three further competitors score 22, 22 and 14. Only The Black Farmer is highlighted.",
     sources: "Sources: Google Search Console (Generative AI features report, available from 18 May 2026), Semrush AI Visibility, August 2026.",
     serviceLink: "SEO and AEO",
-    nextLink: "Five pounds back for every pound spent",
+    nextLink: "Google Ads: £5.32 back for every £1 spent",
     ctaText: "Curious what ChatGPT says about your products?",
     ctaButton: "Get a free AI search check",
 };

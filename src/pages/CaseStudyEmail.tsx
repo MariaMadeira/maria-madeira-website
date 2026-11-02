@@ -2,7 +2,9 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import RelatedLinks from "../components/RelatedLinks";
-import { EmailRevenueChart } from "../components/ResultCharts";
+import Byline from "../components/Byline";
+import AuthorBio from "../components/AuthorBio";
+import { EmailRevenueChart, EmailWindowsChart } from "../components/ResultCharts";
 import { caseStudyJsonLd } from "../lib/schema";
 import { PRACTITIONER_URL } from "../lib/credentials";
 import { useLang } from "../hooks/useLang";
@@ -14,7 +16,7 @@ import COPY from "../i18n/caseStudyEmail";
    language version live (git log); the Portuguese pages went live with the
    /pt routes. Modified: the commit that last changed the page's visible text. */
 const PUBLISHED = { en: "2026-03-16T16:33:25+00:00", pt: "2026-10-19T18:35:44+01:00" };
-const MODIFIED = { en: "2026-10-20T17:09:53+01:00", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-11-02", pt: "2026-11-02" };
 
 /* Tone of each rate tile, in the copy's order. */
 const RATE_TONES = ["positive", "positive", "negative"] as const;
@@ -29,6 +31,7 @@ export default function CaseStudyEmail() {
             description={c.description}
             path={c.path}
             ogImage="/og/og-case-study-email.png"
+            ogImageAlt={c.ogImageAlt}
             ogType="article"
             jsonLd={caseStudyJsonLd({
                 path: c.path,
@@ -79,6 +82,7 @@ export default function CaseStudyEmail() {
                     <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", marginBottom: "1.5rem", lineHeight: 1.15 }}>
                         {c.h1}
                     </h1>
+                    <Byline published={PUBLISHED[lang]} modified={MODIFIED[lang]} compact />
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
                         {c.subtitle}
                     </p>
@@ -137,13 +141,16 @@ export default function CaseStudyEmail() {
                     </h2>
                     <p className="cs-subline">{c.resultsSubline}</p>
 
-                    <EmailRevenueChart />
+                    {/* The +88.9% compares two 12-month windows, so it sits with
+                        its own two-window chart. The calendar-year chart comes
+                        after the rate tiles, never beside the 12-month figures. */}
+                    <EmailWindowsChart />
 
-                    <div className="cs-grid cs-grid-3" style={{ marginTop: "2.5rem" }}>
+                    <div className="cs-grid cs-grid-3">
                         {c.revenue.map((t) => (
                             <div key={t.label} className="cs-tile">
                                 <p className="cs-tile-value">{t.value}</p>
-                                <span className="cs-badge cs-badge--positive">{t.badge}</span>
+                                {t.badge && <span className="cs-badge cs-badge--positive">{t.badge}</span>}
                                 <p className="cs-tile-label">{t.label}</p>
                             </div>
                         ))}
@@ -160,6 +167,10 @@ export default function CaseStudyEmail() {
                                 <p className="cs-tile-label">{t.label}</p>
                             </div>
                         ))}
+                    </div>
+
+                    <div style={{ marginTop: "2.5rem" }}>
+                        <EmailRevenueChart />
                     </div>
                 </section>
 
@@ -201,6 +212,8 @@ export default function CaseStudyEmail() {
                         {c.ctaButton}
                     </Link>
                 </div>
+
+                <AuthorBio cta={false} />
 
             </div>
         </div>

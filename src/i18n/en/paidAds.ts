@@ -8,7 +8,7 @@ const en = {
     h1Accent: "measured against your break-even",
     intro: "Most ad accounts report a ROAS and stop there. The number that matters is the one your margins need. I start by working out your break-even return, then build Google, Meta and Microsoft Ads campaigns to clear it, month after month. Agency-level work, run by the person you actually speak to.",
     results: [
-        { value: "532%", label: "Return on ad spend, against a 400% break-even" },
+        { value: "532%", label: "Google Ads ROAS, October 2025 to August 2026, against a 400% break-even" },
         { value: "£141K", label: "Attributed revenue from £26.5K of ad spend" },
         { value: "10 of 11", label: "Months above break-even" },
     ],
@@ -27,7 +27,7 @@ const en = {
     emailLink: "Email marketing and Klaviyo consulting",
     notYetTitle: "When I'll tell you not to spend yet",
     notYetText: "If tracking is broken, product pages don't convert, or your brand doesn't show up when people search for it, more ad spend makes the problem more expensive. In those cases I'll say so, and we fix the foundations first.",
-    notYetLink: "AEO and search visibility",
+    notYetLink: "SEO and AI search visibility",
     whoTitle: "Who it's for",
     who: "Brands that sell online, in the UK and Portugal, that are spending on ads or ready to, and want a senior person running the account directly.",
     pricingTitle: "Pricing",
@@ -57,7 +57,7 @@ const en = {
         },
         {
             q: "Should my brand run ChatGPT Ads?",
-            a: "Probably not yet. ChatGPT Ads are in beta, with a minimum daily budget that Google and Meta don't have. I tested the Ads Manager with my own account and wrote up what I found.",
+            a: "Probably not yet. ChatGPT Ads are in beta, with a minimum daily budget (25 US dollars, or 15 euros or pounds) far above what Google or Meta ask for. I tested the Ads Manager with my own account and wrote up what I found.",
             link: { to: "/blog/chatgpt-ads-europe", label: "Inside ChatGPT Ads in Europe" },
         },
         {

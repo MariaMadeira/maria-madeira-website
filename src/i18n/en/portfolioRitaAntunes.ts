@@ -42,7 +42,7 @@ const en = {
     relatedWork: "Ousadia: brand identity",
     ctaText: "Looking for a unique visual identity for your practice?",
     ctaPrimary: "Book a free call",
-    ctaSecondary: "View All Work",
+    ctaSecondary: "See the full portfolio",
 };
 
 export default en;

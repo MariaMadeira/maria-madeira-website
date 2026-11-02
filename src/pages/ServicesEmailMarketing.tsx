@@ -5,101 +5,99 @@ import Seo from "../components/Seo";
 import KlaviyoPartnerBadge from "../components/KlaviyoPartnerBadge";
 import { PRACTITIONER_URL } from "../lib/credentials";
 import { useLang } from "../hooks/useLang";
+import { SITE_URL, AREA_SERVED, ORG_REF, withEntities } from "../lib/schema";
 import COPY from "../i18n/emailMarketing";
 
 /* Renders /services/email-marketing and /pt/servicos/email-marketing from
    src/i18n/emailMarketing.ts. Icons, bar widths, scores and links live here;
    every word lives in the copy file. */
-const SITE_URL = "https://mariamadeira.com";
 
-/* ── Compounding-curve bar widths, in the copy's order ── */
-const CURVE_PCT = [[56, 100], [25, 100]];
+/* ── Compounding-curve bar widths, in the copy's order: 28.1 / 50.4 = 56%;
+   c. £71K / £134K = 1 / 1.889 = 53% ── */
+const CURVE_PCT = [[56, 100], [53, 100]];
 
 /* ── "What I do" icons, in the copy's order ── */
 const WHAT_ICONS = [<Search size={26} />, <Repeat size={26} />, <Users size={26} />, <LineChart size={26} />];
 
-const EMAIL_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "Service",
-            "@id": `${SITE_URL}/services/email-marketing#service`,
-            "name": "Email Marketing & Klaviyo Consulting",
-            "serviceType": "Email Marketing and Klaviyo Consulting",
-            "url": `${SITE_URL}/services/email-marketing`,
-            "description": COPY.en.definition,
-            "provider": { "@id": `${SITE_URL}/#person` },
-            "areaServed": "Worldwide",
-            "offers": [
-                { "@type": "Offer", "name": "Klaviyo setup with core flows", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1200, "priceCurrency": "GBP" } },
-                { "@type": "Offer", "name": "Monthly email marketing", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 750, "priceCurrency": "GBP", "unitText": "per month" } },
-            ],
-        },
-        {
-            "@type": "FAQPage",
-            "@id": `${SITE_URL}/services/email-marketing#faq`,
-            "mainEntity": COPY.en.faqs.map((f) => ({
-                "@type": "Question",
-                "name": f.q,
-                "acceptedAnswer": { "@type": "Answer", "text": f.a },
-            })),
-        },
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
-                { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` },
-                { "@type": "ListItem", "position": 3, "name": "Email Marketing & Klaviyo Consulting", "item": `${SITE_URL}/services/email-marketing` },
-            ],
-        },
-    ],
-};
+const EMAIL_JSON_LD = withEntities([
+    {
+        "@type": "Service",
+        "@id": `${SITE_URL}/services/email-marketing#service`,
+        "inLanguage": "en-GB",
+        "name": "Email Marketing & Klaviyo Consulting",
+        "serviceType": "Email Marketing and Klaviyo Consulting",
+        "url": `${SITE_URL}/services/email-marketing`,
+        "description": COPY.en.definition,
+        "provider": ORG_REF,
+        "areaServed": AREA_SERVED,
+        "offers": [
+            { "@type": "Offer", "name": "Klaviyo setup with core flows", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1200, "priceCurrency": "GBP" } },
+            { "@type": "Offer", "name": "Monthly email marketing", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 750, "priceCurrency": "GBP", "unitText": "per month" } },
+        ],
+    },
+    {
+        "@type": "FAQPage",
+        "@id": `${SITE_URL}/services/email-marketing#faq`,
+        "inLanguage": "en-GB",
+        "mainEntity": COPY.en.faqs.map((f) => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": { "@type": "Answer", "text": f.a },
+        })),
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` },
+            { "@type": "ListItem", "position": 3, "name": "Email Marketing & Klaviyo Consulting", "item": `${SITE_URL}/services/email-marketing` },
+        ],
+    },
+]);
 
 /* The Portuguese page: no offers, the page's language and a Portuguese trail. */
 const PT_URL = `${SITE_URL}/pt/servicos/email-marketing`;
-const PT_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "WebPage",
-            "@id": `${PT_URL}#webpage`,
-            "url": PT_URL,
-            "name": "Consultora de email marketing e Klaviyo",
-            "description": COPY.pt.description,
-            "inLanguage": "pt-PT",
-            "isPartOf": { "@id": `${SITE_URL}/#website` },
-            "mainEntity": { "@id": `${PT_URL}#service` },
-        },
-        {
-            "@type": "Service",
-            "@id": `${PT_URL}#service`,
-            "name": "Email marketing e consultoria Klaviyo",
-            "serviceType": "Email marketing e consultoria Klaviyo",
-            "url": PT_URL,
-            "description": COPY.pt.definition,
-            "provider": { "@id": `${SITE_URL}/#person` },
-            "areaServed": ["PT", "GB"],
-        },
-        {
-            "@type": "FAQPage",
-            "@id": `${PT_URL}#faq`,
-            "inLanguage": "pt-PT",
-            "mainEntity": COPY.pt.faqs.map((f) => ({
-                "@type": "Question",
-                "name": f.q,
-                "acceptedAnswer": { "@type": "Answer", "text": f.a },
-            })),
-        },
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
-                { "@type": "ListItem", "position": 2, "name": "Serviços", "item": `${SITE_URL}/pt/servicos` },
-                { "@type": "ListItem", "position": 3, "name": "Email marketing e consultoria Klaviyo", "item": PT_URL },
-            ],
-        },
-    ],
-};
+const PT_JSON_LD = withEntities([
+    {
+        "@type": "WebPage",
+        "@id": `${PT_URL}#webpage`,
+        "url": PT_URL,
+        "name": "Consultora de email marketing e Klaviyo",
+        "description": COPY.pt.description,
+        "inLanguage": "pt-PT",
+        "isPartOf": { "@id": `${SITE_URL}/#website` },
+        "mainEntity": { "@id": `${PT_URL}#service` },
+    },
+    {
+        "@type": "Service",
+        "@id": `${PT_URL}#service`,
+        "inLanguage": "pt-PT",
+        "name": "Email marketing e consultoria Klaviyo",
+        "serviceType": "Email marketing e consultoria Klaviyo",
+        "url": PT_URL,
+        "description": COPY.pt.definition,
+        "provider": ORG_REF,
+        "areaServed": AREA_SERVED,
+    },
+    {
+        "@type": "FAQPage",
+        "@id": `${PT_URL}#faq`,
+        "inLanguage": "pt-PT",
+        "mainEntity": COPY.pt.faqs.map((f) => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": { "@type": "Answer", "text": f.a },
+        })),
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
+            { "@type": "ListItem", "position": 2, "name": "Serviços", "item": `${SITE_URL}/pt/servicos` },
+            { "@type": "ListItem", "position": 3, "name": "Email marketing e consultoria Klaviyo", "item": PT_URL },
+        ],
+    },
+]);
 
 /* ── "Is your email programme underperforming?" mini-check: scores per option
        and the minimum score of each verdict, in the copy's order ── */
