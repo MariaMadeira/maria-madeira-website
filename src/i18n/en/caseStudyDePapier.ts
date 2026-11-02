@@ -76,7 +76,7 @@ const en = {
         "Cristiana wanted to present herself as a team. I recommended one voice backed by a coordinated team: \"I'm Cris\", supported by a team of linguists, with no names or photos. It reads as more credible, matches her registered activity, keeps GDPR simple and is easier to maintain.",
         "The site lists all 10 language pairs openly. Cristiana translates English and French herself, and her team covers the other eight under confidentiality agreements.",
     ],
-    positioningAlt: "Grid of the ten language pairs the site offers, each with its name in both languages",
+    positioningAlt: "Grid of the ten language pairs, each named in Portuguese and in its own language",
 
     quotesTitle: "Quotes instead of price lists",
     quotes: "I took the per-word prices off the site. A short section now explains the four factors behind each quote, including formatting and any rush fee.",

@@ -78,7 +78,7 @@ const pt: typeof en = {
         "A Cristiana queria apresentar-se como equipa. Recomendei uma voz singular com uma equipa coordenada: \"Sou a Cris\", apoiada por uma equipa de linguistas, sem nomes nem fotografias. Transmite mais credibilidade, bate certo com a atividade registada, simplifica o RGPD e é mais fácil de manter.",
         "O site mostra os 10 pares de línguas com transparência. A Cristiana traduz inglês e francês diretamente, e a equipa assegura os outros oito com acordos de confidencialidade.",
     ],
-    positioningAlt: "Grelha com os dez pares de línguas do site, cada um com o nome nas duas línguas",
+    positioningAlt: "Grelha com os dez pares de línguas, cada um com o nome em português e na própria língua",
 
     quotesTitle: "Orçamentos em vez de tabelas de preços",
     quotes: "Retirei os preços por palavra do site. Uma secção curta explica agora os quatro fatores de cada orçamento, incluindo a formatação e uma eventual taxa de urgência.",
