@@ -1,14 +1,14 @@
 /** English copy. See src/i18n/caseStudyGoogleAds.ts. Bold runs are { b: "..." }. */
 const en = {
     path: "/case-study-google-ads",
-    title: "Google Ads Case Study: 532% ROAS, 11 Months | Maria Madeira",
-    description: "Google Ads case study: £26.5K of ad spend returned £141K in attributed revenue over eleven months, a 532% blended return against a 400% break-even.",
-    h1: "£5.32 back for every £1 spent, over eleven months",
-    schemaDescription: "How structured campaign architecture and creative testing turned £26.5K of ad spend into £141K in attributed revenue, a 532% return against a 400% break-even.",
+    title: "Google Ads ROAS 532%, October 2025 to August 2026 | Maria Madeira",
+    description: "Google Ads case study: £26.5K of ad spend returned £141K in attributed revenue from October 2025 to August 2026, a 532% Google Ads ROAS against a 400% break-even.",
+    h1: "£5.32 back for every £1 spent, October 2025 to August 2026",
+    schemaDescription: "How structured campaign architecture and creative testing turned £26.5K of ad spend into £141K in attributed revenue, a 532% Google Ads ROAS against a 400% break-even, October 2025 to August 2026.",
     breadcrumb: "Google Ads",
     back: "Back to Case Studies",
     eyebrow: "Paid Advertising · Case Study",
-    intro: "How an optimised Google Ads strategy turned £26.5K in ad spend into £141K in attributed revenue, a 532% return against the client's 400% break-even, between 1 October 2025 and 26 August 2026.",
+    intro: "How an optimised Google Ads strategy turned £26.5K in ad spend into £141K in attributed revenue, a 532% Google Ads ROAS against the client's 400% break-even, between 1 October 2025 and 26 August 2026.",
     contextTitle: "Context",
     context: [
         "The business relied on paid acquisition to drive new customer growth but required a more structured Google Ads strategy to scale efficiently.",
@@ -21,14 +21,14 @@ const en = {
     results: [
         { value: "£141K", badge: null as string | null, label: "attributed revenue" },
         { value: "£26.5K", badge: null as string | null, label: "ad spend" },
-        { value: "532%", badge: "+132 pts above break-even" as string | null, label: "return on ad spend, against a 400% break-even" },
+        { value: "532%", badge: "+132 pts above break-even" as string | null, label: "Google Ads ROAS, October 2025 to August 2026, against a 400% break-even" },
         { value: "10 of 11", badge: "months above break-even" as string | null, label: "February 2026 came in at 396%" },
         { value: "2,161", badge: null as string | null, label: "conversions" },
     ],
     impactTitle: "Key Impact",
     impact: [
-        ["From ", { b: "£26.5K" }, " in ad spend across eleven months, the optimised campaigns generated ", { b: "£141K" }, " in attributed revenue, a ", { b: "532%" }, " return on ad spend against the client's ", { b: "400%" }, " break-even."],
-        ["That came from ", { b: "2,161 conversions" }, ". Ten of the eleven months finished above break-even; February 2026 landed at 396%, four points short, and every other month cleared the line comfortably."],
+        ["From ", { b: "£26.5K" }, " in ad spend from October 2025 to August 2026, the optimised campaigns generated ", { b: "£141K" }, " in attributed revenue, a ", { b: "532%" }, " Google Ads ROAS against the client's ", { b: "400%" }, " break-even."],
+        ["That came from ", { b: "2,161 purchases" }, ". Ten of the eleven months finished above break-even; February 2026 landed at 396%, four points short, and every other month cleared the line comfortably."],
         ["This case demonstrates how structured campaign management and continuous optimisation can turn paid advertising into a scalable and profitable growth channel."],
     ] as (string | { b: string })[][],
     serviceLink: "Google and Meta Ads management",

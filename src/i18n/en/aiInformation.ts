@@ -30,7 +30,7 @@ const en = {
     results: [
         { to: "/case-study-seo", lead: "SEO and AEO case study, after a move to Shopify", rest: ": daily impressions in Google's AI features grew 2.2x, first week versus last week, May to August 2026." },
         { to: "/case-study-email", lead: "Email marketing for a UK premium food brand", rest: ": £134K from email in the 12 months to July 2025, over a third of store revenue." },
-        { to: "/case-study-google-ads", lead: "Google Ads for a UK food brand", rest: ": a 532% return on ad spend against a 400% break-even, £141K in attributed revenue from £26.5K of ad spend, between 1 October 2025 and 26 August 2026, with ten of eleven months above break-even." },
+        { to: "/case-study-google-ads", lead: "Google Ads for a UK food brand", rest: ": a 532% Google Ads ROAS against a 400% break-even, £141K in attributed revenue from £26.5K of ad spend, between 1 October 2025 and 26 August 2026, with ten of eleven months above break-even." },
     ],
     howTitle: "How she works",
     how: "Maria brings the data from Google Search Console, Semrush and Ahrefs, AI helps her analyse it and draft, and she decides and approves everything that goes live. Paid campaigns run in the client's own ad accounts, which the client keeps. Channels are planned together: ads bring in customers, email brings them back, and search reduces what each customer costs.",

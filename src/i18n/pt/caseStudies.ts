@@ -4,7 +4,7 @@ import type en from "../en/caseStudies";
 const pt: typeof en = {
     path: "/pt/casos-de-estudo",
     title: "Casos de estudo: SEO, Klaviyo e Google Ads | Maria Madeira",
-    description: "Casos de estudo com resultados medidos: SEO e migração, Google Ads com retorno de 532%, £134K de email nos 12 meses até julho de 2025 e Click & Collect.",
+    description: "Casos de estudo com resultados medidos: SEO e migração, ROAS de Google Ads de 532% (outubro de 2025 a agosto de 2026), £134K de email nos 12 meses até julho de 2025 e Click & Collect.",
     schemaName: "Casos de estudo",
     schemaDescription: "Casos de estudo reais com resultados medidos: SEO e migração de plataforma, Google Ads, email no Klaviyo, UX de Click & Collect e um motor de reservas para uma escola de surf.",
     h1Lead: "Casos de ",
@@ -14,7 +14,7 @@ const pt: typeof en = {
         { value: "£134K", label: "Receita de email, 12 meses até jul. 2025" },
         { value: "50,4%", label: "Taxa de abertura média das campanhas, 12 meses até jul. 2025" },
         { value: "Mais de um terço", label: "Peso do email na receita da loja" },
-        { value: "532%", label: "ROAS no Google Ads" },
+        { value: "532%", label: "ROAS de Google Ads, outubro de 2025 a agosto de 2026" },
     ],
     problemLabel: "Problema:",
     readMore: "Ler o caso completo",
@@ -26,10 +26,10 @@ const pt: typeof en = {
             results: "Cliques de 4,5K para 8,0K (+78%) em quatro meses · Posição média de 15,2 para 9,4",
         },
         {
-            title: "5,32 £ de retorno por cada 1 £ investida, ao longo de onze meses",
+            title: "5,32 £ de retorno por cada 1 £ investida, de outubro de 2025 a agosto de 2026",
             category: "Anúncios pagos",
             problem: "A aquisição paga precisava de crescer com lucro, sem perder um bom retorno do investimento em anúncios.",
-            results: "£141K de receita atribuída a partir de £26,5K de investimento em anúncios · ROAS de 532% (ponto de equilíbrio do cliente: 400%) · 10 de 11 meses acima do ponto de equilíbrio",
+            results: "£141K de receita atribuída a partir de £26,5K de investimento em anúncios · ROAS de Google Ads de 532%, de outubro de 2025 a agosto de 2026 (ponto de equilíbrio do cliente: 400%) · 10 de 11 meses acima do ponto de equilíbrio",
         },
         {
             title: "De setembro de 2021 a julho de 2025: o email chegou a £134K em 12 meses e a mais de um terço da receita da loja",

@@ -37,7 +37,7 @@ const pt: typeof en = {
         emailBars: "Duas barras: c. £71K nos 12 meses anteriores (até julho de 2024) e £134K nos 12 meses até julho de 2025, mais 88,9%",
         cards: [
             { value: "£134K", label: "Receita de email, 12 meses até julho de 2025, marca de alimentação premium do Reino Unido" },
-            { value: "532%", label: "ROAS de Google Ads em 11 meses (ROAS de equilíbrio: 400%)" },
+            { value: "532%", label: "ROAS de Google Ads, de outubro de 2025 a agosto de 2026 (ROAS de equilíbrio: 400%)" },
             { value: "+78%", label: "Cliques orgânicos em quatro meses" },
             { value: "15,2 → 9,4", label: "Posição média no Google em quatro meses" },
         ],
@@ -72,10 +72,10 @@ const pt: typeof en = {
                 items: ["£134K de receita de email, 12 meses até julho de 2025", "+88,9% face aos 12 meses anteriores (até julho de 2024)", "Mais de um terço da receita da loja"],
             },
             {
-                alt: "Gráfico de barras do retorno mensal do investimento em anúncios ao longo de onze meses, face a um ponto de equilíbrio de 400%",
+                alt: "Gráfico de barras do ROAS mensal de Google Ads, de outubro de 2025 a agosto de 2026, face a um ponto de equilíbrio de 400%",
                 category: "Anúncios pagos",
-                title: "5,32 £ de retorno por cada 1 £ investida, ao longo de onze meses",
-                items: ["£141K de receita atribuída, 11 meses", "ROAS de 532% (ponto de equilíbrio do cliente: 400%)", "10 de 11 meses acima do ponto de equilíbrio"],
+                title: "5,32 £ de retorno por cada 1 £ investida, de outubro de 2025 a agosto de 2026",
+                items: ["£141K de receita atribuída, 11 meses", "ROAS de Google Ads de 532%, de outubro de 2025 a agosto de 2026 (ponto de equilíbrio do cliente: 400%)", "10 de 11 meses acima do ponto de equilíbrio"],
             },
             {
                 alt: "Gráfico de linhas dos cliques orgânicos, a subir 78% em quatro meses",

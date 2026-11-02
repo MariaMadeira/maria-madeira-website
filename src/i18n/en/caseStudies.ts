@@ -2,7 +2,7 @@
 const en = {
     path: "/case-studies",
     title: "Case Studies: SEO, Klaviyo and Google Ads | Maria Madeira",
-    description: "Case studies with measured results: SEO after a Shopify move, Google Ads at a 532% return, £134K email revenue in 12 months to July 2025, and click & collect.",
+    description: "Case studies with measured results: SEO after a Shopify move, a 532% Google Ads ROAS (October 2025 to August 2026), £134K email revenue in 12 months to July 2025, and click & collect.",
     schemaName: "Case Studies",
     schemaDescription: "Real case studies with measurable outcomes: SEO and platform migration, Google Ads, Klaviyo email, click & collect UX, and a surf school booking engine.",
     h1Lead: "Case ",
@@ -12,7 +12,7 @@ const en = {
         { value: "£134K", label: "Email revenue, 12 months to Jul 2025" },
         { value: "50.4%", label: "Average campaign open rate, 12 months to Jul 2025" },
         { value: "Over a third", label: "Email share of store revenue" },
-        { value: "532%", label: "Google Ads ROAS" },
+        { value: "532%", label: "Google Ads ROAS, October 2025 to August 2026" },
     ],
     problemLabel: "Problem:",
     readMore: "Read Full Study",
@@ -24,10 +24,10 @@ const en = {
             results: "Clicks from 4.5K to 8.0K (+78%) in four months · Average position from 15.2 to 9.4",
         },
         {
-            title: "£5.32 back for every £1 spent, over eleven months",
+            title: "£5.32 back for every £1 spent, October 2025 to August 2026",
             category: "Paid Advertising",
             problem: "Paid acquisition needed to scale profitably while maintaining strong return on ad spend.",
-            results: "£141K attributed revenue from £26.5K ad spend · 532% ROAS (client break-even: 400%) · 10 of 11 months above break-even",
+            results: "£141K attributed revenue from £26.5K ad spend · 532% Google Ads ROAS, October 2025 to August 2026 (client break-even: 400%) · 10 of 11 months above break-even",
         },
         {
             title: "September 2021 to July 2025: email grew to £134K in 12 months and over a third of store revenue",

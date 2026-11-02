@@ -6,7 +6,7 @@ She works on her own and does the work herself: SEO and AI search optimisation (
 
 Published results, each with its period stated on the linked page:
 - Email (Klaviyo), UK premium food brand: £134K in attributed email revenue in the 12 months to July 2025, up 88.9% on c. £71K in the previous 12 months (to July 2024), and over a third of store revenue; 50.4% average campaign open rate, 12 months to July 2025, up from 28.1% in 2022.
-- Google Ads, UK food brand: a 532% return on ad spend against a 400% break-even, £141K in attributed revenue from £26.5K of ad spend, 1 October 2025 to 26 August 2026.
+- Google Ads, UK food brand: a 532% Google Ads ROAS against a 400% break-even, £141K in attributed revenue from £26.5K of ad spend, 1 October 2025 to 26 August 2026.
 - SEO and AI search case study, after a move from WooCommerce to Shopify: organic clicks up 78% (4.5K to 8.0K) and average Google position from 15.2 to 9.4 across all queries, in matched 28-day windows from May to August 2026; daily impressions in Google's AI features up 2.2x, first week to last week.
 
 Last updated: 2026-11-02
@@ -24,7 +24,7 @@ Last updated: 2026-11-02
 ## Case studies
 - [Case studies](https://mariamadeira.com/case-studies): all six case studies with their headline results.
 - [Klaviyo email programme](https://mariamadeira.com/case-study-email): Klaviyo for a UK premium food brand, September 2021 to July 2025, from three automated flows to fourteen; £134K in the 12 months to July 2025, up 88.9% on c. £71K in the previous 12 months (to July 2024), and over a third of store revenue.
-- [Google Ads](https://mariamadeira.com/case-study-google-ads): £26.5K of ad spend returned £141K in attributed revenue over eleven months, a 532% ROAS against a 400% break-even, with ten of eleven months above break-even.
+- [Google Ads](https://mariamadeira.com/case-study-google-ads): £26.5K of ad spend returned £141K in attributed revenue from October 2025 to August 2026, a 532% Google Ads ROAS against a 400% break-even, with ten of eleven months above break-even.
 - [SEO and AI search after a Shopify move](https://mariamadeira.com/case-study-seo): After a move from WooCommerce to Shopify, brand rankings held, but collections and product pages had not been built for search. Four months of SEO and AEO work: organic clicks +78%, average position 15.2 to 9.4, AI-feature impressions 2.2x.
 - [The Bodysurf School](https://mariamadeira.com/case-study-bodysurf-school): a surf school with five locations on the Portuguese coast and no online booking got a bilingual WordPress booking site with MB Way and Multibanco payments, live in one month.
 - [dePapier Translations](https://mariamadeira.com/case-study-depapier-translations): a certified translator in Portugal moved from a free Google Sites page to her own domain, business email and a bilingual WordPress site, in about seven weeks.
@@ -73,7 +73,7 @@ Last updated: 2026-11-02
 - [Política de privacidade](https://mariamadeira.com/pt/privacidade): como são tratados os dados de contacto, segundo o RGPD.
 - [Casos de estudo](https://mariamadeira.com/pt/casos-de-estudo): os seis casos de estudo, com os resultados principais.
 - [Caso: email no Klaviyo](https://mariamadeira.com/pt/caso-email): Klaviyo para uma marca de alimentação premium do Reino Unido, de setembro de 2021 a julho de 2025; £134K nos 12 meses até julho de 2025, mais 88,9% face a c. £71K nos 12 meses anteriores (até julho de 2024), e mais de um terço da receita da loja.
-- [Caso: Google Ads](https://mariamadeira.com/pt/caso-google-ads): ROAS de 532% face a um ponto de equilíbrio de 400%, £141K de receita atribuída a partir de £26,5K em onze meses.
+- [Caso: Google Ads](https://mariamadeira.com/pt/caso-google-ads): ROAS de Google Ads de 532%, de outubro de 2025 a agosto de 2026, face a um ponto de equilíbrio de 400%, £141K de receita atribuída a partir de £26,5K.
 - [Caso: SEO e pesquisa com IA](https://mariamadeira.com/pt/caso-seo): depois de uma mudança de WooCommerce para Shopify: cliques orgânicos +78% e posição média de 15,2 para 9,4 em quatro meses.
 - [Caso: The Bodysurf School](https://mariamadeira.com/pt/caso-bodysurf-school): site de reservas bilingue para uma escola de surf com cinco locais, no ar num mês.
 - [Caso: dePapier Translations](https://mariamadeira.com/pt/caso-depapier-translations): domínio próprio, email profissional e site bilingue para uma tradutora certificada em Portugal, em cerca de sete semanas.

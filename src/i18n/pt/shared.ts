@@ -42,7 +42,7 @@ export const WAYS_PT: WayToWork[] = [
             "Mínimo de três meses",
         ],
         cta: "Falar sobre acompanhamento mensal",
-        proof: { text: "ROAS de 532% face a um ponto de equilíbrio de 400% para uma marca de alimentação do Reino Unido", to: "/case-study-google-ads" },
+        proof: { text: "ROAS de Google Ads de 532% face a um ponto de equilíbrio de 400% para uma marca de alimentação do Reino Unido, de outubro de 2025 a agosto de 2026", to: "/case-study-google-ads" },
     },
 ];
 

@@ -51,6 +51,6 @@ export const WAYS_TO_WORK: WayToWork[] = [
             "Minimum three months",
         ],
         cta: "Talk about ongoing work",
-        proof: { text: "532% ROAS against a 400% break-even for a UK food brand", to: "/case-study-google-ads" },
+        proof: { text: "532% Google Ads ROAS against a 400% break-even for a UK food brand, October 2025 to August 2026", to: "/case-study-google-ads" },
     },
 ];

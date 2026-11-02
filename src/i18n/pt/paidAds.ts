@@ -10,7 +10,7 @@ const pt: typeof en = {
     h1Accent: "medidos face ao seu ponto de equilíbrio",
     intro: "Sou consultora de Google Ads e Meta Ads em Lisboa e trabalho com marcas de e-commerce em Portugal e no Reino Unido. A maioria das contas de anúncios mostra um ROAS e fica por aí. O número que importa é o que as suas margens exigem. Começo por calcular o seu ROAS de equilíbrio e depois construo campanhas no Google Ads, Meta Ads e Microsoft Ads para o ultrapassar, mês após mês. Trabalho ao nível de uma agência, feito pela pessoa com quem fala.",
     results: [
-        { value: "532%", label: "Retorno do investimento em anúncios, face a um ponto de equilíbrio de 400%" },
+        { value: "532%", label: "ROAS de Google Ads, de outubro de 2025 a agosto de 2026, face a um ponto de equilíbrio de 400%" },
         { value: "£141K", label: "Receita atribuída a partir de £26,5K de investimento em anúncios" },
         { value: "10 de 11", label: "Meses acima do ponto de equilíbrio" },
     ],

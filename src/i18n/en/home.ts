@@ -34,7 +34,7 @@ const en = {
         emailBars: "Two bars: c. £71K in the previous 12 months (to July 2024) and £134K in the 12 months to July 2025, up 88.9%",
         cards: [
             { value: "£134K", label: "Email revenue, 12 months to July 2025, UK premium food brand" },
-            { value: "532%", label: "Google Ads ROAS over 11 months (break-even: 400%)" },
+            { value: "532%", label: "Google Ads ROAS, October 2025 to August 2026 (break-even: 400%)" },
             { value: "+78%", label: "Organic clicks in four months" },
             { value: "15.2 → 9.4", label: "Average Google position in four months" },
         ],
@@ -54,10 +54,10 @@ const en = {
                 items: ["£134K email revenue, 12 months to July 2025", "+88.9% on the previous 12 months (to July 2024)", "Over a third of store revenue"],
             },
             {
-                alt: "Bar chart of monthly return on ad spend over eleven months against a 400 percent break-even",
+                alt: "Bar chart of monthly Google Ads ROAS, October 2025 to August 2026, against a 400 percent break-even",
                 category: "Paid advertising",
-                title: "£5.32 back for every £1 spent, over eleven months",
-                items: ["£141K attributed revenue, 11 months", "532% ROAS (client break-even: 400%)", "10 of 11 months above break-even"],
+                title: "£5.32 back for every £1 spent, October 2025 to August 2026",
+                items: ["£141K attributed revenue, 11 months", "532% Google Ads ROAS, October 2025 to August 2026 (client break-even: 400%)", "10 of 11 months above break-even"],
             },
             {
                 alt: "Line chart of organic clicks rising 78 percent over four months",

@@ -38,7 +38,8 @@ import COPY from "../i18n/resultCharts";
 /* ── Source data ───────────────────────────────────────────
  * Google Ads: full account export, 1 October 2025 to 26 August 2026 (11 months).
  * ROAS is revenue ÷ spend for the same month, so the three arrays reconcile.
- * Totals: £26,512 spend, £141,073 revenue, 532% blended ROAS.
+ * Totals: £26,512 spend, £141,073 conversion value, 2,161 purchases, 532% Google Ads ROAS
+ * (source: Google Ads Performance Report, 1 October 2025 to 26 August 2026).
  */
 const ADS_MONTHS = ["Oct 25", "Nov 25", "Dec 25", "Jan 26", "Feb 26", "Mar 26", "Apr 26", "May 26", "Jun 26", "Jul 26", "Aug 26"];
 const ADS_ROAS = [552, 481, 561, 511, 396, 511, 526, 668, 653, 562, 429];

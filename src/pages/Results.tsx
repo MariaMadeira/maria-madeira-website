@@ -52,7 +52,7 @@ export default function Results() {
 
     const paidMetrics: Array<{ label: string; to: number; prefix: string; suffix: string; decimals: number; subtitle: string; range?: string }> = [
         { label: "Google Ads Attributed Revenue", to: 141, prefix: "£", suffix: "K", decimals: 0, subtitle: "From £26.5K spend, 1 Oct 2025 to 26 Aug 2026." },
-        { label: "Google Ads ROAS", to: 532, prefix: "", suffix: "%", decimals: 0, subtitle: "£141K attributed revenue on £26.5K spend, against a 400% break-even." },
+        { label: "Google Ads ROAS", to: 532, prefix: "", suffix: "%", decimals: 0, subtitle: "£141K attributed revenue on £26.5K spend, October 2025 to August 2026, against a 400% break-even." },
         { label: "Cost per Conversion", to: 12.27, prefix: "£", suffix: "", decimals: 2, subtitle: "Across 2,161 Google Ads conversions." }
     ];
 
@@ -60,7 +60,7 @@ export default function Results() {
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
                 title="Results: £134K Email Revenue, 12 Months to July 2025"
-                description="E-commerce growth results: £134K in email revenue in the 12 months to July 2025 (+88.9% on the previous 12 months, to July 2024), a 50.4% average campaign open rate over the same 12 months, and £141K from Google Ads at a 532% return."
+                description="E-commerce growth results: £134K in email revenue in the 12 months to July 2025 (+88.9% on the previous 12 months, to July 2024), a 50.4% average campaign open rate over the same 12 months, and £141K from Google Ads at a 532% Google Ads ROAS, October 2025 to August 2026."
                 path="/results"
             />
 
@@ -182,7 +182,7 @@ export default function Results() {
                     </Link>
                     <Link to="/case-study-google-ads" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
                         <h4 style={{ marginBottom: '1rem' }}>Paid Acquisition Deep-Dive</h4>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>£141K in Google Ads attributed revenue at a 532% return through data-driven targeting and creative testing.</p>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>£141K in Google Ads attributed revenue at a 532% Google Ads ROAS (October 2025 to August 2026) through data-driven targeting and creative testing.</p>
                         <span style={{ color: 'var(--accent-text)', fontWeight: 600, fontSize: '0.85rem', marginTop: '1rem', display: 'block' }}>Read full story →</span>
                     </Link>
                     <Link to="/case-study-seo" className="card glass-panel" style={{ padding: '2rem', textAlign: 'left' }}>
