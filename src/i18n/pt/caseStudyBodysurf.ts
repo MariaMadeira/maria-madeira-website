@@ -60,6 +60,7 @@ const pt: typeof en = {
     quoteContext: "Cliente · Recomendação no LinkedIn",
     serviceLink: "Estratégia e construção de sites",
     nextLink: "Visível no Google e nas respostas de IA",
+    galleryLink: "Ver a galeria do projeto",
     ctaText: "Transformar um site num motor de reservas pede estratégia antes do design.",
     ctaButton: "Vamos falar de estratégia",
 };

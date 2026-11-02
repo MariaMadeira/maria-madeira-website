@@ -15,6 +15,7 @@ const PROJECT_ASSETS: { link: string; visual: string; visualPt?: string }[] = [
         visual: "url('/projects/depapier/depapier-en-desktop-mobile-hero-transparent.webp') center/contain no-repeat",
         visualPt: "url('/projects/depapier/depapier-desktop-mobile-hero-transparent.webp') center/contain no-repeat",
     },
+    { link: "/portfolio-bodysurf-school", visual: "url('/bodysurf-desktop-mobile.webp') center/contain no-repeat" },
     { link: "/portfolio-email-marketing", visual: "url('/projects/email-marketing/recipe.webp') center/cover" },
     { link: "/portfolio-rita-antunes", visual: "url('/projects/rita-antunes/mockup-stationery.webp') center/cover" },
     { link: "/portfolio-ousadia", visual: "url('/projects/ousadia/moodboard.webp') center/cover" },

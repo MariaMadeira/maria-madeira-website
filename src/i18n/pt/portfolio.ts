@@ -21,6 +21,11 @@ const pt: typeof en = {
             description: "Site bilingue e identidade coerente para uma tradutora certificada.",
         },
         {
+            title: "The Bodysurf School",
+            category: "Sites",
+            description: "Site bilingue com reservas online para uma escola de bodysurf com cinco praias.",
+        },
+        {
             title: "Email marketing de ciclo de vida",
             category: "Email marketing",
             description: "£134K de receita atribuída nos 12 meses até julho de 2025, com fluxos automáticos avançados ao longo do ciclo de vida e uma automação pensada primeiro para a retenção.",

@@ -20,6 +20,11 @@ const en = {
             description: "A bilingual website and a consistent identity for a certified translator.",
         },
         {
+            title: "The Bodysurf School",
+            category: "Websites",
+            description: "A bilingual booking website for a bodysurf school with five beach locations.",
+        },
+        {
             title: "Lifecycle Email Marketing",
             category: "Email Marketing",
             description: "£134K in attributed email revenue in the 12 months to July 2025, from lifecycle flows and campaigns.",

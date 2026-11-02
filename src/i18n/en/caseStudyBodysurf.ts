@@ -56,6 +56,7 @@ const en = {
     quoteContext: "Client · Recommended on LinkedIn",
     serviceLink: "Website strategy and build",
     nextLink: "Found on Google and in AI answers",
+    galleryLink: "See the project gallery",
     ctaText: "Turning a website into a booking engine takes strategy before design.",
     ctaButton: "Book a free call",
 };
