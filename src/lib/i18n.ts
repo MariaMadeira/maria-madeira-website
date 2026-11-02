@@ -62,6 +62,16 @@ export function langOf(path: string): Lang {
     return path === "/pt" || path.startsWith("/pt/") ? "pt" : "en";
 }
 
+/**
+ * The share card for a page's language. Every card under /og/ has a
+ * Portuguese twin with the same name plus "-pt", so a /pt page gets
+ * /og/og-email-pt.png where the English page uses /og/og-email.png.
+ */
+export function localOgImage(image: string, lang: Lang): string {
+    if (lang !== "pt") return image;
+    return image.replace(/(\/og\/[^/]+?)(?<!-pt)\.png$/, "$1-pt.png");
+}
+
 /** The same page in the other language, or null when it has no live twin. */
 export function twinOf(path: string): string | null {
     const pair = PAIRS.find((p) => p.en === path || p.pt === path);

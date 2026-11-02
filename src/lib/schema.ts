@@ -12,7 +12,7 @@
 // Organization is the business that sells and publishes (Service.provider,
 // Article.publisher, WebSite.publisher), with the Person as its founder.
 
-import type { Lang } from "./i18n";
+import { localOgImage, type Lang } from "./i18n";
 import { EDUCATION, HAS_CREDENTIAL, PROGRAM_MEMBERSHIP } from "./credentials";
 
 export const SITE_URL = "https://mariamadeira.com";
@@ -42,14 +42,17 @@ export const AREA_SERVED = [
 const ADDRESS = { "@type": "PostalAddress", "addressLocality": "Lisbon", "addressCountry": "PT" };
 
 /**
- * Verified third-party profiles. Add a profile here once it is live and
- * resolves; every page picks it up. Credential pages are not profiles: they
- * stay in hasCredential.
+ * Third-party profiles that answer 200 without a login (checked 2 November
+ * 2026). Add a profile only once it does; every page picks it up. LinkedIn
+ * (sends logged-out visitors to its sign-up wall) and Malt (bot check, could
+ * not be confirmed) are left out on that rule. Credential pages are not
+ * profiles: they stay in hasCredential.
  */
 export const SAME_AS = [
-    "https://www.linkedin.com/in/maria-madeira-growth",
-    "https://influee.co/partnership/maria-madeira",
     "https://www.fiverr.com/maria_mmadeira",
+    "https://contra.com/maria_madeira_1pwgye97",
+    "https://clutch.co/profile/maria-madeira",
+    "https://influee.co/partnership/maria-madeira",
 ];
 
 /** The canonical one-sentence description, the same wherever the entity is introduced. */
@@ -241,7 +244,7 @@ export function blogPostingNode({ path, headline, description, datePublished, da
         "headline": headline,
         "description": description,
         "inLanguage": langCode(lang),
-        "image": `${SITE_URL}${image}`,
+        "image": `${SITE_URL}${localOgImage(image, lang)}`,
         "author": PERSON_REF,
         "publisher": ORG_REF,
         "datePublished": datePublished,
@@ -301,7 +304,7 @@ export function caseStudyJsonLd({ path, headline, description, datePublished, da
             "@id": `${url}#article`,
             "headline": headline,
             "description": description,
-            "image": image.startsWith("http") ? image : `${SITE_URL}${image}`,
+            "image": localOgImage(image.startsWith("http") ? image : `${SITE_URL}${image}`, lang),
             "author": PERSON_REF,
             "publisher": ORG_REF,
             "datePublished": datePublished,

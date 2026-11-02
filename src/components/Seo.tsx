@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { alternatesOf, langOf, twinOf } from "../lib/i18n";
+import { alternatesOf, langOf, localOgImage, twinOf } from "../lib/i18n";
 
 const SITE_URL = "https://mariamadeira.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og/og-default.png`;
@@ -45,9 +45,10 @@ export default function Seo({
     ogImageAlt,
 }: SeoProps) {
     const canonical = `${SITE_URL}${path}`;
-    const imageUrl = ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`;
-    const imageAlt = ogImageAlt ?? title;
     const pt = langOf(path) === "pt";
+    const localImage = localOgImage(ogImage, pt ? "pt" : "en");
+    const imageUrl = localImage.startsWith("http") ? localImage : `${SITE_URL}${localImage}`;
+    const imageAlt = ogImageAlt ?? title;
 
     return (
         <Helmet>
