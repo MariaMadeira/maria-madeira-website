@@ -18,7 +18,7 @@ const en = {
         email: "Email:",
     },
     backgroundTitle: "Background",
-    background: "Maria Madeira spent five years helping build a UK premium food brand's online business from the start, working across e-commerce, email marketing, paid advertising, SEO, creative and the brand's website. She now works independently: the person a client speaks to is the person doing the work. Her education includes a degree in fashion and textile design, a postgraduate programme in journalism and a postgraduate programme in artificial intelligence for design.",
+    background: "Maria Madeira spent five years helping build a UK premium food brand's online business since the launch of its new online shop in 2021, working across e-commerce, email marketing, paid advertising, SEO, creative and the brand's website. She now works independently: the person a client speaks to is the person doing the work. Her education includes a degree in fashion and textile design, a postgraduate programme in journalism and a postgraduate programme in artificial intelligence for design.",
     credentialsTitle: "Credentials",
     credentials: [
         "Klaviyo Partner (K:Partners programme)",

@@ -20,7 +20,7 @@ const pt: typeof en = {
         email: "Email:",
     },
     backgroundTitle: "Percurso",
-    background: "A Maria Madeira passou cinco anos a ajudar a construir o negócio online de uma marca de alimentação premium do Reino Unido desde o início, a trabalhar em e-commerce, email marketing, anúncios pagos, SEO, criativo e no site da marca. Hoje trabalha de forma independente: quem fala com um cliente é quem faz o trabalho. A sua formação inclui uma licenciatura em design de moda e têxtil, uma pós-graduação em jornalismo e uma pós-graduação em inteligência artificial para o design.",
+    background: "A Maria Madeira passou cinco anos a ajudar a construir o negócio online de uma marca de alimentação premium do Reino Unido desde o lançamento da nova loja online, em 2021, a trabalhar em e-commerce, email marketing, anúncios pagos, SEO, criativo e no site da marca. Hoje trabalha de forma independente: quem fala com um cliente é quem faz o trabalho. A sua formação inclui uma licenciatura em design de moda e têxtil, uma pós-graduação em jornalismo e uma pós-graduação em inteligência artificial para o design.",
     credentialsTitle: "Credenciais",
     credentials: [
         "Klaviyo Partner (programa K:Partners)",
