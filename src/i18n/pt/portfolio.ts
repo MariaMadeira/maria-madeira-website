@@ -16,6 +16,11 @@ const pt: typeof en = {
             description: "Teste de produto de ponta a ponta: app de encomendas para telemóvel, criativos de campanha e distribuição em ecrãs de elevador, para uma loja com muito movimento.",
         },
         {
+            title: "dePapier Translations",
+            category: "Sites",
+            description: "Site bilingue e identidade coerente para uma tradutora certificada.",
+        },
+        {
             title: "Email marketing de ciclo de vida",
             category: "Email marketing",
             description: "£134K de receita atribuída nos 12 meses até julho de 2025, com fluxos automáticos avançados ao longo do ciclo de vida e uma automação pensada primeiro para a retenção.",

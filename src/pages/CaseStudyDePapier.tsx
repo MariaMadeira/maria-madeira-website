@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import RelatedLinks from "../components/RelatedLinks";
@@ -188,6 +188,12 @@ export default function CaseStudyDePapier() {
                     service={{ to: "/services/websites", label: c.serviceLink }}
                     next={{ to: "/case-study-bodysurf-school", label: c.nextLink }}
                 />
+                {/* The visual gallery of the same project */}
+                <p style={{ textAlign: "center", margin: "-1.5rem 0 3rem", fontSize: "0.95rem" }}>
+                    <Link to={to("/portfolio-depapier")} style={{ color: "var(--accent-text)", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: "0.4rem", minHeight: "44px" }}>
+                        {c.galleryLink} <ArrowRight size={16} />
+                    </Link>
+                </p>
 
                 {/* CTA */}
                 <div style={{ textAlign: "center", paddingTop: "1rem", paddingBottom: "2rem" }}>

@@ -70,6 +70,7 @@ const pt: typeof en = {
 
     serviceLink: "Estratégia e construção de sites",
     nextLink: "Cinco locais, zero reservas online",
+    galleryLink: "Ver a galeria do projeto",
     ctaText: "Precisa de um site que mostre o valor do seu negócio?",
     ctaButton: "Marcar uma conversa gratuita",
 

@@ -69,6 +69,7 @@ const en = {
 
     serviceLink: "Website strategy and build",
     nextLink: "Five surf school locations, zero online bookings",
+    galleryLink: "See the project gallery",
     ctaText: "Need a website that shows how good your business is?",
     ctaButton: "Book a free call",
 

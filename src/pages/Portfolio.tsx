@@ -5,9 +5,16 @@ import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/portfolio";
 
 /* Renders /portfolio and /pt/portefolio from src/i18n/portfolio.ts. Links
-   and images live here, in the same order as the copy's projects. */
-const PROJECT_ASSETS = [
+   and images live here, in the same order as the copy's projects. A card
+   whose image differs by language sets `visualPt`. Transparent mockups are
+   shown whole on the card background rather than cropped. */
+const PROJECT_ASSETS: { link: string; visual: string; visualPt?: string }[] = [
     { link: "/portfolio-click-collect", visual: "url('/projects/click-collect/app-mockups.webp') center/cover" },
+    {
+        link: "/portfolio-depapier",
+        visual: "url('/projects/depapier/depapier-en-desktop-mobile-hero-transparent.webp') center/contain no-repeat",
+        visualPt: "url('/projects/depapier/depapier-desktop-mobile-hero-transparent.webp') center/contain no-repeat",
+    },
     { link: "/portfolio-email-marketing", visual: "url('/projects/email-marketing/recipe.webp') center/cover" },
     { link: "/portfolio-rita-antunes", visual: "url('/projects/rita-antunes/mockup-stationery.webp') center/cover" },
     { link: "/portfolio-ousadia", visual: "url('/projects/ousadia/moodboard.webp') center/cover" },
@@ -22,7 +29,10 @@ export default function Portfolio() {
        same thing in both languages. */
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const projects = c.projects.map((p, i) => ({ ...p, ...PROJECT_ASSETS[i] }));
+    const projects = c.projects.map((p, i) => {
+        const { link, visual, visualPt } = PROJECT_ASSETS[i];
+        return { ...p, link, visual: lang === "pt" && visualPt ? visualPt : visual };
+    });
 
     const activeCategories = [c.all, ...new Set(projects.map(p => p.category))];
     const activeCategory = activeCategories[activeIndex] ?? c.all;

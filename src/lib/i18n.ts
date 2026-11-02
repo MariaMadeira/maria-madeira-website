@@ -42,6 +42,7 @@ export const PT_PAGES: { en: string; pt: string; status: "live" | "draft"; batch
     { en: "/portfolio-ai-product-photography", pt: "/pt/portefolio-fotografia-de-produto-com-ia", status: "live", batch: 3 },
     { en: "/portfolio-email-marketing", pt: "/pt/portefolio-email-marketing", status: "live", batch: 3 },
     { en: "/portfolio-click-collect", pt: "/pt/portefolio-click-collect", status: "live", batch: 3 },
+    { en: "/portfolio-depapier", pt: "/pt/portefolio-depapier", status: "live", batch: 3 },
 
     { en: "/blog", pt: "/pt/blog", status: "live", batch: 4 },
     { en: "/blog/what-is-aeo", pt: "/pt/blog/o-que-e-aeo", status: "live", batch: 4 },

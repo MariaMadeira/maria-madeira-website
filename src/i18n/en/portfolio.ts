@@ -15,6 +15,11 @@ const en = {
             description: "End-to-end product experiment: mobile ordering app, campaign creative, and elevator screen distribution for a high-traffic retail store.",
         },
         {
+            title: "dePapier Translations",
+            category: "Websites",
+            description: "A bilingual website and a consistent identity for a certified translator.",
+        },
+        {
             title: "Lifecycle Email Marketing",
             category: "Email Marketing",
             description: "£134K in attributed email revenue in the 12 months to July 2025, from lifecycle flows and campaigns.",
