@@ -25,7 +25,7 @@ const pt: typeof en = {
         { value: "£26,5K", badge: null, label: "investimento em anúncios" },
         { value: "532%", badge: "+132 pontos acima do ponto de equilíbrio", label: "ROAS de Google Ads, de outubro de 2025 a agosto de 2026, face a um ponto de equilíbrio de 400%" },
         { value: "10 de 11", badge: "meses acima do ponto de equilíbrio", label: "fevereiro de 2026 ficou nos 396%" },
-        { value: "2161", badge: null, label: "conversões" },
+        { value: "2161", badge: null, label: "compras" },
     ],
     impactTitle: "Impacto principal",
     impact: [

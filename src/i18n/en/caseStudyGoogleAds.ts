@@ -23,7 +23,7 @@ const en = {
         { value: "£26.5K", badge: null as string | null, label: "ad spend" },
         { value: "532%", badge: "+132 pts above break-even" as string | null, label: "Google Ads ROAS, October 2025 to August 2026, against a 400% break-even" },
         { value: "10 of 11", badge: "months above break-even" as string | null, label: "February 2026 came in at 396%" },
-        { value: "2,161", badge: null as string | null, label: "conversions" },
+        { value: "2,161", badge: null as string | null, label: "purchases" },
     ],
     impactTitle: "Key Impact",
     impact: [

@@ -53,7 +53,7 @@ export default function Results() {
     const paidMetrics: Array<{ label: string; to: number; prefix: string; suffix: string; decimals: number; subtitle: string; range?: string }> = [
         { label: "Google Ads Attributed Revenue", to: 141, prefix: "£", suffix: "K", decimals: 0, subtitle: "From £26.5K spend, 1 Oct 2025 to 26 Aug 2026." },
         { label: "Google Ads ROAS", to: 532, prefix: "", suffix: "%", decimals: 0, subtitle: "£141K attributed revenue on £26.5K spend, October 2025 to August 2026, against a 400% break-even." },
-        { label: "Cost per Conversion", to: 12.27, prefix: "£", suffix: "", decimals: 2, subtitle: "Across 2,161 Google Ads conversions." }
+        { label: "Cost per Purchase", to: 12.27, prefix: "£", suffix: "", decimals: 2, subtitle: "Across 2,161 Google Ads purchases." }
     ];
 
     return (
