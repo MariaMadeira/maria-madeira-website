@@ -9,8 +9,11 @@ import COPY from "../i18n/caseStudyClickCollect";
 
 // Git-derived (git log src/pages/CaseStudyClickCollect.tsx). Bump MODIFIED
 // whenever the case study's details are updated.
-const PUBLISHED = "2026-03-23";
-const MODIFIED = "2026-08-26";
+/* Full ISO 8601 with time zone. Published: the commit that put each
+   language version live (git log); the Portuguese pages went live with the
+   /pt routes. Modified: the commit that last changed the page's details. */
+const PUBLISHED = { en: "2026-03-23T10:15:54+00:00", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-08-26T12:38:06+01:00", pt: "2026-10-19T18:35:44+01:00" };
 
 const STRONG = { color: "var(--text-primary)" };
 const SOLUTION_ICONS = [<Smartphone size={24} />, <Zap size={24} />];
@@ -30,12 +33,14 @@ export default function CaseStudyClickCollect() {
             title={c.title}
             description={c.description}
             path={c.path}
+            ogType="article"
             jsonLd={caseStudyJsonLd({
                 path: c.path,
                 headline: c.h1,
                 description: c.schemaDescription,
-                datePublished: PUBLISHED,
-                dateModified: MODIFIED,
+                datePublished: PUBLISHED[lang],
+                dateModified: MODIFIED[lang],
+                image: "/og/og-default.png",
                 breadcrumb: c.breadcrumb,
                 lang,
             })}

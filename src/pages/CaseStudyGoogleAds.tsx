@@ -10,8 +10,11 @@ import COPY from "../i18n/caseStudyGoogleAds";
 
 // Git-derived (git log src/pages/CaseStudyGoogleAds.tsx). Bump MODIFIED
 // whenever the numbers below are updated: this is an ongoing engagement.
-const PUBLISHED = "2026-03-16";
-const MODIFIED = "2026-08-26";
+/* Full ISO 8601 with time zone. Published: the commit that put each
+   language version live (git log); the Portuguese pages went live with the
+   /pt routes. Modified: the commit that last changed the page's details. */
+const PUBLISHED = { en: "2026-03-16T16:33:25+00:00", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-08-26T12:38:06+01:00", pt: "2026-10-19T18:35:44+01:00" };
 
 const STRONG = { color: "var(--text-primary)" };
 
@@ -29,12 +32,14 @@ export default function CaseStudyGoogleAds() {
             title={c.title}
             description={c.description}
             path={c.path}
+            ogType="article"
             jsonLd={caseStudyJsonLd({
                 path: c.path,
                 headline: c.h1,
                 description: c.schemaDescription,
-                datePublished: PUBLISHED,
-                dateModified: MODIFIED,
+                datePublished: PUBLISHED[lang],
+                dateModified: MODIFIED[lang],
+                image: "/og/og-default.png",
                 // Short by design: breadcrumbs render in search results, where the
                 // full headline would truncate.
                 breadcrumb: c.breadcrumb,

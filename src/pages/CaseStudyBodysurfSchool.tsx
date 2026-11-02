@@ -8,8 +8,11 @@ import COPY from "../i18n/caseStudyBodysurf";
 
 // Git-derived (git log src/pages/CaseStudyBodysurfSchool.tsx). Bump MODIFIED
 // whenever the case study's details are updated.
-const PUBLISHED = "2026-07-09";
-const MODIFIED = "2026-08-26";
+/* Full ISO 8601 with time zone. Published: the commit that put each
+   language version live (git log); the Portuguese pages went live with the
+   /pt routes. Modified: the commit that last changed the page's details. */
+const PUBLISHED = { en: "2026-07-09T16:12:06+01:00", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-08-26T15:26:19+01:00", pt: "2026-10-19T18:35:44+01:00" };
 
 const STRATEGY_ICONS = [<Map size={24} />, <CreditCard size={24} />, <LayoutTemplate size={24} />, <Globe size={24} />, <Search size={24} />, <ShieldCheck size={24} />];
 
@@ -31,12 +34,14 @@ export default function CaseStudyBodysurfSchool() {
             title={c.title}
             description={c.description}
             path={c.path}
+            ogType="article"
             jsonLd={caseStudyJsonLd({
                 path: c.path,
                 headline: c.h1,
                 description: c.schemaDescription,
-                datePublished: PUBLISHED,
-                dateModified: MODIFIED,
+                datePublished: PUBLISHED[lang],
+                dateModified: MODIFIED[lang],
+                image: "/og/og-default.png",
                 breadcrumb: c.breadcrumb,
                 lang,
             })}

@@ -9,6 +9,19 @@ export const PERSON_ID = `${SITE_URL}/#person`;
 /** Reference to the canonical Person entity, for author/publisher fields. */
 export const PERSON_REF = { "@id": PERSON_ID } as const;
 
+/**
+ * The Person node in short form, for pages whose author/publisher point at
+ * PERSON_ID: Google does not follow an @id to another page, so a page that
+ * references the Person must also declare it.
+ */
+const PERSON_NODE = {
+    "@type": "Person",
+    "@id": PERSON_ID,
+    "name": "Maria Madeira",
+    "url": `${SITE_URL}/about`,
+    "sameAs": ["https://www.linkedin.com/in/maria-madeira-growth"],
+} as const;
+
 interface CaseStudyMeta {
     /** Route path, e.g. "/case-study-email". */
     path: string;
@@ -17,17 +30,22 @@ interface CaseStudyMeta {
     /** One-sentence summary of the engagement and its outcome. */
     description: string;
     /**
-     * ISO date (YYYY-MM-DD) of the first git commit that introduced the page.
-     * Derived from `git log` at author time: real and verifiable, not guessed.
+     * Full ISO 8601 date and time, with time zone, of the git commit that put
+     * this language version live. Derived from `git log` at author time: real
+     * and verifiable, not guessed.
      */
     datePublished: string;
     /**
-     * ISO date (YYYY-MM-DD) of the most recent commit touching the page.
-     * Hardcoded rather than read from git at build time because Vercel's default
-     * shallow clone would truncate history in production. Bump this in the same
-     * file whenever a case study's numbers are updated.
+     * Full ISO 8601 date and time of the commit that last changed the page's
+     * details. Hardcoded rather than read from git at build time because
+     * Vercel's default shallow clone would truncate history in production.
+     * Bump it in the page whenever a case study's details are updated.
      */
     dateModified: string;
+    /** The page's OG image: absolute URL or root-relative path. */
+    image: string;
+    /** The organisation the case study is about, where the client is named. */
+    about?: { name: string; url: string };
     /** Short breadcrumb label; defaults to the headline. */
     breadcrumb?: string;
     /** "pt" for the /pt twin: inLanguage pt-PT and a Portuguese trail. */
@@ -40,7 +58,7 @@ interface CaseStudyMeta {
  * attributed Articles makes them far more citable. Dates are git-derived (see
  * CaseStudyMeta) so both datePublished and dateModified are real.
  */
-export function caseStudyJsonLd({ path, headline, description, datePublished, dateModified, breadcrumb, lang = "en" }: CaseStudyMeta) {
+export function caseStudyJsonLd({ path, headline, description, datePublished, dateModified, image, about, breadcrumb, lang = "en" }: CaseStudyMeta) {
     const url = `${SITE_URL}${path}`;
     const pt = lang === "pt";
     const hub = pt ? `${SITE_URL}/pt/casos-de-estudo` : `${SITE_URL}/case-studies`;
@@ -52,14 +70,19 @@ export function caseStudyJsonLd({ path, headline, description, datePublished, da
                 "@id": `${url}#article`,
                 "headline": headline,
                 "description": description,
+                "image": image.startsWith("http") ? image : `${SITE_URL}${image}`,
                 "author": PERSON_REF,
                 "publisher": PERSON_REF,
                 "datePublished": datePublished,
                 "dateModified": dateModified,
                 "mainEntityOfPage": url,
                 ...(pt ? { "inLanguage": "pt-PT" } : {}),
-                "isPartOf": { "@id": `${hub}#collection` },
+                ...(about ? { "about": { "@type": "Organization", "name": about.name, "url": about.url } } : {}),
+                // Declared in full: Google does not resolve an @id across pages.
+                "isPartOf": { "@type": "CollectionPage", "@id": `${hub}#collection`, "name": pt ? "Casos de estudo" : "Case Studies", "url": hub },
             },
+            // The author and publisher, declared on the page for the same reason.
+            PERSON_NODE,
             {
                 "@type": "BreadcrumbList",
                 "itemListElement": [

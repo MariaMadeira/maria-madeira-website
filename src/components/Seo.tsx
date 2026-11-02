@@ -24,6 +24,8 @@ interface SeoProps {
     /** Structured data serialised into a <script type="application/ld+json"> tag. */
     jsonLd?: Record<string, unknown>;
     noIndex?: boolean;
+    /** og:type; "article" on case studies. */
+    ogType?: "website" | "article";
 }
 
 export default function Seo({
@@ -33,6 +35,7 @@ export default function Seo({
     ogImage = DEFAULT_OG_IMAGE,
     jsonLd,
     noIndex = false,
+    ogType = "website",
 }: SeoProps) {
     const canonical = `${SITE_URL}${path}`;
     const imageUrl = ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`;
@@ -48,7 +51,7 @@ export default function Seo({
             ))}
             {noIndex && <meta name="robots" content="noindex" />}
 
-            <meta property="og:type" content="website" />
+            <meta property="og:type" content={ogType} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
             <meta property="og:url" content={canonical} />

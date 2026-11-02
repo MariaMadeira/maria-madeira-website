@@ -10,8 +10,11 @@ import COPY from "../i18n/caseStudyEmail";
 
 // Git-derived (git log src/pages/CaseStudyEmail.tsx). Bump PUBLISHED never;
 // bump MODIFIED whenever the numbers below are updated.
-const PUBLISHED = "2026-03-16";
-const MODIFIED = "2026-10-16";
+/* Full ISO 8601 with time zone. Published: the commit that put each
+   language version live (git log); the Portuguese pages went live with the
+   /pt routes. Modified: the commit that last changed the page's details. */
+const PUBLISHED = { en: "2026-03-16T16:33:25+00:00", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-10-16T15:42:26+01:00", pt: "2026-10-19T18:35:44+01:00" };
 
 /* Tone of each rate tile, in the copy's order. */
 const RATE_TONES = ["positive", "positive", "negative"] as const;
@@ -26,12 +29,14 @@ export default function CaseStudyEmail() {
             description={c.description}
             path={c.path}
             ogImage="/og/og-case-study-email.png"
+            ogType="article"
             jsonLd={caseStudyJsonLd({
                 path: c.path,
                 headline: c.h1,
                 description: c.subtitle,
-                datePublished: PUBLISHED,
-                dateModified: MODIFIED,
+                datePublished: PUBLISHED[lang],
+                dateModified: MODIFIED[lang],
+                image: "/og/og-case-study-email.png",
                 // Short by design: breadcrumbs render in search results, where the
                 // full headline would truncate.
                 breadcrumb: c.breadcrumb,

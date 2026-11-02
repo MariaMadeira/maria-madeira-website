@@ -8,8 +8,11 @@ import { decimal } from "../lib/format";
 import COPY from "../i18n/caseStudyDePapier";
 
 // Bump MODIFIED whenever the case study's details are updated.
-const PUBLISHED = "2026-10-30";
-const MODIFIED = "2026-11-02";
+/* Full ISO 8601 with time zone. Published: the commit that put each
+   language version live (git log); the Portuguese pages went live with the
+   /pt routes. Modified: the commit that last changed the page's details. */
+const PUBLISHED = { en: "2026-10-30T16:18:13+00:00", pt: "2026-10-30T16:18:13+00:00" };
+const MODIFIED = { en: "2026-11-02T09:28:20+00:00", pt: "2026-11-02T09:28:20+00:00" };
 
 /* Mockups shared by both pages; the language-specific ones live in the copy. */
 const IMG = "/projects/depapier/";
@@ -56,12 +59,14 @@ export default function CaseStudyDePapier() {
             description={c.description}
             path={c.path}
             ogImage={c.ogImage}
+            ogType="article"
             jsonLd={caseStudyJsonLd({
                 path: c.path,
                 headline: c.h1,
                 description: c.schemaDescription,
-                datePublished: PUBLISHED,
-                dateModified: MODIFIED,
+                datePublished: PUBLISHED[lang],
+                dateModified: MODIFIED[lang],
+                image: c.ogImage,
                 breadcrumb: c.breadcrumb,
                 lang,
             })}

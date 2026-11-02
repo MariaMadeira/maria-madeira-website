@@ -11,8 +11,11 @@ import type { Lang } from "../lib/i18n";
 
 // Git-derived (git log src/pages/CaseStudySEO.tsx). Bump MODIFIED whenever the
 // case study's details are updated.
-const PUBLISHED = "2026-03-16";
-const MODIFIED = "2026-10-16";
+/* Full ISO 8601 with time zone. Published: the commit that put each
+   language version live (git log); the Portuguese pages went live with the
+   /pt routes. Modified: the commit that last changed the page's details. */
+const PUBLISHED = { en: "2026-03-16T16:33:25+00:00", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-10-16T13:32:35+01:00", pt: "2026-10-19T18:35:44+01:00" };
 
 /* Legend colours, in the order of the outcomes bar. */
 const OUTCOME_COLOURS = ["var(--positive)", "var(--text-secondary)", "var(--negative)"];
@@ -109,12 +112,15 @@ export default function CaseStudySEO() {
             description={c.description}
             path={c.path}
             ogImage="/og/og-case-study-seo.png"
+            ogType="article"
             jsonLd={caseStudyJsonLd({
                 path: c.path,
                 headline: c.h1,
                 description: c.intro,
-                datePublished: PUBLISHED,
-                dateModified: MODIFIED,
+                datePublished: PUBLISHED[lang],
+                dateModified: MODIFIED[lang],
+                image: "/og/og-case-study-seo.png",
+                about: { name: "The Black Farmer", url: "https://theblackfarmer.com" },
                 // Short by design: breadcrumbs render in search results, where the
                 // full headline would truncate.
                 breadcrumb: c.breadcrumb,
