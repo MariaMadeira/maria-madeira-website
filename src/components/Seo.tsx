@@ -28,6 +28,9 @@ interface SeoProps {
     ogType?: "website" | "article";
     /** og:image:alt and twitter:image:alt; defaults to the title. */
     ogImageAlt?: string;
+    /** Pixel size of ogImage; the defaults are the 2400x1260 cards in /og/. */
+    ogImageWidth?: number;
+    ogImageHeight?: number;
 }
 
 /* Lets Google show large image previews and full-length snippets, AI
@@ -43,6 +46,8 @@ export default function Seo({
     noIndex = false,
     ogType = "website",
     ogImageAlt,
+    ogImageWidth = 2400,
+    ogImageHeight = 1260,
 }: SeoProps) {
     const canonical = `${SITE_URL}${path}`;
     const pt = langOf(path) === "pt";
@@ -69,8 +74,8 @@ export default function Seo({
             <meta property="og:description" content={description} />
             <meta property="og:url" content={canonical} />
             <meta property="og:image" content={imageUrl} />
-            <meta property="og:image:width" content="2400" />
-            <meta property="og:image:height" content="1260" />
+            <meta property="og:image:width" content={String(ogImageWidth)} />
+            <meta property="og:image:height" content={String(ogImageHeight)} />
             <meta property="og:image:alt" content={imageAlt} />
 
             <meta name="twitter:card" content="summary_large_image" />

@@ -5,7 +5,7 @@ const en = {
     path: "/about",
     title: "About Maria Madeira | Growth Consultant in Lisbon",
     description: "Maria Madeira is an independent growth consultant in Lisbon: SEO, AI search, Klaviyo email and paid ads for e-commerce brands in the UK and Portugal.",
-    imgAlt: "Maria Madeira standing by a window holding a notebook",
+    imgAlt: "Maria Madeira, growth consultant in Lisbon",
     eyebrow: "About",
     h1Lead: "Hi, I'm ",
     paragraphs: [
