@@ -4,9 +4,9 @@ import type en from "../en/caseStudyDePapier";
 const pt: typeof en = {
     path: "/pt/caso-depapier-translations",
     title: "Caso de estudo dePapier Translations: site e identidade | Maria Madeira",
-    description: "Como dei a uma tradutora certificada de Viseu domínio próprio, identidade coerente e um site WordPress bilingue em cerca de sete semanas.",
+    description: "Como dei a uma tradutora certificada em Portugal domínio próprio, identidade coerente e um site WordPress bilingue em cerca de sete semanas.",
     h1: "dePapier Translations: uma casa credível para uma tradutora certificada",
-    schemaDescription: "Como dei a uma tradutora certificada de Viseu domínio próprio, identidade coerente e um site WordPress bilingue em cerca de sete semanas.",
+    schemaDescription: "Como dei a uma tradutora certificada em Portugal domínio próprio, identidade coerente e um site WordPress bilingue em cerca de sete semanas.",
     breadcrumb: "dePapier Translations",
     back: "Voltar aos casos de estudo",
     eyebrow: "Caso de estudo · Website e identidade digital",
