@@ -25,3 +25,9 @@ dist-ssr
 
 # Claude Code local overrides (.claude/settings.json stays tracked)
 .claude/settings.local.json
+
+# Local source images, not shipped. Originals for the optimiser go in
+# scripts/assets/originals/projects/<project>/; the webp output in public/.
+public/projects/DePapier images/
+public/projects/depapier/depapier-en-desktop-mobile-hero.png
+public/KPartner-BadgeTier-Charcoal-Bronze.*

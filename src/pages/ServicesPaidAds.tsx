@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Target, Search, Users, Monitor, FileText, ArrowRight, BarChart, Quote } from "lucide-react";
 import Seo from "../components/Seo";
-import { SITE_URL, PERSON_ID } from "../lib/schema";
+import { SITE_URL, AREA_SERVED, ORG_REF, withEntities } from "../lib/schema";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/paidAds";
 
@@ -12,84 +12,81 @@ const PAGE_URL = `${SITE_URL}/services/paid-ads`;
 const WHAT_ICONS = [<Target size={26} />, <Search size={26} />, <Users size={26} />, <Monitor size={26} />, <FileText size={26} />];
 const FAQS = COPY.en.faqs;
 
-const PAID_ADS_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "Service",
-            "@id": `${PAGE_URL}#service`,
-            "name": "Paid advertising management for e-commerce",
-            "serviceType": "PPC and paid social management",
-            "url": PAGE_URL,
-            "provider": { "@id": PERSON_ID },
-            "areaServed": "GB",
-            "offers": [
-                { "@type": "Offer", "name": "Google Ads or Meta Ads management", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 500, "priceCurrency": "GBP", "unitText": "per month, per platform" } },
-            ],
-        },
-        {
-            "@type": "FAQPage",
-            "@id": `${PAGE_URL}#faq`,
-            "mainEntity": FAQS.map((f) => ({
-                "@type": "Question",
-                "name": f.q,
-                "acceptedAnswer": { "@type": "Answer", "text": f.a },
-            })),
-        },
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
-                { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` },
-                { "@type": "ListItem", "position": 3, "name": "Paid Ads", "item": PAGE_URL },
-            ],
-        },
-    ],
-};
+const PAID_ADS_JSON_LD = withEntities([
+    {
+        "@type": "Service",
+        "@id": `${PAGE_URL}#service`,
+        "inLanguage": "en-GB",
+        "name": "Paid advertising management for e-commerce",
+        "serviceType": "PPC and paid social management",
+        "url": PAGE_URL,
+        "provider": ORG_REF,
+        "areaServed": AREA_SERVED,
+        "offers": [
+            { "@type": "Offer", "name": "Google Ads or Meta Ads management", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 500, "priceCurrency": "GBP", "unitText": "per month, per platform" } },
+        ],
+    },
+    {
+        "@type": "FAQPage",
+        "@id": `${PAGE_URL}#faq`,
+        "inLanguage": "en-GB",
+        "mainEntity": FAQS.map((f) => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": { "@type": "Answer", "text": f.a },
+        })),
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` },
+            { "@type": "ListItem", "position": 3, "name": "Paid Ads", "item": PAGE_URL },
+        ],
+    },
+]);
 
 /* The Portuguese page: no offers, the page's language and a Portuguese trail. */
 const PT_URL = `${SITE_URL}/pt/servicos/anuncios`;
-const PT_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "WebPage",
-            "@id": `${PT_URL}#webpage`,
-            "url": PT_URL,
-            "name": "Google Ads e Meta Ads para e-commerce",
-            "inLanguage": "pt-PT",
-            "isPartOf": { "@id": `${SITE_URL}/#website` },
-            "mainEntity": { "@id": `${PT_URL}#service` },
-        },
-        {
-            "@type": "Service",
-            "@id": `${PT_URL}#service`,
-            "name": "Gestão de anúncios pagos para e-commerce",
-            "serviceType": "Gestão de Google Ads, Meta Ads e Microsoft Ads",
-            "url": PT_URL,
-            "provider": { "@id": PERSON_ID },
-            "areaServed": ["PT", "GB"],
-        },
-        {
-            "@type": "FAQPage",
-            "@id": `${PT_URL}#faq`,
-            "inLanguage": "pt-PT",
-            "mainEntity": COPY.pt.faqs.map((f) => ({
-                "@type": "Question",
-                "name": f.q,
-                "acceptedAnswer": { "@type": "Answer", "text": f.a },
-            })),
-        },
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
-                { "@type": "ListItem", "position": 2, "name": "Serviços", "item": `${SITE_URL}/pt/servicos` },
-                { "@type": "ListItem", "position": 3, "name": "Anúncios pagos", "item": PT_URL },
-            ],
-        },
-    ],
-};
+const PT_JSON_LD = withEntities([
+    {
+        "@type": "WebPage",
+        "@id": `${PT_URL}#webpage`,
+        "url": PT_URL,
+        "name": "Google Ads e Meta Ads para e-commerce",
+        "inLanguage": "pt-PT",
+        "isPartOf": { "@id": `${SITE_URL}/#website` },
+        "mainEntity": { "@id": `${PT_URL}#service` },
+    },
+    {
+        "@type": "Service",
+        "@id": `${PT_URL}#service`,
+        "inLanguage": "pt-PT",
+        "name": "Gestão de anúncios pagos para e-commerce",
+        "serviceType": "Gestão de Google Ads, Meta Ads e Microsoft Ads",
+        "url": PT_URL,
+        "provider": ORG_REF,
+        "areaServed": AREA_SERVED,
+    },
+    {
+        "@type": "FAQPage",
+        "@id": `${PT_URL}#faq`,
+        "inLanguage": "pt-PT",
+        "mainEntity": COPY.pt.faqs.map((f) => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": { "@type": "Answer", "text": f.a },
+        })),
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
+            { "@type": "ListItem", "position": 2, "name": "Serviços", "item": `${SITE_URL}/pt/servicos` },
+            { "@type": "ListItem", "position": 3, "name": "Anúncios pagos", "item": PT_URL },
+        ],
+    },
+]);
 
 const LINK_STYLE = { display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600, fontSize: "0.95rem" } as const;
 

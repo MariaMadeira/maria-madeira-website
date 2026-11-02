@@ -14,6 +14,8 @@ const pt: typeof en = {
     publishedHuman: "9 de setembro de 2026",
     published: "Publicado a ",
     updated: "Atualizado a ",
+    updatedHuman: "2 de novembro de 2026",
+    changeNote: "Atualizado a 2 de novembro de 2026: acrescentei os mínimos em euros e em libras da central de ajuda da OpenAI, corrigi a comparação com a Meta e juntei as fontes.",
     readTime: " 7 min de leitura",
     intro: [
         "O ChatGPT Ads entrou no ar em 31 mercados europeus a 24 de agosto de 2026: todos os Estados-membros da UE, mais a Islândia, o Liechtenstein, a Noruega e a Suíça, que se juntam ao Reino Unido, aberto em junho. O acesso em self-service chegou a 31 de agosto: qualquer empresa registada nestes mercados pode agora abrir uma conta de anunciante em ads.openai.com.",
@@ -25,7 +27,7 @@ const pt: typeof en = {
         "Ativo em 31 mercados europeus desde 24 de agosto de 2026; em self-service desde 31 de agosto, em ads.openai.com",
         "Os anúncios só aparecem nos planos Free e Go; os planos Plus, Pro e Enterprise continuam sem anúncios",
         "Na Europa, a segmentação é só por país (sem cidades nem códigos postais)",
-        "Orçamento mínimo: 25 dólares americanos por dia no processo inicial",
+        "Orçamento mínimo: 25 dólares americanos por dia, ou 15 euros ou 15 libras em contas em EUR e GBP",
         "Formato do anúncio: imagem quadrada, título de 50 caracteres, texto secundário de 52 caracteres",
         "O país, a moeda e o nome da conta não podem ser alterados depois de definidos",
     ],
@@ -44,7 +46,7 @@ const pt: typeof en = {
     walk: [
         { lead: "O anúncio é construído a partir do seu site.", body: " O sistema identificou bem os meus serviços, o que sugere que os dados estruturados e um texto claro passam diretamente para o rascunho. Também escolheu uma fotografia de banco de imagens de uma mulher que não sou eu, e escreveu o texto à volta da localização registada da minha empresa, e não do meu mercado-alvo. A lição para qualquer marca: o anúncio gerado automaticamente é um ponto de partida que reflete tudo o que o seu site comunica, ambiguidades incluídas. Reveja cada elemento antes de chegar perto de um cliente." },
         { lead: "O plano recomendado é um modelo, não uma recomendação.", body: " O meu \"plano recomendado\" veio com a segmentação nos Estados Unidos e um orçamento de 100 dólares americanos por dia. Uma conta portuguesa, uma empresa europeia, e a predefinição aponta para os Estados Unidos com um gasto de 3000 dólares por mês. Uma pequena empresa distraída podia aprovar esse ecrã e gastar o orçamento de um mês no país errado. Altere tudo." },
-        { lead: "Os números reais.", body: " O orçamento diário mínimo no processo inicial é de 25 dólares americanos por dia, e a plataforma não deixa baixar (tentei 10 e recusou). São cerca de 750 dólares por mês só para entrar. Não é o teste de poucos euros por dia que a Meta permite, mas chega para um teste controlado de 30 dias. A moeda adapta-se quando cria formalmente a conta: a minha propôs EUR, com uma nota a dizer que os mínimos se ajustam à moeda da conta." },
+        { lead: "Os números reais.", body: " O orçamento diário mínimo no processo inicial é de 25 dólares americanos por dia, e a plataforma não deixa baixar (tentei 10 e recusou). São cerca de 750 dólares por mês só para entrar. Não é o teste de poucos euros por dia que a Meta permite, mas chega para um teste controlado de 30 dias. A moeda adapta-se quando cria formalmente a conta: a minha propôs EUR, com uma nota a dizer que os mínimos se ajustam à moeda da conta. A central de ajuda da OpenAI indica agora um mínimo de 15 euros por dia para contas em EUR e de 15 libras para contas em GBP, por isso uma conta europeia ou britânica começa em cerca de 450 euros ou libras por mês." },
         { lead: "Decisões que não pode desfazer.", body: " O nome, o país e a moeda da conta ficam bloqueados para sempre quando a conta é criada, e o ecrã di-lo com todas as letras. O tipo de orçamento (diário ou total da campanha) também fica bloqueado quando a campanha arranca. Escolha com cuidado e use o nome exato com que a sua empresa está registada." },
         { lead: "O formato do anúncio.", body: " Uma imagem (quadrada, 800 por 800 píxeis), o nome e o logótipo do anunciante, um título com um máximo de 50 caracteres e um texto secundário com um máximo de 52. Esse limite é duríssimo: um anúncio do Google Ads dá-lhe três títulos de 30 caracteres, 90 no total, e o texto principal da Meta vai até 125 antes de ser cortado. O ChatGPT dá-lhe 52 para a mensagem inteira. Não há espaço para contar uma história, só para uma promessa concreta. Para uma marca de alimentação, \"Award-winning Cumberland sausages, delivered\" (salsichas Cumberland premiadas, entregues em casa) vale mais do que qualquer abordagem de estilo de vida. O URL de destino fica preso ao seu domínio verificado; pode acrescentar um caminho ou parâmetros, o que conta para o acompanhamento com UTM e para páginas de destino próprias." },
     ],
@@ -69,7 +71,7 @@ const pt: typeof en = {
     charsCaption: "Máximo de caracteres por campo de texto, à escala do mais longo.",
     payment: { lead: "Pagamento.", body: " Só paga os cliques elegíveis depois de o anúncio ser aprovado e estar a ser exibido. Ao adicionar um cartão, é feita uma cativação temporária, normalmente libertada em sete dias, e pode guardar toda a configuração sem lançar nada." },
     termsTitle: "O que dizem os termos (e porque é que as marcas de alimentação e bebidas os devem ler)",
-    terms1: "Há três pontos nos Advertising Tools Terms da OpenAI que merecem atenção.",
+    terms1: "Há três pontos nos Ad Tools Terms da OpenAI que merecem atenção.",
     terms2: "As ferramentas criativas com IA podem gerar, traduzir e adaptar o seu anúncio, incluindo adaptá-lo em tempo real ao contexto da conversa do utilizador. Conforme as suas definições, o criativo gerado pode ser aplicado automaticamente à campanha. A responsabilidade por cada afirmação continua a ser sua, e a OpenAI diz expressamente que não garante que o criativo gerado seja correto, legal ou conforme. Em alimentação e bebidas, onde as alegações de saúde, a informação sobre alergénios e as alegações de origem são reguladas, esta combinação exige supervisão humana das definições criativas desde o primeiro dia.",
     terms3: {
         lead: "Os públicos personalizados só aceitam dados próprios. Nada de corretores de dados nem de listas compradas. As marcas que construíram públicos de email genuínos, com o ",
@@ -81,7 +83,7 @@ const pt: typeof en = {
     caveats: [
         {
             title: "O orçamento mínimo é uma barreira a sério.",
-            body: "O Google Ads não tem mínimo: pode anunciar com 2 euros por dia. A Meta também não. O ChatGPT Ads pede 25 dólares por dia, cerca de 750 por mês, só para entrar. Isso exclui o teste exploratório barato a que a maioria das pequenas marcas está habituada. O lado bom, se houver algum: um mínimo tão alto obriga a desenhar o teste antes de gastar. Ou se compromete com um teste a sério de 30 dias, com a medição montada, ou fica de fora. Para muitas marcas de alimentação e bebidas, ficar de fora por agora é a decisão certa.",
+            body: "O Google Ads não tem mínimo: pode anunciar com 2 euros por dia. A Meta define apenas um mínimo diário baixo, que depende da moeda da conta e daquilo para que o conjunto de anúncios está otimizado. O ChatGPT Ads pede 25 dólares por dia, ou 15 euros ou libras, cerca de 750 dólares ou 450 euros por mês, só para entrar. Isso exclui o teste exploratório barato a que a maioria das pequenas marcas está habituada. O lado bom, se houver algum: um mínimo tão alto obriga a desenhar o teste antes de gastar. Ou se compromete com um teste a sério de 30 dias, com a medição montada, ou fica de fora. Para muitas marcas de alimentação e bebidas, ficar de fora por agora é a decisão certa.",
         },
         {
             title: "Uma etiqueta \"Patrocinado\" custa confiança no único sítio onde as pessoas procuram uma resposta honesta.",
@@ -93,8 +95,8 @@ const pt: typeof en = {
         head: ["Plataforma", "Orçamento diário mínimo", "Mínimo mensal"],
         rows: [
             { platform: "Google Ads", daily: "Sem mínimo", monthly: "Nenhum" },
-            { platform: "Meta Ads", daily: "Sem mínimo", monthly: "Nenhum" },
-            { platform: "ChatGPT Ads", daily: "25 dólares americanos", monthly: "Cerca de 750 dólares americanos" },
+            { platform: "Meta Ads", daily: "Mínimo baixo, definido por moeda", monthly: "Baixo, depende da moeda e da otimização" },
+            { platform: "ChatGPT Ads", daily: "25 dólares americanos, 15 euros ou 15 libras", monthly: "Cerca de 750 dólares americanos, ou cerca de 450 euros ou libras" },
         ],
         figcaption: "Custo de entrada, em comparação. A Google e a Meta deixam-no testar pelo preço de um café; o ChatGPT Ads não.",
     },
@@ -108,7 +110,7 @@ const pt: typeof en = {
         },
         {
             title: "Depois, o pago, e só com um teste desenhado.",
-            body: "Se tem a base orgânica e 750 dólares por mês para comprometer durante 30 dias, a vantagem de chegar cedo é real: a frequência de anúncios relatada é baixa, há pouca concorrência e, no piloto nos Estados Unidos, o retalho e a mercearia ficaram com a maior fatia do inventário inicial, porque as perguntas de compras dominam as pesquisas comerciais no ChatGPT.",
+            body: "Se tem a base orgânica e cerca de 450 euros (750 dólares) por mês para comprometer durante 30 dias, a vantagem de chegar cedo é real: a frequência de anúncios relatada é baixa, há pouca concorrência e, no piloto nos Estados Unidos, o retalho e a mercearia ficaram com a maior fatia do inventário inicial, porque as perguntas de compras dominam as pesquisas comerciais no ChatGPT.",
         },
         {
             title: "Nunca o pago em vez do orgânico.",
@@ -124,7 +126,15 @@ const pt: typeof en = {
         c: ". Mostro-lhe o que o ChatGPT diz hoje sobre a sua categoria, com ou sem a sua marca.",
     },
     related: ["Gestão de Google Ads e Meta Ads", "Cinco libras de retorno por cada libra investida", "O que é o AEO?", "Impressões na pesquisa com IA 2,2x maiores"],
-    signOff: "Maria Madeira é consultora de crescimento independente e ajuda marcas de alimentação e bebidas do Reino Unido e da Europa com SEO, AEO, email marketing e aquisição paga.",
+    signOff: "Maria Madeira é consultora de crescimento independente, baseada em Lisboa, e ajuda marcas de e-commerce em Portugal e no Reino Unido com SEO, pesquisa com IA, email marketing no Klaviyo e anúncios pagos.",
+    sourcesTitle: "Fontes",
+    sources: [
+        { label: "OpenAI, \"ChatGPT Ads expands across Europe\" (18 de agosto de 2026)", href: "https://openai.com/index/chatgpt-ads-expands-across-europe/" },
+        { label: "Central de ajuda da OpenAI, \"Create campaigns for ChatGPT Ads\": orçamento diário mínimo por moeda de faturação", href: "https://help.openai.com/en/articles/20001210-create-campaigns-for-chatgpt" },
+        { label: "OpenAI, Ad Tools Terms", href: "https://openai.com/policies/ad-tools-terms/" },
+        { label: "Meta for Developers, Marketing API: referência do orçamento diário mínimo", href: "https://developers.facebook.com/docs/marketing-api/reference/minimum-budget" },
+    ],
+    sourcesNote: "Fontes verificadas a 2 de novembro de 2026. O percurso pela conta é meu, feito antes da primeira publicação deste artigo, a 9 de setembro de 2026.",
 };
 
 export default pt;

@@ -7,9 +7,9 @@ import type en from "../en/caseStudySeo";
  */
 const pt: typeof en = {
     path: "/pt/caso-seo",
-    title: "SEO e AEO: da página 2 para a página 1 | Maria Madeira",
+    title: "Caso de estudo SEO Shopify: +78% de cliques | Maria Madeira",
     description: "SEO e AEO para a The Black Farmer depois da mudança para Shopify: cliques orgânicos com mais 78% e posição média de 15,2 para 9,4, de maio a agosto de 2026.",
-    h1: "Da página 2 para a página 1 do Google, e duas vezes mais visível nas respostas de IA",
+    h1: "Cliques orgânicos com mais 78% e posição média no Google de 15,2 para 9,4 em quatro meses",
     intro: "SEO e AEO para a The Black Farmer depois da mudança para Shopify: cliques orgânicos com mais 78% e posição média de 15,2 para 9,4, em períodos comparáveis de 28 dias, de maio a agosto de 2026.",
     breadcrumb: "SEO e AEO",
     back: "Voltar aos casos de estudo",
@@ -23,11 +23,11 @@ const pt: typeof en = {
         { value: "14+", label: "afirmações impossíveis de verificar retiradas: \"sem glúten\", \"criado ao ar livre\" e \"alimentado a pasto\", que o fornecedor não conseguia confirmar" },
     ],
     searchEyebrow: "Resultados na pesquisa",
-    searchTitle: "Na página 1 em menos de quatro meses",
+    searchTitle: "Mais cliques e melhores posições em menos de quatro meses",
     searchSubline: "Google Search Console, períodos comparáveis de 28 dias, de maio a agosto de 2026",
     searchTop: [
         { before: "4,5K", after: "8,0K", badge: "+78%", label: "cliques orgânicos" },
-        { before: "15,2", after: "9,4", badge: "da página 2 para a 1", label: "posição média no Google" },
+        { before: "15,2", after: "9,4", badge: "5,8 posições acima", label: "posição média no Google, em todas as pesquisas" },
         { before: "479K", after: "997K", badge: "+108%", label: "impressões na pesquisa" },
     ],
     searchMore: [
@@ -65,7 +65,7 @@ const pt: typeof en = {
     quoteCaption: "Uma pesquisa real, em forma de conversa, registada no Search Console. A página Gluten-Free Sausages apareceu na resposta e foi clicada: o primeiro clique documentado do site vindo de uma pergunta ao estilo da IA.",
     sources: "Fontes: Google Search Console (relatório Generative AI features, disponível desde 18 de maio de 2026), Semrush AI Visibility, agosto de 2026.",
     serviceLink: "SEO e AEO",
-    nextLink: "Cinco libras de retorno por cada libra investida",
+    nextLink: "Google Ads: cinco libras de retorno por cada libra investida",
     ctaText: "Tem curiosidade em saber o que o ChatGPT diz sobre os seus produtos?",
     ctaButton: "Pedir a verificação gratuita",
 };

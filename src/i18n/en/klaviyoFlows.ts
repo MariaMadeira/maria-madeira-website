@@ -3,7 +3,7 @@ const en = {
     path: "/blog/klaviyo-flows-vs-campaigns",
     title: "Why Klaviyo Flows Earn More Than Campaigns | Maria Madeira",
     headline: "Why your automated emails earn more than your campaigns",
-    description: "Automated flows are a small share of sends and a large share of email revenue. What the research says, four years of data from a real UK brand, and the flows to build first.",
+    description: "Klaviyo flows vs campaigns: why automated emails earn more per send, data from a real UK brand (September 2021 to July 2025), and which flows to build first.",
     articleSection: "Email Marketing",
     breadcrumb: ["Home", "Blog", "Why Klaviyo Flows Earn More Than Campaigns"],
     allArticles: "All articles",
@@ -16,7 +16,7 @@ const en = {
     summary: {
         a: "Automated emails, called flows in Klaviyo, are a small share of what a brand sends and a large share of what it earns. Across 150,000 brands, ",
         link: "Omnisend",
-        b: " found automations were 2% of email sends and 30% of email revenue. At a UK food brand I worked with for four years, flows earned about 16 times more per recipient than campaigns. Here is why, and which flows to build first.",
+        b: " found automations were 2% of email sends and 30% of email revenue. At a UK food brand I worked with for five years, flows earned about 16 times more per recipient than campaigns. Here is why, and which flows to build first.",
     },
 
     /* Visual 1 */
@@ -90,7 +90,7 @@ const en = {
 
     realTitle: "What this looked like at a real brand",
     real1: "When I started working with a UK food brand in September 2021, it had a customer list, three automated flows and occasional campaign sends. Most email revenue came from one-off promotions.",
-    real2: "Over four years, I built the programme out to 14 live flows, alongside a regular campaign calendar.",
+    real2: "From September 2021 to July 2025, I built the programme out to 14 live flows, alongside a regular campaign calendar.",
 
     /* Visual 4: the brand's flows, before and after. 14 live flows in 2025,
        matching "3 → 14" on /case-study-email. */
@@ -102,16 +102,16 @@ const en = {
     v4More: "+ 4 more",
     v4Desc: (flows2021: string[], flows2025: string[]) => `September 2021: 3 flows (${flows2021.join(", ")}). 2025: 14 flows, including ${flows2025.join(", ")}, and 4 more.`,
 
-    real3: "Flow revenue grew year after year, from £7.1K in the last four months of 2021 to £48.3K in the twelve months to July 2025.",
+    real3: "Flow revenue grew every calendar year: £18.9K in 2022, £23.4K in 2023 and £48.2K in 2024.",
 
     /* Visual 5: numbers come from src/data/emailRevenue.ts. */
-    v5Title: "Email revenue by period",
+    v5Title: "Email revenue by calendar year",
     v5Flows: "Flows",
     v5Campaigns: "Campaigns",
-    v5SvgTitle: "Email revenue by period, flows and campaigns",
-    v5DescIntro: "Stacked bar chart of Klaviyo attributed email revenue by period, in thousands of pounds, split between automated flows and campaigns. ",
+    v5SvgTitle: "Email revenue by calendar year, flows and campaigns",
+    v5DescIntro: "Stacked bar chart of Klaviyo attributed email revenue by calendar year, 2022 to 2024, in thousands of pounds, split between automated flows and campaigns. ",
     v5DescRow: (period: string, flows: string, campaigns: string, total: string) => `${period}: flows £${flows}K, campaigns £${campaigns}K, total ${total}`,
-    v5Caption: "Klaviyo attributed revenue. 2021 covers September to December, when the programme started. Source: Klaviyo Business Overview exports.",
+    v5Caption: "Klaviyo attributed revenue, calendar years 2022 to 2024. The programme started in September 2021, so 2021 is not a full year and is not shown. Source: Klaviyo Business Overview exports.",
 
     /* Visual 6 */
     v6Title: "Revenue per recipient, 2024",
@@ -127,7 +127,7 @@ const en = {
 
     /* Visual 7: an invented brand's welcome email */
     v7Big: "£23.6K",
-    v7Line: "from one welcome series, in twelve months",
+    v7Line: "from one welcome series, 12 months to July 2025",
     v7Title: "Illustrative welcome email from an invented brand, Hillside Pantry",
     v7Desc: "A phone showing a welcome email. Subject line: Welcome to Hillside Pantry. A neutral product image, the heading Good food, delivered, two short paragraphs and a Shop the range button.",
     v7Sender: "Hillside Pantry",
@@ -139,7 +139,7 @@ const en = {
     v7Caption: "Illustrative example, not the brand's actual email.",
 
     honestTitle: "The honest part",
-    honest: "Not every number went up. As more flows went live, flow click rate fell from 8.5% in 2024 to 7.3% in the twelve months to July 2025, while the number of people receiving flows rose 142%. More flows reach more people, but each one needs its own testing, or the average slips.",
+    honest: "Not every number went up. As more flows went live, flow click rate fell from 8.5% in 2024 to 7.3% in the twelve months to July 2025, while far more people were receiving flows. More flows reach more people, but each one needs its own testing, or the average slips.",
 
     /* Visual 8: the first 30 days */
     v8Title: "Your first 30 days of flows",
@@ -163,7 +163,7 @@ const en = {
 
     sourcesTitle: "Sources",
     sources: ["Omnisend, 2026 Ecommerce Marketing Report", "Klaviyo, email marketing benchmarks", "Baymard Institute, cart abandonment rate"],
-    sourceExports: "Klaviyo Business Overview exports for the brand in this article (2021 to 2025)",
+    sourceExports: "Klaviyo Business Overview exports for the brand in this article (September 2021 to July 2025)",
 
     faqTitle: "Frequently asked questions",
     /* FAQ: drives the visible section and the FAQPage schema from one source,
@@ -188,6 +188,8 @@ const en = {
     ],
     related: ["Email marketing and Klaviyo consulting", "AI product descriptions, done safely"],
     author: " is an independent growth consultant for brands that sell online. She ran this brand's Klaviyo programme from 2021 to 2025, is a Klaviyo Partner and holds the Klaviyo Practitioner certificate.",
+    /** The article-specific line in the shared author box. */
+    authorNote: "She ran this brand's Klaviyo programme from 2021 to 2025.",
 };
 
 export default en;

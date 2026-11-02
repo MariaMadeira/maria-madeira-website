@@ -6,20 +6,20 @@ import type en from "../en/emailMarketing";
  */
 const pt: typeof en = {
     path: "/pt/servicos/email-marketing",
-    title: "Consultora de email marketing e Klaviyo | Maria Madeira",
-    description: "Consultora de email marketing e Klaviyo: fluxos automáticos, segmentação e campanhas que fazem crescer a receita atribuída ao email de marcas que vendem online.",
-    eyebrow: "Email marketing e consultoria Klaviyo",
+    title: "Especialista Klaviyo em Portugal | Maria Madeira",
+    description: "Especialista Klaviyo em Portugal e Klaviyo Partner oficial: fluxos automáticos, segmentação e campanhas que fazem crescer a receita de email de lojas online.",
+    eyebrow: "Klaviyo Partner · Email marketing",
     h1Lead: "Faça do email um ",
     h1Accent: "canal de receita que cresce de ano para ano",
     h1Tail: ", e não uma newsletter por obrigação",
-    intro: "Fluxos automáticos que vendem sozinhos, segmentação que envia a mensagem certa ao cliente certo e o rigor de entregabilidade que faz tudo chegar à caixa de entrada.",
+    intro: "Sou especialista em Klaviyo e Klaviyo Partner oficial, baseada em Lisboa, e trabalho com marcas de e-commerce em Portugal e no Reino Unido. Fluxos automáticos que vendem sozinhos, segmentação que envia a mensagem certa ao cliente certo e o rigor de entregabilidade que faz tudo chegar à caixa de entrada.",
     trustPre: "Com ",
     trustLink: "certificação Klaviyo Practitioner",
     trustPost: ".",
     cta: "Marcar uma conversa gratuita",
     heroStats: [
-        { value: "£134K", label: "Receita atribuída ao email", detail: "12 meses até julho de 2025, +88,9% face ao ano anterior" },
-        { value: "50,4%", label: "Taxa de abertura das campanhas", detail: "Percentil 78 face à referência do setor" },
+        { value: "£134K", label: "Receita atribuída ao email", detail: "12 meses até julho de 2025, +88,9% face aos 12 meses anteriores (até julho de 2024)" },
+        { value: "50,4%", label: "Taxa de abertura média das campanhas", detail: "12 meses até julho de 2025, percentil 78 da referência do setor" },
         { value: "Mais de um terço", label: "Da receita total da loja", detail: "Vinda do email, nos 12 meses até julho de 2025" },
     ],
     definitionTitle: "Como é um bom email marketing",
@@ -27,8 +27,8 @@ const pt: typeof en = {
     curveTitle: "A curva que se acumula",
     curveSub: "Números reais de um só cliente, do início até hoje.",
     curve: [
-        { title: "Taxa de abertura das campanhas", from: { label: "2021 a 2022", value: "28%" }, to: { label: "2025", value: "50,4%" }, note: "Percentil 78 face à referência do setor" },
-        { title: "Receita atribuída ao email", from: { label: "set. a dez. 2021", value: "£33K" }, to: { label: "12 meses até jul. 2025", value: "£134K" }, note: "Quatro vezes mais, de quatro meses de 2021 a doze meses até 2025" },
+        { title: "Taxa de abertura média das campanhas", from: { label: "2022", value: "28,1%" }, to: { label: "12 meses até jul. 2025", value: "50,4%" }, note: "Percentil 78 face à referência do setor do Klaviyo, nos 12 meses até julho de 2025" },
+        { title: "Receita atribuída ao email", from: { label: "12 meses anteriores (até jul. 2024)", value: "c. £71K" }, to: { label: "12 meses até jul. 2025", value: "£134K" }, note: "+88,9% face aos 12 meses anteriores (até julho de 2024)" },
     ],
     whatTitle: "O que faço",
     whatIDo: [
@@ -61,12 +61,12 @@ const pt: typeof en = {
     proofTitle: "Resultados",
     proofEyebrow: "Caso de estudo",
     proofCardTitle: "Crescimento da receita de email de ciclo de vida",
-    proofCardText: "Fluxos £48,3K (+82,5% face ao ano anterior), campanhas £86,1K (+92,6% face ao ano anterior) e só a série de boas-vindas £23,6K. Um sistema completo de ciclo de vida no Klaviyo, reconstruído de raiz.",
+    proofCardText: "Nos 12 meses até julho de 2025: campanhas £86,1K, fluxos £48,3K e só a série de boas-vindas £23,6K. Um sistema completo de ciclo de vida no Klaviyo, reconstruído de raiz.",
     proofCardLink: "Ler o caso de estudo",
     proofParaPre: "A explicação completa de como esse sistema foi construído, fluxo a fluxo, está no ",
     proofParaLink: "caso de estudo de email marketing",
     proofParaPost: ".",
-    blogLink: "Fluxos vs. campanhas no Klaviyo: quatro anos de dados",
+    blogLink: "Fluxos vs. campanhas no Klaviyo: dados de setembro de 2021 a julho de 2025",
     pricingTitle: "Orçamento",
     pricingText: "Proposta por escrito, com âmbito e preço fechados, depois de uma primeira conversa.",
     pricingLink: "Ver todas as formas de trabalhar comigo",
@@ -90,7 +90,7 @@ const pt: typeof en = {
         },
         {
             q: "Quanto tempo demora o email marketing a dar resultados?",
-            a: "Os fluxos começam a gerar receita assim que ficam ativos, muitas vezes nas primeiras semanas, porque são disparados por comportamentos que já estão a acontecer. Os ganhos compostos (taxas de abertura mais altas, segmentação mais fina e uma lista envolvida maior) constroem-se ao longo de meses. Para contexto, um programa que montei passou de £33K de receita atribuída ao email nos primeiros quatro meses (2021) para £134K nos 12 meses até julho de 2025.",
+            a: "Os fluxos começam a gerar receita assim que ficam ativos, muitas vezes nas primeiras semanas, porque são disparados por comportamentos que já estão a acontecer. Os ganhos compostos (taxas de abertura mais altas, segmentação mais fina e uma lista envolvida maior) constroem-se ao longo de meses. Para contexto, um programa que montei passou de £66,3K de receita atribuída ao email em 2022, o primeiro ano completo, para £113K em 2024.",
         },
         {
             q: "Quanto custa uma consultora de Klaviyo?",
@@ -107,7 +107,7 @@ const pt: typeof en = {
         },
         {
             q: "Que fluxos deve uma loja pequena montar primeiro?",
-            a: "Uma série de boas-vindas e o carrinho abandonado, seguidos da navegação abandonada e de um email pós-compra. Na marca do caso acima, só a série de boas-vindas gerou £23,6K em doze meses.",
+            a: "Uma série de boas-vindas e o carrinho abandonado, seguidos da navegação abandonada e de um email pós-compra. Na marca do caso acima, só a série de boas-vindas gerou £23,6K nos 12 meses até julho de 2025.",
         },
     ],
     ctaTitle: "Faça do email o seu canal com melhor desempenho",
@@ -116,10 +116,10 @@ const pt: typeof en = {
     ptExtras: {
         results: [
             { value: "16x", label: "mais receita por destinatário nos emails automáticos do que nas campanhas, em 2024" },
-            { value: "£23,6K", label: "gerados por um único fluxo, a série de boas-vindas da lista das caixas, em doze meses" },
+            { value: "£23,6K", label: "gerados por um único fluxo, a série de boas-vindas da lista das caixas, 12 meses até julho de 2025" },
             { value: "3 → 14", label: "fluxos automáticos em produção, de 2021 a 2025" },
         ],
-        source: "Marca de alimentação premium do Reino Unido, 2021 a 2025. Fonte: relatórios do Klaviyo.",
+        source: "Marca de alimentação premium do Reino Unido, setembro de 2021 a julho de 2025. Fonte: relatórios do Klaviyo.",
         caseLink: "Ver o caso completo",
         whoTitle: "Para quem é",
         whoText: "Marcas que vendem online, em Portugal ou no Reino Unido, com uma lista de clientes e poucos ou nenhuns fluxos montados. Normalmente, já há receita parada na conta.",

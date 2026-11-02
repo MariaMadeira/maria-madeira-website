@@ -3,7 +3,7 @@ import type en from "../en/caseStudyGoogleAds";
 /** Portuguese copy, batch 2 as approved in docs/pt-review/lote-2-3-4.md. */
 const pt: typeof en = {
     path: "/pt/caso-google-ads",
-    title: "Google Ads: ROAS de 532% em onze meses | Maria Madeira",
+    title: "Caso de estudo Google Ads: ROAS de 532% | Maria Madeira",
     description: "Caso de estudo de Google Ads: £26,5K em anúncios geraram £141K de receita atribuída em onze meses, um retorno de 532% face a um ponto de equilíbrio de 400%.",
     h1: "Cinco libras de retorno por cada libra investida, ao longo de onze meses",
     schemaDescription: "Como uma estrutura de campanhas organizada e testes de criativos transformaram £26,5K de investimento em anúncios em £141K de receita atribuída, um retorno de 532% face a um ponto de equilíbrio de 400%.",
@@ -34,7 +34,7 @@ const pt: typeof en = {
         ["Este caso mostra como uma gestão de campanhas estruturada e uma otimização contínua podem fazer dos anúncios pagos um canal de crescimento rentável e com margem para crescer."],
     ],
     serviceLink: "Gestão de Google Ads e Meta Ads",
-    nextLink: "Uma lista de email por aproveitar tornou-se o maior canal de receita da marca",
+    nextLink: "Uma lista de email pouco aproveitada chegou a mais de um terço da receita da loja",
     ctaText: "Quer resultados semelhantes para a sua marca?",
     ctaButton: "Vamos falar de estratégia",
 };

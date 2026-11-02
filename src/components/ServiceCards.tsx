@@ -5,11 +5,11 @@ import COPY from "../i18n/serviceCards";
 import { AdsThumb, ChatThumb } from "./ServiceThumbs";
 
 /* Visual and link per card, in the copy's order (src/i18n/serviceCards.ts). */
-const CARDS: { link: string; visual: "aeo" | "paid" | { src: string; position?: string } }[] = [
+const CARDS: { link: string; visual: "aeo" | "paid" | { src: string; width: number; height: number; position?: string } }[] = [
     { link: "/services/aeo", visual: "aeo" },
-    { link: "/services/email-marketing", visual: { src: "/projects/email-marketing/recipe.webp", position: "center top" } },
+    { link: "/services/email-marketing", visual: { src: "/projects/email-marketing/recipe.webp", width: 620, height: 1826, position: "center top" } },
     { link: PAID_ADS_SERVICE, visual: "paid" },
-    { link: "/services/websites", visual: { src: "/bodysurf-desktop-mobile.webp" } },
+    { link: "/services/websites", visual: { src: "/bodysurf-desktop-mobile.webp", width: 1200, height: 800 } },
 ];
 
 /**
@@ -19,8 +19,10 @@ const CARDS: { link: string; visual: "aeo" | "paid" | { src: string; position?: 
  * renders a £ price on a Portuguese page.
  */
 /* headingLevel: 3 under a section h2 (homepage), 2 where the cards sit
-   directly under the page h1 (/services). */
-export default function ServiceCards({ showPrice = false, headingLevel = 3 }: { showPrice?: boolean; headingLevel?: 2 | 3 }) {
+   directly under the page h1 (/services). `eager`: the cards are above the
+   fold (/services), so the first photo is the likely LCP element and loads
+   at once, at high priority, instead of waiting for layout. */
+export default function ServiceCards({ showPrice = false, headingLevel = 3, eager = false }: { showPrice?: boolean; headingLevel?: 2 | 3; eager?: boolean }) {
     const Heading = headingLevel === 2 ? "h2" : "h3";
     const { lang, to } = useLang();
     const c = COPY[lang];
@@ -29,6 +31,7 @@ export default function ServiceCards({ showPrice = false, headingLevel = 3 }: { 
             <ul className="service-cards">
                 {CARDS.map((card, i) => {
                     const t = c.cards[i];
+                    const first = eager && i === CARDS.findIndex((x) => typeof x.visual === "object");
                     const price = showPrice && t.price && !(lang === "pt" && /[£€]/.test(t.price)) ? t.price : "";
                     return (
                         <li key={card.link}>
@@ -42,8 +45,11 @@ export default function ServiceCards({ showPrice = false, headingLevel = 3 }: { 
                                         <img
                                             src={card.visual.src}
                                             alt={t.alt}
-                                            loading="lazy"
-                                            decoding="async"
+                                            width={card.visual.width}
+                                            height={card.visual.height}
+                                            loading={first ? undefined : "lazy"}
+                                            fetchPriority={first ? "high" : undefined}
+                                            decoding={first ? undefined : "async"}
                                             style={{ objectPosition: card.visual.position ?? "center" }}
                                         />
                                     )}

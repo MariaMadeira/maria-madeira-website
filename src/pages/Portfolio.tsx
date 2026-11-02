@@ -2,26 +2,38 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import { useLang } from "../hooks/useLang";
+import type { Lang } from "../lib/i18n";
+import { SITE_URL, breadcrumbNode, webPageNode, withEntities } from "../lib/schema";
 import COPY from "../i18n/portfolio";
+import { PROJECT_ASSETS } from "../data/portfolio";
 
 /* Renders /portfolio and /pt/portefolio from src/i18n/portfolio.ts. Links
-   and images live here, in the same order as the copy's projects. A card
-   whose image differs by language sets `visualPt`. Transparent mockups are
-   shown whole on the card background rather than cropped. */
-const PROJECT_ASSETS: { link: string; visual: string; visualPt?: string }[] = [
-    { link: "/portfolio-click-collect", visual: "url('/projects/click-collect/app-mockups.webp') center/cover" },
-    {
-        link: "/portfolio-depapier",
-        visual: "url('/projects/depapier/depapier-en-desktop-mobile-hero-transparent.webp') center/contain no-repeat",
-        visualPt: "url('/projects/depapier/depapier-desktop-mobile-hero-transparent.webp') center/contain no-repeat",
-    },
-    { link: "/portfolio-bodysurf-school", visual: "url('/bodysurf-desktop-mobile.webp') center/contain no-repeat" },
-    { link: "/portfolio-email-marketing", visual: "url('/projects/email-marketing/recipe.webp') center/cover" },
-    { link: "/portfolio-rita-antunes", visual: "url('/projects/rita-antunes/mockup-stationery.webp') center/cover" },
-    { link: "/portfolio-ousadia", visual: "url('/projects/ousadia/moodboard.webp') center/cover" },
-    { link: "/portfolio-ai-enhanced", visual: "url('/projects/ai-enhanced/cooked ox cheek.webp') center/cover" },
-    { link: "/portfolio-ai-product-photography", visual: "url('/projects/ai-product/DEPOIS%20Cotswold%20Fudge%20Butterscotch.jpg') center/cover" },
-];
+   and images live in src/data/portfolio.ts, in the same order as the copy's
+   projects (alt text: the copy's cardAlts). Real <img> elements, not CSS
+   backgrounds, so the browser can prioritise the first row and search
+   engines can index them. */
+
+/* The hub as a CollectionPage whose parts are the project pages, each named,
+   with the @id its own CreativeWork node uses. */
+function portfolioHubJsonLd(lang: Lang, to: (enPath: string) => string) {
+    const c = COPY[lang];
+    return withEntities([
+        webPageNode({
+            type: "CollectionPage",
+            path: c.path,
+            name: `${c.h1Lead}${c.h1Accent}${c.h1Tail}`.trim(),
+            description: c.description,
+            lang,
+            "hasPart": c.projects.map((p, i) => ({
+                "@type": "CreativeWork",
+                "@id": `${SITE_URL}${to(PROJECT_ASSETS[i].link)}#work`,
+                "name": p.title,
+                "url": `${SITE_URL}${to(PROJECT_ASSETS[i].link)}`,
+            })),
+        }),
+        breadcrumbNode(lang, [[lang === "pt" ? "Portefólio" : "Portfolio", c.path]]),
+    ]);
+}
 
 export default function Portfolio() {
     const { lang, to } = useLang();
@@ -31,8 +43,8 @@ export default function Portfolio() {
     const [activeIndex, setActiveIndex] = useState(0);
 
     const projects = c.projects.map((p, i) => {
-        const { link, visual, visualPt } = PROJECT_ASSETS[i];
-        return { ...p, link, visual: lang === "pt" && visualPt ? visualPt : visual };
+        const { link, src, srcPt, width, height, fit } = PROJECT_ASSETS[i];
+        return { ...p, link, src: lang === "pt" && srcPt ? srcPt : src, width, height, fit, alt: c.cardAlts[i] };
     });
 
     const activeCategories = [c.all, ...new Set(projects.map(p => p.category))];
@@ -48,6 +60,7 @@ export default function Portfolio() {
                 title={c.title}
                 description={c.description}
                 path={c.path}
+                jsonLd={portfolioHubJsonLd(lang, to)}
             />
 
             <h1 className="section-title">{c.h1Lead}<span className="text-gradient">{c.h1Accent}</span>{c.h1Tail}</h1>
@@ -66,20 +79,27 @@ export default function Portfolio() {
             </div>
 
             <div className="card-grid">
-                {filteredProjects.map((project) => (
+                {filteredProjects.map((project, i) => (
                     <div key={project.title} style={{ animation: 'fadeIn 0.3s ease both' }}>
                         <Link to={to(project.link)} className="portfolio-card">
                             <div className="portfolio-image-container hover-scale">
-                                <div style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    minHeight: "280px",
-                                    background: project.visual,
-                                }} />
+                                {/* The first row (two cards) loads at once, the
+                                    first at high priority as the likely LCP;
+                                    the rest wait until they near the viewport. */}
+                                <img
+                                    src={encodeURI(project.src)}
+                                    alt={project.alt}
+                                    width={project.width}
+                                    height={project.height}
+                                    loading={i < 2 ? undefined : "lazy"}
+                                    fetchPriority={i === 0 ? "high" : undefined}
+                                    decoding={i === 0 ? undefined : "async"}
+                                    style={{ display: "block", width: "100%", height: "280px", objectFit: project.fit, objectPosition: "center" }}
+                                />
                             </div>
                             <div className="portfolio-content">
                                 <div className="portfolio-category">{project.category}</div>
-                                <h3 className="portfolio-title">{project.title}</h3>
+                                <h2 className="portfolio-title">{project.title}</h2>
                                 <p className="portfolio-description">{project.description}</p>
                             </div>
                         </Link>

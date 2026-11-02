@@ -37,9 +37,9 @@ const en = {
     /* Same order as the image files in the component; alts are original,
        enhanced, cooked. */
     transformations: [
-        { title: "Hero Product", alts: ["Hero Product Original", "Hero Product Enhanced", "Hero Product Cooked"] },
-        { title: "Signature Range", alts: ["Signature Range Original", "Signature Range Enhanced", "Signature Range Cooked"] },
-        { title: "Seasonal Special", alts: ["Seasonal Special Original", "Seasonal Special Enhanced", "Seasonal Special Cooked"] },
+        { title: "Hero Product", alts: ["Raw ox cheek on a wooden board, original photo", "Raw ox cheek on baking paper with rosemary and garlic, AI-enhanced image", "Braised, shredded ox cheek on a plate with sauce and rosemary, AI-generated image"] },
+        { title: "Signature Range", alts: ["Raw pork stir-fry strips on a wooden board, original photo", "Raw pork stir-fry strips on baking paper with thyme, AI-enhanced image", "Pork stir-fry strips with sauce and chives on a plate, AI-generated image"] },
+        { title: "Seasonal Special", alts: ["Raw heart-shaped steak on a wooden board with rosemary, original photo", "Raw heart-shaped steak on baking paper with rosemary, garlic and salt, AI-enhanced image", "Grilled heart-shaped steak on a plate, AI-generated image"] },
     ],
     /* Shown only if an image fails to load. */
     missingHtml: "Image<br/>Not Found",
@@ -58,7 +58,7 @@ const en = {
     related: ["AI product photography", "AI product descriptions, done safely", "Email campaigns for the same brand"],
     ctaText: "Looking to elevate your product imagery with AI?",
     ctaPrimary: "Book a free call",
-    ctaSecondary: "View All Work",
+    ctaSecondary: "See the full portfolio",
 };
 
 export default en;

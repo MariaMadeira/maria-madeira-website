@@ -86,7 +86,8 @@ if (distinct.size === 1) {
 
 // Translated pages list every language version, themselves included, as
 // xhtml:link alternates, matching the hreflang tags in each page's head.
-const url = r => `${BASE_URL}${r === '/' ? '' : r}`
+// The homepage keeps its slash, the same as its canonical in Seo.tsx.
+const url = r => `${BASE_URL}${r}`
 const alternates = r => {
   const pair = PAIRS.find(p => p.en === r || p.pt === r)
   if (!pair) return ''

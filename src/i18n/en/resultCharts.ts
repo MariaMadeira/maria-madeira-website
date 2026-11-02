@@ -44,15 +44,26 @@ const en = {
         desc: (total: number, parts: string[]) => `Stacked bar of ${total} pages re-evaluated at 30 days: ${parts.join(", ")}.`,
     },
     email: {
-        title: "Attributed email revenue by period",
-        subtitle: "Campaigns and automated flows, values in £K",
+        title: "Attributed email revenue by calendar year",
+        subtitle: "Campaigns and automated flows, 2022 to 2024, values in £K",
         campaigns: "Campaigns",
         flows: "Automated flows",
-        note: "2021 covers September to December, when the programme started.",
+        note: "Calendar years only. The programme started in September 2021, so 2021 is not a full year and is not shown. The 12 months to July 2025 overlap 2024, so they are compared with the previous 12 months (to July 2024) instead.",
         source: "Source: Klaviyo Business Overview exports.",
         /** periods: [label, campaigns, flows, total] in order, money already formatted. */
         desc: (periods: [string, string, string, string][]) =>
-            `Stacked bar chart of attributed email revenue by period, in thousands of pounds, split between campaigns and automated flows. ${periods.map(([p, c, f, t]) => `${p}, campaigns ${c}, flows ${f}, total ${t}`).join("; ")}. Every period is higher than the one before it.`,
+            `Stacked bar chart of attributed email revenue by calendar year, 2022 to 2024, in thousands of pounds, split between campaigns and automated flows. ${periods.map(([p, c, f, t]) => `${p}, campaigns ${c}, flows ${f}, total ${t}`).join("; ")}. Each year is higher than the one before it.`,
+    },
+    /* The +88.9% comparison: two 12-month windows, never next to a calendar year. */
+    windows: {
+        title: "Attributed email revenue, 12 months to July 2025 vs the previous 12 months",
+        subtitle: "Two comparable 12-month windows",
+        previous: "Previous 12 months (to Jul 2024)",
+        latest: "12 months to Jul 2025",
+        /** growth: "88.9", already formatted. */
+        note: (growth: string) => `Up ${growth}% on the previous 12 months (to July 2024).`,
+        desc: (growth: string) =>
+            `Horizontal bar chart comparing attributed email revenue in two 12-month windows: c. £71K in the previous 12 months (to July 2024) and £134K in the 12 months to July 2025, up ${growth}%.`,
     },
 };
 

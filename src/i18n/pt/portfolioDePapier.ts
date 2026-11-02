@@ -5,7 +5,7 @@ const IMG = "/projects/depapier/";
 
 const pt: typeof en = {
     path: "/pt/portefolio-depapier",
-    title: "Site dePapier Translations | Portefólio",
+    title: "Site dePapier Translations | Maria Madeira",
     description: "Site WordPress bilingue e identidade digital para uma tradutora certificada em Portugal: páginas principais, ecrãs de telemóvel e identidade visual.",
     back: "Voltar ao portefólio",
     h1: "dePapier Translations",
@@ -52,7 +52,7 @@ const pt: typeof en = {
     role: "Posicionamento, arquitetura de informação, design e montagem em WordPress, textos nas duas línguas e SEO.",
 
     ctaText: "Quer ler a história completa deste projeto?",
-    ctaButton: "Ver caso de estudo",
+    ctaButton: "Ler o caso de estudo da dePapier",
 };
 
 export default pt;

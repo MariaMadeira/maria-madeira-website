@@ -3,47 +3,35 @@ import { existsSync, statSync } from 'fs';
 import { join } from 'path';
 
 const PUBLIC_DIR = './public';
+// Full-size originals live outside public/, so they are kept in the repo for
+// regenerating the variants without being deployed and served.
+const ORIGINALS_DIR = './scripts/assets/originals';
 
+// The 1200px "canonical" copy (name.webp / name.jpg) is not referenced by any
+// page, so it is only written for an image that sets canonical: true.
 const images = [
     {
         name: 'maria-hero',
-        sources: [
-            join(PUBLIC_DIR, 'maria_hero.jpeg'),
-            join(PUBLIC_DIR, 'maria-hero.jpeg'),
-        ],
+        sources: [join(ORIGINALS_DIR, 'maria_hero.jpeg')],
     },
     {
         name: 'maria-notebook',
-        sources: [
-            join(PUBLIC_DIR, 'maria_NOTEBOOK.jpeg'),
-            join(PUBLIC_DIR, 'maria-notebook.jpeg'),
-        ],
+        sources: [join(ORIGINALS_DIR, 'maria_NOTEBOOK.jpeg')],
     },
     {
         name: 'maria-videocall',
-        sources: [
-            join(PUBLIC_DIR, 'Maria_VIDEOCALL.jpeg'),
-            join(PUBLIC_DIR, 'maria-videocall.jpeg'),
-        ],
-    },
-    {
-        name: 'maria-smiling',
-        sources: [
-            join(PUBLIC_DIR, 'maria_smiling.jpeg'),
-            join(PUBLIC_DIR, 'maria-smiling.jpeg'),
-        ],
+        sources: [join(ORIGINALS_DIR, 'Maria_VIDEOCALL.jpeg')],
     },
     {
         // Homepage case study card 1. The slot is ~400 CSS px at its widest, so
         // 400 and 800 cover it up to 2x DPR; a 1600 variant would only upscale
-        // (the source is 932px wide) and the canonical 1200 copy is unused.
+        // (the source is 932px wide).
         name: 'email-popcorn',
-        sources: [join(PUBLIC_DIR, 'Email_PopCorn.png')],
+        sources: [join(ORIGINALS_DIR, 'Email_PopCorn.png')],
         sizes: [
             { width: 400, suffix: '-400' },
             { width: 800, suffix: '-800' },
         ],
-        canonical: false,
     },
 ];
 
@@ -95,7 +83,7 @@ async function processImages() {
             console.log(`  Created ${jpgOut} (${(jpgStat.size / 1024).toFixed(1)} KB)`);
         }
 
-        if (img.canonical === false) {
+        if (img.canonical !== true) {
             continue;
         }
 

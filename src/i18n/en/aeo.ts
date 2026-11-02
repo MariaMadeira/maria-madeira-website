@@ -1,14 +1,14 @@
 /** English copy. See src/i18n/aeo.ts. */
 const en = {
     path: "/services/aeo",
-    title: "AEO Consultant for E-commerce Brands | Maria Madeira",
-    description: "AEO audits with a measured baseline, for e-commerce and food and drink brands. Get cited and recommended by ChatGPT, Perplexity, Gemini and Google AI Overviews, not just ranked.",
-    definition: "Answer Engine Optimisation (AEO) is the practice of optimising a brand to be cited and recommended by AI answer engines like ChatGPT, Perplexity, Gemini, and Google's AI Overviews. Where SEO competes for a ranked link, AEO competes to be the answer itself: the source the AI names when someone asks for a recommendation.",
-    eyebrow: "Answer Engine Optimisation",
-    h1Lead: "Get found and ",
+    title: "E-commerce SEO & AI Search (AEO) Consultant | Maria Madeira",
+    description: "SEO and AI search optimisation (AEO) for e-commerce brands: ranked on Google, and cited by ChatGPT, Perplexity, Gemini and AI Overviews. Audit, then the work.",
+    definition: "Answer Engine Optimisation (AEO) is the practice of optimising a brand to be cited and recommended by AI answer engines like ChatGPT, Perplexity, Gemini, and Google's AI Overviews. SEO gets your pages ranked; AEO makes your brand the one the AI names, quotes and links when someone asks it for a recommendation.",
+    eyebrow: "SEO and AI search optimisation (AEO)",
+    h1Lead: "SEO that gets you found on Google and ",
     h1Accent: "recommended by AI",
-    h1Tail: ", not just ranked by Google",
-    intro: "Search is shifting from links to answers. AEO makes sure that when an AI assistant answers \"who's the best?\", the answer is you.",
+    h1Tail: "",
+    intro: "I'm an SEO and AI search consultant for e-commerce brands in the UK and Portugal. Search is shifting from links to answers, so the work covers both: ranking on Google, and making sure that when ChatGPT, Perplexity or Google's AI Overviews answer \"who's the best?\", the answer is you.",
     cta: "Book a free call",
     chat: {
         question: "What's the best specialty coffee brand in Europe?",
@@ -42,7 +42,7 @@ const en = {
     alongsideTitle: "Built alongside the rest, not bolted on",
     alongside: [
         "AEO runs on the same foundations as everything else in search: site structure, clean markup, content that answers real questions, and enough authority for engines to trust you. When those are weak, AEO has nothing to stand on.",
-        "That is why I do not sell it on its own. I build websites, run SEO, and run Klaviyo email for the same brands, so the AEO work lands on foundations I can fix rather than foundations I have to work around. One person doing the strategy and the build, with no gap between what gets recommended and what gets shipped.",
+        "That is why AEO always comes with the SEO foundations it depends on. I build websites, run SEO, and run Klaviyo email for the same brands, so the AEO work lands on foundations I can fix rather than foundations I have to work around. One person doing the strategy and the build, with no gap between what gets recommended and what gets shipped.",
     ],
     comparisonLead: "Deciding between an agency and an independent? ",
     comparisonLink: "I wrote a comparison of the European options, including where I fit.",
@@ -70,7 +70,7 @@ const en = {
     proofTitle: "Proof",
     seoCard: {
         kicker: "SEO and AEO case study",
-        title: "A catalogue invisible to Google, rebuilt page by page",
+        title: "A Shopify catalogue rebuilt for Google and AI search, page by page",
         items: ["Clicks from 4.5K to 8.0K (+78%) in four months", "Average position from 15.2 to 9.4"],
         alt: "Line chart of organic clicks rising 78 percent over four months",
     },
@@ -81,7 +81,7 @@ const en = {
         link: "Read the case study",
     },
     pricingTitle: "Pricing",
-    pricingText: "An AEO audit starts from £750. Ongoing AEO work starts from £800 a month. You get a written quote after the first call, once the scope is clear.",
+    pricingText: "An AEO audit is £750, the same fixed price as the Growth Audit. Ongoing AEO work starts from £800 a month. You get a written quote after the first call, once the scope is clear.",
     pricingLink: "See all ways to work with me",
     faqTitle: "Frequently asked questions",
     faqs: [
@@ -93,7 +93,7 @@ const en = {
         { q: "How long does AEO take to show results?", a: "It depends on how often AI engines recrawl and how established your brand entity already is. Early signals (appearing in AI answers for niche questions) often show within weeks, while becoming the default recommendation in a competitive category takes longer. AEO is a compounding investment, not an overnight switch." },
         { q: "Do I still need traditional SEO?", a: "Yes. Crawlable pages, quality content, and authority are exactly what AI engines draw on, so AEO builds on strong SEO rather than replacing it. The two are complementary: SEO keeps you findable, and AEO makes you the recommended answer." },
         { q: "How do you measure AEO?", a: "By tracking whether and how you're cited across AI assistants (ChatGPT, Perplexity, Gemini and AI Overviews), monitoring AI-referred traffic in analytics, and testing category questions to see if your brand surfaces. The goal is measurable presence in answers, not just rankings." },
-        { q: "How much does AEO consulting cost?", a: "An AEO audit starts from £750 and ongoing AEO work from £800 a month. The final price depends on the size of the site, how many pages and products need work, and whether implementation is included." },
+        { q: "How much does AEO consulting cost?", a: "An AEO audit is £750, a fixed price. Ongoing AEO work starts from £800 a month, and its price depends on the size of the site, how many pages and products need work, and whether implementation is included." },
     ],
     ctaTitle: "Become the answer AI recommends",
     ctaText: "A free call to see where AI search places you today.",

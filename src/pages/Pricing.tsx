@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Check, Quote, Sparkles } from "lucide-react";
 import Seo from "../components/Seo";
-import { SITE_URL, PERSON_ID } from "../lib/schema";
+import { SITE_URL, AREA_SERVED, ORG_REF, withEntities } from "../lib/schema";
 import { BODYSURF_TESTIMONIAL } from "../data/testimonials";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/pricing";
@@ -12,87 +12,86 @@ const PAGE_URL = `${SITE_URL}/pricing`;
 const AI_CHECK_CONTACT = "/contact?topic=ai-search-check";
 const FAQS = COPY.en.faqs;
 
-const PRICING_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "WebPage",
-            "@id": `${PAGE_URL}#webpage`,
-            "url": PAGE_URL,
-            "name": "Pricing",
-            "isPartOf": { "@id": `${SITE_URL}/#website` },
-        },
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
-                { "@type": "ListItem", "position": 2, "name": "Pricing", "item": PAGE_URL },
-            ],
-        },
-        {
-            "@type": "Service",
-            "@id": `${PAGE_URL}#service`,
-            "name": "Growth consultancy for brands that sell online",
-            "url": PAGE_URL,
-            "provider": { "@id": PERSON_ID },
-            "offers": [
-                { "@type": "Offer", "name": "Growth Audit", "price": 750, "priceCurrency": "GBP" },
-                { "@type": "Offer", "name": "Project", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1200, "priceCurrency": "GBP" } },
-                { "@type": "Offer", "name": "Monthly", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 500, "priceCurrency": "GBP", "unitText": "per month" } },
-            ],
-        },
-        {
-            "@type": "FAQPage",
-            "@id": `${PAGE_URL}#faq`,
-            "mainEntity": FAQS.map((f) => ({
-                "@type": "Question",
-                "name": f.q,
-                "acceptedAnswer": { "@type": "Answer", "text": f.a },
-            })),
-        },
-    ],
-};
+const PRICING_JSON_LD = withEntities([
+    {
+        "@type": "WebPage",
+        "@id": `${PAGE_URL}#webpage`,
+        "inLanguage": "en-GB",
+        "url": PAGE_URL,
+        "name": "Pricing",
+        "isPartOf": { "@id": `${SITE_URL}/#website` },
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+            { "@type": "ListItem", "position": 2, "name": "Pricing", "item": PAGE_URL },
+        ],
+    },
+    {
+        "@type": "Service",
+        "@id": `${PAGE_URL}#service`,
+        "inLanguage": "en-GB",
+        "name": "Growth consultancy for brands that sell online",
+        "url": PAGE_URL,
+        "provider": ORG_REF,
+        "areaServed": AREA_SERVED,
+        "offers": [
+            { "@type": "Offer", "name": "Growth Audit", "price": 750, "priceCurrency": "GBP" },
+            { "@type": "Offer", "name": "Project", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1200, "priceCurrency": "GBP" } },
+            { "@type": "Offer", "name": "Monthly", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 500, "priceCurrency": "GBP", "unitText": "per month" } },
+        ],
+    },
+    {
+        "@type": "FAQPage",
+        "@id": `${PAGE_URL}#faq`,
+        "inLanguage": "en-GB",
+        "mainEntity": FAQS.map((f) => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": { "@type": "Answer", "text": f.a },
+        })),
+    },
+]);
 
 /* The Portuguese page publishes no prices, so its Service carries no offers. */
 const PT_URL = `${SITE_URL}/pt/precos`;
-const PT_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "WebPage",
-            "@id": `${PT_URL}#webpage`,
-            "url": PT_URL,
-            "name": "Formas de trabalhar comigo",
-            "inLanguage": "pt-PT",
-            "isPartOf": { "@id": `${SITE_URL}/#website` },
-        },
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
-                { "@type": "ListItem", "position": 2, "name": "Preços", "item": PT_URL },
-            ],
-        },
-        {
-            "@type": "Service",
-            "@id": `${PT_URL}#service`,
-            "name": "Consultoria de crescimento para marcas que vendem online",
-            "url": PT_URL,
-            "provider": { "@id": PERSON_ID },
-            "areaServed": ["PT", "GB"],
-        },
-        {
-            "@type": "FAQPage",
-            "@id": `${PT_URL}#faq`,
-            "inLanguage": "pt-PT",
-            "mainEntity": COPY.pt.faqs.map((f) => ({
-                "@type": "Question",
-                "name": f.q,
-                "acceptedAnswer": { "@type": "Answer", "text": f.a },
-            })),
-        },
-    ],
-};
+const PT_JSON_LD = withEntities([
+    {
+        "@type": "WebPage",
+        "@id": `${PT_URL}#webpage`,
+        "url": PT_URL,
+        "name": "Formas de trabalhar comigo",
+        "inLanguage": "pt-PT",
+        "isPartOf": { "@id": `${SITE_URL}/#website` },
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
+            { "@type": "ListItem", "position": 2, "name": "Preços", "item": PT_URL },
+        ],
+    },
+    {
+        "@type": "Service",
+        "@id": `${PT_URL}#service`,
+        "inLanguage": "pt-PT",
+        "name": "Consultoria de crescimento para marcas que vendem online",
+        "url": PT_URL,
+        "provider": ORG_REF,
+        "areaServed": AREA_SERVED,
+    },
+    {
+        "@type": "FAQPage",
+        "@id": `${PT_URL}#faq`,
+        "inLanguage": "pt-PT",
+        "mainEntity": COPY.pt.faqs.map((f) => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": { "@type": "Answer", "text": f.a },
+        })),
+    },
+]);
 
 const LINK_STYLE = { display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--accent-text)", fontWeight: 600 } as const;
 

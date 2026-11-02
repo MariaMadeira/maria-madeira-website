@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Seo from "../components/Seo";
 import RelatedLinks from "../components/RelatedLinks";
+import Byline from "../components/Byline";
+import AuthorBio from "../components/AuthorBio";
 import { caseStudyJsonLd } from "../lib/schema";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/caseStudyClickCollect";
@@ -13,7 +15,7 @@ import COPY from "../i18n/caseStudyClickCollect";
    language version live (git log); the Portuguese pages went live with the
    /pt routes. Modified: the commit that last changed the page's visible text. */
 const PUBLISHED = { en: "2026-03-23T10:15:54+00:00", pt: "2026-10-19T18:35:44+01:00" };
-const MODIFIED = { en: "2026-10-20T17:09:53+01:00", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-11-02", pt: "2026-11-02" };
 
 const STRONG = { color: "var(--text-primary)" };
 const SOLUTION_ICONS = [<Smartphone size={24} />, <Zap size={24} />];
@@ -40,7 +42,8 @@ export default function CaseStudyClickCollect() {
                 description: c.schemaDescription,
                 datePublished: PUBLISHED[lang],
                 dateModified: MODIFIED[lang],
-                image: "/og/og-default.png",
+                // The case study's own visual, rather than the sitewide card.
+                image: "/projects/click-collect/app-mockups.webp",
                 breadcrumb: c.breadcrumb,
                 lang,
             })}
@@ -83,6 +86,7 @@ export default function CaseStudyClickCollect() {
                     <h1 style={{ fontSize: "clamp(2rem, 5vw, 3rem)", marginBottom: "1.5rem", lineHeight: 1.15 }}>
                         {c.h1}
                     </h1>
+                    <Byline published={PUBLISHED[lang]} modified={MODIFIED[lang]} compact />
                     <p style={{ fontSize: "1.15rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "3rem" }}>
                         {c.intro}
                     </p>
@@ -318,6 +322,8 @@ export default function CaseStudyClickCollect() {
                         {c.ctaButton}
                     </Link>
                 </div>
+
+                <AuthorBio cta={false} />
 
             </div>
         </div>

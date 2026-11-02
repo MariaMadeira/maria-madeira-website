@@ -13,14 +13,15 @@ export const WAYS = { en: WAYS_TO_WORK, pt: WAYS_PT };
 /**
  * Testimonial framing. The quote itself stays in English, word for word
  * (decision D3): only the badge, context and link labels are translated, and
- * the Portuguese page adds a note after the quote.
+ * the Portuguese page adds a note after the quote. The link goes to the
+ * client's case study, so its label names it.
  */
 export const TESTIMONIAL_LABELS = {
-    en: { badge: "Client", context: "Recommended on LinkedIn", readMore: "Read the full recommendation", note: "" },
+    en: { badge: "Client", context: "Recommended on LinkedIn", readMore: (name: string) => `${name} case study`, note: "" },
     pt: TESTIMONIAL_LABELS_PT,
 };
 
 export function testimonialFor(t: Testimonial, lang: "en" | "pt") {
     const l = TESTIMONIAL_LABELS[lang];
-    return { ...t, badge: t.badge ? l.badge : null, context: l.context, readMoreLabel: l.readMore, note: l.note };
+    return { ...t, badge: t.badge ? l.badge : null, context: l.context, readMoreLabel: l.readMore(t.name), note: l.note };
 }

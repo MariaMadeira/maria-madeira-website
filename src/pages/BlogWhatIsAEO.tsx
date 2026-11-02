@@ -1,64 +1,45 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Clock } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Seo from "../components/Seo";
 import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 import AuthorBio from "../components/AuthorBio";
+import Byline from "../components/Byline";
 import { useLang } from "../hooks/useLang";
 import type { Lang } from "../lib/i18n";
+import { blogPostingNode, breadcrumbNode, faqNode, withEntities } from "../lib/schema";
 import COPY from "../i18n/blogWhatIsAeo";
 import type { Para, Rich } from "../i18n/en/blogWhatIsAeo";
 
 /* Renders /blog/what-is-aeo and /pt/blog/o-que-e-aeo from
    src/i18n/blogWhatIsAeo.ts. Dates, styles and links live here. */
-const SITE_URL = "https://mariamadeira.com";
-const PUBLISHED_ISO = "2026-07-13";
-// Bump MODIFIED when content changes. Latest edits (five-question test callout,
-// roundup cross-link, FAQ corrections) shipped 14 July 2026.
-const MODIFIED_ISO = "2026-07-14";
+const OG_IMAGE = "/og/og-blog-aeo.png";
+/* Per language. English: the July 2026 dates the post has always shown.
+   Portuguese: the commit that put /pt/blog/o-que-e-aeo live, and the last
+   one that changed its text (git log src/i18n/pt/blogWhatIsAeo.ts). Bump
+   MODIFIED, in the language that changed, with the visible text. The byline
+   renders these same strings, so page and schema always agree. */
+const PUBLISHED = { en: "2026-07-13", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-11-02", pt: "2026-11-02" };
 
-/* English keeps its Article schema; the Portuguese page is a BlogPosting in
-   pt-PT with the same dates. FAQ drives both the visible section and the
+/* BlogPosting in both languages. FAQ drives both the visible section and the
    FAQPage schema, so they can't drift. */
 function articleJsonLd(lang: Lang) {
     const t = COPY[lang];
-    const pageUrl = `${SITE_URL}${t.path}`;
-    const pt = lang === "pt";
-    return {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": pt ? "BlogPosting" : "Article",
-                "@id": `${pageUrl}#article`,
-                "headline": t.headline,
-                "description": t.description,
-                ...(pt ? { "inLanguage": "pt-PT" } : {}),
-                "author": pt ? { "@id": `${SITE_URL}/#person` } : { "@type": "Person", "@id": `${SITE_URL}/#person`, "name": "Maria Madeira" },
-                "publisher": { "@id": `${SITE_URL}/#person` },
-                "datePublished": PUBLISHED_ISO,
-                "dateModified": MODIFIED_ISO,
-                "mainEntityOfPage": pageUrl,
-            },
-            {
-                "@type": "FAQPage",
-                "@id": `${pageUrl}#faq`,
-                ...(pt ? { "inLanguage": "pt-PT" } : {}),
-                "mainEntity": t.faqs.map((f) => ({
-                    "@type": "Question",
-                    "name": f.q,
-                    "acceptedAnswer": { "@type": "Answer", "text": f.a },
-                })),
-            },
-            {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": t.crumbs.home, "item": pt ? `${SITE_URL}/pt` : `${SITE_URL}/` },
-                    { "@type": "ListItem", "position": 2, "name": t.crumbs.blog, "item": pt ? `${SITE_URL}/pt/blog` : `${SITE_URL}/blog` },
-                    { "@type": "ListItem", "position": 3, "name": t.crumbs.page, "item": pageUrl },
-                ],
-            },
-        ],
-    };
+    const blogPath = lang === "pt" ? "/pt/blog" : "/blog";
+    return withEntities([
+        blogPostingNode({
+            path: t.path,
+            headline: t.headline,
+            description: t.description,
+            datePublished: PUBLISHED[lang],
+            dateModified: MODIFIED[lang],
+            image: OG_IMAGE,
+            lang,
+        }),
+        faqNode(t.path, lang, t.faqs),
+        breadcrumbNode(lang, [[t.crumbs.blog, blogPath], [t.crumbs.page, t.path]]),
+    ]);
 }
 
 const ARTICLE_JSON_LD = { en: articleJsonLd("en"), pt: articleJsonLd("pt") };
@@ -88,7 +69,8 @@ export default function BlogWhatIsAEO() {
                 title={t.title}
                 description={t.description}
                 path={t.path}
-                ogImage="/og/og-blog-aeo.png"
+                ogImage={OG_IMAGE}
+                ogType="article"
                 jsonLd={ARTICLE_JSON_LD[lang]}
             />
 
@@ -104,13 +86,7 @@ export default function BlogWhatIsAEO() {
                     {t.headline}
                 </h1>
 
-                {/* byline + dates */}
-                <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap", color: "var(--text-secondary)", fontSize: "0.9rem", marginBottom: "2.5rem", paddingBottom: "2rem", borderBottom: "1px solid var(--border-color)" }}>
-                    <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>Maria Madeira</span>
-                    <span>{t.published}</span>
-                    <span>{t.updated}</span>
-                    <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><Clock size={13} /> {t.readTime}</span>
-                </div>
+                <Byline published={PUBLISHED[lang]} modified={MODIFIED[lang]} readTime={t.readTime} />
 
                 <blockquote style={{ ...calloutBox, margin: "0 0 1.25rem" }}>
                     <p style={{ fontSize: "1.15rem", lineHeight: 1.7, color: "var(--text-primary)", fontWeight: 500, margin: 0 }}>
@@ -170,7 +146,10 @@ export default function BlogWhatIsAEO() {
 
                 <RelatedLinks
                     className="related-links--open"
-                    items={t.related.map((r) => ({ kicker: RELATED.reading, ...r }))}
+                    items={[
+                        { kicker: RELATED.service, to: "/services/aeo", label: t.relatedService },
+                        ...t.related.map((r) => ({ kicker: RELATED.reading, ...r })),
+                    ]}
                 />
 
                 <AuthorBio />

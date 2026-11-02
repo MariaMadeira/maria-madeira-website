@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Seo from "../components/Seo";
 import RelatedLinks, { RELATED } from "../components/RelatedLinks";
+import { portfolioJsonLd } from "../lib/schema";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/portfolioAIProductPhotography";
 
@@ -68,6 +69,13 @@ export default function PortfolioAIProductPhotography() {
             title={c.title}
             description={c.description}
             path={c.path}
+            jsonLd={portfolioJsonLd({
+                path: c.path,
+                name: c.h1,
+                description: c.description,
+                image: "/projects/ai-product/DEPOIS Cotswold Fudge Butterscotch.webp",
+                lang,
+            })}
         />
         <div className="container animate-fade-in portfolio-page-inner" style={{ paddingTop: "6rem", paddingBottom: "6rem", background: "var(--bg-primary)" }}>
             <div className="portfolio-inner" style={{ maxWidth: "1000px", margin: "0 auto" }}>

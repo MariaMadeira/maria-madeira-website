@@ -3,14 +3,14 @@ import type en from "../en/aeo";
 /** Portuguese copy, batch 1 as approved in docs/pt-review/lote-1.md. */
 const pt: typeof en = {
     path: "/pt/servicos/aeo",
-    title: "Consultora de AEO: a sua marca no ChatGPT | Maria Madeira",
-    description: "Auditoria e implementação de AEO para marcas de e-commerce e de alimentação e bebidas. Para a sua marca ser citada e recomendada pelo ChatGPT, Perplexity e Gemini.",
-    definition: "A otimização para motores de resposta (AEO, de Answer Engine Optimisation) é o trabalho de preparar uma marca para ser citada e recomendada por motores de resposta com IA, como o ChatGPT, o Perplexity, o Gemini e a Vista geral de IA da Google (AI Overviews). Enquanto o SEO disputa um lugar numa lista de links, o AEO disputa a própria resposta: a fonte que a IA indica quando alguém pede uma recomendação.",
-    eyebrow: "Otimização para motores de resposta",
+    title: "Consultora SEO e pesquisa com IA em Portugal | Maria Madeira",
+    description: "SEO e pesquisa com IA (AEO) para lojas online em Portugal: a sua marca encontrada no Google e recomendada pelo ChatGPT, Perplexity e Gemini.",
+    definition: "A otimização para motores de resposta (AEO, de Answer Engine Optimisation) é o trabalho de preparar uma marca para ser citada e recomendada por motores de resposta com IA, como o ChatGPT, o Perplexity, o Gemini e a Vista geral de IA da Google (AI Overviews). O SEO põe as suas páginas nos resultados; o AEO faz da sua marca a que a IA nomeia, cita e indica com link quando alguém lhe pede uma recomendação.",
+    eyebrow: "SEO e otimização para a pesquisa com IA (AEO)",
     h1Lead: "A sua marca encontrada e ",
     h1Accent: "recomendada pela IA",
     h1Tail: ", não só posicionada no Google",
-    intro: "A pesquisa está a passar dos links para as respostas. O AEO garante que, quando um assistente de IA responde a \"qual é o melhor?\", a resposta é a sua marca.",
+    intro: "Sou consultora de SEO e de pesquisa com IA para marcas de e-commerce, baseada em Lisboa, e trabalho com lojas online em Portugal e no Reino Unido. A pesquisa está a passar dos links para as respostas, por isso o trabalho cobre as duas coisas: aparecer no Google e garantir que, quando o ChatGPT, o Perplexity ou a Vista geral de IA da Google respondem a \"qual é o melhor?\", a resposta é a sua marca.",
     cta: "Marcar uma conversa gratuita",
     chat: {
         question: "Qual é a melhor marca de café de especialidade da Europa?",
@@ -44,7 +44,7 @@ const pt: typeof en = {
     alongsideTitle: "Feito em conjunto com o resto, não acrescentado à pressa",
     alongside: [
         "O AEO assenta nas mesmas bases que tudo o resto na pesquisa: a estrutura do site, código limpo, conteúdos que respondem a perguntas reais e autoridade suficiente para os motores confiarem na sua marca. Quando essas bases são fracas, o AEO não tem onde se apoiar.",
-        "É por isso que não o vendo à parte. Construo sites, faço SEO e giro o email no Klaviyo para as mesmas marcas, por isso o trabalho de AEO assenta em bases que posso corrigir, e não em bases que tenho de contornar. Uma só pessoa faz a estratégia e a execução, sem distância entre o que se recomenda e o que vai para o ar.",
+        "É por isso que o AEO vem sempre com as bases de SEO de que depende. Construo sites, faço SEO e giro o email no Klaviyo para as mesmas marcas, por isso o trabalho de AEO assenta em bases que posso corrigir, e não em bases que tenho de contornar. Uma só pessoa faz a estratégia e a execução, sem distância entre o que se recomenda e o que vai para o ar.",
     ],
     comparisonLead: "Está a decidir entre uma agência e uma consultora independente? ",
     comparisonLink: "Escrevi uma comparação das opções na Europa, incluindo onde me encaixo.",
@@ -72,7 +72,7 @@ const pt: typeof en = {
     proofTitle: "Resultados",
     seoCard: {
         kicker: "Caso de estudo de SEO e AEO",
-        title: "Um catálogo invisível para o Google, reconstruído página a página",
+        title: "Um catálogo Shopify reconstruído para o Google e a pesquisa com IA, página a página",
         items: ["Cliques de 4,5K para 8,0K (+78%) em quatro meses", "Posição média de 15,2 para 9,4"],
         alt: "Gráfico de linhas dos cliques orgânicos, a subir 78% em quatro meses",
     },

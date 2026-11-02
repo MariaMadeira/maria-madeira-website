@@ -14,11 +14,12 @@ const HAS_PARTNER_BADGE = true;
 const COPY: Record<Lang, {
     home: string; blurb: string; nav: string; navLinks: { name: string; path: string }[];
     company: string; companyLinks: { name: string; path: string }[];
-    touch: string; touchLine: string; cta: string; ctaPath: string; based: [string, string]; rights: string;
+    touch: string; touchLine: string; cta: string; ctaPath: string; based: [string, string];
+    privacy: string;
 }> = {
     en: {
         home: "/",
-        blurb: "Independent growth consultant for brands that sell online: SEO and AEO, Klaviyo email, paid ads and websites.",
+        blurb: "Independent growth consultant for brands that sell online: SEO and AI search (AEO), Klaviyo email, paid ads and websites.",
         nav: "Navigation",
         navLinks: [
             { name: "Services", path: "/services" },
@@ -41,17 +42,17 @@ const COPY: Record<Lang, {
         touchLine: "Tell me about your brand.",
         cta: "Book a free call",
         ctaPath: "/contact",
-        based: ["Based in Lisbon, Portugal.", "Working globally."],
-        rights: "All rights reserved.",
+        based: ["Based in Lisbon, Portugal.", "Working with brands in the UK and Portugal."],
+        privacy: "Privacy policy",
     },
     pt: {
         home: "/pt",
-        blurb: "Consultora de crescimento para marcas que vendem online, com decisões baseadas em dados e marketing apoiado por IA.",
+        blurb: "Consultora de crescimento independente para marcas que vendem online: SEO e pesquisa com IA, email no Klaviyo, anúncios e sites.",
         nav: "Navegação",
         navLinks: [
             { name: "Serviços", path: "/services" },
             { name: "Sites", path: "/services/websites" },
-            { name: "AEO e SEO", path: "/services/aeo" },
+            { name: "SEO e pesquisa com IA", path: "/services/aeo" },
             { name: "Email marketing e Klaviyo", path: "/services/email-marketing" },
             { name: "Anúncios pagos", path: PAID_ADS_SERVICE },
             { name: "Casos de estudo", path: "/case-studies" },
@@ -70,9 +71,14 @@ const COPY: Record<Lang, {
         cta: "Marcar uma conversa gratuita",
         ctaPath: "/pt/contacto",
         based: ["Baseada em Lisboa, Portugal.", "A trabalhar com marcas em Portugal e no Reino Unido."],
-        rights: "Todos os direitos reservados.",
+        privacy: "Política de privacidade",
     },
 };
+
+/* Column titles are styled paragraphs, not <h2>s: the footer repeats on every
+   page and its headings polluted each page's outline. Same look as before
+   (the global h1-h6 rule plus the old inline style). */
+const COLUMN_TITLE = { fontFamily: "var(--font-heading)", fontWeight: 600, lineHeight: 1.2, color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" } as const;
 
 /* Footer links and icons keep a 44px tap target on touch screens. */
 const LINK = { color: "rgba(255,255,255,0.7)", fontSize: "0.95rem", display: "inline-flex", alignItems: "center", minHeight: "44px" } as const;
@@ -126,7 +132,7 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>{t.nav}</h2>
+                        <p style={COLUMN_TITLE}>{t.nav}</p>
                         <ul style={{ display: "flex", flexDirection: "column", gap: 0 }}>
                             {t.navLinks.map((l) => <li key={l.path}><Link to={localize(l.path)} style={LINK}>{l.name}</Link></li>)}
                         </ul>
@@ -134,7 +140,7 @@ export default function Footer() {
 
                     {/* Company */}
                     <div>
-                        <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>{t.company}</h2>
+                        <p style={COLUMN_TITLE}>{t.company}</p>
                         <ul style={{ display: "flex", flexDirection: "column", gap: 0 }}>
                             {t.companyLinks.map((l) => <li key={l.path}><Link to={localize(l.path)} style={LINK}>{l.name}</Link></li>)}
                         </ul>
@@ -142,7 +148,7 @@ export default function Footer() {
 
                     {/* Get in Touch */}
                     <div>
-                        <h2 style={{ color: "white", marginBottom: "1.5rem", fontSize: "1.1rem" }}>{t.touch}</h2>
+                        <p style={COLUMN_TITLE}>{t.touch}</p>
                         <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.85rem", marginBottom: "1.25rem" }}>
                             {t.touchLine}
                         </p>
@@ -177,8 +183,10 @@ export default function Footer() {
                     flexWrap: "wrap",
                     gap: "1rem"
                 }}>
+                    {/* Legal line: name, NIF and the privacy policy (DL 7/2004 and GDPR). */}
                     <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.85rem" }}>
-                        © {currentYear} Maria Madeira. {t.rights}
+                        © {currentYear} Maria Madeira · NIF 256029342 ·{" "}
+                        <Link to={localize("/privacy")} style={{ ...LINK, fontSize: "0.85rem", textDecoration: "underline", textUnderlineOffset: "3px" }}>{t.privacy}</Link>
                     </p>
                 </div>
             </div>

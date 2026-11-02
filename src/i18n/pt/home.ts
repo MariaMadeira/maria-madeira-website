@@ -14,17 +14,17 @@ const CERTS = ptAbout.credentialGroups.flatMap((g) => g.items);
 
 const pt: typeof en = {
     path: "/pt",
-    title: "Consultoria de AEO para marcas de e-commerce | Maria Madeira",
-    description: "AEO, SEO e email marketing para marcas de alimentação e bebidas em Portugal e no Reino Unido. Trabalho de agência, feito por uma consultora independente.",
+    title: "Maria Madeira, consultora em Lisboa: SEO, Klaviyo, anúncios",
+    description: "Maria Madeira, consultora de crescimento em Lisboa: SEO, pesquisa com IA, email no Klaviyo e anúncios para marcas de e-commerce em Portugal e no Reino Unido.",
     hero: {
-        eyebrow: "Consultoria de AEO e crescimento para marcas de e-commerce.",
+        eyebrow: "Consultora de crescimento · Klaviyo Partner",
         h1: "Consultoria de AEO para e-commerce.",
-        intro: "O trabalho de uma agência, sem a agência. Otimização para motores de resposta (AEO), SEO, email e anúncios pagos para marcas que querem trabalho sénior, feito diretamente.",
+        intro: "Sou a Maria Madeira, consultora de crescimento independente, baseada em Lisboa. Ajudo marcas de e-commerce em Portugal e no Reino Unido a serem encontradas no Google e na pesquisa com IA, e a crescer com email marketing no Klaviyo e anúncios pagos. Trabalho sénior, feito por mim.",
         cta: "Marcar uma conversa gratuita",
         results: "Ver os resultados",
         imageAlt: "Maria Madeira, consultora de crescimento, à secretária",
         badgeTitle: "£23,6K com a série de boas-vindas",
-        badgeText: "Receita de um único fluxo automático",
+        badgeText: "De um único fluxo automático, 12 meses até julho de 2025",
     },
     brandsLabel: "Marcas que confiaram no meu trabalho",
     results: {
@@ -33,11 +33,12 @@ const pt: typeof en = {
         title: "Impacto mensurável",
         sub: "De contas reais de clientes. Cada número leva ao caso de estudo.",
         link: "Ver o caso",
+        emailBars: "Duas barras: c. £71K nos 12 meses anteriores (até julho de 2024) e £134K nos 12 meses até julho de 2025, mais 88,9%",
         cards: [
-            { value: "£134K", label: "Receita de email em 12 meses, marca alimentar premium do Reino Unido" },
+            { value: "£134K", label: "Receita de email, 12 meses até julho de 2025, marca de alimentação premium do Reino Unido" },
             { value: "532%", label: "ROAS de Google Ads em 11 meses (ROAS de equilíbrio: 400%)" },
             { value: "+78%", label: "Cliques orgânicos em quatro meses" },
-            { value: "Página 2 → 1", label: "Posição média no Google, de 15,2 para 9,4" },
+            { value: "15,2 → 9,4", label: "Posição média no Google em quatro meses" },
         ],
     },
     whatIDo: {
@@ -66,8 +67,8 @@ const pt: typeof en = {
             {
                 alt: "Campanha de email desenhada no Klaviyo para uma marca de alimentação premium do Reino Unido",
                 category: "Email marketing",
-                title: "Uma lista de email por aproveitar tornou-se um canal de receita",
-                items: ["£134K de receita de email, 12 meses", "+88,9% face ao ano anterior", "Mais de um terço da receita da loja"],
+                title: "Uma lista de email pouco aproveitada chegou a mais de um terço da receita da loja",
+                items: ["£134K de receita de email, 12 meses até julho de 2025", "+88,9% face aos 12 meses anteriores (até julho de 2024)", "Mais de um terço da receita da loja"],
             },
             {
                 alt: "Gráfico de barras do retorno mensal do investimento em anúncios ao longo de onze meses, face a um ponto de equilíbrio de 400%",
@@ -78,11 +79,10 @@ const pt: typeof en = {
             {
                 alt: "Gráfico de linhas dos cliques orgânicos, a subir 78% em quatro meses",
                 category: "SEO e AEO",
-                title: "Um catálogo invisível para o Google, reconstruído página a página",
-                items: ["Cliques de 4,5K para 8,0K (+78%) em quatro meses", "Posição média de 15,2 para 9,4 (da página 2 para a página 1)", "60 páginas melhoraram aos 30 dias, 0 pioraram aos 60 dias"],
+                title: "Um catálogo Shopify reconstruído para o Google e a pesquisa com IA, página a página",
+                items: ["Cliques de 4,5K para 8,0K (+78%) em quatro meses", "Posição média de 15,2 para 9,4", "60 páginas melhoraram aos 30 dias, 0 pioraram aos 60 dias"],
             },
         ],
-        readCase: "Ler o caso de estudo",
         viewAll: "Ver todos os casos de estudo",
     },
     work: {
@@ -105,7 +105,7 @@ const pt: typeof en = {
         items: [
             {
                 q: "Trabalha com marcas em Portugal?",
-                a: "Sim. Trabalho com marcas que vendem online em Portugal e no Reino Unido, de vários setores, com a experiência mais longa em alimentação e bebidas.",
+                a: "Sim. Sou consultora de crescimento em Lisboa e trabalho com marcas de e-commerce em Portugal e no Reino Unido, de vários setores. A maior parte da minha experiência é em e-commerce de alimentação e bebidas, incluindo cinco anos com uma marca de alimentação premium do Reino Unido.",
             },
             {
                 q: "É uma agência?",
@@ -129,6 +129,9 @@ const pt: typeof en = {
             .map((c) => ({ name: c.name, issuer: c.issuer, verifyUrl: c.verifyUrl })),
         verify: "Verificar credencial",
     },
+    caseStudyLinks: ["Ler o caso de email marketing", "Ler o caso de Google Ads", "Ler o caso de SEO e AEO"],
+    servicesLink: "Ver os quatro serviços",
+    blog: { title: "Do blog", viewAll: "Todos os artigos" },
 };
 
 export default pt;

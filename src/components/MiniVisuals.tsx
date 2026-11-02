@@ -7,8 +7,9 @@
  * The data mirrors the case studies, so the shapes match the published charts:
  * - Google Ads ROAS: the 11 monthly values of ADS_ROAS in ResultCharts.tsx
  *   (1 Oct 2025 to 26 Aug 2026), break-even 400%.
- * - Email: the previous 12 months against the 12 months to July 2025, drawn
- *   in the ratio of the published +88.9% (£134.4K / 1.889).
+ * - Email: c. £71K in the 12 months to July 2024 against £134K in the 12
+ *   months to July 2025, drawn in the ratio of the published +88.9%
+ *   (£134,380 / 1.889 = £71.1K). TWELVE_MONTH_WINDOWS in emailRevenue.ts.
  * - SEO: clicks 4.5K to 8.0K and average position 15.2 to 9.4, the two ends
  *   published on /case-study-seo.
  */
@@ -40,16 +41,19 @@ export function Sparkline({ label }: { label: string }) {
     );
 }
 
-/** Before/after bar pair with a green increase badge. */
-export function EmailBarsVisual({ label, badge }: { label: string; badge: string }) {
+/** Two-window bar pair (12 months to Jul 2024, 12 months to Jul 2025), each
+ *  bar labelled with its value, and a green increase badge. */
+export function EmailBarsVisual({ label, badge, beforeText, afterText }: { label: string; badge: string; beforeText: string; afterText: string }) {
     const base = 60;
-    const full = 46;
+    const full = 40;
     const before = full / 1.889;
     return (
         <svg role="img" aria-label={label} viewBox="0 0 160 64" className="mini-visual">
             <line x1="8" y1={base} x2="112" y2={base} stroke={RULE} strokeWidth="1" />
             <rect x="20" y={base - before} width="34" height={before} rx="3" fill={GREY} />
             <rect x="64" y={base - full} width="34" height={full} rx="3" fill={ACCENT} />
+            <text x="37" y={base - before - 4} textAnchor="middle" fontSize="9" fill={INK_SOFT} fontFamily="var(--font-sans)">{beforeText}</text>
+            <text x="81" y={base - full - 4} textAnchor="middle" fontSize="9" fontWeight="700" fill={DEEP} fontFamily="var(--font-sans)">{afterText}</text>
             <rect x="106" y="4" width="52" height="20" rx="10" fill="var(--positive-bg)" />
             <text x="132" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="var(--positive)" fontFamily="var(--font-sans)">{badge}</text>
         </svg>

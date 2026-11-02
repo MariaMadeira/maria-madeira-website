@@ -14,12 +14,12 @@ const en = {
     back: "All articles",
     category: "AI Search",
     published: "Published 13 July 2026",
-    updated: "Updated 14 July 2026",
+    updated: "Updated 2 November 2026",
     readTime: "9 min read",
-    definition: "Answer Engine Optimisation (AEO) is the practice of optimising a brand to be cited and recommended by AI answer engines like ChatGPT, Perplexity, Gemini, and Google's AI Overviews. Where SEO competes for a ranked link on a results page, AEO competes to be the answer itself: the source the AI names when someone asks \"what's the best option for me?\". It works by making your brand legible to machines through structured data, clear entities, and content written so an AI can lift it, quote it, and attribute it to you.",
-    intro: "That is the short version. The rest of this guide covers how AEO differs from SEO and GEO, why 2026 is the year it stopped being optional, what the work looks like in practice, and how to find out whether AI assistants recommend you or your competitor today.",
+    definition: "Answer Engine Optimisation (AEO) is the work of making your brand the source that ChatGPT, Perplexity, Gemini and Google's AI Overviews name, quote and link when someone asks them a question. On a UK premium food brand's Shopify catalogue, from May to August 2026, that meant three things: I removed product claims the supplier could not verify, gave each page a direct answer to a real customer question, and marked the founder up as a structured entity. Over that period, daily impressions in Google's AI features grew 2.2x from the first to the last week.",
+    intro: "This guide covers how AEO differs from SEO and GEO, why 2026 is the year it stopped being optional, what the work looks like in practice, and how to find out whether AI assistants recommend you or your competitor today.",
     terms: {
-        h2: "SEO, AEO, GEO: three terms, one shift",
+        h2: "How is AEO different from SEO and GEO?",
         paras: [
             { text: ["The industry has produced a small alphabet soup around AI search. The terms overlap, but they are not interchangeable."] },
             { lead: "SEO (Search Engine Optimisation)", text: ["targets ranked positions in classic search results. The user types a query, gets a list of links, and does the comparison work themselves. SEO's currency is position: the difference between ranking third and ranking thirtieth is the difference between traffic and invisibility."] },
@@ -29,7 +29,7 @@ const en = {
         ] as Para[],
     },
     whyNow: {
-        h2: "Why now: the answer layer is eating the results page",
+        h2: "Why does AEO matter in 2026?",
         paras: [
             { text: ["Three shifts made AEO urgent for any brand that sells online."] },
             { lead: "Buyers ask assistants first.", text: ["Product research that used to start with a Google search increasingly starts with a question to ChatGPT, Perplexity, or Gemini: \"What's a good gift for a coffee lover?\", \"Which booking platform should a surf school use?\". The assistant answers with names. If your category is being asked about, some assistant is already recommending someone. The only question is who."] },
@@ -38,7 +38,7 @@ const en = {
         ] as Para[],
     },
     work: {
-        h2: "What AEO work actually looks like",
+        h2: "What does AEO work involve?",
         paras: [
             { text: ["Strip away the acronym and AEO is four concrete workstreams. This is the structure I use with clients, and you can read ", { to: "/services/aeo", text: "how I work as an AEO consultant" }, " on the service page."] },
             { lead: "1. AI visibility audit.", text: ["Before optimising anything, measure where you stand. Ask ChatGPT, Perplexity, Gemini, and Google (for AI Overviews) the questions your buyers ask: best-in-category, comparisons, \"should I use X\". Record who gets named, who gets cited, and which pages the citations point to. Most brands discover a competitor, a marketplace, or a random 2019 listicle owns their category's answer. That map defines the work."] },
@@ -53,11 +53,11 @@ const en = {
             { text: ["The cheapest time to do AEO is while a site is being built, because entities, schema, and answer-ready structure cost almost nothing to include and a lot to retrofit."] },
             { text: ["The ", { to: "/case-study-bodysurf-school", text: "Bodysurf School project" }, " is how that looks in practice. The brief was a full rebuild: a brochure site turned into a bilingual booking engine for a surf school. SEO and AEO foundations went in from the first commit: structured data describing the school, its services and its location as clean entities, pages organised around the questions surfers actually ask, and every key answer present in static HTML where both Googlebot and AI crawlers can read it without executing anything. The site competes in classic local search and is legible to answer engines, and neither goal cost the other anything."] },
             { text: ["That is the general lesson: AEO done early is architecture, not campaign. If you are planning a rebuild anyway, fold it in. My ", { to: "/services/websites", text: "website strategy service" }, " treats them as one project for exactly this reason."] },
-            { text: ["Retrofitting is the harder case, and the more common one. The ", { to: "/case-study-seo", text: "SEO and AEO case study" }, " covers a catalogue that launched without either, then had both rebuilt into it page by page, and my ", { to: "/services/aeo", text: "AEO consulting service" }, " is the same work packaged."] },
+            { text: ["Retrofitting is the harder case, and the more common one. The ", { to: "/case-study-seo", text: "SEO and AEO case study" }, " covers a Shopify catalogue whose collections and product pages had not been built for search, then had SEO and AEO rebuilt into it page by page, and my ", { to: "/services/aeo", text: "AEO consulting service" }, " is the same work packaged."] },
         ] as Para[],
     },
     start: {
-        h2: "Where to start this week",
+        h2: "How do I start with AEO this week?",
         intro: "Three actions, in order of effort:",
         steps: [
             { lead: "Run the five-question test below.", text: "Twenty minutes tells you whether AI already recommends you or a competitor." },
@@ -113,6 +113,8 @@ const en = {
         { to: "/blog/chatgpt-ads-europe", label: "Inside ChatGPT Ads in Europe" },
         { to: "/blog/ai-product-descriptions-food-brands", label: "AI product descriptions, done safely" },
     ],
+    /** RelatedLinks: the service the article is about. */
+    relatedService: "SEO and AI search optimisation (AEO) for e-commerce",
 };
 
 export default en;

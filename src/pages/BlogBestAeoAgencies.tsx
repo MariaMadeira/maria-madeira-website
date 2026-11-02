@@ -1,74 +1,59 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Clock, Check } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 import Seo from "../components/Seo";
 import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 import AuthorBio from "../components/AuthorBio";
+import Byline from "../components/Byline";
 import { useLang } from "../hooks/useLang";
 import type { Lang } from "../lib/i18n";
+import { SITE_URL, blogPostingNode, breadcrumbNode, faqNode, withEntities } from "../lib/schema";
 import COPY from "../i18n/blogBestAeoAgencies";
 import type { Rich } from "../i18n/en/blogWhatIsAeo";
 
 /* Renders /blog/best-aeo-agencies-ecommerce-europe and its /pt twin from
    src/i18n/blogBestAeoAgencies.ts. The shortlist in the copy is the single
    source for the table, the cards and the ItemList. */
-const SITE_URL = "https://mariamadeira.com";
-const PUBLISHED_ISO = "2026-07-14";
+const OG_IMAGE = "/og/og-blog-roundup.png";
+/* Per language. English: the July 2026 date the post shows. Portuguese: the
+   commit that put the /pt post live, and the last one that changed its text
+   (git log src/i18n/pt/blogBestAeoAgencies.ts). Bump MODIFIED, in the
+   language that changed, with the visible text; the byline renders these. */
+const PUBLISHED = { en: "2026-07-14", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-11-02", pt: "2026-11-02" };
 
-/* English keeps its Article schema; the Portuguese page is a BlogPosting in
-   pt-PT with the same dates, and its ItemList points at the PT anchors. */
+/* BlogPosting in both languages; the ItemList points at each language's
+   own anchors. */
 function articleJsonLd(lang: Lang) {
     const t = COPY[lang];
     const pageUrl = `${SITE_URL}${t.path}`;
-    const pt = lang === "pt";
-    return {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": pt ? "BlogPosting" : "Article",
-                "@id": `${pageUrl}#article`,
-                "headline": t.headline,
-                "description": t.description,
-                ...(pt ? { "inLanguage": "pt-PT" } : {}),
-                "author": pt ? { "@id": `${SITE_URL}/#person` } : { "@type": "Person", "@id": `${SITE_URL}/#person`, "name": "Maria Madeira" },
-                "publisher": { "@id": `${SITE_URL}/#person` },
-                "datePublished": PUBLISHED_ISO,
-                "dateModified": PUBLISHED_ISO,
-                "mainEntityOfPage": pageUrl,
-            },
-            {
-                "@type": "ItemList",
-                "@id": `${pageUrl}#shortlist`,
-                "name": t.listName,
-                "itemListOrder": "https://schema.org/ItemListOrderAscending",
-                "numberOfItems": t.agencies.length,
-                "itemListElement": t.agencies.map((a, i) => ({
-                    "@type": "ListItem",
-                    "position": i + 1,
-                    "name": a.name,
-                    "url": `${pageUrl}#${a.anchor}`,
-                })),
-            },
-            {
-                "@type": "FAQPage",
-                "@id": `${pageUrl}#faq`,
-                ...(pt ? { "inLanguage": "pt-PT" } : {}),
-                "mainEntity": t.faqs.map((f) => ({
-                    "@type": "Question",
-                    "name": f.q,
-                    "acceptedAnswer": { "@type": "Answer", "text": f.a },
-                })),
-            },
-            {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": t.crumbs.home, "item": pt ? `${SITE_URL}/pt` : `${SITE_URL}/` },
-                    { "@type": "ListItem", "position": 2, "name": t.crumbs.blog, "item": pt ? `${SITE_URL}/pt/blog` : `${SITE_URL}/blog` },
-                    { "@type": "ListItem", "position": 3, "name": t.crumbs.page, "item": pageUrl },
-                ],
-            },
-        ],
-    };
+    const blogPath = lang === "pt" ? "/pt/blog" : "/blog";
+    return withEntities([
+        blogPostingNode({
+            path: t.path,
+            headline: t.headline,
+            description: t.description,
+            datePublished: PUBLISHED[lang],
+            dateModified: MODIFIED[lang],
+            image: OG_IMAGE,
+            lang,
+        }),
+        {
+            "@type": "ItemList",
+            "@id": `${pageUrl}#shortlist`,
+            "name": t.listName,
+            "itemListOrder": "https://schema.org/ItemListOrderAscending",
+            "numberOfItems": t.agencies.length,
+            "itemListElement": t.agencies.map((a, i) => ({
+                "@type": "ListItem",
+                "position": i + 1,
+                "name": a.name,
+                "url": `${pageUrl}#${a.anchor}`,
+            })),
+        },
+        faqNode(t.path, lang, t.faqs),
+        breadcrumbNode(lang, [[t.crumbs.blog, blogPath], [t.crumbs.page, t.path]]),
+    ]);
 }
 
 const ARTICLE_JSON_LD = { en: articleJsonLd("en"), pt: articleJsonLd("pt") };
@@ -93,7 +78,8 @@ export default function BlogBestAeoAgencies() {
                 title={t.title}
                 description={t.description}
                 path={t.path}
-                ogImage="/og/og-blog-roundup.png"
+                ogImage={OG_IMAGE}
+                ogType="article"
                 jsonLd={ARTICLE_JSON_LD[lang]}
             />
 
@@ -120,13 +106,7 @@ export default function BlogBestAeoAgencies() {
                     {t.headline}
                 </h1>
 
-                {/* byline + dates */}
-                <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap", color: "var(--text-secondary)", fontSize: "0.9rem", marginBottom: "2.5rem", paddingBottom: "2rem", borderBottom: "1px solid var(--border-color)" }}>
-                    <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>Maria Madeira</span>
-                    <span>{t.published}</span>
-                    <span>{t.updated}</span>
-                    <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><Clock size={13} /> {t.readTime}</span>
-                </div>
+                <Byline published={PUBLISHED[lang]} modified={MODIFIED[lang]} readTime={t.readTime} />
 
                 {/* Intro answer: quotable lead */}
                 <blockquote style={{ ...calloutBox, margin: "0 0 1.5rem" }}>

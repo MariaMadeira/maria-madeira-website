@@ -97,6 +97,8 @@ const en = {
         b: ".",
     },
     related: ["AI product photography for a UK food brand", "AI search impressions up 2.2x"],
+    /** RelatedLinks: the service the article leads to. */
+    relatedService: "SEO and AI search optimisation (AEO) for e-commerce",
 };
 
 export default en;

@@ -32,7 +32,12 @@ export default function AppShell({ children }: { children: ReactNode }) {
             <LangSync />
             <Navbar />
             <div className="page-container">
-                <Suspense fallback={<PageLoader />}>{children}</Suspense>
+                {/* The one <main> landmark: page content, without the nav and
+                    footer around it. Inside the shared shell, so the server and
+                    client trees stay identical. */}
+                <main id="main">
+                    <Suspense fallback={<PageLoader />}>{children}</Suspense>
+                </main>
                 <Footer />
             </div>
         </>

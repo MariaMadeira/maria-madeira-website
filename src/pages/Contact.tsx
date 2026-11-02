@@ -1,7 +1,15 @@
 import { Mail, Linkedin, Send, CheckCircle } from "lucide-react";
 import { useState, useSyncExternalStore } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Seo from "../components/Seo";
+import { ORG_REF, PERSON_REF, breadcrumbNode, webPageNode, withEntities } from "../lib/schema";
+
+/* ContactPage, its breadcrumb and the shared Person, Organization and WebSite,
+   matching /pt/contacto. */
+const JSON_LD = withEntities([
+    webPageNode({ type: "ContactPage", path: "/contact", name: "Contact", lang: "en", about: PERSON_REF, publisher: ORG_REF }),
+    breadcrumbNode("en", [["Contact", "/contact"]]),
+]);
 
 /* Enquiry presets reachable as /contact?topic=<key>. Anything else, including no
    parameter at all, leaves the page exactly as it was. */
@@ -85,9 +93,10 @@ export default function Contact() {
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
-                title="Contact Maria Madeira | Growth Strategist"
-                description="Contact Maria Madeira to discuss growth strategy, email marketing, paid advertising, or AI marketing systems for your online business. Let's talk."
+                title="Contact Maria Madeira | Growth Consultant in Lisbon"
+                description="Contact Maria Madeira, an independent growth consultant in Lisbon, about SEO and AI search, Klaviyo email, paid ads or your website. Free 30-minute call."
                 path="/contact"
+                jsonLd={JSON_LD}
             />
 
             <h1 className="section-title">{preset ? preset.h1 : "Let's talk"}</h1>
@@ -183,6 +192,9 @@ export default function Contact() {
 
                             <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", textAlign: "center", margin: 0 }}>
                                 No commitment, no pressure.
+                            </p>
+                            <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", textAlign: "center", margin: 0 }}>
+                                I'll only use your details to reply to you. <Link to="/privacy" style={{ color: "var(--accent-text)", fontWeight: 600 }}>Privacy policy</Link>.
                             </p>
                         </form>
                     )}

@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { alternatesOf } from "../lib/i18n";
+import { alternatesOf, langOf, twinOf } from "../lib/i18n";
 
 const SITE_URL = "https://mariamadeira.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og/og-default.png`;
@@ -24,9 +24,15 @@ interface SeoProps {
     /** Structured data serialised into a <script type="application/ld+json"> tag. */
     jsonLd?: Record<string, unknown>;
     noIndex?: boolean;
-    /** og:type; "article" on case studies. */
+    /** og:type; "article" on case studies and blog posts. */
     ogType?: "website" | "article";
+    /** og:image:alt and twitter:image:alt; defaults to the title. */
+    ogImageAlt?: string;
 }
+
+/* Lets Google show large image previews and full-length snippets, AI
+   Overviews included. Indexable pages only; noindex pages say just that. */
+const ROBOTS = "max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 
 export default function Seo({
     title,
@@ -36,9 +42,12 @@ export default function Seo({
     jsonLd,
     noIndex = false,
     ogType = "website",
+    ogImageAlt,
 }: SeoProps) {
     const canonical = `${SITE_URL}${path}`;
     const imageUrl = ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`;
+    const imageAlt = ogImageAlt ?? title;
+    const pt = langOf(path) === "pt";
 
     return (
         <Helmet>
@@ -49,8 +58,11 @@ export default function Seo({
             {alternatesOf(path).map((alt) => (
                 <link key={alt.hreflang} rel="alternate" hrefLang={alt.hreflang} href={`${SITE_URL}${alt.path}`} />
             ))}
-            {noIndex && <meta name="robots" content="noindex" />}
+            <meta name="robots" content={noIndex ? "noindex" : ROBOTS} />
 
+            <meta property="og:site_name" content="Maria Madeira" />
+            <meta property="og:locale" content={pt ? "pt_PT" : "en_GB"} />
+            {twinOf(path) && <meta property="og:locale:alternate" content={pt ? "en_GB" : "pt_PT"} />}
             <meta property="og:type" content={ogType} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
@@ -58,11 +70,13 @@ export default function Seo({
             <meta property="og:image" content={imageUrl} />
             <meta property="og:image:width" content="2400" />
             <meta property="og:image:height" content="1260" />
+            <meta property="og:image:alt" content={imageAlt} />
 
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={imageUrl} />
+            <meta name="twitter:image:alt" content={imageAlt} />
 
             {jsonLd && IS_SERVER && (
                 <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>

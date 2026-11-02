@@ -6,7 +6,11 @@
  * optimize-images.mjs. These are different: each appears in exactly one slot,
  * so a single well-sized file beats a srcset nobody varies.
  *
- * Originals stay in the repo untouched; only the .webp is referenced.
+ * Originals stay in the repo untouched, under scripts/assets/originals/ at the
+ * same path they would have in public/ (so .../originals/projects/ousadia/2.jpg
+ * writes public/projects/ousadia/2.webp). Keeping them out of public/ stops
+ * Vercel serving the multi-MB files. A new original dropped straight into
+ * public/projects/ is still picked up, but move it to originals/ afterwards.
  */
 import sharp from 'sharp';
 import { readdirSync, statSync, existsSync } from 'fs';
@@ -16,9 +20,13 @@ const BUDGET = 150 * 1024;   // the brief's ceiling, per image
 const WIDE_MAX = 1200;       // widest slot on the site is ~998 CSS px
 const TALL_MAX = 800;        // tall email screenshots sit in ~350 px columns
 
-const roots = ['public/projects', 'public'];
+const ORIGINALS = 'scripts/assets/originals';
+// [directory to scan, how deep to recurse]. Top level only for the root dirs,
+// where the bodysurf screenshots are the only project images.
+const roots = [[`${ORIGINALS}/projects`, 3], [ORIGINALS, 0], ['public/projects', 3]];
 const files = [];
-for (const root of roots) {
+for (const [root, maxDepth] of roots) {
+    if (!existsSync(root)) continue;
     const walk = (dir, depth) => {
         for (const e of readdirSync(dir, { withFileTypes: true })) {
             const p = join(dir, e.name);
@@ -26,17 +34,17 @@ for (const root of roots) {
             if (!/\.(jpe?g|png)$/i.test(e.name)) continue;
             if (p.includes('/og/')) continue;                 // OG images stay JPG/PNG
             if (/favicon|apple-touch/i.test(e.name)) continue; // handled separately
-            if (root === 'public' && !/^public\/bodysurf-/.test(p)) continue;
+            if (root === ORIGINALS && !/^bodysurf-/.test(e.name)) continue;
             files.push(p);
         }
     };
-    walk(root, root === 'public' ? 0 : 3);
+    walk(root, maxDepth);
 }
 
 let before = 0, after = 0, n = 0;
 const rows = [];
 for (const src of files.sort()) {
-    const out = src.replace(/\.(jpe?g|png)$/i, '.webp');
+    const out = src.replace(`${ORIGINALS}/`, 'public/').replace(/\.(jpe?g|png)$/i, '.webp');
     const meta = await sharp(src).metadata();
     const tall = meta.height > meta.width * 1.5;
     const target = Math.min(meta.width, tall ? TALL_MAX : WIDE_MAX);

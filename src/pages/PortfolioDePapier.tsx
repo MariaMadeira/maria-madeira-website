@@ -50,7 +50,7 @@ export default function PortfolioDePapier() {
                 path: c.path,
                 name: "dePapier Translations",
                 description: c.description,
-                about: { type: "Organization", name: "dePapier Translations" },
+                about: { type: "Organization", name: "dePapier Translations", url: "https://depapiertranslations.com" },
                 image: c.site.src,
                 lang,
             })}

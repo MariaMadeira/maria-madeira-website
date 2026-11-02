@@ -9,17 +9,17 @@ export interface HomePtExtras {
 
 const en = {
     path: "/",
-    title: "AEO Consultancy for E-commerce Brands | Maria Madeira",
-    description: "Answer Engine Optimisation (AEO), SEO and email marketing for UK food and drink e-commerce brands. Agency-level execution from an independent consultant.",
+    title: "Maria Madeira | Growth Consultant: SEO, AI Search, Klaviyo",
+    description: "Maria Madeira, independent growth consultant in Lisbon: SEO, AI search, Klaviyo email and paid ads for e-commerce brands in the UK and Portugal.",
     hero: {
         eyebrow: "Growth consultant · Klaviyo Partner",
         h1: "Found in AI search. Paid back by email and ads.",
-        intro: "I'm Maria, a growth consultant for brands that sell online. SEO and AEO, Klaviyo email, Google and Meta Ads, and the website they run on. Senior work, done by me.",
+        intro: "I'm Maria Madeira, an independent growth consultant based in Lisbon. I help e-commerce brands in the UK and Portugal get found on Google and in AI search, and grow revenue with Klaviyo email marketing and paid ads. Senior work, done by me.",
         cta: "Book a free call",
         results: "See my results",
         imageAlt: "Maria Madeira, growth consultant, at her desk",
         badgeTitle: "£23.6K Welcome Series",
-        badgeText: "Revenue from a single lifecycle flow",
+        badgeText: "From a single lifecycle flow, 12 months to July 2025",
     },
     brandsLabel: "Brands I've worked with",
     results: {
@@ -28,11 +28,13 @@ const en = {
         /* Link text under each card. */
         link: "Read case study",
         /* Same order as the visuals and links in the component. */
+        /* The email card's two bars, as the visual's accessible name reads them. */
+        emailBars: "Two bars: c. £71K in the previous 12 months (to July 2024) and £134K in the 12 months to July 2025, up 88.9%",
         cards: [
-            { value: "£134K", label: "Email revenue in 12 months, UK premium food brand" },
+            { value: "£134K", label: "Email revenue, 12 months to July 2025, UK premium food brand" },
             { value: "532%", label: "Google Ads ROAS over 11 months (break-even: 400%)" },
             { value: "+78%", label: "Organic clicks in four months" },
-            { value: "Page 2 → 1", label: "Average Google position, 15.2 to 9.4" },
+            { value: "15.2 → 9.4", label: "Average Google position in four months" },
         ],
     },
     whatIDo: {
@@ -46,8 +48,8 @@ const en = {
             {
                 alt: "Email campaign designed in Klaviyo for a UK premium food brand",
                 category: "Email marketing",
-                title: "An unused email list became a revenue channel",
-                items: ["£134K email revenue, 12 months", "+88.9% year on year", "Over a third of store revenue"],
+                title: "An underused email list grew to over a third of store revenue",
+                items: ["£134K email revenue, 12 months to July 2025", "+88.9% on the previous 12 months (to July 2024)", "Over a third of store revenue"],
             },
             {
                 alt: "Bar chart of monthly return on ad spend over eleven months against a 400 percent break-even",
@@ -58,11 +60,10 @@ const en = {
             {
                 alt: "Line chart of organic clicks rising 78 percent over four months",
                 category: "SEO and AEO",
-                title: "A catalogue invisible to Google, rebuilt page by page",
-                items: ["Clicks from 4.5K to 8.0K (+78%) in four months", "Average position from 15.2 to 9.4 (page 2 to page 1)", "60 pages improved at 30 days, 0 declined at 60 days"],
+                title: "A Shopify catalogue rebuilt for Google and AI search, page by page",
+                items: ["Clicks from 4.5K to 8.0K (+78%) in four months", "Average position from 15.2 to 9.4", "60 pages improved at 30 days, 0 declined at 60 days"],
             },
         ],
-        readCase: "Read case study",
         viewAll: "View all case studies",
     },
     how: {
@@ -103,11 +104,11 @@ const en = {
         items: [
             {
                 q: "What does Maria Madeira do?",
-                a: "I'm an independent growth consultant for brands that sell online. I work on SEO and AEO (being found and recommended in Google and AI assistants), Klaviyo email marketing, Google, Meta and Microsoft Ads, and the websites they run on. I do the strategy and the work myself.",
+                a: "I'm an independent growth consultant based in Lisbon, Portugal, working with e-commerce brands in the UK and Portugal. I work on SEO and AI search optimisation (AEO: being found on Google and recommended by ChatGPT, Perplexity, Gemini and Google AI Overviews), Klaviyo email marketing, Google, Meta and Microsoft Ads, and the websites they run on. I do the strategy and the work myself.",
             },
             {
                 q: "Where are your clients?",
-                a: "I'm based in Lisbon and work with brands in the UK and Portugal, across sectors. Most of my experience is in food and drink e-commerce, including five years with The Black Farmer.",
+                a: "I'm based in Lisbon and work with e-commerce brands in the UK and Portugal, across sectors. Most of my experience is in food and drink e-commerce, including five years with a UK premium food brand.",
             },
             {
                 q: "How much does it cost?",
@@ -125,6 +126,12 @@ const en = {
         button: "Book a free call",
     },
     ptExtras: null as HomePtExtras | null,
+    /** Link text for the three case-study cards, in card order (email, Google Ads, SEO). */
+    caseStudyLinks: ["Read the email marketing case study", "Read the Google Ads case study", "Read the SEO and AEO case study"],
+    /** Under the What I do cards: the services hub. */
+    servicesLink: "See all four services",
+    /** The From the blog section: every post, newest first. */
+    blog: { title: "From the blog", viewAll: "All articles" },
 };
 
 export default en;

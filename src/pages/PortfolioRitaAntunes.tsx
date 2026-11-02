@@ -63,7 +63,7 @@ export default function PortfolioRitaAntunes() {
                 >
                     <div style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
                         <h1 style={{
-                            fontFamily: "'Outfit', sans-serif",
+                            fontFamily: "var(--font-heading)",
                             fontSize: "clamp(3rem, 8vw, 4.5rem)",
                             fontWeight: 600,
                             color: "#53593f",
@@ -108,7 +108,7 @@ export default function PortfolioRitaAntunes() {
 
                     style={{ marginBottom: "6rem" }}
                 >
-                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "#53593f" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "2.25rem", fontWeight: 600, marginBottom: "1.5rem", color: "#53593f" }}>
                         {c.overviewTitle}
                     </h2>
                     <p style={{
@@ -129,7 +129,7 @@ export default function PortfolioRitaAntunes() {
 
                     style={{ marginBottom: "6rem" }}
                 >
-                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
                         {c.conceptTitle}
                     </h2>
                     <p style={{
@@ -168,7 +168,7 @@ export default function PortfolioRitaAntunes() {
 
                     style={{ marginBottom: "6rem" }}
                 >
-                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
                         {c.logoTitle}
                     </h2>
                     <p style={{
@@ -207,7 +207,7 @@ export default function PortfolioRitaAntunes() {
 
                     style={{ marginBottom: "6rem" }}
                 >
-                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
                         {c.paletteTitle}
                     </h2>
                     <p style={{
@@ -243,7 +243,7 @@ export default function PortfolioRitaAntunes() {
 
                     style={{ marginBottom: "6rem" }}
                 >
-                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
                         {c.typeTitle}
                     </h2>
                     <p style={{
@@ -287,7 +287,7 @@ export default function PortfolioRitaAntunes() {
 
                     style={{ marginBottom: "6rem" }}
                 >
-                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
                         {c.patternTitle}
                     </h2>
                     <p style={{
@@ -326,7 +326,7 @@ export default function PortfolioRitaAntunes() {
 
                     style={{ marginBottom: "6rem" }}
                 >
-                    <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
+                    <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "2.25rem", marginBottom: "1.5rem", color: "#53593f" }}>
                         {c.applicationsTitle}
                     </h2>
                     <p style={{
@@ -367,7 +367,7 @@ export default function PortfolioRitaAntunes() {
                     }}>
                         <CheckCircle2 style={{ color: "#53593f", flexShrink: 0 }} size={32} />
                         <div>
-                            <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: "1.75rem", marginBottom: "1rem", color: "#53593f" }}>
+                            <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "1.75rem", marginBottom: "1rem", color: "#53593f" }}>
                                 {c.outcomeTitle}
                             </h2>
                             <p style={{

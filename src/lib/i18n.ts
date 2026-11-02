@@ -18,6 +18,8 @@ export const PT_PAGES: { en: string; pt: string; status: "live" | "draft"; batch
     { en: "/", pt: "/pt", status: "live", batch: 0 },
     { en: "/services/email-marketing", pt: "/pt/servicos/email-marketing", status: "live", batch: 0 },
     { en: "/contact", pt: "/pt/contacto", status: "live", batch: 0 },
+    // Legal page, published in both languages at once (not part of a review batch).
+    { en: "/privacy", pt: "/pt/privacidade", status: "live", batch: 0 },
 
     { en: "/services", pt: "/pt/servicos", status: "live", batch: 1 },
     { en: "/services/aeo", pt: "/pt/servicos/aeo", status: "live", batch: 1 },

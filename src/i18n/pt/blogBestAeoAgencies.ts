@@ -10,7 +10,7 @@ import type { Rich } from "../en/blogWhatIsAeo";
  */
 const pt: typeof en = {
     path: "/pt/blog/melhores-agencias-aeo-ecommerce-europa",
-    title: "Agências de AEO para e-commerce na Europa | Maria Madeira",
+    title: "Agências de AEO (pesquisa com IA) na Europa | Maria Madeira",
     description: "Seleção das melhores agências de AEO para marcas de e-commerce na Europa, como avaliá-las e quando uma consultora independente é a melhor escolha.",
     headline: "As melhores agências de AEO para marcas de e-commerce na Europa (2026), e onde entra uma consultora independente",
     crumbs: { home: "Início", blog: "Blog", page: "Melhores agências de AEO para e-commerce na Europa" },
@@ -109,7 +109,7 @@ const pt: typeof en = {
     fitTitle: "Onde entra uma consultora independente",
     fit: [
         ["Todas as empresas acima são agências, e isso reflete o mercado: as avenças de AEO foram pensadas para empresas que podem gastar GBP 3K a 10K por mês e têm alguém internamente para gerir a relação. Uma grande parte das marcas europeias de e-commerce não é essa empresa. São lojas geridas pelos fundadores, com uma faturação entre EUR 500K e 10M, onde o orçamento existe mas a estrutura de uma agência não compensa, e onde o fundador quer falar com quem faz o trabalho."],
-        ["É esse o espaço que os consultores independentes ocupam, e é nele que trabalho. Com toda a transparência, já que fui eu que escrevi esta lista: sou consultora de crescimento em Lisboa e trabalho com marcas de e-commerce em toda a Europa, juntando o AEO aos canais que ele alimenta, às bases do site, ao SEO e ao email marketing no Klaviyo. A minha metodologia está publicada, incluindo o ", { to: "/services/aeo", text: "processo de auditoria" }, " e um ", { to: "/blog/what-is-aeo", text: "guia completo sobre AEO" }, " que pode usar sem contratar ninguém. Não me vou comparar com as agências acima; a forma honesta de o dizer é que resolvemos situações diferentes. Se a sua marca é gerida pelos fundadores, ", { to: "/contact", text: "é para essa conversa que estou aqui" }, ". Se é uma grande empresa, comece pela seleção."],
+        ["É esse o espaço que os consultores independentes ocupam, e é nele que trabalho. Com toda a transparência, já que fui eu que escrevi esta lista: sou consultora de crescimento independente, baseada em Lisboa, e trabalho com marcas de e-commerce em Portugal e no Reino Unido, juntando o AEO aos canais que ele alimenta, às bases do site, ao SEO e ao email marketing no Klaviyo. A minha metodologia está publicada, incluindo o ", { to: "/services/aeo", text: "processo de auditoria" }, " e um ", { to: "/blog/what-is-aeo", text: "guia completo sobre AEO" }, " que pode usar sem contratar ninguém. Não me vou comparar com as agências acima; a forma honesta de o dizer é que resolvemos situações diferentes. Se a sua marca é gerida pelos fundadores, ", { to: "/contact", text: "marque comigo uma conversa gratuita de 30 minutos" }, ". Se é uma grande empresa, comece pela seleção."],
     ] as Rich[],
     proof: ["Avaliado pelo mesmo critério que defini acima, o meu trabalho pode ser verificado, não só afirmado: o ", { to: "/case-study-seo", text: "caso de estudo de SEO e AEO" }, " publica os períodos do Google Search Console em que se baseia, e a ", { to: "/services/aeo", text: "página do serviço de AEO" }, " explica o processo de auditoria de onde veio."] as Rich,
     faqTitle: "Perguntas frequentes",
@@ -135,7 +135,7 @@ const pt: typeof en = {
             a: "Sim. Um especialista interno dedicado ao AEO pode cobrir tudo o que uma agência oferece: a disciplina está documentada, não é segredo de ninguém, e este guia tem links para a maior parte dela. A questão prática é económica, não de capacidade. Para uma só loja, o AEO não é um trabalho a tempo inteiro: depois do trabalho estrutural inicial, passa a um ritmo mensal de medição, conteúdos e construção de autoridade, e é por isso que um especialista a tempo inteiro raramente compensa abaixo da escala de uma grande empresa. As marcas maiores juntam-no a uma função de SEO ou de conteúdos que já existe, e isso funciona quando a pessoa tem tempo real para o fazer. As marcas pelo meio costumam comprar essa mesma senioridade a tempo parcial, através de um consultor ou de um trabalho leve com uma agência, precisamente porque a carga de trabalho é parcial, mas a experiência necessária não.",
         },
     ],
-    lastUpdated: ["Última atualização: 14 de julho de 2026. Esta lista vai ser revista à medida que o mercado europeu de AEO amadurece; correções e sugestões de novas entradas são bem-vindas através do ", { to: "/contact", text: "contacto" }, "."] as Rich,
+    lastUpdated: ["Lista verificada a 14 de julho de 2026. Esta lista vai ser revista à medida que o mercado europeu de AEO amadurece; correções e sugestões de novas entradas são bem-vindas através do ", { to: "/contact", text: "contacto" }, "."] as Rich,
     related: [
         { to: "/case-study-bodysurf-school", label: "Bases de AEO integradas num site novo" },
         { to: "/blog/chatgpt-ads-europe", label: "Respostas orgânicas ou ChatGPT Ads" },

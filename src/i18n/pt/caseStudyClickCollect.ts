@@ -6,9 +6,9 @@ import type en from "../en/caseStudyClickCollect";
  */
 const pt: typeof en = {
     path: "/pt/caso-click-collect",
-    title: "Click & Collect: menos filas na loja | Maria Madeira",
+    title: "Caso de estudo: app de Click & Collect | Maria Madeira",
     description: "Caso de estudo de Click & Collect: uma app de pré-encomenda para uma loja com muito movimento, e o que a baixa adesão ensinou sobre os hábitos dos clientes.",
-    h1: "Uma loja a perder vendas por causa das filas, e a solução: pré-encomendas pelo telemóvel",
+    h1: "Uma app de pré-encomenda para uma loja com filas, e porque é que a adesão ficou baixa",
     schemaDescription: "O lançamento de uma app de pré-encomenda para uma loja com muito movimento, e o que a baixa adesão nos ensinou sobre os hábitos dos clientes.",
     breadcrumb: "Click & Collect",
     back: "Voltar aos casos de estudo",

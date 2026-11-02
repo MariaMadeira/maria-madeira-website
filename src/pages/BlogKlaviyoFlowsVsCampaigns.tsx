@@ -1,23 +1,29 @@
 import { Link } from "react-router-dom";
 import type { ReactNode } from "react";
-import { ArrowLeft, Clock, ArrowRight, UserPlus, Eye, ShoppingCart, PackageCheck, RefreshCw, Moon, Cake, Mail, Undo2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, UserPlus, Eye, ShoppingCart, PackageCheck, RefreshCw, Moon, Cake, Mail, Undo2 } from "lucide-react";
 import Seo from "../components/Seo";
 import RelatedLinks, { RELATED } from "../components/RelatedLinks";
+import AuthorBio from "../components/AuthorBio";
+import Byline from "../components/Byline";
 import KlaviyoPartnerBadge from "../components/KlaviyoPartnerBadge";
 import { PRACTITIONER_URL } from "../lib/credentials";
-import { EMAIL_PERIODS } from "../data/emailRevenue";
-import { decimal, EMAIL_PERIOD_LINES_PT } from "../lib/format";
+import { CALENDAR_YEARS } from "../data/emailRevenue";
+import { decimal } from "../lib/format";
 import type { Lang } from "../lib/i18n";
 import { useLang } from "../hooks/useLang";
+import { blogPostingNode, breadcrumbNode, faqNode, withEntities } from "../lib/schema";
 import COPY from "../i18n/klaviyoFlows";
 
 /* Renders /blog/klaviyo-flows-vs-campaigns and /pt/blog/fluxos-vs-campanhas-klaviyo
    from src/i18n/klaviyoFlows.ts. Icons, colours, numbers and links live here;
    every word, including the text of the eight visuals, lives in the copy. */
-const SITE_URL = "https://mariamadeira.com";
 const OG_IMAGE = "/og/og-blog-klaviyo-automations.png";
-const PUBLISHED_ISO = "2026-10-19";
-const MODIFIED_ISO = "2026-10-19";
+/* Per language. English: the date the post shows. Portuguese: the commit
+   that put the /pt post live, and the last one that changed its text (git
+   log src/i18n/pt/klaviyoFlows.ts). Bump MODIFIED, in the language that
+   changed, with the visible text; the byline renders these same strings. */
+const PUBLISHED = { en: "2026-10-19", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-11-02", pt: "2026-11-02" };
 
 const OMNISEND = "https://www.omnisend.com/2026-ecommerce-marketing-report";
 const KLAVIYO_BENCHMARKS = "https://www.klaviyo.com/products/email-marketing/benchmarks";
@@ -72,48 +78,21 @@ const FROM_2021 = new Set([0, 1, 3, 4]);
 
 function articleJsonLd(lang: Lang) {
     const t = COPY[lang];
-    const pageUrl = `${SITE_URL}${t.path}`;
-    const home = lang === "pt" ? `${SITE_URL}/pt` : `${SITE_URL}/`;
-    const blog = lang === "pt" ? `${SITE_URL}/pt/blog` : `${SITE_URL}/blog`;
-    const inLanguage = lang === "pt" ? { "inLanguage": "pt-PT" } : {};
-    return {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "BlogPosting",
-                "@id": `${pageUrl}#article`,
-                "headline": t.headline,
-                "description": t.description,
-                ...inLanguage,
-                "author": { "@id": `${SITE_URL}/#person` },
-                "publisher": { "@id": `${SITE_URL}/#organization` },
-                "datePublished": PUBLISHED_ISO,
-                "dateModified": MODIFIED_ISO,
-                "mainEntityOfPage": pageUrl,
-                "image": `${SITE_URL}${OG_IMAGE}`,
-                "isPartOf": { "@id": `${blog}#blog` },
-                "articleSection": t.articleSection,
-            },
-            {
-                "@type": "FAQPage",
-                "@id": `${pageUrl}#faq`,
-                ...inLanguage,
-                "mainEntity": t.faqs.map((f) => ({
-                    "@type": "Question",
-                    "name": f.q,
-                    "acceptedAnswer": { "@type": "Answer", "text": f.a },
-                })),
-            },
-            {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": t.breadcrumb[0], "item": home },
-                    { "@type": "ListItem", "position": 2, "name": t.breadcrumb[1], "item": blog },
-                    { "@type": "ListItem", "position": 3, "name": t.breadcrumb[2], "item": pageUrl },
-                ],
-            },
-        ],
-    };
+    const blogPath = lang === "pt" ? "/pt/blog" : "/blog";
+    return withEntities([
+        blogPostingNode({
+            path: t.path,
+            headline: t.headline,
+            description: t.description,
+            datePublished: PUBLISHED[lang],
+            dateModified: MODIFIED[lang],
+            image: OG_IMAGE,
+            lang,
+            articleSection: t.articleSection,
+        }),
+        faqNode(t.path, lang, t.faqs),
+        breadcrumbNode(lang, [[t.breadcrumb[1], blogPath], [t.breadcrumb[2], t.path]]),
+    ]);
 }
 const JSON_LD = { en: articleJsonLd("en"), pt: articleJsonLd("pt") };
 
@@ -162,22 +141,22 @@ function ShareBar({ id, label, auto }: { id: string; label: string; auto: number
     );
 }
 
-/* ── Visual 5: email revenue by period, flows at the base. Two drawings, as
+/* ── Visual 5: email revenue by calendar year (2022 to 2024), flows at the base. Two drawings, as
        the case study charts do: vertical bars wide, horizontal bars narrow. ── */
-/* Period labels and figures in the page's language: English exactly as the
-   data file has them, Portuguese with a decimal comma (£33,1K). */
-const periodLines = (i: number, lang: Lang) => (lang === "pt" ? EMAIL_PERIOD_LINES_PT[i] : EMAIL_PERIODS[i].lines);
+/* Year labels read the same in both languages; figures in the page's
+   language, Portuguese with a decimal comma (£66,3K). */
+const periodLines = (i: number) => CALENDAR_YEARS[i].lines;
 const amount = (v: number, lang: Lang) => decimal(String(v), lang);
 function revDesc(lang: Lang) {
     const t = COPY[lang];
-    return `${t.v5DescIntro}${EMAIL_PERIODS.map((p, i) => t.v5DescRow(periodLines(i, lang).join(" "), amount(p.flows, lang), amount(p.campaigns, lang), decimal(p.total, lang))).join("; ")}.`;
+    return `${t.v5DescIntro}${CALENDAR_YEARS.map((p, i) => t.v5DescRow(periodLines(i).join(" "), amount(p.flows, lang), amount(p.campaigns, lang), decimal(p.total, lang))).join("; ")}.`;
 }
 const REV_MAX = 150;
 
 function RevenueWide() {
     const { lang } = useLang();
     const t = COPY[lang];
-    const L = 54, R = 750, T = 34, B = 290, plotH = B - T, band = (R - L) / EMAIL_PERIODS.length, bw = 70;
+    const L = 54, R = 750, T = 34, B = 290, plotH = B - T, band = (R - L) / CALENDAR_YEARS.length, bw = 70;
     const y = (v: number) => B - (v / REV_MAX) * plotH;
     return (
         <svg viewBox="0 0 760 350" width="100%" role="img" aria-labelledby="kfc-rev-w-t kfc-rev-w-d" className="kfc-wide" style={{ overflow: "visible" }}>
@@ -189,14 +168,14 @@ function RevenueWide() {
                     <text x={L - 10} y={y(t) + 4} fontSize="13" fill={INK_SOFT} textAnchor="end">£{t}K</text>
                 </g>
             ))}
-            {EMAIL_PERIODS.map((p, i) => {
+            {CALENDAR_YEARS.map((p, i) => {
                 const cx = L + band * i + band / 2, x = cx - bw / 2;
                 return (
                     <g key={p.total}>
                         <rect x={x} y={y(p.flows)} width={bw} height={B - y(p.flows)} fill={SAGE} />
                         <rect x={x} y={y(p.flows + p.campaigns)} width={bw} height={y(p.flows) - y(p.flows + p.campaigns)} fill={LIGHT} />
                         <text x={cx} y={y(p.flows + p.campaigns) - 9} fontSize="15" fontWeight="700" fill={INK} textAnchor="middle">{decimal(p.total, lang)}</text>
-                        {periodLines(i, lang).map((ln, j) => (
+                        {periodLines(i).map((ln, j) => (
                             <text key={ln} x={cx} y={B + 22 + j * 17} fontSize="13" fill={INK_SOFT} textAnchor="middle">{ln}</text>
                         ))}
                     </g>
@@ -212,14 +191,14 @@ function RevenueNarrow() {
     const L = 0, W = 300, rowH = 62;
     const x = (v: number) => L + (v / REV_MAX) * W;
     return (
-        <svg viewBox={`0 0 360 ${EMAIL_PERIODS.length * rowH + 4}`} width="100%" role="img" aria-labelledby="kfc-rev-n-t kfc-rev-n-d" className="kfc-narrow" style={{ overflow: "visible" }}>
+        <svg viewBox={`0 0 360 ${CALENDAR_YEARS.length * rowH + 4}`} width="100%" role="img" aria-labelledby="kfc-rev-n-t kfc-rev-n-d" className="kfc-narrow" style={{ overflow: "visible" }}>
             <title id="kfc-rev-n-t">{t.v5SvgTitle}</title>
             <desc id="kfc-rev-n-d">{revDesc(lang)}</desc>
-            {EMAIL_PERIODS.map((p, i) => {
+            {CALENDAR_YEARS.map((p, i) => {
                 const top = i * rowH;
                 return (
                     <g key={p.total}>
-                        <text x="0" y={top + 16} fontSize="14" fill={INK_SOFT}>{periodLines(i, lang).join(" ")}</text>
+                        <text x="0" y={top + 16} fontSize="14" fill={INK_SOFT}>{periodLines(i).join(" ")}</text>
                         <rect x={x(0)} y={top + 24} width={x(p.flows) - x(0)} height="24" fill={SAGE} />
                         <rect x={x(p.flows)} y={top + 24} width={x(p.flows + p.campaigns) - x(p.flows)} height="24" fill={LIGHT} />
                         <text x={x(p.flows + p.campaigns) + 8} y={top + 41} fontSize="14" fontWeight="700" fill={INK}>{decimal(p.total, lang)}</text>
@@ -257,6 +236,7 @@ export default function BlogKlaviyoFlowsVsCampaigns() {
                 description={t.description}
                 path={t.path}
                 ogImage={OG_IMAGE}
+                ogType="article"
                 jsonLd={JSON_LD[lang]}
             />
 
@@ -329,13 +309,7 @@ export default function BlogKlaviyoFlowsVsCampaigns() {
                     {t.headline}
                 </h1>
 
-                {/* byline + dates */}
-                <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap", color: "var(--text-secondary)", fontSize: "0.9rem", marginBottom: "2.5rem", paddingBottom: "2rem", borderBottom: "1px solid var(--border-color)" }}>
-                    <span style={{ fontWeight: 600, color: "var(--text-primary)" }}>Maria Madeira</span>
-                    <span>{t.published}{t.publishedHuman}</span>
-                    <span>{t.updated}{t.modifiedHuman}</span>
-                    <span style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}><Clock size={13} />{t.readTime}</span>
-                </div>
+                <Byline published={PUBLISHED[lang]} modified={MODIFIED[lang]} readTime={t.readTime} />
 
                 {/* Answer-first summary, in the article callout treatment */}
                 <div style={{ ...calloutBox, marginBottom: "1.25rem" }}>
@@ -604,10 +578,8 @@ export default function BlogKlaviyoFlowsVsCampaigns() {
                     ]}
                 />
 
-                {/* Author box, in the shared AuthorBio treatment with this article's own line */}
-                <div style={{ marginTop: "3.5rem", paddingTop: "2rem", borderTop: "1px solid var(--border-color)", color: "var(--text-secondary)", fontStyle: "italic", lineHeight: 1.7 }}>
-                    <Link to={to("/about")} style={{ color: "var(--accent-text)", fontWeight: 600, fontStyle: "normal" }}>Maria Madeira</Link>{t.author}
-                </div>
+                {/* The shared author box, with this article's own line. */}
+                <AuthorBio note={t.authorNote} />
             </article>
         </div>
     );

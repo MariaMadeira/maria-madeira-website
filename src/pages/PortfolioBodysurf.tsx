@@ -50,7 +50,7 @@ export default function PortfolioBodysurf() {
                 path: c.path,
                 name: "The Bodysurf School",
                 description: c.description,
-                about: { type: "Organization", name: "The Bodysurf School" },
+                about: { type: "Organization", name: "The Bodysurf School", url: "https://thebodysurfschool.com" },
                 image: c.site.src,
                 lang,
             })}

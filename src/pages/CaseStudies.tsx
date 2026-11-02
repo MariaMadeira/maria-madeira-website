@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
-import { SITE_URL } from "../lib/schema";
+import { SITE_URL, breadcrumbNode, webPageNode, withEntities } from "../lib/schema";
 import { useLang } from "../hooks/useLang";
 import type { Lang } from "../lib/i18n";
 import COPY from "../i18n/caseStudies";
@@ -16,33 +16,37 @@ const STUDY_LINKS = [
 ];
 
 /**
- * Every case study Article declares isPartOf this @id (see caseStudyJsonLd), but
- * the node itself was never declared anywhere, leaving the reference unresolved.
- * hasPart mirrors it back so the collection and its members point at each other.
+ * Every case study Article declares isPartOf this @id (see caseStudyJsonLd).
+ * hasPart mirrors it back, each study named and linked, so the collection and
+ * its members point at each other and the hub is readable on its own.
  */
 function caseStudiesJsonLd(lang: Lang, to: (enPath: string) => string) {
     const c = COPY[lang];
     const url = `${SITE_URL}${c.path}`;
-    return {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "CollectionPage",
-                "@id": `${url}#collection`,
-                "url": url,
-                "name": c.schemaName,
-                "description": c.schemaDescription,
-                ...(lang === "pt" ? { "inLanguage": "pt-PT" } : {}),
-                "hasPart": STUDY_LINKS.map((link) => ({ "@id": `${SITE_URL}${to(link)}#article` })),
-            },
-        ],
-    };
+    const hub = webPageNode({
+        type: "CollectionPage",
+        path: c.path,
+        name: c.schemaName,
+        description: c.schemaDescription,
+        lang,
+        "hasPart": STUDY_LINKS.map((link, i) => ({
+            "@type": "Article",
+            "@id": `${SITE_URL}${to(link)}#article`,
+            "headline": c.studies[i].title,
+            "url": `${SITE_URL}${to(link)}`,
+        })),
+    });
+    return withEntities([
+        // The id every case study's isPartOf already uses.
+        { ...hub, "@id": `${url}#collection` },
+        breadcrumbNode(lang, [[c.schemaName, c.path]]),
+    ]);
 }
 
 export default function CaseStudies() {
     const { lang, to } = useLang();
     const c = COPY[lang];
-    const studies = c.studies.map((study, i) => ({ ...study, link: STUDY_LINKS[i] }));
+    const studies = c.studies.map((study, i) => ({ ...study, link: STUDY_LINKS[i], linkText: c.readMoreLinks[i] }));
     return (
         <div className="container animate-fade-in" style={{ paddingTop: "6rem", paddingBottom: "6rem" }}>
             <Seo
@@ -94,7 +98,9 @@ export default function CaseStudies() {
                         <p className="text-gradient-accent" style={{ fontSize: "0.85rem", fontWeight: "bold", marginBottom: "0.5rem" }}>
                             {study.category}
                         </p>
-                        <h3>{study.title}</h3>
+                        {/* h2: the cards sit directly under the page h1. Sized as the
+                            .card h3 it replaces. */}
+                        <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>{study.title}</h2>
                         <div style={{ marginTop: "1rem", flex: 1 }}>
                             {study.problem && (
                                 <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", marginBottom: "1rem" }}>
@@ -115,7 +121,7 @@ export default function CaseStudies() {
 
                         {study.link ? (
                             <Link to={to(study.link)} className="btn btn-secondary" style={{ marginTop: "1.5rem", width: "100%", textAlign: "center" }}>
-                                {c.readMore}
+                                {study.linkText}
                             </Link>
                         ) : (
                             <button className="btn btn-secondary" style={{ marginTop: "1.5rem", width: "100%" }}>

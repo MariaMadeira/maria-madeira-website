@@ -1,7 +1,7 @@
 /** English copy. See src/i18n/caseStudyGoogleAds.ts. Bold runs are { b: "..." }. */
 const en = {
     path: "/case-study-google-ads",
-    title: "Five pounds back for every pound spent, over eleven months",
+    title: "Google Ads Case Study: 532% ROAS, 11 Months | Maria Madeira",
     description: "Google Ads case study: £26.5K of ad spend returned £141K in attributed revenue over eleven months, a 532% blended return against a 400% break-even.",
     h1: "Five pounds back for every pound spent, over eleven months",
     schemaDescription: "How structured campaign architecture and creative testing turned £26.5K of ad spend into £141K in attributed revenue, a 532% return against a 400% break-even.",
@@ -32,7 +32,7 @@ const en = {
         ["This case demonstrates how structured campaign management and continuous optimisation can turn paid advertising into a scalable and profitable growth channel."],
     ] as (string | { b: string })[][],
     serviceLink: "Google and Meta Ads management",
-    nextLink: "An unused email list became the brand's biggest revenue channel",
+    nextLink: "An underused email list grew to over a third of store revenue",
     ctaText: "Want similar results for your brand?",
     ctaButton: "Book a free call",
 };

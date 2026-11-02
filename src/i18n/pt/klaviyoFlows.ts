@@ -5,7 +5,7 @@ const pt: typeof en = {
     path: "/pt/blog/fluxos-vs-campanhas-klaviyo",
     title: "Klaviyo: porque é que os fluxos rendem mais | Maria Madeira",
     headline: "Porque é que os seus emails automáticos rendem mais do que as suas campanhas",
-    description: "Os fluxos automáticos são poucos envios e muita receita de email. O que dizem os estudos, quatro anos de dados de uma marca britânica e que fluxos criar.",
+    description: "Os fluxos automáticos são poucos envios e muita receita de email. O que dizem os estudos, dados de uma marca britânica (setembro de 2021 a julho de 2025) e que fluxos criar.",
     articleSection: "Email marketing",
     breadcrumb: ["Início", "Blog", "Porque é que os fluxos do Klaviyo rendem mais do que as campanhas"],
     allArticles: "Todos os artigos",
@@ -18,7 +18,7 @@ const pt: typeof en = {
     summary: {
         a: "Os emails automáticos, a que o Klaviyo chama fluxos (flows), são uma pequena parte do que uma marca envia e uma grande parte do que fatura. Em 150 000 marcas, a ",
         link: "Omnisend",
-        b: " concluiu que as automações eram 2% dos envios de email e 30% da receita de email. Numa marca de alimentação do Reino Unido com quem trabalhei durante quatro anos, os fluxos renderam cerca de 16 vezes mais por destinatário do que as campanhas. Explico porquê e que fluxos criar primeiro.",
+        b: " concluiu que as automações eram 2% dos envios de email e 30% da receita de email. Numa marca de alimentação do Reino Unido com quem trabalhei durante cinco anos, os fluxos renderam cerca de 16 vezes mais por destinatário do que as campanhas. Explico porquê e que fluxos criar primeiro.",
     },
 
     v1Title: "Poucos envios, muita receita",
@@ -88,7 +88,7 @@ const pt: typeof en = {
 
     realTitle: "Como foi numa marca real",
     real1: "Quando comecei a trabalhar com uma marca de alimentação do Reino Unido, em setembro de 2021, a marca tinha uma lista de clientes, três fluxos automáticos e envios de campanhas esporádicos. A maior parte da receita de email vinha de promoções pontuais.",
-    real2: "Em quatro anos, alarguei o programa até 14 fluxos ativos, a par de um calendário regular de campanhas.",
+    real2: "De setembro de 2021 a julho de 2025, alarguei o programa até 14 fluxos ativos, a par de um calendário regular de campanhas.",
 
     v4Title: "De 3 fluxos para 14",
     v4Before: "setembro de 2021",
@@ -98,15 +98,15 @@ const pt: typeof en = {
     v4More: "+ 4 outros",
     v4Desc: (flows2021: string[], flows2025: string[]) => `Setembro de 2021: 3 fluxos (${flows2021.join(", ")}). 2025: 14 fluxos, entre eles ${flows2025.join(", ")}, e mais 4.`,
 
-    real3: "A receita dos fluxos cresceu ano após ano, de £7,1K nos últimos quatro meses de 2021 para £48,3K nos doze meses até julho de 2025.",
+    real3: "A receita dos fluxos cresceu em todos os anos civis: £18,9K em 2022, £23,4K em 2023 e £48,2K em 2024.",
 
-    v5Title: "Receita de email por período",
+    v5Title: "Receita de email por ano civil",
     v5Flows: "Fluxos",
     v5Campaigns: "Campanhas",
-    v5SvgTitle: "Receita de email por período, fluxos e campanhas",
-    v5DescIntro: "Gráfico de barras empilhadas da receita de email atribuída pelo Klaviyo, por período, em milhares de libras, dividida entre fluxos automáticos e campanhas. ",
+    v5SvgTitle: "Receita de email por ano civil, fluxos e campanhas",
+    v5DescIntro: "Gráfico de barras empilhadas da receita de email atribuída pelo Klaviyo, por ano civil, de 2022 a 2024, em milhares de libras, dividida entre fluxos automáticos e campanhas. ",
     v5DescRow: (period: string, flows: string, campaigns: string, total: string) => `${period}: fluxos £${flows}K, campanhas £${campaigns}K, total ${total}`,
-    v5Caption: "Receita atribuída pelo Klaviyo. 2021 cobre setembro a dezembro, quando o programa começou. Fonte: exportações do Klaviyo Business Overview.",
+    v5Caption: "Receita atribuída pelo Klaviyo, anos civis de 2022 a 2024. O programa começou em setembro de 2021, por isso 2021 não é um ano completo e não aparece. Fonte: exportações do Klaviyo Business Overview.",
 
     v6Title: "Receita por destinatário, 2024",
     v6Desc: "Receita por destinatário em 2024 numa marca de alimentação do Reino Unido: um email automático rendeu cerca de 16 vezes mais do que um email de campanha. A barra da campanha mede 1 unidade e a do email automático 16.",
@@ -120,7 +120,7 @@ const pt: typeof en = {
     oneFlow: "O fluxo que mais rendeu não foi uma automação nova e engenhosa. Foi a série de boas-vindas para a lista das caixas da marca, que sozinha trouxe £23,6K nos doze meses até julho de 2025.",
 
     v7Big: "£23,6K",
-    v7Line: "de uma só série de boas-vindas, em doze meses",
+    v7Line: "de uma só série de boas-vindas, 12 meses até julho de 2025",
     v7Title: "Email de boas-vindas ilustrativo de uma marca inventada, Hillside Pantry",
     v7Desc: "Um telemóvel com um email de boas-vindas. Assunto: Bem-vindo à Hillside Pantry. Uma imagem de produto neutra, o título Boa comida, entregue em casa, dois parágrafos curtos e um botão Ver a gama.",
     v7Sender: "Hillside Pantry",
@@ -132,7 +132,7 @@ const pt: typeof en = {
     v7Caption: "Exemplo ilustrativo, não é o email real da marca.",
 
     honestTitle: "A parte honesta",
-    honest: "Nem todos os números subiram. À medida que entravam mais fluxos no ar, a taxa de clique dos fluxos desceu de 8,5% em 2024 para 7,3% nos doze meses até julho de 2025, enquanto o número de pessoas a receber fluxos subiu 142%. Mais fluxos chegam a mais pessoas, mas cada um precisa dos seus próprios testes, senão a média desce.",
+    honest: "Nem todos os números subiram. À medida que entravam mais fluxos no ar, a taxa de clique dos fluxos desceu de 8,5% em 2024 para 7,3% nos doze meses até julho de 2025, enquanto muitas mais pessoas passaram a receber fluxos. Mais fluxos chegam a mais pessoas, mas cada um precisa dos seus próprios testes, senão a média desce.",
 
     v8Title: "Os seus primeiros 30 dias de fluxos",
     weeks: [
@@ -155,7 +155,7 @@ const pt: typeof en = {
 
     sourcesTitle: "Fontes",
     sources: ["Omnisend, 2026 Ecommerce Marketing Report", "Klaviyo, benchmarks de email marketing", "Baymard Institute, taxa de abandono de carrinho"],
-    sourceExports: "Exportações do Klaviyo Business Overview da marca deste artigo (2021 a 2025)",
+    sourceExports: "Exportações do Klaviyo Business Overview da marca deste artigo (setembro de 2021 a julho de 2025)",
 
     faqTitle: "Perguntas frequentes",
     faqs: [
@@ -178,6 +178,7 @@ const pt: typeof en = {
     ],
     related: ["Email marketing e consultoria Klaviyo", "Descrições de produto com IA, sem riscos"],
     author: " é consultora de crescimento independente para marcas que vendem online. Geriu o programa Klaviyo desta marca de 2021 a 2025, é Klaviyo Partner e tem o certificado Klaviyo Practitioner.",
+    authorNote: "Geriu o programa Klaviyo desta marca de 2021 a 2025.",
 };
 
 export default pt;

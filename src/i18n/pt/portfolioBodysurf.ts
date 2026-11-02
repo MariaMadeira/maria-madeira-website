@@ -3,8 +3,8 @@ import type en from "../en/portfolioBodysurf";
 /** Portuguese copy. See src/i18n/portfolioBodysurf.ts. */
 const pt: typeof en = {
     path: "/pt/portefolio-bodysurf-school",
-    title: "Site The Bodysurf School | Portefólio",
-    description: "Site WordPress bilingue com reservas e pagamento online para uma escola de bodysurf com cinco locais em Portugal.",
+    title: "Site The Bodysurf School | Maria Madeira",
+    description: "Site WordPress bilingue com reservas online e pagamentos por MB Way e Multibanco para uma escola de bodysurf com cinco locais em Portugal.",
     back: "Voltar ao portefólio",
     h1: "The Bodysurf School",
     subtitle: "SITE E SISTEMA DE RESERVAS",
@@ -43,7 +43,7 @@ const pt: typeof en = {
     role: "Estratégia de crescimento, UX/UI, montagem em WordPress, reservas e pagamentos, e SEO e AEO.",
 
     ctaText: "Quer ler a história completa deste projeto?",
-    ctaButton: "Ver caso de estudo",
+    ctaButton: "Ler o caso de estudo da The Bodysurf School",
 };
 
 export default pt;

@@ -1,8 +1,8 @@
 /** English copy. See src/i18n/blog.ts. */
 const en = {
     path: "/blog",
-    title: "Blog | Maria Madeira",
-    description: "Practical writing on AI search (AEO), email marketing, paid acquisition and e-commerce growth, from strategist Maria Madeira. From the work, not the theory.",
+    title: "E-commerce Blog: SEO, AI Search & Klaviyo | Maria Madeira",
+    description: "Practical writing on SEO, AI search (AEO), Klaviyo email marketing and paid ads for e-commerce, from growth consultant Maria Madeira. From the work, not theory.",
     schema: {
         name: "Maria Madeira Blog",
         description: "Practical writing on e-commerce growth, AI search (AEO), email marketing and paid acquisition.",
@@ -18,7 +18,7 @@ const en = {
         {
             slug: "klaviyo-flows-vs-campaigns",
             title: "Why your automated emails earn more than your campaigns",
-            excerpt: "Automated flows are a small share of sends and a large share of email revenue. What the research says, four years of data from a real UK brand, and the flows to build first.",
+            excerpt: "Automated flows are a small share of sends and a large share of email revenue. What the research says, data from a real UK brand (September 2021 to July 2025), and the flows to build first.",
             category: "Email Marketing",
             readTime: "7 min read",
             date: "19 October 2026",

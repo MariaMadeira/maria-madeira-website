@@ -1,8 +1,8 @@
 /** English copy. See src/i18n/pricing.ts. */
 const en = {
     path: "/pricing",
-    title: "Pricing | Maria Madeira",
-    description: "Three ways to work with Maria Madeira: a fixed-price Growth Audit, defined projects, or ongoing monthly work on AEO, email and paid ads. Starting prices published.",
+    title: "Pricing: SEO, Klaviyo and Ads Consulting | Maria Madeira",
+    description: "Three ways to work with Maria Madeira: a £750 Growth Audit, projects from £1,200, or monthly SEO, AI search, Klaviyo and ads work from £500 a month.",
     eyebrow: "Pricing",
     h1: "Ways to work with me",
     intro: "Start with an audit, hire me for a defined project, or work with me month to month. Every price below is a starting point, and you get a written quote before any work begins.",
@@ -14,7 +14,7 @@ const en = {
     adSpend: "Ad spend for Google and Meta is paid directly by you to the platform and is not included in any price.",
     byServiceTitle: "Starting prices by service",
     byService: [
-        { name: "AEO", text: "audit £750, ongoing from £800 a month", to: "/services/aeo" },
+        { name: "SEO and AI search (AEO)", text: "audit £750, ongoing from £800 a month", to: "/services/aeo" },
         { name: "Email and Klaviyo", text: "setup with core flows from £1,200, monthly from £750 a month", to: "/services/email-marketing" },
         { name: "Paid ads", text: "management from £500 a month per platform", to: "/services/paid-ads" },
         { name: "Websites", text: "quoted per project", to: "/services/websites" },

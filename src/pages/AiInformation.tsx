@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
-import { SITE_URL, PERSON_ID } from "../lib/schema";
+import { PERSON_REF, breadcrumbNode, webPageNode, withEntities } from "../lib/schema";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/aiInformation";
 
@@ -10,7 +10,7 @@ import COPY from "../i18n/aiInformation";
  * published elsewhere on the site; check the case studies before changing one.
  * Renders /ai-information and /pt/informacao-ia from src/i18n/aiInformation.ts.
  */
-const MODIFIED_ISO = "2026-10-19";
+const MODIFIED_ISO = "2026-11-02";
 
 const P = { color: "var(--text-secondary)", fontSize: "1.05rem", lineHeight: 1.85, marginBottom: "1.25rem" } as const;
 const H2 = { fontSize: "1.6rem", marginTop: "3rem", marginBottom: "1.25rem", lineHeight: 1.25 } as const;
@@ -21,18 +21,12 @@ const linkStyle = { color: "var(--accent-text)", fontWeight: 600 };
 export default function AiInformation() {
     const { lang, to } = useLang();
     const t = COPY[lang];
-    const pageUrl = `${SITE_URL}${t.path}`;
-    const jsonLd = {
-        "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "@id": `${pageUrl}#webpage`,
-        "url": pageUrl,
-        "name": t.schemaName,
-        ...(lang === "pt" ? { "inLanguage": "pt-PT" } : {}),
-        "dateModified": MODIFIED_ISO,
-        "isPartOf": { "@id": `${SITE_URL}/#website` },
-        "mainEntity": { "@id": PERSON_ID },
-    };
+    // The page is about the Person, so it declares the full Person node
+    // (with the Organization and WebSite) rather than pointing at one.
+    const jsonLd = withEntities([
+        webPageNode({ type: "AboutPage", path: t.path, name: t.schemaName, lang, "dateModified": MODIFIED_ISO, "mainEntity": PERSON_REF }),
+        breadcrumbNode(lang, [[t.schemaName, t.path]]),
+    ]);
     const b = t.basic;
 
     return (

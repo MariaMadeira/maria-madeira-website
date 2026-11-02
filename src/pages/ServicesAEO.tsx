@@ -4,11 +4,11 @@ import { Sparkles, Search, Database, FileText, LineChart, MessageSquare, ArrowRi
 import Seo from "../components/Seo";
 import FinalCta from "../components/FinalCta";
 import { useLang } from "../hooks/useLang";
+import { SITE_URL, AREA_SERVED, ORG_REF, withEntities } from "../lib/schema";
 import COPY from "../i18n/aeo";
 
 /* Renders /services/aeo and /pt/servicos/aeo from src/i18n/aeo.ts. Icons,
    scores and links live here; every word lives in the copy file. */
-const SITE_URL = "https://mariamadeira.com";
 
 const WHY_ICONS = [<Users size={24} />, <MousePointerClick size={24} />, <Sparkles size={24} />];
 const WHAT_ICONS = [<Search size={26} />, <Database size={26} />, <FileText size={26} />, <LineChart size={26} />];
@@ -16,87 +16,93 @@ const WHAT_ICONS = [<Search size={26} />, <Database size={26} />, <FileText size
 /* ── FAQ: drives both the visible section and the FAQPage schema ── */
 const FAQS = COPY.en.faqs;
 
-const AEO_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "Service",
-            "@id": `${SITE_URL}/services/aeo#service`,
-            "name": "Answer Engine Optimisation (AEO)",
-            "serviceType": "Answer Engine Optimisation",
-            "url": `${SITE_URL}/services/aeo`,
-            "description": COPY.en.definition,
-            "provider": { "@id": `${SITE_URL}/#person` },
-            "areaServed": "Worldwide",
-            "offers": [
-                { "@type": "Offer", "name": "AEO audit", "priceSpecification": { "@type": "PriceSpecification", "minPrice": 750, "priceCurrency": "GBP" } },
-                { "@type": "Offer", "name": "Ongoing AEO", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 800, "priceCurrency": "GBP", "unitText": "per month" } },
-            ],
-        },
-        {
-            "@type": "FAQPage",
-            "@id": `${SITE_URL}/services/aeo#faq`,
-            "mainEntity": FAQS.map((f) => ({
-                "@type": "Question",
-                "name": f.q,
-                "acceptedAnswer": { "@type": "Answer", "text": f.a },
-            })),
-        },
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
-                { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` },
-                { "@type": "ListItem", "position": 3, "name": "Answer Engine Optimisation", "item": `${SITE_URL}/services/aeo` },
-            ],
-        },
-    ],
-};
+const AEO_JSON_LD = withEntities([
+    {
+        "@type": "WebPage",
+        "@id": `${SITE_URL}/services/aeo#webpage`,
+        "url": `${SITE_URL}/services/aeo`,
+        "name": "E-commerce SEO & AI Search (AEO) Consultant",
+        "inLanguage": "en-GB",
+        "isPartOf": { "@id": `${SITE_URL}/#website` },
+        "mainEntity": { "@id": `${SITE_URL}/services/aeo#service` },
+    },
+    {
+        "@type": "Service",
+        "@id": `${SITE_URL}/services/aeo#service`,
+        "inLanguage": "en-GB",
+        "name": "SEO and AI search optimisation (AEO)",
+        "serviceType": ["Search engine optimisation", "Answer engine optimisation"],
+        "url": `${SITE_URL}/services/aeo`,
+        "description": COPY.en.definition,
+        "provider": ORG_REF,
+        "areaServed": AREA_SERVED,
+        "offers": [
+            { "@type": "Offer", "name": "AEO audit", "price": 750, "priceCurrency": "GBP" },
+            { "@type": "Offer", "name": "Ongoing AEO", "priceSpecification": { "@type": "UnitPriceSpecification", "minPrice": 800, "priceCurrency": "GBP", "unitText": "per month" } },
+        ],
+    },
+    {
+        "@type": "FAQPage",
+        "@id": `${SITE_URL}/services/aeo#faq`,
+        "inLanguage": "en-GB",
+        "mainEntity": FAQS.map((f) => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": { "@type": "Answer", "text": f.a },
+        })),
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+            { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` },
+            { "@type": "ListItem", "position": 3, "name": "SEO and AI search", "item": `${SITE_URL}/services/aeo` },
+        ],
+    },
+]);
 
 /* The Portuguese page: no offers, the page's language and a Portuguese trail. */
 const PT_URL = `${SITE_URL}/pt/servicos/aeo`;
-const PT_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "WebPage",
-            "@id": `${PT_URL}#webpage`,
-            "url": PT_URL,
-            "name": "Consultora de AEO",
-            "inLanguage": "pt-PT",
-            "isPartOf": { "@id": `${SITE_URL}/#website` },
-            "mainEntity": { "@id": `${PT_URL}#service` },
-        },
-        {
-            "@type": "Service",
-            "@id": `${PT_URL}#service`,
-            "name": "Otimização para motores de resposta (AEO)",
-            "serviceType": "Otimização para motores de resposta",
-            "url": PT_URL,
-            "description": COPY.pt.definition,
-            "provider": { "@id": `${SITE_URL}/#person` },
-            "areaServed": "Worldwide",
-        },
-        {
-            "@type": "FAQPage",
-            "@id": `${PT_URL}#faq`,
-            "inLanguage": "pt-PT",
-            "mainEntity": COPY.pt.faqs.map((f) => ({
-                "@type": "Question",
-                "name": f.q,
-                "acceptedAnswer": { "@type": "Answer", "text": f.a },
-            })),
-        },
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
-                { "@type": "ListItem", "position": 2, "name": "Serviços", "item": `${SITE_URL}/pt/servicos` },
-                { "@type": "ListItem", "position": 3, "name": "AEO", "item": PT_URL },
-            ],
-        },
-    ],
-};
+const PT_JSON_LD = withEntities([
+    {
+        "@type": "WebPage",
+        "@id": `${PT_URL}#webpage`,
+        "url": PT_URL,
+        "name": "Consultora SEO e pesquisa com IA em Portugal",
+        "inLanguage": "pt-PT",
+        "isPartOf": { "@id": `${SITE_URL}/#website` },
+        "mainEntity": { "@id": `${PT_URL}#service` },
+    },
+    {
+        "@type": "Service",
+        "@id": `${PT_URL}#service`,
+        "inLanguage": "pt-PT",
+        "name": "SEO e otimização para a pesquisa com IA (AEO)",
+        "serviceType": ["Otimização para motores de pesquisa", "Otimização para motores de resposta"],
+        "url": PT_URL,
+        "description": COPY.pt.definition,
+        "provider": ORG_REF,
+        "areaServed": AREA_SERVED,
+    },
+    {
+        "@type": "FAQPage",
+        "@id": `${PT_URL}#faq`,
+        "inLanguage": "pt-PT",
+        "mainEntity": COPY.pt.faqs.map((f) => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": { "@type": "Answer", "text": f.a },
+        })),
+    },
+    {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
+            { "@type": "ListItem", "position": 2, "name": "Serviços", "item": `${SITE_URL}/pt/servicos` },
+            { "@type": "ListItem", "position": 3, "name": "SEO e pesquisa com IA", "item": PT_URL },
+        ],
+    },
+]);
 
 /* ── Hero: user-controlled mock AI chat (Without AEO / With AEO) ───── */
 // Both states share one answer, word for word; only the brand name and citation

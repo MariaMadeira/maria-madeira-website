@@ -1,16 +1,16 @@
 /** English copy. See src/i18n/caseStudies.ts. */
 const en = {
     path: "/case-studies",
-    title: "Case Studies | E-commerce Growth Results",
-    description: "Real case studies with measurable outcomes: SEO and platform migration, Google Ads at a 532% return, £134K email revenue, and click & collect UX.",
+    title: "Case Studies: SEO, Klaviyo and Google Ads | Maria Madeira",
+    description: "Case studies with measured results: SEO after a Shopify move, Google Ads at a 532% return, £134K email revenue in 12 months to July 2025, and click & collect.",
     schemaName: "Case Studies",
     schemaDescription: "Real case studies with measurable outcomes: SEO and platform migration, Google Ads, Klaviyo email, click & collect UX, and a surf school booking engine.",
     h1Lead: "Case ",
     h1Accent: "Studies",
     intro: "Real results from strategic marketing engagements. Each study outlines the challenge, approach, and measurable outcomes.",
     headlineResults: [
-        { value: "£134K", label: "Email revenue (12 mo, +88.9%)" },
-        { value: "50.4%", label: "Campaign open rate" },
+        { value: "£134K", label: "Email revenue, 12 months to Jul 2025" },
+        { value: "50.4%", label: "Average campaign open rate, 12 months to Jul 2025" },
         { value: "Over a third", label: "Email share of store revenue" },
         { value: "532%", label: "Google Ads ROAS" },
     ],
@@ -18,9 +18,9 @@ const en = {
     readMore: "Read Full Study",
     studies: [
         {
-            title: "Found on Google and in AI answers, four months after a migration that left the site invisible",
+            title: "Organic clicks up 78% and average Google position from 15.2 to 9.4 in four months",
             category: "SEO / AEO Optimisation",
-            problem: "After migrating from WordPress to Shopify, the new website lacked proper SEO structure and was not optimised for AI-powered search and answer engines.",
+            problem: "After the move from WooCommerce to Shopify, brand rankings held, but collections, product pages and metadata had not been built for search or for AI answers.",
             results: "Clicks from 4.5K to 8.0K (+78%) in four months · Average position from 15.2 to 9.4",
         },
         {
@@ -30,29 +30,38 @@ const en = {
             results: "£141K attributed revenue from £26.5K ad spend · 532% ROAS (client break-even: 400%) · 10 of 11 months above break-even",
         },
         {
-            title: "An unused email list became a revenue channel",
+            title: "September 2021 to July 2025: email grew to £134K a year and over a third of store revenue",
             category: "Email Marketing",
-            problem: "Email channel underutilised with limited lifecycle automation.",
-            results: "£134K attributed revenue · +88.9% year on year, 12 months to July 2025",
+            problem: "Three automated flows and occasional campaign sends, with most email revenue coming from one-off promotions.",
+            results: "£134K attributed revenue in the 12 months to July 2025 · +88.9% on the previous 12 months (to July 2024)",
         },
         {
-            title: "A shop losing sales to queues, fixed with a mobile pre-order system",
+            title: "A mobile pre-order app for a shop with peak-hour queues, and why adoption stayed low",
             category: "Product Experiment & UX Strategy",
             problem: "Physical retail store losing demand to long peak-hour queues with no option for customers to pre-order.",
             results: "Mobile Click & Collect app built · Key learnings on digital adoption in physical retail",
         },
         {
-            title: "Five surf school locations, zero online bookings. Built from scratch in one month.",
+            title: "Five surf school locations, zero online bookings. Live in one month.",
             category: "The Bodysurf School Website",
             problem: "A growing surf school with five coastal locations relied on manual enquiries, with no online booking, no payment processing, and no search visibility strategy.",
             results: "Full rebuild delivered: online booking with local payment methods, bilingual site, SEO and AEO foundations.",
         },
         {
-            title: "dePapier Translations: identity and bilingual website",
+            title: "dePapier Translations: a credible home for a certified translator",
             category: "Website and digital identity",
             problem: "a certified translator with no domain, no business email and her name in different versions online.",
             results: "A certified translator moves from a free page to her own domain, email and bilingual site.",
         },
+    ],
+    /** Each card's link text, in the order of `studies`, so every link says where it goes. */
+    readMoreLinks: [
+        "Read the SEO and AEO case study",
+        "Read the Google Ads case study",
+        "Read the email marketing case study",
+        "Read the click & collect case study",
+        "Read The Bodysurf School case study",
+        "Read the dePapier Translations case study",
     ],
 };
 

@@ -29,6 +29,7 @@ export const ROUTES: RouteDef[] = [
     { path: "/about", load: () => import("./pages/About") },
     { path: "/ai-information", load: () => import("./pages/AiInformation") },
     { path: "/contact", load: () => import("./pages/Contact") },
+    { path: "/privacy", load: () => import("./pages/Privacy") },
     { path: "/blog", load: () => import("./pages/Blog") },
     { path: "/blog/what-is-aeo", load: () => import("./pages/BlogWhatIsAEO") },
     { path: "/blog/best-aeo-agencies-ecommerce-europe", load: () => import("./pages/BlogBestAeoAgencies") },
@@ -54,6 +55,7 @@ export const ROUTES: RouteDef[] = [
     { path: "/pt", load: () => import("./pages/Home") },
     { path: "/pt/servicos/email-marketing", load: () => import("./pages/ServicesEmailMarketing") },
     { path: "/pt/contacto", load: () => import("./pages/PtContacto") },
+    { path: "/pt/privacidade", load: () => import("./pages/Privacy") },
     // Batch 1: the English components, rendering their Portuguese copy.
     { path: "/pt/servicos", load: () => import("./pages/Services") },
     { path: "/pt/servicos/aeo", load: () => import("./pages/ServicesAEO") },

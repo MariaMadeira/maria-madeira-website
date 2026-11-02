@@ -2,39 +2,39 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Clock } from "lucide-react";
 import Seo from "../components/Seo";
 import { useLang } from "../hooks/useLang";
-import type { Lang } from "../lib/i18n";
+import { ptLink, type Lang } from "../lib/i18n";
+import { PERSON_REF, SITE_URL, breadcrumbNode, langCode, withEntities } from "../lib/schema";
 import COPY from "../i18n/blog";
 
 /* Renders /blog and /pt/blog from src/i18n/blog.ts. */
-const SITE_URL = "https://mariamadeira.com";
 
 /** The English post list, newest first. The Portuguese twin is COPY.pt.posts. */
 export const POSTS = COPY.en.posts;
 
+/* The Blog, with every post named and linked (the @id each post's own
+   BlogPosting uses), so the hub is readable on its own. */
 function blogJsonLd(lang: Lang) {
     const t = COPY[lang];
     const url = `${SITE_URL}${t.path}`;
-    return {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "Blog",
-                "@id": `${url}#blog`,
-                "name": t.schema.name,
-                "url": url,
-                ...(lang === "pt" ? { "inLanguage": "pt-PT" } : {}),
-                "description": t.schema.description,
-                "author": { "@id": `${SITE_URL}/#person` },
-            },
-            {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": t.schema.home, "item": lang === "pt" ? `${SITE_URL}/pt` : `${SITE_URL}/` },
-                    { "@type": "ListItem", "position": 2, "name": t.schema.blog, "item": url },
-                ],
-            },
-        ],
-    };
+    const postPath = (slug: string) => (lang === "pt" ? ptLink(`/blog/${slug}`).to : `/blog/${slug}`);
+    return withEntities([
+        {
+            "@type": "Blog",
+            "@id": `${url}#blog`,
+            "name": t.schema.name,
+            "url": url,
+            "inLanguage": langCode(lang),
+            "description": t.schema.description,
+            "author": PERSON_REF,
+            "blogPost": t.posts.map((post) => ({
+                "@type": "BlogPosting",
+                "@id": `${SITE_URL}${postPath(post.slug)}#article`,
+                "headline": post.title,
+                "url": `${SITE_URL}${postPath(post.slug)}`,
+            })),
+        },
+        breadcrumbNode(lang, [[t.schema.blog, t.path]]),
+    ]);
 }
 
 const BLOG_JSON_LD = { en: blogJsonLd("en"), pt: blogJsonLd("pt") };

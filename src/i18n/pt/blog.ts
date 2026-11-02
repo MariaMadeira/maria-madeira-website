@@ -6,7 +6,7 @@ import type en from "../en/blog";
  */
 const pt: typeof en = {
     path: "/pt/blog",
-    title: "Blog | Maria Madeira",
+    title: "Blog: SEO, pesquisa com IA e Klaviyo | Maria Madeira",
     description: "Textos práticos sobre pesquisa com IA (AEO), email marketing, anúncios pagos e crescimento de e-commerce, de Maria Madeira. Da prática, não da teoria.",
     schema: {
         name: "Blog de Maria Madeira",
@@ -22,7 +22,7 @@ const pt: typeof en = {
         {
             slug: "klaviyo-flows-vs-campaigns",
             title: "Porque é que os seus emails automáticos rendem mais do que as suas campanhas",
-            excerpt: "Os fluxos automáticos são uma pequena parte dos envios e uma grande parte da receita de email. O que diz a investigação, quatro anos de dados de uma marca real do Reino Unido e os fluxos a criar primeiro.",
+            excerpt: "Os fluxos automáticos são uma pequena parte dos envios e uma grande parte da receita de email. O que diz a investigação, dados de uma marca real do Reino Unido (setembro de 2021 a julho de 2025) e os fluxos a criar primeiro.",
             category: "Email marketing",
             readTime: "7 min de leitura",
             date: "19 de outubro de 2026",
@@ -33,7 +33,7 @@ const pt: typeof en = {
             excerpt: "Uma marca de alimentação do Reino Unido deixou um agente de IA escrever as descrições dos seus produtos. O que correu mal, porque é que isso pesa mais na alimentação e uma forma mais segura de usar IA nas suas páginas de produto.",
             category: "Pesquisa com IA",
             readTime: "5 min de leitura",
-            date: "24 de setembro de 2026",
+            date: "19 de outubro de 2026",
         },
         {
             slug: "chatgpt-ads-europe",
@@ -41,7 +41,7 @@ const pt: typeof en = {
             excerpt: "Os ChatGPT Ads já estão ativos em 31 mercados europeus. O registo visto por dentro, passo a passo: os mínimos obrigatórios, as predefinições americanas, as definições que ficam bloqueadas para sempre e porque é que o AEO continua a vir primeiro.",
             category: "Anúncios pagos",
             readTime: "7 min de leitura",
-            date: "9 de setembro de 2026",
+            date: "19 de outubro de 2026",
         },
         {
             slug: "best-aeo-agencies-ecommerce-europe",
@@ -49,7 +49,7 @@ const pt: typeof en = {
             excerpt: "Uma seleção, com pesquisa feita, de sete agências de AEO para marcas europeias de e-commerce, uma tabela comparativa, cinco perguntas para as avaliar e os casos em que uma consultora independente é a melhor escolha.",
             category: "Pesquisa com IA",
             readTime: "10 min de leitura",
-            date: "14 de julho de 2026",
+            date: "19 de outubro de 2026",
         },
         {
             slug: "what-is-aeo",
@@ -57,7 +57,7 @@ const pt: typeof en = {
             excerpt: "Como as marcas são citadas e recomendadas pelo ChatGPT, Perplexity, Gemini e pela Vista geral de IA da Google (AI Overviews), em que é que o AEO difere do SEO e do GEO, e por onde começar esta semana.",
             category: "Pesquisa com IA",
             readTime: "9 min de leitura",
-            date: "13 de julho de 2026",
+            date: "19 de outubro de 2026",
         },
     ],
 };

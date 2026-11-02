@@ -39,7 +39,7 @@ const pt: typeof en = {
     role: "Responsabilidade de ponta a ponta pelo design de produto, pela UX e pelos testes de lançamento no mercado.",
     relatedService: "Estratégia de crescimento e testes de produto",
     ctaText: "Quer ler a história completa deste teste?",
-    ctaPrimary: "Ver o caso de estudo",
+    ctaPrimary: "Ler o caso de estudo do Click & Collect",
     ctaSecondary: "Marcar uma conversa gratuita",
 };
 

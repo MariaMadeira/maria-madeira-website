@@ -3,47 +3,44 @@ import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
 import FinalCta from "../components/FinalCta";
 import ServiceCards from "../components/ServiceCards";
-import { SITE_URL } from "../lib/schema";
+import { SITE_URL, breadcrumbNode, webPageNode, withEntities } from "../lib/schema";
+import type { Lang } from "../lib/i18n";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/services";
 import { WAYS } from "../i18n/shared";
 
-// Matches the BreadcrumbList each child service page already carries, so the
-// hub is not the one rung missing from the trail.
-const SERVICES_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
-                { "@type": "ListItem", "position": 2, "name": "Services", "item": `${SITE_URL}/services` },
-            ],
-        },
-    ],
-};
+/* The hub: a WebPage whose main entity is the list of the four services, each
+   named and linked by the @id of the Service node on its own page, plus the
+   breadcrumb rung each child service page already points at. Names match
+   those Service nodes. */
+const HUB_SERVICES: { en: string; pt: string; path: string }[] = [
+    { en: "SEO and AI search optimisation (AEO)", pt: "SEO e otimização para a pesquisa com IA (AEO)", path: "/services/aeo" },
+    { en: "Email Marketing & Klaviyo Consulting", pt: "Email marketing e consultoria Klaviyo", path: "/services/email-marketing" },
+    { en: "Paid advertising management for e-commerce", pt: "Gestão de anúncios pagos para e-commerce", path: "/services/paid-ads" },
+    { en: "Website Strategy & Build", pt: "Estratégia e construção de sites", path: "/services/websites" },
+];
 
-/* The Portuguese hub: same trail, in Portuguese, and the page's language. */
-const PT_JSON_LD = {
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "WebPage",
-            "@id": `${SITE_URL}/pt/servicos#webpage`,
-            "url": `${SITE_URL}/pt/servicos`,
-            "name": "Serviços",
-            "inLanguage": "pt-PT",
-            "isPartOf": { "@id": `${SITE_URL}/#website` },
-        },
-        {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Início", "item": `${SITE_URL}/pt` },
-                { "@type": "ListItem", "position": 2, "name": "Serviços", "item": `${SITE_URL}/pt/servicos` },
-            ],
-        },
-    ],
-};
+function servicesJsonLd(lang: Lang, to: (enPath: string) => string) {
+    const t = COPY[lang];
+    const name = lang === "pt" ? "Serviços" : "Services";
+    return withEntities([
+        webPageNode({
+            path: t.path,
+            name,
+            description: t.description,
+            lang,
+            "mainEntity": {
+                "@type": "ItemList",
+                "itemListElement": HUB_SERVICES.map((sv, i) => ({
+                    "@type": "ListItem",
+                    "position": i + 1,
+                    "item": { "@type": "Service", "@id": `${SITE_URL}${to(sv.path)}#service`, "name": sv[lang], "url": `${SITE_URL}${to(sv.path)}` },
+                })),
+            },
+        }),
+        breadcrumbNode(lang, [[name, t.path]]),
+    ]);
+}
 
 const SERVICE_LINK_STYLE = {
     display: "inline-flex",
@@ -65,7 +62,7 @@ export default function Services() {
                 title={t.title}
                 description={t.description}
                 path={t.path}
-                jsonLd={lang === "pt" ? PT_JSON_LD : SERVICES_JSON_LD}
+                jsonLd={servicesJsonLd(lang, to)}
             />
 
             <div style={{ textAlign: "center", marginBottom: "5rem" }}>
@@ -76,7 +73,7 @@ export default function Services() {
             </div>
 
             {/* The four visual service cards, shared with the homepage. */}
-            <ServiceCards showPrice headingLevel={2} />
+            <ServiceCards showPrice headingLevel={2} eager />
 
             {/* How it works */}
             <div style={{ marginTop: "8rem", marginBottom: "8rem" }}>
