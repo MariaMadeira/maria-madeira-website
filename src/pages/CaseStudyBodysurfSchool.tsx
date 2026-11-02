@@ -10,9 +10,9 @@ import COPY from "../i18n/caseStudyBodysurf";
 // whenever the case study's details are updated.
 /* Full ISO 8601 with time zone. Published: the commit that put each
    language version live (git log); the Portuguese pages went live with the
-   /pt routes. Modified: the commit that last changed the page's details. */
+   /pt routes. Modified: the commit that last changed the page's visible text. */
 const PUBLISHED = { en: "2026-07-09T16:12:06+01:00", pt: "2026-10-19T18:35:44+01:00" };
-const MODIFIED = { en: "2026-08-26T15:26:19+01:00", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-10-20T17:09:53+01:00", pt: "2026-10-20T17:09:53+01:00" };
 
 const STRATEGY_ICONS = [<Map size={24} />, <CreditCard size={24} />, <LayoutTemplate size={24} />, <Globe size={24} />, <Search size={24} />, <ShieldCheck size={24} />];
 

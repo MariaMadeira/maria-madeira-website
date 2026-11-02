@@ -10,7 +10,7 @@ import COPY from "../i18n/caseStudyDePapier";
 // Bump MODIFIED whenever the case study's details are updated.
 /* Full ISO 8601 with time zone. Published: the commit that put each
    language version live (git log); the Portuguese pages went live with the
-   /pt routes. Modified: the commit that last changed the page's details. */
+   /pt routes. Modified: the commit that last changed the page's visible text. */
 const PUBLISHED = { en: "2026-10-30T16:18:13+00:00", pt: "2026-10-30T16:18:13+00:00" };
 const MODIFIED = { en: "2026-11-02T09:28:20+00:00", pt: "2026-11-02T09:28:20+00:00" };
 

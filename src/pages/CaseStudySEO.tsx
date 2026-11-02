@@ -13,9 +13,9 @@ import type { Lang } from "../lib/i18n";
 // case study's details are updated.
 /* Full ISO 8601 with time zone. Published: the commit that put each
    language version live (git log); the Portuguese pages went live with the
-   /pt routes. Modified: the commit that last changed the page's details. */
+   /pt routes. Modified: the commit that last changed the page's visible text. */
 const PUBLISHED = { en: "2026-03-16T16:33:25+00:00", pt: "2026-10-19T18:35:44+01:00" };
-const MODIFIED = { en: "2026-10-16T13:32:35+01:00", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-10-20T18:10:05+01:00", pt: "2026-10-20T18:10:05+01:00" };
 
 /* Legend colours, in the order of the outcomes bar. */
 const OUTCOME_COLOURS = ["var(--positive)", "var(--text-secondary)", "var(--negative)"];

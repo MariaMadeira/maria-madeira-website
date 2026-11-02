@@ -12,9 +12,9 @@ import COPY from "../i18n/caseStudyGoogleAds";
 // whenever the numbers below are updated: this is an ongoing engagement.
 /* Full ISO 8601 with time zone. Published: the commit that put each
    language version live (git log); the Portuguese pages went live with the
-   /pt routes. Modified: the commit that last changed the page's details. */
+   /pt routes. Modified: the commit that last changed the page's visible text. */
 const PUBLISHED = { en: "2026-03-16T16:33:25+00:00", pt: "2026-10-19T18:35:44+01:00" };
-const MODIFIED = { en: "2026-08-26T12:38:06+01:00", pt: "2026-10-19T18:35:44+01:00" };
+const MODIFIED = { en: "2026-10-20T17:09:53+01:00", pt: "2026-10-19T18:57:51+01:00" };
 
 const STRONG = { color: "var(--text-primary)" };
 
