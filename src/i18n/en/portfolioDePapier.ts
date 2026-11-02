@@ -19,7 +19,7 @@ const en = {
     overview: "A new home for a certified translator who was running her business from a free Google Sites page: her own domain, one consistent identity and a site in Portuguese and English.",
 
     siteTitle: "The site",
-    site: { src: `${IMG}depapier-en-desktop-mobile-hero-transparent.webp`, width: 1600, height: 1001, alt: "dePapier Translations homepage on desktop and mobile", caption: "HOMEPAGE · DESKTOP AND MOBILE" },
+    site: { src: `${IMG}depapier-en-desktop-mobile-hero-transparent.webp`, width: 1600, height: 805, alt: "dePapier Translations homepage on desktop and mobile", caption: "HOMEPAGE · DESKTOP AND MOBILE" },
 
     pagesTitle: "Key pages",
     pages: [
