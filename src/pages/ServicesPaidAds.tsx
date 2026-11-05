@@ -25,7 +25,6 @@ const PAID_ADS_JSON_LD = withEntities([
     {
         "@type": "Service",
         "@id": `${PAGE_URL}#service`,
-        "inLanguage": "en-GB",
         "name": "Paid advertising management for e-commerce",
         "serviceType": "PPC and paid social management",
         "url": PAGE_URL,
@@ -70,7 +69,6 @@ const PT_JSON_LD = withEntities([
     {
         "@type": "Service",
         "@id": `${PT_URL}#service`,
-        "inLanguage": "pt-PT",
         "name": "Gestão de anúncios pagos para e-commerce",
         "serviceType": "Gestão de Google Ads, Meta Ads e Microsoft Ads",
         "url": PT_URL,

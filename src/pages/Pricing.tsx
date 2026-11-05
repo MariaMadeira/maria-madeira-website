@@ -31,7 +31,6 @@ const PRICING_JSON_LD = withEntities([
     {
         "@type": "Service",
         "@id": `${PAGE_URL}#service`,
-        "inLanguage": "en-GB",
         "name": "Growth consultancy for brands that sell online",
         "url": PAGE_URL,
         "provider": ORG_REF,
@@ -75,7 +74,6 @@ const PT_JSON_LD = withEntities([
     {
         "@type": "Service",
         "@id": `${PT_URL}#service`,
-        "inLanguage": "pt-PT",
         "name": "Consultoria de crescimento para marcas que vendem online",
         "url": PT_URL,
         "provider": ORG_REF,

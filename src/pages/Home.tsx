@@ -54,7 +54,7 @@ function homeJsonLd(lang: Lang) {
     const t = COPY[lang];
     return withEntities([
         webPageNode({ path: t.path, name: t.title, description: t.description, lang, "about": PERSON_REF }),
-        serviceNode({ path: t.path, ...SERVICE_COPY[lang], serviceType: SERVICE_TYPES[lang], lang }),
+        serviceNode({ path: t.path, ...SERVICE_COPY[lang], serviceType: SERVICE_TYPES[lang] }),
         faqNode(t.path, lang, t.faq.items),
     ]);
 }

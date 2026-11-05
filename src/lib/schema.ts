@@ -14,6 +14,7 @@
 
 import { localOgImage, type Lang } from "./i18n";
 import { EDUCATION, HAS_CREDENTIAL, PROGRAM_MEMBERSHIP } from "./credentials";
+import ROUTE_DATES from "../data/route-dates.json";
 
 export const SITE_URL = "https://mariamadeira.com";
 export const PERSON_ID = `${SITE_URL}/#person`;
@@ -116,9 +117,10 @@ export const PERSON_NODE = {
 };
 
 /**
- * The business. No sameAs: the only profiles that exist are personal ones,
- * and pointing the business at the personal LinkedIn would merge the two
- * entities. Add a company page here if one is created.
+ * The business. sameAs lists business listings only: Clutch profiles the
+ * consultancy as a service provider. The personal LinkedIn, Malt, Fiverr,
+ * Contra and Influee profiles stay on the Person, so the two entities are not
+ * merged. Add a company page here if one is created.
  */
 export const ORG_NODE = {
     "@type": "Organization",
@@ -133,9 +135,9 @@ export const ORG_NODE = {
     },
     "description": "Independent growth consultancy of Maria Madeira, based in Lisbon, Portugal: SEO and AI search optimisation, Klaviyo email marketing, Google, Meta and Microsoft Ads, and websites for e-commerce brands in the UK and Portugal.",
     "founder": PERSON_REF,
+    "sameAs": ["https://clutch.co/profile/maria-madeira"],
     "address": ADDRESS,
     "areaServed": AREA_SERVED,
-    "taxID": "256029342",
     "email": "info@mariamadeira.com",
     "contactPoint": {
         "@type": "ContactPoint",
@@ -200,13 +202,14 @@ export function webPageNode({ type = "WebPage", path, name, description, lang, .
     };
 }
 
-/** A Service sold by the Organization, in the UK and Portugal. */
-export function serviceNode({ path, name, serviceType, description, lang, ...extra }: {
+/** A Service sold by the Organization, in the UK and Portugal. No
+    inLanguage: schema.org defines it for creative works, not for Service, so
+    the language sits on the page's WebPage and FAQPage instead. */
+export function serviceNode({ path, name, serviceType, description, ...extra }: {
     path: string;
     name: string;
     serviceType: string | string[];
     description?: string;
-    lang: Lang;
 } & Node) {
     const url = `${SITE_URL}${path}`;
     return {
@@ -216,7 +219,6 @@ export function serviceNode({ path, name, serviceType, description, lang, ...ext
         "serviceType": serviceType,
         "url": url,
         ...(description ? { "description": description } : {}),
-        "inLanguage": langCode(lang),
         "provider": ORG_REF,
         "areaServed": AREA_SERVED,
         ...extra,
@@ -357,6 +359,32 @@ interface PortfolioMeta {
 }
 
 /**
+ * When each portfolio page went public, per language: the commit that first
+ * added the route (git log -S'"<path>"' src/routes.ts, or src/App.tsx before
+ * routes.ts existed), deployed to production within minutes. The site itself
+ * went public on 30 March 2026, so pages committed before then carry that
+ * date. Fixed: a page is published once.
+ */
+const PORTFOLIO_PUBLISHED: Record<string, string> = {
+    "/portfolio-rita-antunes": "2026-03-30",
+    "/portfolio-ousadia": "2026-03-30",
+    "/portfolio-ai-enhanced": "2026-03-30",
+    "/portfolio-ai-product-photography": "2026-03-30",
+    "/portfolio-email-marketing": "2026-03-30",
+    "/portfolio-click-collect": "2026-03-30",
+    "/portfolio-depapier": "2026-11-02T09:28:20Z",
+    "/portfolio-bodysurf-school": "2026-11-02T10:16:44Z",
+    "/pt/portefolio-rita-antunes": "2026-10-19T18:35:44+01:00",
+    "/pt/portefolio-ousadia": "2026-10-19T18:35:44+01:00",
+    "/pt/portefolio-imagens-de-produto-com-ia": "2026-10-19T18:35:44+01:00",
+    "/pt/portefolio-fotografia-de-produto-com-ia": "2026-10-19T18:35:44+01:00",
+    "/pt/portefolio-email-marketing": "2026-10-19T18:35:44+01:00",
+    "/pt/portefolio-click-collect": "2026-10-19T18:35:44+01:00",
+    "/pt/portefolio-depapier": "2026-11-02T09:28:20Z",
+    "/pt/portefolio-bodysurf-school": "2026-11-02T10:16:44Z",
+};
+
+/**
  * CreativeWork + BreadcrumbList for a portfolio project, with the Person as
  * creator, so these pages join the site's entity graph.
  */
@@ -371,6 +399,10 @@ export function portfolioJsonLd({ path, name, description, about, image, lang = 
             "description": description,
             "url": url,
             "creator": PERSON_REF,
+            ...(PORTFOLIO_PUBLISHED[path] ? { "datePublished": PORTFOLIO_PUBLISHED[path] } : {}),
+            // The sitemap's <lastmod> for this route, which the pre-commit
+            // hook keeps current, so the two always agree.
+            ...((ROUTE_DATES as Record<string, string>)[path] ? { "dateModified": (ROUTE_DATES as Record<string, string>)[path] } : {}),
             ...(about ? { "about": { "@type": about.type, "name": about.name, ...(about.url ? { "url": about.url } : {}) } } : {}),
             "image": `${SITE_URL}${encodeURI(image)}`,
             "inLanguage": langCode(lang),
