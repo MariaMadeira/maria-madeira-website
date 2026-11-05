@@ -33,7 +33,6 @@ const EMAIL_JSON_LD = withEntities([
     {
         "@type": "Service",
         "@id": `${SITE_URL}/services/email-marketing#service`,
-        "inLanguage": "en-GB",
         "name": "Email Marketing & Klaviyo Consulting",
         "serviceType": "Email Marketing and Klaviyo Consulting",
         "url": `${SITE_URL}/services/email-marketing`,
@@ -81,7 +80,6 @@ const PT_JSON_LD = withEntities([
     {
         "@type": "Service",
         "@id": `${PT_URL}#service`,
-        "inLanguage": "pt-PT",
         "name": "Email marketing e consultoria Klaviyo",
         "serviceType": "Email marketing e consultoria Klaviyo",
         "url": PT_URL,

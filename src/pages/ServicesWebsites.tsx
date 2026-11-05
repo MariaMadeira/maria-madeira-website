@@ -20,7 +20,7 @@ function websitesJsonLd(lang: Lang) {
     const servicesPath = lang === "pt" ? "/pt/servicos" : "/services";
     return withEntities([
         webPageNode({ path: t.path, name: n.name, description: t.description, lang, "mainEntity": { "@id": `${SITE_URL}${t.path}#service` } }),
-        serviceNode({ path: t.path, name: n.name, serviceType: lang === "pt" ? "Estratégia e construção de sites (WordPress e Shopify)" : "Website strategy and build (WordPress and Shopify)", description: t.intro, lang }),
+        serviceNode({ path: t.path, name: n.name, serviceType: lang === "pt" ? "Estratégia e construção de sites (WordPress e Shopify)" : "Website strategy and build (WordPress and Shopify)", description: t.intro }),
         faqNode(t.path, lang, t.faqs),
         breadcrumbNode(lang, [[n.services, servicesPath], [n.crumb, t.path]]),
     ]);

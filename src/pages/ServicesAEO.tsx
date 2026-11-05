@@ -29,7 +29,6 @@ const AEO_JSON_LD = withEntities([
     {
         "@type": "Service",
         "@id": `${SITE_URL}/services/aeo#service`,
-        "inLanguage": "en-GB",
         "name": "SEO and AI search optimisation (AEO)",
         "serviceType": ["Search engine optimisation", "Answer engine optimisation"],
         "url": `${SITE_URL}/services/aeo`,
@@ -76,7 +75,6 @@ const PT_JSON_LD = withEntities([
     {
         "@type": "Service",
         "@id": `${PT_URL}#service`,
-        "inLanguage": "pt-PT",
         "name": "SEO e otimização para a pesquisa com IA (AEO)",
         "serviceType": ["Otimização para motores de pesquisa", "Otimização para motores de resposta"],
         "url": PT_URL,

@@ -11,6 +11,8 @@ import COPY from "../i18n/aiInformation";
  * Renders /ai-information and /pt/informacao-ia from src/i18n/aiInformation.ts.
  */
 const MODIFIED_ISO = "2026-11-02";
+/* The commits that put each language live (git log src/routes.ts). */
+const PUBLISHED_ISO = { en: "2026-10-19T14:02:13+01:00", pt: "2026-10-19T17:54:09+01:00" };
 
 const P = { color: "var(--text-secondary)", fontSize: "1.05rem", lineHeight: 1.85, marginBottom: "1.25rem" } as const;
 const H2 = { fontSize: "1.6rem", marginTop: "3rem", marginBottom: "1.25rem", lineHeight: 1.25 } as const;
@@ -24,7 +26,7 @@ export default function AiInformation() {
     // The page is about the Person, so it declares the full Person node
     // (with the Organization and WebSite) rather than pointing at one.
     const jsonLd = withEntities([
-        webPageNode({ type: "AboutPage", path: t.path, name: t.schemaName, lang, "dateModified": MODIFIED_ISO, "mainEntity": PERSON_REF }),
+        webPageNode({ type: "AboutPage", path: t.path, name: t.schemaName, lang, "datePublished": PUBLISHED_ISO[lang], "dateModified": MODIFIED_ISO, "mainEntity": PERSON_REF }),
         breadcrumbNode(lang, [[t.schemaName, t.path]]),
     ]);
     const b = t.basic;
