@@ -30,6 +30,16 @@
       "source": "/case-study-seo-aeo",
       "destination": "/case-study-seo",
       "statusCode": 301
+    },
+    {
+      "source": "/blog/base-aeo-agencies-ecommerce-europe",
+      "destination": "/blog/best-aeo-agencies-ecommerce-europe",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/best-aeo-ecommerce-europe",
+      "destination": "/blog/best-aeo-agencies-ecommerce-europe",
+      "statusCode": 301
     }
   ],
   "headers": [

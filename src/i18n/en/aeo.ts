@@ -1,8 +1,8 @@
 /** English copy. See src/i18n/aeo.ts. */
 const en = {
     path: "/services/aeo",
-    title: "E-commerce SEO & AI Search (AEO) Consultant | Maria Madeira",
-    description: "SEO and AI search optimisation (AEO) for e-commerce brands: ranked on Google, and cited by ChatGPT, Perplexity, Gemini and AI Overviews. Audit, then the work.",
+    title: "AEO Consultant for E-commerce Brands (UK) | Maria Madeira",
+    description: "Independent AEO and SEO consultant for e-commerce brands in the UK and Portugal: found on Google and recommended by ChatGPT, Perplexity and AI Overviews.",
     definition: "Answer Engine Optimisation (AEO) is the practice of optimising a brand to be cited and recommended by AI answer engines like ChatGPT, Perplexity, Gemini, and Google's AI Overviews. SEO gets your pages ranked; AEO makes your brand the one the AI names, quotes and links when someone asks it for a recommendation.",
     eyebrow: "SEO and AI search optimisation (AEO)",
     h1Lead: "SEO that gets you found on Google and ",
@@ -87,6 +87,7 @@ const en = {
     faqs: [
         { q: "What does an AEO consultant do for an e-commerce brand?", a: "Four stages, and I deliver all four. It starts with an AI visibility audit that records where you appear, or do not, across ChatGPT, Perplexity, Gemini and Google AI Overviews. The rest is implementation: structured data and entity signals machines can read and attribute to you, pages and copy structured to be lifted and cited inside AI answers, and citation tracking set up so you can see what changed. Nothing is handed over as a list of recommendations for someone else to action." },
         { q: "Should an e-commerce brand hire an AEO consultant or an agency?", a: "It depends on your size and how much coordination you can absorb. An agency gives you process and parallel capacity, which suits brands with an internal marketing team to brief and manage them. An independent consultant gives you senior attention on every task and direct contact with the person doing the work, rather than briefing a team through an account manager. I have published an open comparison of the European agency options, including where I fit and where an agency is the better choice." },
+        { q: "Do you work with UK e-commerce brands?", a: "Yes. I'm based in Lisbon and work with e-commerce brands in the UK and Portugal, with most of my experience in UK food and drink e-commerce." },
         { q: "Do you implement the work, or only advise?", a: "I implement it. The audit is the starting point, not the deliverable. From there I do the work: structured data, entity consistency, page and content changes, and citation tracking across ChatGPT, Perplexity, Gemini and AI Overviews. If the site itself needs rebuilding to support any of it, I do that too. You are working directly with the person doing the work, not briefing a team through an account manager." },
         { q: "What is answer engine optimisation?", a: "Answer engine optimisation (AEO) is the practice of structuring your brand, content, and data so AI assistants cite and recommend you when they answer questions. Instead of chasing a blue-link ranking, AEO aims to make your business the answer that tools like ChatGPT, Perplexity, and Google's AI Overviews return." },
         { q: "How is AEO different from SEO?", a: "SEO optimises for ranked links on a search results page; AEO optimises to be the cited source inside an AI-generated answer. SEO leans on keywords and backlinks, while AEO leans on clear entities, structured data, and content written to be lifted. They overlap, but AEO assumes the user may never see a list of links at all." },

@@ -192,4 +192,13 @@ const en = {
     authorNote: "She ran this brand's Klaviyo programme from 2021 to 2025.",
 };
 
+/* English only for now: the /pt post has no translation of this section, so
+   it lives outside `en` and the Portuguese copy (typed as `typeof en`) needs
+   no placeholder. Built only from points in this article and on
+   /case-study-email; the brand stays unnamed. */
+export const CAMPAIGNS_EN = {
+    title: "How do I increase revenue from Klaviyo campaigns?",
+    text: "Move from one-off promotions to a regular campaign calendar, send to segments rather than to your whole list, and test as you go. A campaign reaches everyone it is sent to on the same day, whatever they happen to be doing, so a 30-day engaged segment is a simple place to start. At the UK food brand in this article, with that in place, campaign revenue per recipient rose from £0.030 in 2022 to £0.081 in the 12 months to July 2025. Campaigns still earn less per recipient than flows, so run them alongside a welcome series and abandoned checkout, not instead of them.",
+};
+
 export default en;

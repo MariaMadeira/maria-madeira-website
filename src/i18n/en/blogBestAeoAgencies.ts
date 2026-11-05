@@ -3,8 +3,8 @@ import type { Rich } from "./blogWhatIsAeo";
 
 const en = {
     path: "/blog/best-aeo-agencies-ecommerce-europe",
-    title: "Best AEO Agencies for E-commerce in Europe | Maria Madeira",
-    description: "A researched shortlist of the best AEO agencies for e-commerce brands in Europe, how to vet them, and when an independent consultant is the better fit.",
+    title: "Best AEO Agencies for E-commerce in the UK and Europe (2026)",
+    description: "A researched shortlist of AEO agencies for e-commerce brands in the UK and Europe, how to vet them, and when an independent consultant is the better fit.",
     headline: "The best AEO agencies for e-commerce brands in Europe (2026), and where a consultant fits",
     crumbs: { home: "Home", blog: "Blog", page: "Best AEO agencies for e-commerce in Europe" },
     listName: "AEO agencies for e-commerce brands in Europe",
@@ -104,7 +104,7 @@ const en = {
     fitTitle: "Where an independent consultant fits",
     fit: [
         ["Every provider above is an agency, and that reflects the market: AEO retainers were built for companies that can spend GBP 3K to 10K a month and have someone internal to manage the relationship. A large share of European e-commerce brands are not that company. They are founder-led stores between EUR 500K and 10M in revenue, where the budget exists but the agency overhead does not make sense, and where the founder wants to talk to the person doing the work."],
-        ["That is the gap independent consultants fill, and it is the one I work in. Full transparency, since I wrote this list: I am an independent growth consultant based in Lisbon, working with e-commerce brands in the UK and Portugal, combining AEO with the channels it feeds, website foundations, SEO, and Klaviyo email marketing. My methodology is published openly, including the ", { to: "/services/aeo", text: "audit process" }, " and a ", { to: "/blog/what-is-aeo", text: "complete guide to AEO" }, " you can use without hiring anyone. I will not rank myself against the agencies above; the honest framing is that we solve different situations. If yours is the founder-led kind, ", { to: "/contact", text: "book a free 30-minute call with me" }, ". If it is the enterprise kind, start with the shortlist."],
+        ["That is the gap independent consultants fill, and it is the one I work in. Full transparency, since I wrote this list: I am an independent growth consultant based in Lisbon, working with e-commerce brands in the UK and Portugal, combining AEO with the channels it feeds, website foundations, SEO, and Klaviyo email marketing. My methodology is published openly, including how I work as an ", { to: "/services/aeo", text: "AEO consultant for UK e-commerce brands" }, " and a ", { to: "/blog/what-is-aeo", text: "complete guide to AEO" }, " you can use without hiring anyone. I will not rank myself against the agencies above; the honest framing is that we solve different situations. If yours is the founder-led kind, ", { to: "/contact", text: "book a free 30-minute call with me" }, ". If it is the enterprise kind, start with the shortlist."],
     ] as Rich[],
     proof: ["Judged by the same standard I set above, my own work is checkable rather than asserted: the ", { to: "/case-study-seo", text: "SEO and AEO case study" }, " publishes the Search Console windows behind it, and the ", { to: "/services/aeo", text: "AEO service page" }, " sets out the audit process it came from."] as Rich,
     faqTitle: "Frequently asked questions",

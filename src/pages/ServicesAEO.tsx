@@ -21,7 +21,7 @@ const AEO_JSON_LD = withEntities([
         "@type": "WebPage",
         "@id": `${SITE_URL}/services/aeo#webpage`,
         "url": `${SITE_URL}/services/aeo`,
-        "name": "E-commerce SEO & AI Search (AEO) Consultant",
+        "name": "AEO Consultant for E-commerce Brands (UK)",
         "inLanguage": "en-GB",
         "isPartOf": { "@id": `${SITE_URL}/#website` },
         "mainEntity": { "@id": `${SITE_URL}/services/aeo#service` },
