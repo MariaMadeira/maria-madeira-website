@@ -4,7 +4,7 @@ import type en from "../en/caseStudies";
 const pt: typeof en = {
     path: "/pt/casos-de-estudo",
     title: "Casos de estudo: SEO, Klaviyo e Google Ads | Maria Madeira",
-    description: "Casos de estudo com resultados medidos: SEO e migração, ROAS de Google Ads de 532% (outubro de 2025 a agosto de 2026), £134K de email nos 12 meses até julho de 2025 e Click & Collect.",
+    description: "Resultados medidos: SEO e migração, ROAS de Google Ads de 532%, £134K de receita de email em 12 meses e uma experiência mobile Click & Collect.",
     schemaName: "Casos de estudo",
     schemaDescription: "Casos de estudo reais com resultados medidos: SEO e migração de plataforma, Google Ads, email no Klaviyo, UX de Click & Collect e um motor de reservas para uma escola de surf.",
     h1Lead: "Casos de ",

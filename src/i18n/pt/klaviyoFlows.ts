@@ -5,7 +5,7 @@ const pt: typeof en = {
     path: "/pt/blog/fluxos-vs-campanhas-klaviyo",
     title: "Klaviyo: porque é que os fluxos rendem mais | Maria Madeira",
     headline: "Porque é que os seus emails automáticos rendem mais do que as suas campanhas",
-    description: "Os fluxos automáticos são poucos envios e muita receita de email. O que dizem os estudos, dados de uma marca britânica (setembro de 2021 a julho de 2025) e que fluxos criar.",
+    description: "Os fluxos automáticos são poucos envios e muita receita. O que dizem os estudos, dados de uma marca britânica e que fluxos criar.",
     articleSection: "Email marketing",
     breadcrumb: ["Início", "Blog", "Porque é que os fluxos do Klaviyo rendem mais do que as campanhas"],
     allArticles: "Todos os artigos",

@@ -4,7 +4,7 @@ import type en from "../en/pricing";
 const pt: typeof en = {
     path: "/pt/precos",
     title: "Formas de trabalhar: SEO, Klaviyo e anúncios | Maria Madeira",
-    description: "Três formas de trabalhar comigo: Auditoria de crescimento, projetos ou acompanhamento mensal de SEO, pesquisa com IA (AEO), email e anúncios, com proposta escrita.",
+    description: "Três formas de trabalhar comigo: Auditoria de crescimento, projetos ou acompanhamento mensal de SEO, AEO, email e anúncios. Proposta escrita.",
     eyebrow: "Preços",
     h1: "Formas de trabalhar comigo",
     intro: "Comece com uma auditoria, contrate-me para um projeto definido ou trabalhe comigo mês a mês. Proposta por escrito, com âmbito e preço fechados, depois de uma primeira conversa.",
