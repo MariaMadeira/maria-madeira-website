@@ -13,6 +13,7 @@ import type { Lang } from "../lib/i18n";
 import { useLang } from "../hooks/useLang";
 import { blogPostingNode, breadcrumbNode, faqNode, withEntities } from "../lib/schema";
 import COPY from "../i18n/klaviyoFlows";
+import { CAMPAIGNS_EN } from "../i18n/en/klaviyoFlows";
 
 /* Renders /blog/klaviyo-flows-vs-campaigns and /pt/blog/fluxos-vs-campanhas-klaviyo
    from src/i18n/klaviyoFlows.ts. Icons, colours, numbers and links live here;
@@ -23,7 +24,7 @@ const OG_IMAGE = "/og/og-blog-klaviyo-automations.png";
    log src/i18n/pt/klaviyoFlows.ts). Bump MODIFIED, in the language that
    changed, with the visible text; the byline renders these same strings. */
 const PUBLISHED = { en: "2026-10-19", pt: "2026-10-19T18:35:44+01:00" };
-const MODIFIED = { en: "2026-11-02", pt: "2026-11-02" };
+const MODIFIED = { en: "2026-11-05", pt: "2026-11-02" };
 
 const OMNISEND = "https://www.omnisend.com/2026-ecommerce-marketing-report";
 const KLAVIYO_BENCHMARKS = "https://www.klaviyo.com/products/email-marketing/benchmarks";
@@ -525,6 +526,14 @@ export default function BlogKlaviyoFlowsVsCampaigns() {
                         {t.v8Note}
                     </p>
                 </figure>
+
+                {/* Campaign revenue: English only for now. */}
+                {lang === "en" && (
+                    <>
+                        <h2 style={H2}>{CAMPAIGNS_EN.title}</h2>
+                        <p style={P}>{CAMPAIGNS_EN.text}</p>
+                    </>
+                )}
 
                 {/* CTA */}
                 <div style={{ ...calloutBox, marginTop: "3.5rem" }}>
