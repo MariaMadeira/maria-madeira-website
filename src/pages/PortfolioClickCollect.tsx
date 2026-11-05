@@ -514,6 +514,7 @@ export default function PortfolioClickCollect() {
                     className="related-links--open"
                     items={[
                         { kicker: RELATED.service, to: "/services", label: c.relatedService },
+                        { kicker: RELATED.work, to: "/case-study-click-collect", label: c.ctaPrimary },
                     ]}
                 />
 

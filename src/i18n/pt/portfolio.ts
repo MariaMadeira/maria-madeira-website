@@ -8,6 +8,7 @@ const pt: typeof en = {
     h1Lead: "",
     h1Accent: "Portefólio",
     h1Tail: " criativo",
+    intro: ["Uma seleção de projetos de branding, websites, email marketing e criatividade com IA. Para ver os resultados medidos por trás do trabalho, consulte os ", "casos de estudo", "."],
     all: "Todos",
     projects: [
         {

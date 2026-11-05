@@ -21,6 +21,16 @@ const WHAT_ICONS = [<Search size={26} />, <Repeat size={26} />, <Users size={26}
 
 const EMAIL_JSON_LD = withEntities([
     {
+        "@type": "WebPage",
+        "@id": `${SITE_URL}/services/email-marketing#webpage`,
+        "url": `${SITE_URL}/services/email-marketing`,
+        "name": "Klaviyo Email Marketing Consultant",
+        "description": COPY.en.description,
+        "inLanguage": "en-GB",
+        "isPartOf": { "@id": `${SITE_URL}/#website` },
+        "mainEntity": { "@id": `${SITE_URL}/services/email-marketing#service` },
+    },
+    {
         "@type": "Service",
         "@id": `${SITE_URL}/services/email-marketing#service`,
         "inLanguage": "en-GB",

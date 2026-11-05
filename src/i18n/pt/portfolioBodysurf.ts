@@ -42,6 +42,7 @@ const pt: typeof en = {
     roleTitle: "Papel",
     role: "Estratégia de crescimento, UX/UI, montagem em WordPress, reservas e pagamentos, e SEO e AEO.",
 
+    relatedService: "Estratégia e construção de sites",
     ctaText: "Quer ler a história completa deste projeto?",
     ctaButton: "Ler o caso de estudo da The Bodysurf School",
 };

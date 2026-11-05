@@ -12,7 +12,7 @@ const pt: typeof en = {
     h1Lead: "Faça do email um ",
     h1Accent: "canal de receita que cresce de ano para ano",
     h1Tail: ", e não uma newsletter por obrigação",
-    intro: "Sou especialista em Klaviyo e Klaviyo Partner oficial, baseada em Lisboa, e trabalho com marcas de e-commerce em Portugal e no Reino Unido. Fluxos automáticos que vendem sozinhos, segmentação que envia a mensagem certa ao cliente certo e o rigor de entregabilidade que faz tudo chegar à caixa de entrada.",
+    intro: "Sou consultora de crescimento, especialista em Klaviyo e Klaviyo Partner oficial, baseada em Lisboa, e trabalho com marcas de e-commerce em Portugal e no Reino Unido. Fluxos automáticos que vendem sozinhos, segmentação que envia a mensagem certa ao cliente certo e o rigor de entregabilidade que faz tudo chegar à caixa de entrada.",
     trustPre: "Com ",
     trustLink: "certificação Klaviyo Practitioner",
     trustPost: ".",

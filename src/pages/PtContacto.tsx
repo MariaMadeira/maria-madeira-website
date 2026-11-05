@@ -2,16 +2,20 @@ import { useState, useSyncExternalStore } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Mail, Linkedin, Send, CheckCircle } from "lucide-react";
 import Seo from "../components/Seo";
-import { ORG_REF, PERSON_REF, breadcrumbNode, webPageNode, withEntities } from "../lib/schema";
+import ContactNext from "../components/ContactNext";
+import NEXT from "../i18n/contactNext";
+import { ORG_REF, PERSON_REF, breadcrumbNode, faqNode, webPageNode, withEntities } from "../lib/schema";
 
 /* Portuguese twin of /contact. Same Formspree form as the English page; the
    subject marks the enquiry as coming from the Portuguese site. */
 const FORMSPREE = "https://formspree.io/f/xvzvrqde";
 
-/* Same graph as /contact: the page, its breadcrumb and the shared entities. */
+/* Same graph as /contact: the page, its breadcrumb, the "Antes de marcar"
+   FAQ and the shared entities. */
 const JSON_LD = withEntities([
     webPageNode({ type: "ContactPage", path: "/pt/contacto", name: "Contacto", lang: "pt", about: PERSON_REF, publisher: ORG_REF }),
     breadcrumbNode("pt", [["Contacto", "/pt/contacto"]]),
+    faqNode("/pt/contacto", "pt", NEXT.pt.faqs),
 ]);
 
 /* Enquiry presets reachable as /pt/contacto?topic=<key>, mirroring /contact.
@@ -160,6 +164,8 @@ export default function PtContacto() {
                     )}
                 </div>
             </div>
+
+            <ContactNext c={NEXT.pt} />
         </div>
     );
 }

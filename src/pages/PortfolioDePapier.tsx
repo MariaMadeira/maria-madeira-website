@@ -1,6 +1,7 @@
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Seo from "../components/Seo";
+import RelatedLinks, { RELATED } from "../components/RelatedLinks";
 import { portfolioJsonLd } from "../lib/schema";
 import { useLang } from "../hooks/useLang";
 import COPY from "../i18n/portfolioDePapier";
@@ -161,6 +162,14 @@ export default function PortfolioDePapier() {
                         </div>
                     </div>
                 </section>
+
+                <RelatedLinks
+                    className="related-links--open"
+                    items={[
+                        { kicker: RELATED.service, to: "/services/websites", label: c.relatedService },
+                        { kicker: RELATED.work, to: "/case-study-depapier-translations", label: c.ctaButton },
+                    ]}
+                />
 
                 {/* Footer CTA */}
                 <div style={{ textAlign: "center", paddingTop: "4rem", borderTop: "1px solid var(--border-color)", display: "flex", flexDirection: "column", alignItems: "center", gap: "1.5rem" }}>

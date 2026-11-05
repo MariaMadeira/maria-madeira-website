@@ -6,6 +6,8 @@ const en = {
     h1Lead: "Creative ",
     h1Accent: "Portfolio",
     h1Tail: "",
+    /* Intro under the H1: before, the words linked to the case studies hub, after. */
+    intro: ["Selected projects across branding, websites, email marketing and AI-assisted creative. For the measured results behind the work, see the ", "case studies", "."] as [string, string, string],
     all: "All",
     /* Same order as the links and images in src/pages/Portfolio.tsx. */
     projects: [

@@ -51,6 +51,7 @@ const pt: typeof en = {
     roleTitle: "Papel",
     role: "Posicionamento, arquitetura de informação, design e montagem em WordPress, textos nas duas línguas e SEO.",
 
+    relatedService: "Estratégia e construção de sites",
     ctaText: "Quer ler a história completa deste projeto?",
     ctaButton: "Ler o caso de estudo da dePapier",
 };

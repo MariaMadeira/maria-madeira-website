@@ -14,6 +14,15 @@ const FAQS = COPY.en.faqs;
 
 const PAID_ADS_JSON_LD = withEntities([
     {
+        "@type": "WebPage",
+        "@id": `${PAGE_URL}#webpage`,
+        "url": PAGE_URL,
+        "name": "Google and Meta Ads for e-commerce",
+        "inLanguage": "en-GB",
+        "isPartOf": { "@id": `${SITE_URL}/#website` },
+        "mainEntity": { "@id": `${PAGE_URL}#service` },
+    },
+    {
         "@type": "Service",
         "@id": `${PAGE_URL}#service`,
         "inLanguage": "en-GB",

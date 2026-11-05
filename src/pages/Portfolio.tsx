@@ -64,6 +64,9 @@ export default function Portfolio() {
             />
 
             <h1 className="section-title">{c.h1Lead}<span className="text-gradient">{c.h1Accent}</span>{c.h1Tail}</h1>
+            <p style={{ textAlign: "center", color: "var(--text-secondary)", maxWidth: "700px", margin: "-1.5rem auto 3rem", fontSize: "1.1rem", lineHeight: 1.8 }}>
+                {c.intro[0]}<Link to={to("/case-studies")} style={{ color: "var(--accent-text)", fontWeight: 600 }}>{c.intro[1]}</Link>{c.intro[2]}
+            </p>
 
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center", marginBottom: "4rem" }}>
                 {activeCategories.map((cat, i) => (

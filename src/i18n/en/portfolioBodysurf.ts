@@ -40,6 +40,7 @@ const en = {
     roleTitle: "Role",
     role: "Growth strategy, UX/UI, WordPress build, booking and payments, and SEO and AEO.",
 
+    relatedService: "Website strategy and build",
     ctaText: "Want to read the full story behind this project?",
     ctaButton: "Read The Bodysurf School case study",
 };

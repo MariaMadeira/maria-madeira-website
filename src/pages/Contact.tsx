@@ -2,13 +2,16 @@ import { Mail, Linkedin, Send, CheckCircle } from "lucide-react";
 import { useState, useSyncExternalStore } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Seo from "../components/Seo";
-import { ORG_REF, PERSON_REF, breadcrumbNode, webPageNode, withEntities } from "../lib/schema";
+import ContactNext from "../components/ContactNext";
+import NEXT from "../i18n/contactNext";
+import { ORG_REF, PERSON_REF, breadcrumbNode, faqNode, webPageNode, withEntities } from "../lib/schema";
 
-/* ContactPage, its breadcrumb and the shared Person, Organization and WebSite,
-   matching /pt/contacto. */
+/* ContactPage, its breadcrumb, the "Before you book" FAQ and the shared
+   Person, Organization and WebSite, matching /pt/contacto. */
 const JSON_LD = withEntities([
     webPageNode({ type: "ContactPage", path: "/contact", name: "Contact", lang: "en", about: PERSON_REF, publisher: ORG_REF }),
     breadcrumbNode("en", [["Contact", "/contact"]]),
+    faqNode("/contact", "en", NEXT.en.faqs),
 ]);
 
 /* Enquiry presets reachable as /contact?topic=<key>. Anything else, including no
@@ -200,6 +203,8 @@ export default function Contact() {
                     )}
                 </div>
             </div>
+
+            <ContactNext c={NEXT.en} />
         </div>
     );
 }

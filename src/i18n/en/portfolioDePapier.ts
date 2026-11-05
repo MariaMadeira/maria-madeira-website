@@ -49,6 +49,7 @@ const en = {
     roleTitle: "Role",
     role: "Positioning, information architecture, design and WordPress build, copy in both languages and SEO.",
 
+    relatedService: "Website strategy and build",
     ctaText: "Want to read the full story behind this project?",
     ctaButton: "Read the dePapier case study",
 };
