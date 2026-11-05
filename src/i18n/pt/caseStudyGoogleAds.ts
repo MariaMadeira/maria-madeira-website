@@ -4,7 +4,7 @@ import type en from "../en/caseStudyGoogleAds";
 const pt: typeof en = {
     path: "/pt/caso-google-ads",
     title: "Google Ads para uma marca alimentar: ROAS de 532%",
-    description: "Caso de estudo de Google Ads: £26,5K em anúncios geraram £141K de receita atribuída de outubro de 2025 a agosto de 2026, um ROAS de Google Ads de 532% face a um ponto de equilíbrio de 400%.",
+    description: "Caso de estudo de Google Ads para uma marca alimentar britânica: £26,5K em anúncios geraram £141K de receita atribuída, um ROAS de 532%.",
     h1: "5,32 £ de retorno por cada 1 £ investida, de outubro de 2025 a agosto de 2026",
     schemaDescription: "Como uma estrutura de campanhas organizada e testes de criativos transformaram £26,5K de investimento em anúncios em £141K de receita atribuída, um ROAS de Google Ads de 532% face a um ponto de equilíbrio de 400%, de outubro de 2025 a agosto de 2026.",
     breadcrumb: "Google Ads",

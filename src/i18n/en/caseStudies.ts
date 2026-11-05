@@ -2,7 +2,7 @@
 const en = {
     path: "/case-studies",
     title: "Case Studies: SEO, Klaviyo and Google Ads | Maria Madeira",
-    description: "Case studies with measured results: SEO after a Shopify move, a 532% Google Ads ROAS (October 2025 to August 2026), £134K email revenue in 12 months to July 2025, and click & collect.",
+    description: "Measured results: SEO after a Shopify move, 532% Google Ads ROAS, £134K email revenue in 12 months and a Click & Collect mobile experience.",
     schemaName: "Case Studies",
     schemaDescription: "Real case studies with measurable outcomes: SEO and platform migration, Google Ads, Klaviyo email, click & collect UX, and a surf school booking engine.",
     h1Lead: "Case ",
