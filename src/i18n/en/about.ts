@@ -52,6 +52,7 @@ const en = {
     cta: "Book a free call",
     ctaTitle: "Tell me about your brand.",
     ctaLine: "A free 30-minute call. No commitment.",
+    ctaPhotoAlt: "Maria Madeira, growth consultant in Lisbon",
     /** Links beside LinkedIn under the intro. */
     servicesLink: "My services",
     factsLink: "Key facts",

@@ -75,6 +75,7 @@ const pt: typeof en = {
     ctaTitle: "Vamos ver por onde começar?",
     /* As on /pt/servicos. */
     ctaLine: "Uma conversa gratuita de 30 minutos. Sem compromisso.",
+    ctaPhotoAlt: "Maria Madeira, consultora de crescimento em Lisboa",
     servicesLink: "Os meus serviços",
     factsLink: "Factos principais",
 };

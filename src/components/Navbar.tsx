@@ -246,8 +246,8 @@ export default function Navbar() {
             <div className="container">
                 <div className="navbar-content">
                     <Link to={t.homePath} className="nav-logo" onClick={() => setIsOpen(false)}>
-                        <img src="/logo-80.png" alt="" width="80" height="80" style={{ height: '40px', width: '40px', objectFit: 'contain', mixBlendMode: 'multiply', flexShrink: 0 }} />
-                        <span className="nav-logo-text" style={{ fontSize: '1.2rem', letterSpacing: '0.1em' }}>MARIA MADEIRA</span>
+                        <img src="/logo-80.png" alt="Maria Madeira" width="80" height="80" style={{ height: '40px', width: '40px', objectFit: 'contain', mixBlendMode: 'multiply', flexShrink: 0 }} />
+                        <span className="nav-logo-text" aria-hidden="true" style={{ fontSize: '1.2rem', letterSpacing: '0.1em' }}>MARIA MADEIRA</span>
                     </Link>
 
                     {/* Desktop Nav */}

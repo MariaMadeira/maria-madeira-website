@@ -232,7 +232,7 @@ export default function About() {
                 })}
             </section>
 
-            <FinalCta title={t.ctaTitle} line={t.ctaLine} button={t.cta} to={to("/contact")} photo />
+            <FinalCta title={t.ctaTitle} line={t.ctaLine} button={t.cta} to={to("/contact")} photo photoAlt={t.ctaPhotoAlt} />
         </div>
     );
 }
