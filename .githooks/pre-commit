@@ -1,0 +1,6 @@
+#!/bin/sh
+# Keeps src/data/route-dates.json (the sitemap's <lastmod>) in step with each
+# commit: routes whose page or copy is staged get today's date, the rest keep
+# theirs. See scripts/route-dates.mjs. Switched on by `npm install`.
+node scripts/route-dates.mjs --staged || exit 1
+git add src/data/route-dates.json

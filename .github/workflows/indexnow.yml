@@ -1,0 +1,55 @@
+name: IndexNow
+
+# After each successful Vercel production deployment, tell IndexNow (Bing,
+# Yandex, Seznam, Naver) which URLs changed: the routes whose date in
+# src/data/route-dates.json differs from the previous successful production
+# deployment. Those dates are kept current by the pre-commit hook
+# (.githooks/pre-commit). Nothing changed, nothing is sent.
+on: deployment_status
+
+permissions:
+  contents: read
+  deployments: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Find the previous production deployment
+        id: prev
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          CURRENT: ${{ github.event.deployment.id }}
+        run: |
+          for id in $(gh api "repos/$REPO/deployments?environment=Production&per_page=30" --jq ".[] | select(.id < $CURRENT) | .id"); do
+            ok=$(gh api "repos/$REPO/deployments/$id/statuses" --jq '[.[].state] | any(. == "success")')
+            if [ "$ok" = "true" ]; then
+              sha=$(gh api "repos/$REPO/deployments/$id" --jq .sha)
+              echo "Previous production deployment: $id at $sha"
+              echo "sha=$sha" >> "$GITHUB_OUTPUT"
+              break
+            fi
+          done
+
+      - name: Submit changed URLs
+        if: steps.prev.outputs.sha != ''
+        run: node scripts/indexnow.mjs --since=${{ steps.prev.outputs.sha }}
+
+      - name: No previous deployment
+        if: steps.prev.outputs.sha == ''
+        run: echo "No earlier successful production deployment found; run npm run indexnow by hand for a full submission."

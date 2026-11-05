@@ -11,11 +11,17 @@
  *   npm run indexnow -- --dist             every URL in dist/sitemap.xml (local build)
  *   npm run indexnow -- /blog/what-is-aeo /pt/blog
  *                                          only these (paths or full URLs)
+ *   npm run indexnow -- --since=<sha>      only routes whose date in
+ *                                          src/data/route-dates.json differs
+ *                                          from that commit (what the
+ *                                          IndexNow GitHub Action runs after
+ *                                          each production deploy)
  *   npm run indexnow -- --dry-run ...      print the payload, send nothing
  *
  * Submit after a change, not on a schedule: resubmitting unchanged URLs again
  * and again can get the key throttled.
  */
+import { execSync } from 'child_process';
 import { readFileSync, readdirSync } from 'fs';
 
 const HOST = 'mariamadeira.com';
@@ -31,6 +37,8 @@ if (`${key}.txt` !== keyFiles[0]) throw new Error(`public/${keyFiles[0]} must co
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
 const fromDist = args.includes('--dist');
+const since = args.find(a => a.startsWith('--since='))?.slice('--since='.length);
+if (since !== undefined && !/^[0-9a-f]{7,40}$/.test(since)) throw new Error(`--since needs a commit sha, got "${since}"`);
 const paths = args.filter(a => !a.startsWith('--'));
 
 const locsIn = xml => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].trim());
@@ -38,6 +46,21 @@ const locsIn = xml => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].tr
 let urlList;
 if (paths.length) {
     urlList = paths.map(p => (p.startsWith('http') ? p : `${BASE_URL}${p.startsWith('/') ? '' : '/'}${p}`));
+} else if (since) {
+    // A route is new or changed when its sitemap date moved; a removed route
+    // is submitted too, so engines see its 404 sooner.
+    const datesAt = rev => {
+        try { return JSON.parse(execSync(`git show ${rev}:src/data/route-dates.json`, { encoding: 'utf-8', stdio: ['ignore', 'pipe', 'ignore'] })); }
+        catch { return {}; }
+    };
+    const before = datesAt(since), after = datesAt('HEAD');
+    const changed = [...new Set([...Object.keys(before), ...Object.keys(after)])]
+        .filter(r => r !== '/404' && before[r] !== after[r]);
+    if (!changed.length) {
+        console.log(`  IndexNow: no sitemap dates changed since ${since.slice(0, 7)}, nothing to submit`);
+        process.exit(0);
+    }
+    urlList = changed.map(r => `${BASE_URL}${r}`);
 } else if (fromDist) {
     urlList = locsIn(readFileSync('dist/sitemap.xml', 'utf-8'));
 } else {

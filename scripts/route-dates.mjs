@@ -24,6 +24,19 @@
  * Run `node scripts/route-dates.mjs` after the content edits and before the
  * commit (or right after it, then amend). `--print` shows the result and the
  * files behind each date without writing the JSON.
+ *
+ * `--staged` is what the pre-commit hook (.githooks/pre-commit) runs. It is
+ * incremental: a route whose page or copy is staged in this commit gets
+ * today's date, and every other route keeps the date already in the JSON, so
+ * a date corrected by hand stays corrected. A route not yet in the JSON gets
+ * its git date. Unstaged edits do not count: they are not in this commit.
+ * The hook is switched on by `npm install` (the "prepare" script).
+ *
+ * Known limit, both modes: dependencies are tracked per file, not per field.
+ * The homepage imports the portfolio copy for its project titles, so any
+ * change to that file dates / and /pt too; an edit to a component shared by
+ * an English page and its /pt twin dates both. Correct such a date by hand in
+ * the JSON; with --staged it is kept until that route's files change again.
  */
 import { execSync } from 'child_process';
 import { readFileSync, writeFileSync, existsSync } from 'fs';
@@ -32,6 +45,7 @@ import { dirname, join, normalize } from 'path';
 const routesSrc = readFileSync('src/routes.ts', 'utf-8');
 const OUT = 'src/data/route-dates.json';
 const PRINT = process.argv.includes('--print');
+const STAGED = process.argv.includes('--staged');
 
 const routes = [...routesSrc.matchAll(/path:\s*"([^"]+)"[\s\S]*?import\("\.\/pages\/([A-Za-z0-9_]+)"\)/g)]
     .map(([, path, page]) => ({ path, file: `src/pages/${page}.tsx`, lang: path === '/pt' || path.startsWith('/pt/') ? 'pt' : 'en' }));
@@ -81,10 +95,16 @@ function declaredDate(page, lang) {
 
 const today = new Date().toISOString().slice(0, 10);
 function gitDate(file) {
-    const dirty = execSync(`git status --porcelain -- "${file}"`, { encoding: 'utf-8' }).trim();
+    const dirty = !STAGED && execSync(`git status --porcelain -- "${file}"`, { encoding: 'utf-8' }).trim();
     if (dirty) return today;
     return execSync(`git log -1 --format=%cI -- "${file}"`, { encoding: 'utf-8' }).trim().slice(0, 10) || null;
 }
+
+// --staged: the files in this commit, and the dates as they stand.
+const staged = STAGED
+    ? new Set(execSync('git diff --cached --name-only', { encoding: 'utf-8' }).split('\n').filter(Boolean))
+    : null;
+const previous = STAGED && existsSync(OUT) ? JSON.parse(readFileSync(OUT, 'utf-8')) : {};
 
 const dates = {};
 const why = {};
@@ -92,6 +112,11 @@ for (const { path, file, lang } of routes) {
     if (!existsSync(file)) { console.warn(`  no file for ${path}`); continue; }
     const declared = declaredDate(file, lang);
     if (declared) { dates[path] = declared; why[path] = `dateModified in ${file}`; continue; }
+    if (STAGED) {
+        const hit = [file, ...copyFiles(file, lang)].find(f => staged.has(f));
+        if (hit) { dates[path] = today; why[path] = `${hit} (staged)`; continue; }
+        if (previous[path]) { dates[path] = previous[path]; why[path] = 'unchanged'; continue; }
+    }
     let latest = null, from = null;
     for (const f of [file, ...copyFiles(file, lang)]) {
         const d = gitDate(f);
@@ -101,6 +126,13 @@ for (const { path, file, lang } of routes) {
 }
 
 if (!PRINT) writeFileSync(OUT, JSON.stringify(dates, null, 2) + '\n');
+if (STAGED) {
+    // The hook stays quiet unless a date moves.
+    for (const [p, d] of Object.entries(dates)) {
+        if (previous[p] !== d) console.log(`  route-dates: ${p} ${previous[p] ?? '(new)'} -> ${d} (${why[p]})`);
+    }
+    process.exit(0);
+}
 const spread = new Set(Object.values(dates));
 console.log(`  ${Object.keys(dates).length} routes, ${spread.size} distinct dates${PRINT ? ' (not written)' : ''}`);
 for (const [p, d] of Object.entries(dates).sort((a, b) => a[1].localeCompare(b[1]))) {
