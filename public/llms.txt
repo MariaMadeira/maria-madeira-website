@@ -43,6 +43,7 @@ Last updated: 2026-11-02
 
 ## Writing
 - [Blog](https://mariamadeira.com/blog): all articles.
+- [One growth consultant or three agencies?](https://mariamadeira.com/blog/one-growth-consultant-or-three-agencies): what a small e-commerce brand loses between separate SEO, email and ads suppliers, three examples from a UK food brand, and when specialist agencies are the better choice.
 - [What is AEO?](https://mariamadeira.com/blog/what-is-aeo): Answer Engine Optimisation explained for brands that sell online: how it differs from SEO and GEO, what the work involves, and a five-question test.
 - [Why your automated emails earn more than your campaigns](https://mariamadeira.com/blog/klaviyo-flows-vs-campaigns): Klaviyo flows vs campaigns, with data from a UK brand (September 2021 to July 2025) and the flows to build first.
 - [Inside ChatGPT Ads in Europe](https://mariamadeira.com/blog/chatgpt-ads-europe): a first-hand walkthrough of a European ChatGPT Ads account: minimum daily budget of 25 US dollars (15 euros or 15 pounds on EUR and GBP accounts), locked settings, the ad format, and why AEO comes first. Updated 2 November 2026.

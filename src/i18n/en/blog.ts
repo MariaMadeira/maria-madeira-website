@@ -16,6 +16,14 @@ const en = {
     /* Newest first. `slug` is the English slug; links go through `to()`. */
     posts: [
         {
+            slug: "one-growth-consultant-or-three-agencies",
+            title: "One Growth Consultant or Three Agencies? What a Small E-commerce Brand Needs",
+            excerpt: "SEO, email and paid ads are usually bought from three suppliers. Three real examples of what gets lost between them, and when one consultant is the better choice.",
+            category: "Growth",
+            readTime: "7 min read",
+            date: "12 November 2026",
+        },
+        {
             slug: "klaviyo-flows-vs-campaigns",
             title: "Why your automated emails earn more than your campaigns",
             excerpt: "Automated flows are a small share of sends and a large share of email revenue. What the research says, data from a real UK brand (September 2021 to July 2025), and the flows to build first.",

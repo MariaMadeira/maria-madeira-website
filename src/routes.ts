@@ -36,6 +36,7 @@ export const ROUTES: RouteDef[] = [
     { path: "/blog/chatgpt-ads-europe", load: () => import("./pages/BlogChatGptAdsEurope") },
     { path: "/blog/ai-product-descriptions-food-brands", load: () => import("./pages/BlogAiProductDescriptions") },
     { path: "/blog/klaviyo-flows-vs-campaigns", load: () => import("./pages/BlogKlaviyoFlowsVsCampaigns") },
+    { path: "/blog/one-growth-consultant-or-three-agencies", load: () => import("./pages/BlogConsultantOrAgencies") },
     { path: "/case-studies", load: () => import("./pages/CaseStudies") },
     { path: "/case-study-email", load: () => import("./pages/CaseStudyEmail") },
     { path: "/case-study-google-ads", load: () => import("./pages/CaseStudyGoogleAds") },
