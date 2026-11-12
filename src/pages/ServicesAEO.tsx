@@ -278,6 +278,9 @@ export default function ServicesAEO() {
                 @media (max-width: 420px) { .aeo-steps { grid-template-columns: 1fr; } }
                 .aeo-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
                 @media (max-width: 860px) { .aeo-hero { grid-template-columns: 1fr; } }
+                .aeo-hero-intro { font-size: 1.15rem; margin-bottom: 2.5rem; }
+                /* On phones, keep the hero button above the fold on a 375x667 screen. */
+                @media (max-width: 600px) { .aeo-hero-intro { font-size: 1.05rem; margin-bottom: 2rem; } }
                 .aeo-answer { animation: aeo-fade 0.2s ease; }
                 @keyframes aeo-fade { from { opacity: 0; } to { opacity: 1; } }
                 .aeo-switch:focus-visible, .aeo-switch-label:focus-visible { outline: 2px solid var(--accent-secondary); outline-offset: 3px; border-radius: 6px; }
@@ -296,12 +299,16 @@ export default function ServicesAEO() {
                     <h1 className="section-title" style={{ marginBottom: "1.5rem", textAlign: "left" }}>
                         {t.h1Lead}<span className="text-gradient">{t.h1Accent}</span>{t.h1Tail}
                     </h1>
-                    <p style={{ color: "var(--text-secondary)", fontSize: "1.15rem", lineHeight: 1.8, marginBottom: "2.5rem" }}>
+                    <p className="aeo-hero-intro" style={{ color: "var(--text-secondary)", lineHeight: 1.8 }}>
                         {t.intro}
                     </p>
                     <Link to={to("/contact")} className="btn btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
                         {t.cta} <ArrowRight size={18} style={{ marginLeft: "8px" }} />
                     </Link>
+                    {/* Below the button, so it can never push the button down. */}
+                    <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", lineHeight: 1.6, marginTop: "1rem", marginBottom: 0 }}>
+                        <Link to={to("/pricing")} style={{ color: "var(--accent-text)", fontWeight: 600 }}>{t.priceLine.link}</Link>{t.priceLine.b}
+                    </p>
                 </div>
                 <div style={{ display: "flex", justifyContent: "center" }}>
                     <AiChatDemo />
@@ -374,6 +381,7 @@ export default function ServicesAEO() {
                 ))}
                 <p style={{ color: "var(--text-secondary)", lineHeight: 1.8, fontSize: "1.05rem", margin: 0 }}>
                     {t.comparisonLead}<Link to={to("/blog/best-aeo-agencies-ecommerce-europe")} style={{ color: "var(--accent-text)", fontWeight: 600 }}>{t.comparisonLink}</Link>
+                    {t.consultantGuide.a}<Link to={to("/blog/independent-aeo-consultant-ecommerce")} style={{ color: "var(--accent-text)", fontWeight: 600 }}>{t.consultantGuide.link}</Link>{t.consultantGuide.b}
                 </p>
             </section>
 

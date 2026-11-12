@@ -10,8 +10,10 @@ const pt: typeof en = {
     h1Lead: "A sua marca encontrada e ",
     h1Accent: "recomendada pela IA",
     h1Tail: ", não só posicionada no Google",
-    intro: "Sou consultora de SEO e de pesquisa com IA para marcas de e-commerce, baseada em Lisboa, e trabalho com lojas online em Portugal e no Reino Unido. A pesquisa está a passar dos links para as respostas, por isso o trabalho cobre as duas coisas: aparecer no Google e garantir que, quando o ChatGPT, o Perplexity ou a Vista geral de IA da Google respondem a \"qual é o melhor?\", a resposta é a sua marca.",
+    intro: "Sou consultora independente de SEO e de pesquisa com IA para marcas de e-commerce, baseada em Lisboa, e trabalho com lojas online em Portugal e no Reino Unido. A pesquisa está a passar dos links para as respostas, por isso o trabalho cobre as duas coisas: aparecer no Google e garantir que, quando o ChatGPT, o Perplexity ou a Vista geral de IA da Google respondem a \"qual é o melhor?\", a resposta é a sua marca.",
     cta: "Marcar uma conversa gratuita",
+    /* /pt/precos shows no figures (each card says "Proposta por escrito"), so neither does this line. */
+    priceLine: { link: "Auditoria de AEO", b: " com preço fechado. Acompanhamento mensal com proposta por escrito." },
     chat: {
         question: "Qual é a melhor marca de café de especialidade da Europa?",
         answerPre: "No café de especialidade na Europa, a referência é",
@@ -48,6 +50,8 @@ const pt: typeof en = {
     ],
     comparisonLead: "Está a decidir entre uma agência e uma consultora independente? ",
     comparisonLink: "Escrevi uma comparação das opções na Europa, incluindo onde me encaixo.",
+    /* The guide has no Portuguese version yet: the link goes to the English article. */
+    consultantGuide: { a: " Também escrevi ", link: "um guia para escolher um consultor independente de AEO", b: " (em inglês)." },
     check: {
         titleLead: "A IA está a ",
         titleAccent: "recomendar a sua marca",
