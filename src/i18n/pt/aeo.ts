@@ -10,7 +10,7 @@ const pt: typeof en = {
     h1Lead: "A sua marca encontrada e ",
     h1Accent: "recomendada pela IA",
     h1Tail: ", não só posicionada no Google",
-    intro: "Sou consultora independente de SEO e de pesquisa com IA para marcas de e-commerce, baseada em Lisboa, e trabalho com lojas online em Portugal e no Reino Unido. A pesquisa está a passar dos links para as respostas, por isso o trabalho cobre as duas coisas: aparecer no Google e garantir que, quando o ChatGPT, o Perplexity ou a Vista geral de IA da Google respondem a \"qual é o melhor?\", a resposta é a sua marca.",
+    intro: "Sou consultora independente de SEO e de pesquisa com IA (AEO) para marcas de e-commerce, baseada em Lisboa, e trabalho com lojas online em Portugal e no Reino Unido. A pesquisa está a passar dos links para as respostas, por isso o trabalho cobre as duas coisas: aparecer no Google e garantir que, quando o ChatGPT, o Perplexity ou a Vista geral de IA da Google respondem a \"qual é o melhor?\", a resposta é a sua marca.",
     cta: "Marcar uma conversa gratuita",
     /* /pt/precos shows no figures (each card says "Proposta por escrito"), so neither does this line. */
     priceLine: { link: "Auditoria de AEO", b: " com preço fechado. Acompanhamento mensal com proposta por escrito." },
