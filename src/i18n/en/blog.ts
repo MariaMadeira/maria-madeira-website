@@ -16,6 +16,14 @@ const en = {
     /* Newest first. `slug` is the English slug; links go through `to()`. */
     posts: [
         {
+            slug: "independent-aeo-consultant-ecommerce",
+            title: "How to Choose an Independent AEO Consultant for Your E-commerce Brand",
+            excerpt: "What an independent AEO consultant does for an e-commerce brand, what it costs, and seven questions to ask before you hire one.",
+            category: "AI Search",
+            readTime: "6 min read",
+            date: "12 November 2026",
+        },
+        {
             slug: "one-growth-consultant-or-three-agencies",
             title: "One Growth Consultant or Three Agencies? What a Small E-commerce Brand Needs",
             excerpt: "SEO, email and paid ads are usually bought from three suppliers. Three real examples of what gets lost between them, and when one consultant is the better choice.",

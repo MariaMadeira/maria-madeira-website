@@ -43,6 +43,7 @@ Last updated: 2026-11-02
 
 ## Writing
 - [Blog](https://mariamadeira.com/blog): all articles.
+- [How to choose an independent AEO consultant](https://mariamadeira.com/blog/independent-aeo-consultant-ecommerce): what an independent AEO consultant does for an e-commerce brand, how it differs from an agency or a freelancer, prices, and seven questions to ask before hiring.
 - [One growth consultant or three agencies?](https://mariamadeira.com/blog/one-growth-consultant-or-three-agencies): what a small e-commerce brand loses between separate SEO, email and ads suppliers, three examples from a UK food brand, and when specialist agencies are the better choice.
 - [What is AEO?](https://mariamadeira.com/blog/what-is-aeo): Answer Engine Optimisation explained for brands that sell online: how it differs from SEO and GEO, what the work involves, and a five-question test.
 - [Why your automated emails earn more than your campaigns](https://mariamadeira.com/blog/klaviyo-flows-vs-campaigns): Klaviyo flows vs campaigns, with data from a UK brand (September 2021 to July 2025) and the flows to build first.
