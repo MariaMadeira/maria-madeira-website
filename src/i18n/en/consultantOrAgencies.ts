@@ -9,7 +9,7 @@
  */
 const en = {
     path: "/blog/one-growth-consultant-or-three-agencies",
-    title: "One Growth Consultant or Three Agencies? What a Small E-commerce Brand Needs",
+    title: "One Growth Consultant or Three Agencies? | Maria Madeira",
     headline: "One Growth Consultant or Three Agencies? What a Small E-commerce Brand Needs",
     description: "SEO, email and paid ads are usually bought from three suppliers. Three real examples of what gets lost between them, and when one consultant is the better choice.",
     articleSection: "Growth",
@@ -17,7 +17,7 @@ const en = {
     breadcrumb: ["Home", "Blog", "One Growth Consultant or Three Agencies?"],
     allArticles: "All articles",
     eyebrow: "Growth · E-commerce",
-    readTime: " 8 min read",
+    readTime: " 7 min read",
 
     summary: {
         lead: "Short answer: ",
@@ -32,9 +32,8 @@ const en = {
         klaviyoLink: "Klaviyo",
         d: ", ",
         adsLink: "paid ads",
-        e: " and websites for brands that sell online, so I have an obvious interest in that answer.",
+        e: " and websites for brands that sell online, so I have an obvious interest in that answer. This article is my attempt to earn it with three examples from my own work, including one that did not go well.",
     },
-    intro2: "This article is my attempt to earn it with three examples from my own work, including one that did not go well.",
 
     missingTitle: "Where the money goes missing",
     missing1: "Each agency reports on its own channel, and each report can be accurate. The ads agency shows cost per lead. The email agency shows open rates and flow revenue. The SEO agency shows rankings.",
@@ -50,20 +49,19 @@ const en = {
     ex1p1: "Early in 2026 I built a lead campaign for a UK food brand I worked with. Google and Meta ads sent people to a Klaviyo sign-up page offering 15% off a first order. Sign-ups went into their own list, kept apart from organic subscribers so I could measure them separately. They received a welcome email with the code, then two reminders on day one and day three.",
     ex1p2: "I ran both halves: the ad campaigns and the Klaviyo flow.",
     ex1Table: {
-        caption: "The lead campaign, stage by stage, from ad spend to orders from the follow-up emails",
-        head: ["Stage", "Result"],
+        caption: "The lead campaign, stage by stage, from the ads to orders from the follow-up emails",
+        head: ["Stage", "What happened"],
         rows: [
-            ["Google Search campaign, January to April", "£677 spent, 136 leads, about £5 per lead"],
-            ["Sign-up form", "About 3,000 views, 227 sign-ups"],
-            ["Form completion (two steps)", "146 of 227 finished, 36% lost at step two"],
-            ["Bought on day one, from the welcome email", "16 of 203 people in the flow (7.9%)"],
-            ["Reminder 1", "161 delivered, 33.5% opened, 1 order"],
-            ["Reminder 2", "136 delivered, 35.8% opened, 0 orders"],
+            ["Paid ads to the sign-up form", "Plenty of leads, at a cost per lead that looked excellent"],
+            ["Subscription confirmation", "More than a third of sign-ups never confirmed"],
+            ["Welcome email with the code", "About 8% of people in the flow bought on day one"],
+            ["Reminder 1", "About a third opened it, one order"],
+            ["Reminder 2", "About a third opened it, no orders"],
         ],
     },
-    ex1p3: "Seen from the ads side, this was a success. Five pounds per lead is a number most agencies would be glad to report.",
-    ex1p4: "Seen from the email side, the picture was mixed. The welcome email did better than the brand's organic welcome flow, which converted 5.6%. The reminders did nothing. People who had not used the code on day one did not use it after two more emails about the same code.",
-    ex1p5: "Put the two sides together and the number changes. Sixteen first orders against £677 of Google spend is £42 per first customer, before counting what Meta cost. On first orders the leads returned about 1.8x the Google spend, and the account needed 4x to break even. The £5 lead was a £42 customer.",
+    ex1p3: "Seen from the ads side, this was a success. The cost per lead was the kind of number most agencies would be glad to report.",
+    ex1p4: "Seen from the email side, the picture was mixed. The welcome email converted better than the brand's organic welcome flow. The reminders did nothing. People who had not used the code on day one did not use it after two more emails about the same code.",
+    ex1p5: "Put the two sides together and the number changes. About one lead in twelve became a customer, so each first customer cost roughly twelve times what a lead cost. On first orders the campaign returned less than half of what the account needed to break even. A cheap lead had become an expensive customer.",
 
     listTitle: "What I did with the list",
     list1: {
@@ -75,9 +73,9 @@ const en = {
 
     differentTitle: "What I would do differently",
     different: [
-        "Sell the product in the reminders. Two more emails repeating the discount added nothing.",
-        "Set the target as cost per first customer before launch. Cost per lead looked excellent and hid the real figure for weeks.",
-        "Use a one-step form. A third of the people who started it never finished.",
+        { lead: "Sell the product in the reminders.", body: " Two more emails repeating the discount added nothing." },
+        { lead: "Set the target as cost per first customer before launch.", body: " Cost per lead looked excellent and hid the real figure for weeks." },
+        { lead: "Use a one-step sign-up.", body: " More than a third of the people who signed up never confirmed their subscription." },
     ],
     different2: "None of this was hard to see. It only needed someone looking at the ad spend and the flow report in the same sitting.",
 
@@ -89,15 +87,8 @@ const en = {
 
     ex3Title: "Example 3: a record month that was not good news",
     ex3p1: "The same brand ran a seasonal Performance Max campaign alongside its brand search campaign. In June I added ten search themes to the seasonal campaign. One of them was the brand's own name. That was my mistake.",
-    ex3Table: {
-        caption: "Return on ad spend for the brand and seasonal campaigns, June and July",
-        head: ["Campaign", "June", "July"],
-        rows: [
-            ["Brand", "6.8x", "3.9x"],
-            ["Seasonal", "6.6x", "7.9x"],
-        ],
-    },
-    ex3p2: "In July the seasonal campaign posted a higher return, while the brand campaign fell by almost half. The seasonal campaign was showing to people who were already searching for the brand, and taking the credit for their orders. Its great number was our own customers counted in the wrong place.",
+    ex3p2: "In July the seasonal campaign's reported return rose by about a fifth. Over the same month the brand campaign's return fell by more than 40%.",
+    ex3p2b: "The two moves were connected. The seasonal campaign was showing to people who were already searching for the brand, and taking the credit for their orders. Its great number was our own customers counted in the wrong place.",
     ex3p3: "I found it because I write down every change with its date, and because I was watching both campaigns as one account. On 20 July I added a negative brand list to the seasonal campaign and removed the brand themes. The brand campaign improved the following month, and the seasonal one settled at its real level.",
     ex3p4: "This example sits inside a single channel. I include it because it shows the same habit as the first one: a good number is only good news once you know where the traffic came from.",
 
@@ -119,15 +110,15 @@ const en = {
     whenTitle: "When three agencies are the better choice",
     when1: "One person is the wrong answer in some situations, and it is better to say so:",
     whenList: [
-        "Your ad spend is large enough to need daily attention. At that level a paid media team earns its fee.",
-        "You need volume. Dozens of new ad creatives a month, or a digital PR programme, is production work for a team.",
-        "You already have a head of marketing. If someone in-house owns the strategy and connects the channels, specialists reporting to that person can work well.",
-        "You need a channel I do not run. I manage Google, Meta and Microsoft Ads. I have never run TikTok Ads, and I would tell you to find someone who has.",
+        { lead: "Your ad spend is large enough to need daily attention.", body: " At that level a paid media team earns its fee." },
+        { lead: "You need volume.", body: " Dozens of new ad creatives a month, or a digital PR programme, is production work for a team." },
+        { lead: "You already have a head of marketing.", body: " If someone in-house owns the strategy and connects the channels, specialists reporting to that person can work well." },
+        { lead: "You need a channel I do not run.", body: " I manage Google, Meta and Microsoft Ads. I have never run TikTok Ads, and I would tell you to find someone who has." },
     ],
     when2: "If none of these describes you, the more likely problem is that nobody is looking at the whole picture.",
 
     howTitle: "How I work",
-    how1: "I start with a fixed-price growth audit. I look at search, email, paid ads and the site together, then walk you through what I found on a 60-minute call. You get a written list of what to fix, in order.",
+    how1: "I start with a fixed-price growth audit. It covers one channel, and I walk you through what I found on a 60-minute call.",
     how2: {
         a: "After that you can stop, agree a project with a scope and price in writing, or work with me monthly for a minimum of three months. I work inside your own ad accounts, your Klaviyo and your Search Console, so everything stays with you when we finish. The options are on the ",
         link: "pricing page",

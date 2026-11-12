@@ -20,7 +20,7 @@ const en = {
             title: "One Growth Consultant or Three Agencies? What a Small E-commerce Brand Needs",
             excerpt: "SEO, email and paid ads are usually bought from three suppliers. Three real examples of what gets lost between them, and when one consultant is the better choice.",
             category: "Growth",
-            readTime: "8 min read",
+            readTime: "7 min read",
             date: "12 November 2026",
         },
         {

@@ -41,6 +41,7 @@ const H2 = { fontSize: "1.6rem", marginTop: "3.5rem", marginBottom: "1.25rem", l
 const H3 = { fontSize: "1.2rem", marginTop: "2.25rem", marginBottom: "1rem", lineHeight: 1.35, color: "var(--text-primary)" } as const;
 const LIST = { ...P, paddingLeft: "1.25rem", listStyle: "disc", display: "flex", flexDirection: "column", gap: "0.6rem" } as const;
 const linkStyle = { color: "var(--accent-text)", fontWeight: 600 } as const;
+const strong = { color: "var(--text-primary)", fontWeight: 700 } as const;
 const calloutBox = { background: "var(--accent-glow)", border: "1px solid var(--border-color)", borderLeft: "4px solid var(--accent-secondary)", borderRadius: "16px", padding: "clamp(1.5rem, 4vw, 2.5rem)" } as const;
 
 /** A data table in the ChatGPT Ads article's style, scrolling inside its own frame. */
@@ -128,7 +129,6 @@ export default function BlogConsultantOrAgencies() {
                     {t.intro1.d}<Link to={to(PAID_ADS_SERVICE)} style={linkStyle}>{t.intro1.adsLink}</Link>
                     {t.intro1.e}
                 </p>
-                <p style={P}>{t.intro2}</p>
 
                 <h2 style={H2}>{t.missingTitle}</h2>
                 <p style={P}>{t.missing1}</p>
@@ -154,7 +154,7 @@ export default function BlogConsultantOrAgencies() {
 
                 <h3 style={H3}>{t.differentTitle}</h3>
                 <ul style={LIST}>
-                    {t.different.map((item) => <li key={item}>{item}</li>)}
+                    {t.different.map((item) => <li key={item.lead}><strong style={strong}>{item.lead}</strong>{item.body}</li>)}
                 </ul>
                 <p style={P}>{t.different2}</p>
 
@@ -166,8 +166,8 @@ export default function BlogConsultantOrAgencies() {
 
                 <h2 style={H2}>{t.ex3Title}</h2>
                 <p style={P}>{t.ex3p1}</p>
-                <Table {...t.ex3Table} />
                 <p style={P}>{t.ex3p2}</p>
+                <p style={P}>{t.ex3p2b}</p>
                 <p style={P}>{t.ex3p3}</p>
                 <p style={P}>{t.ex3p4}</p>
 
@@ -177,7 +177,7 @@ export default function BlogConsultantOrAgencies() {
                 <h2 style={H2}>{t.whenTitle}</h2>
                 <p style={P}>{t.when1}</p>
                 <ul style={LIST}>
-                    {t.whenList.map((item) => <li key={item}>{item}</li>)}
+                    {t.whenList.map((item) => <li key={item.lead}><strong style={strong}>{item.lead}</strong>{item.body}</li>)}
                 </ul>
                 <p style={P}>{t.when2}</p>
 
