@@ -8,8 +8,10 @@ const en = {
     h1Lead: "SEO that gets you found on Google and ",
     h1Accent: "recommended by AI",
     h1Tail: "",
-    intro: "I'm an SEO and AI search consultant for e-commerce brands in the UK and Portugal. Search is shifting from links to answers, so the work covers both: ranking on Google, and making sure that when ChatGPT, Perplexity or Google's AI Overviews answer \"who's the best?\", the answer is you.",
+    intro: "I'm an independent SEO and AI search (AEO) consultant for e-commerce brands in the UK and Portugal. Search is shifting from links to answers, so the work covers both: ranking on Google, and making sure that when ChatGPT, Perplexity or Google's AI Overviews answer \"who's the best?\", the answer is you.",
     cta: "Book a free call",
+    /* Under the hero button. Figures from the AEO line on /pricing (src/i18n/en/pricing.ts). */
+    priceLine: { link: "AEO audit £750", b: ", fixed price. Monthly work from £800." },
     chat: {
         question: "What's the best specialty coffee brand in Europe?",
         answerPre: "For specialty coffee in Europe, the standout is",
@@ -46,6 +48,7 @@ const en = {
     ],
     comparisonLead: "Deciding between an agency and an independent? ",
     comparisonLink: "I wrote a comparison of the European options, including where I fit.",
+    consultantGuide: { a: " I also wrote ", link: "a guide to choosing an independent AEO consultant", b: "." },
     check: {
         titleLead: "Is AI ",
         titleAccent: "recommending you",
