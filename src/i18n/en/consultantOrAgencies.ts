@@ -61,7 +61,7 @@ const en = {
     },
     ex1p3: "Seen from the ads side, this was a success. The cost per lead was the kind of number most agencies would be glad to report.",
     ex1p4: "Seen from the email side, the picture was mixed. The welcome email converted better than the brand's organic welcome flow. The reminders did nothing. People who had not used the code on day one did not use it after two more emails about the same code.",
-    ex1p5: "Put the two sides together and the number changes. About one lead in twelve became a customer, so each first customer cost roughly twelve times what a lead cost. On first orders the campaign returned less than half of what the account needed to break even. A cheap lead had become an expensive customer.",
+    ex1p5: "Put the two sides together and the number changes. Only a small share of leads became customers, so each first customer cost several times what a lead cost. On first orders the campaign returned less than half of what the account needed to break even. A cheap lead had become an expensive customer.",
 
     listTitle: "What I did with the list",
     list1: {
