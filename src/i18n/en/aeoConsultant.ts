@@ -94,7 +94,7 @@ const en = {
     how3: {
         a: "Two results I can point to. In my ",
         link: "SEO case study",
-        b: ", daily impressions in Google's AI features rose 2.2x between the first week and the last. On my own site, in September 2026 I rewrote the pages aimed at the phrase \"AEO consultant for ecommerce UK\". The site was ranking around position 22 on Google for it. In the 28 days to 10 November, the average position in Search Console was 3.",
+        b: ", daily impressions in Google's AI features rose 2.2x between the first week and the last. On my own site, in September 2026 I rewrote the pages aimed at the phrase \"AEO consultant for ecommerce UK\". The site was ranking around position 22 on Google for it. In the 28 days to 10 November, the average position in Search Console was 3 across all countries and 5 in the UK.",
     },
     how4: {
         a: "If you want to see where your brand stands before deciding anything, ",
@@ -131,7 +131,7 @@ const en = {
         },
         {
             q: "How long does AEO take to show results?",
-            a: "Changes to your own pages can show within weeks. My own site moved from around position 22 to an average of position 3 on Google for one target phrase within seven weeks. Being named by AI assistants usually takes longer, because it also depends on what other sites say about you.",
+            a: "Changes to your own pages can show within weeks. My own site moved from around position 22 to the first page of Google for one target phrase within seven weeks. Being named by AI assistants usually takes longer, because it also depends on what other sites say about you.",
         },
         {
             q: "Does an AEO consultant also write the content?",
