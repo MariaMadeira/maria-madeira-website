@@ -3,8 +3,8 @@ import type { Rich } from "./blogWhatIsAeo";
 
 const en = {
     path: "/blog/best-aeo-agencies-ecommerce-europe",
-    title: "Best AEO Agencies for E-commerce in the UK and Europe (2026)",
-    description: "A researched shortlist of AEO agencies for e-commerce brands in the UK and Europe, how to vet them, and when an independent consultant is the better fit.",
+    title: "7 Best AEO Agencies for E-commerce, UK & Europe (2026)",
+    description: "Seven AEO agencies for e-commerce in the UK and Europe, shortlisted by an independent consultant. No agency ranking itself first. Plus how to vet them.",
     headline: "The best AEO agencies for e-commerce brands in Europe (2026), and where a consultant fits",
     crumbs: { home: "Home", blog: "Blog", page: "Best AEO agencies for e-commerce in Europe" },
     listName: "AEO agencies for e-commerce brands in Europe",
