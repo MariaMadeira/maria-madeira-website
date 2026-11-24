@@ -16,6 +16,14 @@ const en = {
     /* Newest first. `slug` is the English slug; links go through `to()`. */
     posts: [
         {
+            slug: "what-chatgpt-says-about-your-food-brand",
+            title: "What ChatGPT Says About Your Food Brand, and How to Check",
+            excerpt: "Five questions to ask ChatGPT, Perplexity and Google about your own products, how to read the answers, and what to fix first. A 15-minute check for food and drink brands.",
+            category: "AI Search",
+            readTime: "7 min read",
+            date: "24 November 2026",
+        },
+        {
             slug: "independent-aeo-consultant-ecommerce",
             title: "How to Choose an Independent AEO Consultant for Your E-commerce Brand",
             excerpt: "What an independent AEO consultant does for an e-commerce brand, what it costs, and seven questions to ask before you hire one.",

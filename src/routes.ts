@@ -38,6 +38,7 @@ export const ROUTES: RouteDef[] = [
     { path: "/blog/klaviyo-flows-vs-campaigns", load: () => import("./pages/BlogKlaviyoFlowsVsCampaigns") },
     { path: "/blog/one-growth-consultant-or-three-agencies", load: () => import("./pages/BlogConsultantOrAgencies") },
     { path: "/blog/independent-aeo-consultant-ecommerce", load: () => import("./pages/BlogAeoConsultant") },
+    { path: "/blog/what-chatgpt-says-about-your-food-brand", load: () => import("./pages/BlogFoodBrandAiCheck") },
     { path: "/case-studies", load: () => import("./pages/CaseStudies") },
     { path: "/case-study-email", load: () => import("./pages/CaseStudyEmail") },
     { path: "/case-study-google-ads", load: () => import("./pages/CaseStudyGoogleAds") },
