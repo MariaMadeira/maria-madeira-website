@@ -178,6 +178,9 @@ export default function BlogFoodBrandAiCheck() {
                     <div style={{ display: "inline-flex", width: "48px", height: "48px", borderRadius: "50%", background: "var(--bg-secondary)", alignItems: "center", justifyContent: "center", color: "var(--accent-secondary)", marginBottom: "1.25rem" }}>
                         <Sparkles size={24} />
                     </div>
+                    <h2 style={{ fontSize: "1.5rem", margin: "0 0 1rem", lineHeight: 1.25, color: "var(--text-primary)" }}>
+                        {t.ctaTitle}
+                    </h2>
                     <p style={{ color: "var(--text-primary)", fontSize: "1.05rem", lineHeight: 1.8, margin: "0 0 1rem" }}>
                         {t.cta1}
                     </p>

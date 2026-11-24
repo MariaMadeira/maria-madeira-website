@@ -122,6 +122,7 @@ const en = {
     case3: "One query from Search Console shows what changed: \"what meat has no gluten? give me a list of gluten-free sausages\". The Gluten-Free Sausages page was shown in the answer and clicked. It was the site's first documented click from an AI-style question.",
     caseLink: "Read the full SEO and AEO case study",
 
+    ctaTitle: "How does AI search describe your products?",
     cta1: "If you run the check and find gaps, the list above is where to start, and a small team can do much of it without outside help.",
     cta2: "If you would rather I ran it, send me your website. I'll ask ChatGPT and Perplexity about three of your products and send back a short note on what they get right, what they get wrong, and what I'd fix first. It's free, for food and drink brands selling online.",
     ctaButton: "Request your AI search check",
